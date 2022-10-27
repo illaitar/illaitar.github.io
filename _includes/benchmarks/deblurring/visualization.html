@@ -335,6 +335,7 @@
             onChangeHelper();
 
             function onChangeHelper() {
+                console.log("we entered!");
                 let videoToName = ['stirling', 'arabic', 'mtg', 'martian', 'racer'];
                 let numToName = [
                                  ['nafnet_reds', 'NAFNet (REDS)'], 
@@ -441,7 +442,11 @@
 
 
             }
-
+            window.addEventListener("scroll", function() {
+    onChangeHelper()
+});
+            window.addEventListener("load", function(){onChangeHelper()});
+            document.addEventListener('DOMContentLoaded', function(){onChangeHelper()});
             document.getElementById("video_selector").onchange = onChangeHelper;
             document.getElementById("comp_model1_selector").onchange = onChangeHelper;
             document.getElementById("comp_model2_selector").onchange = onChangeHelper;
