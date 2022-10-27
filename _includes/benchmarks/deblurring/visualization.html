@@ -120,6 +120,9 @@
                 }
             }
 
+            $('#result1').hide().show(0);
+            $('#result2').hide().show(0);
+
             /* Execute a function when someone moves the cursor over the image, or the lens: */
             for (let i = 0; i < lenses.length; i++) {
                 lenses[i].addEventListener("mousedown", mousedown);
@@ -136,7 +139,6 @@
             }
 
             let clicked = 0;
-
 
             function mousedown(e) {
                 for (let i = 0; i < lenses.length; i++) {
@@ -272,11 +274,11 @@
                                                                                 name="values">
     <option>NAFNet (REDS)</option>
     <option>Restormer</option>
-    <option>VRT (REDS)</option>
+    <option selected="selected">VRT (REDS)</option>
     <option>MPR (local)</option>
     <option>VRT (GoPro)</option>
     <option>Deeprft (GoPro)</option>
-    <option selected="selected">Deeprft (REDS)</option>
+    <option >Deeprft (REDS)</option>
     <option>DeblurGAN (Inception)</option>
     <option>Restormer (local)</option>
 
@@ -324,9 +326,9 @@
                 <div id="result3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
                 <div id="vqmt3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
                 <div id="edge3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="elem1"></div>
             </div>
         </div>
-        <div id="elem1"></div>
         <script>
             imageZoom(["imagegt", "image1", "image2", "image3"],
                 ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 200, 200);
@@ -435,12 +437,8 @@
                 pic3.src = src3;
 
                 imageZoom(["imagegt", "image1", "image2", "image3"],
-                    ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 200, 200);
-                function updateDiv()
-                { 
-                    $( "#elem1" ).load(window.location.href + " #elem1" );
-                }
-                updateDiv();
+                    ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 150, 150);
+
 
             }
 
