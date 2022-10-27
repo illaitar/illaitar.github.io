@@ -1,0 +1,30 @@
+<h2 id="TMK">TMK</h2>
+<ul>Adapted the kernel descriptor framework of Bo <a href="https://proceedings.neurips.cc/paper/2010/file/4558dbb6f6f8bb2e16d03b85bde76e2c-Paper.pdf">(paper)</a> to sequences of frames. Proposed a query expansion (QE) technique that automatically aligns the videos deemed relevant for the
+    query.</ul>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://github.com/cscss/DBVSR">GitHub</a>, <a href="https://arxiv.org/abs/2003.04716">paper</a></ul>
+<h2 id="VideoIndexer">VideoIndexer</h2>
+<ul>Detect scene changes, split the video on scenes. Align scenes, than align frames respectively.</ul>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://storage.videoprocessing.ai/compression/video-beta/video-diff/article.pdf">paper</a></ul>
+<h2 id="VQMT">Time shift metric in VQMT tool</h2>
+<ul>Use PSNR to detect relevant frames.</ul>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://www.compression.ru/video/quality_measure/video_measurement_tool.html">project</a></ul>
+<h2 id="VQMT3D">Time shift metric in VQMT3D tool</h2>
+<ul>Use motion vectors and RANSAC to measure time shift between frames.</ul>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://www.compression.ru/compression.ru/video/vqmt3d/">project</a></ul>
+<h2 id="ViSiL">ViSiL</h2>
+<ul>Use RMAC descriptors to estimate frame-to-frame and video-to-video similarity.</ul>
+<div class="center">
+    <div>
+        <img src="/assets/img/benchmarks/aligners/ViSiL.png">
+    </div>
+</div>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>This method was modified by MSU to suit the benchmark suite tasks: we measure only frame-to-frame similarity, then we make synchronization map by taking maximum values in the resulting cost matrix.</ul>
+<ul>Links: <a href="https://github.com/MKLab-ITI/visil">GitHub</a>, <a href="https://arxiv.org/abs/1908.07410">paper</a></ul>
+<h2 id="ViSiL_SCD">ViSiL_SCD</h2>
+<ul>Use ViSiL architecture to compute frames features. Detect scene changes by the features and split videos on scenes. Match the scenes by video-to-video similarity and then make synchronization map by taking maximum values in the frame-to-frame similarity matrix.</ul>
+<ul>Added to the benchmark by MSU G&M Lab</ul>

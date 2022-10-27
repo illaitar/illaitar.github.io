@@ -1,0 +1,128 @@
+<div id="leaderboard_id_top">
+    <p style="margin-left: 20;">Correlation type: <label for="codec_selector_top"></label>
+        <select id="codec_selector_top" name="values">
+            <option>Spearman</option>
+            <option>Kendall</option>
+            <option>Pearson</option>
+        </select>
+    </p>
+
+    <style type="text/css">
+    </style>
+
+    <div class="datatable-container">
+        <div class="datatable-center">
+
+            <table id="leaderboard_table_top" class="datatable display" style="background-color: #ffffff; width:75%">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>function onChangeHelper() {
+        current_url = window.location.href;
+        var json_path = '../assets/json/benchmarks/frm/leaderboards_top.json';
+        if (current_url.includes('nrm.html')) {
+            json_path = '../assets/json/benchmarks/frm/nrm/leaderboards_top.json';
+        } else if (current_url.includes('frm.html')) {
+            json_path = '../assets/json/benchmarks/frm/frm/leaderboards_top.json';
+        } 
+
+
+        $.getJSON(json_path, function (data) {
+            let ind = document.getElementById('codec_selector_top').selectedIndex;
+            let table = document.getElementById('leaderboard_table_top');
+
+            let codecToName = ['spearman', 'kendall', 'pearson'];
+            let codecName = codecToName[ind]
+
+            table.innerHTML = data[codecName];
+
+
+            $('#leaderboard_table_top').DataTable().destroy();
+
+            $('#leaderboard_table_top').DataTable({
+                searching: false,
+                order: [[0, 'asc']],
+                "lengthMenu": [ [15, -1], [15, "All"] ],
+                bInfo : false,
+                dom: 'Blfrtip',
+            });
+        });
+    }
+
+    document.getElementById("codec_selector_top").onchange = onChangeHelper;
+    onChangeHelper();
+
+    </script>
+
+</div>
+
+<p>To analyze metric performance in more detail, we added a few mutually nonexclusive categories with 196 videos from the dataset: Shaking, Nature, Sports, Gaming / Animation.
+</p>
+
+<div id="leaderboard_id_new">
+    <p style="margin-left: 20;">Correlation type: <label for="codec_selector_new"></label>
+        <select id="codec_selector_new" name="values">
+            <option>Spearman</option>
+            <option>Kendall</option>
+            <option>Pearson</option>
+        </select>
+    </p>
+
+    <div class="datatable-container">
+        <div class="datatable-center">
+
+            <table id="leaderboard_table" class="datatable display" style="background-color: #ffffff; width:75%">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>function onChangeHelper() {
+        current_url = window.location.href;
+        var json_path = '../assets/json/benchmarks/frm/leaderboards_new.json';
+        if (current_url.includes('nrm.html')) {
+            json_path = '../assets/json/benchmarks/frm/nrm/leaderboards_new.json';
+        } else if (current_url.includes('frm.html')) {
+            json_path = '../assets/json/benchmarks/frm/frm/leaderboards_new.json';
+        } 
+
+        $.getJSON(json_path, function (data) {
+            let ind = document.getElementById('codec_selector_new').selectedIndex;
+            let table = document.getElementById('leaderboard_table');
+
+            let codecToName = ['spearman', 'kendall', 'pearson'];
+            let codecName = codecToName[ind] 
+
+            table.innerHTML = data[codecName];
+
+
+            $('#leaderboard_table').DataTable().destroy();
+
+            $('#leaderboard_table').DataTable({
+                searching: false,
+                // order: [[1, 'asc']],
+                "lengthMenu": [ [15, -1], [15, "All"] ],
+                bInfo : false,
+                dom: 'Blfrtip',
+            });
+        });
+    }
+
+    document.getElementById("codec_selector_new").onchange = onChangeHelper;
+    onChangeHelper();
+
+    </script>
+
+</div>

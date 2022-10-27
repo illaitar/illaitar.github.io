@@ -1,0 +1,990 @@
+principle:
+  title: "Principle quality metrics"
+  metrics:
+    psnr:
+      title: PSNR (Peak signal-to-noise ratio)
+      menu_name: PSNR
+      long_name: Peak signal-to-noise ratio
+      description: |
+        Metric depends only on difference of original and distorted, and more preciesly, only on $$L_2$$-norm of this difference (see [MSE](#mse)). Unlike MSE, metric has logrithmic scale and can be calculated using the following formula:
+
+        $$\mbox{PSNR} = 10\cdot\log_{10}\cfrac{\mbox{MaxErr}^2\cdot w\cdot h}{\sum\limits_{i=1,j=1}^{w,h}(x_{i,j}-y_{i,j})},$$
+
+        where MaxErr – maximum possible absolute value of color component (MaxErr=1 in VQMT), w – video width, h – video height.
+
+        Total PSNR is aggregated value, that considers all processed frames as a single huge image and then calculates PSNR. Total PSNR takes into account sum suqared distortion on all frames, and doesn't distinguish situation where all distorion on one frame from situation where it is distributed across all frames. While arithmetic mean aggregated value depends from geometric mean of MSE's of each frames, Total PSNR depends on arithmetic mean of them.
+
+        In MSU VQMT you can calculate PSNR for all YUV and RGB components and for L component of LUV color space. Also, since VQMT 12 you can calculate over all YUV space or all RGB space, achieving a single value for 3 components. PSNR metric is easy and fast to calculate, but sometimes it is not appropriate to human's perception.
+      vqmt_metrics:
+        - psnr
+      benchmarks:
+        - impl: default 
+          system: multithreaded
+          indexes: ['psnr', '', 'Y', 'multithreaded']
+        - impl: default 
+          system: multithreaded
+          indexes: ['psnr', '', 'YUV', 'multithreaded']
+        - impl: default 
+          system: singlethreaded
+          indexes: ['psnr', '', 'Y', 'singlethreaded']
+        - impl: default 
+          system: singlethreaded
+          indexes: ['psnr', '', 'YUV', 'singlethreaded']
+      examples:
+        - title: PSNR
+          subtitle: ""
+          key: "psnr"
+        - title: PSNR-RGB
+          subtitle: ""
+          key: "psnr-rgb"
+      info:
+        Metric type: >
+          %FULL_REFERENCE% %IMAGE% metric
+        Value range: >
+          (completely different) 0..100 (similar to original)
+        Value interpretation: >
+          bigger is better quality
+        MSU VQMT implementations: >
+          cpu multithreaded
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          R, G, B, Y, U, V, L, RGB, YUV
+        Output values: |
+          metric value
+        Aggregated values: >
+          %STDSET%, total PSNR
+        MSU VQMT usages: >
+          `-metr psnr [over <color components>]`
+        External references: >
+          Wikipedia
+      legacy_notes: ''
+
+
+
+    vmaf:
+      title: Netflix VMAF (Video Multimethod Assessment Fusion)
+      menu_name: VMAF
+      long_name: Video Multimethod Assessment Fusion
+      description: |
+        VMAF is modern reference metric developed by Netflix in cooperation with the University of Southern California. VQMT has full support of VMAF with multiple configuration switches. MSU VQMT support the following VMAF models: VMAF 0.60, VMAF 0.61 (2k, 4k), VMAF 0.62 (2k, 4k), VMAF 0.63 (2k), also, you can compute phone model and elementary features of VMAF. You can use custom model in pkl format with VQMT.
+
+        VMAF consist of 4 features (ADM, VIF, Motion, ANSNR) and 35 elementary features, but VMAF models uses only 6 of them: adm2, motion2, vif_scale0, vif_scale1, vif_scale2, vif_scale3. VMAF applies an SVM model to this set of features, which depends on current settings. After applying SVM, the value is clipped to interval 0..100 by default. Motion feature is the only temporal feature, it consider adjacent frames. To calculate VMAF value for current frame it is needed to use the previous frame and the next frame.
+
+        VMAF can also compute confidence intervals by applying multiple models and calculating standard deviation of result. VMAF has models, that aimed for 4k and 2k. By default, VQMT will automatically select the correct model by the resolution of input video.
+
+        Since VQMT 13 VMAF has a real block-wise visualization, which computes individual VMAF value for each 16x16 block of image. You also can visualize every feature besides motion (ADM, VIF, ANSNR).
+      benchmarks:
+        - impl: OpenCL
+          system: OpenCL
+          indexes: ['vmaf', 'OpenCL', 'Y', 'multithreaded']
+        - impl: default 
+          system: multithreaded
+          indexes: ['vmaf', '', 'Y', 'multithreaded']
+        - impl: default 
+          system: singlethreaded
+          indexes: ['vmaf', '', 'Y', 'singlethreaded']
+      examples:
+        - title: VMAF
+          subtitle: ""
+          key: "vmaf"
+      info:
+        Metric type: >
+           %FULL_REFERENCE% %TEMPORAL%  metric
+        Value range: |
+          (completely different) 0..100 (similar to original)  
+          -∞..∞ if truncation to 0..100 is off   
+          *dependent on model* in case of custom model  
+        Value interpretation: >
+          bigger better quality, value 100 does not mean that the images match pixel by pixel
+        MSU VQMT implementations: >
+          %VQMT_MT% %VQMT_OPENCL% (since VQMT 13)
+        MSU VQMT visualization: >
+          block-wise (for VMAF visualization), pixel-wise (for ADM, VIF, ANSNR visualisation)
+        Available colorspaces: >
+          Y
+        Output values: |
+          metric value,  
+          bagging values (if on),  
+          confidence intervals (if on),  
+          values of elementary features (if on)  
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr vmaf [-dev <OpenCL device>]`
+        External links: >
+          [Original paper](https://www.cambridge.org/core/journals/apsipa-transactions-on-signal-and-information-processing/article/visual-quality-assessment-recent-developments-coding-applications-and-future-trends/780B747AAE3253F21B2AA34D90C95B6A){:target="_blank"}
+      legacy_notes: ''
+
+
+
+    niqe:
+      title: NIQE (Naturalness Image Quality Evaluator)
+      menu_name: NIQE
+      long_name: Naturalness Image Quality Evaluator
+      info:
+        Metric type: >
+          %NO_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (very natural) 0..∞ (not natural)
+        Value interpretation: |
+          lesser metric values - better quality (naturalness)  
+          normal metric values are in range about 3..20. Also, there can be values NAN and 0, which are abnormal and should be considered as symptom of not natural image
+        MSU VQMT implementations: >
+          %VQMT_MT% %VQMT_OPENCL% (since VQMT 13)
+        MSU VQMT visualization: >
+          block-wise
+        Available colorspaces: >
+          Y
+        Output values: |
+          metric value
+        Aggregated values: >
+           %STDSET%, NIQE mean
+        MSU VQMT usages: >
+          `-metr niqe [-dev <OpenCL device>]`
+        External links: >
+          [original paper (A. Mittal, R. Soundararajan and A. C. Bovik)](http://live.ece.utexas.edu/research/Quality/niqe_spl.pdf){:target="_blank"}, [MSU paper](https://www.researchgate.net/publication/337396113_Barriers_Towards_No-reference_Metrics_Application_to_Compressed_Video_Quality_Analysis_on_the_Example_of_No-reference_Metric_NIQE){:target="_blank"}
+      description: |
+        NIQE performs feature extraction for every 96x96 block of image on 2 scales. Than it computes correlations of features between all blocks and applies leaned model. For more details, please refer to [original paper](http://live.ece.utexas.edu/research/Quality/niqe_spl.pdf){:target="_blank"}. Since version 13 VQMT can build a block-wise visualization showing contribution of each block to the final result.
+
+        This metric has a special aggregated value NIQE mean, it takes a weighted mean filtering abnormal metric values and taking suspicies values with low weight. You can turn this mode using metric settings. Also, please see [our paper](https://www.researchgate.net/publication/337396113_Barriers_Towards_No-reference_Metrics_Application_to_Compressed_Video_Quality_Analysis_on_the_Example_of_No-reference_Metric_NIQE){:_target="_blank"}.
+
+        This metric only applicable to filmed scenes. Metric can produce inadequate result if some graphics is on it (including credits, subtitles, etc.). Please, run NIQE excluding all rendered scenes, they can fatally spoil average value. Also, this metric can produce bad result on scenes containing noisy objects, like sand or grass, however on scenes with big constant areas, like monotonic sky. In common case normal metric results lies in the interval 3..20.
+
+        Sometimes, metric shows better result for the compressed image and this correlates with human perception. Compressed image not always is perceived as worse. It can occur for example in case of noisy images (if the noise has non-compression nature). This is only metric in VQMT now that can detect increasing of subjective quality in comparison to original.
+
+        Sometimes, codec can allow geometry transformation (like shift of heterogeneous objects in frame), that not critical for subjective perception. Objective-reference metrics are very perceptive to such transformation, and in this cases no-reference metric can show result closer to subjective score.
+
+      benchmarks:
+        - impl: OpenCL
+          system: OpenCL
+          indexes: ['niqe', 'OpenCL', 'Y', 'multithreaded']
+        - impl: default 
+          system: multithreaded
+          indexes: ['niqe', '', 'Y', 'multithreaded']
+        - impl: default 
+          system: singlethreaded
+          indexes: ['niqe', '', 'Y', 'singlethreaded']
+      examples:
+        - title: NIQE
+          subtitle: ""
+          key: "niqe"
+
+
+ssim:
+  title: SSIM-Family
+  metrics:
+    ssim:
+      title: SSIM (Structural Similarity)
+      menu_name: SSIM
+      long_name: Structural Similarity
+      info:
+        Metric type: >
+           %FULL_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (images are different) -1..1 (images are same)
+        Value interpretation: >
+          bigger is better quality
+        MSU VQMT implementations: |
+          %VQMT_MT% fast (default),  
+          cpu multithreaded precice,  
+          cpu multithreaded GPU identical,  
+          %VQMT_OPENCL% (recommended),  
+          %VQMT_CUDA%
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          Y, U, V, YUV, R, G, B, RGB
+        Output values: |
+          metric value
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: |
+          `-metr ssim [over <color components>]`  
+          `-metr ssim_precise [over <color components>]`  
+          `-metr ssim_gpu_id [over <color components>]`  
+          `-metr ssim_cuda [over <color components>]`  
+          `-metr ssim [over <color components>] -dev <OpenCL device>`
+        External links: >
+          [original paper (Z. Wang, A. C. Bovik, H. R. Sheikh and E. P. Simoncelli)](http://compression-debug.gml-team.ru/video/quality_measure/ssim.pdf){:target="_blank"}
+      description: |
+        Main idea of the structure similarity index (SSIM) is to compare distortion of three image components:
+        * Luminance comparison
+        * Contrast comparison
+        * Structure comparison
+
+        This algorithm uses some window function $$W_{i,j}$$, $$i,j=0..N$$ and performs convolution with this window, defined as follows:
+
+        $$
+        \left<U,W\right> = \sum\limits_{i=-R, j=-R}^{R,R}U(x+i, y+j)W_{i+R,j+R},\ \mbox{where}\ R=\frac N2
+        $$
+
+        In fast implementation, it uses box window: $$W_{i,j}=\frac1{(N+1)^2}$$, in other implementations (precise, CUDA, OpenCL, GPU identical) it uses Gaussian window with σ= 1.5, N=10. You can note, that formula above uses negative $$U$$ indexes, and indexes out of image area. We should define image values outside of it's edge. In VQMT we spread closest edge pixel to the desired position.
+
+        SSIM uses the following convolutions:
+
+        $$
+        \begin{aligned}
+        \mu_x &= \left< X, W\right>\\
+        \mu_y &= \left< y, W\right>\\
+        \sigma_x &= \left< (X-\mu_x)^2, W\right>\\
+        \sigma_y &= \left< (Y-\mu_y)^2, W\right>\\
+        \sigma_{xy} &= \left< (X-\mu_x)(Y-\mu_x), W\right>\\
+        \end{aligned}
+        $$
+
+        And the computed SSIM in each pixel by the following formula:
+
+        $$
+        \mbox{SSIM}\ = \frac{(2\mu_x\mu_y+C_1)(2\sigma_{xy}+C_2)}{(\mu_x^2+\mu_y^2+C_1)(\sigma_x+\sigma_y+C_2)},
+        $$
+
+        where $$C_1=0.01^2$$, $$C_2=0.03^2$$. Destination metric value is arithmetic mean of SSIM values for each pixel. You also can see SSIM for each individual pixel on visualization.
+
+        *GPU identical*, *CUDA*, *OpenCL* implementations should produce very similar result. They use Gaussian window as presice implementation. Value of Presice implementation can differs from these ones.
+      benchmarks:
+        - impl: OpenCL
+          system: OpenCL
+          indexes: ['ssim', 'OpenCL', 'Y', 'multithreaded']
+        - impl: superfast
+          system: multithreaded
+          indexes: ['ssim', 'superfast', 'Y', 'multithreaded']
+        - impl: fast
+          system: multithreaded
+          indexes: ['ssim', 'fast', 'Y', 'multithreaded']
+        - impl: precise
+          system: multithreaded
+          indexes: ['ssim', 'precise', 'Y', 'multithreaded']
+        - impl: superfast
+          system: singlethreaded
+          indexes: ['ssim', 'superfast', 'Y', 'singlethreaded']
+        - impl: fast
+          system: singlethreaded
+          indexes: ['ssim', 'fast', 'Y', 'singlethreaded']
+        - impl: precise
+          system: singlethreaded
+          indexes: ['ssim', 'precise', 'Y', 'singlethreaded']
+        - impl: OpenCL
+          system: OpenCL
+          indexes: ['ssim', 'OpenCL', 'YUV', 'multithreaded']
+        - impl: superfast
+          system: multithreaded
+          indexes: ['ssim', 'superfast', 'YUV', 'multithreaded']
+        - impl: fast
+          system: multithreaded
+          indexes: ['ssim', 'fast', 'YUV', 'multithreaded']
+        - impl: precise
+          system: multithreaded
+          indexes: ['ssim', 'precise', 'YUV', 'multithreaded']
+        - impl: superfast
+          system: singlethreaded
+          indexes: ['ssim', 'superfast', 'YUV', 'singlethreaded']
+        - impl: fast
+          system: singlethreaded
+          indexes: ['ssim', 'fast', 'YUV', 'singlethreaded']
+        - impl: precise
+          system: singlethreaded
+          indexes: ['ssim', 'precise', 'YUV', 'singlethreaded']
+      examples:
+        - title: SSIM Precise
+          subtitle: "(SSIM Precise)"
+          key: "ssim_precise"
+        - title: SSIM Fast
+          subtitle: "(SSIM Fast)"
+          key: "ssim_fast"
+      legacy_notes: |
+        In VQMT 14 implemented SSIM Superfast. Also SSIM can be applied to three components simulteneously.
+
+
+
+    msssim:
+      title: MS-SSIM (Multi-Scale Structural Similarity)
+      menu_name: MS-SSIM
+      long_name: Multi-Scale Structural Similarity
+      info:
+        Metric type: >
+           %FULL_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (images are different) -1..1 (images are same)
+        Value interpretation: >
+          bigger is better quality
+        MSU VQMT implementations: |
+          %VQMT_MT% superfast (default),  
+          %VQMT_MT% fast,  
+          cpu multithreaded precice,  
+          cpu multithreaded GPU identical,  
+          %VQMT_OPENCL% (recommended),  
+          %VQMT_CUDA%
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          Y, U, V, YUV, R, G, B, RGB
+        Output values: |
+          metric value
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: |
+          `-metr msssim [over <color components>]`  
+          `-metr msssim_precise [over <color components>]`  
+          `-metr msssim_gpu_id [over <color components>]`  
+          `-metr msssim_cuda [over <color components>]`  
+          `-metr msssim [over <color components>] -dev <OpenCL device>`
+        Other names: >
+          MSSSIM
+        External links: >
+          [original paper (Z. Wang, A. C. Bovik and E. P. Simoncelli)](http://compression-debug.gml-team.ru/video/quality_measure/msssim.pdf){:target="_blank"}
+      description: |
+        This metric performs SSIM calculation as described in [SSIM](#ssim) paragraph for 5 scales of input images. Each next scale divides width and height by 2. The result SSIM values are producted with the following powers: 0.0448, 0.2856, 0.3001, 0.2363, 0.1333.
+      benchmarks:
+        - impl: OpenCL
+          system: OpenCL
+          indexes: ['msssim', 'OpenCL', 'Y', 'multithreaded']
+        - impl: superfast
+          system: multithreaded
+          indexes: ['msssim', 'superfast', 'Y', 'multithreaded']
+        - impl: fast
+          system: multithreaded
+          indexes: ['msssim', 'fast', 'Y', 'multithreaded']
+        - impl: precise
+          system: multithreaded
+          indexes: ['msssim', 'precise', 'Y', 'multithreaded']
+        - impl: superfast
+          system: singlethreaded
+          indexes: ['msssim', 'superfast', 'Y', 'singlethreaded']
+        - impl: fast
+          system: singlethreaded
+          indexes: ['msssim', 'fast', 'Y', 'singlethreaded']
+        - impl: precise
+          system: singlethreaded
+          indexes: ['msssim', 'precise', 'Y', 'singlethreaded']
+        - impl: OpenCL
+          system: OpenCL
+          indexes: ['msssim', 'OpenCL', 'YUV', 'multithreaded']
+        - impl: superfast
+          system: multithreaded
+          indexes: ['msssim', 'superfast', 'YUV', 'multithreaded']
+        - impl: fast
+          system: multithreaded
+          indexes: ['msssim', 'fast', 'YUV', 'multithreaded']
+        - impl: precise
+          system: multithreaded
+          indexes: ['msssim', 'precise', 'YUV', 'multithreaded']
+        - impl: superfast
+          system: singlethreaded
+          indexes: ['msssim', 'superfast', 'YUV', 'singlethreaded']
+        - impl: fast
+          system: singlethreaded
+          indexes: ['msssim', 'fast', 'YUV', 'singlethreaded']
+        - impl: precise
+          system: singlethreaded
+          indexes: ['msssim', 'precise', 'YUV', 'singlethreaded']
+      examples:
+        - title: MS-SSIM Precise
+          subtitle: "(MS-SSIM Precise)"
+          key: "msssim_precise"
+        - title: MS-SSIM Fast
+          subtitle: "(MS-SSIM Fast)"
+          key: "msssim_fast"
+      legacy_notes: |
+        In VQMT 14 implemented SSIM Superfast. Also MS-SSIM can be applied to three components simulteneously.
+
+
+
+    3ssim:
+      title: 3-SSIM (Three-commponent Structural Similarity)
+      menu_name: 3-SSIM
+      long_name: Three-commponent Structural Similarity
+      info:
+        Metric type: >
+           %FULL_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (images are different) -1..1 (images are same)
+        Value interpretation: >
+          bigger is better quality
+        MSU VQMT implementations: |
+          %VQMT_MT% (default),  
+          %VQMT_OPENCL% (recommended),  
+          %VQMT_CUDA%
+        Available colorspaces: >
+          Y, U, V
+        Output values: |
+          metric value
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: |
+          `-metr 3ssim [over <color components>]`  
+          `-metr 3ssim_cuda [over <color components>]`  
+          `-metr 3ssim [over <color components>] -dev <OpenCL device>`
+        Other names: >
+          3-SSIM
+        External links: >
+          [original paper (C. Li and A. C. Bovik)](http://live.ece.utexas.edu/publications/2010/li_jei_jan10.pdf){:target="_blank"}
+      description: |
+        3-Component SSIM Index based on region division of source frames. There are 3 types of regions – edges, textures and smooth regions. Result metric calculated as weighted average of SSIM metric for those regions. In fact, human eye can see difference more precisely on textured or edge regions than on smooth regions. Division based on gradient magnitude is presented in every pixel of images.
+      benchmarks:
+        - impl: default
+          system: multithreaded
+          indexes: ['3ssim', '', 'Y', 'multithreaded']
+        - impl: default
+          system: singlethreaded
+          indexes: ['3ssim', '', 'Y', 'singlethreaded']
+      examples:
+        - title: 3SSIM Precise
+          subtitle: ""
+          key: "3ssim"
+      legacy_notes: |
+        In VQMT 14 implemented SSIM Superfast. Also MS-SSIM can be applied to three components simulteneously.
+
+
+
+    stssim:
+      title: ST-SSIM (Spatio-Temporal SSIM Index)
+      menu_name: ST-SSIM
+      long_name: Spatio-Temporal SSIM Index
+      info:
+        Metric type: >
+           %FULL_REFERENCE% %TEMPORAL% metric
+        MSU VQMT implementations: >
+          this metric was temporary excluded from VQMT due to unstability of results
+        External links: >
+          [original paper (A. K. Moorthy and A. C. Bovik)](http://compression-debug.gml-team.ru/video/quality_measure/stssim.pdf){:_target="_blank"}
+      description: |
+        The idea of this algorithm is to use motion-oriented weighted windows for SSIM Index. MSU Motion Estimation algorithm is used to retrieve this information. Based on the ME results, weighting window is constructed for every pixel. This window can use up to 33 consecutive frames (16 + current frame + 16). Then SSIM Index is calculated for every window to take into account temporal distortions as well. In addition, another spooling technique is used in this implementation. We use only lower 6% of metric values for the frame to calculate frame metric value. This causes larger metric values difference for difference files.
+      legacy_notes: |
+        This metric was temporary removed in VQMT 10.
+
+
+norm:
+  title: "Norm calculation metrics"
+  metrics:
+    delta:
+      title: Delta
+      menu_name: Delta
+      long_name: ""
+      info:
+        Metric type: >
+           %FULL_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (original is much brigther) -1..1 (distorted is much brigther)
+        Value interpretation: >
+          bigger is darker original, 0 - same brightness
+        MSU VQMT implementations: >
+          %VQMT_MT%  
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          R, G, B, Y, U, V, L
+        Output values: |
+          metric value
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr delta [over <color components>]`
+        Other names: >
+          mean difference
+      description: |
+        The value of this metric is the mean difference of the color value in the corresponding points of image.
+
+        $$
+        d(X,Y) = \frac{\sum\limits_{i=1,j=1}^{m,n}Y_{i,j}-X_{i,j}}{mn}
+        $$
+
+        where $$m$$ – video width, $$n$$ – video height, image data are in range 0..1. This formula can be rewriten to the following way: $$\mbox{mean distorted brightness} − \mbox{mean original brightness}$$.
+
+        This metric doesn't show a quality loss, because it can be 0 for completely different images, but you can detect general brightness shifts using this metric if you are sure images have same structure.
+      benchmarks:
+        - impl: default
+          system: multithreaded
+          indexes: ['delta', '', 'Y', 'multithreaded']
+        - impl: default
+          system: singlethreaded
+          indexes: ['delta', '', 'Y', 'singlethreaded']
+      examples:
+        - title: Delta
+          subtitle: ""
+          key: "delta"
+      legacy_notes: |
+        Since VQMT 12 metric uses input range 0..1. In legacy mode is assumed input range to be 0..255 and 0..100 for L channel.
+
+
+
+    identity:
+      title: Identity
+      menu_name: Identity
+      long_name: ""
+      info:
+        Metric type: >
+           %FULL_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (images are different) 0..1 (images are same)
+        Value interpretation: >
+          binary mode: 1 - images are same, 0 - images are not same;  
+          pixel mode: proportion of same pixels
+        MSU VQMT implementations: >
+          %VQMT_MT%  
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          R, G, B, Y, U, V, L, RGB, YUV
+        Output values: |
+          metric value
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr identity [over <color components>]`
+        Other names: >
+          inverse L∞-norm
+      description: |
+        Metric cas to modes: binary and pixels. In binary mode only two values are possible: 1 if images are pixel-wise similar, 0 if images have at least 1 different value pixel.
+
+        In pixel mode the value is proporsion of similar pixels. 1 means all pixels are similar, 0 means all pixels are dirrefent.
+      benchmarks:
+        - impl: default
+          system: multithreaded
+          indexes: ['identity', '', 'Y', 'multithreaded']
+        - impl: default
+          system: multithreaded
+          indexes: ['identity', '', 'YUV', 'multithreaded']
+        - impl: default
+          system: singlethreaded
+          indexes: ['identity', '', 'Y', 'singlethreaded']
+        - impl: default
+          system: singlethreaded
+          indexes: ['identity', '', 'YUV', 'singlethreaded']
+      examples:
+        - title: Identity
+          subtitle: ""
+          key: "identity"
+      legacy_notes: |
+        This metric was introduce in VQMT 13.
+
+
+    msad:
+      title: MSAD (Mean Sum of Absolute Differences)
+      menu_name: MSAD
+      long_name: Mean Sum of Absolute Differences
+      info:
+        Metric type: >
+           %FULL_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (same images) 0..1 (completely different)
+        Value interpretation: >
+          smaller is better quality
+        MSU VQMT implementations: >
+          %VQMT_MT%  
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          R, G, B, Y, U, V, L
+        Output values: |
+          metric value
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr msad [over <color components>]`
+        Other names: >
+          SAD, $$L_1$$-norm
+        External links: >
+          [Wikipedia](https://en.wikipedia.org/wiki/Sum_of_absolute_differences){:target=_blank}
+      description: |
+        This metric has very similar formula to [Delta](#delta), but has a modulo around the difference:
+
+        $$
+        d(X,Y) = \frac{\sum\limits_{i=1,j=1}^{m,n}|Y_{i,j}-X_{i,j}|}{mn}
+        $$
+
+        where $$m$$ – video width, $$n$$ – video height, image data are in range 0..1. Metric depends only on difference of original and distorted, it is $$L_1$$-norm of this difference.
+
+        Unlike [Delta](#delta), this metric will show real difference between images, 0 means completely equivalent images.
+
+      benchmarks:
+        - impl: default
+          system: multithreaded
+          indexes: ['msad', '', 'Y', 'multithreaded']
+        - impl: default
+          system: singlethreaded
+          indexes: ['msad', '', 'Y', 'singlethreaded']
+      examples:
+        - title: MSAD
+          subtitle: ""
+          key: "msad"
+      legacy_notes: |
+        Since VQMT 12 metric uses input range 0..1. In legacy mode is assumed input range to be 0..255 and 0..100 for L channel.
+
+
+
+    mse:
+      title: MSE (Mean Squared Error)
+      menu_name: MSE
+      long_name: Mean Squared Error
+      info:
+        Metric type: >
+           %FULL_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (same images) 0..1 (completely different)
+        Value interpretation: >
+          smaller is better quality
+        MSU VQMT implementations: >
+          %VQMT_MT%  
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          R, G, B, Y, U, V, L
+        Output values: |
+          metric value
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr mse [over <color components>]`
+        Other names: >
+          $$L_2$$-norm
+        External links: >
+          [Wikipedia](https://en.wikipedia.org/wiki/Mean_squared_error){:target=_blank}
+      description: |
+        Metric depends only on difference of original and distorted, it is L2-norm of this difference. Metric could be computed using the following formula:
+
+        $$
+        d(X,Y) = \frac{\sum\limits_{i=1,j=1}^{m,n}(Y_{i,j}-X_{i,j})^2}{mn}
+        $$
+
+        where $$m$$ – video width, $$n$$ – video height, image data are in range 0..1.
+      benchmarks:
+        - impl: default
+          system: multithreaded
+          indexes: ['mse', '', 'Y', 'multithreaded']
+        - impl: default
+          system: singlethreaded
+          indexes: ['mse', '', 'Y', 'singlethreaded']
+      examples:
+        - title: MSE
+          subtitle: ""
+          key: "mse"
+      legacy_notes: |
+        Since VQMT 12 metric uses input range 0..1. In legacy mode is assumed input range to be 0..255 and 0..100 for L channel.
+
+
+other:
+  title: Other metrics
+  metrics:
+    vqm:
+      title: VQM (DCT-based Video Quality Metric)
+      menu_name: VQM
+      long_name: DCT-based Video Quality Metric
+      info:
+        Metric type: >
+           %FULL_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (images are same) 0..∞ (bad quality)
+        Value interpretation: >
+          smaller is better quality
+        MSU VQMT implementations: >
+          %VQMT_MT%  
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          Y
+        Output values: |
+          metric value
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr vqm`
+        External links: >
+          [original paper (Feng Xiao)](http://compression-debug.gml-team.ru/video/quality_measure/vqm.pdf){:target="_blank"}
+      description: |
+        This metric uses discrete cosine transform (DCT) to predict human rank. It is different from widely spreaded VQM metric by ITU, that currently not implemented in VQMT. Following calculations are processed to get value of metric:
+
+        * **Color transform**. YUV color space is used for metric calculation.
+        * **DCT transform of blocks 8x8**. It is used to separate images into different frequencies.
+        * **Conversion** from DCT coefficients to local contrast (LC) using following equation:
+
+        $$
+          LC_{i,j}=\frac{DCT_{i,j}\cdot DC}{2^{20}}
+        $$
+
+        where DC is the DCT coefficient with indexes (0, 0).
+
+        * **Conversion** from LC to just-noticeable difference:
+
+        $$
+          JND_{i,j}=LC_{i,j}\cdot CSF_{i,j}
+        $$
+
+        where CSF is Contrast Sensitivity Function. Inverse MPEG-4 default quantization matrix is used as CSF in original article.
+
+        * **Weighted pooling of mean and maximum distortions**. First, absolute difference "D" is calculated for JND coefficients following by VQM value construction:
+
+        $$
+          \mbox{VQM}=\mbox{mean}(|D|)+0.005\cdot\mbox{max}(|D|)
+        $$
+
+        Please, refer the [original paper](http://compression-debug.gml-team.ru/video/quality_measure/vqm.pdf){:target="_blank"} for the details.
+      benchmarks:
+        - impl: default
+          system: multithreaded
+          indexes: ['vqm', '', 'Y', 'multithreaded']
+        - impl: default
+          system: singlethreaded
+          indexes: ['vqm', '', 'Y', 'singlethreaded']
+      examples:
+        - title: VQM
+          subtitle: ""
+          key: "vqm"
+      legacy_notes: |
+        In VQMT 12 we removed input aligning, also metric is optimized. 
+
+
+
+    timeshift:
+      title: MSU Time shift
+      menu_name: MSU Time shift
+      long_name: ""
+      info:
+        Metric type: >
+           %FULL_REFERENCE% %TEMPORAL% metric
+        Value range: >
+          depending on settings
+        Value interpretation: >
+          Metric value is shift in frames of distorted sequence relative to original. If n-th value is x, then n+x'th frame of distorted corresponds to n'th frame of original
+        MSU VQMT implementations: >
+          %VQMT_MT%  
+        MSU VQMT visualization: >
+          block-wise
+        Available colorspaces: >
+          Y
+        Output values: |
+          metric value  
+          multiple individual measument results if on
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr time-shift`
+      description: |
+        This metric performes calculation of another metric (base metric: PSNR or SSIM) between each frame of original image and several frames of distorted image. You can choose what interval will be used in settings. This metric can detect such artifacts as skipped frame, duplicated frame, small fps mismatch.
+
+        Metric considers, that the best metric value for specific original frame is the correct shift. Metric can prefer smaller shift with base metric value X to bigger shift with metric value Y if $$X > Y \cdot \mbox{threshold}$$, where threshold can be set in metric settings. This helps to avoid random fluctuations.
+
+        Also, values of base metric will be smothed over adjacent frames if smoothing is on. This can help in case of very there are very similar adjacent frames in seuqence or the desired frame is absent (for example, negative shift on first frame).
+      benchmarks:
+        - impl: default
+          system: multithreaded
+          indexes: ['time-shift', '', 'Y', 'multithreaded']
+        - impl: default
+          system: singlethreaded
+          indexes: ['time-shift', '', 'Y', 'singlethreaded']
+      examples:
+        - title: Time shift
+          subtitle: ""
+          key: "time-shift"
+      legacy_notes: |
+        This metric was introduced in VQMT 13. 
+
+
+
+noref:
+  title: No-reference informational metrics
+  metrics:
+    blurring:
+      title: MSU Blurring
+      menu_name: MSU Blurring
+      long_name: ""
+      info:
+        Metric type: >
+          %NO_REFERENCE%  %IMAGE% metric
+        Value range: >
+          (constant image) 0..1 (very noisy)
+        Value interpretation: >
+          bigger is more noise
+        MSU VQMT implementations: |
+          %VQMT_MT% sigma (default),  
+          %VQMT_MT% delta
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          Y, R, G, B for sigma  
+          Y, U, V, R, G, B for delta
+        Output values: |
+          metric value 
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr blurring [over <color components>]`  
+          `-metr blurring_delta [over <color components>]`
+      description: |
+        This metric allows you to compare power of blurring of two images. If value of the metric for first picture is greater than for second, it means that second picture is more blurred, than first.
+
+        Main features: this metric is fast and doesn't require source video.
+
+        This method estimates color variance in the neighborhood of a pixel and computes average variance. This metric has 2 variations:
+
+        * **Sigma** (default since VQMT 11). It uses 3-pixel radius neighborhood and normalized Gaussian kernel
+        * **Delta** (the only before VQMT 11). It uses 1-pixel radius neighborhood
+
+        Notes:
+        * You can't measure blurriness on constant or gradient areas of input image. So, the value of metric is very dependent on amount of edges in images.
+        * This metric will detect not only compression artifacts, but natural not-infocus areas, so the value of metric is very dependent on area of focused objects in the frame. You shouldn't use value of this metric as final blurrness index, use is only to compare blurrness of images with similar structure.
+
+      benchmarks:
+        - impl: Delta
+          system: multithreaded
+          indexes: ['blurring', 'delta', 'Y', 'multithreaded']
+        - impl: Sigma
+          system: multithreaded
+          indexes: ['blurring', 'sigma', 'Y', 'multithreaded']
+        - impl: Delta
+          system: singlethreaded
+          indexes: ['blurring', 'delta', 'Y', 'singlethreaded']
+        - impl: Sigma
+          system: singlethreaded
+          indexes: ['blurring', 'sigma', 'Y', 'singlethreaded']
+      examples:
+        - title: Blurring Sigma
+          subtitle: "(Burring Sigma)"
+          key: "blurring"
+        - title: Blurring Delta
+          subtitle: "(Burring Delta)"
+          key: "blurring_delta"
+      legacy_notes: |
+        In VQMT 12 metric was optimized, consider correct range, added legacy mode
+
+
+
+    blocking:
+      title: MSU Blocking
+      menu_name: MSU Blocking
+      long_name: ""
+      info:
+        Metric type: >
+          %NO_REFERENCE% %IMAGE% metric
+        Value range: >
+          (no blocks) 0..∞ (a lot of blocks)
+        Value interpretation: >
+          bigger is more blocks
+        MSU VQMT implementations: >
+          %VQMT_MT%
+        MSU VQMT visualization: >
+          pixel-wise
+        Available colorspaces: >
+          Y
+        Output values: |
+          metric value 
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr blocking`
+      description: |
+        This metric contains heuristic method for detecting objects edges, which are placed to the edge of the block. In this case metric value is pulled down, allowing to measure blocking more precisely. This metric also considers image contrast around of block and use it as weight for obtained value.
+
+        Notes:
+
+        * This algirithm considers 8x8 blocks of image, so it applicable only for I frames of video and some of encoders.
+
+      benchmarks:
+        - impl: Blocking
+          system: multithreaded
+          indexes: ['blocking', '', 'Y', 'multithreaded']
+        - impl: Blocking
+          system: singlethreaded
+          indexes: ['blocking', '', 'Y', 'singlethreaded']
+      examples:
+        - title: Blocking
+          subtitle: ""
+          key: "blocking"
+      legacy_notes: |
+        In VQMT 12 metric was optimized, consider correct range, added legacy mode.
+
+
+
+    si:
+      title: SI (Spatial Information)
+      menu_name: SI
+      long_name: Spatial Information
+      info:
+        Metric type: >
+          %NO_REFERENCE% %IMAGE% metric
+        Value range: >
+          (simple, monotone frame) 0..1 (very complex frame)
+        Value interpretation: >
+          bigger more complex frame
+        MSU VQMT implementations: >
+          %VQMT_MT%
+        MSU VQMT visualization: >
+          pixel-wise, sobel transformation
+        Available colorspaces: >
+          Y
+        Output values: |
+          metric value 
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr si`
+        External links: >
+          [ITU-T Recommendation P.910: Subjective video quality assessment methods for multimedia applications, 1999. – 37 p.](https://www.itu.int/rec/T-REC-P.910){:target="_blank"}
+      description: |
+        This metric measures complexity (entropy) of an input image. This metric represents simplest SI realization that takes standard deviation of sequence of pixel values (Y-component) of Sobel transformation of input image:
+
+        $$\mbox{SI}(X) = \mbox{std}[\mbox{Sobel}(X(x,y))]$$
+
+        $$\mbox{Sobel}$$ is length of vector $$(\mbox{Sobel}_h, \mbox{Sobel}_v)$$, where $$\mbox{Sobel}_h$$ and $$\mbox{Sobel}_v$$ are horizontal and vertical Sobel transformation. While calculating Sobel, the edge pixels will be excluded from calculation.
+
+      benchmarks:
+        - impl: SI
+          system: multithreaded
+          indexes: ['si', 'SI', 'Y', 'multithreaded']
+        - impl: SI
+          system: singlethreaded
+          indexes: ['si', 'SI', 'Y', 'singlethreaded']
+      examples:
+        - title: SI
+          subtitle: ""
+          key: "si"
+      legacy_notes: |
+        In VQMT 12 metric was optimized, consider correct range, added legacy mode.
+
+
+
+    ti:
+      title: TI (Temporal Information)
+      menu_name: TI
+      long_name: Temporal Information
+      info:
+        Metric type: >
+          %NO_REFERENCE% %TEMPORAL% metric
+        Value range: >
+          (simple, static video) 0..1 (very diverse frames)
+        Value interpretation: >
+          bigger more diverse frames
+        MSU VQMT implementations: >
+          %VQMT_MT%
+        MSU VQMT visualization: >
+          pixel-wise, difference between adjacent frames
+        Available colorspaces: >
+          Y
+        Output values: |
+          metric value 
+        Aggregated values: >
+           %STDSET%
+        MSU VQMT usages: >
+          `-metr ti`
+        External links: >
+          [ITU-T Recommendation P.910: Subjective video quality assessment methods for multimedia applications, 1999. – 37 p.](https://www.itu.int/rec/T-REC-P.910){:target="_blank"}
+      description: |
+        This metric measures complexity (entropy) of defference between consequent frames of input video. This metric represents simplest TI realization that takes standard deviation of sequence of differences of corresponding pixel values of a frame and previous frame:
+
+        $$
+        \mbox{TI}(V) = \frac{\mbox{std}[V_n(X(x,y))-V_{n-1}(X(x,y))]}{\mbox{max}}
+        $$
+
+      benchmarks:
+        - impl: TI
+          system: multithreaded
+          indexes: ['ti', 'TI', 'Y', 'multithreaded']
+        - impl: TI
+          system: singlethreaded
+          indexes: ['ti', 'TI', 'Y', 'singlethreaded']
+      examples:
+        - title: TI
+          subtitle: ""
+          key: "ti"
+      legacy_notes: |
+        In VQMT 12 metric was optimized, consider correct range, added legacy mode.

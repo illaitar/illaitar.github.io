@@ -1,0 +1,49 @@
+<h3 align="left" style="color: #3d6f96">Speed/Quality trade-off</h3>
+
+<!-- <p>Read about Frames per Second (FPS) calculation <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#computational_complexity">here</a>.
+Read about BSQ-rate over Subjective score <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#bsq-rate">here</a>.</p>  -->
+
+
+<!-- <div id="time" style="display: block" class="highcharts-figure">
+    <script async src="/assets/js/benchmarks/vfi/fps.js"></script>
+</div> -->
+
+<div id="time_plot_selector" class="mobile-plots">
+    <p style="white-space: pre;">Metric: <label for="time_plot_selector_metric"></label><select id="time_plot_selector_metric" name="values">
+        <option>Subjective</option>
+        <option>PSNR</option>
+        <option>SSIM</option>
+        <option>VMAF</option>
+        <option>LPIPS</option>
+        <option>MS-SSIM</option>
+    </select>    Test: <label for="time_plot_selector_test"></label><select id="time_plot_selector_test" name="values">
+        <option>From 30 fps</option>
+        <option>From 60 fps</option>
+    </select></p>
+
+    <div id="time_plot" style="display: block" class="highcharts-figure">
+        <script async src="/assets/js/benchmarks/vfi/time_scatter.js"></script>
+    </div>
+
+    <script>
+        function onChangeHelper() {
+            let speed_plot = document.getElementById("time_plot");
+            let this_div = document.getElementById("time_plot_selector");
+
+            speed_plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "time_plot");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+
+            let sc = document.createElement("script");
+            sc.src = '/assets/js/benchmarks/vfi/time_scatter.js'; 
+            new_plot.appendChild(sc);
+        }
+
+        document.getElementById("time_plot_selector_test").onchange = onChangeHelper
+        //document.getElementById("time_plot_selector_part").onchange = onChangeHelper
+        document.getElementById("time_plot_selector_metric").onchange = onChangeHelper
+    </script>
+</div>
+<!--<p style="text-align: center">Highlight the plot region where you want to zoom in</p>-->

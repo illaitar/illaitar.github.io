@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Method for region of interest selection with noticeable stereoscopic distortions in S3D videos</title>
+    <meta property="og:title" content="Method for region of interest selection with noticeable stereoscopic distortions in S3D videos">
+    <meta property="og:image" content="http://localhost:4000/assets/img/vqmt3d/interest-region-selection/preview.png">
+    <meta name="description" content="How to find foreground objects that are stuck to the background?">
+    <meta property="og:description" content="How to find foreground objects that are stuck to the background?">
+    <meta property="og:url" content="
+http://localhost:4000/stereo_quality/interest-region-selection.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <h1 id="method-for-region-of-interest-selection-with-noticeable-stereoscopic-distortions-in-s3d-videos">Method for region of interest selection with noticeable stereoscopic distortions in S3D videos</h1>
+        <ul>
+          <li>Author: Denis Kondranin</li>
+          <li>Supervisor: dr. Dmitriy Vatolin</li>
+        </ul>
+        <h2 id="introduction">Introduction</h2>
+        <p>Shooting 3D with two cameras without proper calibration causes geometric and sharpness distortions. The search of such distortions is manual and time-consuming. So, the special algorithm has been developed. It automates the process of fragments’ selection in stereoscopic frame containing the most noticeable geometric distortions and inconsistency of views in terms of sharpness.</p>
+        <p><b><br />
+            Types of distortions</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/distortions.png" alt="Types of distortions" /></p>
+        <p><b><br />
+            Example of sharpness mismatch</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/preview.png" alt="Sharpness mismatch example" /></p>
+        <p><b><br />
+            Example of color mismatch<br />
+            Spy Kids 3D: Game Over</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/color_mismatch.gif" alt="Color mismatch example" /></p>
+        <p><b><br />
+            Example of rotation mismatch<br />
+            Drive Angry</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/rotation_mismatch1.png" alt="Rotation mismatch example" />
+          <img src="/assets/img/vqmt3d/interest-region-selection/rotation_mismatch2.jpg" alt="Rotation mismatch example" /></p>
+        <p><b><br />
+            Example of scale mismatch</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/scale_mismatch.gif" alt="Scale mismatch example" /></p>
+        <p><b><br />
+            Example of vertical disparity<br />
+            Journey to the Center of the Earth 3D</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/vertical_disparity1.png" alt="Vertical disparity example" />
+          <img src="/assets/img/vqmt3d/interest-region-selection/vertical_disparity2.png" alt="Vertical disparity example" /></p>
+        <h2 id="proposed-method">Proposed method</h2>
+        <p><b>Algorithm scheme</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/algorithm.png" alt="Algorithm scheme" /></p>
+        <p>The algorithms of region selection for frames, containing scale, rotation and/or sharpness mismatch, were improved through machine learning methods.</p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/machine_learning.png" alt="Machine learning" /></p>
+        <h2 id="experiments">Experiments</h2>
+        <p>A dataset was created to train the model, which would predict the correctness of the detected region. The dataset was made by human experts who selected regions of interest, and consists of:</p>
+        <ul>
+          <li>854 annotated bounding-boxes for scale mismatch;</li>
+          <li>1044 annotated bounding-boxes for rotation mismatch;</li>
+          <li>1064 annotated bounding-boxes for sharpness mismatch.
+            The model relies on three types of features:</li>
+          <li>The output scalar value of the base algorithm;</li>
+          <li>The map of local distortions for both views;</li>
+          <li>The saliency map, calculated with SAM-ResNet.
+            Separate models were trained for each type of distortion. Several models were considered:</li>
+          <li>Logistic regression;</li>
+          <li>Random forest;</li>
+          <li>Support vector machine;</li>
+          <li>Gradient boosting.
+            There was no leader among the models: different individual base models showed diverse quality of results, depending on the problem. So we decided to apply stacked generalization, and chose logistic regression as a meta-classifier.</li>
+        </ul>
+        <p><b>The results of classifiers (cross-validation and 95% confidence interval)</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/results.png" alt="The results of classifiers" />
+          C — regularization weight
+          𝛄 — kernel parameter</p>
+        <p>For each type of distortion, we chose the model that showed the best results. The model predicts the region that would likely be selected by an expert.</p>
+        <h2 id="results">Results</h2>
+        <p>To decide whether the machine learning model is better than the baseline algorithm, we marked 100 additional frames and conducted an expert comparison. Two regions with distortions were shown to each participant: one area from the baseline algorithm and one from the machine learning model. The participants were asked to choose which region was better.</p>
+        <p><b>Comparison of the base algorithm and machine learning model</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/comparison.png" alt="Comparison" /></p>
+        <p><b><br />
+            The most important features for scale mismatch</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/features_scale.png" alt="The most important features for scale mismatch" /></p>
+        <p><b><br />
+            The most important features for rotation mismatch</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/features_rotation.png" alt="The most important features for rotation mismatch" /></p>
+        <p><b><br />
+            The most important features for sharpness mismatch</b></p>
+        <p><img src="/assets/img/vqmt3d/interest-region-selection/features_sharpness.png" alt="The most important features for sharpness mismatch" /></p>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=Method for region of interest selection with noticeable stereoscopic distortions in S3D videos&amp;url=
+http://localhost:4000/stereo_quality/interest-region-selection.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=Method for region of interest selection with noticeable stereoscopic distortions in S3D videos&amp;url=
+http://localhost:4000/stereo_quality/interest-region-selection.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/stereo_quality/interest-region-selection.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=Method for region of interest selection with noticeable stereoscopic distortions in S3D videos&amp;body=
+http://localhost:4000/stereo_quality/interest-region-selection.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/stereo_quality/interest-region-selection.html
+&amp;title=Method for region of interest selection with noticeable stereoscopic distortions in S3D videos&amp;summary=Method for region of interest selection with noticeable stereoscopic distortions in S3D videos&amp;source=
+http://localhost:4000/stereo_quality/interest-region-selection.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">05 May 2020</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/stereo_quality/report12.html">
+          <div class="image" style="background-image: url(/assets/img/vqmt3d/report12/preview-report.png)"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 12</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report11.html">
+          <div class="image" style="background-image: url(/assets/img/vqmt3d/report11/preview-report.png)"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 11</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report10.html">
+          <div class="image" style="background-image: url(/assets/img/vqmt3d/report10/preview-report.png)"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 10</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/stereo-window-violation.html">
+          <div class="image" style="background-image: url(/assets/img/vqmt3d/stereo-window-violation/scheme.png)"></div>
+          <div class="title">Detection of stereo window violation</div>
+          <div class="text">How to find objects that are present only in one view?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/depth-continuity-s3d.html">
+          <div class="image" style="background-image: url(/assets/img/vqmt3d/depth-continuity-s3d/scheme.png)"></div>
+          <div class="title">Depth continuity estimation in S3D video</div>
+          <div class="text">How smooth is the depth transition between scenes?</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

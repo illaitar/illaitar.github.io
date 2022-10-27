@@ -1,0 +1,30 @@
+<div class="tabs">
+    <button class="global-table-tablinks active-tablink" value="global-light">Light</button>
+    <button class="global-table-tablinks" value="global-medium-geom">Medium geometric</button>
+    <button class="global-table-tablinks" value="global-medium-color">Medium color</button>
+    <button class="global-table-tablinks" value="global-hard">Hard</button>
+</div>
+<p style="font-weight: bold">Leaderboard</p>
+<div class="datatable-container">
+    <div class="datatable-center">
+        <table id="table-global" class="table-fixed" style="background-color: #d4d4d4">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Name</th>
+                <th style="background-color: #3d6f96">F<sub>1</sub>-score</th>
+                <th style="background-color: #3d6f96">Precision</th>
+                <th style="background-color: #3d6f96">Recall</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+
+<p style="font-weight: bold">Charts</p>
+<select name="Method's name" id="filter-chart-global"></select>
+<p style="text-align: center">Highlight the plot region where you want to zoom in</p>
+<div id="chart-global-wrapper" class="mobile-plots">
+    <div id="chart-global" class="highcharts-figure"></div>
+</div>

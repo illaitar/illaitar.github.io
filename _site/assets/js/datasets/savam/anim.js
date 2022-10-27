@@ -1,0 +1,56 @@
+var m=1200;
+run_anim=function()
+{
+    q=[
+        function(e)
+        {
+            $(".frame1q").show(0).delay(m).hide(0,e);
+            $(".frame1").show(0).delay(m).hide(0)
+        },
+        function(e)
+        {
+            $(".frame2q").show(0).delay(m).hide(0,e);
+            $(".frame2").show(0).delay(m).hide(0)
+        },
+        function(e)
+        {
+            $(".frame1q").show(0).delay(m).hide(0,e);
+            $(".frame1").show(0).delay(m).hide(0)
+        },
+        function(e)
+        {
+            $(".frame2q").show(0).delay(m).hide(0,e);
+            $(".frame2").show(0).delay(m).hide(0)
+        },
+        function(e)
+        {
+            $(".frame3q").show(0).delay(m).hide(0,e);
+            $(".frame3").show(0).delay(m).hide(0)
+        },
+        function(e)
+        {
+            $(".frame4q").show(0).delay(m).hide(0,e);
+            $(".frame4").show(0).delay(m).hide(0)
+        },
+        function(e)
+        {
+            $(".frame3q").show(0).delay(m).hide(0,e);
+            $(".frame3").show(0).delay(m).hide(0)
+        },
+        function(e)
+        {
+            $(".frame4q").show(0).delay(m).hide(0,e);
+            $(".frame4").show(0).delay(m).hide(0)
+        }
+    ];
+        
+    var e=0;
+    r=function()
+    {
+        if(e>=q.length)
+            {e=0} 
+        q[e++](r)
+    };
+    r()
+};
+run_anim();

@@ -1,0 +1,317 @@
+h1 {
+margin-block-start: 0.67em;
+margin-block-end: 0.67em; }
+h2 {
+margin-block-start: 0.83em;
+margin-block-end: 0.83em; }
+h3 {
+margin-block-start: 1em;
+margin-block-end: 1em; }
+h4 {
+margin-block-start: 1.33em;
+margin-block-end: 1.33em; }
+h5 {
+margin-block-start: 1.67em;
+margin-block-end: 1.67em; }
+h6 {
+margin-block-start: 2.33em;
+margin-block-end: 2.33em; }
+p {
+margin-block-start: 1em;
+margin-block-end: 1em; }
+/* cyrillic-ext */
+@font-face {
+font-family: 'Arimo';
+font-style: italic;
+font-weight: 400;
+font-display: swap;
+src: local("Arimo Italic"), local("Arimo-Italic"), url(https://fonts.gstatic.com/s/arimo/v13/P5sCzZCDf9_T_10c9C5kiL2t2dkPJA.woff2) format("woff2");
+unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+/* cyrillic */
+@font-face {
+font-family: 'Arimo';
+font-style: italic;
+font-weight: 400;
+font-display: swap;
+src: local("Arimo Italic"), local("Arimo-Italic"), url(https://fonts.gstatic.com/s/arimo/v13/P5sCzZCDf9_T_10c9CdkiL2t2dkPJA.woff2) format("woff2");
+unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+/* latin-ext */
+@font-face {
+font-family: 'Arimo';
+font-style: italic;
+font-weight: 400;
+font-display: swap;
+src: local("Arimo Italic"), local("Arimo-Italic"), url(https://fonts.gstatic.com/s/arimo/v13/P5sCzZCDf9_T_10c9C1kiL2t2dkPJA.woff2) format("woff2");
+unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+/* latin */
+@font-face {
+font-family: 'Arimo';
+font-style: italic;
+font-weight: 400;
+font-display: swap;
+src: local("Arimo Italic"), local("Arimo-Italic"), url(https://fonts.gstatic.com/s/arimo/v13/P5sCzZCDf9_T_10c9CNkiL2t2dk.woff2) format("woff2");
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+/* cyrillic-ext */
+@font-face {
+font-family: 'Arimo';
+font-style: italic;
+font-weight: 700;
+font-display: swap;
+src: local("Arimo Bold Italic"), local("Arimo-BoldItalic"), url(https://fonts.gstatic.com/s/arimo/v13/P5sHzZCDf9_T_10c_JhBnZ2P1PM1LY90Bg.woff2) format("woff2");
+unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+/* cyrillic */
+@font-face {
+font-family: 'Arimo';
+font-style: italic;
+font-weight: 700;
+font-display: swap;
+src: local("Arimo Bold Italic"), local("Arimo-BoldItalic"), url(https://fonts.gstatic.com/s/arimo/v13/P5sHzZCDf9_T_10c_JhBnZSP1PM1LY90Bg.woff2) format("woff2");
+unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+/* latin-ext */
+@font-face {
+font-family: 'Arimo';
+font-style: italic;
+font-weight: 700;
+font-display: swap;
+src: local("Arimo Bold Italic"), local("Arimo-BoldItalic"), url(https://fonts.gstatic.com/s/arimo/v13/P5sHzZCDf9_T_10c_JhBnZ6P1PM1LY90Bg.woff2) format("woff2");
+unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+/* latin */
+@font-face {
+font-family: 'Arimo';
+font-style: italic;
+font-weight: 700;
+font-display: swap;
+src: local("Arimo Bold Italic"), local("Arimo-BoldItalic"), url(https://fonts.gstatic.com/s/arimo/v13/P5sHzZCDf9_T_10c_JhBnZCP1PM1LY8.woff2) format("woff2");
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+/* cyrillic-ext */
+@font-face {
+font-family: 'Arimo';
+font-style: normal;
+font-weight: 400;
+font-display: swap;
+src: local("Arimo Regular"), local("Arimo-Regular"), url(https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10UxCFuj5-v6dg.woff2) format("woff2");
+unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+/* cyrillic */
+@font-face {
+font-family: 'Arimo';
+font-style: normal;
+font-weight: 400;
+font-display: swap;
+src: local("Arimo Regular"), local("Arimo-Regular"), url(https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10dxCFuj5-v6dg.woff2) format("woff2");
+unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+/* latin-ext */
+@font-face {
+font-family: 'Arimo';
+font-style: normal;
+font-weight: 400;
+font-display: swap;
+src: local("Arimo Regular"), local("Arimo-Regular"), url(https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10XxCFuj5-v6dg.woff2) format("woff2");
+unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+/* latin */
+@font-face {
+font-family: 'Arimo';
+font-style: normal;
+font-weight: 400;
+font-display: swap;
+src: local("Arimo Regular"), local("Arimo-Regular"), url(https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10ZxCFuj5-v.woff2) format("woff2");
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+/* cyrillic-ext */
+@font-face {
+font-family: 'Arimo';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: local("Arimo Bold"), local("Arimo-Bold"), url(https://fonts.gstatic.com/s/arimo/v13/P5sBzZCDf9_T_1Wi4TROrZKF09E3HY4.woff2) format("woff2");
+unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+/* cyrillic */
+@font-face {
+font-family: 'Arimo';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: local("Arimo Bold"), local("Arimo-Bold"), url(https://fonts.gstatic.com/s/arimo/v13/P5sBzZCDf9_T_1Wi4TRHrZKF09E3HY4.woff2) format("woff2");
+unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+/* latin-ext */
+@font-face {
+font-family: 'Arimo';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: local("Arimo Bold"), local("Arimo-Bold"), url(https://fonts.gstatic.com/s/arimo/v13/P5sBzZCDf9_T_1Wi4TRNrZKF09E3HY4.woff2) format("woff2");
+unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+/* latin */
+@font-face {
+font-family: 'Arimo';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: local("Arimo Bold"), local("Arimo-Bold"), url(https://fonts.gstatic.com/s/arimo/v13/P5sBzZCDf9_T_1Wi4TRDrZKF09E3.woff2) format("woff2");
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+body {
+font-family: "Arimo", sans-serif;
+line-height: 130%;
+color: #222222;
+margin: 0;
+padding: 0; }
+.navbar, .navbar li .dropmenu, .footer ul {
+list-style-type: none;
+margin: 0;
+padding: 0; }
+.navbar {
+display: flex;
+align-items: center;
+background-color: #f8f8f8;
+height: 160px;
+max-width: 1300px;
+padding: 0 calc((100% - 1300px) / 2);
+justify-content: space-between;
+user-select: none;
+line-height: normal; }
+.navbar .logo {
+width: 87px;
+height: 67px;
+padding-right: 10px; }
+.navbar .navbar-header .header {
+display: flex;
+align-items: center; }
+.navbar .navbar-header .header h1 {
+font-size: 20px;
+color: #3d6f96; }
+.navbar .navbar-header .header h1 div {
+padding-top: 5px;
+font-size: 16px;
+font-weight: normal;
+white-space: nowrap;
+color: #888888; }
+.navbar .menu-toggle-button {
+display: none; }
+.navbar .dropdown-icon {
+vertical-align: middle; }
+.navbar li .dropmenu {
+display: none;
+width: 300%;
+z-index: 10;
+position: absolute;
+background-color: #f6f6f6;
+margin-left: -5px; }
+.navbar li .dropmenu a {
+padding: 10px; }
+.navbar li .dropmenu li:hover {
+background-color: #ffffff; }
+.navbar li a {
+display: block;
+font-size: 16px;
+color: inherit;
+text-decoration: none;
+padding: 10px; }
+.navbar li:hover {
+position: relative; }
+.navbar li:hover .dropmenu {
+display: block; }
+.navbar li:hover::first-letter {
+text-decoration: underline; }
+.footer {
+background-color: #eaeaea;
+max-width: 1300px;
+padding: 0 calc(max(0px, (100% - 1300px) / 2) + 10px);
+height: 250px;
+display: flex;
+justify-content: space-between;
+color: #888888;
+font-size: 14px; }
+.footer a {
+color: inherit;
+text-decoration: none; }
+.footer ul li:hover::first-letter {
+text-decoration: underline; }
+.footer .footer-column {
+margin-top: 40px; }
+.footer .copyright {
+display: flex;
+flex-direction: column; }
+.footer .copyright .logo {
+width: 98px;
+height: 84px; }
+.footer .copyright .text {
+margin-top: 10px;
+color: #3d6f96; }
+a span.pdf {
+display: inline-block;
+width: 24px;
+height: 24px;
+background-size: 24px;
+vertical-align: middle;
+background-image: url(/assets/icons/pdf.png); }
+@media (max-width: 950px) {
+.navbar {
+flex-direction: column;
+align-items: stretch;
+height: auto; }
+.navbar .logo {
+width: 57px;
+height: 44px;
+margin: 0;
+margin-right: 5px;
+padding: 0; }
+.navbar li {
+width: 100%;
+display: none; }
+.navbar .navbar-header {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+height: 60px; }
+.navbar .navbar-header .header {
+padding-right: 0px; }
+.navbar .navbar-header .header h1 {
+font-size: 12px; }
+.navbar .navbar-header .header h1 div {
+font-size: 10px; }
+.navbar .menu-toggle-button {
+display: block;
+padding: 10px !important;
+padding-left: 0px !important; }
+.navbar .menu-toggle-button .icon {
+width: 25px;
+height: 12px;
+background-image: url(/assets/icons/menu.svg); }
+.navbar li.navbar-header a {
+padding: 5px; }
+.navbar.unfolded li {
+display: block; }
+.navbar.unfolded li a {
+padding: 20px; }
+.navbar.unfolded .navbar-header {
+display: flex; }
+.navbar.unfolded .navbar-header a {
+padding: 5px; }
+.navbar.unfolded .menu-toggle-button .icon {
+width: 21px;
+height: 21px;
+background-image: url(/assets/icons/close.svg); }
+.navbar.unfolded .dropmenu {
+display: block;
+width: auto;
+position: relative;
+margin-left: 40px;
+background-color: #f8f8f8; }
+.navbar.unfolded .dropmenu li a {
+padding: 10px; }
+.navbar.unfolded .dropmenu li:hover {
+background-color: inherit; }
+.footer {
+flex-direction: column;
+height: auto;
+padding: 20px 0 20px 0; }
+.footer .footer-column {
+margin: 20px 10px 20px 10px; }
+.footer .copyright {
+flex-direction: row;
+align-items: center; }
+.footer .copyright .logo {
+width: 47px;
+height: 40px; }
+.footer .copyright .text {
+margin-top: 0;
+margin-left: 20px; } }

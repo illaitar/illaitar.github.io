@@ -1,0 +1,134 @@
+<style>
+    .dataTables_paginate {margin-top: 15px;}
+    .dataTables_length {margin-bottom: 15px;}
+</style>
+
+<p>
+    The table below shows a comparison of all Video Frame Interpolation methods.
+    You can sort the table by a specific metric.<br>
+    To walk through papers and implementations of algorithms go to the <a href="/benchmarks/video-frame-interpolation-participants.html">Participants tab</a>.
+    Discover details of the comparison in the <a href="/benchmarks/video-frame-interpolation-methodology.html">Methodology tab</a>.
+</p>
+
+<div id="leaderboard_pairs">
+    <p>     Dataset: <label for="leaderboard_video_selector"></label><select id="leaderboard_video_selector" name="values">
+        <option>From 30 fps</option>
+        <option>From 60 fps</option>
+    </select> </p>
+
+    <div class="datatable-container">
+    <div class="datatable-center">
+        <table id="leaderboard_pairs_table" class="display" style="background-color: #ffffff;width:99.5%">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Rank</th>
+                <th style="background-color: #3d6f96">Algorithm</th>
+                <th style="background-color: #3d6f96">Subjective</th>
+                <th style="background-color: #3d6f96">PSNR</th>
+                <th style="background-color: #3d6f96">SSIM</th>
+                <th style="background-color: #3d6f96">VMAF</th>
+                <th style="background-color: #3d6f96">LPIPS</th>
+                <th style="background-color: #3d6f96">MS-SSIM</th>
+                <th style="background-color: #3d6f96">FPS</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    <script>
+
+    
+    const video_button_left_id = 'video_button_left'
+    const video_button_right_id = 'video_button_right'
+    const video_select_id = 'leaderboard_video_selector'
+
+    $('#'+video_button_left_id).click(function(){
+        var video_select = document.getElementById(video_select_id);
+        var total_sz = video_select.options.length; 
+        video_select.selectedIndex -= 1;
+        if (video_select.selectedIndex < 0) video_select.selectedIndex = total_sz - 1;
+        onChangeHelper();
+    })
+    $('#'+video_button_right_id).click(function(){ 
+        var video_select = document.getElementById(video_select_id);
+        var total_sz = video_select.options.length; 
+        if (video_select.selectedIndex >= total_sz - 1) video_select.selectedIndex = 0;
+        else video_select.selectedIndex += 1;
+        //video_select.selectedIndex %= total_sz;
+        onChangeHelper();
+    })
+    
+
+    function onChangeHelper() {
+        
+        var video_select = document.getElementById("leaderboard_video_selector");
+        var videoToName = ['From 30 fps', 'From 60 fps'];
+        var video_name = videoToName[video_select.selectedIndex];
+
+
+        let text = "<thead>\n" +
+        "<tr style=\"font-size: large; background-color: #3d6f96\">" +
+        "    <th style=\"background-color: #3d6f96\">Rank</th>" +
+        "       <th style=\"background-color: #3d6f96\">Algorithm</th>" +
+        "       <th style=\"background-color: #3d6f96\">Subjective</th>" +
+        "       <th style=\"background-color: #3d6f96\">PSNR</th>" +
+        "       <th style=\"background-color: #3d6f96\">SSIM</th>" +
+        "       <th style=\"background-color: #3d6f96\">VMAF</th>" +
+        "       <th style=\"background-color: #3d6f96\">LPIPS</th>" +
+        "       <th style=\"background-color: #3d6f96\">MS-SSIM</th>" +
+        "       <th style=\"background-color: #3d6f96\">FPS</th>" +
+        "</tr>\n" +
+        "</thead>\n" +
+        "<tbody>\n";
+
+        let metrics = ['Subjective', 'PSNR', 'SSIM', 'VMAF', 'LPIPS', 'MS-SSIM', 'FPS'];
+
+        $.getJSON('../assets/json/benchmarks/vfi/leaderboard.json', function (data) {
+            $.each( data[video_name], function( pair, val ) {
+                
+                if (pair.substring(0, 4) == 'only') {
+                    td = "<td style='background-color:#FAF18C'>";
+                } else {
+                    td = "<td>";
+                }
+                text += "<tr class=\"item\">\n";
+                text += td + val["rank"] + "</td>\n" + td + pair + "</td>\n";
+                for (metric of metrics) {
+                    text += td + val[metric] + "</td>\n";
+                }
+                text += "</tr>\n";                    
+            });
+    
+            text += "</tbody>\n";
+            
+            let table = document.getElementById('leaderboard_pairs_table');
+            table.innerHTML = text;
+                
+
+            $('#leaderboard_pairs_table').DataTable().destroy();
+
+            $('#leaderboard_pairs_table').DataTable({
+                searching: false,
+                ordering: true,
+                order: [[0, 'asc']],
+                // "lengthMenu": [ [15, -1], [15, "All"] ],
+                paging: false,
+                bInfo : false,
+                dom: 'Blfrtip',
+            });
+        });
+    }  
+
+    document.getElementById("leaderboard_video_selector").onchange = onChangeHelper;
+    onChangeHelper();
+
+    </script>
+
+</div>
+<p>
+    * these algorithms do not require computing power
+</p>

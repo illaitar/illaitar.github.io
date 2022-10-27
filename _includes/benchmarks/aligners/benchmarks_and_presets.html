@@ -1,0 +1,94 @@
+<div>
+    <p>We decided to divide the problem of video alignment into three logical parts: local time distortions (occurs due to video processing), global time distortions (occurs due to video editing) and mixed time distortions (for versatility testing on both distortion types). Hence, our benchmark suite contains <b>three</b> benchmarks.</p>
+</div>
+<div class="datatable-container">
+    <div class="datatable-center">
+        <table class="static-table">
+            <thead>
+                <tr style="font-size: large; background-color: #3d6f96">
+                    <th  style="background-color: #3d6f96">Benchmark</th>
+                    <th  style="background-color: #3d6f96">Time distortions</th>
+                    <th  style="background-color: #3d6f96">Metric</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="4">Local time distortions</td>
+                <td>Drop frames</td>
+                <td rowspan="4">Accuracy(%) of correctly localized time-shifts of initial frames depending on maximum accepted error in frames</td>
+            </tr>
+            <tr>
+                <td>Duplicate frames</td>
+            </tr>
+            <tr>
+                <td>Freeze frames</td>
+            </tr>
+            <tr>
+                <td>Time shift</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Global time distortions</td>
+                <td>Fragment insertion</td>
+                <td rowspan="4">F<sub>1</sub>-score</td>
+            </tr>
+            <tr>
+                <td>Drop fragment</td>
+            </tr>
+            <tr>
+                <td>Cut the video</td>
+            </tr>
+            <tr>
+                <td>Mixed time distortions</td>
+                <td>All time distortions</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+    <p>Metrics are calculated as follows:</p>
+    <div class="flex-images">
+        <img src="/assets/img/benchmarks/aligners/Accuracy.png">
+        <img src="/assets/img/benchmarks/aligners/f.png">
+        <img src="/assets/img/benchmarks/aligners/TPFN.png">
+    </div>
+</div>
+<div>
+    <p>Each benchmark consists of <b>four</b> presets for a more precise understanding of the pros and cons of algorithms.</p>
+</div>
+<div class="datatable-container" style="margin-top: 10px">
+    <div class="datatable-center">
+        <table class="static-table">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th  style="background-color: #3d6f96">Preset</th>
+                <th  style="background-color: #3d6f96">Used distortions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td >Light</td>
+                <td>Time distortions</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Medium geometric</td>
+                <td>Time distortions</td>
+            </tr>
+            <tr>
+                <td>Geometric distortions</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Medium color</td>
+                <td>Time distortions</td>
+            </tr>
+            <tr>
+                <td>Color distortions</td>
+            </tr>
+            <tr>
+                <td>Hard</td>
+                <td>All distortions</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

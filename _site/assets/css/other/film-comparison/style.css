@@ -1,0 +1,43 @@
+#film-table {
+	display: flex;
+	flex-wrap: wrap
+}
+
+#film-table > div {
+	text-align: center;
+	min-width: 200px;
+	margin: 10px;
+	flex: 1 1 0
+}
+
+#film-table figure {
+	display: table;
+	margin: auto
+}
+
+#film-table img {
+	display: block;
+	height: 300px
+}
+
+#film-table figcaption {
+	display: table-caption;
+	caption-side: bottom;
+	padding-top: 5px
+}
+
+table#article {
+	border-spacing: 30px 0;
+	white-space: normal
+}
+
+table#article td {
+	vertical-align: middle
+}
+
+table#article img {
+	border: 1px solid black;
+	box-shadow: 5px 5px 3px #888888;
+	width: 150px;
+	min-width: 50px
+}

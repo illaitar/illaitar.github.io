@@ -1,0 +1,14 @@
+---
+---
+
+@import 'config.scss';
+
+.authors{
+    margin-left: 60%;
+}
+
+@media (max-width: $mobile-breakpoint) {
+    .authors{
+        margin-left: 25%;
+    }
+}

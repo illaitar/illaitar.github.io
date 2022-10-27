@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Video Alignment and Retrieval Benchmark</title>
+    <meta property="og:title" content="MSU Video Alignment and Retrieval Benchmark">
+    <meta property="og:image" content="http://localhost:4000/assets/img/benchmarks/aligners/kdpv_main.gif">
+    <meta name="description" content="Explore the best algorithms in different video alignment tasks">
+    <meta property="og:description" content="Explore the best algorithms in different video alignment tasks">
+    <meta property="og:url" content="
+http://localhost:4000/benchmarks/aligners.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/benchmarks/">MSU Benchmark Collection</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css" />
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <link rel="stylesheet" href="/assets/css/benchmarks/aligners/style.css" />
+        <h1 class="center" id="msu-video-alignment-and-retrieval-benchmark-suite">MSU Video Alignment and Retrieval Benchmark Suite</h1>
+        <div id="buttons"></div>
+        <script>
+          __set_menu_buttons([
+          ['Home', '/benchmarks/aligners.html'],
+          ['Participants','/benchmarks/aligners-participants.html'],
+          ['Evaluation methodology', '/benchmarks/aligners.html#methodology'],
+          ['How to participate', '/benchmarks/aligners.html#participate'],
+              ['Contact us', '/benchmarks/aligners.html#contacts']
+          ], 'Home')
+        </script>
+        <div class="current_content">
+          <h2 class="center" id="explore-the-best-algorithms-in-different-video-alignment-tasks">Explore the best algorithms in different video alignment tasks</h2>
+          <div style="
+    display: inline-block;
+    vertical-align: top;
+    float:right;
+    margin-bottom: 30px;
+    font-weight: bold;
+">
+            <div>Video group head: Dr. Dmitriy Vatolin</div>
+            <div style="display: inline-flex;vertical-align: top;">
+              <div style="margin-right: 5px">Measurements, analysis:</div>
+              <div>Mikhail Dremin,<br />
+                Konstantin Kozhemyakov</div>
+            </div>
+          </div>
+          <div class="center">
+            <img style="width:100%" src="/assets/img/benchmarks/aligners/kdpv_main.gif" />
+          </div>
+          <h2 id="whats-new">What’s new</h2>
+          <ul>
+            <li><strong>22.10.2021</strong> Public beta-version Release</li>
+            <li><strong>06.10.2021</strong> Alpha-version Release</li>
+          </ul>
+          <h2 id="key-features-of-the-benchmark-suite">Key features of the Benchmark Suite</h2>
+          <ul>
+            <li><strong>The most diverse dataset</strong> for alignment of near-duplicate videos:
+              <ul>
+                <li><strong>560 test pairs in each Benchmark</strong> with a total duration of ~2 million frames</li>
+                <li>Combinations of <strong><a href="#distortions">13 frequent distortions</a></strong> obtained due to human/machine video editing and processing</li>
+              </ul>
+            </li>
+            <li><strong>Test your method on our <a href="#benchmarks">Benchmarks:</a></strong>
+              <ul>
+                <li><strong>Local time distortions:</strong> occur due to video processing (transmitting, compressing with low bitrate etc.)</li>
+                <li><strong>Global time distortions:</strong> occur due to video editing</li>
+                <li><strong>Mixed version</strong> for versatility testing on both distortion types</li>
+              </ul>
+            </li>
+            <li><strong>Find the best method</strong> for your near-duplicate video alignment requirements:
+              <ul>
+                <li>Each Benchmark contains <a href="#benchmarks">three distortion presets</a> representing use cases with different complexity</li>
+              </ul>
+            </li>
+          </ul>
+          <p>To submit your method, please, follow several simple steps in the <a href="#participate">Algorithm Submission</a> section</p>
+          <p>We appreciate new ideas. Please, write us an e-mail to <a href="mailto:aligners-benchmark@videoprocessing.ai">aligners-benchmark@videoprocessing.ai</a></p>
+          <h2 id="evaluation">Evaluation</h2>
+          <div>
+            <p>You can <b>choose the preset</b> on which the algorithms were tested and <b>sort charts</b> by the algorithm.</p>
+          </div>
+          <div>
+            <p><b>NOTE:</b> The same number of test pair on different charts does not mean the same test pair because of sorting the results by algorithm.</p>
+          </div>
+          <h3 id="local-time-distortions">Local Time Distortions</h3>
+          <div class="tabs">
+            <button class="local-table-tablinks active-tablink" value="local-light">Light</button>
+            <button class="local-table-tablinks" value="local-medium-geom">Medium geometric</button>
+            <button class="local-table-tablinks" value="local-medium-color">Medium color</button>
+            <button class="local-table-tablinks" value="local-hard">Hard</button>
+          </div>
+          <p style="font-weight: bold">Leaderboard</p>
+          <div class="datatable-container">
+            <div class="datatable-center">
+              <table id="table-local" class="table-fixed" style="background-color: #d4d4d4">
+                <thead>
+                  <tr style="font-size: large; background-color: #3d6f96">
+                    <th style="background-color: #3d6f96">Name</th>
+                    <th style="background-color: #3d6f96">Accuracy<br />
+                      0 frames error</th>
+                    <th style="background-color: #3d6f96">Accuracy<br />
+                      3 frames error</th>
+                    <th style="background-color: #3d6f96">Accuracy<br />
+                      10 frames error</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+          <p style="font-weight: bold">Charts</p>
+          <p><select name="Method's name" id="filter-chart-local"></select></p>
+          <p style="text-align: center">Highlight the plot region where you want to zoom in</p>
+          <div id="chart-local-wrapper" class="mobile-plots">
+            <div id="chart-local" class="highcharts-figure"></div>
+          </div>
+          <div id="chart-local-error-wrapper" class="mobile-plots local local-light">
+            <div id="chart-local-error" class="highcharts-figure"></div>
+          </div>
+          <h3 id="global-time-distortions">Global Time Distortions</h3>
+          <div class="tabs">
+            <button class="global-table-tablinks active-tablink" value="global-light">Light</button>
+            <button class="global-table-tablinks" value="global-medium-geom">Medium geometric</button>
+            <button class="global-table-tablinks" value="global-medium-color">Medium color</button>
+            <button class="global-table-tablinks" value="global-hard">Hard</button>
+          </div>
+          <p style="font-weight: bold">Leaderboard</p>
+          <div class="datatable-container">
+            <div class="datatable-center">
+              <table id="table-global" class="table-fixed" style="background-color: #d4d4d4">
+                <thead>
+                  <tr style="font-size: large; background-color: #3d6f96">
+                    <th style="background-color: #3d6f96">Name</th>
+                    <th style="background-color: #3d6f96">F<sub>1</sub>-score</th>
+                    <th style="background-color: #3d6f96">Precision</th>
+                    <th style="background-color: #3d6f96">Recall</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+          <p style="font-weight: bold">Charts</p>
+          <p><select name="Method's name" id="filter-chart-global"></select></p>
+          <p style="text-align: center">Highlight the plot region where you want to zoom in</p>
+          <div id="chart-global-wrapper" class="mobile-plots">
+            <div id="chart-global" class="highcharts-figure"></div>
+          </div>
+          <h3 id="mixed-time-distortions">Mixed Time Distortions</h3>
+          <div class="tabs">
+            <button class="mixed-table-tablinks active-tablink" value="mixed-light">Light</button>
+            <button class="mixed-table-tablinks" value="mixed-medium-geom">Medium geometric</button>
+            <button class="mixed-table-tablinks" value="mixed-medium-color">Medium color</button>
+            <button class="mixed-table-tablinks" value="mixed-hard">Hard</button>
+          </div>
+          <p style="font-weight: bold">Leaderboard</p>
+          <div class="datatable-container">
+            <div class="datatable-center">
+              <table id="table-mixed" class="table-fixed" style="background-color: #d4d4d4">
+                <thead>
+                  <tr style="font-size: large; background-color: #3d6f96">
+                    <th style="background-color: #3d6f96">Name</th>
+                    <th style="background-color: #3d6f96">F<sub>1</sub>-score</th>
+                    <th style="background-color: #3d6f96">Precision</th>
+                    <th style="background-color: #3d6f96">Recall</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+          <p style="font-weight: bold">Charts</p>
+          <p><select name="Method's name" id="filter-chart-mixed"></select></p>
+          <p style="text-align: center">Highlight the plot region where you want to zoom in</p>
+          <div id="chart-mixed-wrapper" class="mobile-plots">
+            <div id="chart-mixed" class="highcharts-figure"></div>
+          </div>
+          <h2 id="methodology">Methodology</h2>
+          <h3 id="video-sequences-selection">Video sequences selection</h3>
+          <div id="methodology">
+            <p>Content diversity in test sequences is necessary for running algorithms in near-realistic conditions. To provide this diversity the following steps have been undertaken.</p>
+            <p>We identified two families of cases: processes during which temporary distortions could occur, i.e. video editing, streaming, capturing from different rigidly-connected cameras etc., and content in test videos which is difficult to align, i.e. talking head, recurring events (such as football matches, formula-1 racing), camera on a tripod (small amount of movement) etc. Then, we collected ~2000 videos from Vimeo from each taxonomic category to ensure unbiased video selection and sufficient coverage in terms of semantics and context presented in the video.</p>
+          </div>
+          <div id="videos-selection-wrapper" class="mobile-plots">
+            <div id="videos-selection" class="highcharts-figure"></div>
+          </div>
+          <p> Finally, SI/TI features were calculated for each video and for each class we mapped videos to use cases mentioned above.</p>
+          <div id="SITI-wrapper" class="mobile-plots">
+            <div id="SITI" class="highcharts-figure"></div>
+          </div>
+          <p> We chose videos that sufficiently cover SI/TI space and all the identified use cases and got 56 source videos.</p>
+          <div id="filtered-SITI-wrapper" class="mobile-plots">
+            <div id="filtered-SITI" class="highcharts-figure"></div>
+          </div>
+          <h3 id="dataset">Dataset</h3>
+          <div>
+            <p>Our dataset is constantly updated. Now we have 56 source video sequences with total duration of 195,411 frames. Resolution of all video sequences is 1920×1080. FPS ranges from 16 to 60. </p>
+          </div>
+          <h3 id="benchmarks-and-presets"><span id="benchmarks"></span> Benchmarks and presets</h3>
+          <div>
+            <p>We decided to divide the problem of video alignment into three logical parts: local time distortions (occurs due to video processing), global time distortions (occurs due to video editing) and mixed time distortions (for versatility testing on both distortion types). Hence, our benchmark suite contains <b>three</b> benchmarks.</p>
+          </div>
+          <div class="datatable-container">
+            <div class="datatable-center">
+              <table class="static-table">
+                <thead>
+                  <tr style="font-size: large; background-color: #3d6f96">
+                    <th style="background-color: #3d6f96">Benchmark</th>
+                    <th style="background-color: #3d6f96">Time distortions</th>
+                    <th style="background-color: #3d6f96">Metric</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="4">Local time distortions</td>
+                    <td>Drop frames</td>
+                    <td rowspan="4">Accuracy(%) of correctly localized time-shifts of initial frames depending on maximum accepted error in frames</td>
+                  </tr>
+                  <tr>
+                    <td>Duplicate frames</td>
+                  </tr>
+                  <tr>
+                    <td>Freeze frames</td>
+                  </tr>
+                  <tr>
+                    <td>Time shift</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">Global time distortions</td>
+                    <td>Fragment insertion</td>
+                    <td rowspan="4">F<sub>1</sub>-score</td>
+                  </tr>
+                  <tr>
+                    <td>Drop fragment</td>
+                  </tr>
+                  <tr>
+                    <td>Cut the video</td>
+                  </tr>
+                  <tr>
+                    <td>Mixed time distortions</td>
+                    <td>All time distortions</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <p>Metrics are calculated as follows:</p>
+            <div class="flex-images">
+              <img src="/assets/img/benchmarks/aligners/Accuracy.png" />
+              <img src="/assets/img/benchmarks/aligners/f.png" />
+              <img src="/assets/img/benchmarks/aligners/TPFN.png" />
+            </div>
+          </div>
+          <div>
+            <p>Each benchmark consists of <b>four</b> presets for a more precise understanding of the pros and cons of algorithms.</p>
+          </div>
+          <div class="datatable-container" style="margin-top: 10px">
+            <div class="datatable-center">
+              <table class="static-table">
+                <thead>
+                  <tr style="font-size: large; background-color: #3d6f96">
+                    <th style="background-color: #3d6f96">Preset</th>
+                    <th style="background-color: #3d6f96">Used distortions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Light</td>
+                    <td>Time distortions</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2">Medium geometric</td>
+                    <td>Time distortions</td>
+                  </tr>
+                  <tr>
+                    <td>Geometric distortions</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2">Medium color</td>
+                    <td>Time distortions</td>
+                  </tr>
+                  <tr>
+                    <td>Color distortions</td>
+                  </tr>
+                  <tr>
+                    <td>Hard</td>
+                    <td>All distortions</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <h3 id="distortions-and-distortion-distribution"><span id="distortions"></span> Distortions and distortion distribution</h3>
+          <div class="datatable-container">
+            <div class="datatable-center">
+              <table id="distortions-table" class="static-table">
+                <thead>
+                  <tr style="font-size: large; background-color: #3d6f96">
+                    <th style="background-color: #3d6f96">Distortion type</th>
+                    <th style="background-color: #3d6f96">Distortion</th>
+                    <th style="background-color: #3d6f96">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="6">Time distortions</td>
+                    <td>Drop frames</td>
+                    <td rowspan="2">First, last or random frame number &lt; fps, drop/duplicate 1, 2 or random up to 10 frames</td>
+                  </tr>
+                  <tr>
+                    <td>Duplicate/Freeze frames</td>
+                  </tr>
+                  <tr>
+                    <td>Time shift</td>
+                    <td>Crop up to 11 frames from the start</td>
+                  </tr>
+                  <tr>
+                    <td>Fragment insertion</td>
+                    <td>Insert fragment from another video</td>
+                  </tr>
+                  <tr>
+                    <td>Drop fragment</td>
+                    <td>Drop random fragment</td>
+                  </tr>
+                  <tr>
+                    <td>Cut the video</td>
+                    <td>Cut up to 3/4 of the entire video</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">Color distortions</td>
+                    <td>Add noise</td>
+                    <td>Add gaussian noise, sigma 3</td>
+                  </tr>
+                  <tr>
+                    <td>Add blur</td>
+                    <td>Add gaussian blur, sigma 1.5</td>
+                  </tr>
+                  <tr>
+                    <td>Random brightness&amp;contrast</td>
+                    <td>Random brignthess decrease from -10% up to -25%,<br />
+                      contrast increase from 5% up to 30%</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="5">Geometric distortions</td>
+                    <td>Add logo</td>
+                    <td>Logo or news title. Covers max 300px from bottom/top/left/right</td>
+                  </tr>
+                  <tr>
+                    <td>Add subtitles</td>
+                    <td>English language. Covers max 250px from bottom or top</td>
+                  </tr>
+                  <tr>
+                    <td>Crop</td>
+                    <td>Crop 2/4/8 px from right and bottom</td>
+                  </tr>
+                  <tr>
+                    <td>Scale</td>
+                    <td>Scale up to 110%</td>
+                  </tr>
+                  <tr>
+                    <td>Add black bars</td>
+                    <td>Crop to a ratio of 4:3 or 21:9. Then return to 16:9 by adding black bars</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tabs">
+            <button class="local-distortion-tablinks active-tablink" value="Local">Light</button>
+            <button class="local-distortion-tablinks" value="Local">Medium geometric</button>
+            <button class="local-distortion-tablinks" value="Local">Medium color</button>
+            <button class="local-distortion-tablinks" value="Local">Hard</button>
+          </div>
+          <div id="distortions-distribution-local-wrapper" class="mobile-plots">
+            <div id="distortions-distribution-local" class="highcharts-figure"></div>
+          </div>
+          <div class="tabs">
+            <button class="global-distortion-tablinks active-tablink" value="Global">Light</button>
+            <button class="global-distortion-tablinks" value="Global">Medium geometric</button>
+            <button class="global-distortion-tablinks" value="Global">Medium color</button>
+            <button class="global-distortion-tablinks" value="Global">Hard</button>
+          </div>
+          <div id="distortions-distribution-global-wrapper" class="mobile-plots">
+            <div id="distortions-distribution-global" class="highcharts-figure"></div>
+          </div>
+          <div class="tabs">
+            <button class="mixed-distortion-tablinks active-tablink" value="Mixed">Light</button>
+            <button class="mixed-distortion-tablinks" value="Mixed">Medium geometric</button>
+            <button class="mixed-distortion-tablinks" value="Mixed">Medium color</button>
+            <button class="mixed-distortion-tablinks" value="Mixed">Hard</button>
+          </div>
+          <div id="distortions-distribution-mixed-wrapper" class="mobile-plots">
+            <div id="distortions-distribution-mixed" class="highcharts-figure"></div>
+          </div>
+          <h2 id="submit-your-algorithm"><span id="participate"></span> Submit your algorithm</h2>
+          <style>
+            tt {
+                font-family: "Lucida Console", "Menlo", "Monaco", "Courier",
+                monospace;
+            }
+          </style>
+          <div>
+            <table style="border-collapse:collapse; table-layout: fixed; word-break: break-all;">
+              <tr>
+                <td colspan="2" style="background-color: #F4F6F6; width: 30%;">
+                  <b style="font-size: 20px">1. Download input data</b>
+                </td>
+                <td style="background-color: #F4F6F6;">
+                  <b>Download the necessary folders for the benchmark you want to take part in <a href="https://drive.google.com/drive/folders/1njChLzlUpUazzUVZVzQJVTptGK1P1ABN?usp=sharing">here</a>.
+                    <br />
+                    Some important notes:</b>
+                  <ul><b>A.</b> Each benchmark has train and validation sets</ul>
+                  <ul><b>B.</b> There are 3 folders for each benchmark, containing 4 zip-folders for each preset</ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <br />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="background-color: #F4F6F6; width: 30%;">
+                  <b style="font-size: 20px">2. Apply your algorithm</b>
+                </td>
+                <td style="background-color: #F4F6F6;">
+                  <b>Align videos with your algorithm</b><br />
+                  You can also send us the code of your method or the executable file and we will run it ourselves.<br />
+                  We expect a specific <b>output of your algorithm</b>. The description and some examples can be found in<br />
+                  downloadable dataset folder. Depending on benchmark, we calculate Accuracy, F<sub>1</sub>-score, <br />
+                  Precision and Recall.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <br />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="background-color: #F4F6F6; width: 30%;">
+                  <b style="font-size: 20px">3. Send us result</b>
+                </td>
+                <td style="background-color: #F4F6F6;">
+                  <b>Send us an email to <a href="mailto:aligners-benchmark@videoprocessing.ai">aligners-benchmark@videoprocessing.ai</a>
+                    with the following information: </b>
+                  <ul><b>A. </b>Name of your method that will be specified in our benchmark</ul>
+                  <ul><b>B. </b>Link to the cloud drive (Google Drive, OneDrive, Dropbox, etc.), containing output maps<br />
+                  </ul>
+                  <ul><b>C. </b>(Optional) Any additional information about the method:
+                    <ul>1. Full name of your model</ul>
+                    <ul>2. The parameter set that was used</ul>
+                    <ul>3. A link to the code of your model, if it is available</ul>
+                    <ul>4. A link to the paper about your model</ul>
+                    <ul>5. Execution time of your algorithm and information about used GPU and CPU</ul>
+                    <ul>6. Any other additional information</ul>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <h2 id="contacts"><span id="contacts"></span>Contacts</h2>
+          <p>For questions and propositions, please contact us: <a href="mailto:aligners-benchmark@videoprocessing.ai">aligners-benchmark@videoprocessing.ai</a></p>
+          <script src="/assets/js/benchmarks/aligners/highcharts/charts_and_tables.js"></script>
+        </div>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Video Alignment and Retrieval Benchmark&amp;url=
+http://localhost:4000/benchmarks/aligners.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Video Alignment and Retrieval Benchmark&amp;url=
+http://localhost:4000/benchmarks/aligners.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/benchmarks/aligners.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Video Alignment and Retrieval Benchmark&amp;body=
+http://localhost:4000/benchmarks/aligners.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/benchmarks/aligners.html
+&amp;title=MSU Video Alignment and Retrieval Benchmark&amp;summary=MSU Video Alignment and Retrieval Benchmark&amp;source=
+http://localhost:4000/benchmarks/aligners.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">22 Oct 2021</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/vfi/main.webp)"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

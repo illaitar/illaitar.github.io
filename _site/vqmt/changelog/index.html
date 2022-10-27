@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15281510-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'UA-15281510-2');
+    </script>
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU VQMT Version history</title>
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/vqmt/vqmt.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/assets/js/vqmt/interface.js"></script>
+  </head>
+  <body>
+    <div class="global-container">
+      <div class="global-content-and-header">
+        <div class="global-header">
+          <ul class="navbar">
+            <li class="navbar-header">
+              <a href="/" class="header">
+                <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+                <h1>Video processing, compression<br>
+                  and quality research group
+                  <div>Based in MSU Graphics & Media Laboratory</div>
+                </h1>
+              </a>
+              <a class="menu-toggle-button">
+                <div class="icon"></div>
+              </a>
+            </li>
+            <li>
+              <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+              <ul class="dropmenu">
+                <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+                <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+                <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+                <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+                <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+                <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+                <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+                <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+                <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+                <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+                <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+                <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+                <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+                <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+              <ul class="dropmenu">
+                <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+                <li><a href="/vqmt/">VQMT</a></li>
+                <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+                <li><a href="/datasets/">MSU Datasets Collection</a></li>
+                <li><a href="/metrics/">Metrics Research</a></li>
+                <li><a href="/video_filters/">Video Filters</a></li>
+                <li><a href="/other/">Other Projects</a></li>
+              </ul>
+            </li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contacts/">Contacts</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="tiles-width nav-current">
+            <a href="/index.html">Main page</a> &mdash;
+            <a href="/vqmt/">VQMT</a>
+          </div>
+          <div class="tiles-width markdown article">
+            <p>MSU Video Quality Measurement Tool (MSU VQMT) project:</p>
+            <ul>
+              <li><a href="https://compression.ru/vqmt"><strong>Main MSU VQMT page</strong></a> on compression.ru</li>
+              <li><a href="https://compression.ru/vqmt-pro"><strong>Download &amp; Purchase</strong></a> on compression.ru</li>
+              <li><a href="/vqmt/basic"><strong>Basic information</strong></a></li>
+              <li><a href="/vqmt/vqmt-doc-toc"><strong>Online help</strong></a></li>
+              <li><a href="/vqmt/metrics"><strong>Metrics reference</strong></a></li>
+              <li><a href="/vqmt/changelog"><strong>Version history &amp; Changelog</strong></a></li>
+            </ul>
+            <h2 id="release-notes-on-vqmt-141">Release notes on VQMT 14.1</h2>
+            <h3 id="msu-vqmt-python-interface">MSU VQMT Python Interface</h3>
+            <p>Since MSU VQMT 14.1 you can use efficient MSU VQMT Python Interface. It demands installed MSU VQMT PRO, Premium, DEMO or Trial version. More information on <a href="https://pypi.org/project/msu-vqmt/" target="_blank">project page on PyPI</a>.</p>
+            <h3 id="color-policy-changes">Color policy changes</h3>
+            <p>Prior to VQMT 14.0, the color policy was to keep colorspace characteristics of an input file. Now the color policy is: find the best color space and convert the input images to that color space.</p>
+            <p>Now each measurement has a specific color space and all inputs will be converted to that color space. You can also implicitly specify this color space.</p>
+            <p>Another change is that VQMT will prefer Rec range for YUV and PC range for RGB, unless otherwise implicitly specified.</p>
+            <p><em>Be careful, these changes may affect the values of the metrics.</em></p>
+            <h3 id="change-of-branding">Change of branding</h3>
+            <p>We have changed MSU G&amp;M Lab. logo to new <a href="https://compression.ru" target="_blank">Video Compression Team</a> logo. MSU G&amp;M Lab. remains involved in the development of MSU VQMT and uses it for <a href="https://videoprocessing.ai/benchmarks/" target="_blank">benchmarks</a> and the <a href="https://compression.ru/video/codec_comparison/index_en.html" target="_blank">annuary Codec compression</a>.</p>
+            <p><img src="/assets/img/vqmt/logo_change.svg" alt="VQMT logo transformation" height="120px" /></p>
+            <h3 id="free-version-policy-changes">FREE version policy changes</h3>
+            <p>The most discussing FREE version limitation was limitation on input files resolution. We cancelled this limitation and now the FREE version can be used with files of any resolutions.</p>
+            <p>We have the following changes for FREE version policy:</p>
+            <ul>
+              <li>Limitation on inputs resolution - only files below HD: <strong>cancelled</strong></li>
+              <li>Limitation on color depth - HDR limitations: <strong>changed</strong> - no support for HDR files in VQMT 14 FREE, no HDR metrics in VQMT 14.1 FREE</li>
+              <li>Limitation on interface - only BUI version: <strong>kept</strong></li>
+              <li>Limitation on usage in companies - only personal usage: <strong>kept</strong></li>
+              <li>Limitation on implementations - no GPU metrics: <strong>introduced</strong></li>
+              <li>Limitation on Python usage - python imterface only for PRO version: <strong>introduced</strong></li>
+            </ul>
+            <h2 id="changelog">Changelog</h2>
+            <ul class="open-list changelog-global">
+              <li class="open-cont active changelog">14.1<span class="ver-date">June 2022</span>
+                <span class="ver-info">Python wrapper</span>
+                <ul>
+                  <li class="section">Main features:</li>
+                  <li class="n">Python wrapper as pip package msu_vqmt</li>
+                  <li class="n">New color policy: specifying exact colorspace for metric calculation</li>
+                  <li class="f">Modern decoders from FFmpeg 5</li>
+                  <li class="f">Better Linux support - more systems supported</li>
+                  <li class="f">Free policy updated - no resolution limitation</li>
+                  <li class="section">Other features:</li>
+                  <li class="f">New VQMT logo</li>
+                  <li class="f">VQMT SDK updated</li>
+                  <li class="n">Specifying custom file path for visualization</li>
+                  <li class="n">More json output</li>
+                  <li class="f">Fixed color components order in GUI</li>
+                  <li class="f">Bugfixes</li>
+                </ul>
+              </li>
+              <li class="open-cont active changelog">14.0 BETA<span class="ver-date">Jan 2022</span>
+                <span class="ver-info">SSIM, MS-SSIM Superfast metrics</span>
+                <ul>
+                  <li class="section">Main features:</li>
+                  <li class="n">Support for big files up to 1'000'000 frames and more</li>
+                  <li class="n">GUI: Possibility to select any number of files</li>
+                  <li class="n">GUI: You can save &amp; load results, including plots</li>
+                  <li class="n">GUI: Measure history. Open results of resent measurement</li>
+                  <li class="n">Metrics: new metrics SSIM Superfast, MS-SSIM Superfast: speedup - 10 times</li>
+                  <li class="n">New documentation</li>
+                  <li class="section">Optimization:</li>
+                  <li class="n">Initialization speedup</li>
+                  <li class="n">Memory consumption redused while processing big files: up to 20 times</li>
+                  <li class="n">All CPU metrics speedup about 5-10%</li>
+                  <li class="section">GUI:</li>
+                  <li class="n">Full path in result window</li>
+                  <li class="n">Pagination in result table</li>
+                  <li class="n">Dragging any number of files to GUI</li>
+                  <li class="n">Setting up process priority</li>
+                  <li class="n">Arrow showing better values on the plot</li>
+                  <li class="n">New tab Summary. Appears when multiple files were processed.</li>
+                  <li class="f">Improved scrollbars behaviour</li>
+                  <li class="section">CLI:</li>
+                  <li class="n">Possibility to set skipping mode</li>
+                  <li class="n">New section Summaty in the output.</li>
+                  <li class="n">Help will be displayed in separate sections</li>
+                  <li class="n">Output of JSON list of devices</li>
+                  <li class="n">Output of saved files in performace JSON output</li>
+                  <li class="n">Added option -v: output general info in readable or JSON fromat</li>
+                  <li class="section">Metrics:</li>
+                  <li class="n">SSIM-metrics can compute weighted average over Y, U, V</li>
+                  <li class="n">SSIM-metrics can build visualization of all components in one image</li>
+                  <li class="n">PSNR could take into account subsampled U, V components</li>
+                  <li class="n">Confidence interval length in VMAF now is tunable</li>
+                  <li class="f">ci95_low and ci95_high in VMAF output renamed to ci_low and ci_high</li>
+                  <li class="f">MSSSIM renamed to MS-SSIM</li>
+                  <li class="section">Other:</li>
+                  <li class="f">Output: Fixed names of autogenerated files</li>
+                  <li class="f">Changed field names in VQMT JSON configuration</li>
+                  <li class="f">Bugfixes</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">13.1<span class="ver-date">May 2021</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="n">VMAF now supports "No enhancement gain" (NEG) features</li>
+                  <li class="n">VMAF calculation on CPU — 1.5 times faster</li>
+                  <li class="n">VMAF supports JSON models</li>
+                  <li class="n">VMAF legacy mode</li>
+                  <li class="n">Optimization of OpenCL metrics: 1-4 times faster than 13.0</li>
+                  <li class="n">PIPE mode: read any numbers of inputs from arbitrary commands output</li>
+                  <li class="f">Bugfix: settings were not restored</li>
+                  <li class="f">Bugfix: rebuilding index each time</li>
+                  <li class="f">Bugfix: flood of FFmpeg messages</li>
+                  <li class="f">Bugfix: some formats supports</li>
+                  <li class="f">Bugfix: temporal metrics in Preview</li>
+                  <li class="f">Bugfix: crashes</li>
+                  <li class="f">Other bugfixes</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">13.0 BETA<span class="ver-date">Feb 2021</span>
+                <span class="ver-info">Colorspaces, HDR metrics, AV1</span>
+                <ul>
+                  <li class="section">Main features:</li>
+                  <li class="n">FFmpeg 4 in VQMT - improved navigation and format support</li>
+                  <li class="n">Support for AV1</li>
+                  <li class="n">NIQE now supports OpenCL (~40 fps on FullHD on tested devices)</li>
+                  <li class="n">Native support for EXR files</li>
+                  <li class="n">Colorspaces and color standards support in VQMT</li>
+                  <li class="n">Visualization pallets and gamma correction</li>
+                  <li class="section">Visualization &amp; Preview:</li>
+                  <li class="n">Support for 11 pallets for metrics visualization</li>
+                  <li class="n">Support gamma correction for metrics visualization</li>
+                  <li class="n">Turning visualization parameters right in Preview window</li>
+                  <li class="n">New visualization formats: PNG, JPEG, BMP, fixed H264</li>
+                  <li class="n">Visualization video will be saved with correct FPS</li>
+                  <li class="n">Preview by channel, any colorspace</li>
+                  <li class="n">Separate colorspace setup for render and values</li>
+                  <li class="section">Colorspaces:</li>
+                  <li class="n">Fixed L-LUV metrics</li>
+                  <li class="n">Conversion between different colorspaces and models</li>
+                  <li class="n">Support for CIE XYZ, CIR LUV, ICtCp, LMS, Perceptual uniform encoding</li>
+                  <li class="n">Manually specifying input file colorspace and automatic detection</li>
+                  <li class="n">Manually specifying sample range for floating-point input files</li>
+                  <li class="n">Setting of display maximum luminance, that affects GDR-metrics calculation</li>
+                  <li class="section">New metrics:</li>
+                  <li class="n">HDR VQM</li>
+                  <li class="n">HDR PSNR</li>
+                  <li class="n">HDR SSIM</li>
+                  <li class="n">HDR MS-SSIM</li>
+                  <li class="n">Delta ICtCp</li>
+                  <li class="section">Other:</li>
+                  <li class="n">Using arbitrary external codec as input</li>
+                  <li class="n">VQMT don't save the index to the input file folder anymore</li>
+                  <li class="n">Different verbosity levels</li>
+                  <li class="n">Setting implicit output CSV file path</li>
+                  <li class="n">New command line arguments: -cs, -csv-default-file, -csv-file, -display-luminance, -float-range, -vis-colormap, -vis-gamma</li>
+                  <li class="f">Bugfixes in online metrics and online visualization</li>
+                  <li class="f">Oher bugfixes</li>
+                  <li class="section">Known issues:</li>
+                  <li class="b">Speed of SSIM metrics on OpenCL could be slower</li>
+                  <li class="b">Results after RGB → YUV conversion may differ from VQMT 12 ones</li>
+                  <li class="b">Meaning of L-LUV channel changed, results for L colorspace will differ from VQMT 12 ones</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">12.1<span class="ver-date">Feb 2021</span>
+                <span class="ver-info">VMAF on OpenCL, Non-binary masks</span>
+                <ul>
+                  <li class="section">Main features:</li>
+                  <li class="n">VMAF now supports OpenCL (~40 fps on FullHD on tested devices)</li>
+                  <li class="n">VQMT now can be configured with JSON-file instead of command line</li>
+                  <li class="n">Online help for VQMT</li>
+                  <li class="n">Support for non-binary masks</li>
+                  <li class="section">Masks:</li>
+                  <li class="n">Mask-support fixed and refactored</li>
+                  <li class="n">Support the simple setting of rectangular masks</li>
+                  <li class="n">Native mask support in some metrics (PSNR, Delta, MSE, MSAD, SSIM-Fast, SSIM-Precise, SSIM-OpenCL, MSSSIM-Precise, VMAF, VMAF-OpenCL, NIQE)</li>
+                  <li class="n">Mask logging</li>
+                  <li class="section">Performance:</li>
+                  <li class="n">"Lazy" metrics' loading, VQMT initialization speedup.</li>
+                  <li class="section">New metrics:</li>
+                  <li class="n">Timeshift</li>
+                  <li class="section">Visualization in metrics:</li>
+                  <li class="n">TI</li>
+                  <li class="n">VMAF</li>
+                  <li class="section">Other:</li>
+                  <li class="n">JSON-configuration from STDIN and command line</li>
+                  <li class="f">Fixed AviSynth on Windows</li>
+                  <li class="f">Other bugfixes</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">12.0 BETA r12434<span class="ver-date">Jan 2020</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="f">VMAF freezing on platforms with a big amount of logic units</li>
+                  <li class="f">VMAF wrong results on platforms with a big amount of logic units if run for multiple files at once</li>
+                  <li class="f">Freezes of Preview window in some cases</li>
+                  <li class="f">Crashes in the case of unaligned subsampled picture type (i. e. odd yuv420)</li>
+                  <li class="f">AviSynth and AVIFile support fixed (Windows)</li>
+                  <li class="f">Mask support fixed</li>
+                  <li class="f">JSON fixes - removed trailing None in legacy mode</li>
+                  <li class="f">CUDA error correct handling</li>
+                  <li class="n">Newer OpenCL driver</li>
+                  <li class="n">Saving properties of the Result window</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">12.0 BETA<span class="ver-date">Nov 2019</span>
+                <span class="ver-info">Online metrics, acceleration</span>
+                <ul>
+                  <li class="n">Online metric calculation</li>
+                  <li class="n">Visualization for specific frames</li>
+                  <li class="n">Computed metric values in Preview</li>
+                  <li class="f">VQMT will not stop if some files, but not all, are done</li>
+                  <li class="f">Improved multi-core support - acceleration up to 3 times</li>
+                  <li class="n">Automatic color selection in command line possible</li>
+                  <li class="f">Color specification in command line changed</li>
+                  <li class="f">Now colors named by single letter, i. e. Y instead if YYUV</li>
+                  <li class="n">PSNR metric now supports single value for RGB and YUV</li>
+                  <li class="f">Single PSNR metric instead of 4</li>
+                  <li class="n">Processing of multiple colors simultaneously possible in GUI</li>
+                  <li class="n">Preview window: zoom</li>
+                  <li class="n">Preview window: timestamp &amp; frame</li>
+                  <li class="n">Preview window: no freezing when changing frame</li>
+                  <li class="n">Preview window: pixel indicator &amp; pixel information</li>
+                  <li class="n">Preview window: individual pixel values</li>
+                  <li class="n">Preview window: clickable miniview</li>
+                  <li class="n">Preview window: hotkeys improved</li>
+                  <li class="n">Preview window: vertical comparison mode</li>
+                  <li class="n">Preview window: slider mode</li>
+                  <li class="n">Preview window: information in fullscreen mode</li>
+                  <li class="n">NIQE: visualization</li>
+                  <li class="f">NIQE will output common mean and NIQE mean as separate accumulated values</li>
+                  <li class="n">More average values: statistical data, specific metric values</li>
+                  <li class="f">New JSON format: column-vise JSON values</li>
+                  <li class="n">Bitrates in JSON</li>
+                  <li class="f">New CSV format</li>
+                  <li class="f">Legacy mode to bring VQMT closer to VQMT 11</li>
+                  <li class="n">Subsampling mode: skipping frames to improve performance</li>
+                  <li class="n">Performance settings in GUI, new performance setting ‐ metric parallelism</li>
+                  <li class="n">Sample conversion setting</li>
+                  <li class="n">More RGB ↔ YUV tables</li>
+                  <li class="f">Changed value range in the following metrics: Delta, MSE, MSAD</li>
+                  <li class="f">Option "-subsampling" renamed to "-no-upscale-uv"</li>
+                  <li class="n">Considerably improved precision for SSIM Fast and MSSSIM fast metrics</li>
+                  <li class="n">Corrected precision in SSIM-CUDA, SSIM-OpenCL, Blocking</li>
+                  <li class="n">Some metrics optimized</li>
+                  <li class="n">VQMT internally optimized</li>
+                  <li class="n">Results plot window optimized</li>
+                  <li class="n">Completely refreshed VQMT log output</li>
+                  <li class="n">Information in console window: FPS, estimated time, etc.</li>
+                  <li class="n">Average values in console output</li>
+                  <li class="n">Additional information in log: average FPS, exit status, etc</li>
+                  <li class="n">More accurate FPS during calculation</li>
+                  <li class="n">Consider correct sample range in all metrics</li>
+                  <li class="n">New bad frames features</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">11.2<span class="ver-date">Nov 2019</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="n">CentOs Linux now is supported</li>
+                  <li class="n">Added FFmpeg scaling algorithms</li>
+                  <li class="f">Fixed PSNR average value</li>
+                  <li class="f">Fixed OpenCL metrics (SSIM, 3SSIM, MSSSIM)</li>
+                  <li class="f">Fixed incorrect values in bi_psnr metric</li>
+                  <li class="f">Fixed BFM metric</li>
+                  <li class="f">Fixed NIQE metric</li>
+                  <li class="f">3SSIM-CUDA bug fixed</li>
+                  <li class="f">Error reporting in CUDA metrics, accuracity in CUDA metric fixed for compatibility with OpenCL, GPU_Id metrics</li>
+                  <li class="f">CSV fixes - correct escaping, line endings</li>
+                  <li class="f">RGB48 pixel format support fix</li>
+                  <li class="f">Other bugfixes</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">11.1<span class="ver-date">May 2019</span>
+                <span class="ver-info">Geometry correction</span>
+                <ul>
+                  <li class="n">Comparison on different resolution (geometry correction)</li>
+                  <li class="n">New metrics (SI, TI)</li>
+                  <li class="n">Saving bitrates</li>
+                  <li class="f">And bugfixes</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">11.0<span class="ver-date">Feb 2019</span>
+                <span class="ver-info">1400+ raw formats, wider HDR</span>
+                <ul>
+                  <li class="n">Support for 1400+ new RAW formats</li>
+                  <li class="n">Support for standard names for RAW formats</li>
+                  <li class="n">Support new RGB ↔ YUV tables</li>
+                  <li class="n">Support HDR videos and more HDR image formats: 3 more times video formats now can be lossless</li>
+                  <li class="n">Result table with metric values inside VQMT</li>
+                  <li class="n">Automatic command-line generation from GUI</li>
+                  <li class="n">Plot of bitrate</li>
+                  <li class="n">Actual VMAF support: modern models, 4k models, confidence intervals</li>
+                  <li class="n">New blurring metric</li>
+                  <li class="n">New Noise Estimation metric</li>
+                  <li class="n">Linux command line considerably improved</li>
+                  <li class="n">Better performance on some cases</li>
+                  <li class="n">New quality control standards</li>
+                  <li class="n">Measurement on subsampled U and V</li>
+                  <li class="n">Latest CUDA engine</li>
+                  <li class="f">And bugfixes</li>
+                  <li class="f">Only x64-bit edition from this version</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">10.2<span class="ver-date">Feb 2019</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="n">PREMIUM licensing introduced</li>
+                  <li class="f">And bugfixes</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">10.1<span class="ver-date">Apr 2018</span>
+                <span class="ver-info">New metrics: VMAF, NIQE</span>
+                <ul>
+                  <li class="n">Support of perspective and modern VMAF metric. Many settings guarantee full metric support.</li>
+                  <li class="n">Now it's possible to determine quality even without a reference via new NIQE metric.</li>
+                  <li class="n">Improved usability: Drag &amp; Drop files and changing of file order by single click.</li>
+                  <li class="n">The -stdin parameter allows you to transmit data directly from the output of another program, such as FFmpeg, without saving multi-gigabyte files. Acceleration and simplification (PRO and DEMO only)</li>
+                  <li class="n">New formats with support for HDR: extended support for TIFF and PXM family. (HDR only in PRO and DEMO)</li>
+                  <li class="n">Better usability of command line - a lot of improvements while maintaining full backward compatibility (PRO and DEMO only)</li>
+                  <li class="n">Built-in profiler. It will show which operations take the most time and allow you to accurately measure the performance of VQMT (PRO and DEMO only)</li>
+                  <li class="n">Better JSON output</li>
+                  <li class="n">TIFF as format for bad frames</li>
+                  <li class="n">More functions in Linux version: more metrics, plug-ins support, OpenCL support (PRO and DEMO only)</li>
+                  <li class="f">And bugfixes</li>
+                  <li class="f">Now we recommend specifying original input using new key '-orig' instead of traditional '-in'</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">10.0 BETA<span class="ver-date">Apr 2017</span>
+                <span class="ver-info">New main window, Linux support</span>
+                <ul>
+                  <li class="n">New look of main window</li>
+                  <li class="n">Saving and loading VQMT projects</li>
+                  <li class="n">Status bar with diagnostic in main window</li>
+                  <li class="n">Report generation</li>
+                  <li class="n">Saving result plot in arbitrary image formats</li>
+                  <li class="n">New clear VQMT folder structure</li>
+                  <li class="n">Improved using vqmt console in PRO version</li>
+                  <li class="n">Command line Linux utility</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">9.1<span class="ver-date">Apr 2017</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="f">Fixed incorrect results while using second processed video</li>
+                  <li class="n">Added legend to result plot</li>
+                  <li class="n">Saving log from GUI</li>
+                  <li class="f">Fixed copying plot to clipboard</li>
+                  <li class="f">Using *.YUV bug fixed: first frame could be duplicated</li>
+                  <li class="f">Improved h265 support</li>
+                  <li class="f">Index file building bug fixed</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">9.0 BETA<span class="ver-date">Dec 2016</span>
+                <span class="ver-info">New result window</span>
+                <ul>
+                  <li class="n">New look of result window</li>
+                  <li class="n">Using interface while calculation is processing and while viewing results</li>
+                  <li class="n">Viewing multiple results at the same time</li>
+                  <li class="n">Switch between calculation log and results plot</li>
+                  <li class="n">Extended information about progress: count of processed frames, FPS, elapsed time, estimated time</li>
+                  <li class="n">Pretty and configurable result plot</li>
+                  <li class="n">Saving CSV after calculation finished</li>
+                  <li class="n">Saving JSON result file in GUI</li>
+                  <li class="n">Saving results' plot as SVG file</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">8.1<span class="ver-date">Nov 2016</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="n">Added checking for updates.</li>
+                  <li class="n">Using single image as source do not truncate all other inputs to one frame.</li>
+                  <li class="f">Fixed crashes when use plug-in metric.</li>
+                  <li class="f">Improved video previewing, fixed opening visualization video inside VQMT.</li>
+                  <li class="f">Fixed possible incorrect negative PSNR.</li>
+                  <li class="f">Fixed mask behavior.</li>
+                  <li class="n">Recognize patterns 720p etc. in the name of RAW file to detect resolution automatically.</li>
+                  <li class="n">Hotkeys in Preview and Fullscreen window considerably improved.</li>
+                  <li class="n">Allow to change video source and frame inside Fullscreen window.</li>
+                  <li class="f">Bugfixes in Preview window performed.</li>
+                  <li class="f">Fixed green frame in some types of file, incorrect reading of some color spaces.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">8.0 BETA<span class="ver-date">Oct 2016</span>
+                <span class="ver-info">Preview window</span>
+                <ul>
+                  <li class="n">Added new visualization methods: Lossless Video, Lossy Video and TIFF files.</li>
+                  <li class="n">Preview window replaced.</li>
+                  <li class="n">Full-screen preview, display selection.</li>
+                  <li class="n">Side-by-side preview.</li>
+                  <li class="n">Inspecting visualization inside VQMT.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">7.1<span class="ver-date">Oct 2016</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="f">Crashes fixed.</li>
+                  <li class="f">Improved command line output in PRO version.</li>
+                  <li class="f">Preview display fix.</li>
+                  <li class="f">Seeking and offsetting YUV files fixed.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">7.0 BETA<span class="ver-date">Jun 2016</span>
+                <span class="ver-info">OpenCL support, Metrics reorganized</span>
+                <ul>
+                  <li class="n">Added support for OpenCL device interface. Efficient calculation on different devices.</li>
+                  <li class="n">Speedup of PSNR and SSIM metrics.</li>
+                  <li class="n">Similar metrics joined.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">6.2<span class="ver-date">Jun 2016</span>
+                <span class="ver-info">JSON support</span>
+                <ul>
+                  <li class="n">Added support for JSON output in console.</li>
+                  <li class="f">Incorrect results with RGB metric on RGB video fixed.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">6.1 BETA<span class="ver-date">Apr 2016</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="f">Fixed bug: hangs in console while using files in network directories.</li>
+                  <li class="f">Fixed incorrect behavior of .Y4M files in GUI.</li>
+                  <li class="f">Fixed crashes when the length of all files was not able to be detected."</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">6.0 BETA<span class="ver-date">Mar 2016</span>
+                <span class="ver-info">Acceleration</span>
+                <ul>
+                  <li class="n">VQMT became about 3 times faster.</li>
+                  <li class="n">16 and 32 bpp floating point TIFF files supported (PRO version).</li>
+                  <li class="n">Added "-threads" command line argument to PRO version, which allows to control CPU usage.</li>
+                  <li class="f">Advanced mask processing - allowed shifts from exact black color for indication black area.</li>
+                  <li class="f">Fixed crashes and incorrect results while using mask.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">5.2<span class="ver-date">Apr 2016</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="f">Fixed bug: hangs in console while using files in network directories.</li>
+                  <li class="f">Files incorrect behaviour of .Y4M files in GUI."</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">5.1<span class="ver-date">Mar 2016</span>
+                <span class="ver-info">Ranges and offsets support</span>
+                <ul>
+                  <li class="n">Support comparing ranges of input videos.</li>
+                  <li class="f">Fixed crashed while using YUV files with more than 8bpp.</li>
+                  <li class="f">Corrected RGB &lt;-&gt; YUV conversion procedures.</li>
+                  <li class="f">Fixed incorrect transformation for some input formats.</li>
+                  <li class="f">10, 14 and 16 bpp RGB format plain order changed to R, G, B.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">5.0 BETA<span class="ver-date">Sep 2015</span>
+                <span class="ver-info">Open wizard, Command line refactor</span>
+                <ul>
+                  <li class="n">Added Open File Wizard to help with opening and previewing files;</li>
+                  <li class="n">Use wizard or file picker for selection of input file;</li>
+                  <li class="n">Wizard supports drag&amp;drop mechanism;</li>
+                  <li class="n">Now user can select mode for opening file (FFmpeg, AviFile, automatic AviSynth, RAW file, image or image sequence and others);</li>
+                  <li class="n">Special mode to compare the results of opening file using different modes;</li>
+                  <li class="n">Automatic selection of the best open mode for specified file;</li>
+                  <li class="n">More settings for opening process customization;</li>
+                  <li class="n">Added automatic generation of video index file that helps file to be opened and correctly previewed;</li>
+                  <li class="n">Number of supported codecs available for opening and previewing increased (supported for new versions of video codecs);</li>
+                  <li class="n">Added support for images as input files: *.jpg, *.png, *.tif, more formats of *.bmp and many others;</li>
+                  <li class="n">Added support for using image sequences as input video, automatic detection of sequence;</li>
+                  <li class="n">Previewing raw files (*.yuv, etc.) "on the fly";</li>
+                  <li class="n">Detection of resolution of raw files from file name;</li>
+                  <li class="f">PRO console interface is more user friendly with full compatibility to previous version;</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">4.4<span class="ver-date">Sep 2015</span>
+                <span class="ver-info">GPU support improved</span>
+                <ul>
+                  <li class="n">Number of files available for metric calculation increased;</li>
+                  <li class="n">The number of supported devices for running CUDA metrics increased;</li>
+                  <li class="f">Unable to run metric for single file bug fixed;</li>
+                  <li class="f">Unable to view results if some minor error occurred bug fixed;</li>
+                  <li class="f">CUDA metrics crash fixed;</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">4.3 BETA<span class="ver-date">May 2015</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="n">Number of files available for metric calculation increased. Now
+                    metric can be calculated for the files that not available for
+                    preview;</li>
+                  <li class="n">Speed up of file opening in metric calculation process for some
+                    types of files;</li>
+                  <li class="n">Standard VQMT plug-ins is now supported;</li>
+                  <li class="f">Memory leak fixed in VQMT.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">4.2 BETA<span class="ver-date">Apr 2015</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="n">Added native support for *.mkv, *.flv and some other containers and codecs;</li>
+                  <li class="f">Stability fixes.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">4.1 BETA<span class="ver-date">Mar 2015</span>
+                <span class="ver-info">Native reading video files via FFmpeg</span>
+                <ul>
+                  <li class="n">Added FFmpeg file reading support, the number of supported formats greatly increased. Using AviSynth is not recommended;</li>
+                  <li class="f">Fixed x64 crashed;</li>
+                  <li class="f">Stability fixes.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">3.2<span class="ver-date">Feb 2015</span>
+                <span class="ver-info">AviSynth support improved</span>
+                <ul>
+                  <li class="f">Existence of AviSynth determining fixed;</li>
+                  <li class="n">AviSynth for VQMT as standalone installer;</li>
+                  <li class="f">AviSynth plug-in opening fixed;</li>
+                  <li class="f">Fixed unsuccessful file opening in AviSynth mode;</li>
+                  <li class="n">AviSynth mode now supported in console;</li>
+                  <li class="n">All dependencies now are immediately in installer, no more
+                    redistributable packages needed;</li>
+                  <li class="n">Main menu and desktop labels fixed to determine Pro, Free and Pro
+                    Demo license;</li>
+                  <li class="n">Executable file metadata errors fixed;</li>
+                  <li class="n">Cosmetic fixed in Interface and file naming: revision number added
+                    to naming;</li>
+                  <li class="f">Fixed crashes in 64-bit on multiple platforms;</li>
+                  <li class="f">Fixed crashes and hangs after: the press of Process button,
+                    viewing of analyses result, other events.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">3.1<span class="ver-date">Nov 2012</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="n">Changed to CUDA 5.0 toolkit, added Kepler support (Compute Capability 3.0)</li>
+                  <li class="f">Stability fixes</li>
+                  <li class="f">Fixed major bug with masking</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">3.0<span class="ver-date">Jun 2011</span>
+                <span class="ver-info">GPU support, 64-bit version</span>
+                <ul>
+                  <li class="n">Added stSSIM metric</li>
+                  <li class="n">Added ".y4m" raw video internal support</li>
+                  <li class="n">Added Autoupdate feature for free (our PRO customers receive updates automatically)</li>
+                  <li class="n">Added GPU realization for SSIM-based metrics (SSIM, 3-SSIM, 
+                    MS-SSIM. Requires CUDA-capable device. See metrics info page for additional info)</li>
+                  <li class="f">Added subjective comparison for the most popular metrics (see metrics info)</li>
+                  <li class="f">Added 64-bit of MSU VQMT (up to 10% speedup)</li>
+                  <li class="b">Program crashes due memory lack when -metr ALL specified with large (i.e. 1280x720) video frames.</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">2.7.3<span class="ver-date">Oct 2010</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="f">Fixed bug with MSSIM metric causing source frame change</li>
+                  <li class="f">Fixed some metrics inaccuracy causing different metric values by enabling\disabling visualization</li>
+                  <li class="b">Program crashes due memory lack when -metr ALL specified with large (i.e. 1280x720) video frames</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">2.7.2<span class="ver-date">Aug 2010</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="f">Fixed bug causing incorrect metric values, when using 3SSIM and MSSSIM simultaneously</li>
+                  <li class="f">Fixed bug causing incorrect PSNR metric values in CSV files</li>
+                  <li class="f">Fixed bug causing no metric calculation for large (&gt;4gb) files</li>
+                  <li class="f">Not existing directory specified in "-cod" parameter will be created now and processing will not cancel.</li>
+                  <li class="b">Program crashes due memory lack when -metr ALL specified with large (i.e. 1280x720) video frames</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">2.7.1<span class="ver-date">Jun 2010</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="f">Fixed bug in CVS file generation. Sometimes first frame metric value was empty</li>
+                  <li class="f">Fixed bug causing incorrect MSE metric values after calculating SSIM metric</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">2.7<span class="ver-date">May 2010</span>
+                <span class="ver-info">MSSSIM, 3SSIM metrics added</span>
+                <ul>
+                  <li class="n">MSSSIM (fast and precise) metric implemented</li>
+                  <li class="n">3SSIM metric implemented</li>
+                  <li class="f">Fixed bug in calculation of VQM metric under Windows 7</li>
+                  <li class="f">Fixed bug during program launch on some machines</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">2.6<span class="ver-date">Jan 2010</span>
+                <span class="ver-info">Windows Vista &amp; Windows 7 support</span>
+                <ul>
+                  <li class="f">Fixed bug in Scene Change Detection plug-in when working under Windows Vista or Windows 7</li>
+                  <li class="f">Fixed bug in saving visualization video when running on Windows Vista or Windows 7</li>
+                  <li class="f">Fixed dependency with vcomp.dll</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">2.5<span class="ver-date">Nov 2009</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="n">Video with any resolution is now supported by all metrics. Video with resolution which is not appropriate for some metric is now expanded (via data duplication, separately for each metric) to make resolution acceptable</li>
+                  <li class="n">1.95 times speed up of command line tool multiple metrics calculation on average (PRO only)</li>
+                  <li class="n">YUV files with size more than 2Gb are supported now</li>
+                  <li class="n">Output directory for *.CSV and visualization files is automatically set to folder of last specified reference file</li>
+                  <li class="f">Fixed bug in processing of *.YUV files with non-standard resolution</li>
+                  <li class="f">Fixed bug in loading the mask from *.YUV files</li>
+                  <li class="f">Fixed bug in masking of L (LUV colorspace) component</li>
+                  <li class="f">Fixed bug in processing of non-standard resolution *.AVS files</li>
+                  <li class="f">Fixed bug in calculation of SSIM (precise) for second reference file</li>
+                  <li class="f">Fixed bug in conversion from RGB32 to YUV color spaces for video with non-standard resolutions (affects calculation of metric for *.AVI files)</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">2.01 beta<span class="ver-date">Apr 2009</span>
+                <span class="ver-info">Masking added</span>
+                <ul>
+                  <li class="n">1.5 times speed up of command line tool multiple metrics calculation on average (PRO only)</li>
+                  <li class="n">Masking is added</li>
+                  <li class="f">Fixed bug in 4:2:2 raw files with more than 8 bits per component support</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">2.0 BETA<span class="ver-date">Mar 2009</span>
+                <span class="ver-info">HDTV support, Deep RAW files</span>
+                <ul>
+                  <li class="n">*.MOV, *.VOB, *.WMV, *.MP4, *.MPG, *.MKV, *.FLV formats support simplified</li>
+                  <li class="n">HDTV support (PRO only)</li>
+                  <li class="n">Raw files with more than 8 bits color depth per component are supported (PRO only)</li>
+                  <li class="n">Alternative SSIM and PSNR are added for compatibility with other implementations</li>
+                  <li class="n">New of *.CSV files with average metric values (PRO only)</li>
+                  <li class="n">Minor acceleration</li>
+                  <li class="n">Preview buttons are added</li>
+                  <li class="n">Options save is improved</li>
+                  <li class="n">All MSU plug-ins are renamed (names are now more correct in GUI and simpler to call from PRO console)</li>
+                  <li class="f">MSU Noise Estimation plug-in bug with incorrect (identical) values for some videos is fixed</li>
+                  <li class="f">MSU Noise Estimation and MSU BI-PSNR plug-ins provide correct information about their home pages now</li>
+                  <li class="f">MSU BI-PSNR plug-in crash during visualizing a metric for video sequences with dimensions less than 255 is fixed</li>
+                  <li class="n">Now it is possible to compress visualization</li>
+                </ul>
+              </li>
+              <li class="open-cont  changelog">1.0<span class="ver-date">May 2006</span>
+                <span class="ver-info"></span>
+                <ul>
+                  <li class="n">More YUV file types are supported, including YV12, YUY2, YUV</li>
+                  <li class="n">Supports unicode</li>
+                  <li class="n">Visualization dialog was extensively reworked</li>
+                  <li class="f">Interface is more user-friendly</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="tiles-width meta">
+            <div class="share">
+              <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+              <!-- Sharingbutton Twitter -->
+              <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU VQMT Version history&amp;url=
+http://localhost:4000/vqmt/changelog/
+"
+   target="_blank" rel="noopener" aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton Telegram -->
+              <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU VQMT Version history&amp;url=
+http://localhost:4000/vqmt/changelog/
+" rel="noopener" target="_blank">
+                <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton Facebook -->
+              <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/vqmt/changelog/
+" rel="noopener"
+   target="_blank">
+                <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton E-Mail -->
+              <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU VQMT Version history&amp;body=
+http://localhost:4000/vqmt/changelog/
+" target="_self" rel="noopener"
+   aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton LinkedIn -->
+              <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/vqmt/changelog/
+&amp;title=MSU VQMT Version history&amp;summary=MSU VQMT Version history&amp;source=
+http://localhost:4000/vqmt/changelog/
+"
+   target="_blank" rel="noopener" aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+            <span class="date">23 Dec 2021</span>
+          </div>
+          <div class="tiles-width separator"></div>
+          <div class="tiles-width see-also-title">
+            See Also
+          </div>
+          <div class="tiles wide">
+            <a class="tile" href="/benchmarks/deblurring.html">
+              <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+              <div class="title">MSU Video Deblurring Benchmark 2022</div>
+              <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+            </a>
+            <a class="tile" href="/vqmt/vqmt-doc-toc/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Documentation TOC</div>
+              <div class="text">Table of content for all version of MSU VQMT online help</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/picture-types/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Picture types</div>
+              <div class="text">VQMT 14.0 Online help: List of all picture types available in VQMT and their aliases</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/metrics/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI</div>
+              <div class="text">VQMT 14.0 Online help: Description of VQMT metrics, their parameters and using in CLI</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/info/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: VQMT various lists and tables</div>
+              <div class="text">VQMT 14.0 Online help: Information about VQMT visualization formats, read modes, etc...</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/help/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Command-line help</div>
+              <div class="text">VQMT 14.0 Online help: Information about all VQMT CLI options for Pro/Premium versions</div>
+            </a>
+          </div>
+          <div class="tiles-width separator"></div>
+          <div class="tiles-width markdown site-structure">
+            <span class="title">Site structure</span>
+            <ul>
+              <li>
+                <a href="/benchmarks/">MSU Benchmark Collection</a>
+                <ul>
+                  <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+                  <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+                  <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+                  <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+                  <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+                  <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+                  <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/codecs/">Codecs Comparisons & Optimization</a>
+                <ul>
+                  <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+                  <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+                  <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+                  <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+                  <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+                  <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/vqmt/">VQMT</a>
+                <ul>
+                  <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+                <ul>
+                  <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+                  <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+                  <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/datasets/">MSU Datasets Collection</a>
+                <ul>
+                </ul>
+              </li>
+              <li>
+                <a href="/metrics/">Metrics Research</a>
+                <ul>
+                </ul>
+              </li>
+              <li>
+                <a href="/video_filters/">Video Filters</a>
+                <ul>
+                  <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+                  <li><a href="/video_filters/public/">Free Filters</a></li>
+                  <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/other/">Other Projects</a>
+                <ul>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="global-footer">
+        <div class="footer">
+          <div class="footer-column copyright">
+            <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+            <div class="text">
+              MSU Graphics & Media Lab Video Group
+              <br>
+              2019&ndash;2022
+            </div>
+          </div>
+          <div class="footer-column">
+            <ul>
+              <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+              <li><a href="/vqmt/">VQMT</a></li>
+              <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+              <li><a href="/datasets/">MSU Datasets Collection</a></li>
+              <li><a href="/metrics/">Metrics Research</a></li>
+              <li><a href="/video_filters/">Video Filters</a></li>
+              <li><a href="/other/">Other Projects</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <ul>
+              <li><a href="/about/">About Us</a></li>
+              <li><a href="/benchmarks/">Benchmarks</a></li>
+              <li><a href="/projects/">Projects</a></li>
+              <li><a href="/publications/">Publications</a></li>
+              <li><a href="/contacts/">Contacts</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: [
+          "MathMenu.js",
+          "MathZoom.js",
+          "AssistiveMML.js",
+          "a11y/accessibility-menu.js"
+        ],
+        jax: ["input/TeX", "output/CommonHTML"],
+        TeX: {
+          extensions: [
+            "AMSmath.js",
+            "AMSsymbols.js",
+            "noErrors.js",
+            "noUndefined.js",
+          ]
+        }
+      });
+    </script>
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  </body>
+</html>

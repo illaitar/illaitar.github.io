@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Automatic Segmentation</title>
+    <meta property="og:title" content="Automatic Segmentation">
+    <meta property="og:image" content="http://localhost:4000/assets/img/filters/segmentation/mother_f271_yuv.jpg">
+    <meta name="description" content="Detection and tracking of foreground objects in video">
+    <meta property="og:description" content="Detection and tracking of foreground objects in video">
+    <meta property="og:url" content="
+http://localhost:4000/video_filters/segmentation.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/video_filters/">Video Filters</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <h1 id="automatic-segmentation">Automatic Segmentation</h1>
+        <ul>
+          <li>Algorithm, ideas: Dr. Dmitriy Vatolin</li>
+          <li>Algorithm, implementation: Sergey Grishin,
+            Kostya Strelnikov, Maxim Makhinya, Sergey Putilin</li>
+        </ul>
+        <p>Interest in advanced interactivity with multimedia data significantly
+          increased last years. This causes an advent of new standards proposing
+          functionality for manipulation with multimedia data (an example of
+          such a standard is MPEG4). That is why segmentation algorithms find its
+          application in wide range of areas including content-based
+          representation of multimedia data, improvement of coding efficiency in
+          video compression standards, sophisticated query and retrieval of video
+          and other content-based functionalities for multimedia applications.</p>
+        <p>Our developed algorithm performs detection and tracking of foreground
+          (FG) objects in video. This is done by calculation of global motion with
+          further estimation of local motion. Detection of a FG object position is
+          then performed based on the information about global and local motion.
+          The principal advantage of the method is its ability to detect a FG
+          object even in case of ultra slow motion which is not common for
+          algorithms of this type. Another important advantages include:</p>
+        <ul>
+          <li>adjustable speed/quality trade-off</li>
+          <li>several segmentation precision levels</li>
+          <li>does not require manual segmentation</li>
+        </ul>
+        <h2 id="examples">Examples</h2>
+        <p>This section contains segmentation results of the developed algorithm and
+          its comparison with an algorithm developed at University of Florida.</p>
+        <p>The first example (pic. 1, 2) demonstrates result obtained using
+          ‘dancer’ test video sequence:</p>
+        <table class="center" style="text-align: center">
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/filters/segmentation/aas_dancer_f68.jpg" alt="Original frame" width="230" height="275" /></td>
+              <td><img src="/assets/img/filters/segmentation/aas_dancer_f68_s.jpg" alt="Segmentation result" width="230" height="275" /></td>
+            </tr>
+            <tr class="even">
+              <td><strong>Pic.1</strong> Original frame</td>
+              <td><strong>Pic.2</strong> Segmentation result</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The second example (pic. 3, 4) shows result obtained using ‘table
+          tennis’ test video sequence:</p>
+        <table class="center" style="text-align: center">
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/filters/segmentation/aas_table_f109.jpg" alt="Original frame" width="230" height="272" /></td>
+              <td><img src="/assets/img/filters/segmentation/aas_table_f109_s.jpg" alt="Segmentation result" width="230" height="272" /></td>
+            </tr>
+            <tr class="even">
+              <td><strong>Pic.3</strong> Original frame</td>
+              <td><strong>Pic.4</strong> Segmentation result</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The next example (pic. 5, 6) shows segmentation result of ‘bus’ test
+          video sequence:</p>
+        <table class="center" style="text-align: center">
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/filters/segmentation/aas_bus_f113.jpg" alt="Original frame" width="352" height="288" /></td>
+              <td><img src="/assets/img/filters/segmentation/aas_bus_f113_s.jpg" alt="Segmentation result" width="352" height="288" /></td>
+            </tr>
+            <tr class="even">
+              <td><strong>Pic.5</strong> Original frame</td>
+              <td><strong>Pic.6</strong> Segmentation result</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Quality comparison of the developed method and the algorithm of University
+          of Florida is shown in the pictures below. This example shows the results
+          for a test video sequence ‘mother &amp; daughter’. This sequence has two
+          obstacles for successful segmentation. The first one is the proximity of
+          colors belonging to different objects. And the second one (obstacle for
+          foreground-background classification) is very slow motion of FG objects.
+          Method of University of Florida produces segments consisting of parts
+          actually belonging to several objects: the blue segment has parts in the
+          area of woman’s silhouette, blue segment points are presented around
+          woman’s head. However this comparison is not fully correct because
+          the algorithms perform segmentation of different types.</p>
+        <div class="center">
+          <div>
+            <img src="/assets/img/filters/segmentation/mother_f271.jpg" width="352" height="288" /><br />
+            <b>Pic.7</b> Original frame
+          </div>
+        </div>
+        <table class="center" style="text-align: center">
+          <tbody>
+            <tr style="vertical-align: top">
+              <td>
+                <img src="/assets/img/filters/segmentation/mother_f271_florida.jpg" alt="University of Florida result" width="352" height="288" /><br />
+                <b>Pic.8</b> University of Florida result<br />
+                (different segments are marked by different colors)
+              </td>
+              <td>
+                <img src="/assets/img/filters/segmentation/mother_f271_yuv.jpg" alt="Proposed method result" width="352" height="288" /><br />
+                <b>Pic.9</b> Proposed method result
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="download">Download</h2>
+        <p>For commercial license of this filter please contact us via</p>
+        <p>E-mail: <a href="mailto:video-licensing@graphics.cs.msu.ru">video-licensing@graphics.cs.msu.ru</a></p>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=Automatic Segmentation&amp;url=
+http://localhost:4000/video_filters/segmentation.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=Automatic Segmentation&amp;url=
+http://localhost:4000/video_filters/segmentation.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/video_filters/segmentation.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=Automatic Segmentation&amp;body=
+http://localhost:4000/video_filters/segmentation.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/video_filters/segmentation.html
+&amp;title=Automatic Segmentation&amp;summary=Automatic Segmentation&amp;source=
+http://localhost:4000/video_filters/segmentation.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">10 Mar 2011</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/video_filters/video-filters-2011.html">
+          <div class="image" style="background-image: url(/assets/img/filters/video-filters/preview.png)"></div>
+          <div class="title">MSU Video Group / Video data filtering and compession</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/video_filters/logo-removal.html">
+          <div class="image" style="background-image: url(/assets/img/filters/logo-removal/preview.gif)"></div>
+          <div class="title">VirtualDub MSU Logo Remover</div>
+          <div class="text">The filter is intended to remove logo from films</div>
+        </a>
+        <a class="tile" href="/video_filters/stereo-to-multiview.html">
+          <div class="image" style="background-image: url(/assets/img/filters/stereo-to-multiview/skydiving_stereo_to_multiview.gif)"></div>
+          <div class="title">MSU Stereo To Multiview 3D Video Conversion ( Glasses-free 3D-Displays Video Content creation)</div>
+          <div class="text">Stereo to multiview video conversion algorithm for glasses-free autostereoscopic 3D displays</div>
+        </a>
+        <a class="tile" href="/video_filters/video-super-resolution.html">
+          <div class="image" style="background-image: url(/assets/img/filters/super-resolution-super-resolution/preview.jpg)"></div>
+          <div class="title">MSU Video Super-Resolution Filter</div>
+          <div class="text">This filter increases resolution of video sequence while saving and improving details and reducing artifacts.</div>
+        </a>
+        <a class="tile" href="/video_filters/video-public-filters.html">
+          <div class="image" style="background-image: url(/assets/img/filters/video-public-filters/preview.png)"></div>
+          <div class="title">MSU Video Group / Video data filtering and compession</div>
+          <div class="text"></div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

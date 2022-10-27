@@ -1,0 +1,149 @@
+- name: Brief Description
+  content: |
+      MSU Video Quality Measurement Tool (MSU VQMT) is professional software that is used to perform deep 
+      comparative objective analysis of video quality. The main functionality of this software 
+      is to calculate objective quality metrics for digital multimedia content (video or image) 
+      using reference (when comparing one or several processed/compressed/distorted video sequences 
+      to original one) or non-reference (when analyzing content and getting mark of its quality) 
+      types of analysis.
+
+      MSU VQMT is developed by [**COMPRESSION.RU Team**](https://compression.ru) with 
+      participants **MSU Graphics & Media Lab. Video Group** (G&M Lab.). Project leader: 
+      [dr. Dmitry Vatolin](dmitriy@graphics.cs.msu.ru).
+
+      To use MSU VQMT with Python refer to [MSU VQMT Python Interface](https://github.com/msu-vqmt/vqmt-python).
+
+      See also: [MSU VQMT online help](https://videoprocessing.ai/vqmt/vqmt-doc-toc/) on 
+      [https://videoprocessing.ai](https://videoprocessing.ai/). 
+
+      Main support email: [video-measure@compression.ru](video-measure@compression.ru).
+
+- name: Main application areas
+  content: |
+   **Codec developers** Modern metrics are close to human perception. Control quality loss with VQMT.
+
+   **Television industry**. Be sure in picture quality.
+
+   **Studios**. Control quality in automatic or manual mode on stage of production
+
+   **Medical equipment developers**. Analysis quality and parameters of medical devices signal.
+
+   **Video providers**. Reduce storage and transmission cost.
+
+   **Research groups & Universities**. Use VQMT to control arbitrary parameters of video and images.
+
+   **Individuals**. Writers, bloggers, journalists in video segment.
+
+   **AV system manufacturers**. For camera, video compressors, transmitters developers.
+
+   We use MSU VQMT in own projects, for example:
+   * Moscow State University, CS MSU Graphics & Media Lab. Annual Codecs Comparison
+     [https://www.compression.ru/video/codec\_comparison/index\_en.html](https://www.compression.ru/video/codec_comparison/index_en.html).
+
+   * MSU Benchmarks. [https://videoprocessing.ai/benchmarks/](https://videoprocessing.ai/benchmarks/)
+
+   * See also x264 Codec Capabilities analysis from YUVsoft Corp.  
+     [http://yuvsoft.com/pdf/x264\_parameters\_comparison.pdf](http://yuvsoft.com/pdf/x264_parameters_comparison.pdf).
+
+- name: Editions & API
+  content: |
+   **FREE license** is an edition for individuals. It supplies only GUI edition for Windows and has 
+   limitations.
+
+   **DEMO license** is an edition for testing PRO/Premium features. This version is useless - computed values are 
+   incorrect. However it can be used to test VQMT features and performance.
+
+   **Trial license** is an edition for companies considering purchasing VQMT. This edition can be requested on 
+   [VQMT website](https://compression.ru/vqmt). The standard trial period is 2 weeks.
+
+   **PRO license** is an edition for companies and individuals, who wants to use all abilities of 
+   MSU VQMT GUI and CLI interfaces on Windows or Linux. It helps them to carry out massive comparisons of 
+   their technologies using batch processing of big numbers of files and flexible options for 
+   measurements without technical limitations. One PRO verison license grants access to one Windows and 
+   one Linux platform simultaneously. We have very attractive volume discounts.
+
+   **PREMIUM license** is an edition for companies, who actively uses MSU VQMT.
+   It doesn't limit installations, supports automatical activation, using in clouds, on virtual machines 
+   and more.
+
+   **SDK license** is a special expensive license for companies that want to incorporate VQMT into their workflow.
+
+- name: System Requirements
+  content: |
+      Supported Windows systems (GUI and CLI):
+      * Microsoft Windows 7 x64 SP 1 or later, with installed updates: KB2999226, KB976932, KB2533623.
+      * Microsoft Windows 8 x64, 10 x64 or later. 
+
+      Supported Linux systems (command-line interface only):
+      * Debian family (Ubuntu 16.04 or later) 
+      * Red Hat family (CentOS 7 or later) 
+      * Support for other standalone Linux systems -- by request. 
+
+      Hardware requirements: 
+      * 2 GHZ x86-64 Processor 
+      * Processor with AVX support required on Linux 
+      * 4 GB of RAM 
+      * 200 Mb free disc space 
+
+      We recommend: 
+      * 4+ core processor with AVX support 
+      * 8 GM RAM 
+      * Graphical adapter with at least 1 GB video RAM.
+
+      We recommend Premium version for usage in clouds, containers, virtual machines and with other virtualization technologies. 
+      The PRO activation is guaranteed to work only on standalone workstations, laptops.
+
+- name: Main Features
+  content: |
+      Three types of User Interface:
+      1. Command-Line Interface (Windows & Linux, Professional only);
+      2. Graphic User Interface (Windows only, Free & Professional);
+      3. Python Interface. Can be installed via [PyPI package](https://pypi.org/project/msu-vqmt/).
+
+      Various input video formats:
+      * Video files (*.avi; *.avs; *.dat; *.divx; *.f4v; *.flv; *.h265; *.m2ts; *.m2v; *.m4v; *.mkv; *.mov; *.mp4; *.mpg; *.mts; *.mxf; *.ogm; *.ogv; *.qt; *.ts; *.vob; *.wmv; *.265; *.3g2; *.3gp; *.3gpp and others);
+      * Raw files with 1-16 bit integer color depth or 32-bit floats, different colorspaces and subsamplings;
+      * Image files and image sequences: *.bmp, *.bw, *.cut, *.dds, *.exr, *.g3, *.gif (only static images), *.hdp, *.hdr, *.ico, *.iff, *.j2c, *.j2k, *.jif, *.jng, *.jp2, *.jpe, *.jpeg, *.jpg, *.jxr, *.lbm, *.mng, *.pbm, *.pcd, *.pct, *.pcx, *.pgm, *.pic, *.pict, *.png, *.ppm, *.psd, *.ras, *.rgb, *.rgba, *.sgi, *.targa, *.tga, *.tif, *.tiff, *.wap, *.wbm, *.wbmp, *.wdp, *.webp, *.xbm, *.xpm;
+      * Full-HD, 4K, 8K and other resolutions support;
+      * TIFF images with 16 and 32 bit (floating point) color depth;
+      * AviSynth scripts – it can be very useful when using VOB, WMV and other files as input for MSU VQMT;
+      * Video files via AviSynth scripts auto generation;
+
+      Base metrics are included:
+      1.  PSNR;
+      2.  HDR PSNR;
+      3.  MSE;
+      4.  MSAD;
+      5.  Delta;
+      6.  Delta ICtCp;
+      7.  SSIM (superfast, fast, precise, OpenCL, CUDA);
+      9.  HDR SSIM;
+      10. MSSSIM (superfast, fast, precise, OpenCL, CUDA);
+      12. HDR MS-SSIM;
+      13. 3SSIM (CPU, OpenCL, CUDA);
+      14. stSSIM (temporary excluded);
+      15. VQM;
+      16. HDR VQM;
+      17. NIQE (no-reference);
+      18. VMAF;
+      19. SI (no-reference)
+      20. TI (no-reference) 
+
+      Additional objective quality metrics from MSU: 
+      * MSU Brightness Flicking Metric (with source code);
+      * MSU Brightness Independent PSNR (with source code);
+      * MSU Drop Frame Metric (with source code);
+      * MSU Noise Estimation Metric (with source code);
+      * MSU Scene Change Detector (with source code);
+      * MSU Blocking (no-reference);
+      * MSU Blurring (no-reference);
+
+      In command-line mode metrics can be calculated simultaneously. Also metrics supports:
+      * Sets of color components;
+      * ROI;
+      * Saving results to CSV of JSON files
+      * Visualization;
+      * Different averaging modes;
+      * Plug-ins interface with SDK that gives user possibility to create their own metrics;
+      * Possibility to compare several files in one comparison – typical situation when comparing original uncompressed file with several compressed files with different codecs or presets;
+      * Possibility to save “bad” frames for every comparison with flexible options – it can be very useful when comparing two (or more) codecs and user wants to see frames where these codecs have maximum difference, the lowest/highest metric value, etc.

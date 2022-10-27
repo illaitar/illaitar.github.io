@@ -1,0 +1,798 @@
+<style>
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.width {
+    width: 85%;
+}
+
+.width2 {
+    width: 80%;
+}
+
+th, td {
+    padding: 10px;
+}
+
+.column {
+  float: left;
+  width: 45%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+tt {
+    font-family: "Lucida Console", "Menlo", "Monaco", "Courier",
+                 monospace;
+  }
+
+
+</style>
+
+<!--
+<p>You can read the Methodology below or download the presentation in pdf format 
+    <a href="https://drive.google.com/file/d/1Fw5RkfPCvjpYxoCV-2n-Qr7oYLdqEnAO/view?usp=sharing">here</a>.<br> You also can see it in 
+    Google Slides <a href="https://docs.google.com/presentation/d/1od9wMfacW-2p3enQHUSjKV5R3kcbnwdk3YSf-cqi_d4/edit?usp=sharing">here</a>.</p>
+-->
+<h3 id="benchmark_statistics">Benchmark Statistics</h3>
+<div class="center">
+    <table class="width" style="background-color: #ffffff;width: 99%;">
+        <tbody>
+            <tr style="font-size: large">
+                <td width="15%" style="text-align:center;background-color:#B0DEF5">
+                    <p><b>Date</b></p>
+                </td>
+                <td width="15%" style="text-align:center;background-color:#B0DEF5">
+                    <p><b>Participants</b></p>
+                </td>
+                <td width="15%" style="text-align:center;background-color:#B0DEF5">
+                    <p><b>Sequences</b></p>
+                </td>
+                <td width="15%" style="text-align:center;background-color:#B0DEF5">
+                    <p><b>Codecs</b></p>
+                </td>
+                <td width="30%" style="text-align:center;background-color:#B0DEF5">
+                    <p><b>Valid answers in subjective comparison</b></p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td width="14%" style="text-align:center">
+                    <p><b>12.04.2022</b></p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p><b>18</b></p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p><b>9</b></p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p><b>5</b></p>
+                </td>
+                <td width="29%" style="text-align:center">
+                    <p><b>120 316</b></p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td width="14%" style="text-align:center">
+                    <p>25.03.2022</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>18</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>9</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>5</p>
+                </td>
+                <td width="29%" style="text-align:center">
+                    <p>57 943</p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td width="14%" style="text-align:center">
+                    <p>14.03.2022</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>15</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>9</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>5</p>
+                </td>
+                <td width="29%" style="text-align:center">
+                    <p>57 943</p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td width="14%" style="text-align:center">
+                    <p>12.10.2021</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>13</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>7</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>5</p>
+                </td>
+                <td width="29%" style="text-align:center">
+                    <p>57 943</p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td width="14%" style="text-align:center">
+                    <p>21.09.2021</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>13</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>5</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>5</p>
+                </td>
+                <td width="29%" style="text-align:center">
+                    <p>57 943</p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td width="14%" style="text-align:center">
+                    <p>31.08.2021</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>13</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>3</p>
+                </td>
+                <td width="14%" style="text-align:center">
+                    <p>5</p>
+                </td>
+                <td width="29%" style="text-align:center">
+                    <p>57 943</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p class="center"><i>Table 1: Benchmark statistics</i></p>
+
+
+
+<h3 id="problem_definition">Problem definition</h3>
+
+<p> Super-Resolution is the process of calculating high-resolution samples from their low-resolution counterparts. 
+    Due to the rapid development of Video Super-Resolution technologies, they are used in video codecs. </p>
+<p> Different SR models have different bitrate/quality tradeoffs when working with compressed video sequences. 
+    If two SRs produce results of the same subjective quality, the one that works with the lower bitrate input is considered to be better. 
+    Our benchmark aims to find the best Video Super-Resolution algorithm based on this criterion.</p>
+<p> We are currently testing only 4× upscale. </p>
+
+<h3 id="dataset">Dataset</h3>
+<p> Our dataset is constantly being updated. You can see the current number of sequences in the dataset in <a href="#benchmark_statistics">Table 1</a>. 
+    Each FullHD video in yuv format is decoded with 6 different bitrates using 5 different <a href="#codecs">codecs</a>. 
+    Videos were recorded specifically for the benchmark or taken from MSU codecs comparison<sup><a href="#references">[1]</a></sup> 2019 and 2020 test sets. The dataset contains videos in FullHD resolution with FPS from 24 to 30. </p>
+<p> All videos have low SI/TI value and simple textures. It was made to minimize compression artifacts that may occur to make restoration of details possible. </p>
+<p> Note that 3 out of 9 these videos are private, which means that the results for these videos are available only in the upcoming enterprise report.</p>
+
+
+<div class="center" style="padding-bottom: 0px; margin-bottom: 0px;">
+    <video autoplay loop muted playsinline width="100%">
+        <source src="/assets/img/benchmarks/sr-codecs/dataset_preview_.mp4" type='video/mp4'>
+        Sorry, your browser does not support this video.
+    </video>
+</div>
+
+<div class="center">
+    <p><i>Figure 1. Segments from dataset</i></p>
+</div>
+
+<!--
+<div class="center">
+    <div style="width:75%">
+        <video autoplay loop muted playsinline>
+            <source src="/assets/img/benchmarks/sr-codecs/dataset_preview.mp4" type='video/mp4'>
+            <source src="/assets/img/benchmarks/sr-codecs/dataset_preview.vp9.webm" type='video/webm'>
+            <source src="/assets/img/benchmarks/sr-codecs/dataset_preview.av1.mp4" type='video/mp4'>
+        </video>
+        <p><i>Figure 1. Segments from dataset</i></p>
+    </div>
+</div>
+
+<div id="dataset_table" class="center">
+    <table class="width2" style="background-color: #ffffff;">
+        <thead>
+            <tr style="font-size: medium">
+                <td style="text-align:center">
+                    <p><b>Preview</b></p>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Description</b></p>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Format</b></p>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Frames</b></p>
+                </td>
+                <td style="text-align:center">
+                    <p><b>FPS</b></p>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Bitrate</b></p>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="font-size: medium">
+                <td style="text-align: center;"> 
+                    <div>
+                        <img width="100%" src="/assets/img/benchmarks/sr-codecs/animation_clip-small.png">
+                    </div>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Animation clip</b></p>
+                    <p>2D animation advertising clip<br>drawn in bright colors.</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>FullHD</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>100</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>30 fps</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>104.58 Mbps</p>
+                </td>
+            </tr>
+            <tr style="font-size: medium">
+                <td style="text-align: center;"> 
+                    <div>
+                        <img width="100%" src="/assets/img/benchmarks/sr-codecs/glass-small.png">
+                    </div>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Glass</b></p>
+                    <p>A man working with an oven<br>in the workshop.</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>FullHD</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>105</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>30 fps</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>108.14 Mbps</p>
+                </td>
+            </tr>
+            <tr style="font-size: medium; ">
+                <td style="text-align: center;">
+                    <div>
+                        <img style="align: center;" width="100%" src="/assets/img/benchmarks/sr-codecs/lift-small.png">
+                    </div>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Lift</b></p>
+                    <p>Animation clip,<br>slow camera zoom.</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>FullHD</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>120</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>30 fps</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>104.56 Mbps</p>
+                </td>
+            </tr>
+            <tr style="font-size: medium">
+                <td style="text-align: center;"> 
+                    <div>
+                        <img width="100%" src="/assets/img/benchmarks/sr-codecs/professor-small.png">
+                    </div>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Professor</b></p>
+                    <p>A scene with professor from<br>international affairs school.</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>FullHD</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>105</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>24 fps</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>165.41 Mbps </p>
+                </td>
+            </tr>
+            <tr style="font-size: medium;">
+                <td style="text-align: center;">
+                    <div>
+                        <img width="100%" src="/assets/img/benchmarks/sr-codecs/skiing-small.png">
+                    </div>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Skiing learning</b></p>
+                    <p>People are being trained to ski<br>in slow motion.</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>FullHD</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>179</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>24 fps</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>107.59 Mbps</p>
+                </td>
+            </tr>
+            <tr style="font-size: medium; ">
+                <td style="text-align: center;">
+                    <div>
+                        <img style="align: center;" width="100%" src="/assets/img/benchmarks/sr-codecs/street_show-small.png">
+                    </div>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Street show</b></p>
+                    <p>Two men sing, dance and perform<br>some acrobatics on a street.</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>FullHD</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>200</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>24 fps</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>108.40 Mbps</p>
+                </td>
+            </tr>
+            <tr style="font-size: medium">
+                <td style="text-align: center;"> 
+                    <div>
+                        <img width="100%" src="/assets/img/benchmarks/sr-codecs/wedding-small.png">
+                    </div>
+                </td>
+                <td style="text-align:center">
+                    <p><b>Wedding</b></p>
+                    <p>A couple walks slowly<br>at the ceremony.</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>FullHD</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>125</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>24 fps</p>
+                </td>
+                <td style="text-align:center">
+                    <p><br>123.96 Mbps</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p class="center"><i>Table 2: Dataset characteristics</i></p>
+-->
+
+<h3 id="metrics">Metrics</h3>
+
+<h4 id="psnr">PSNR</h4>
+
+<p>
+    PSNR is a commonly used metric for reconstruction quality for images and video. 
+    In our benchmark, we calculate PSNR on the Y component in YUV colorspace. 
+</p>
+
+<p>
+    Since some Super-Resolution models can generate images with a global shift relative to GT, we calculate shifted PSNR. 
+    We check each shift in the range [-3, 3] (including subpixel shifts) for both axes and select the highest PSNR value among these shifts. 
+    We noticed that SRs’ results on the same video decoded with different bitrates usually have the same global shift. 
+    Thus we calculate the best shift only once for each video.
+</p> 
+    
+<p>For metric calculation, we use MSU VQMT<sup><a href="#references">[2]</a></sup>.</p>
+
+
+<h4 id="msssim">MS-SSIM</h4>
+
+<p>
+    SSIM is a metric based on structural similarity. 
+    In our benchmark, we use Multiscale SSIM (MS-SSIM), which is conducted over multiple scales through a process of multiple stages of sub-sampling. 
+    We calculate MS-SSIM on Y components in the YUV colorspace, since this method shows the best correlation with subjective scores<sup><a href="#references">[13]</a></sup>.
+ 
+</p>
+
+<p>
+    These results also rely on the shift of frames. 
+    We take optimal subpixel shift for PSNR and apply in to input frames 
+    before calculating MS-SSIM.
+</p> 
+    
+<p>For metric calculation, we use MSU VQMT<sup><a href="#references">[2]</a></sup>.</p>
+
+<h4 id="vmaf">VMAF</h4>
+
+<p>
+    VMAF is a perceptual video quality assessment algorithm developed by Netflix. 
+    In our benchmark, we calculate VMAF on the Y component in YUV colorspace. 
+</p>
+
+<p>
+    For metric calculation, we use MSU VQMT<sup><a href="#references">[2]</a></sup>. 
+    For VMAF we use <code>-set "disable_clip=True"</code> option of MSU VQMT.
+</p> 
+
+<!--
+<p>
+    Shifted VMAF and VMAF NEG give less than 1% gain relative to unshifted versions, 
+    that’s why we use unshifted versions in our benchmark.
+    In Figure 2a and 2b you can see the gain that each model get by using shifted VMAF and VMAF NEG relative to unshifted versions.
+</p>
+
+<div class="center">
+    <div class="row">
+        <div class="column">
+            <img style="width:100%" src="/assets/img/benchmarks/sr-codecs/vmaf_gain.png">
+            <p><i>Figure 2a. Shifted VMAF gain of each model</i></p>
+        </div>
+        <div class="column">
+            <img style="width:100%" src="/assets/img/benchmarks/sr-codecs/vmaf_neg_gain.png">
+            <p><i>Figure 2b. Shifted VMAF NEG gain of each model</i></p>
+        </div>
+    </div>
+</div>
+-->
+<h4 id="lpips">LPIPS</h4>
+
+<p>
+    LPIPS (Learned Perceptual Image Patch Similarity) evaluates the distance between image patches. 
+    Higher means further/more different. Lower means more similar. In our benchmark, we subtract LPIPS value from 1. 
+    Thus, more similar images have higher metric values. 
+</p>
+<p>
+    To calculate LPIPS we use Perceptual Similarity Metric implementation<sup><a href="#references">[3]</a></sup> proposed in 
+    The Unreasonable Effectiveness of Deep Features as a Perceptual Metric<sup><a href="#references">[4]</a></sup>.
+</p>
+
+<!--
+<p>
+    We have also noticed, that shifted LPIPS give less than 1% gain relative to the unshifted version,
+    as you can see in Figure 3. That's why we calculate LPIPS without shift compensation in our benchmark.
+</p>
+
+
+<div class="center">
+    <div>
+        <img style="width:60%" src="/assets/img/benchmarks/sr-codecs/lpips_gain.png">
+        <p><i>Figure 3. Shifted LPIPS gain of each model</i></p>
+    </div>
+</div>
+-->
+
+<h4 id="erqa">ERQA</h4>
+
+<p>
+    ERQAv2.0 (Edge Restoration Quality Assessment, version 2.0) estimates how well 
+    a model has restored edges of the high-resolution frame. 
+    This metric was developed for MSU Video Super-Resolution Benchmark 2021<sup><a href="#references">[5]</a></sup>.
+
+</p>
+<p>
+    Firstly, we find edges in both output and GT frames. 
+    To do it we use OpenCV implementation<sup><a href="#references">[6]</a></sup> of the Canny algorithm<sup><a href="#references">[7]</a></sup>. 
+    A threshold for the initial finding of strong edges is set to 200 and a threshold 
+    for edge linking is set to 100. Then we compare these edges by using an F1-score. 
+    To compensate for the one-pixel shift, edges that are no more than one pixel away 
+    from the GT's are considered true-positive. 
+</p>
+
+<p>
+    More information about this metric can be found at the 
+    Evaluation Methodology of MSU Video Super-Resolution Benchmark<sup><a href="#references">[9]</a></sup>.
+</p>
+
+<div class="center">
+    <div>
+        <img style="width:100%" src="/assets/img/benchmarks/sr-codecs/erqa_visualisation.png">
+        <p><i>Figure 2. ERQAv2.0 visualization.<br>
+            White pixels are True Positive, red pixels are False Positive, blue pixels are False Negative</i></p>
+    </div>
+</div>
+
+<h4 >Other metrics</h4>
+<p>
+    We also calculate VMAF NEG (no enhancements gain), YUV-SSIM and YUV-PSNR. More information about these metrics can be found in our upcoming enterprise report.
+</p>
+
+<h3 id="codecs">Codecs</h3>
+
+<p>To compress GT videos, we use the following codecs:</p>
+
+<div class="center">
+    <table id="codec_table" class="display" style="background-color: #ffffff;">
+        <tbody>
+            <tr style="font-size: large">
+                <td style="text-align:center;background-color:#B0DEF5">
+                    <p><b>Codec</b></p>
+                </td>
+                <td style="text-align:center;background-color:#B0DEF5">
+                    <p><b>Standart</b></p>
+                </td>
+                <td style="text-align:center;background-color:#B0DEF5">
+                    <p><b>Implementation</b></p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td style="text-align:center">
+                    <p>x264</p>
+                </td>
+                <td style="text-align:center">
+                    <p>H.264</p>
+                </td>
+                <td style="text-align:center">
+                    <p>FFmpeg version 2021-04-28-git-1ab74bc193-full_build-www.gyan.dev</p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td style="text-align:center">
+                    <p>x265</p>
+                </td>
+                <td style="text-align:center">
+                    <p>H.265</p>
+                </td>
+                <td style="text-align:center">
+                    <p>FFmpeg version 2021-04-28-git-1ab74bc193-full_build-www.gyan.dev</p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td style="text-align:center">
+                    <p>aomenc</p>
+                </td>
+                <td style="text-align:center">
+                    <p>AV1</p>
+                </td>
+                <td style="text-align:center">
+                    <p>FFmpeg version 2021-04-28-git-1ab74bc193-full_build-www.gyan.dev</p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td style="text-align:center">
+                    <p>VVenC</p>
+                </td>
+                <td style="text-align:center">
+                    <p>H.266</p>
+                </td>
+                <td style="text-align:center">
+                    <p>Fraunhofer Versatile Video Encoder<sup><a href="#references">[11]</a></sup></p>
+                </td>
+            </tr>
+            <tr style="font-size: large">
+                <td style="text-align:center">
+                    <p>uavs3e</p>
+                </td>
+                <td style="text-align:center">
+                    <p>AVS3</p>
+                </td>
+                <td style="text-align:center">
+                    <p>uavs3e<sup><a href="#references">[12]</a></sup></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p class="center"><i>Table 2: Codecs' description</i></p>
+
+<p>For x264, x265, aomenc, and VVenC we use <code>-preset=“medium”</code> option.<br>
+To compress videos with uasv3e we use the following command: <br><code>uavs3e.exe -w {width} -h {height} -i {in_path} -o {out_path} -r  {result_path} --rc_type 1 <br>--rc_crf {crf} --fps_num {FPS} --fps_den 1 -d 8</code></p>
+
+<h3 id="evaluation">Evaluation</h3>
+
+<p>
+    Firstly, we downscale our FullHD GT video using FFmpeg to make it 480×270 resolution. 
+    We use the <code>flags::bicubic</code> option to keep more information in the resulting video. 
+    Then, we compress scaled video with seven different bitrates 
+    (approximately 100, 300, 600, 1000, 2000, and 4000 kbps). 
+    The resulting videos are transcoded to .png sequences and given as an input to a 
+    Super-Resolution model. 
+</p>
+
+<p>
+    In our benchmark we test 4× upscale, however, there are some Super-Resolution models 
+    which can only do 2× upscale. In this case, we apply them twice.
+</p>
+
+<div class="center">
+    <div>
+        <img style="width:80%" src="/assets/img/benchmarks/sr-codecs/sr_results.png">
+        <p><i>Figure 3. SR results evaluation steps</i></p>
+    </div>
+</div>
+
+<!--
+<p id="only_compressed">
+    We also compress FullHD GT video without scaling to make “only compressed” results.
+</p>
+
+<div class="center">
+    <div>
+        <img style="width:80%" src="/assets/img/benchmarks/sr-codecs/only_compressed_result.png">
+        <p><i>Figure 6. "only compressed" evaluation steps</i></p>
+    </div>
+</div>
+-->
+
+<p id="bsq-rate">
+    Next, we calculate each metric for each result (including the results of applying codecs without downscaling). 
+    We calculate 
+    <a href="#psnr">shifted Y-PSNR</a>, 
+    <a href="#msssim">shifted Y-MS-SSIM</a>, 
+    <a href="#vmaf">Y-VMAF</a>, 
+    <a href="#lpips">LPIPS</a>, 
+    and <a href="#erqa">ERQAv2.0</a>. 
+    Then, we build RD curves (see Figure 4) and calculate BSQ-rate<sup><a href="#references">[8]</a></sup> 
+    (bitrate-for-the-same-quality rate) for each metric (see Figure 5). 
+    We take the results of applying codecs without downscaling as a reference during the calculations.
+</p>
+
+<div class="center">
+    <div>
+        <img style="width:80%" src="/assets/img/benchmarks/sr-codecs/rd-curve.png">
+        <p><i>Figure 4. RD curve</i></p>
+    </div>
+</div>
+
+<div class="center">
+    <div>
+        <img style="width:80%" src="/assets/img/benchmarks/sr-codecs/bsqrate_calculation.png">
+        <p><i>Figure 5. BSQ-rate </i></p>
+    </div>
+</div>
+
+<!--
+<div id="methods">
+    <p>
+        There are 3 ways we calculate BSQ-rate:
+        <ol>
+    <li> Relative to <a href="#codecs">x264</a> - for each codec we calculate the average BSQ-rate relative to <a href="#only_compressed">“only compressed”</a> made by <a href="#codecs">x264</a> codec;</li>
+    <li> Relative to self - for each codec we calculate the average BSQ-rate relative to <a href="#only_compressed">“only compressed”</a> made by this codec;</li>
+    <li> Max. relative to self - for each codec we calculate BSQ-rate relative to <a href="#only_compressed">“only compressed”</a> made by this codec and take the best result of all sequences;</li>
+        </ol>
+    </p>
+</div>
+-->
+
+
+<h3 id="subjective_comparison">Subjective comparison</h3>
+
+<p>
+    We have conducted 5 subjective comparisons for each codec separately. We took videos compressed with 3 different bitrates 
+    (approximately 600, 1000, and 2000 kbps) and cut one crop of size 480×270 from each video. The crops were chosen based on
+    saliency maps generated by the method <sup><a href="#references">[14]</a></sup> proposed in 
+    Contextual encoder-decoder network for visual saliency prediction<sup><a href="#references">[15]</a></sup>. 
+    We selected 10 visually different SR models for each codec. Each one of 5397 participants has seen
+    25 video pairs and had to choose which one of them looks more realistic (option “indistinguishable” is also available). 
+    There were 3 verification questions to protect against random answers and bots. You can see the current number of valid answers in <a href="#benchmark_statistics">Table 1</a>.
+    We used these valid answers to predict the ranking using the
+    Bradley-Terry model. 
+</p>
+
+
+
+<!--<div class="center">
+    <div>
+        <img style="width:80%" src="/assets/img/benchmarks/sr-codecs/subjective_crop.gif">
+        <p><i>Figure 9. Crops used for subjective comparison</i></p>
+    </div>
+</div>
+-->
+
+<div class="center" style="padding-bottom: 0px; margin-bottom: 0px;">
+    <video autoplay loop muted playsinline width="100%">
+        <source src="/assets/img/benchmarks/sr-codecs/crops.mp4" type='video/mp4'>
+        Sorry, your browser does not support this video.
+    </video>
+</div>
+<div class="center">
+    <p><i>Figure 6. Crops used for subjective comparison.</i></p>
+</div>
+
+<!--
+<h4 id="extrapolation">Subjective BSQ-rate calculation</h4>
+
+<p>
+    To calculate subjective BSQ-rate we extrapolated subjective results using the 
+    most similar objective metric. To do this we take the subjective results on 3 
+    bitrates used for subjective comparison, find the objective metric that has the 
+    highest correlation with the subjective one on the same bitrates, and extrapolate 
+    subjective metric using this objective metric as a reference (see Figures 10a and 10b).
+</p>
+
+
+<div class="center">
+    <div class="row">
+        <div class="column">
+            <img style="width:100%" src="/assets/img/benchmarks/sr-codecs/extrapolation.png">
+            <p><i>Figure 10a. Subjective metric extrapolation</i></p>
+        </div>
+        <div class="column">
+            <img style="width:100%" src="/assets/img/benchmarks/sr-codecs/objective_metric.png">
+            <p><i>Figure 10b. The most similar objective metric</i></p>
+        </div>
+    </div>
+</div>
+
+-->
+
+<h3 id="computational_complexity">Computational complexity</h3>
+
+<p>
+    We run each model on NVIDIA Titan RTX and calculated runtime on the same test sequence:
+</p>
+
+<ul>
+    <li>100 frames</li>
+    <li>Input resolution — 480×270</li>
+    <li>
+        Test case:
+        <ul>
+            <li>video — dancing</li>
+            <li>codec — x264</li>
+            <li>bitrate — 836 kbps</li>
+        </ul>
+    </li>
+</ul>
+
+<p>
+    We calculate frames per second (FPS) as the number of sequence frames divided by the execution time of a total model runtime.
+</p>
+
+
+<h3 id="references">References</h3>
+
+<ol>
+    <li><a href="https://compression.ru/video/codec_comparison/2021/">https://compression.ru/video/codec_comparison/2021/</a></li>
+    <li><a href="http://compression.ru/video/quality_measure/video_measurement_tool.html">http://compression.ru/video/quality_measure/video_measurement_tool.html</a></li>
+    <li><a href="https://github.com/richzhang/PerceptualSimilarity">https://github.com/richzhang/PerceptualSimilarity</a></li>
+    <li>R. Zhang, P. Isola, A. A. Efros, E. Shechtman, O. Wang, "The unreasonable effectiveness of deep features as a perceptual metric," in Proceedings of the IEEE conference on computer vision and pattern recognition, 2020, pp.586-595.</li>
+    <li><a href="https://videoprocessing.ai/benchmarks/video-super-resolution.html">https://videoprocessing.ai/benchmarks/video-super-resolution.html</a></li>
+    <li><a href="https://docs.opencv.org/3.4/dd/d1a/group__imgproc__feature.html#ga04723e007ed888ddf11d9ba04e2232de">https://docs.opencv.org/3.4/dd/d1a/group__imgproc__feature.html#ga04723e007ed888ddf11d9ba04e2232de</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Canny_edge_detector">https://en.wikipedia.org/wiki/Canny_edge_detector</a></li>
+    <li>A. V. Zvezdakova, D. L. Kulikov, S. V. Zvezdakov, D. S. Vatolin, "BSQ-rate: a new approach for video-codec performance comparison and drawbacks of current solutions," in Programming and computer software, vol. 46, 2020, pp.183-194.</li>
+    <li><a href="https://videoprocessing.ai/benchmarks/video-super-resolution-methodology.html">https://videoprocessing.ai/benchmarks/video-super-resolution-methodology.html</a></li>
+    <li><a href="http://app.subjectify.us/">http://app.subjectify.us/</a></li>
+    <li><a href="https://github.com/fraunhoferhhi/vvenc">https://github.com/fraunhoferhhi/vvenc</a></li>
+    <li><a href="https://github.com/uavs3/uavs3e">https://github.com/uavs3/uavs3e</a></li>
+    <li>A. Antsiferova, A. Yakovenko, N. Safonov, D. Kulikov, A. Gushin, D.Vatolin, "Objective video quality metrics application to video codecs comparisons: choosing the best for subjective quality estimation," in arXiv preprint arXiv:2107.10220, 2021</li>
+    <li><a href="https://github.com/alexanderkroner/saliency">https://github.com/alexanderkroner/saliency</a></li>
+    <li>A. Kroner, M. Senden, K. Driessens, and R. Goebel, "Contextual encoder-decoder network for visual saliency prediction," in Neural Networks, 129, pp. 261-270, 2020.</li>
+</ol>

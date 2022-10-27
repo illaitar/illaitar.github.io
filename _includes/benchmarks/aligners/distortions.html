@@ -1,0 +1,102 @@
+<div class="datatable-container">
+    <div class="datatable-center">
+        <table id="distortions-table" class="static-table">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Distortion type</th>
+                <th style="background-color: #3d6f96">Distortion</th>
+                <th style="background-color: #3d6f96">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="6">Time distortions</td>
+                    <td>Drop frames</td>
+                    <td rowspan="2">First, last or random frame number < fps, drop/duplicate 1, 2 or random up to 10 frames</td>
+                </tr>
+                <tr>
+                    <td>Duplicate/Freeze frames</td>
+                </tr>
+                <tr>
+                    <td>Time shift</td>
+                    <td>Crop up to 11 frames from the start</td>
+                </tr>
+                <tr>
+                    <td>Fragment insertion</td>
+                    <td>Insert fragment from another video</td>
+                </tr>
+                <tr>
+                    <td>Drop fragment</td>
+                    <td>Drop random fragment</td>
+                </tr>
+                <tr>
+                    <td>Cut the video</td>
+                    <td>Cut up to 3/4 of the entire video</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Color distortions</td>
+                    <td>Add noise</td>
+                    <td >Add gaussian noise, sigma 3</td>
+                </tr>
+                <tr>
+                    <td>Add blur</td>
+                    <td>Add gaussian blur, sigma 1.5</td>
+                </tr>
+                <tr>
+                    <td>Random brightness&contrast</td>
+                    <td>Random brignthess decrease from -10% up to -25%,<br>contrast increase from 5% up to 30%</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">Geometric distortions</td>
+                    <td>Add logo</td>
+                    <td>Logo or news title. Covers max 300px from bottom/top/left/right</td>
+                </tr>
+                <tr>
+                    <td>Add subtitles</td>
+                    <td>English language. Covers max 250px from bottom or top</td>
+                </tr>
+                <tr>
+                    <td>Crop</td>
+                    <td>Crop 2/4/8 px from right and bottom</td>
+                </tr>
+                <tr>
+                    <td>Scale</td>
+                    <td>Scale up to 110%</td>
+                </tr>
+                <tr>
+                    <td>Add black bars</td>
+                    <td>Crop to a ratio of 4:3 or 21:9. Then return to 16:9 by adding black bars</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="tabs">
+    <button class="local-distortion-tablinks active-tablink" value="Local">Light</button>
+    <button class="local-distortion-tablinks" value="Local">Medium geometric</button>
+    <button class="local-distortion-tablinks" value="Local">Medium color</button>
+    <button class="local-distortion-tablinks" value="Local">Hard</button>
+</div>
+<div id="distortions-distribution-local-wrapper" class="mobile-plots">
+    <div id="distortions-distribution-local" class="highcharts-figure"></div>
+</div>
+
+<div class="tabs">
+    <button class="global-distortion-tablinks active-tablink" value="Global">Light</button>
+    <button class="global-distortion-tablinks" value="Global">Medium geometric</button>
+    <button class="global-distortion-tablinks" value="Global">Medium color</button>
+    <button class="global-distortion-tablinks" value="Global">Hard</button>
+</div>
+<div id="distortions-distribution-global-wrapper" class="mobile-plots">
+    <div id="distortions-distribution-global" class="highcharts-figure"></div>
+</div>
+
+<div class="tabs">
+    <button class="mixed-distortion-tablinks active-tablink" value="Mixed">Light</button>
+    <button class="mixed-distortion-tablinks" value="Mixed">Medium geometric</button>
+    <button class="mixed-distortion-tablinks" value="Mixed">Medium color</button>
+    <button class="mixed-distortion-tablinks" value="Mixed">Hard</button>
+</div>
+<div id="distortions-distribution-mixed-wrapper" class="mobile-plots">
+    <div id="distortions-distribution-mixed" class="highcharts-figure"></div>
+</div>

@@ -1,0 +1,681 @@
+<p class="no_toc"><a name="mse" id="mse"></a></p>
+<h2 id="mse-mean-squared-error">MSE (Mean Squared Error)</h2>
+<h4 class="no_toc" id="general-info">General info</h4>
+<dl class="properties">
+  <dt>Metric type</dt>
+  <dd>
+    <p><span class="hover-help">full-reference<span class="help-content stdhelp-full-reference">
+        </span></span>  <span class="hover-help">image<span class="help-content stdhelp-image-metric">
+        </span></span> metric</p>
+  </dd>
+  <dt>Value range</dt>
+  <dd>
+    <p>(same images) 0..1 (completely different)</p>
+  </dd>
+  <dt>Value interpretation</dt>
+  <dd>
+    <p>smaller is better quality</p>
+  </dd>
+  <dt>MSU VQMT implementations</dt>
+  <dd>
+    <p><span class="hover-help">CPU multithreaded<span class="help-content stdhelp-cpu-multithreaded">
+        </span></span></p>
+  </dd>
+  <dt>MSU VQMT visualization</dt>
+  <dd>
+    <p>pixel-wise</p>
+  </dd>
+  <dt>Available colorspaces</dt>
+  <dd>
+    <p>R, G, B, Y, U, V, L</p>
+  </dd>
+  <dt>Output values</dt>
+  <dd>
+    <p>metric value</p>
+  </dd>
+  <dt>Aggregated values</dt>
+  <dd>
+    <p><span class="hover-help">standard set<span class="help-content stdhelp-avg-std">
+        </span></span></p>
+  </dd>
+  <dt>MSU VQMT usages</dt>
+  <dd>
+    <p><code class="highlighter-rouge">-metr mse [over &lt;color components&gt;]</code></p>
+  </dd>
+  <dt>Other names</dt>
+  <dd>
+    <p><script type="math/tex">
+        L_2
+      </script>-norm</p>
+  </dd>
+  <dt>External links</dt>
+  <dd>
+    <p><a href="https://en.wikipedia.org/wiki/Mean_squared_error">Wikipedia</a></p>
+  </dd>
+</dl>
+<h4 class="no_toc" id="algorithm-description">Algorithm description</h4>
+<p>Metric depends only on difference of original and distorted, it is L2-norm of this difference. Metric could be computed using the following formula:</p>
+<script type="math/tex; mode=display">
+  d(X,Y) = \frac{\sum\limits_{i=1,j=1}^{m,n}(Y_{i,j}-X_{i,j})^2}{mn}
+</script>
+<p>where <script type="math/tex">
+    m
+  </script> – video width, <script type="math/tex">
+    n
+  </script> – video height, image data are in range 0..1.</p>
+<h4 class="no_toc" id="benchmark">Benchmark</h4>
+<div class="benchmark-choose">
+  Choose benchmark:
+  <select class="benchmark-choose" metric="mse">
+    <option value="result_linux_14">VQMT 14.0 on 64 cores, GPU: NVIDIA CUDA/TITAN RTX</option>
+    <option value="output_vqmt13">VQMT 13.1 on 8 cores, GPU: NVIDIA CUDA/GeForce GTX 660 Ti</option>
+    <option value="output_vqmt14" selected="">VQMT 14.0 on 8 cores, GPU: NVIDIA CUDA/GeForce GTX 660 Ti</option>
+  </select>
+</div>
+<div benchmark_name="result_linux_14" class="benchmark-table" formetric="mse">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>1222.28</td>
+        <td>0.002</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>666.49</td>
+        <td>0.004</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>84.68</td>
+        <td>0.02</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>150.56</td>
+        <td>0.007</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>67.56</td>
+        <td>0.015</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>21.72</td>
+        <td>0.047</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 14.0 BETA r12792 PRO for Linux.<br />
+    CPU:  Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz, 64 cores<br />
+    GPU: NVIDIA CUDA/TITAN RTX<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<div benchmark_name="output_vqmt13" class="benchmark-table" formetric="mse">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>565.05</td>
+        <td>0.003</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>257.4</td>
+        <td>0.005</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>54.12</td>
+        <td>0.02</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>180.58</td>
+        <td>0.006</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>88.57</td>
+        <td>0.012</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>22.55</td>
+        <td>0.046</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 13.1 r12792 PRO for Windows.<br />
+    CPU: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz, 8 cores<br />
+    GPU: NVIDIA CUDA/GeForce GTX 660 Ti<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<div benchmark_name="output_vqmt14" class="benchmark-table selected" formetric="mse">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>558.26</td>
+        <td>0.003</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>270.53</td>
+        <td>0.005</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>58.87</td>
+        <td>0.019</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>178.24</td>
+        <td>0.007</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>88.43</td>
+        <td>0.012</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>22.51</td>
+        <td>0.047</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 14.0 BETA r12792 PRO for Windows.<br />
+    CPU: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz, 8 cores<br />
+    GPU: NVIDIA CUDA/GeForce GTX 660 Ti<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<h4 class="no_toc" id="example">Example</h4>
+<div>
+  <input class="flexible-check" checked="" type="checkbox" id="checkbox_MSE_cion" name="checkbox_MSE_cion" />
+  <label class="flexible-controller" for="checkbox_MSE_cion">cion</label>
+  <div class="flexible-body">
+    <div class="sample-choose">
+      Choose example:
+      <select class="sample-choose" metric="MSE" dataset="cion">
+        <option value="y LQ H264">y LQ H264</option>
+        <option value="y Blurring">y Blurring</option>
+        <option value="y Random points">y Random points</option>
+        <option value="y Luminance shift">y Luminance shift</option>
+        <option value="y JPEG Q=2">y JPEG Q=2</option>
+        <option value="y JPEG Q=5">y JPEG Q=5</option>
+        <option value="y JPEG Q=10">y JPEG Q=10</option>
+        <option value="y JPEG Q=15">y JPEG Q=15</option>
+        <option value="y JPEG Q=20">y JPEG Q=20</option>
+        <option value="y JPEG Q=40">y JPEG Q=40</option>
+        <option value="y JPEG Q=80">y JPEG Q=80</option>
+      </select>
+    </div>
+    <div class="sample-group selected" formetric="MSE" fordataset="cion" fordist="y LQ H264">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lq-6.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlq-d_mse_y_A_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-lqPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lq-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lq-6.png" /><span class="label">LQ H264, MSE-y=0.0005</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlq-d_mse_y_A_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlq-d_mse_y_A_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y Blurring">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/blur-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dblur-d_mse_y_B_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-blurJpg.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/blur-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/blur-6.jpg" /><span class="label">Blurring, MSE-y=0.0006</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dblur-d_mse_y_B_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dblur-d_mse_y_B_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y Random points">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/pt-6.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dpt-d_mse_y_C_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-ptPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/pt-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/pt-6.png" /><span class="label">Random points, MSE-y=0.0002</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dpt-d_mse_y_C_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dpt-d_mse_y_C_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y Luminance shift">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lum-6.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlum-d_mse_y_D_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-lumPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lum-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lum-6.png" /><span class="label">Luminance shift, MSE-y=0.0001</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlum-d_mse_y_D_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlum-d_mse_y_D_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y JPEG Q=2">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj2-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj2-d_mse_y_E_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-lqjJpg2.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj2-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj2-6.jpg" /><span class="label">JPEG Q=2, MSE-y=0.0022</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj2-d_mse_y_E_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj2-d_mse_y_E_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y JPEG Q=5">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj5-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj5-d_mse_y_F_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-lqjJpg5.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj5-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj5-6.jpg" /><span class="label">JPEG Q=5, MSE-y=0.0011</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj5-d_mse_y_F_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj5-d_mse_y_F_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y JPEG Q=10">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj10-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj10-d_mse_y_G_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-lqjJpg10.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj10-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj10-6.jpg" /><span class="label">JPEG Q=10, MSE-y=0.0005</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj10-d_mse_y_G_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj10-d_mse_y_G_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y JPEG Q=15">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj15-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj15-d_mse_y_H_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-lqjJpg15.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj15-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj15-6.jpg" /><span class="label">JPEG Q=15, MSE-y=0.0003</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj15-d_mse_y_H_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj15-d_mse_y_H_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y JPEG Q=20">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj20-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj20-d_mse_y_I_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-lqjJpg20.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj20-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj20-6.jpg" /><span class="label">JPEG Q=20, MSE-y=0.0003</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj20-d_mse_y_I_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj20-d_mse_y_I_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y JPEG Q=40">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj40-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj40-d_mse_y_J_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-lqjJpg40.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj40-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj40-6.jpg" /><span class="label">JPEG Q=40, MSE-y=0.0001</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj40-d_mse_y_J_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj40-d_mse_y_J_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="cion" fordist="y JPEG Q=80">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj80-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj80-d_mse_y_K_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/mse-cion-y-lqjJpg80.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj80-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj80-6.jpg" /><span class="label">JPEG Q=80, MSE-y=0.0000</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj80-d_mse_y_K_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_cion/ref-dlqj80-d_mse_y_K_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <input class="flexible-check" type="checkbox" id="checkbox_MSE_singapore" name="checkbox_MSE_singapore" />
+  <label class="flexible-controller" for="checkbox_MSE_singapore">singapore</label>
+  <div class="flexible-body">
+    <div class="sample-choose">
+      Choose example:
+      <select class="sample-choose" metric="MSE" dataset="singapore">
+        <option value="y LQ H264">y LQ H264</option>
+        <option value="y Blurring">y Blurring</option>
+        <option value="y Random points">y Random points</option>
+        <option value="y Luminance shift">y Luminance shift</option>
+        <option value="y JPEG Q=2">y JPEG Q=2</option>
+        <option value="y JPEG Q=5">y JPEG Q=5</option>
+        <option value="y JPEG Q=10">y JPEG Q=10</option>
+        <option value="y JPEG Q=15">y JPEG Q=15</option>
+        <option value="y JPEG Q=20">y JPEG Q=20</option>
+        <option value="y JPEG Q=40">y JPEG Q=40</option>
+        <option value="y JPEG Q=80">y JPEG Q=80</option>
+      </select>
+    </div>
+    <div class="sample-group selected" formetric="MSE" fordataset="singapore" fordist="y LQ H264">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lq-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlq-d_mse_y_A_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-lqPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lq-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lq-10.png" /><span class="label">LQ H264, MSE-y=0.0008</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlq-d_mse_y_A_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlq-d_mse_y_A_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y Blurring">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/blur-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dblur-d_mse_y_B_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-blurJpg.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/blur-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/blur-10.jpg" /><span class="label">Blurring, MSE-y=0.0027</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dblur-d_mse_y_B_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dblur-d_mse_y_B_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y Random points">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/pt-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dpt-d_mse_y_C_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-ptPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/pt-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/pt-10.png" /><span class="label">Random points, MSE-y=0.0012</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dpt-d_mse_y_C_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dpt-d_mse_y_C_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y Luminance shift">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lum-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlum-d_mse_y_D_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-lumPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lum-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lum-10.png" /><span class="label">Luminance shift, MSE-y=0.0001</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlum-d_mse_y_D_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlum-d_mse_y_D_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y JPEG Q=2">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj2-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj2-d_mse_y_E_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-lqjJpg2.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj2-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj2-10.jpg" /><span class="label">JPEG Q=2, MSE-y=0.0031</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj2-d_mse_y_E_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj2-d_mse_y_E_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y JPEG Q=5">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj5-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj5-d_mse_y_F_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-lqjJpg5.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj5-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj5-10.jpg" /><span class="label">JPEG Q=5, MSE-y=0.0022</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj5-d_mse_y_F_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj5-d_mse_y_F_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y JPEG Q=10">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj10-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj10-d_mse_y_G_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-lqjJpg10.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj10-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj10-10.jpg" /><span class="label">JPEG Q=10, MSE-y=0.0014</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj10-d_mse_y_G_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj10-d_mse_y_G_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y JPEG Q=15">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj15-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj15-d_mse_y_H_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-lqjJpg15.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj15-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj15-10.jpg" /><span class="label">JPEG Q=15, MSE-y=0.0012</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj15-d_mse_y_H_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj15-d_mse_y_H_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y JPEG Q=20">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj20-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj20-d_mse_y_I_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-lqjJpg20.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj20-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj20-10.jpg" /><span class="label">JPEG Q=20, MSE-y=0.0012</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj20-d_mse_y_I_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj20-d_mse_y_I_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y JPEG Q=40">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj40-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj40-d_mse_y_J_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-lqjJpg40.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj40-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj40-10.jpg" /><span class="label">JPEG Q=40, MSE-y=0.0011</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj40-d_mse_y_J_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj40-d_mse_y_J_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="singapore" fordist="y JPEG Q=80">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj80-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj80-d_mse_y_K_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/mse-singapore-y-lqjJpg80.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj80-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj80-10.jpg" /><span class="label">JPEG Q=80, MSE-y=0.0010</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj80-d_mse_y_K_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_singapore/ref-dlqj80-d_mse_y_K_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <input class="flexible-check" type="checkbox" id="checkbox_MSE_kayak" name="checkbox_MSE_kayak" />
+  <label class="flexible-controller" for="checkbox_MSE_kayak">kayak</label>
+  <div class="flexible-body">
+    <div class="sample-choose">
+      Choose example:
+      <select class="sample-choose" metric="MSE" dataset="kayak">
+        <option value="y LQ H264">y LQ H264</option>
+        <option value="y Blurring">y Blurring</option>
+        <option value="y Random points">y Random points</option>
+        <option value="y Luminance shift">y Luminance shift</option>
+        <option value="y JPEG Q=2">y JPEG Q=2</option>
+        <option value="y JPEG Q=5">y JPEG Q=5</option>
+        <option value="y JPEG Q=10">y JPEG Q=10</option>
+        <option value="y JPEG Q=15">y JPEG Q=15</option>
+        <option value="y JPEG Q=20">y JPEG Q=20</option>
+        <option value="y JPEG Q=40">y JPEG Q=40</option>
+        <option value="y JPEG Q=80">y JPEG Q=80</option>
+      </select>
+    </div>
+    <div class="sample-group selected" formetric="MSE" fordataset="kayak" fordist="y LQ H264">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lq-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlq-d_mse_y_A_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-lqPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lq-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lq-10.png" /><span class="label">LQ H264, MSE-y=0.0059</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlq-d_mse_y_A_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlq-d_mse_y_A_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y Blurring">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/blur-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dblur-d_mse_y_B_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-blurJpg.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/blur-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/blur-10.jpg" /><span class="label">Blurring, MSE-y=0.0022</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dblur-d_mse_y_B_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dblur-d_mse_y_B_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y Random points">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/pt-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dpt-d_mse_y_C_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-ptPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/pt-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/pt-10.png" /><span class="label">Random points, MSE-y=0.0002</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dpt-d_mse_y_C_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dpt-d_mse_y_C_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y Luminance shift">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lum-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlum-d_mse_y_D_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-lumPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lum-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lum-10.png" /><span class="label">Luminance shift, MSE-y=0.0001</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlum-d_mse_y_D_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlum-d_mse_y_D_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y JPEG Q=2">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj2-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj2-d_mse_y_E_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-lqjJpg2.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj2-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj2-10.jpg" /><span class="label">JPEG Q=2, MSE-y=0.0035</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj2-d_mse_y_E_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj2-d_mse_y_E_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y JPEG Q=5">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj5-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj5-d_mse_y_F_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-lqjJpg5.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj5-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj5-10.jpg" /><span class="label">JPEG Q=5, MSE-y=0.0020</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj5-d_mse_y_F_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj5-d_mse_y_F_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y JPEG Q=10">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj10-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj10-d_mse_y_G_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-lqjJpg10.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj10-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj10-10.jpg" /><span class="label">JPEG Q=10, MSE-y=0.0011</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj10-d_mse_y_G_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj10-d_mse_y_G_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y JPEG Q=15">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj15-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj15-d_mse_y_H_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-lqjJpg15.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj15-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj15-10.jpg" /><span class="label">JPEG Q=15, MSE-y=0.0007</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj15-d_mse_y_H_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj15-d_mse_y_H_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y JPEG Q=20">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj20-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj20-d_mse_y_I_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-lqjJpg20.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj20-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj20-10.jpg" /><span class="label">JPEG Q=20, MSE-y=0.0006</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj20-d_mse_y_I_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj20-d_mse_y_I_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y JPEG Q=40">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj40-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj40-d_mse_y_J_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-lqjJpg40.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj40-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj40-10.jpg" /><span class="label">JPEG Q=40, MSE-y=0.0003</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj40-d_mse_y_J_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj40-d_mse_y_J_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="MSE" fordataset="kayak" fordist="y JPEG Q=80">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj80-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj80-d_mse_y_K_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/mse-kayak-y-lqjJpg80.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj80-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj80-10.jpg" /><span class="label">JPEG Q=80, MSE-y=0.0001</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj80-d_mse_y_K_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/mse_kayak/ref-dlqj80-d_mse_y_K_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<h4 class="no_toc" id="legacy-notes">Legacy notes</h4>
+<p>Since VQMT 12 metric uses input range 0..1. In legacy mode is assumed input range to be 0..255 and 0..100 for L channel.</p>
+<p><a href="#top" class="toplink"></a></p>

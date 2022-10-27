@@ -1,0 +1,41 @@
+{%- assign firsto = true -%}
+{% for var in include.examples %}
+<div>
+<input class="flexible-check" {%if firsto %}checked{%endif%} type="checkbox" id="checkbox_{{include.metric}}_{{var[0]}}" name="checkbox_{{include.metric}}_{{var[0]}}"/>
+<label class="flexible-controller" for="checkbox_{{include.metric}}_{{var[0]}}">{{var[0]}}</label>
+<div class="flexible-body">
+    {%- assign firsto = false -%}
+    <div class="sample-choose">
+        Choose example:
+        <select class="sample-choose" metric="{{include.metric}}" dataset="{{var[0]}}">
+        {% for vard in var[1].tables %}
+            <option value="{{vard.name}}">{{vard.name}}</option>
+        {% endfor %}
+        </select>
+    </div>
+
+    {%- assign firsta = true -%}
+    {% for vard in var[1].tables %}
+    <div class="sample-group{%if firsta %} selected{%endif%}" formetric="{{include.metric}}" fordataset="{{var[0]}}" fordist="{{vard.name}}">
+    {%- assign firsta = false -%}
+        <div class="dl-links">
+            {%- assign first = true -%}
+            Download (
+            {%- for varb in vard.downloads -%}
+            {%- unless first %} | {% endunless -%}
+            <a href="{{include.imgroot}}{{varb.file}}" target="_blank">{{varb.name}}</a>
+            {%- assign first = false -%}
+            {%- endfor -%}
+            ) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+        </div>
+        <div class="hover-tip"></div>
+        <div class="thumb-cells">
+        {% for varb in vard.images %}
+            <div class="cell"><img src="{{include.imgroot}}{{varb.thumb}}" fullimage="{{include.imgroot}}{{varb.full}}"><span class="label">{{varb.label}}</span></div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endfor %}

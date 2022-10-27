@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU HDR Video Reconstruction Benchmark 2022</title>
+    <meta property="og:title" content="MSU HDR Video Reconstruction Benchmark 2022">
+    <meta property="og:image" content="http://localhost:4000/assets/img/benchmarks/itm/main.webp">
+    <meta name="description" content="The most comprehensive comparison of HDR video reconstruction methods">
+    <meta property="og:description" content="The most comprehensive comparison of HDR video reconstruction methods">
+    <meta property="og:url" content="
+http://localhost:4000/benchmarks/inverse-tone-mapping.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/benchmarks/">MSU Benchmark Collection</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <link rel="stylesheet" href="/assets/css/benchmarks/style.css" />
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css" />
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <h1 id="msu-hdr-video-reconstruction-benchmark-2022-hlg">MSU HDR Video Reconstruction Benchmark 2022: HLG</h1>
+        <div id="buttons"></div>
+        <script>
+          __set_menu_buttons([
+          ['Home', '/benchmarks/inverse-tone-mapping.html'],
+          ['Participants','/benchmarks/inverse-tone-mapping-participants.html'],
+              ['Dataset', '/benchmarks/inverse-tone-mapping-dataset.html'],
+          ['Evaluation methodology', '/benchmarks/inverse-tone-mapping-methodology.html'],
+              ['Contact us', '#contacts']
+          ], 'Home')
+        </script>
+        <div class="current_content">
+          <div class="container" style="padding-top: 0px; margin-top: 10px;">
+            <h2 style="padding-bottom: 0px; padding-top: 0px;">The most comprehensive comparison of HDR video reconstruction methods</h2>
+            <div style="margin-left: 60%;">
+              <div><b>G&amp;M Lab head: Dr. Dmitriy Vatolin</b></div>
+              <div style="display: flex">
+                <div><b>Measurements, analysis:</b>&nbsp;</div>
+                <div><b>Mikhail Voronin,<br />
+                    Nikolay Safonov</b>
+                </div>
+              </div>
+            </div>
+            <div style="padding-bottom: 15px; padding-top: 15px;">
+              <img src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/preview.webp" />
+            </div>
+            <h3 style="padding-bottom: 0px; padding-top: 0px;padding-left: 30px" align="left">Key features of the Benchmark</h3>
+            <div align="left" style="padding-bottom: 0px; padding-top: 0px;padding-left: 30px">
+              <ul>
+                <li><strong>Comparison of 14 methods of HDR video reconstruction</strong></li>
+                <li><strong>A new private dataset for testing.</strong> 20 different scenes: fireworks, flowers, soccer and others</li>
+                <li><strong>10 metrics for restoration quality assessment</strong></li>
+                <li>HDR video player for <strong>self-assessment</strong> of quality</li>
+                <li>(Soon) Subjective comparison</li>
+                <li>Split comparison of video restoration with two most popular gamma curves: <a href="https://en.wikipedia.org/wiki/Perceptual_quantizer">PQ</a> (soon), <a href="https://en.wikipedia.org/wiki/Hybrid_log–gamma">HLG</a></li>
+              </ul>
+            </div>
+          </div>
+          <style>
+            .container{
+                box-shadow: 0 5px 10px 1px grey;
+                background: rgba(255, 255, 255, 0.90);
+                text-align: center;
+                border-radius: 5px;
+                overflow: hidden;
+                margin: 2.5em auto;
+                width: 100%;
+            }
+            
+            .product-details {
+                position: relative;
+                text-align: left;
+                overflow: hidden;
+                padding: 15px 15px;
+                height: 100%;
+                float: left;
+                width: 44%;
+            }
+            .container .product-details h1{
+                display: inline-block;
+                position: relative;
+                font-size: 20px;
+                color: #344055;
+                margin: 0;
+            }
+            
+            .control{
+                position: absolute;
+                bottom: 20%;
+                left: 22.8%;
+            }
+            
+            
+            @media (max-width: 420px) {
+                .container .product-details > p {
+                    font-size: 4.5vw;
+                }
+                .product-details {
+                    padding: 0px 0px 20px 20px;
+                }
+                .container .product-details h1{
+                    margin-top: 10px;
+                    font-size: 4.5vw;
+                }
+            }
+          </style>
+          <style method="text/css">
+            .textcols {
+                white-space: nowrap;
+            }
+            .textcols-item {
+                white-space: normal;
+                display: inline-block;
+                width: 31%;
+                vertical-align: top;
+                /*background: #fff2e1;*/
+            }
+            .textcols-item1 {
+                white-space: normal;
+                display: inline-block;
+                width: 48%;
+                vertical-align: top;
+                /*background: #fff2e1;*/
+            }
+            .textcols .textcols-item:first-child {
+                margin-right: 4%;
+            }
+          </style>
+          <h2 id="leaderboard"><span id="leaderboard"></span> Leaderboard</h2>
+          <!--<p>The table below shows a comparison of Video Super Resolution methods by subjective score and a few objective metrics on Bicubic interpolation (BI). Default ranking is by subjective score.<br>-->
+          <!--    <b>You can click on the model's name in the table</b> to read information about the method. You can see information about all participants <a href="/benchmarks/video-super-resolution-participants.html">here</a>.-->
+          <!--</p>-->
+          <!--<p><b>Metrics:</b> Subjective assessment — <a href="/benchmarks/video-super-resolution-methodology.html#subjective">read about</a>,<br>-->
+          <!--    ERQAv1.0 — <a href="/benchmarks/video-super-resolution-methodology.html#erqa">read about</a>,<br>-->
+          <!--    PSNR-Y — <a href="/benchmarks/video-super-resolution-methodology.html#psnr">read about</a>,<br>-->
+          <!--    SSIM-Y — <a href="/benchmarks/video-super-resolution-methodology.html#ssim">read about</a>,<br>-->
+          <!--    QRCRv1.0 — <a href="/benchmarks/video-super-resolution-methodology.html#qrcr">read about</a>,<br>-->
+          <!--    CRRMv1.0 — <a href="/benchmarks/video-super-resolution-methodology.html#crrm">read about</a>,<br>-->
+          <!--    FPS — <a href="/benchmarks/video-super-resolution-methodology.html#fps">read about</a>.-->
+          <!--</p>-->
+          <p>Click on the labels to sort the table.<br />
+            In the <a href="/benchmarks/inverse-tone-mapping-methodology.html">methodology</a> you can read brief information about all metrics.<br />
+            You can scroll the table to see all the results.
+          </p>
+          <div class="datatable-container">
+            <div class="datatable-center">
+              <table id="leaderboard_bicubic" class="datatable display" style="background-color: #d4d4d4">
+                <thead>
+                  <tr style="font-size: 90%; background-color: #3d6f96">    
+                    <th style="background-color: #3d6f96">Rank</th>
+                    <th style="background-color: #3d6f96">Model</th>
+                    <th style="background-color: #3d6f96">HDR-VQM</th>
+                    <th style="background-color: #3d6f96">HDR-VDP-3</th>
+                    <th style="background-color: #3d6f96">HDR-PSNR</th>
+                    <th style="background-color: #3d6f96">HDR-SSIM</th>
+                    <th style="background-color: #3d6f96">PQ-NIQE</th>
+                    <th style="background-color: #3d6f96">PQ-PSNR</th>
+                    <th style="background-color: #3d6f96">PQ-SSIM</th>
+                    <th style="background-color: #3d6f96">PQ-VMAF</th>
+                    <th style="background-color: #3d6f96">Shifted HDR-PSNR</th>
+                    <th style="background-color: #3d6f96">FovVideoVDP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="item">
+                    <td>1</td>
+                    <td>Kuo</td>
+                    <td>8.6776</td>
+                    <td><b>0.0579</b></td>
+                    <td>40.7642</td>
+                    <td><b>0.9954</b></td>
+                    <td>5.0287</td>
+                    <td>34.9679</td>
+                    <td><b>0.9862</b></td>
+                    <td><b>94.0270</b></td>
+                    <td><b>47.4611</b></td>
+                    <td>9.8880</td>
+                  </tr>
+                  <tr class="item">
+                    <td>2</td>
+                    <td>Maxon</td>
+                    <td>8.2153</td>
+                    <td>0.0622</td>
+                    <td><b>45.6478</b></td>
+                    <td>0.9949</td>
+                    <td>4.9400</td>
+                    <td><b>35.1188</b></td>
+                    <td>0.9846</td>
+                    <td>89.9478</td>
+                    <td>45.3267</td>
+                    <td>9.8374</td>
+                  </tr>
+                  <tr class="item">
+                    <td>3</td>
+                    <td>DeepHDR</td>
+                    <td>8.0572</td>
+                    <td>0.1000</td>
+                    <td>33.5267</td>
+                    <td>0.9907</td>
+                    <td>5.0832</td>
+                    <td>21.9155</td>
+                    <td>0.9584</td>
+                    <td>89.5382</td>
+                    <td>37.0040</td>
+                    <td>9.3205</td>
+                  </tr>
+                  <tr class="item">
+                    <td>4</td>
+                    <td>HDRTV</td>
+                    <td>6.9813</td>
+                    <td>0.1296</td>
+                    <td>35.9721</td>
+                    <td>0.9918</td>
+                    <td>5.4744</td>
+                    <td>22.4636</td>
+                    <td>0.9555</td>
+                    <td>85.6109</td>
+                    <td>26.8880</td>
+                    <td>9.8788</td>
+                  </tr>
+                  <tr class="item">
+                    <td>5</td>
+                    <td>KovOliv</td>
+                    <td>7.4724</td>
+                    <td>0.1329</td>
+                    <td>32.4223</td>
+                    <td>0.9937</td>
+                    <td>4.8269</td>
+                    <td>20.1296</td>
+                    <td>0.9389</td>
+                    <td>91.3117</td>
+                    <td>28.9170</td>
+                    <td>9.8861</td>
+                  </tr>
+                  <tr class="item">
+                    <td>6</td>
+                    <td>twostageHDR</td>
+                    <td>6.6004</td>
+                    <td>0.1350</td>
+                    <td>31.6717</td>
+                    <td>0.9864</td>
+                    <td><b>7.7687</b></td>
+                    <td>22.4022</td>
+                    <td>0.9139</td>
+                    <td>46.1830</td>
+                    <td>TBP</td>
+                    <td>TBP</td>
+                  </tr>
+                  <tr class="item">
+                    <td>7</td>
+                    <td>HuoPhys</td>
+                    <td>7.0618</td>
+                    <td>0.1518</td>
+                    <td>32.6570</td>
+                    <td>0.9946</td>
+                    <td>5.0754</td>
+                    <td>18.7458</td>
+                    <td>0.9383</td>
+                    <td>90.0419</td>
+                    <td>22.1553</td>
+                    <td>9.8866</td>
+                  </tr>
+                  <tr class="item">
+                    <td>8</td>
+                    <td>HDRUNet</td>
+                    <td>6.6857</td>
+                    <td>0.1830</td>
+                    <td>34.9894</td>
+                    <td>0.9845</td>
+                    <td>6.7712</td>
+                    <td>24.7347</td>
+                    <td>0.9388</td>
+                    <td>92.1209</td>
+                    <td>TBP</td>
+                    <td>TBP</td>
+                  </tr>
+                  <tr class="item">
+                    <td>9</td>
+                    <td>HDRCNN</td>
+                    <td>6.3880</td>
+                    <td>0.1919</td>
+                    <td>33.0200</td>
+                    <td>0.9663</td>
+                    <td>4.9391</td>
+                    <td>21.2604</td>
+                    <td>0.8539</td>
+                    <td>50.5081</td>
+                    <td>35.0804</td>
+                    <td>9.8778</td>
+                  </tr>
+                  <tr class="item">
+                    <td>10</td>
+                    <td>ExpNet</td>
+                    <td>7.5910</td>
+                    <td>0.1942</td>
+                    <td>34.0555</td>
+                    <td>0.9892</td>
+                    <td>5.2161</td>
+                    <td>24.2994</td>
+                    <td>0.9321</td>
+                    <td>61.6722</td>
+                    <td>40.8574</td>
+                    <td><b>9.8887</b></td>
+                  </tr>
+                  <tr class="item">
+                    <td>11</td>
+                    <td>Huo</td>
+                    <td><b>8.9004</b></td>
+                    <td>0.2103</td>
+                    <td>30.0900</td>
+                    <td>0.9720</td>
+                    <td>4.9126</td>
+                    <td>23.3886</td>
+                    <td>0.9527</td>
+                    <td>82.4653</td>
+                    <td>44.4314</td>
+                    <td>9.2408</td>
+                  </tr>
+                  <tr class="item">
+                    <td>12</td>
+                    <td>KUnet</td>
+                    <td>6.1543</td>
+                    <td>0.2126</td>
+                    <td>32.5082</td>
+                    <td>0.9838</td>
+                    <td>7.3623</td>
+                    <td>24.1380</td>
+                    <td>0.9236</td>
+                    <td>77.6478</td>
+                    <td>TBP</td>
+                    <td>TBP</td>
+                  </tr>
+                  <tr class="item">
+                    <td>13</td>
+                    <td>Akyuz</td>
+                    <td>6.4114</td>
+                    <td>0.2521</td>
+                    <td>28.1420</td>
+                    <td>0.9917</td>
+                    <td>4.7872</td>
+                    <td>14.6789</td>
+                    <td>0.8535</td>
+                    <td>71.5814</td>
+                    <td>23.3069</td>
+                    <td>9.8799</td>
+                  </tr>
+                  <tr class="item">
+                    <td>14</td>
+                    <td>SingleHDR</td>
+                    <td>8.4180</td>
+                    <td>0.2630</td>
+                    <td>34.2872</td>
+                    <td>0.9845</td>
+                    <td>5.5764</td>
+                    <td>25.8042</td>
+                    <td>0.9606</td>
+                    <td>70.6792</td>
+                    <td>42.5944</td>
+                    <td>9.8305</td>
+                  </tr>
+                </tbody>
+              </table>
+              <script>
+                $(document).ready(function () {
+                            $('#leaderboard_bicubic').DataTable({
+                                order: [[ 2, "asc" ]],
+                                lengthChange: false,
+                                paging: false,
+                                searching: false,
+                                "bInfo" : false
+                            });
+                        });
+              </script>
+            </div>
+            <p>
+              TBP* – to be published
+            </p>
+          </div>
+          <!--<p><b>*To Be Published</b><br>-->
+          <!--<b>**Shifted version (see <a href="/benchmarks/video-super-resolution-methodology.html">methodology</a> for more information)</b><br>-->
+          <!--<sup style="color: #0000FF">1</sup> measured by MSU<br>-->
+          <!--<sup style="color: #0000FF">2</sup> measured by participants</p>-->
+          <!--<h3  id="difference" align="left" style="color: #3d6f96">The absolute difference between metric values on BI and BD degradation models</h3>-->
+          <!--<div id="dif_plot_selector" class="mobile-plots">-->
+          <!--    <p style="white-space: pre;">Metric: <label for="dif_plot_selector_metric"></label><select id="dif_plot_selector_metric" name="values">-->
+          <!--        <option>ERQAv1.0</option>-->
+          <!--        <option>PSNR-Y**</option>-->
+          <!--        <option>SSIM-Y**</option>-->
+          <!--        <option>CRRMv1.0</option>-->
+          <!--        <option>QRCRv1.0</option>-->
+          <!--    </select>-->
+          <!--</p>-->
+          <!--<div id="dif_plot" style="display: block" class="highcharts-figure">-->
+          <!--    <script async src="/assets/js/benchmarks/vsr/dif_plot.js"></script>-->
+          <!--</div>-->
+          <!--<script>-->
+          <!--    function onChangeHelper() {-->
+          <!--        let speed_plot = document.getElementById("dif_plot");-->
+          <!--        let this_div = document.getElementById("dif_plot_selector");-->
+          <!--        speed_plot.remove();-->
+          <!--        let new_plot = document.createElement('div');-->
+          <!--        new_plot.setAttribute("id", "dif_plot");-->
+          <!--        new_plot.setAttribute("class", "highcharts-figure");-->
+          <!--        this_div.appendChild(new_plot);-->
+          <!--        let sc = document.createElement("script");-->
+          <!--        sc.src = '/assets/js/benchmarks/vsr/dif_plot.js';-->
+          <!--        new_plot.appendChild(sc);-->
+          <!--    }-->
+          <!--    document.getElementById("dif_plot_selector_metric").onchange = onChangeHelper-->
+          <!--</script>-->
+          <!--</div>  -->
+          <!--<details>-->
+          <!--    <summary><b>Click here to see table with metrics on data prepared with BD degradation</b></summary>-->
+          <!--    <p>Click on the labels to sort the table</p> -->
+          <!--    <div class="datatable-container">-->
+          <!--        <div class="datatable-center">-->
+          <!--            <table id="leaderboard_gauss" class="datatable display" style="background-color: #d4d4d4">-->
+          <!--    <thead>-->
+          <!--        <tr style="font-size: 90%; background-color: #3d6f96">    <th style="background-color: #3d6f96">Rank</th>-->
+          <!--        <th style="background-color: #3d6f96">Model</th>-->
+          <!--        <th style="background-color: #3d6f96">Subjective</th>-->
+          <!--        <th style="background-color: #3d6f96">ERQAv1.0</th>-->
+          <!--        <th style="background-color: #3d6f96">QRCRv1.0</th>-->
+          <!--        <th style="background-color: #3d6f96">SSIM-Y**</th>-->
+          <!--        <th style="background-color: #3d6f96">CRRMv1.0</th>-->
+          <!--        <th style="background-color: #3d6f96">PSNR-Y**</th>-->
+          <!--        <th style="background-color: #3d6f96">FPS(s)</th>-->
+          <!--    </tr>-->
+          <!--    </thead><tbody>-->
+          <!--    <tr class="item">-->
+          <!--    <td>16</td>-->
+          <!--    <td>D3Dnet<sup><a href="/benchmarks/video-super-resolution-participants.html#d3dnet">[16]</a></sup></td>-->
+          <!--    <td><b>3.283</b></td>-->
+          <!--    <td>0.538</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.831</td>-->
+          <!--    <td>0.956</td>-->
+          <!--    <td>27.093</td>-->
+          <!--    <td>24.238<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>2</td>-->
+          <!--    <td>DBVSR<sup><a href="/benchmarks/video-super-resolution-participants.html#dbvsr">[2]</a></sup></td>-->
+          <!--    <td><b>5.247</b></td>-->
+          <!--    <td>0.589</td>-->
+          <!--    <td>0.557</td>-->
+          <!--    <td>0.843</td>-->
+          <!--    <td>0.964</td>-->
+          <!--    <td>27.664</td>-->
+          <!--    <td>TBP**</td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>15</td>-->
+          <!--    <td>DUF-16L<sup><a href="/benchmarks/video-super-resolution-participants.html#duf">[15]</a></sup></td>-->
+          <!--    <td><b>3.393</b></td>-->
+          <!--    <td>0.533</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.820</td>-->
+          <!--    <td>0.995</td>-->
+          <!--    <td>24.969</td>-->
+          <!--    <td>1.653<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>13</td>-->
+          <!--    <td>DUF-28L<sup><a href="/benchmarks/video-super-resolution-participants.html#duf">[13]</a></sup></td>-->
+          <!--    <td><b>3.571</b></td>-->
+          <!--    <td>0.534</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.823</td>-->
+          <!--    <td>0.976</td>-->
+          <!--    <td>26.365</td>-->
+          <!--    <td>2.392<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>5</td>-->
+          <!--    <td>DynaVSR-R<sup><a href="/benchmarks/video-super-resolution-participants.html#dynavsr">[5]</a></sup></td>-->
+          <!--    <td><b>4.403</b></td>-->
+          <!--    <td>0.690</td>-->
+          <!--    <td>0.619</td>-->
+          <!--    <td>0.882</td>-->
+          <!--    <td>0.977</td>-->
+          <!--    <td>30.182</td>-->
+          <!--    <td>5.664<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>20</td>-->
+          <!--    <td>DynaVSR-V<sup><a href="/benchmarks/video-super-resolution-participants.html#dynavsr">[20]</a></sup></td>-->
+          <!--    <td><b>2.554</b></td>-->
+          <!--    <td>0.666</td>-->
+          <!--    <td>0.629</td>-->
+          <!--    <td>0.875</td>-->
+          <!--    <td>0.986</td>-->
+          <!--    <td>29.724</td>-->
+          <!--    <td>6.660<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>22</td>-->
+          <!--    <td>ESPCN<sup><a href="/benchmarks/video-super-resolution-participants.html#espcn">[22]</a></sup></td>-->
+          <!--    <td><b>0.214</b></td>-->
+          <!--    <td>0.411</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.784</td>-->
+          <!--    <td>0.940</td>-->
+          <!--    <td>25.672</td>-->
+          <!--    <td>TBP**</td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>10</td>-->
+          <!--    <td>ESRGAN<sup><a href="/benchmarks/video-super-resolution-participants.html#esrgan">[10]</a></sup></td>-->
+          <!--    <td><b>3.674</b></td>-->
+          <!--    <td>0.506</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.797</td>-->
+          <!--    <td>0.964</td>-->
+          <!--    <td>26.115</td>-->
+          <!--    <td>0.996<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>4</td>-->
+          <!--    <td>LGFN<sup><a href="/benchmarks/video-super-resolution-participants.html#lgfn">[4]</a></sup></td>-->
+          <!--    <td><b>4.715</b></td>-->
+          <!--    <td>0.618</td>-->
+          <!--    <td>0.629</td>-->
+          <!--    <td>0.853</td>-->
+          <!--    <td>0.966</td>-->
+          <!--    <td>28.020</td>-->
+          <!--    <td>1.499<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>1</td>-->
+          <!--    <td>RBPN<sup><a href="/benchmarks/video-super-resolution-participants.html#rbpn">[1]</a></sup></td>-->
+          <!--    <td><b>5.325</b></td>-->
+          <!--    <td>0.595</td>-->
+          <!--    <td>0.629</td>-->
+          <!--    <td>0.847</td>-->
+          <!--    <td>0.966</td>-->
+          <!--    <td>27.765</td>-->
+          <!--    <td>TBP**</td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>12</td>-->
+          <!--    <td>RRN-10L<sup><a href="/benchmarks/video-super-resolution-participants.html#rrn">[12]</a></sup></td>-->
+          <!--    <td><b>3.587</b></td>-->
+          <!--    <td>0.517</td>-->
+          <!--    <td>0.609</td>-->
+          <!--    <td>0.798</td>-->
+          <!--    <td>0.977</td>-->
+          <!--    <td>25.001</td>-->
+          <!--    <td>0.390<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>17</td>-->
+          <!--    <td>RRN-5L<sup><a href="/benchmarks/video-super-resolution-participants.html#rrn">[17]</a></sup></td>-->
+          <!--    <td><b>3.245</b></td>-->
+          <!--    <td>0.505</td>-->
+          <!--    <td>0.549</td>-->
+          <!--    <td>0.793</td>-->
+          <!--    <td>0.977</td>-->
+          <!--    <td>24.382</td>-->
+          <!--    <td>0.365<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>7</td>-->
+          <!--    <td>RSDN<sup><a href="/benchmarks/video-super-resolution-participants.html#rsdn">[7]</a></sup></td>-->
+          <!--    <td><b>3.845</b></td>-->
+          <!--    <td>0.554</td>-->
+          <!--    <td>0.557</td>-->
+          <!--    <td>0.826</td>-->
+          <!--    <td>0.978</td>-->
+          <!--    <td>25.767</td>-->
+          <!--    <td>TBP**</td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>11</td>-->
+          <!--    <td>Real-ESRGAN<sup><a href="/benchmarks/video-super-resolution-participants.html#real-esrgan">[11]</a></sup></td>-->
+          <!--    <td><b>3.652</b></td>-->
+          <!--    <td>0.656</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.764</td>-->
+          <!--    <td>0.950</td>-->
+          <!--    <td>24.239</td>-->
+          <!--    <td>0.991<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>21</td>-->
+          <!--    <td>Real-ESRnet<sup><a href="/benchmarks/video-super-resolution-participants.html#real-esrnet">[21]</a></sup></td>-->
+          <!--    <td><b>1.830</b></td>-->
+          <!--    <td>0.591</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.822</td>-->
+          <!--    <td>0.955</td>-->
+          <!--    <td>27.194</td>-->
+          <!--    <td>0.982<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>14</td>-->
+          <!--    <td>RealSR<sup><a href="/benchmarks/video-super-resolution-participants.html#realsr">[14]</a></sup></td>-->
+          <!--    <td><b>3.520</b></td>-->
+          <!--    <td>0.588</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.751</td>-->
+          <!--    <td>0.948</td>-->
+          <!--    <td>25.406</td>-->
+          <!--    <td>TBP**</td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>18</td>-->
+          <!--    <td>SOF-VSR-BD<sup><a href="/benchmarks/video-super-resolution-participants.html#sof-vsr">[18]</a></sup></td>-->
+          <!--    <td><b>3.110</b></td>-->
+          <!--    <td>0.536</td>-->
+          <!--    <td>0.549</td>-->
+          <!--    <td>0.826</td>-->
+          <!--    <td>0.954</td>-->
+          <!--    <td>26.808</td>-->
+          <!--    <td>1.430<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>19</td>-->
+          <!--    <td>SOF-VSR-BI<sup><a href="/benchmarks/video-super-resolution-participants.html#sof-vsr">[19]</a></sup></td>-->
+          <!--    <td><b>3.041</b></td>-->
+          <!--    <td>0.527</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.826</td>-->
+          <!--    <td>0.955</td>-->
+          <!--    <td>27.004</td>-->
+          <!--    <td>1.750<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>9</td>-->
+          <!--    <td>TDAN<sup><a href="/benchmarks/video-super-resolution-participants.html#tdan">[9]</a></sup></td>-->
+          <!--    <td><b>3.718</b></td>-->
+          <!--    <td>0.550</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.831</td>-->
+          <!--    <td>0.964</td>-->
+          <!--    <td>27.057</td>-->
+          <!--    <td>TBP**</td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>8</td>-->
+          <!--    <td>TGA<sup><a href="/benchmarks/video-super-resolution-participants.html#tga">[8]</a></sup></td>-->
+          <!--    <td><b>3.832</b></td>-->
+          <!--    <td>0.554</td>-->
+          <!--    <td>0.557</td>-->
+          <!--    <td>0.828</td>-->
+          <!--    <td>0.976</td>-->
+          <!--    <td>26.247</td>-->
+          <!--    <td>1.417<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>6</td>-->
+          <!--    <td>TMNet<sup><a href="/benchmarks/video-super-resolution-participants.html#tmnet">[6]</a></sup></td>-->
+          <!--    <td><b>4.298</b></td>-->
+          <!--    <td>0.537</td>-->
+          <!--    <td>0.000</td>-->
+          <!--    <td>0.827</td>-->
+          <!--    <td>0.964</td>-->
+          <!--    <td>26.918</td>-->
+          <!--    <td>TBP**</td>-->
+          <!--    </tr>-->
+          <!--    <tr class="item">-->
+          <!--    <td>3</td>-->
+          <!--    <td>iSeeBetter<sup><a href="/benchmarks/video-super-resolution-participants.html#iseebetter">[3]</a></sup></td>-->
+          <!--    <td><b>5.122</b></td>-->
+          <!--    <td>0.596</td>-->
+          <!--    <td>0.557</td>-->
+          <!--    <td>0.848</td>-->
+          <!--    <td>0.969</td>-->
+          <!--    <td>27.712</td>-->
+          <!--    <td>22.275<sup style="color: #0000FF">1</sup></td>-->
+          <!--    </tr>-->
+          <!--    </tbody>-->
+          <!--            </table>-->
+          <!--            <script>$(document).ready(function () {-->
+          <!--                $('#leaderboard_gauss').DataTable({-->
+          <!--                    order: [[ 2, "desc" ]],-->
+          <!--                    lengthChange: false,-->
+          <!--                    paging: false,-->
+          <!--                    searching: false-->
+          <!--                });-->
+          <!--            });</script>-->
+          <!--        </div>-->
+          <!--    </div>-->
+          <!--    <p><b>*To be published</b><br>-->
+          <!--    <b>**Shifted version (see <a href="/benchmarks/video-super-resolution-methodology.html">methodology</a> for more information)</b><br>-->
+          <!--    <sup style="color: #0000FF">1</sup> measured by MSU<br>-->
+          <!--    <sup style="color: #0000FF">2</sup> measured by participants</p>-->
+          <!--</details>-->
+          <!--<h3 align="left" style="color: #3d6f96">Correlation of metrics with subjective assessment</h3>-->
+          <!--<div id="corr_selector" class="mobile-plots">-->
+          <!--    <p style="white-space: pre;">Correlation method: <label for="corr_selector_type"></label><select id="corr_selector_type" name="values">-->
+          <!--        <option>Pearson</option>-->
+          <!--        <option>Spearman</option>-->
+          <!--    </select>-->
+          <!--</p>-->
+          <!--<div id="corr_plot" style="display: block" class="highcharts-figure">-->
+          <!--    <script async src="/assets/js/benchmarks/vsr/corr_plot.js"></script>-->
+          <!--</div>-->
+          <!--<script>-->
+          <!--    function onChangeHelper() {-->
+          <!--        let speed_plot = document.getElementById("corr_plot");-->
+          <!--        let this_div = document.getElementById("corr_selector");-->
+          <!--        speed_plot.remove();-->
+          <!--        let new_plot = document.createElement('div');-->
+          <!--        new_plot.setAttribute("id", "corr_plot");-->
+          <!--        new_plot.setAttribute("class", "highcharts-figure");-->
+          <!--        this_div.appendChild(new_plot);-->
+          <!--        let sc = document.createElement("script");-->
+          <!--        sc.src = '/assets/js/benchmarks/vsr/corr_plot.js';-->
+          <!--        new_plot.appendChild(sc);-->
+          <!--    }-->
+          <!--    document.getElementById("corr_selector_type").onchange = onChangeHelper-->
+          <!--</script>-->
+          <!--</div>  -->
+          <h2 id="charts"><span id="charts"></span> Charts</h2>
+          <p>In this section you can observe the values of different metrics for each individual video and the average values.
+            In the "Video" selector, you can observe the names of the videos. For your convenience, the <a href="/benchmarks/inverse-tone-mapping-dataset.html"> Dataset tab</a> has a preview of each video and its full name match.</p>
+          <div id="arrow_selector" class="mobile-plots">
+            <p style="white-space: pre;">Metric: <label for="arrow_selector_metric"></label><select id="arrow_selector_metric" name="values">
+                <option>HDR-VDP-3</option>
+                <option selected="selected">HDR-VQM</option>
+                <option>HDR-PSNR</option>
+                <option>HDR-SSIM</option>
+                <option>PQ-NIQE</option>
+                <option>PQ-PSNR</option>
+                <option>PQ-SSIM</option>
+                <option>PQ-VMAF</option>
+                <option>Shifted HDR-PSNR</option>
+                <option>FovVideoVDP</option>
+              </select>    Video: <label for="arrow_selector_video"></label><select id="arrow_selector_video" name="values">
+                <option>Overall</option>
+                <option>Red Square</option>
+                <option>Rolex</option>
+                <option>Candles</option>
+                <option>Red Square 2</option>
+                <option>Playing Cards</option>
+                <option>Flowers</option>
+                <option>Eternal flame</option>
+                <option>GUM</option>
+                <option>Puddle</option>
+                <option>Road sign</option>
+                <option>Dog</option>
+                <option>Red Bull</option>
+                <option>Thaw</option>
+                <option>Red Bull 2</option>
+                <option>Football</option>
+                <option>Luminaire</option>
+                <option>Firework</option>
+                <option>Cola</option>
+                <option>Cola 2</option>
+                <option>Bonsai</option>
+              </select>
+            </p>
+            <div class="plot-and-arrow" style="display: flex; justify-content: center" id="plot_and_arrow">
+              <div id="arrow_plot" style="display: block; flex-grow: 1" class="highcharts-figure">
+                <script async="" src="/assets/js/benchmarks/itm/arrow.js"></script>
+              </div>
+              <img src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/vBetter.png" style="max-height: 400px" />
+            </div>
+            <!--  <style type="text/css">-->
+            <!--    .plot-and-arrow {-->
+            <!--      display: flex;-->
+            <!--      flex-direction: row;-->
+            <!--      justify-content: center;-->
+            <!--    }-->
+            <!--  </style>-->
+            <script>
+              function onChangeHelper() {
+                let speed_plot = document.getElementById("plot_and_arrow");
+                let this_div = document.getElementById("arrow_selector");
+              
+                speed_plot.remove();
+                let new_plot = document.createElement('div');
+                new_plot.setAttribute("id", "plot_and_arrow");
+                new_plot.setAttribute("style", "display: flex; justify-content: center")
+                new_plot.setAttribute("class", "plot-and-arrow");
+              
+                let new_arrow_plot = document.createElement('div');
+                new_arrow_plot.setAttribute("id", "arrow_plot");
+                new_arrow_plot.setAttribute("style", "display: block; flex-grow: 1")
+                new_arrow_plot.setAttribute("class", "highcharts-figure");
+              
+                let new_arrow = document.createElement('img');
+                new_arrow.setAttribute("src", "https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/vBetter.png");
+                new_arrow.setAttribute("style", "max-height: 400px")
+              
+                new_plot.appendChild(new_arrow_plot);
+                new_plot.appendChild(new_arrow);
+                this_div.appendChild(new_plot);
+              
+                let sc = document.createElement("script");
+                sc.src = '/assets/js/benchmarks/itm/arrow.js';
+                new_arrow_plot.appendChild(sc);
+              }
+              
+              document.getElementById("arrow_selector_video").onchange = onChangeHelper
+              // document.getElementById("arrow_selector_part").onchange = onChangeHelper
+              document.getElementById("arrow_selector_metric").onchange = onChangeHelper
+            </script>
+          </div>
+          <h2 id="results"><span id="charts"></span> Results</h2>
+          <p>
+            In this section, you can quickly evaluate the quality of the algorithms yourself. The video player below show you
+            the HDR video if your device supports this technology. We recommend opening this video via Google Chrome or Safari.
+          </p>
+          <div id="arrow_selector" class="mobile-plots">
+            <p style="white-space: pre;">Method: <label for="selector_meth"></label><select id="selector_meth" name="values">
+                <option>Akyuz</option>
+                <option>HDRCNN</option>
+                <option>HDRTVNet</option>
+                <option>Maxon</option>
+                <option>SingleHDR</option>
+                <option>DeepHDR</option>
+                <option>ExpNet</option>
+                <option>Huo</option>
+                <option>HuoPhys</option>
+                <option>KovOliv</option>
+                <option>Kuo</option>
+                <option>HDRUNet</option>
+                <option>KUnet</option>
+                <option>twostageHDR</option>
+              </select>
+            </p>
+            <p align="center" id="video_div">
+              <iframe class="video-hdr-box" id="video" width="560" height="315" src="https://www.youtube.com/embed/yjJSiBSqr8I" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+            </p>
+            <script>
+              function onChangeHelper() {
+                  let video = document.getElementById("video");
+                  video.remove()
+                  var video_select = document.getElementById("selector_meth");
+                  // Akyuz HDRCNN HDRTVNet Maxon SingleHDR DeepHDR ExpNet HuoPhys
+                  var videoToId = ['yjJSiBSqr8I', '7Da7CM1rvKQ', 'IYzj_OrshJM', 'CMnPNTlYSV0', 'VrIrKWQWpEk', 'HSax--x7AHQ',
+                      'tGeRBkGpZl0', 'Q3Vntdc-bkw', 'at-WIf3gWfk', 'Phep_XyyHv4', 'JV8R3tVFZrc', '3R20544-TRE', 'ICMYCgLOwIA',
+                      'QRaujtLNDd4']
+                  let new_url = "https://www.youtube.com/embed/" + videoToId[video_select.selectedIndex]
+                  console.log(new_url)
+                  let new_video = document.createElement('iframe');
+                  new_video.setAttribute("id", "video")
+                  new_video.setAttribute("width", "560")
+                  new_video.setAttribute("height", "315")
+                  new_video.setAttribute("src", new_url)
+                  new_video.setAttribute("allowfullscreen", "true")
+              
+                  new_video.setAttribute("title", "YouTube video player")
+                  new_video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture")
+              
+                  let div = document.getElementById("video_div");
+                  div.appendChild(new_video)
+              
+              }
+              
+              // document.getElementById("arrow_selector_video").onchange = onChangeHelper
+              // document.getElementById("arrow_selector_part").onchange = onChangeHelper
+              document.getElementById("selector_meth").onchange = onChangeHelper
+            </script>
+          </div>
+          <h2 id="visualization"><span id="visualization"></span> Visualization</h2>
+          <p>This section presents a visualization of the result of each of the algorithms.<br />
+            <ul>
+              <li>The first line is a <b>preview</b></li>
+              <li>The second line is a <b>tonemapped crop</b></li>
+              <li>The third and fourth lines are the <b>two exposures</b>, which show in detail the differences in the dark and bright areas</li>
+            </ul>
+            While generating the exposures, we keep the visible contrast between the objects as on an HDR monitor, assuming that the expected brightness of your display is around 300 nits.<br />
+            Please note that we do not show GT exposures, as this information makes it possible to obtain the HDR version of the GT video.<br />
+          </p>
+          <style type="text/css">
+            .img-zoom-container {
+                position: relative;
+                margin: 1em auto;
+            
+                width: 100%;
+            }
+            
+            .img-zoom-lens {
+                position: absolute;
+                border: 2px solid #ff0000;
+                /*set the size of the lens:*/
+            
+                width: 35px;
+                height: 35px;
+            }
+            
+            /*Three image containers (use 25% for four, and 50% for two, etc)*/
+            .column {
+                box-sizing: border-box;
+                float: left;
+                width: 24%;
+                padding: 5px;
+            }
+            
+            
+            /*Clear floats after image containers*/
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+          </style>
+          <div class="comparison_selector_div mobile-visualization">
+            <script>
+              function imageZoom(imgIDs, resultIDs, vqmtIDs, edgeIDs, zoomx, zoomy) {
+                  let imgs = [];
+                  for (let i = 0; i < imgIDs.length; i++) {
+                      let imgID = imgIDs[i];
+                      let img = document.getElementById(imgID);
+                      imgs.push(img);
+                  }
+              
+                  let results = [];
+                  for (let i = 0; i < resultIDs.length; i++) {
+                      let resultID = resultIDs[i];
+                      let result = document.getElementById(resultID);
+                      results.push(result);
+                  }
+              
+                  let vqmts = [];
+                  for (let i = 0; i < vqmtIDs.length; i++) {
+                      let vqmtID = vqmtIDs[i];
+                      let vqmt = document.getElementById(vqmtID);
+                      vqmts.push(vqmt);
+                  }
+              
+                  let edges = [];
+                  for (let i = 0; i < edgeIDs.length; i++) {
+                      let edgeID = edgeIDs[i];
+                      let edge = document.getElementById(edgeID);
+                      edges.push(edge);
+                  }
+              
+                  let lenses = [];
+                  let x = Math.floor(zoomx / 1080 * imgs[0].height);
+                  let y = Math.floor(zoomy / 1920 * imgs[0].width);
+              
+                  for (let i = 0; i < imgs.length; i++) {
+                      let pastLens = document.getElementById("lens" + i.toString());
+                      if (pastLens) {
+                          pastLens.remove();
+                      }
+                      let lens = document.createElement("DIV");
+                      lens.setAttribute("class", "img-zoom-lens");
+                      lens.setAttribute("id", "lens" + i.toString());
+                      imgs[i].parentElement.insertBefore(lens, imgs[i]);
+                      lenses.push(lens);
+                  }
+                  let cxs = [], cys = [];
+                  for (let i = 0; i < results.length; i++) {
+                      let cx = results[i].offsetWidth / lenses[i].offsetWidth;
+                      let cy = results[i].offsetHeight / lenses[i].offsetHeight;
+                      cxs.push(cx);
+                      cys.push(cy);
+                  }
+              
+                  /* Set background properties for the result DIV */
+                  for (let i = 0; i < results.length; i++) {
+                      //results[i].style.backgroundImage = "url('" + imgs[i].src + "')";
+                      results[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                  }
+              
+                  for (let i = 0; i < vqmts.length; i++) {
+                      vqmts[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                      edges[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                  }
+              
+                  for (let i = 0; i < lenses.length; i++) {
+                      lenses[i].style.top = x + "px";
+                      lenses[i].style.left = y + "px";
+                      results[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                      if (i < vqmts.length) {
+                          vqmts[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                          edges[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                      }
+                  }
+              
+                  /* Execute a function when someone moves the cursor over the image, or the lens: */
+                  for (let i = 0; i < lenses.length; i++) {
+                      lenses[i].addEventListener("mousedown", mousedown);
+                      lenses[i].addEventListener("mouseup", mouseup);
+                      /* And also for touch screens: */
+                      /* Or touched (for touch screens: */
+                      imgs[i].addEventListener("click", moveLens);
+                      /* And also for touch screens: */
+                      /* Or touched (for touch screens: */
+              
+              
+                      lenses[i].addEventListener("touchstart", mousedown);
+                      lenses[i].addEventListener("touchend", mouseup);
+                  }
+              
+                  let clicked = 0;
+              
+              
+                  function mousedown(e) {
+                      for (let i = 0; i < lenses.length; i++) {
+                          lenses[i].addEventListener("mousemove", moveLens);
+                          imgs[i].addEventListener("mousemove", moveLens);
+                          lenses[i].addEventListener("touchmove", moveLens);
+                          imgs[i].addEventListener("touchmove", moveLens);
+                      }
+                      clicked = 1;
+                  }
+              
+                  function mouseup(e) {
+                      for (let i = 0; i < lenses.length; i++) {
+                          lenses[i].removeEventListener("mousemove", moveLens);
+                          imgs[i].removeEventListener("mousemove", moveLens);
+                          lenses[i].removeEventListener("touchmove", moveLens);
+                          imgs[i].removeEventListener("touchmove", moveLens);
+                      }
+                      clicked = 0;
+                  }
+              
+              
+                  function moveLens(e) {
+                      /*if (!clicked) {
+                          return;
+                      }*/
+                      let pos, x, y;
+                      /* Prevent any other actions that may occur when moving over the image */
+                      e.preventDefault();
+                      /* Get the cursor's x and y positions: */
+                      pos = getCursorPos(e);
+                      /* Calculate the position of the lens: */
+                      x = pos.x - (lenses[0].offsetWidth / 2);
+                      y = pos.y - (lenses[0].offsetHeight / 2);
+                      /* Prevent the lens from being positioned outside the image: */
+                      if (x > imgs[0].width - lenses[0].offsetWidth) {
+                          x = imgs[0].width - lenses[0].offsetWidth;
+                      }
+                      if (x < 0) {
+                          x = 0;
+                      }
+                      if (y > imgs[0].height - lenses[0].offsetHeight) {
+                          y = imgs[0].height - lenses[0].offsetHeight;
+                      }
+                      if (y < 0) {
+                          y = 0;
+                      }
+                      /* Set the position of the lens: */
+                      for (let i = 0; i < lenses.length; i++) {
+                          lenses[i].style.left = x + "px";
+                          lenses[i].style.top = y + "px";
+                          /* Display what the lens "sees": */
+                          results[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                          if (i < vqmts.length) {
+                              vqmts[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                              edges[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                          }
+                      }
+                  }
+              
+                  function getCursorPos(e) {
+                      let x = 0, y = 0;
+                      e = e || window.event;
+                      /* Get the x and y positions of the image: */
+                      let boundingRects = [];
+                      for (let i = 0; i < imgs.length; i++) {
+                          let a = imgs[i].getBoundingClientRect();
+                          boundingRects.push(a);
+                      }
+              
+                      let i = boundingRects.length - 1;
+                      while (i > 0 && e.pageX < boundingRects[i].left) {
+                          i--;
+                      }
+              
+                      /* Calculate the cursor's x and y coordinates, relative to the image: */
+                      x = e.pageX - boundingRects[i].left;
+                      y = e.pageY - boundingRects[i].top;
+                      /* Consider any page scrolling: */
+                      x = x - window.pageXOffset;
+                      y = y - window.pageYOffset;
+                      return {x: x, y: y};
+                  }
+              }
+            </script>
+            <p style="white-space: pre;">Video: <label for="video_selector"></label><select id="video_selector" name="values">
+                <option>Red Square</option>
+                <option>Rolex</option>
+                <option>Candles</option>
+                <option>Red Square 2</option>
+                <option>Playing Cards</option>
+                <option>Flowers</option>
+                <option>Eternal flame</option>
+                <option>GUM</option>
+                <option>Puddle</option>
+                <option>Road sign</option>
+                <option selected="selected">Dog</option>
+                <option>Red Bull</option>
+                <option>Thaw</option>
+                <option>Red Bull 2</option>
+                <option>Football</option>
+                <option>Luminaire</option>
+                <option>Firework</option>
+                <option>Cola</option>
+                <option>Cola 2</option>
+                <option>Bonsai</option>
+                <!--    </select>    Content: <label for="comp_part_selector"></label><select id="comp_part_selector"-->
+                <!--                                                                                name="values">-->
+                <!--        <option selected="selected">Board</option>-->
+                <!--        <option>QR-codes</option>-->
+                <!--        <option>Text</option>-->
+                <!--        <option>Metal paper</option>-->
+                <!--        <option>Color lines</option>-->
+                <!--        <option>Car numbers</option>-->
+                <!--        <option>Noise</option>-->
+                <!--        <option>Mira</option>-->
+              </select></p>
+            <p style="white-space: pre;"> Model 1: <label for="comp_model1_selector"></label><select id="comp_model1_selector" name="values">
+                <option selected="selected">HDRTVNet</option>
+                <option>HDRCNN</option>
+                <option>Maxon</option>
+                <option>SingleHDR</option>
+                <option>DeepHDR</option>
+                <option>Akyuz</option>
+                <option>ExpNet</option>
+                <option>Huo</option>
+                <option>HuoPhys</option>
+                <option>Kuo</option>
+                <option>KovOliv</option>
+                <option>HDRUNet</option>
+                <option>KUNet</option>
+                <option>twostageHDR</option>
+              </select>    Model 2: <label for="comp_model2_selector"></label><select id="comp_model2_selector" name="values">
+                <option>HDRTVNet</option>
+                <option selected="selected">HDRCNN</option>
+                <option>Maxon</option>
+                <option>SingleHDR</option>
+                <option>DeepHDR</option>
+                <option>Akyuz</option>
+                <option>ExpNet</option>
+                <option>Huo</option>
+                <option>HuoPhys</option>
+                <option>Kuo</option>
+                <option>KovOliv</option>
+                <option>HDRUNet</option>
+                <option>KUNet</option>
+                <option>twostageHDR</option>
+              </select>    Model 3: <label for="comp_model3_selector"></label><select id="comp_model3_selector" name="values">
+                <option>HDRTVNet</option>
+                <option>HDRCNN</option>
+                <option selected="selected">Maxon</option>
+                <option>SingleHDR</option>
+                <option>DeepHDR</option>
+                <option>Akyuz</option>
+                <option>ExpNet</option>
+                <option>Huo</option>
+                <option>HuoPhys</option>
+                <option>Kuo</option>
+                <option>KovOliv</option>
+                <option>HDRUNet</option>
+                <option>KUNet</option>
+                <option>twostageHDR</option>
+              </select></p>
+            <p style="text-align: center"><b>Drag a red rectangle in the area, which you want to crop.</b></p>
+            <div class="row">
+              <div class="column">
+                <h3 style="text-align: center">GT</h3>
+                <div class="img-zoom-container">
+                  <img id="imagegt" style="width: 100%; height: 8vw" src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/small_images/small_video2_GT.jpg" />
+                  <div id="resultgt" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <img id="fake_vqmt" style="width: 100%;" src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/ev1.png" />
+                  <img id="fake_edge" style="width: 100%;" src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/ev2.png" />
+                </div>
+              </div>
+              <div class="column">
+                <h3 id="comp_label1" style="text-align: center">GT</h3>
+                <div class="img-zoom-container">
+                  <img id="image1" style="width: 100%; height: 8vw" src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/small_images/small_video2_GT.jpg" />
+                  <div id="result1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="vqmt1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="edge1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                </div>
+              </div>
+              <div class="column">
+                <h3 id="comp_label2" style="text-align: center">HDRTVNet</h3>
+                <div class="img-zoom-container">
+                  <img id="image2" style="width: 100%; height: 8vw" src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/small_images/small_video2_HDRTV.jpg" />
+                  <div id="result2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="vqmt2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="edge2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                </div>
+              </div>
+              <div class="column">
+                <h3 id="comp_label3" style="text-align: center">HDRCNN</h3>
+                <div class="img-zoom-container">
+                  <img id="image3" style="width: 100%; height: 8vw" src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/small_images/small_video2_HDRCNN.jpg" />
+                  <div id="result3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="vqmt3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="edge3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                </div>
+              </div>
+              <script>
+                imageZoom(["imagegt", "image1", "image2", "image3"],
+                    ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 540, 960);
+                onChangeHelper();
+                
+                function onChangeHelper() {
+                    let videoToName = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
+                    let numToName = ['HDRTV', 'HDRCNN', 'Maxon', 'SingleHDR', 'DeepHDR', 'Akyuz', 'ExpNet', 'Huo', 'HuoPhys', 'Kuo', 'KovOliv', 'HDRUNet', 'KUnet', 'twostageHDR'];
+                
+                    let numselect = document.getElementById("video_selector");
+                    let selected_video = videoToName[numselect.selectedIndex];
+                
+                
+                    let model1select = document.getElementById("comp_model1_selector");
+                    let model2select = document.getElementById("comp_model2_selector");
+                    let model3select = document.getElementById("comp_model3_selector");
+                    let selected_model1 = numToName[model1select.selectedIndex];
+                    let selected_model2 = numToName[model2select.selectedIndex];
+                    let selected_model3 = numToName[model3select.selectedIndex];
+                
+                    let pic_gt = document.getElementById("imagegt");
+                    let pic1 = document.getElementById("image1");
+                    let pic2 = document.getElementById("image2");
+                    let pic3 = document.getElementById("image3");
+                
+                    let res_gt = document.getElementById("resultgt");
+                    let res1 = document.getElementById("result1");
+                    let res2 = document.getElementById("result2");
+                    let res3 = document.getElementById("result3");
+                
+                    let fake_vqmt = document.getElementById("fake_vqmt");
+                    let vqmt1 = document.getElementById("vqmt1");
+                    let vqmt2 = document.getElementById("vqmt2");
+                    let vqmt3 = document.getElementById("vqmt3");
+                
+                    let fake_edge = document.getElementById("fake_edge");
+                    let edge1 = document.getElementById("edge1");
+                    let edge2 = document.getElementById("edge2");
+                    let edge3 = document.getElementById("edge3");
+                
+                
+                    let img_prefix = "https://storage.videoprocessing.ai/benchmarks/itm/visualizations/";
+                    let src_gt = img_prefix + "small_images/small_video" + selected_video + "_GT.jpg";
+                    let src1 = img_prefix + "small_images/small_video" + selected_video + "_" + selected_model1 +".jpg";
+                    let src2 = img_prefix + "small_images/small_video" + selected_video + "_" + selected_model2 +".jpg";
+                    let src3 = img_prefix + "small_images/small_video" + selected_video + "_" + selected_model3 +".jpg";
+                
+                
+                    let resultgt_src = img_prefix + "images/video" + selected_video + "_GT.jpg";
+                    let result1_src = img_prefix + "images/video" + selected_video + "_" + selected_model1 +".jpg";
+                    let result2_src = img_prefix + "images/video" + selected_video + "_" + selected_model2 +".jpg";
+                    let result3_src = img_prefix + "images/video" + selected_video + "_" + selected_model3 +".jpg";
+                
+                
+                    let vqmt1_src = img_prefix + "exposures1/exposures1_video" + selected_video + "_" + selected_model1 +".jpg";
+                    let vqmt2_src = img_prefix + "exposures1/exposures1_video" + selected_video + "_" + selected_model2 +".jpg";
+                    let vqmt3_src = img_prefix + "exposures1/exposures1_video" + selected_video + "_" + selected_model3 +".jpg";
+                
+                    let edge1_src = img_prefix + "exposures2/exposures2_video" + selected_video + "_" + selected_model1 +".jpg";
+                    let edge2_src = img_prefix + "exposures2/exposures2_video" + selected_video + "_" + selected_model2 +".jpg";
+                    let edge3_src = img_prefix + "exposures2/exposures2_video" + selected_video + "_" + selected_model3 +".jpg";
+                
+                    let comp_label1 = document.getElementById("comp_label1");
+                    let comp_label2 = document.getElementById("comp_label2");
+                    let comp_label3 = document.getElementById("comp_label3");
+                
+                    res_gt.style.backgroundImage = "url('" + resultgt_src + "')";
+                    res1.style.backgroundImage = "url('" + result1_src + "')";
+                    res2.style.backgroundImage = "url('" + result2_src + "')";
+                    res3.style.backgroundImage = "url('" + result3_src + "')";
+                
+                    vqmt1.style.backgroundImage = "url('" + vqmt1_src + "')";
+                    vqmt2.style.backgroundImage = "url('" + vqmt2_src + "')";
+                    vqmt3.style.backgroundImage = "url('" + vqmt3_src + "')";
+                
+                    edge1.style.backgroundImage = "url('" + edge1_src + "')";
+                    edge2.style.backgroundImage = "url('" + edge2_src + "')";
+                    edge3.style.backgroundImage = "url('" + edge3_src + "')";
+                
+                    if (selected_model1 === 'HDRTV') {
+                        selected_model1 = 'HDRTVNet'
+                    }
+                    if (selected_model2 === 'HDRTV') {
+                        selected_model2 = 'HDRTVNet'
+                    }
+                    if (selected_model3 === 'HDRTV') {
+                        selected_model3 = 'HDRTVNet'
+                    }
+                
+                    if (selected_model1 === 'KUnet') {
+                        selected_model1 = 'KUNet'
+                    }
+                    if (selected_model2 === 'KUnet') {
+                        selected_model2 = 'KUNet'
+                    }
+                    if (selected_model3 === 'KUnet') {
+                        selected_model3 = 'KUNet'
+                    }
+                
+                    comp_label1.innerText = selected_model1;
+                    comp_label2.innerText = selected_model2;
+                    comp_label3.innerText = selected_model3;
+                
+                    pic_gt.src = src_gt;
+                    pic1.src = src1;
+                    pic2.src = src2;
+                    pic3.src = src3;
+                
+                    imageZoom(["imagegt", "image1", "image2", "image3"],
+                        ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 540, 960);
+                }
+                
+                document.getElementById("video_selector").onchange = onChangeHelper;
+                document.getElementById("comp_model1_selector").onchange = onChangeHelper;
+                document.getElementById("comp_model2_selector").onchange = onChangeHelper;
+                document.getElementById("comp_model3_selector").onchange = onChangeHelper;
+              </script>
+            </div>
+          </div>
+          <style type="text/css">
+            .paper-preview-container img:hover {
+                filter: brightness(80%);
+            }
+            
+            .paper-preview01 {
+                padding: 0;
+                clear: both;
+                border: 1px solid black;
+                box-shadow: 5px 5px 3px #888888;
+                width: 150px;
+            }
+          </style>
+          <h2 id="your-method-submission"><span id="participate"></span> Your method submission</h2>
+          <p><strong>Verify the restoration ability of your HDR Video Reconstruction algorithm and compare it with state-of-the-art solutions.</strong>
+            You can see information about all other participants <a href="/benchmarks/inverse-tone-mapping-participants.html">here</a>.</p>
+          <div>
+            <table align="center" width="100%" cellpadding="10" style="border-collapse:collapse; table-layout: fixed; word-break: break-all;">
+              <tr>
+                <td bgcolor="#F4F6F6" colspan="2" width="30%" style="word-break: break-all;">
+                  <b>1. Download input data</b>
+                  <br />
+                  <i><font size="=1"></font></i>
+                </td>
+                <td bgcolor="#F4F6F6" style="word-break: break-all;">
+                  <b>Download <a href="https://drive.google.com/drive/folders/1P0VEwllQaYOgWMnjDrnbjAiGJFv2FFNM?usp=sharing">SDR videos</a></b><br />
+                </td>
+              </tr>
+              <tr>
+                <td style="border-right-style: solid" width="15%">
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" bgcolor="#F4F6F6" style="word-break: break-all;" width="15%">
+                  <b>2. Apply your algorithm</b>
+                </td>
+                <td bgcolor="#F4F6F6" style="word-break: break-all;">
+                  <b>Convert SDR videos to HDR using your algorithm.</b><br />
+                  You can also send us the code of your method or the executable file and we will run it ourselves.
+                </td>
+              </tr>
+              <tr>
+                <td style="border-right-style: solid">
+                </td>
+                <td>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="2" bgcolor="#F4F6F6" style="word-break: break-all;" width="15%">
+                  <b>3. Send us result</b>
+                </td>
+                <td bgcolor="#F4F6F6" style="word-break: break-all;">
+                  <b>Send us an email to <a href="mailto:itm-benchmark@videoprocessing.ai">itm-benchmark@videoprocessing.ai</a>
+                    with the following information: </b>
+                  <ul><b>A. </b>Name of your method that will be specified in our benchmark</ul>
+                  <ul><b>B. </b>Link to the cloud drive (Google Drive, OneDrive, Dropbox, etc.), containing output frames.<br />
+                    <ul>
+                      You can send us files in the following formats:
+                    </ul>
+                    <ul>
+                      1) <b>.exr, .hdr</b> for linear gamma curve <br />
+                    </ul>
+                    <ul>
+                      2)<b> .png, .tif</b>, if your method does the gamma curve yourself
+                    </ul>
+                    <ul>
+                      3)<b> .mov,</b> if you make a video of the frames yourself (apply the gamma curve HLG)
+                    </ul>
+                    <ul>
+                      Please read the <a href="/benchmarks/inverse-tone-mapping-methodology.html">evaluation</a> section of the methodology before submitting your algorithm
+                    </ul>
+                  </ul>
+                  <ul><b>C. </b>(Optional) Execution time of your algorithm and information about used GPU</ul>
+                  <ul><b>D. </b>(Optional) Any additional information about the method:
+                    <ul>1. Full name of your model</ul>
+                    <ul>2. The parameter set that was used</ul>
+                    <ul>3. A link to the code of your model, if it is available</ul>
+                    <ul>4. A link to the paper about your model, if it is available</ul>
+                    <ul>5. Any other additional information</ul>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <h2 id="contacts"><span id="contacts"></span>Contacts</h2>
+          <p>We would highly appreciate any suggestions and ideas on how to improve our benchmark. For questions and propositions, please contact us: <a href="mailto:itm-benchmark@videoprocessing.ai">itm-benchmark@videoprocessing.ai</a></p>
+          <p>Also you can subscribe to updates on our benchmark:</p>
+          <style>
+            input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
+                font-size: 0.75em;
+                color: #999;
+                top: -5px;
+                -webkit-transition: all 0.225s ease;
+                transition: all 0.225s ease;
+            }
+            
+            
+            .styled-input {
+                float: left;
+                width: 293px;
+                margin: 1rem 0;
+                position: relative;
+                border-radius: 4px;
+            }
+            
+            
+            .styled-input label {
+                color: black;
+                padding: 1.3rem 30px 1rem 30px;
+                position: absolute;
+                top: 10px;
+                left: 0;
+                -webkit-transition: all 0.25s ease;
+                transition: all 0.25s ease;
+                pointer-events: none;
+            }
+            
+            
+            .styled-input.wide {
+                width: 500px;
+                max-width: 100%;
+            }
+            
+            input,
+            textarea {
+                padding: 30px;
+                border: 0;
+                font-size: 1rem;
+                background-color: #F0F0F0;
+                color: black;
+                border-radius: 4px;
+            }
+            
+            input:focus,
+            textarea:focus { outline: 0; }
+            
+            input:focus ~ span,
+            textarea:focus ~ span {
+                width: 100%;
+                -webkit-transition: all 0.075s ease;
+                transition: all 0.075s ease;
+            }
+            
+            textarea {
+                width: 100%;
+                min-height: 15em;
+            }
+            
+            .input-container {
+                width: 650px;
+                max-width: 100%;
+            }
+            
+            .submit-btn {
+                float: center;
+                padding: 7px 35px;
+                border-radius: 4px;
+                display: inline-block;
+                background-color: #496E93;
+                color: white;
+                font-size: 18px;
+                cursor: pointer;
+                box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
+                0 2px 10px 0 rgba(0,0,0,0.07);
+                -webkit-transition: all 300ms ease;
+                transition: all 300ms ease;
+                width:150px;
+            }
+            
+            .wrapper {text-align: center;}
+            
+            .submit-btn:hover {
+                transform: translateY(1px);
+                box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
+                0 1px 1px 0 rgba(0,0,0,0.09);
+            }
+            
+            @media (max-width: 768px) {
+                .submit-btn {
+                    width:100%;
+                    float: none;
+                    text-align:center;
+                }
+            }
+            
+            .cont2{
+                width:70%;
+                display:inline-block;
+            }
+            
+            .f_form{
+                background-color: #9EB6CE;
+                border-radius:15px;
+            }
+          </style>
+          <div class="cont2">
+            <div class=".f_form">
+              <form action="https://docs.google.com/forms/d/e/1FAIpQLScKDys3MQyBXYOnQFHor294r3jeMQW5JuMc_iYniKktbWNVsA/formResponse">
+                <div class="input-container">
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" type="text" name="entry.1482308356" required="" />
+                      <label>E-mail</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" name="entry.734874705" type="text" required="" />
+                      <label>Name</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" name="entry.131102352" type="text" required="" />
+                      <label>Company name (developer)</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" name="entry.1466064120" type="text" required="" />
+                      <label>How did you hear about us</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" type="text" name="entry.960434224" required="" />
+                      <label>Questions and suggestions</label>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="styled-input wide">
+                    <input style="width:50%" type="submit" value="Send" class="submit-btn" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU HDR Video Reconstruction Benchmark 2022&amp;url=
+http://localhost:4000/benchmarks/inverse-tone-mapping.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU HDR Video Reconstruction Benchmark 2022&amp;url=
+http://localhost:4000/benchmarks/inverse-tone-mapping.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/benchmarks/inverse-tone-mapping.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU HDR Video Reconstruction Benchmark 2022&amp;body=
+http://localhost:4000/benchmarks/inverse-tone-mapping.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/benchmarks/inverse-tone-mapping.html
+&amp;title=MSU HDR Video Reconstruction Benchmark 2022&amp;summary=MSU HDR Video Reconstruction Benchmark 2022&amp;source=
+http://localhost:4000/benchmarks/inverse-tone-mapping.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">10 May 2022</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/vfi/main.webp)"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

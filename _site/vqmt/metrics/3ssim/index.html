@@ -1,0 +1,673 @@
+<p class="no_toc"><a name="3ssim" id="3ssim"></a></p>
+<h2 id="3-ssim-three-commponent-structural-similarity">3-SSIM (Three-commponent Structural Similarity)</h2>
+<h4 class="no_toc" id="general-info">General info</h4>
+<dl class="properties">
+  <dt>Metric type</dt>
+  <dd>
+    <p><span class="hover-help">full-reference<span class="help-content stdhelp-full-reference">
+        </span></span>  <span class="hover-help">image<span class="help-content stdhelp-image-metric">
+        </span></span> metric</p>
+  </dd>
+  <dt>Value range</dt>
+  <dd>
+    <p>(images are different) -1..1 (images are same)</p>
+  </dd>
+  <dt>Value interpretation</dt>
+  <dd>
+    <p>bigger is better quality</p>
+  </dd>
+  <dt>MSU VQMT implementations</dt>
+  <dd>
+    <p><span class="hover-help">CPU multithreaded<span class="help-content stdhelp-cpu-multithreaded">
+        </span></span> (default),<br />
+      <span class="hover-help">OpenCL<span class="help-content stdhelp-opencl">
+        </span></span> (recommended),<br />
+      <span class="hover-help">CUDA<span class="help-content stdhelp-cuda">
+        </span></span></p>
+  </dd>
+  <dt>Available colorspaces</dt>
+  <dd>
+    <p>Y, U, V</p>
+  </dd>
+  <dt>Output values</dt>
+  <dd>
+    <p>metric value</p>
+  </dd>
+  <dt>Aggregated values</dt>
+  <dd>
+    <p><span class="hover-help">standard set<span class="help-content stdhelp-avg-std">
+        </span></span></p>
+  </dd>
+  <dt>MSU VQMT usages</dt>
+  <dd>
+    <p><code class="highlighter-rouge">-metr 3ssim [over &lt;color components&gt;]</code><br />
+      <code class="highlighter-rouge">-metr 3ssim_cuda [over &lt;color components&gt;]</code><br />
+      <code class="highlighter-rouge">-metr 3ssim [over &lt;color components&gt;] -dev &lt;OpenCL device&gt;</code></p>
+  </dd>
+  <dt>Other names</dt>
+  <dd>
+    <p>3-SSIM</p>
+  </dd>
+  <dt>External links</dt>
+  <dd>
+    <p><a href="http://live.ece.utexas.edu/publications/2010/li_jei_jan10.pdf" target="_blank">original paper (C. Li and A. C. Bovik)</a></p>
+  </dd>
+</dl>
+<h4 class="no_toc" id="algorithm-description">Algorithm description</h4>
+<p>3-Component SSIM Index based on region division of source frames. There are 3 types of regions – edges, textures and smooth regions. Result metric calculated as weighted average of SSIM metric for those regions. In fact, human eye can see difference more precisely on textured or edge regions than on smooth regions. Division based on gradient magnitude is presented in every pixel of images.</p>
+<h4 class="no_toc" id="benchmark">Benchmark</h4>
+<div class="benchmark-choose">
+  Choose benchmark:
+  <select class="benchmark-choose" metric="3ssim">
+    <option value="result_linux_14">VQMT 14.0 on 64 cores, GPU: NVIDIA CUDA/TITAN RTX</option>
+    <option value="output_vqmt13">VQMT 13.1 on 8 cores, GPU: NVIDIA CUDA/GeForce GTX 660 Ti</option>
+    <option value="output_vqmt14" selected="">VQMT 14.0 on 8 cores, GPU: NVIDIA CUDA/GeForce GTX 660 Ti</option>
+  </select>
+</div>
+<div benchmark_name="result_linux_14" class="benchmark-table" formetric="3ssim">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>309.37</td>
+        <td>0.005</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>114.47</td>
+        <td>0.013</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>28.56</td>
+        <td>0.086</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>24.26</td>
+        <td>0.042</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>11.52</td>
+        <td>0.088</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>3.32</td>
+        <td>0.31</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 14.0 BETA r12792 PRO for Linux.<br />
+    CPU:  Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz, 64 cores<br />
+    GPU: NVIDIA CUDA/TITAN RTX<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<div benchmark_name="output_vqmt13" class="benchmark-table" formetric="3ssim">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>54.9</td>
+        <td>0.019</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>24.34</td>
+        <td>0.044</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>5.84</td>
+        <td>0.206</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>29.5</td>
+        <td>0.035</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>12.94</td>
+        <td>0.08</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>3.28</td>
+        <td>0.325</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 13.1 r12792 PRO for Windows.<br />
+    CPU: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz, 8 cores<br />
+    GPU: NVIDIA CUDA/GeForce GTX 660 Ti<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<div benchmark_name="output_vqmt14" class="benchmark-table selected" formetric="3ssim">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>54.74</td>
+        <td>0.02</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>24.39</td>
+        <td>0.045</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>5.83</td>
+        <td>0.209</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>29.26</td>
+        <td>0.036</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>12.99</td>
+        <td>0.081</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>3.29</td>
+        <td>0.328</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 14.0 BETA r12792 PRO for Windows.<br />
+    CPU: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz, 8 cores<br />
+    GPU: NVIDIA CUDA/GeForce GTX 660 Ti<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<h4 class="no_toc" id="example">Example</h4>
+<div>
+  <input class="flexible-check" checked="" type="checkbox" id="checkbox_3SSIM Precise_cion" name="checkbox_3SSIM Precise_cion" />
+  <label class="flexible-controller" for="checkbox_3SSIM Precise_cion">cion</label>
+  <div class="flexible-body">
+    <div class="sample-choose">
+      Choose example:
+      <select class="sample-choose" metric="3SSIM Precise" dataset="cion">
+        <option value="y LQ H264">y LQ H264</option>
+        <option value="y Blurring">y Blurring</option>
+        <option value="y Random points">y Random points</option>
+        <option value="y Luminance shift">y Luminance shift</option>
+        <option value="y JPEG Q=2">y JPEG Q=2</option>
+        <option value="y JPEG Q=5">y JPEG Q=5</option>
+        <option value="y JPEG Q=10">y JPEG Q=10</option>
+        <option value="y JPEG Q=15">y JPEG Q=15</option>
+        <option value="y JPEG Q=20">y JPEG Q=20</option>
+        <option value="y JPEG Q=40">y JPEG Q=40</option>
+        <option value="y JPEG Q=80">y JPEG Q=80</option>
+      </select>
+    </div>
+    <div class="sample-group selected" formetric="3SSIM Precise" fordataset="cion" fordist="y LQ H264">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lq-6.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlq-d_3ssim_y_A_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-lqPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lq-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lq-6.png" /><span class="label">LQ H264, 3SSIM-y=0.7321</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlq-d_3ssim_y_A_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlq-d_3ssim_y_A_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y Blurring">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/blur-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dblur-d_3ssim_y_B_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-blurJpg.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/blur-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/blur-6.jpg" /><span class="label">Blurring, 3SSIM-y=0.5467</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dblur-d_3ssim_y_B_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dblur-d_3ssim_y_B_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y Random points">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/pt-6.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dpt-d_3ssim_y_C_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-ptPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/pt-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/pt-6.png" /><span class="label">Random points, 3SSIM-y=0.9679</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dpt-d_3ssim_y_C_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dpt-d_3ssim_y_C_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y Luminance shift">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lum-6.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlum-d_3ssim_y_D_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-lumPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lum-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lum-6.png" /><span class="label">Luminance shift, 3SSIM-y=0.9999</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlum-d_3ssim_y_D_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlum-d_3ssim_y_D_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y JPEG Q=2">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj2-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj2-d_3ssim_y_E_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-lqjJpg2.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj2-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj2-6.jpg" /><span class="label">JPEG Q=2, 3SSIM-y=0.4614</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj2-d_3ssim_y_E_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj2-d_3ssim_y_E_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y JPEG Q=5">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj5-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj5-d_3ssim_y_F_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-lqjJpg5.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj5-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj5-6.jpg" /><span class="label">JPEG Q=5, 3SSIM-y=0.6304</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj5-d_3ssim_y_F_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj5-d_3ssim_y_F_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y JPEG Q=10">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj10-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj10-d_3ssim_y_G_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-lqjJpg10.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj10-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj10-6.jpg" /><span class="label">JPEG Q=10, 3SSIM-y=0.7925</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj10-d_3ssim_y_G_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj10-d_3ssim_y_G_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y JPEG Q=15">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj15-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj15-d_3ssim_y_H_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-lqjJpg15.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj15-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj15-6.jpg" /><span class="label">JPEG Q=15, 3SSIM-y=0.8524</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj15-d_3ssim_y_H_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj15-d_3ssim_y_H_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y JPEG Q=20">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj20-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj20-d_3ssim_y_I_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-lqjJpg20.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj20-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj20-6.jpg" /><span class="label">JPEG Q=20, 3SSIM-y=0.8856</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj20-d_3ssim_y_I_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj20-d_3ssim_y_I_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y JPEG Q=40">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj40-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj40-d_3ssim_y_J_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-lqjJpg40.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj40-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj40-6.jpg" /><span class="label">JPEG Q=40, 3SSIM-y=0.9378</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj40-d_3ssim_y_J_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj40-d_3ssim_y_J_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="cion" fordist="y JPEG Q=80">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj80-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj80-d_3ssim_y_K_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/3ssim-cion-y-lqjJpg80.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj80-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj80-6.jpg" /><span class="label">JPEG Q=80, 3SSIM-y=0.9788</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj80-d_3ssim_y_K_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_cion/ref-dlqj80-d_3ssim_y_K_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <input class="flexible-check" type="checkbox" id="checkbox_3SSIM Precise_singapore" name="checkbox_3SSIM Precise_singapore" />
+  <label class="flexible-controller" for="checkbox_3SSIM Precise_singapore">singapore</label>
+  <div class="flexible-body">
+    <div class="sample-choose">
+      Choose example:
+      <select class="sample-choose" metric="3SSIM Precise" dataset="singapore">
+        <option value="y LQ H264">y LQ H264</option>
+        <option value="y Blurring">y Blurring</option>
+        <option value="y Random points">y Random points</option>
+        <option value="y Luminance shift">y Luminance shift</option>
+        <option value="y JPEG Q=2">y JPEG Q=2</option>
+        <option value="y JPEG Q=5">y JPEG Q=5</option>
+        <option value="y JPEG Q=10">y JPEG Q=10</option>
+        <option value="y JPEG Q=15">y JPEG Q=15</option>
+        <option value="y JPEG Q=20">y JPEG Q=20</option>
+        <option value="y JPEG Q=40">y JPEG Q=40</option>
+        <option value="y JPEG Q=80">y JPEG Q=80</option>
+      </select>
+    </div>
+    <div class="sample-group selected" formetric="3SSIM Precise" fordataset="singapore" fordist="y LQ H264">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lq-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlq-d_3ssim_y_A_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-lqPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lq-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lq-10.png" /><span class="label">LQ H264, 3SSIM-y=0.9139</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlq-d_3ssim_y_A_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlq-d_3ssim_y_A_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y Blurring">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/blur-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dblur-d_3ssim_y_B_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-blurJpg.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/blur-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/blur-10.jpg" /><span class="label">Blurring, 3SSIM-y=0.6624</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dblur-d_3ssim_y_B_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dblur-d_3ssim_y_B_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y Random points">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/pt-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dpt-d_3ssim_y_C_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-ptPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/pt-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/pt-10.png" /><span class="label">Random points, 3SSIM-y=0.9662</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dpt-d_3ssim_y_C_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dpt-d_3ssim_y_C_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y Luminance shift">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lum-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlum-d_3ssim_y_D_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-lumPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lum-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lum-10.png" /><span class="label">Luminance shift, 3SSIM-y=0.9834</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlum-d_3ssim_y_D_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlum-d_3ssim_y_D_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y JPEG Q=2">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj2-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj2-d_3ssim_y_E_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-lqjJpg2.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj2-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj2-10.jpg" /><span class="label">JPEG Q=2, 3SSIM-y=0.6776</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj2-d_3ssim_y_E_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj2-d_3ssim_y_E_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y JPEG Q=5">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj5-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj5-d_3ssim_y_F_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-lqjJpg5.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj5-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj5-10.jpg" /><span class="label">JPEG Q=5, 3SSIM-y=0.8164</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj5-d_3ssim_y_F_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj5-d_3ssim_y_F_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y JPEG Q=10">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj10-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj10-d_3ssim_y_G_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-lqjJpg10.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj10-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj10-10.jpg" /><span class="label">JPEG Q=10, 3SSIM-y=0.9310</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj10-d_3ssim_y_G_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj10-d_3ssim_y_G_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y JPEG Q=15">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj15-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj15-d_3ssim_y_H_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-lqjJpg15.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj15-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj15-10.jpg" /><span class="label">JPEG Q=15, 3SSIM-y=0.9376</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj15-d_3ssim_y_H_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj15-d_3ssim_y_H_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y JPEG Q=20">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj20-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj20-d_3ssim_y_I_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-lqjJpg20.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj20-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj20-10.jpg" /><span class="label">JPEG Q=20, 3SSIM-y=0.9626</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj20-d_3ssim_y_I_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj20-d_3ssim_y_I_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y JPEG Q=40">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj40-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj40-d_3ssim_y_J_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-lqjJpg40.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj40-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj40-10.jpg" /><span class="label">JPEG Q=40, 3SSIM-y=0.9717</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj40-d_3ssim_y_J_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj40-d_3ssim_y_J_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="singapore" fordist="y JPEG Q=80">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj80-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj80-d_3ssim_y_K_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/3ssim-singapore-y-lqjJpg80.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj80-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj80-10.jpg" /><span class="label">JPEG Q=80, 3SSIM-y=0.9857</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj80-d_3ssim_y_K_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_singapore/ref-dlqj80-d_3ssim_y_K_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <input class="flexible-check" type="checkbox" id="checkbox_3SSIM Precise_kayak" name="checkbox_3SSIM Precise_kayak" />
+  <label class="flexible-controller" for="checkbox_3SSIM Precise_kayak">kayak</label>
+  <div class="flexible-body">
+    <div class="sample-choose">
+      Choose example:
+      <select class="sample-choose" metric="3SSIM Precise" dataset="kayak">
+        <option value="y LQ H264">y LQ H264</option>
+        <option value="y Blurring">y Blurring</option>
+        <option value="y Random points">y Random points</option>
+        <option value="y Luminance shift">y Luminance shift</option>
+        <option value="y JPEG Q=2">y JPEG Q=2</option>
+        <option value="y JPEG Q=5">y JPEG Q=5</option>
+        <option value="y JPEG Q=10">y JPEG Q=10</option>
+        <option value="y JPEG Q=15">y JPEG Q=15</option>
+        <option value="y JPEG Q=20">y JPEG Q=20</option>
+        <option value="y JPEG Q=40">y JPEG Q=40</option>
+        <option value="y JPEG Q=80">y JPEG Q=80</option>
+      </select>
+    </div>
+    <div class="sample-group selected" formetric="3SSIM Precise" fordataset="kayak" fordist="y LQ H264">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lq-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlq-d_3ssim_y_A_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-lqPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lq-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lq-10.png" /><span class="label">LQ H264, 3SSIM-y=0.2678</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlq-d_3ssim_y_A_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlq-d_3ssim_y_A_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y Blurring">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/blur-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dblur-d_3ssim_y_B_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-blurJpg.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/blur-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/blur-10.jpg" /><span class="label">Blurring, 3SSIM-y=0.4563</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dblur-d_3ssim_y_B_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dblur-d_3ssim_y_B_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y Random points">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/pt-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dpt-d_3ssim_y_C_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-ptPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/pt-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/pt-10.png" /><span class="label">Random points, 3SSIM-y=0.9822</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dpt-d_3ssim_y_C_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dpt-d_3ssim_y_C_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y Luminance shift">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lum-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlum-d_3ssim_y_D_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-lumPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lum-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lum-10.png" /><span class="label">Luminance shift, 3SSIM-y=0.9958</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlum-d_3ssim_y_D_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlum-d_3ssim_y_D_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y JPEG Q=2">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj2-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj2-d_3ssim_y_E_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-lqjJpg2.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj2-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj2-10.jpg" /><span class="label">JPEG Q=2, 3SSIM-y=0.4640</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj2-d_3ssim_y_E_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj2-d_3ssim_y_E_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y JPEG Q=5">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj5-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj5-d_3ssim_y_F_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-lqjJpg5.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj5-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj5-10.jpg" /><span class="label">JPEG Q=5, 3SSIM-y=0.6538</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj5-d_3ssim_y_F_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj5-d_3ssim_y_F_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y JPEG Q=10">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj10-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj10-d_3ssim_y_G_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-lqjJpg10.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj10-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj10-10.jpg" /><span class="label">JPEG Q=10, 3SSIM-y=0.8012</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj10-d_3ssim_y_G_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj10-d_3ssim_y_G_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y JPEG Q=15">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj15-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj15-d_3ssim_y_H_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-lqjJpg15.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj15-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj15-10.jpg" /><span class="label">JPEG Q=15, 3SSIM-y=0.8591</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj15-d_3ssim_y_H_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj15-d_3ssim_y_H_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y JPEG Q=20">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj20-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj20-d_3ssim_y_I_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-lqjJpg20.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj20-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj20-10.jpg" /><span class="label">JPEG Q=20, 3SSIM-y=0.8876</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj20-d_3ssim_y_I_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj20-d_3ssim_y_I_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y JPEG Q=40">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj40-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj40-d_3ssim_y_J_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-lqjJpg40.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj40-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj40-10.jpg" /><span class="label">JPEG Q=40, 3SSIM-y=0.9366</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj40-d_3ssim_y_J_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj40-d_3ssim_y_J_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="3SSIM Precise" fordataset="kayak" fordist="y JPEG Q=80">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj80-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj80-d_3ssim_y_K_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/3ssim-kayak-y-lqjJpg80.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj80-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj80-10.jpg" /><span class="label">JPEG Q=80, 3SSIM-y=0.9777</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj80-d_3ssim_y_K_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/3ssim_kayak/ref-dlqj80-d_3ssim_y_K_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<h4 class="no_toc" id="legacy-notes">Legacy notes</h4>
+<p>In VQMT 14 implemented SSIM Superfast. Also MS-SSIM can be applied to three components simulteneously.</p>
+<p><a href="#top" class="toplink"></a></p>

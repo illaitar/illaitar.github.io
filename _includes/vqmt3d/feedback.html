@@ -1,0 +1,55 @@
+<link href="/assets/css/form.css" rel="stylesheet" type="text/css">
+<form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdY-cN3heXQjzuzIAzuDvDoar740YDBKCBufIjZ6kR2LIhS0g/formResponse"
+      class="block-form" id="feedback-form" method="POST" target="_blank">
+    <div>
+        <p>Do you have any feedback on previous reports? What did you find useful, or was anything lacking?</p>
+        <textarea class="autofit" data-name="name" name="entry.581391843" type="text"></textarea>
+    </div>
+
+    <div>
+        <p>What would you like to see in future reports (analysis of certain films, different metrics, charts and visualizations, etc.)?</p>
+        <textarea class="autofit" data-name="name" name="entry.427968696" type="text"></textarea>
+    </div>
+
+    <div>
+        <p><b>We are open to collaboration. If you are interested in working with us, please write your propositions:</b></p>
+        <textarea class="autofit" data-name="name" name="entry.1253416507" type="text"></textarea>
+    </div>
+
+    <div>
+        <p>Any other feedback that doesn't fit in previous fields:</p>
+        <textarea class="autofit" data-name="name" name="entry.1913335057" type="text"></textarea>
+    </div>
+
+    <input data-name="name" name="entry.49126243" placeholder="Name (optional)" type="text">
+    <input data-name="email" name="entry.1972439387" placeholder="E-mail (optional)" type="email">
+    <input type="submit" value="SEND">
+</form>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/assets/js/codecs/hevc-2018/jquery.min.js"></script>
+
+<script>
+    var span = $('<span>').css('display','inline-block')
+        .css('word-break','break-all').appendTo('body').css('visibility','hidden');
+    span.text('line');
+    var line = span.height();
+    function initSpan(textarea){
+      span.text(textarea.text())
+          .width(textarea.width())      
+          .css('font',textarea.css('font'));
+    }
+    $('textarea').on({
+        input: function(){
+          var text = $(this).val();
+          span.text(text);
+          $(this).height(text ? span.height()+line : line+line);
+        },
+        focus: function(){
+         initSpan($(this));
+        },
+        keypress: function(e){
+            if(e.which == 13) e.preventDefault();
+        }
+    });
+</script>

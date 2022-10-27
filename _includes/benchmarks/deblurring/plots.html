@@ -1,0 +1,88 @@
+<p>In this section you can observe the values of different metrics for each individual video and the average values.
+  In the "Video" selector, you can observe the names of the videos. For your convenience, the <a href="/benchmarks/inverse-tone-mapping-dataset.html"> Dataset tab</a> has a preview of each video and its full name match.</p>
+
+<div id="arrow_selector" class="mobile-plots">
+  <p style="white-space: pre;">Metric: <label for="arrow_selector_metric"></label><select id="arrow_selector_metric" name="values">
+    <option>PSNR</option>
+    <option selected="selected">SSIM</option>
+    <option>VMAF</option>
+    <option>LPIPS</option>
+    <option>ERQAv2.0</option>
+
+  </select>    Video: <label for="arrow_selector_video"></label><select id="arrow_selector_video" name="values">
+    <option>Overall</option>
+    <option>Arabic</option>
+    <option>Astro</option>
+    <option>Blanket</option>
+    <option>Camry</option>
+    <option>Dolphin dynamic</option>
+    <option>Dice</option>
+    <option>Dice flat</option>
+    <option>Dolphin static</option>
+    <option>Dragon</option>
+    <option>Falling</option>
+    <option>Lullaby & Stirling</option>
+    <option>Lullaby & Stirling 2</option>
+    <option>Knots</option>
+    <option>Lullaby</option>
+    <option>Martian</option>
+    <option>Minerals</option>
+    <option>MTG</option>
+    <option>Naturemort</option>
+    <option>Ball</option>
+    <option>Racer</option>
+    <option>Rolling</option>
+    <option>Shuttle</option>
+    <option>Stirling</option>
+  </select>
+  </p>
+
+  <div class="plot-and-arrow" style="display: flex; justify-content: center" id="plot_and_arrow">
+    <div id="arrow_plot" style="display: block; flex-grow: 1" class="highcharts-figure">
+      <script async src="/assets/js/benchmarks/deblurring/arrow.js"></script>
+    </div>
+    <img src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/vBetter.png" style="max-height: 400px">
+  </div>
+
+<!--  <style type="text/css">-->
+<!--    .plot-and-arrow {-->
+<!--      display: flex;-->
+<!--      flex-direction: row;-->
+<!--      justify-content: center;-->
+<!--    }-->
+<!--  </style>-->
+
+  <script>
+    function onChangeHelper() {
+      let speed_plot = document.getElementById("plot_and_arrow");
+      let this_div = document.getElementById("arrow_selector");
+
+      speed_plot.remove();
+      let new_plot = document.createElement('div');
+      new_plot.setAttribute("id", "plot_and_arrow");
+      new_plot.setAttribute("style", "display: flex; justify-content: center")
+      new_plot.setAttribute("class", "plot-and-arrow");
+
+      let new_arrow_plot = document.createElement('div');
+      new_arrow_plot.setAttribute("id", "arrow_plot");
+      new_arrow_plot.setAttribute("style", "display: block; flex-grow: 1")
+      new_arrow_plot.setAttribute("class", "highcharts-figure");
+
+      let new_arrow = document.createElement('img');
+      new_arrow.setAttribute("src", "https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/vBetter.png");
+      new_arrow.setAttribute("style", "max-height: 400px")
+
+      new_plot.appendChild(new_arrow_plot);
+      new_plot.appendChild(new_arrow);
+      this_div.appendChild(new_plot);
+
+      let sc = document.createElement("script");
+      sc.src = '/assets/js/benchmarks/deblurring/arrow.js';
+      new_arrow_plot.appendChild(sc);
+    }
+
+    document.getElementById("arrow_selector_video").onchange = onChangeHelper
+    // document.getElementById("arrow_selector_part").onchange = onChangeHelper
+    document.getElementById("arrow_selector_metric").onchange = onChangeHelper
+  </script>
+</div>

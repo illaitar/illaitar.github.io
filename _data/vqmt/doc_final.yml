@@ -1,0 +1,19 @@
+- name: About us
+  content: |
+      COPRESSION.RU Team initially developed MSU VQMT for the [Annual codec comparison](https://compression.ru/video/codec_comparison/index_en.html) by Graphics & Media Lab Video Group.
+
+      Video Group is a part of the Graphics & Media Lab of the Computer Science Department in Moscow State University. The history of Graphics Group began at the end of 1980's. Graphics & Media Lab was officially founded in 1998\. The main research directions of the Lab lie in different areas of Computer Graphics, Computer Vision, and Media Processing (audio, image, and video processing). Some of the research results were patented, other results were presented in a number of publications. 
+
+      The main research directions of Graphics & Media Lab Video Group are video processing (pre-, post- and video analysis filters) and video compression (codecs' testing and tuning, quality metrics research, development of codecs).
+
+      We are really glad to work many years with companies like Intel, Samsung, Huawei. RealNetworks and others. 
+
+      Mutual collaboration in areas of video processing and video compression is always interesting for us. 
+
+      Images in this documentation by Compression.RU Team and MSU Video Group distributed under the terms of Creative Commons Attribution Lincense. In the examples we used materials from the following sources:
+
+      * [https://vimeo.com/162777344](https://vimeo.com/162777344){:target="_blank"} by AJA Video Systems
+      * [https://vimeo.com/311282786](https://vimeo.com/311282786){:target="_blank"} by Harold Aune
+      * [https://vimeo.com/123907536](https://vimeo.com/123907536){:target="_blank"} by Glenn Ng
+
+      E-mail: [video-measure@compression.ru](mailto:video-measure@compression.ru)

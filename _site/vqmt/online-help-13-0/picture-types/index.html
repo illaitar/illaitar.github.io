@@ -1,0 +1,3378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15281510-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'UA-15281510-2');
+    </script>
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Video Quality Measurement Tool: Picture types</title>
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/vqmt/vqmt.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/assets/js/vqmt/interface.js"></script>
+  </head>
+  <body>
+    <div class="global-container">
+      <div class="global-content-and-header">
+        <div class="global-header">
+          <ul class="navbar">
+            <li class="navbar-header">
+              <a href="/" class="header">
+                <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+                <h1>Video processing, compression<br>
+                  and quality research group
+                  <div>Based in MSU Graphics & Media Laboratory</div>
+                </h1>
+              </a>
+              <a class="menu-toggle-button">
+                <div class="icon"></div>
+              </a>
+            </li>
+            <li>
+              <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+              <ul class="dropmenu">
+                <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+                <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+                <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+                <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+                <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+                <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+                <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+                <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+                <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+                <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+                <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+                <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+                <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+                <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+              <ul class="dropmenu">
+                <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+                <li><a href="/vqmt/">VQMT</a></li>
+                <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+                <li><a href="/datasets/">MSU Datasets Collection</a></li>
+                <li><a href="/metrics/">Metrics Research</a></li>
+                <li><a href="/video_filters/">Video Filters</a></li>
+                <li><a href="/other/">Other Projects</a></li>
+              </ul>
+            </li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contacts/">Contacts</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="tiles-width nav-current">
+            <a href="/index.html">Main page</a> &mdash;
+            <a href="/vqmt/">VQMT</a>
+          </div>
+          <div class="tiles-width markdown article">
+            <p>This is part of MSU Video Quality Measurement tool Online Help for <strong>MSU VQMT 13.0</strong></p>
+            <p>MSU Video Quality Measurement Tool (MSU VQMT) project:</p>
+            <ul>
+              <li><a href="https://compression.ru/vqmt"><strong>Main MSU VQMT page</strong></a> on compression.ru</li>
+              <li><a href="https://compression.ru/vqmt-pro"><strong>Download &amp; Purchase</strong></a> on compression.ru</li>
+              <li><a href="/vqmt/basic"><strong>Basic information</strong></a></li>
+              <li><a href="/vqmt/vqmt-doc-toc"><strong>Online help</strong></a></li>
+              <li><a href="/vqmt/metrics"><strong>Metrics reference</strong></a></li>
+              <li><a href="/vqmt/changelog"><strong>Version history &amp; Changelog</strong></a></li>
+            </ul>
+            <p>Online help for MSU VQMT 13.0 contents:</p>
+            <ul>
+              <li><a href="../help/">Command-line help</a></li>
+              <li><a href="../info/">VQMT various lists and tables</a></li>
+              <li><a href="../metrics/">Usage of VQMT metrics in CLI</a></li>
+              <li><strong>Picture types</strong></li>
+              <li><a href="../config/">Configuration description</a></li>
+              <li><a href="../../vqmt-doc-toc/">List of documentation pages for all versions</a></li>
+            </ul>
+            <h1 id="content">Content</h1>
+            <ul id="markdown-toc">
+              <li><a href="#content" id="markdown-toc-content">Content</a>    
+                <ul>
+                  <li><a href="#list-of-picture-types" id="markdown-toc-list-of-picture-types">List of picture types</a>        
+                    <ul>
+                      <li><a href="#argb-packed-8-bit-samples" id="markdown-toc-argb-packed-8-bit-samples">ARGB packed 8-bit samples</a></li>
+                      <li><a href="#argb-packed-16-bit-samples" id="markdown-toc-argb-packed-16-bit-samples">ARGB packed 16-bit samples</a></li>
+                      <li><a href="#argb-packed-float-samples" id="markdown-toc-argb-packed-float-samples">ARGB packed float samples</a></li>
+                      <li><a href="#argb-planar-8-bit-samples" id="markdown-toc-argb-planar-8-bit-samples">ARGB planar 8-bit samples</a></li>
+                      <li><a href="#argb-planar-16-bit-samples" id="markdown-toc-argb-planar-16-bit-samples">ARGB planar 16-bit samples</a></li>
+                      <li><a href="#argb-planar-float-samples" id="markdown-toc-argb-planar-float-samples">ARGB planar float samples</a></li>
+                      <li><a href="#rgb-packed-8-bit-samples" id="markdown-toc-rgb-packed-8-bit-samples">RGB packed 8-bit samples</a></li>
+                      <li><a href="#rgb-packed-16-bit-samples" id="markdown-toc-rgb-packed-16-bit-samples">RGB packed 16-bit samples</a></li>
+                      <li><a href="#rgb-packed-float-samples" id="markdown-toc-rgb-packed-float-samples">RGB packed float samples</a></li>
+                      <li><a href="#rgb-planar-8-bit-samples" id="markdown-toc-rgb-planar-8-bit-samples">RGB planar 8-bit samples</a></li>
+                      <li><a href="#rgb-planar-16-bit-samples" id="markdown-toc-rgb-planar-16-bit-samples">RGB planar 16-bit samples</a></li>
+                      <li><a href="#rgb-planar-float-samples" id="markdown-toc-rgb-planar-float-samples">RGB planar float samples</a></li>
+                      <li><a href="#yuv-planar-8-bit-samples" id="markdown-toc-yuv-planar-8-bit-samples">YUV planar 8-bit samples</a></li>
+                      <li><a href="#yuv-planar-16-bit-samples" id="markdown-toc-yuv-planar-16-bit-samples">YUV planar 16-bit samples</a></li>
+                      <li><a href="#yuv-planar-float-samples" id="markdown-toc-yuv-planar-float-samples">YUV planar float samples</a></li>
+                      <li><a href="#yuv-packed-8-bit-samples" id="markdown-toc-yuv-packed-8-bit-samples">YUV packed 8-bit samples</a></li>
+                      <li><a href="#yuv-packed-float-samples" id="markdown-toc-yuv-packed-float-samples">YUV packed float samples</a></li>
+                      <li><a href="#yuv-packed-16-bit-samples" id="markdown-toc-yuv-packed-16-bit-samples">YUV packed 16-bit samples</a></li>
+                      <li><a href="#yuv-mixed-8-bit-samples" id="markdown-toc-yuv-mixed-8-bit-samples">YUV mixed 8-bit samples</a></li>
+                      <li><a href="#yuv-mixed-float-samples" id="markdown-toc-yuv-mixed-float-samples">YUV mixed float samples</a></li>
+                      <li><a href="#yuv-mixed-16-bit-samples" id="markdown-toc-yuv-mixed-16-bit-samples">YUV mixed 16-bit samples</a></li>
+                      <li><a href="#gray-8-bit-samples" id="markdown-toc-gray-8-bit-samples">Gray 8-bit samples</a></li>
+                      <li><a href="#gray-16-bit-samples" id="markdown-toc-gray-16-bit-samples">Gray 16-bit samples</a></li>
+                      <li><a href="#gray-float-samples" id="markdown-toc-gray-float-samples">Gray float samples</a></li>
+                      <li><a href="#aliases" id="markdown-toc-aliases">Aliases</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <h2 id="list-of-picture-types">List of picture types</h2>
+            <ul>
+              <li>[fp] - floating point samples</li>
+              <li>[bp] - bits packed - samples not aligned to bytes</li>
+              <li>[LE], [BE] - little endian, big endian</li>
+              <li>[ud] - upside down - first row is bottom one</li>
+            </ul>
+            <h3 id="argb-packed-8-bit-samples">ARGB packed 8-bit samples</h3>
+            <dl class="properties">
+              <dt>ABGR32</dt>
+              <dd>packed ABGR 444 8bps</dd>
+              <dt>ABGR32u</dt>
+              <dd>packed ABGR 444 8bps [ud]</dd>
+              <dt>ABGR4</dt>
+              <dd>packed ABGR 444 1bps</dd>
+              <dt>ABGR4u</dt>
+              <dd>packed ABGR 444 1bps [ud]</dd>
+              <dt>ARGB32</dt>
+              <dd>packed ARGB 444 8bps</dd>
+              <dt>ARGB32u</dt>
+              <dd>packed ARGB 444 8bps [ud]</dd>
+              <dt>ARGB4</dt>
+              <dd>packed ARGB 444 1bps</dd>
+              <dt>ARGB4u</dt>
+              <dd>packed ARGB 444 1bps [ud]</dd>
+              <dt>BGRA32</dt>
+              <dd>packed BGRA 444 8bps</dd>
+              <dt>BGRA32u</dt>
+              <dd>packed BGRA 444 8bps [ud]</dd>
+              <dt>BGRA4</dt>
+              <dd>packed BGRA 444 1bps</dd>
+              <dt>BGRA4u</dt>
+              <dd>packed BGRA 444 1bps [ud]</dd>
+              <dt>RGBA32</dt>
+              <dd>packed RGBA 444 8bps</dd>
+              <dt>RGBA32u</dt>
+              <dd>packed RGBA 444 8bps [ud]</dd>
+              <dt>RGBA4</dt>
+              <dd>packed RGBA 444 1bps</dd>
+              <dt>RGBA4u</dt>
+              <dd>packed RGBA 444 1bps [ud]</dd>
+            </dl>
+            <h3 id="argb-packed-16-bit-samples">ARGB packed 16-bit samples</h3>
+            <dl class="properties">
+              <dt>ABGR36</dt>
+              <dd>packed ABGR 444 9bps [LE]</dd>
+              <dt>ABGR36u</dt>
+              <dd>packed ABGR 444 9bps [LE] [ud]</dd>
+              <dt>ABGR40</dt>
+              <dd>packed ABGR 444 10bps [LE]</dd>
+              <dt>ABGR40u</dt>
+              <dd>packed ABGR 444 10bps [LE] [ud]</dd>
+              <dt>ABGR48</dt>
+              <dd>packed ABGR 444 12bps [LE]</dd>
+              <dt>ABGR48u</dt>
+              <dd>packed ABGR 444 12bps [LE] [ud]</dd>
+              <dt>ABGR56</dt>
+              <dd>packed ABGR 444 14bps [LE]</dd>
+              <dt>ABGR56u</dt>
+              <dd>packed ABGR 444 14bps [LE] [ud]</dd>
+              <dt>ABGR64</dt>
+              <dd>packed ABGR 444 16bps [LE]</dd>
+              <dt>ABGR64u</dt>
+              <dd>packed ABGR 444 16bps [LE] [ud]</dd>
+              <dt>ARGB36</dt>
+              <dd>packed ARGB 444 9bps [LE]</dd>
+              <dt>ARGB36u</dt>
+              <dd>packed ARGB 444 9bps [LE] [ud]</dd>
+              <dt>ARGB40</dt>
+              <dd>packed ARGB 444 10bps [LE]</dd>
+              <dt>ARGB40u</dt>
+              <dd>packed ARGB 444 10bps [LE] [ud]</dd>
+              <dt>ARGB48</dt>
+              <dd>packed ARGB 444 12bps [LE]</dd>
+              <dt>ARGB48u</dt>
+              <dd>packed ARGB 444 12bps [LE] [ud]</dd>
+              <dt>ARGB56</dt>
+              <dd>packed ARGB 444 14bps [LE]</dd>
+              <dt>ARGB56u</dt>
+              <dd>packed ARGB 444 14bps [LE] [ud]</dd>
+              <dt>ARGB64</dt>
+              <dd>packed ARGB 444 16bps [LE]</dd>
+              <dt>ARGB64u</dt>
+              <dd>packed ARGB 444 16bps [LE] [ud]</dd>
+              <dt>BGRA36</dt>
+              <dd>packed BGRA 444 9bps [LE]</dd>
+              <dt>BGRA36u</dt>
+              <dd>packed BGRA 444 9bps [LE] [ud]</dd>
+              <dt>BGRA40</dt>
+              <dd>packed BGRA 444 10bps [LE]</dd>
+              <dt>BGRA40u</dt>
+              <dd>packed BGRA 444 10bps [LE] [ud]</dd>
+              <dt>BGRA48</dt>
+              <dd>packed BGRA 444 12bps [LE]</dd>
+              <dt>BGRA48u</dt>
+              <dd>packed BGRA 444 12bps [LE] [ud]</dd>
+              <dt>BGRA56</dt>
+              <dd>packed BGRA 444 14bps [LE]</dd>
+              <dt>BGRA56u</dt>
+              <dd>packed BGRA 444 14bps [LE] [ud]</dd>
+              <dt>BGRA64</dt>
+              <dd>packed BGRA 444 16bps [LE]</dd>
+              <dt>BGRA64u</dt>
+              <dd>packed BGRA 444 16bps [LE] [ud]</dd>
+              <dt>RGBA36</dt>
+              <dd>packed RGBA 444 9bps [LE]</dd>
+              <dt>RGBA36u</dt>
+              <dd>packed RGBA 444 9bps [LE] [ud]</dd>
+              <dt>RGBA40</dt>
+              <dd>packed RGBA 444 10bps [LE]</dd>
+              <dt>RGBA40u</dt>
+              <dd>packed RGBA 444 10bps [LE] [ud]</dd>
+              <dt>RGBA48</dt>
+              <dd>packed RGBA 444 12bps [LE]</dd>
+              <dt>RGBA48u</dt>
+              <dd>packed RGBA 444 12bps [LE] [ud]</dd>
+              <dt>RGBA56</dt>
+              <dd>packed RGBA 444 14bps [LE]</dd>
+              <dt>RGBA56u</dt>
+              <dd>packed RGBA 444 14bps [LE] [ud]</dd>
+              <dt>RGBA64</dt>
+              <dd>packed RGBA 444 16bps [LE]</dd>
+              <dt>RGBA64u</dt>
+              <dd>packed RGBA 444 16bps [LE] [ud]</dd>
+            </dl>
+            <h3 id="argb-packed-float-samples">ARGB packed float samples</h3>
+            <dl class="properties">
+              <dt>ABGRf</dt>
+              <dd>packed ABGR 444 32bps [fp]</dd>
+              <dt>ABGRfu</dt>
+              <dd>packed ABGR 444 32bps [fp] [ud]</dd>
+              <dt>ARGBf</dt>
+              <dd>packed ARGB 444 32bps [fp]</dd>
+              <dt>ARGBfu</dt>
+              <dd>packed ARGB 444 32bps [fp] [ud]</dd>
+              <dt>BGRAf</dt>
+              <dd>packed BGRA 444 32bps [fp]</dd>
+              <dt>BGRAfu</dt>
+              <dd>packed BGRA 444 32bps [fp] [ud]</dd>
+              <dt>RGBAf</dt>
+              <dd>packed RGBA 444 32bps [fp]</dd>
+              <dt>RGBAfu</dt>
+              <dd>packed RGBA 444 32bps [fp] [ud]</dd>
+            </dl>
+            <h3 id="argb-planar-8-bit-samples">ARGB planar 8-bit samples</h3>
+            <dl class="properties">
+              <dt>ARGBp</dt>
+              <dd>planar ARGB 444 8bps</dd>
+              <dt>ARGBp1</dt>
+              <dd>planar ARGB 444 1bps</dd>
+              <dt>ARGBp1p</dt>
+              <dd>planar ARGB 444 1bps [bp]</dd>
+              <dt>ARGBp1pu</dt>
+              <dd>planar ARGB 444 1bps [bp] [ud]</dd>
+              <dt>ARGBp1u</dt>
+              <dd>planar ARGB 444 1bps [ud]</dd>
+              <dt>ARGBpu</dt>
+              <dd>planar ARGB 444 8bps [ud]</dd>
+              <dt>BGRAp</dt>
+              <dd>planar BGRA 444 8bps</dd>
+              <dt>BGRAp1</dt>
+              <dd>planar BGRA 444 1bps</dd>
+              <dt>BGRAp1p</dt>
+              <dd>planar BGRA 444 1bps [bp]</dd>
+              <dt>BGRAp1pu</dt>
+              <dd>planar BGRA 444 1bps [bp] [ud]</dd>
+              <dt>BGRAp1u</dt>
+              <dd>planar BGRA 444 1bps [ud]</dd>
+              <dt>BGRApu</dt>
+              <dd>planar BGRA 444 8bps [ud]</dd>
+              <dt>RGBAp</dt>
+              <dd>planar RGBA 444 8bps</dd>
+              <dt>RGBAp1</dt>
+              <dd>planar RGBA 444 1bps</dd>
+              <dt>RGBAp1p</dt>
+              <dd>planar RGBA 444 1bps [bp]</dd>
+              <dt>RGBAp1pu</dt>
+              <dd>planar RGBA 444 1bps [bp] [ud]</dd>
+              <dt>RGBAp1u</dt>
+              <dd>planar RGBA 444 1bps [ud]</dd>
+              <dt>RGBApu</dt>
+              <dd>planar RGBA 444 8bps [ud]</dd>
+            </dl>
+            <h3 id="argb-planar-16-bit-samples">ARGB planar 16-bit samples</h3>
+            <dl class="properties">
+              <dt>ARGBp10BE</dt>
+              <dd>planar ARGB 444 10bps [BE]</dd>
+              <dt>ARGBp10BEu</dt>
+              <dd>planar ARGB 444 10bps [BE] [ud]</dd>
+              <dt>ARGBp10LE</dt>
+              <dd>planar ARGB 444 10bps [LE]</dd>
+              <dt>ARGBp10LEu</dt>
+              <dd>planar ARGB 444 10bps [LE] [ud]</dd>
+              <dt>ARGBp10p</dt>
+              <dd>planar ARGB 444 10bps [bp]</dd>
+              <dt>ARGBp10pu</dt>
+              <dd>planar ARGB 444 10bps [bp] [ud]</dd>
+              <dt>ARGBp12BE</dt>
+              <dd>planar ARGB 444 12bps [BE]</dd>
+              <dt>ARGBp12BEu</dt>
+              <dd>planar ARGB 444 12bps [BE] [ud]</dd>
+              <dt>ARGBp12LE</dt>
+              <dd>planar ARGB 444 12bps [LE]</dd>
+              <dt>ARGBp12LEu</dt>
+              <dd>planar ARGB 444 12bps [LE] [ud]</dd>
+              <dt>ARGBp12p</dt>
+              <dd>planar ARGB 444 12bps [bp]</dd>
+              <dt>ARGBp12pu</dt>
+              <dd>planar ARGB 444 12bps [bp] [ud]</dd>
+              <dt>ARGBp14BE</dt>
+              <dd>planar ARGB 444 14bps [BE]</dd>
+              <dt>ARGBp14BEu</dt>
+              <dd>planar ARGB 444 14bps [BE] [ud]</dd>
+              <dt>ARGBp14LE</dt>
+              <dd>planar ARGB 444 14bps [LE]</dd>
+              <dt>ARGBp14LEu</dt>
+              <dd>planar ARGB 444 14bps [LE] [ud]</dd>
+              <dt>ARGBp14p</dt>
+              <dd>planar ARGB 444 14bps [bp]</dd>
+              <dt>ARGBp14pu</dt>
+              <dd>planar ARGB 444 14bps [bp] [ud]</dd>
+              <dt>ARGBp16BE</dt>
+              <dd>planar ARGB 444 16bps [BE]</dd>
+              <dt>ARGBp16BEu</dt>
+              <dd>planar ARGB 444 16bps [BE] [ud]</dd>
+              <dt>ARGBp16LE</dt>
+              <dd>planar ARGB 444 16bps [LE]</dd>
+              <dt>ARGBp16LEu</dt>
+              <dd>planar ARGB 444 16bps [LE] [ud]</dd>
+              <dt>ARGBp9BE</dt>
+              <dd>planar ARGB 444 9bps [BE]</dd>
+              <dt>ARGBp9BEu</dt>
+              <dd>planar ARGB 444 9bps [BE] [ud]</dd>
+              <dt>ARGBp9LE</dt>
+              <dd>planar ARGB 444 9bps [LE]</dd>
+              <dt>ARGBp9LEu</dt>
+              <dd>planar ARGB 444 9bps [LE] [ud]</dd>
+              <dt>ARGBp9p</dt>
+              <dd>planar ARGB 444 9bps [bp]</dd>
+              <dt>ARGBp9pu</dt>
+              <dd>planar ARGB 444 9bps [bp] [ud]</dd>
+              <dt>BGRAp10BE</dt>
+              <dd>planar BGRA 444 10bps [BE]</dd>
+              <dt>BGRAp10BEu</dt>
+              <dd>planar BGRA 444 10bps [BE] [ud]</dd>
+              <dt>BGRAp10LE</dt>
+              <dd>planar BGRA 444 10bps [LE]</dd>
+              <dt>BGRAp10LEu</dt>
+              <dd>planar BGRA 444 10bps [LE] [ud]</dd>
+              <dt>BGRAp10p</dt>
+              <dd>planar BGRA 444 10bps [bp]</dd>
+              <dt>BGRAp10pu</dt>
+              <dd>planar BGRA 444 10bps [bp] [ud]</dd>
+              <dt>BGRAp12BE</dt>
+              <dd>planar BGRA 444 12bps [BE]</dd>
+              <dt>BGRAp12BEu</dt>
+              <dd>planar BGRA 444 12bps [BE] [ud]</dd>
+              <dt>BGRAp12LE</dt>
+              <dd>planar BGRA 444 12bps [LE]</dd>
+              <dt>BGRAp12LEu</dt>
+              <dd>planar BGRA 444 12bps [LE] [ud]</dd>
+              <dt>BGRAp12p</dt>
+              <dd>planar BGRA 444 12bps [bp]</dd>
+              <dt>BGRAp12pu</dt>
+              <dd>planar BGRA 444 12bps [bp] [ud]</dd>
+              <dt>BGRAp14BE</dt>
+              <dd>planar BGRA 444 14bps [BE]</dd>
+              <dt>BGRAp14BEu</dt>
+              <dd>planar BGRA 444 14bps [BE] [ud]</dd>
+              <dt>BGRAp14LE</dt>
+              <dd>planar BGRA 444 14bps [LE]</dd>
+              <dt>BGRAp14LEu</dt>
+              <dd>planar BGRA 444 14bps [LE] [ud]</dd>
+              <dt>BGRAp14p</dt>
+              <dd>planar BGRA 444 14bps [bp]</dd>
+              <dt>BGRAp14pu</dt>
+              <dd>planar BGRA 444 14bps [bp] [ud]</dd>
+              <dt>BGRAp16BE</dt>
+              <dd>planar BGRA 444 16bps [BE]</dd>
+              <dt>BGRAp16BEu</dt>
+              <dd>planar BGRA 444 16bps [BE] [ud]</dd>
+              <dt>BGRAp16LE</dt>
+              <dd>planar BGRA 444 16bps [LE]</dd>
+              <dt>BGRAp16LEu</dt>
+              <dd>planar BGRA 444 16bps [LE] [ud]</dd>
+              <dt>BGRAp9BE</dt>
+              <dd>planar BGRA 444 9bps [BE]</dd>
+              <dt>BGRAp9BEu</dt>
+              <dd>planar BGRA 444 9bps [BE] [ud]</dd>
+              <dt>BGRAp9LE</dt>
+              <dd>planar BGRA 444 9bps [LE]</dd>
+              <dt>BGRAp9LEu</dt>
+              <dd>planar BGRA 444 9bps [LE] [ud]</dd>
+              <dt>BGRAp9p</dt>
+              <dd>planar BGRA 444 9bps [bp]</dd>
+              <dt>BGRAp9pu</dt>
+              <dd>planar BGRA 444 9bps [bp] [ud]</dd>
+              <dt>RGBAp10BE</dt>
+              <dd>planar RGBA 444 10bps [BE]</dd>
+              <dt>RGBAp10BEu</dt>
+              <dd>planar RGBA 444 10bps [BE] [ud]</dd>
+              <dt>RGBAp10LE</dt>
+              <dd>planar RGBA 444 10bps [LE]</dd>
+              <dt>RGBAp10LEu</dt>
+              <dd>planar RGBA 444 10bps [LE] [ud]</dd>
+              <dt>RGBAp10p</dt>
+              <dd>planar RGBA 444 10bps [bp]</dd>
+              <dt>RGBAp10pu</dt>
+              <dd>planar RGBA 444 10bps [bp] [ud]</dd>
+              <dt>RGBAp12BE</dt>
+              <dd>planar RGBA 444 12bps [BE]</dd>
+              <dt>RGBAp12BEu</dt>
+              <dd>planar RGBA 444 12bps [BE] [ud]</dd>
+              <dt>RGBAp12LE</dt>
+              <dd>planar RGBA 444 12bps [LE]</dd>
+              <dt>RGBAp12LEu</dt>
+              <dd>planar RGBA 444 12bps [LE] [ud]</dd>
+              <dt>RGBAp12p</dt>
+              <dd>planar RGBA 444 12bps [bp]</dd>
+              <dt>RGBAp12pu</dt>
+              <dd>planar RGBA 444 12bps [bp] [ud]</dd>
+              <dt>RGBAp14BE</dt>
+              <dd>planar RGBA 444 14bps [BE]</dd>
+              <dt>RGBAp14BEu</dt>
+              <dd>planar RGBA 444 14bps [BE] [ud]</dd>
+              <dt>RGBAp14LE</dt>
+              <dd>planar RGBA 444 14bps [LE]</dd>
+              <dt>RGBAp14LEu</dt>
+              <dd>planar RGBA 444 14bps [LE] [ud]</dd>
+              <dt>RGBAp14p</dt>
+              <dd>planar RGBA 444 14bps [bp]</dd>
+              <dt>RGBAp14pu</dt>
+              <dd>planar RGBA 444 14bps [bp] [ud]</dd>
+              <dt>RGBAp16BE</dt>
+              <dd>planar RGBA 444 16bps [BE]</dd>
+              <dt>RGBAp16BEu</dt>
+              <dd>planar RGBA 444 16bps [BE] [ud]</dd>
+              <dt>RGBAp16LE</dt>
+              <dd>planar RGBA 444 16bps [LE]</dd>
+              <dt>RGBAp16LEu</dt>
+              <dd>planar RGBA 444 16bps [LE] [ud]</dd>
+              <dt>RGBAp9BE</dt>
+              <dd>planar RGBA 444 9bps [BE]</dd>
+              <dt>RGBAp9BEu</dt>
+              <dd>planar RGBA 444 9bps [BE] [ud]</dd>
+              <dt>RGBAp9LE</dt>
+              <dd>planar RGBA 444 9bps [LE]</dd>
+              <dt>RGBAp9LEu</dt>
+              <dd>planar RGBA 444 9bps [LE] [ud]</dd>
+              <dt>RGBAp9p</dt>
+              <dd>planar RGBA 444 9bps [bp]</dd>
+              <dt>RGBAp9pu</dt>
+              <dd>planar RGBA 444 9bps [bp] [ud]</dd>
+            </dl>
+            <h3 id="argb-planar-float-samples">ARGB planar float samples</h3>
+            <dl class="properties">
+              <dt>ARGBpf</dt>
+              <dd>planar ARGB 444 32bps [fp]</dd>
+              <dt>ARGBpfu</dt>
+              <dd>planar ARGB 444 32bps [fp] [ud]</dd>
+              <dt>BGRApf</dt>
+              <dd>planar BGRA 444 32bps [fp]</dd>
+              <dt>BGRApfu</dt>
+              <dd>planar BGRA 444 32bps [fp] [ud]</dd>
+              <dt>RGBApf</dt>
+              <dd>planar RGBA 444 32bps [fp]</dd>
+              <dt>RGBApfu</dt>
+              <dd>planar RGBA 444 32bps [fp] [ud]</dd>
+            </dl>
+            <h3 id="rgb-packed-8-bit-samples">RGB packed 8-bit samples</h3>
+            <dl class="properties">
+              <dt>BGR24</dt>
+              <dd>packed BGR 444 8bps</dd>
+              <dt>BGR24u</dt>
+              <dd>packed BGR 444 8bps [ud]</dd>
+              <dt>BGR3</dt>
+              <dd>packed BGR 444 1bps</dd>
+              <dt>BGR3u</dt>
+              <dd>packed BGR 444 1bps [ud]</dd>
+              <dt>BRG24</dt>
+              <dd>packed BRG 444 8bps</dd>
+              <dt>BRG24u</dt>
+              <dd>packed BRG 444 8bps [ud]</dd>
+              <dt>BRG3</dt>
+              <dd>packed BRG 444 1bps</dd>
+              <dt>BRG3u</dt>
+              <dd>packed BRG 444 1bps [ud]</dd>
+              <dt>GBR24</dt>
+              <dd>packed GBR 444 8bps</dd>
+              <dt>GBR24u</dt>
+              <dd>packed GBR 444 8bps [ud]</dd>
+              <dt>GBR3</dt>
+              <dd>packed GBR 444 1bps</dd>
+              <dt>GBR3u</dt>
+              <dd>packed GBR 444 1bps [ud]</dd>
+              <dt>GRB24</dt>
+              <dd>packed GRB 444 8bps</dd>
+              <dt>GRB24u</dt>
+              <dd>packed GRB 444 8bps [ud]</dd>
+              <dt>GRB3</dt>
+              <dd>packed GRB 444 1bps</dd>
+              <dt>GRB3u</dt>
+              <dd>packed GRB 444 1bps [ud]</dd>
+              <dt>RBG24</dt>
+              <dd>packed RBG 444 8bps</dd>
+              <dt>RBG24u</dt>
+              <dd>packed RBG 444 8bps [ud]</dd>
+              <dt>RBG3</dt>
+              <dd>packed RBG 444 1bps</dd>
+              <dt>RBG3u</dt>
+              <dd>packed RBG 444 1bps [ud]</dd>
+              <dt>RGB24</dt>
+              <dd>packed RGB 444 8bps</dd>
+              <dt>RGB24u</dt>
+              <dd>packed RGB 444 8bps [ud]</dd>
+              <dt>RGB3</dt>
+              <dd>packed RGB 444 1bps</dd>
+              <dt>RGB3u</dt>
+              <dd>packed RGB 444 1bps [ud]</dd>
+            </dl>
+            <h3 id="rgb-packed-16-bit-samples">RGB packed 16-bit samples</h3>
+            <dl class="properties">
+              <dt>BGR27</dt>
+              <dd>packed BGR 444 9bps [LE]</dd>
+              <dt>BGR27u</dt>
+              <dd>packed BGR 444 9bps [LE] [ud]</dd>
+              <dt>BGR30</dt>
+              <dd>packed BGR 444 10bps [LE]</dd>
+              <dt>BGR30u</dt>
+              <dd>packed BGR 444 10bps [LE] [ud]</dd>
+              <dt>BGR36</dt>
+              <dd>packed BGR 444 12bps [LE]</dd>
+              <dt>BGR36u</dt>
+              <dd>packed BGR 444 12bps [LE] [ud]</dd>
+              <dt>BGR42</dt>
+              <dd>packed BGR 444 14bps [LE]</dd>
+              <dt>BGR42u</dt>
+              <dd>packed BGR 444 14bps [LE] [ud]</dd>
+              <dt>BGR48</dt>
+              <dd>packed BGR 444 16bps [LE]</dd>
+              <dt>BGR48u</dt>
+              <dd>packed BGR 444 16bps [LE] [ud]</dd>
+              <dt>BRG27</dt>
+              <dd>packed BRG 444 9bps [LE]</dd>
+              <dt>BRG27u</dt>
+              <dd>packed BRG 444 9bps [LE] [ud]</dd>
+              <dt>BRG30</dt>
+              <dd>packed BRG 444 10bps [LE]</dd>
+              <dt>BRG30u</dt>
+              <dd>packed BRG 444 10bps [LE] [ud]</dd>
+              <dt>BRG36</dt>
+              <dd>packed BRG 444 12bps [LE]</dd>
+              <dt>BRG36u</dt>
+              <dd>packed BRG 444 12bps [LE] [ud]</dd>
+              <dt>BRG42</dt>
+              <dd>packed BRG 444 14bps [LE]</dd>
+              <dt>BRG42u</dt>
+              <dd>packed BRG 444 14bps [LE] [ud]</dd>
+              <dt>BRG48</dt>
+              <dd>packed BRG 444 16bps [LE]</dd>
+              <dt>BRG48u</dt>
+              <dd>packed BRG 444 16bps [LE] [ud]</dd>
+              <dt>GBR27</dt>
+              <dd>packed GBR 444 9bps [LE]</dd>
+              <dt>GBR27u</dt>
+              <dd>packed GBR 444 9bps [LE] [ud]</dd>
+              <dt>GBR30</dt>
+              <dd>packed GBR 444 10bps [LE]</dd>
+              <dt>GBR30u</dt>
+              <dd>packed GBR 444 10bps [LE] [ud]</dd>
+              <dt>GBR36</dt>
+              <dd>packed GBR 444 12bps [LE]</dd>
+              <dt>GBR36u</dt>
+              <dd>packed GBR 444 12bps [LE] [ud]</dd>
+              <dt>GBR42</dt>
+              <dd>packed GBR 444 14bps [LE]</dd>
+              <dt>GBR42u</dt>
+              <dd>packed GBR 444 14bps [LE] [ud]</dd>
+              <dt>GBR48</dt>
+              <dd>packed GBR 444 16bps [LE]</dd>
+              <dt>GBR48u</dt>
+              <dd>packed GBR 444 16bps [LE] [ud]</dd>
+              <dt>GRB27</dt>
+              <dd>packed GRB 444 9bps [LE]</dd>
+              <dt>GRB27u</dt>
+              <dd>packed GRB 444 9bps [LE] [ud]</dd>
+              <dt>GRB30</dt>
+              <dd>packed GRB 444 10bps [LE]</dd>
+              <dt>GRB30u</dt>
+              <dd>packed GRB 444 10bps [LE] [ud]</dd>
+              <dt>GRB36</dt>
+              <dd>packed GRB 444 12bps [LE]</dd>
+              <dt>GRB36u</dt>
+              <dd>packed GRB 444 12bps [LE] [ud]</dd>
+              <dt>GRB42</dt>
+              <dd>packed GRB 444 14bps [LE]</dd>
+              <dt>GRB42u</dt>
+              <dd>packed GRB 444 14bps [LE] [ud]</dd>
+              <dt>GRB48</dt>
+              <dd>packed GRB 444 16bps [LE]</dd>
+              <dt>GRB48u</dt>
+              <dd>packed GRB 444 16bps [LE] [ud]</dd>
+              <dt>RBG27</dt>
+              <dd>packed RBG 444 9bps [LE]</dd>
+              <dt>RBG27u</dt>
+              <dd>packed RBG 444 9bps [LE] [ud]</dd>
+              <dt>RBG30</dt>
+              <dd>packed RBG 444 10bps [LE]</dd>
+              <dt>RBG30u</dt>
+              <dd>packed RBG 444 10bps [LE] [ud]</dd>
+              <dt>RBG36</dt>
+              <dd>packed RBG 444 12bps [LE]</dd>
+              <dt>RBG36u</dt>
+              <dd>packed RBG 444 12bps [LE] [ud]</dd>
+              <dt>RBG42</dt>
+              <dd>packed RBG 444 14bps [LE]</dd>
+              <dt>RBG42u</dt>
+              <dd>packed RBG 444 14bps [LE] [ud]</dd>
+              <dt>RBG48</dt>
+              <dd>packed RBG 444 16bps [LE]</dd>
+              <dt>RBG48u</dt>
+              <dd>packed RBG 444 16bps [LE] [ud]</dd>
+              <dt>RGB27</dt>
+              <dd>packed RGB 444 9bps [LE]</dd>
+              <dt>RGB27u</dt>
+              <dd>packed RGB 444 9bps [LE] [ud]</dd>
+              <dt>RGB30</dt>
+              <dd>packed RGB 444 10bps [LE]</dd>
+              <dt>RGB30u</dt>
+              <dd>packed RGB 444 10bps [LE] [ud]</dd>
+              <dt>RGB36</dt>
+              <dd>packed RGB 444 12bps [LE]</dd>
+              <dt>RGB36u</dt>
+              <dd>packed RGB 444 12bps [LE] [ud]</dd>
+              <dt>RGB42</dt>
+              <dd>packed RGB 444 14bps [LE]</dd>
+              <dt>RGB42u</dt>
+              <dd>packed RGB 444 14bps [LE] [ud]</dd>
+              <dt>RGB48</dt>
+              <dd>packed RGB 444 16bps [LE]</dd>
+              <dt>RGB48u</dt>
+              <dd>packed RGB 444 16bps [LE] [ud]</dd>
+            </dl>
+            <h3 id="rgb-packed-float-samples">RGB packed float samples</h3>
+            <dl class="properties">
+              <dt>BGRf</dt>
+              <dd>packed BGR 444 32bps [fp]</dd>
+              <dt>BGRfu</dt>
+              <dd>packed BGR 444 32bps [fp] [ud]</dd>
+              <dt>BRGf</dt>
+              <dd>packed BRG 444 32bps [fp]</dd>
+              <dt>BRGfu</dt>
+              <dd>packed BRG 444 32bps [fp] [ud]</dd>
+              <dt>GBRf</dt>
+              <dd>packed GBR 444 32bps [fp]</dd>
+              <dt>GBRfu</dt>
+              <dd>packed GBR 444 32bps [fp] [ud]</dd>
+              <dt>GRBf</dt>
+              <dd>packed GRB 444 32bps [fp]</dd>
+              <dt>GRBfu</dt>
+              <dd>packed GRB 444 32bps [fp] [ud]</dd>
+              <dt>RBGf</dt>
+              <dd>packed RBG 444 32bps [fp]</dd>
+              <dt>RBGfu</dt>
+              <dd>packed RBG 444 32bps [fp] [ud]</dd>
+              <dt>RGBf</dt>
+              <dd>packed RGB 444 32bps [fp]</dd>
+              <dt>RGBfu</dt>
+              <dd>packed RGB 444 32bps [fp] [ud]</dd>
+            </dl>
+            <h3 id="rgb-planar-8-bit-samples">RGB planar 8-bit samples</h3>
+            <dl class="properties">
+              <dt>BGRp</dt>
+              <dd>planar BGR 444 8bps</dd>
+              <dt>BGRp1</dt>
+              <dd>planar BGR 444 1bps</dd>
+              <dt>BGRp1p</dt>
+              <dd>planar BGR 444 1bps [bp]</dd>
+              <dt>BGRp1pu</dt>
+              <dd>planar BGR 444 1bps [bp] [ud]</dd>
+              <dt>BGRp1u</dt>
+              <dd>planar BGR 444 1bps [ud]</dd>
+              <dt>BGRpu</dt>
+              <dd>planar BGR 444 8bps [ud]</dd>
+              <dt>BRGp</dt>
+              <dd>planar BRG 444 8bps</dd>
+              <dt>BRGp1</dt>
+              <dd>planar BRG 444 1bps</dd>
+              <dt>BRGp1p</dt>
+              <dd>planar BRG 444 1bps [bp]</dd>
+              <dt>BRGp1pu</dt>
+              <dd>planar BRG 444 1bps [bp] [ud]</dd>
+              <dt>BRGp1u</dt>
+              <dd>planar BRG 444 1bps [ud]</dd>
+              <dt>BRGpu</dt>
+              <dd>planar BRG 444 8bps [ud]</dd>
+              <dt>GBRp</dt>
+              <dd>planar GBR 444 8bps</dd>
+              <dt>GBRp1</dt>
+              <dd>planar GBR 444 1bps</dd>
+              <dt>GBRp1p</dt>
+              <dd>planar GBR 444 1bps [bp]</dd>
+              <dt>GBRp1pu</dt>
+              <dd>planar GBR 444 1bps [bp] [ud]</dd>
+              <dt>GBRp1u</dt>
+              <dd>planar GBR 444 1bps [ud]</dd>
+              <dt>GBRpu</dt>
+              <dd>planar GBR 444 8bps [ud]</dd>
+              <dt>GRBp</dt>
+              <dd>planar GRB 444 8bps</dd>
+              <dt>GRBp1</dt>
+              <dd>planar GRB 444 1bps</dd>
+              <dt>GRBp1p</dt>
+              <dd>planar GRB 444 1bps [bp]</dd>
+              <dt>GRBp1pu</dt>
+              <dd>planar GRB 444 1bps [bp] [ud]</dd>
+              <dt>GRBp1u</dt>
+              <dd>planar GRB 444 1bps [ud]</dd>
+              <dt>GRBpu</dt>
+              <dd>planar GRB 444 8bps [ud]</dd>
+              <dt>RBGp</dt>
+              <dd>planar RBG 444 8bps</dd>
+              <dt>RBGp1</dt>
+              <dd>planar RBG 444 1bps</dd>
+              <dt>RBGp1p</dt>
+              <dd>planar RBG 444 1bps [bp]</dd>
+              <dt>RBGp1pu</dt>
+              <dd>planar RBG 444 1bps [bp] [ud]</dd>
+              <dt>RBGp1u</dt>
+              <dd>planar RBG 444 1bps [ud]</dd>
+              <dt>RBGpu</dt>
+              <dd>planar RBG 444 8bps [ud]</dd>
+              <dt>RGBp</dt>
+              <dd>planar RGB 444 8bps</dd>
+              <dt>RGBp1</dt>
+              <dd>planar RGB 444 1bps</dd>
+              <dt>RGBp1p</dt>
+              <dd>planar RGB 444 1bps [bp]</dd>
+              <dt>RGBp1pu</dt>
+              <dd>planar RGB 444 1bps [bp] [ud]</dd>
+              <dt>RGBp1u</dt>
+              <dd>planar RGB 444 1bps [ud]</dd>
+              <dt>RGBpu</dt>
+              <dd>planar RGB 444 8bps [ud]</dd>
+            </dl>
+            <h3 id="rgb-planar-16-bit-samples">RGB planar 16-bit samples</h3>
+            <dl class="properties">
+              <dt>BGRp10BE</dt>
+              <dd>planar BGR 444 10bps [BE]</dd>
+              <dt>BGRp10BEu</dt>
+              <dd>planar BGR 444 10bps [BE] [ud]</dd>
+              <dt>BGRp10LE</dt>
+              <dd>planar BGR 444 10bps [LE]</dd>
+              <dt>BGRp10LEu</dt>
+              <dd>planar BGR 444 10bps [LE] [ud]</dd>
+              <dt>BGRp10p</dt>
+              <dd>planar BGR 444 10bps [bp]</dd>
+              <dt>BGRp10pu</dt>
+              <dd>planar BGR 444 10bps [bp] [ud]</dd>
+              <dt>BGRp12BE</dt>
+              <dd>planar BGR 444 12bps [BE]</dd>
+              <dt>BGRp12BEu</dt>
+              <dd>planar BGR 444 12bps [BE] [ud]</dd>
+              <dt>BGRp12LE</dt>
+              <dd>planar BGR 444 12bps [LE]</dd>
+              <dt>BGRp12LEu</dt>
+              <dd>planar BGR 444 12bps [LE] [ud]</dd>
+              <dt>BGRp12p</dt>
+              <dd>planar BGR 444 12bps [bp]</dd>
+              <dt>BGRp12pu</dt>
+              <dd>planar BGR 444 12bps [bp] [ud]</dd>
+              <dt>BGRp14BE</dt>
+              <dd>planar BGR 444 14bps [BE]</dd>
+              <dt>BGRp14BEu</dt>
+              <dd>planar BGR 444 14bps [BE] [ud]</dd>
+              <dt>BGRp14LE</dt>
+              <dd>planar BGR 444 14bps [LE]</dd>
+              <dt>BGRp14LEu</dt>
+              <dd>planar BGR 444 14bps [LE] [ud]</dd>
+              <dt>BGRp14p</dt>
+              <dd>planar BGR 444 14bps [bp]</dd>
+              <dt>BGRp14pu</dt>
+              <dd>planar BGR 444 14bps [bp] [ud]</dd>
+              <dt>BGRp16BE</dt>
+              <dd>planar BGR 444 16bps [BE]</dd>
+              <dt>BGRp16BEu</dt>
+              <dd>planar BGR 444 16bps [BE] [ud]</dd>
+              <dt>BGRp16LE</dt>
+              <dd>planar BGR 444 16bps [LE]</dd>
+              <dt>BGRp16LEu</dt>
+              <dd>planar BGR 444 16bps [LE] [ud]</dd>
+              <dt>BGRp9BE</dt>
+              <dd>planar BGR 444 9bps [BE]</dd>
+              <dt>BGRp9BEu</dt>
+              <dd>planar BGR 444 9bps [BE] [ud]</dd>
+              <dt>BGRp9LE</dt>
+              <dd>planar BGR 444 9bps [LE]</dd>
+              <dt>BGRp9LEu</dt>
+              <dd>planar BGR 444 9bps [LE] [ud]</dd>
+              <dt>BGRp9p</dt>
+              <dd>planar BGR 444 9bps [bp]</dd>
+              <dt>BGRp9pu</dt>
+              <dd>planar BGR 444 9bps [bp] [ud]</dd>
+              <dt>BRGp10BE</dt>
+              <dd>planar BRG 444 10bps [BE]</dd>
+              <dt>BRGp10BEu</dt>
+              <dd>planar BRG 444 10bps [BE] [ud]</dd>
+              <dt>BRGp10LE</dt>
+              <dd>planar BRG 444 10bps [LE]</dd>
+              <dt>BRGp10LEu</dt>
+              <dd>planar BRG 444 10bps [LE] [ud]</dd>
+              <dt>BRGp10p</dt>
+              <dd>planar BRG 444 10bps [bp]</dd>
+              <dt>BRGp10pu</dt>
+              <dd>planar BRG 444 10bps [bp] [ud]</dd>
+              <dt>BRGp12BE</dt>
+              <dd>planar BRG 444 12bps [BE]</dd>
+              <dt>BRGp12BEu</dt>
+              <dd>planar BRG 444 12bps [BE] [ud]</dd>
+              <dt>BRGp12LE</dt>
+              <dd>planar BRG 444 12bps [LE]</dd>
+              <dt>BRGp12LEu</dt>
+              <dd>planar BRG 444 12bps [LE] [ud]</dd>
+              <dt>BRGp12p</dt>
+              <dd>planar BRG 444 12bps [bp]</dd>
+              <dt>BRGp12pu</dt>
+              <dd>planar BRG 444 12bps [bp] [ud]</dd>
+              <dt>BRGp14BE</dt>
+              <dd>planar BRG 444 14bps [BE]</dd>
+              <dt>BRGp14BEu</dt>
+              <dd>planar BRG 444 14bps [BE] [ud]</dd>
+              <dt>BRGp14LE</dt>
+              <dd>planar BRG 444 14bps [LE]</dd>
+              <dt>BRGp14LEu</dt>
+              <dd>planar BRG 444 14bps [LE] [ud]</dd>
+              <dt>BRGp14p</dt>
+              <dd>planar BRG 444 14bps [bp]</dd>
+              <dt>BRGp14pu</dt>
+              <dd>planar BRG 444 14bps [bp] [ud]</dd>
+              <dt>BRGp16BE</dt>
+              <dd>planar BRG 444 16bps [BE]</dd>
+              <dt>BRGp16BEu</dt>
+              <dd>planar BRG 444 16bps [BE] [ud]</dd>
+              <dt>BRGp16LE</dt>
+              <dd>planar BRG 444 16bps [LE]</dd>
+              <dt>BRGp16LEu</dt>
+              <dd>planar BRG 444 16bps [LE] [ud]</dd>
+              <dt>BRGp9BE</dt>
+              <dd>planar BRG 444 9bps [BE]</dd>
+              <dt>BRGp9BEu</dt>
+              <dd>planar BRG 444 9bps [BE] [ud]</dd>
+              <dt>BRGp9LE</dt>
+              <dd>planar BRG 444 9bps [LE]</dd>
+              <dt>BRGp9LEu</dt>
+              <dd>planar BRG 444 9bps [LE] [ud]</dd>
+              <dt>BRGp9p</dt>
+              <dd>planar BRG 444 9bps [bp]</dd>
+              <dt>BRGp9pu</dt>
+              <dd>planar BRG 444 9bps [bp] [ud]</dd>
+              <dt>GBRp10BE</dt>
+              <dd>planar GBR 444 10bps [BE]</dd>
+              <dt>GBRp10BEu</dt>
+              <dd>planar GBR 444 10bps [BE] [ud]</dd>
+              <dt>GBRp10LE</dt>
+              <dd>planar GBR 444 10bps [LE]</dd>
+              <dt>GBRp10LEu</dt>
+              <dd>planar GBR 444 10bps [LE] [ud]</dd>
+              <dt>GBRp10p</dt>
+              <dd>planar GBR 444 10bps [bp]</dd>
+              <dt>GBRp10pu</dt>
+              <dd>planar GBR 444 10bps [bp] [ud]</dd>
+              <dt>GBRp12BE</dt>
+              <dd>planar GBR 444 12bps [BE]</dd>
+              <dt>GBRp12BEu</dt>
+              <dd>planar GBR 444 12bps [BE] [ud]</dd>
+              <dt>GBRp12LE</dt>
+              <dd>planar GBR 444 12bps [LE]</dd>
+              <dt>GBRp12LEu</dt>
+              <dd>planar GBR 444 12bps [LE] [ud]</dd>
+              <dt>GBRp12p</dt>
+              <dd>planar GBR 444 12bps [bp]</dd>
+              <dt>GBRp12pu</dt>
+              <dd>planar GBR 444 12bps [bp] [ud]</dd>
+              <dt>GBRp14BE</dt>
+              <dd>planar GBR 444 14bps [BE]</dd>
+              <dt>GBRp14BEu</dt>
+              <dd>planar GBR 444 14bps [BE] [ud]</dd>
+              <dt>GBRp14LE</dt>
+              <dd>planar GBR 444 14bps [LE]</dd>
+              <dt>GBRp14LEu</dt>
+              <dd>planar GBR 444 14bps [LE] [ud]</dd>
+              <dt>GBRp14p</dt>
+              <dd>planar GBR 444 14bps [bp]</dd>
+              <dt>GBRp14pu</dt>
+              <dd>planar GBR 444 14bps [bp] [ud]</dd>
+              <dt>GBRp16BE</dt>
+              <dd>planar GBR 444 16bps [BE]</dd>
+              <dt>GBRp16BEu</dt>
+              <dd>planar GBR 444 16bps [BE] [ud]</dd>
+              <dt>GBRp16LE</dt>
+              <dd>planar GBR 444 16bps [LE]</dd>
+              <dt>GBRp16LEu</dt>
+              <dd>planar GBR 444 16bps [LE] [ud]</dd>
+              <dt>GBRp9BE</dt>
+              <dd>planar GBR 444 9bps [BE]</dd>
+              <dt>GBRp9BEu</dt>
+              <dd>planar GBR 444 9bps [BE] [ud]</dd>
+              <dt>GBRp9LE</dt>
+              <dd>planar GBR 444 9bps [LE]</dd>
+              <dt>GBRp9LEu</dt>
+              <dd>planar GBR 444 9bps [LE] [ud]</dd>
+              <dt>GBRp9p</dt>
+              <dd>planar GBR 444 9bps [bp]</dd>
+              <dt>GBRp9pu</dt>
+              <dd>planar GBR 444 9bps [bp] [ud]</dd>
+              <dt>GRBp10BE</dt>
+              <dd>planar GRB 444 10bps [BE]</dd>
+              <dt>GRBp10BEu</dt>
+              <dd>planar GRB 444 10bps [BE] [ud]</dd>
+              <dt>GRBp10LE</dt>
+              <dd>planar GRB 444 10bps [LE]</dd>
+              <dt>GRBp10LEu</dt>
+              <dd>planar GRB 444 10bps [LE] [ud]</dd>
+              <dt>GRBp10p</dt>
+              <dd>planar GRB 444 10bps [bp]</dd>
+              <dt>GRBp10pu</dt>
+              <dd>planar GRB 444 10bps [bp] [ud]</dd>
+              <dt>GRBp12BE</dt>
+              <dd>planar GRB 444 12bps [BE]</dd>
+              <dt>GRBp12BEu</dt>
+              <dd>planar GRB 444 12bps [BE] [ud]</dd>
+              <dt>GRBp12LE</dt>
+              <dd>planar GRB 444 12bps [LE]</dd>
+              <dt>GRBp12LEu</dt>
+              <dd>planar GRB 444 12bps [LE] [ud]</dd>
+              <dt>GRBp12p</dt>
+              <dd>planar GRB 444 12bps [bp]</dd>
+              <dt>GRBp12pu</dt>
+              <dd>planar GRB 444 12bps [bp] [ud]</dd>
+              <dt>GRBp14BE</dt>
+              <dd>planar GRB 444 14bps [BE]</dd>
+              <dt>GRBp14BEu</dt>
+              <dd>planar GRB 444 14bps [BE] [ud]</dd>
+              <dt>GRBp14LE</dt>
+              <dd>planar GRB 444 14bps [LE]</dd>
+              <dt>GRBp14LEu</dt>
+              <dd>planar GRB 444 14bps [LE] [ud]</dd>
+              <dt>GRBp14p</dt>
+              <dd>planar GRB 444 14bps [bp]</dd>
+              <dt>GRBp14pu</dt>
+              <dd>planar GRB 444 14bps [bp] [ud]</dd>
+              <dt>GRBp16BE</dt>
+              <dd>planar GRB 444 16bps [BE]</dd>
+              <dt>GRBp16BEu</dt>
+              <dd>planar GRB 444 16bps [BE] [ud]</dd>
+              <dt>GRBp16LE</dt>
+              <dd>planar GRB 444 16bps [LE]</dd>
+              <dt>GRBp16LEu</dt>
+              <dd>planar GRB 444 16bps [LE] [ud]</dd>
+              <dt>GRBp9BE</dt>
+              <dd>planar GRB 444 9bps [BE]</dd>
+              <dt>GRBp9BEu</dt>
+              <dd>planar GRB 444 9bps [BE] [ud]</dd>
+              <dt>GRBp9LE</dt>
+              <dd>planar GRB 444 9bps [LE]</dd>
+              <dt>GRBp9LEu</dt>
+              <dd>planar GRB 444 9bps [LE] [ud]</dd>
+              <dt>GRBp9p</dt>
+              <dd>planar GRB 444 9bps [bp]</dd>
+              <dt>GRBp9pu</dt>
+              <dd>planar GRB 444 9bps [bp] [ud]</dd>
+              <dt>RBGp10BE</dt>
+              <dd>planar RBG 444 10bps [BE]</dd>
+              <dt>RBGp10BEu</dt>
+              <dd>planar RBG 444 10bps [BE] [ud]</dd>
+              <dt>RBGp10LE</dt>
+              <dd>planar RBG 444 10bps [LE]</dd>
+              <dt>RBGp10LEu</dt>
+              <dd>planar RBG 444 10bps [LE] [ud]</dd>
+              <dt>RBGp10p</dt>
+              <dd>planar RBG 444 10bps [bp]</dd>
+              <dt>RBGp10pu</dt>
+              <dd>planar RBG 444 10bps [bp] [ud]</dd>
+              <dt>RBGp12BE</dt>
+              <dd>planar RBG 444 12bps [BE]</dd>
+              <dt>RBGp12BEu</dt>
+              <dd>planar RBG 444 12bps [BE] [ud]</dd>
+              <dt>RBGp12LE</dt>
+              <dd>planar RBG 444 12bps [LE]</dd>
+              <dt>RBGp12LEu</dt>
+              <dd>planar RBG 444 12bps [LE] [ud]</dd>
+              <dt>RBGp12p</dt>
+              <dd>planar RBG 444 12bps [bp]</dd>
+              <dt>RBGp12pu</dt>
+              <dd>planar RBG 444 12bps [bp] [ud]</dd>
+              <dt>RBGp14BE</dt>
+              <dd>planar RBG 444 14bps [BE]</dd>
+              <dt>RBGp14BEu</dt>
+              <dd>planar RBG 444 14bps [BE] [ud]</dd>
+              <dt>RBGp14LE</dt>
+              <dd>planar RBG 444 14bps [LE]</dd>
+              <dt>RBGp14LEu</dt>
+              <dd>planar RBG 444 14bps [LE] [ud]</dd>
+              <dt>RBGp14p</dt>
+              <dd>planar RBG 444 14bps [bp]</dd>
+              <dt>RBGp14pu</dt>
+              <dd>planar RBG 444 14bps [bp] [ud]</dd>
+              <dt>RBGp16BE</dt>
+              <dd>planar RBG 444 16bps [BE]</dd>
+              <dt>RBGp16BEu</dt>
+              <dd>planar RBG 444 16bps [BE] [ud]</dd>
+              <dt>RBGp16LE</dt>
+              <dd>planar RBG 444 16bps [LE]</dd>
+              <dt>RBGp16LEu</dt>
+              <dd>planar RBG 444 16bps [LE] [ud]</dd>
+              <dt>RBGp9BE</dt>
+              <dd>planar RBG 444 9bps [BE]</dd>
+              <dt>RBGp9BEu</dt>
+              <dd>planar RBG 444 9bps [BE] [ud]</dd>
+              <dt>RBGp9LE</dt>
+              <dd>planar RBG 444 9bps [LE]</dd>
+              <dt>RBGp9LEu</dt>
+              <dd>planar RBG 444 9bps [LE] [ud]</dd>
+              <dt>RBGp9p</dt>
+              <dd>planar RBG 444 9bps [bp]</dd>
+              <dt>RBGp9pu</dt>
+              <dd>planar RBG 444 9bps [bp] [ud]</dd>
+              <dt>RGBp10BE</dt>
+              <dd>planar RGB 444 10bps [BE]</dd>
+              <dt>RGBp10BEu</dt>
+              <dd>planar RGB 444 10bps [BE] [ud]</dd>
+              <dt>RGBp10LE</dt>
+              <dd>planar RGB 444 10bps [LE]</dd>
+              <dt>RGBp10LEu</dt>
+              <dd>planar RGB 444 10bps [LE] [ud]</dd>
+              <dt>RGBp10p</dt>
+              <dd>planar RGB 444 10bps [bp]</dd>
+              <dt>RGBp10pu</dt>
+              <dd>planar RGB 444 10bps [bp] [ud]</dd>
+              <dt>RGBp12BE</dt>
+              <dd>planar RGB 444 12bps [BE]</dd>
+              <dt>RGBp12BEu</dt>
+              <dd>planar RGB 444 12bps [BE] [ud]</dd>
+              <dt>RGBp12LE</dt>
+              <dd>planar RGB 444 12bps [LE]</dd>
+              <dt>RGBp12LEu</dt>
+              <dd>planar RGB 444 12bps [LE] [ud]</dd>
+              <dt>RGBp12p</dt>
+              <dd>planar RGB 444 12bps [bp]</dd>
+              <dt>RGBp12pu</dt>
+              <dd>planar RGB 444 12bps [bp] [ud]</dd>
+              <dt>RGBp14BE</dt>
+              <dd>planar RGB 444 14bps [BE]</dd>
+              <dt>RGBp14BEu</dt>
+              <dd>planar RGB 444 14bps [BE] [ud]</dd>
+              <dt>RGBp14LE</dt>
+              <dd>planar RGB 444 14bps [LE]</dd>
+              <dt>RGBp14LEu</dt>
+              <dd>planar RGB 444 14bps [LE] [ud]</dd>
+              <dt>RGBp14p</dt>
+              <dd>planar RGB 444 14bps [bp]</dd>
+              <dt>RGBp14pu</dt>
+              <dd>planar RGB 444 14bps [bp] [ud]</dd>
+              <dt>RGBp16BE</dt>
+              <dd>planar RGB 444 16bps [BE]</dd>
+              <dt>RGBp16BEu</dt>
+              <dd>planar RGB 444 16bps [BE] [ud]</dd>
+              <dt>RGBp16LE</dt>
+              <dd>planar RGB 444 16bps [LE]</dd>
+              <dt>RGBp16LEu</dt>
+              <dd>planar RGB 444 16bps [LE] [ud]</dd>
+              <dt>RGBp9BE</dt>
+              <dd>planar RGB 444 9bps [BE]</dd>
+              <dt>RGBp9BEu</dt>
+              <dd>planar RGB 444 9bps [BE] [ud]</dd>
+              <dt>RGBp9LE</dt>
+              <dd>planar RGB 444 9bps [LE]</dd>
+              <dt>RGBp9LEu</dt>
+              <dd>planar RGB 444 9bps [LE] [ud]</dd>
+              <dt>RGBp9p</dt>
+              <dd>planar RGB 444 9bps [bp]</dd>
+              <dt>RGBp9pu</dt>
+              <dd>planar RGB 444 9bps [bp] [ud]</dd>
+            </dl>
+            <h3 id="rgb-planar-float-samples">RGB planar float samples</h3>
+            <dl class="properties">
+              <dt>BGRpf</dt>
+              <dd>planar BGR 444 32bps [fp]</dd>
+              <dt>BGRpfu</dt>
+              <dd>planar BGR 444 32bps [fp] [ud]</dd>
+              <dt>BRGpf</dt>
+              <dd>planar BRG 444 32bps [fp]</dd>
+              <dt>BRGpfu</dt>
+              <dd>planar BRG 444 32bps [fp] [ud]</dd>
+              <dt>GBRpf</dt>
+              <dd>planar GBR 444 32bps [fp]</dd>
+              <dt>GBRpfu</dt>
+              <dd>planar GBR 444 32bps [fp] [ud]</dd>
+              <dt>GRBpf</dt>
+              <dd>planar GRB 444 32bps [fp]</dd>
+              <dt>GRBpfu</dt>
+              <dd>planar GRB 444 32bps [fp] [ud]</dd>
+              <dt>RBGpf</dt>
+              <dd>planar RBG 444 32bps [fp]</dd>
+              <dt>RBGpfu</dt>
+              <dd>planar RBG 444 32bps [fp] [ud]</dd>
+              <dt>RGBpf</dt>
+              <dd>planar RGB 444 32bps [fp]</dd>
+              <dt>RGBpfu</dt>
+              <dd>planar RGB 444 32bps [fp] [ud]</dd>
+            </dl>
+            <h3 id="yuv-planar-8-bit-samples">YUV planar 8-bit samples</h3>
+            <dl class="properties">
+              <dt>UYV410p</dt>
+              <dd>planar UYV 410 8bps</dd>
+              <dt>UYV410p1</dt>
+              <dd>planar UYV 410 1bps</dd>
+              <dt>UYV410p1p</dt>
+              <dd>planar UYV 410 1bps [bp]</dd>
+              <dt>UYV410p1pu</dt>
+              <dd>planar UYV 410 1bps [bp] [ud]</dd>
+              <dt>UYV410p1u</dt>
+              <dd>planar UYV 410 1bps [ud]</dd>
+              <dt>UYV410pu</dt>
+              <dd>planar UYV 410 8bps [ud]</dd>
+              <dt>UYV411p</dt>
+              <dd>planar UYV 411 8bps</dd>
+              <dt>UYV411p1</dt>
+              <dd>planar UYV 411 1bps</dd>
+              <dt>UYV411p1p</dt>
+              <dd>planar UYV 411 1bps [bp]</dd>
+              <dt>UYV411p1pu</dt>
+              <dd>planar UYV 411 1bps [bp] [ud]</dd>
+              <dt>UYV411p1u</dt>
+              <dd>planar UYV 411 1bps [ud]</dd>
+              <dt>UYV411pu</dt>
+              <dd>planar UYV 411 8bps [ud]</dd>
+              <dt>UYV420p</dt>
+              <dd>planar UYV 420 8bps</dd>
+              <dt>UYV420p1</dt>
+              <dd>planar UYV 420 1bps</dd>
+              <dt>UYV420p1p</dt>
+              <dd>planar UYV 420 1bps [bp]</dd>
+              <dt>UYV420p1pu</dt>
+              <dd>planar UYV 420 1bps [bp] [ud]</dd>
+              <dt>UYV420p1u</dt>
+              <dd>planar UYV 420 1bps [ud]</dd>
+              <dt>UYV420pu</dt>
+              <dd>planar UYV 420 8bps [ud]</dd>
+              <dt>UYV422p</dt>
+              <dd>planar UYV 422 8bps</dd>
+              <dt>UYV422p1</dt>
+              <dd>planar UYV 422 1bps</dd>
+              <dt>UYV422p1p</dt>
+              <dd>planar UYV 422 1bps [bp]</dd>
+              <dt>UYV422p1pu</dt>
+              <dd>planar UYV 422 1bps [bp] [ud]</dd>
+              <dt>UYV422p1u</dt>
+              <dd>planar UYV 422 1bps [ud]</dd>
+              <dt>UYV422pu</dt>
+              <dd>planar UYV 422 8bps [ud]</dd>
+              <dt>UYV444p</dt>
+              <dd>planar UYV 444 8bps</dd>
+              <dt>UYV444p1</dt>
+              <dd>planar UYV 444 1bps</dd>
+              <dt>UYV444p1p</dt>
+              <dd>planar UYV 444 1bps [bp]</dd>
+              <dt>UYV444p1pu</dt>
+              <dd>planar UYV 444 1bps [bp] [ud]</dd>
+              <dt>UYV444p1u</dt>
+              <dd>planar UYV 444 1bps [ud]</dd>
+              <dt>UYV444pu</dt>
+              <dd>planar UYV 444 8bps [ud]</dd>
+              <dt>YUV410p</dt>
+              <dd>planar YUV 410 8bps</dd>
+              <dt>YUV410p1</dt>
+              <dd>planar YUV 410 1bps</dd>
+              <dt>YUV410p1p</dt>
+              <dd>planar YUV 410 1bps [bp]</dd>
+              <dt>YUV410p1pu</dt>
+              <dd>planar YUV 410 1bps [bp] [ud]</dd>
+              <dt>YUV410p1u</dt>
+              <dd>planar YUV 410 1bps [ud]</dd>
+              <dt>YUV410pu</dt>
+              <dd>planar YUV 410 8bps [ud]</dd>
+              <dt>YUV411p</dt>
+              <dd>planar YUV 411 8bps</dd>
+              <dt>YUV411p1</dt>
+              <dd>planar YUV 411 1bps</dd>
+              <dt>YUV411p1p</dt>
+              <dd>planar YUV 411 1bps [bp]</dd>
+              <dt>YUV411p1pu</dt>
+              <dd>planar YUV 411 1bps [bp] [ud]</dd>
+              <dt>YUV411p1u</dt>
+              <dd>planar YUV 411 1bps [ud]</dd>
+              <dt>YUV411pu</dt>
+              <dd>planar YUV 411 8bps [ud]</dd>
+              <dt>YUV420p</dt>
+              <dd>planar YUV 420 8bps</dd>
+              <dt>YUV420p1</dt>
+              <dd>planar YUV 420 1bps</dd>
+              <dt>YUV420p1p</dt>
+              <dd>planar YUV 420 1bps [bp]</dd>
+              <dt>YUV420p1pu</dt>
+              <dd>planar YUV 420 1bps [bp] [ud]</dd>
+              <dt>YUV420p1u</dt>
+              <dd>planar YUV 420 1bps [ud]</dd>
+              <dt>YUV420pu</dt>
+              <dd>planar YUV 420 8bps [ud]</dd>
+              <dt>YUV422p</dt>
+              <dd>planar YUV 422 8bps</dd>
+              <dt>YUV422p1</dt>
+              <dd>planar YUV 422 1bps</dd>
+              <dt>YUV422p1p</dt>
+              <dd>planar YUV 422 1bps [bp]</dd>
+              <dt>YUV422p1pu</dt>
+              <dd>planar YUV 422 1bps [bp] [ud]</dd>
+              <dt>YUV422p1u</dt>
+              <dd>planar YUV 422 1bps [ud]</dd>
+              <dt>YUV422pu</dt>
+              <dd>planar YUV 422 8bps [ud]</dd>
+              <dt>YUV444p</dt>
+              <dd>planar YUV 444 8bps</dd>
+              <dt>YUV444p1</dt>
+              <dd>planar YUV 444 1bps</dd>
+              <dt>YUV444p1p</dt>
+              <dd>planar YUV 444 1bps [bp]</dd>
+              <dt>YUV444p1pu</dt>
+              <dd>planar YUV 444 1bps [bp] [ud]</dd>
+              <dt>YUV444p1u</dt>
+              <dd>planar YUV 444 1bps [ud]</dd>
+              <dt>YUV444pu</dt>
+              <dd>planar YUV 444 8bps [ud]</dd>
+              <dt>YVU410p</dt>
+              <dd>planar YVU 410 8bps</dd>
+              <dt>YVU410p1</dt>
+              <dd>planar YVU 410 1bps</dd>
+              <dt>YVU410p1p</dt>
+              <dd>planar YVU 410 1bps [bp]</dd>
+              <dt>YVU410p1pu</dt>
+              <dd>planar YVU 410 1bps [bp] [ud]</dd>
+              <dt>YVU410p1u</dt>
+              <dd>planar YVU 410 1bps [ud]</dd>
+              <dt>YVU410pu</dt>
+              <dd>planar YVU 410 8bps [ud]</dd>
+              <dt>YVU411p</dt>
+              <dd>planar YVU 411 8bps</dd>
+              <dt>YVU411p1</dt>
+              <dd>planar YVU 411 1bps</dd>
+              <dt>YVU411p1p</dt>
+              <dd>planar YVU 411 1bps [bp]</dd>
+              <dt>YVU411p1pu</dt>
+              <dd>planar YVU 411 1bps [bp] [ud]</dd>
+              <dt>YVU411p1u</dt>
+              <dd>planar YVU 411 1bps [ud]</dd>
+              <dt>YVU411pu</dt>
+              <dd>planar YVU 411 8bps [ud]</dd>
+              <dt>YVU420p</dt>
+              <dd>planar YVU 420 8bps</dd>
+              <dt>YVU420p1</dt>
+              <dd>planar YVU 420 1bps</dd>
+              <dt>YVU420p1p</dt>
+              <dd>planar YVU 420 1bps [bp]</dd>
+              <dt>YVU420p1pu</dt>
+              <dd>planar YVU 420 1bps [bp] [ud]</dd>
+              <dt>YVU420p1u</dt>
+              <dd>planar YVU 420 1bps [ud]</dd>
+              <dt>YVU420pu</dt>
+              <dd>planar YVU 420 8bps [ud]</dd>
+              <dt>YVU422p</dt>
+              <dd>planar YVU 422 8bps</dd>
+              <dt>YVU422p1</dt>
+              <dd>planar YVU 422 1bps</dd>
+              <dt>YVU422p1p</dt>
+              <dd>planar YVU 422 1bps [bp]</dd>
+              <dt>YVU422p1pu</dt>
+              <dd>planar YVU 422 1bps [bp] [ud]</dd>
+              <dt>YVU422p1u</dt>
+              <dd>planar YVU 422 1bps [ud]</dd>
+              <dt>YVU422pu</dt>
+              <dd>planar YVU 422 8bps [ud]</dd>
+              <dt>YVU444p</dt>
+              <dd>planar YVU 444 8bps</dd>
+              <dt>YVU444p1</dt>
+              <dd>planar YVU 444 1bps</dd>
+              <dt>YVU444p1p</dt>
+              <dd>planar YVU 444 1bps [bp]</dd>
+              <dt>YVU444p1pu</dt>
+              <dd>planar YVU 444 1bps [bp] [ud]</dd>
+              <dt>YVU444p1u</dt>
+              <dd>planar YVU 444 1bps [ud]</dd>
+              <dt>YVU444pu</dt>
+              <dd>planar YVU 444 8bps [ud]</dd>
+            </dl>
+            <h3 id="yuv-planar-16-bit-samples">YUV planar 16-bit samples</h3>
+            <dl class="properties">
+              <dt>UYV410p10BE</dt>
+              <dd>planar UYV 410 10bps [BE]</dd>
+              <dt>UYV410p10BEu</dt>
+              <dd>planar UYV 410 10bps [BE] [ud]</dd>
+              <dt>UYV410p10LE</dt>
+              <dd>planar UYV 410 10bps [LE]</dd>
+              <dt>UYV410p10LEu</dt>
+              <dd>planar UYV 410 10bps [LE] [ud]</dd>
+              <dt>UYV410p10p</dt>
+              <dd>planar UYV 410 10bps [bp]</dd>
+              <dt>UYV410p10pu</dt>
+              <dd>planar UYV 410 10bps [bp] [ud]</dd>
+              <dt>UYV410p12BE</dt>
+              <dd>planar UYV 410 12bps [BE]</dd>
+              <dt>UYV410p12BEu</dt>
+              <dd>planar UYV 410 12bps [BE] [ud]</dd>
+              <dt>UYV410p12LE</dt>
+              <dd>planar UYV 410 12bps [LE]</dd>
+              <dt>UYV410p12LEu</dt>
+              <dd>planar UYV 410 12bps [LE] [ud]</dd>
+              <dt>UYV410p12p</dt>
+              <dd>planar UYV 410 12bps [bp]</dd>
+              <dt>UYV410p12pu</dt>
+              <dd>planar UYV 410 12bps [bp] [ud]</dd>
+              <dt>UYV410p14BE</dt>
+              <dd>planar UYV 410 14bps [BE]</dd>
+              <dt>UYV410p14BEu</dt>
+              <dd>planar UYV 410 14bps [BE] [ud]</dd>
+              <dt>UYV410p14LE</dt>
+              <dd>planar UYV 410 14bps [LE]</dd>
+              <dt>UYV410p14LEu</dt>
+              <dd>planar UYV 410 14bps [LE] [ud]</dd>
+              <dt>UYV410p14p</dt>
+              <dd>planar UYV 410 14bps [bp]</dd>
+              <dt>UYV410p14pu</dt>
+              <dd>planar UYV 410 14bps [bp] [ud]</dd>
+              <dt>UYV410p16BE</dt>
+              <dd>planar UYV 410 16bps [BE]</dd>
+              <dt>UYV410p16BEu</dt>
+              <dd>planar UYV 410 16bps [BE] [ud]</dd>
+              <dt>UYV410p16LE</dt>
+              <dd>planar UYV 410 16bps [LE]</dd>
+              <dt>UYV410p16LEu</dt>
+              <dd>planar UYV 410 16bps [LE] [ud]</dd>
+              <dt>UYV410p9BE</dt>
+              <dd>planar UYV 410 9bps [BE]</dd>
+              <dt>UYV410p9BEu</dt>
+              <dd>planar UYV 410 9bps [BE] [ud]</dd>
+              <dt>UYV410p9LE</dt>
+              <dd>planar UYV 410 9bps [LE]</dd>
+              <dt>UYV410p9LEu</dt>
+              <dd>planar UYV 410 9bps [LE] [ud]</dd>
+              <dt>UYV410p9p</dt>
+              <dd>planar UYV 410 9bps [bp]</dd>
+              <dt>UYV410p9pu</dt>
+              <dd>planar UYV 410 9bps [bp] [ud]</dd>
+              <dt>UYV411p10BE</dt>
+              <dd>planar UYV 411 10bps [BE]</dd>
+              <dt>UYV411p10BEu</dt>
+              <dd>planar UYV 411 10bps [BE] [ud]</dd>
+              <dt>UYV411p10LE</dt>
+              <dd>planar UYV 411 10bps [LE]</dd>
+              <dt>UYV411p10LEu</dt>
+              <dd>planar UYV 411 10bps [LE] [ud]</dd>
+              <dt>UYV411p10p</dt>
+              <dd>planar UYV 411 10bps [bp]</dd>
+              <dt>UYV411p10pu</dt>
+              <dd>planar UYV 411 10bps [bp] [ud]</dd>
+              <dt>UYV411p12BE</dt>
+              <dd>planar UYV 411 12bps [BE]</dd>
+              <dt>UYV411p12BEu</dt>
+              <dd>planar UYV 411 12bps [BE] [ud]</dd>
+              <dt>UYV411p12LE</dt>
+              <dd>planar UYV 411 12bps [LE]</dd>
+              <dt>UYV411p12LEu</dt>
+              <dd>planar UYV 411 12bps [LE] [ud]</dd>
+              <dt>UYV411p12p</dt>
+              <dd>planar UYV 411 12bps [bp]</dd>
+              <dt>UYV411p12pu</dt>
+              <dd>planar UYV 411 12bps [bp] [ud]</dd>
+              <dt>UYV411p14BE</dt>
+              <dd>planar UYV 411 14bps [BE]</dd>
+              <dt>UYV411p14BEu</dt>
+              <dd>planar UYV 411 14bps [BE] [ud]</dd>
+              <dt>UYV411p14LE</dt>
+              <dd>planar UYV 411 14bps [LE]</dd>
+              <dt>UYV411p14LEu</dt>
+              <dd>planar UYV 411 14bps [LE] [ud]</dd>
+              <dt>UYV411p14p</dt>
+              <dd>planar UYV 411 14bps [bp]</dd>
+              <dt>UYV411p14pu</dt>
+              <dd>planar UYV 411 14bps [bp] [ud]</dd>
+              <dt>UYV411p16BE</dt>
+              <dd>planar UYV 411 16bps [BE]</dd>
+              <dt>UYV411p16BEu</dt>
+              <dd>planar UYV 411 16bps [BE] [ud]</dd>
+              <dt>UYV411p16LE</dt>
+              <dd>planar UYV 411 16bps [LE]</dd>
+              <dt>UYV411p16LEu</dt>
+              <dd>planar UYV 411 16bps [LE] [ud]</dd>
+              <dt>UYV411p9BE</dt>
+              <dd>planar UYV 411 9bps [BE]</dd>
+              <dt>UYV411p9BEu</dt>
+              <dd>planar UYV 411 9bps [BE] [ud]</dd>
+              <dt>UYV411p9LE</dt>
+              <dd>planar UYV 411 9bps [LE]</dd>
+              <dt>UYV411p9LEu</dt>
+              <dd>planar UYV 411 9bps [LE] [ud]</dd>
+              <dt>UYV411p9p</dt>
+              <dd>planar UYV 411 9bps [bp]</dd>
+              <dt>UYV411p9pu</dt>
+              <dd>planar UYV 411 9bps [bp] [ud]</dd>
+              <dt>UYV420p10BE</dt>
+              <dd>planar UYV 420 10bps [BE]</dd>
+              <dt>UYV420p10BEu</dt>
+              <dd>planar UYV 420 10bps [BE] [ud]</dd>
+              <dt>UYV420p10LE</dt>
+              <dd>planar UYV 420 10bps [LE]</dd>
+              <dt>UYV420p10LEu</dt>
+              <dd>planar UYV 420 10bps [LE] [ud]</dd>
+              <dt>UYV420p10p</dt>
+              <dd>planar UYV 420 10bps [bp]</dd>
+              <dt>UYV420p10pu</dt>
+              <dd>planar UYV 420 10bps [bp] [ud]</dd>
+              <dt>UYV420p12BE</dt>
+              <dd>planar UYV 420 12bps [BE]</dd>
+              <dt>UYV420p12BEu</dt>
+              <dd>planar UYV 420 12bps [BE] [ud]</dd>
+              <dt>UYV420p12LE</dt>
+              <dd>planar UYV 420 12bps [LE]</dd>
+              <dt>UYV420p12LEu</dt>
+              <dd>planar UYV 420 12bps [LE] [ud]</dd>
+              <dt>UYV420p12p</dt>
+              <dd>planar UYV 420 12bps [bp]</dd>
+              <dt>UYV420p12pu</dt>
+              <dd>planar UYV 420 12bps [bp] [ud]</dd>
+              <dt>UYV420p14BE</dt>
+              <dd>planar UYV 420 14bps [BE]</dd>
+              <dt>UYV420p14BEu</dt>
+              <dd>planar UYV 420 14bps [BE] [ud]</dd>
+              <dt>UYV420p14LE</dt>
+              <dd>planar UYV 420 14bps [LE]</dd>
+              <dt>UYV420p14LEu</dt>
+              <dd>planar UYV 420 14bps [LE] [ud]</dd>
+              <dt>UYV420p14p</dt>
+              <dd>planar UYV 420 14bps [bp]</dd>
+              <dt>UYV420p14pu</dt>
+              <dd>planar UYV 420 14bps [bp] [ud]</dd>
+              <dt>UYV420p16BE</dt>
+              <dd>planar UYV 420 16bps [BE]</dd>
+              <dt>UYV420p16BEu</dt>
+              <dd>planar UYV 420 16bps [BE] [ud]</dd>
+              <dt>UYV420p16LE</dt>
+              <dd>planar UYV 420 16bps [LE]</dd>
+              <dt>UYV420p16LEu</dt>
+              <dd>planar UYV 420 16bps [LE] [ud]</dd>
+              <dt>UYV420p9BE</dt>
+              <dd>planar UYV 420 9bps [BE]</dd>
+              <dt>UYV420p9BEu</dt>
+              <dd>planar UYV 420 9bps [BE] [ud]</dd>
+              <dt>UYV420p9LE</dt>
+              <dd>planar UYV 420 9bps [LE]</dd>
+              <dt>UYV420p9LEu</dt>
+              <dd>planar UYV 420 9bps [LE] [ud]</dd>
+              <dt>UYV420p9p</dt>
+              <dd>planar UYV 420 9bps [bp]</dd>
+              <dt>UYV420p9pu</dt>
+              <dd>planar UYV 420 9bps [bp] [ud]</dd>
+              <dt>UYV422p10BE</dt>
+              <dd>planar UYV 422 10bps [BE]</dd>
+              <dt>UYV422p10BEu</dt>
+              <dd>planar UYV 422 10bps [BE] [ud]</dd>
+              <dt>UYV422p10LE</dt>
+              <dd>planar UYV 422 10bps [LE]</dd>
+              <dt>UYV422p10LEu</dt>
+              <dd>planar UYV 422 10bps [LE] [ud]</dd>
+              <dt>UYV422p10p</dt>
+              <dd>planar UYV 422 10bps [bp]</dd>
+              <dt>UYV422p10pu</dt>
+              <dd>planar UYV 422 10bps [bp] [ud]</dd>
+              <dt>UYV422p12BE</dt>
+              <dd>planar UYV 422 12bps [BE]</dd>
+              <dt>UYV422p12BEu</dt>
+              <dd>planar UYV 422 12bps [BE] [ud]</dd>
+              <dt>UYV422p12LE</dt>
+              <dd>planar UYV 422 12bps [LE]</dd>
+              <dt>UYV422p12LEu</dt>
+              <dd>planar UYV 422 12bps [LE] [ud]</dd>
+              <dt>UYV422p12p</dt>
+              <dd>planar UYV 422 12bps [bp]</dd>
+              <dt>UYV422p12pu</dt>
+              <dd>planar UYV 422 12bps [bp] [ud]</dd>
+              <dt>UYV422p14BE</dt>
+              <dd>planar UYV 422 14bps [BE]</dd>
+              <dt>UYV422p14BEu</dt>
+              <dd>planar UYV 422 14bps [BE] [ud]</dd>
+              <dt>UYV422p14LE</dt>
+              <dd>planar UYV 422 14bps [LE]</dd>
+              <dt>UYV422p14LEu</dt>
+              <dd>planar UYV 422 14bps [LE] [ud]</dd>
+              <dt>UYV422p14p</dt>
+              <dd>planar UYV 422 14bps [bp]</dd>
+              <dt>UYV422p14pu</dt>
+              <dd>planar UYV 422 14bps [bp] [ud]</dd>
+              <dt>UYV422p16BE</dt>
+              <dd>planar UYV 422 16bps [BE]</dd>
+              <dt>UYV422p16BEu</dt>
+              <dd>planar UYV 422 16bps [BE] [ud]</dd>
+              <dt>UYV422p16LE</dt>
+              <dd>planar UYV 422 16bps [LE]</dd>
+              <dt>UYV422p16LEu</dt>
+              <dd>planar UYV 422 16bps [LE] [ud]</dd>
+              <dt>UYV422p9BE</dt>
+              <dd>planar UYV 422 9bps [BE]</dd>
+              <dt>UYV422p9BEu</dt>
+              <dd>planar UYV 422 9bps [BE] [ud]</dd>
+              <dt>UYV422p9LE</dt>
+              <dd>planar UYV 422 9bps [LE]</dd>
+              <dt>UYV422p9LEu</dt>
+              <dd>planar UYV 422 9bps [LE] [ud]</dd>
+              <dt>UYV422p9p</dt>
+              <dd>planar UYV 422 9bps [bp]</dd>
+              <dt>UYV422p9pu</dt>
+              <dd>planar UYV 422 9bps [bp] [ud]</dd>
+              <dt>UYV444p10BE</dt>
+              <dd>planar UYV 444 10bps [BE]</dd>
+              <dt>UYV444p10BEu</dt>
+              <dd>planar UYV 444 10bps [BE] [ud]</dd>
+              <dt>UYV444p10LE</dt>
+              <dd>planar UYV 444 10bps [LE]</dd>
+              <dt>UYV444p10LEu</dt>
+              <dd>planar UYV 444 10bps [LE] [ud]</dd>
+              <dt>UYV444p10p</dt>
+              <dd>planar UYV 444 10bps [bp]</dd>
+              <dt>UYV444p10pu</dt>
+              <dd>planar UYV 444 10bps [bp] [ud]</dd>
+              <dt>UYV444p12BE</dt>
+              <dd>planar UYV 444 12bps [BE]</dd>
+              <dt>UYV444p12BEu</dt>
+              <dd>planar UYV 444 12bps [BE] [ud]</dd>
+              <dt>UYV444p12LE</dt>
+              <dd>planar UYV 444 12bps [LE]</dd>
+              <dt>UYV444p12LEu</dt>
+              <dd>planar UYV 444 12bps [LE] [ud]</dd>
+              <dt>UYV444p12p</dt>
+              <dd>planar UYV 444 12bps [bp]</dd>
+              <dt>UYV444p12pu</dt>
+              <dd>planar UYV 444 12bps [bp] [ud]</dd>
+              <dt>UYV444p14BE</dt>
+              <dd>planar UYV 444 14bps [BE]</dd>
+              <dt>UYV444p14BEu</dt>
+              <dd>planar UYV 444 14bps [BE] [ud]</dd>
+              <dt>UYV444p14LE</dt>
+              <dd>planar UYV 444 14bps [LE]</dd>
+              <dt>UYV444p14LEu</dt>
+              <dd>planar UYV 444 14bps [LE] [ud]</dd>
+              <dt>UYV444p14p</dt>
+              <dd>planar UYV 444 14bps [bp]</dd>
+              <dt>UYV444p14pu</dt>
+              <dd>planar UYV 444 14bps [bp] [ud]</dd>
+              <dt>UYV444p16BE</dt>
+              <dd>planar UYV 444 16bps [BE]</dd>
+              <dt>UYV444p16BEu</dt>
+              <dd>planar UYV 444 16bps [BE] [ud]</dd>
+              <dt>UYV444p16LE</dt>
+              <dd>planar UYV 444 16bps [LE]</dd>
+              <dt>UYV444p16LEu</dt>
+              <dd>planar UYV 444 16bps [LE] [ud]</dd>
+              <dt>UYV444p9BE</dt>
+              <dd>planar UYV 444 9bps [BE]</dd>
+              <dt>UYV444p9BEu</dt>
+              <dd>planar UYV 444 9bps [BE] [ud]</dd>
+              <dt>UYV444p9LE</dt>
+              <dd>planar UYV 444 9bps [LE]</dd>
+              <dt>UYV444p9LEu</dt>
+              <dd>planar UYV 444 9bps [LE] [ud]</dd>
+              <dt>UYV444p9p</dt>
+              <dd>planar UYV 444 9bps [bp]</dd>
+              <dt>UYV444p9pu</dt>
+              <dd>planar UYV 444 9bps [bp] [ud]</dd>
+              <dt>YUV410p10BE</dt>
+              <dd>planar YUV 410 10bps [BE]</dd>
+              <dt>YUV410p10BEu</dt>
+              <dd>planar YUV 410 10bps [BE] [ud]</dd>
+              <dt>YUV410p10LE</dt>
+              <dd>planar YUV 410 10bps [LE]</dd>
+              <dt>YUV410p10LEu</dt>
+              <dd>planar YUV 410 10bps [LE] [ud]</dd>
+              <dt>YUV410p10p</dt>
+              <dd>planar YUV 410 10bps [bp]</dd>
+              <dt>YUV410p10pu</dt>
+              <dd>planar YUV 410 10bps [bp] [ud]</dd>
+              <dt>YUV410p12BE</dt>
+              <dd>planar YUV 410 12bps [BE]</dd>
+              <dt>YUV410p12BEu</dt>
+              <dd>planar YUV 410 12bps [BE] [ud]</dd>
+              <dt>YUV410p12LE</dt>
+              <dd>planar YUV 410 12bps [LE]</dd>
+              <dt>YUV410p12LEu</dt>
+              <dd>planar YUV 410 12bps [LE] [ud]</dd>
+              <dt>YUV410p12p</dt>
+              <dd>planar YUV 410 12bps [bp]</dd>
+              <dt>YUV410p12pu</dt>
+              <dd>planar YUV 410 12bps [bp] [ud]</dd>
+              <dt>YUV410p14BE</dt>
+              <dd>planar YUV 410 14bps [BE]</dd>
+              <dt>YUV410p14BEu</dt>
+              <dd>planar YUV 410 14bps [BE] [ud]</dd>
+              <dt>YUV410p14LE</dt>
+              <dd>planar YUV 410 14bps [LE]</dd>
+              <dt>YUV410p14LEu</dt>
+              <dd>planar YUV 410 14bps [LE] [ud]</dd>
+              <dt>YUV410p14p</dt>
+              <dd>planar YUV 410 14bps [bp]</dd>
+              <dt>YUV410p14pu</dt>
+              <dd>planar YUV 410 14bps [bp] [ud]</dd>
+              <dt>YUV410p16BE</dt>
+              <dd>planar YUV 410 16bps [BE]</dd>
+              <dt>YUV410p16BEu</dt>
+              <dd>planar YUV 410 16bps [BE] [ud]</dd>
+              <dt>YUV410p16LE</dt>
+              <dd>planar YUV 410 16bps [LE]</dd>
+              <dt>YUV410p16LEu</dt>
+              <dd>planar YUV 410 16bps [LE] [ud]</dd>
+              <dt>YUV410p9BE</dt>
+              <dd>planar YUV 410 9bps [BE]</dd>
+              <dt>YUV410p9BEu</dt>
+              <dd>planar YUV 410 9bps [BE] [ud]</dd>
+              <dt>YUV410p9LE</dt>
+              <dd>planar YUV 410 9bps [LE]</dd>
+              <dt>YUV410p9LEu</dt>
+              <dd>planar YUV 410 9bps [LE] [ud]</dd>
+              <dt>YUV410p9p</dt>
+              <dd>planar YUV 410 9bps [bp]</dd>
+              <dt>YUV410p9pu</dt>
+              <dd>planar YUV 410 9bps [bp] [ud]</dd>
+              <dt>YUV411p10BE</dt>
+              <dd>planar YUV 411 10bps [BE]</dd>
+              <dt>YUV411p10BEu</dt>
+              <dd>planar YUV 411 10bps [BE] [ud]</dd>
+              <dt>YUV411p10LE</dt>
+              <dd>planar YUV 411 10bps [LE]</dd>
+              <dt>YUV411p10LEu</dt>
+              <dd>planar YUV 411 10bps [LE] [ud]</dd>
+              <dt>YUV411p10p</dt>
+              <dd>planar YUV 411 10bps [bp]</dd>
+              <dt>YUV411p10pu</dt>
+              <dd>planar YUV 411 10bps [bp] [ud]</dd>
+              <dt>YUV411p12BE</dt>
+              <dd>planar YUV 411 12bps [BE]</dd>
+              <dt>YUV411p12BEu</dt>
+              <dd>planar YUV 411 12bps [BE] [ud]</dd>
+              <dt>YUV411p12LE</dt>
+              <dd>planar YUV 411 12bps [LE]</dd>
+              <dt>YUV411p12LEu</dt>
+              <dd>planar YUV 411 12bps [LE] [ud]</dd>
+              <dt>YUV411p12p</dt>
+              <dd>planar YUV 411 12bps [bp]</dd>
+              <dt>YUV411p12pu</dt>
+              <dd>planar YUV 411 12bps [bp] [ud]</dd>
+              <dt>YUV411p14BE</dt>
+              <dd>planar YUV 411 14bps [BE]</dd>
+              <dt>YUV411p14BEu</dt>
+              <dd>planar YUV 411 14bps [BE] [ud]</dd>
+              <dt>YUV411p14LE</dt>
+              <dd>planar YUV 411 14bps [LE]</dd>
+              <dt>YUV411p14LEu</dt>
+              <dd>planar YUV 411 14bps [LE] [ud]</dd>
+              <dt>YUV411p14p</dt>
+              <dd>planar YUV 411 14bps [bp]</dd>
+              <dt>YUV411p14pu</dt>
+              <dd>planar YUV 411 14bps [bp] [ud]</dd>
+              <dt>YUV411p16BE</dt>
+              <dd>planar YUV 411 16bps [BE]</dd>
+              <dt>YUV411p16BEu</dt>
+              <dd>planar YUV 411 16bps [BE] [ud]</dd>
+              <dt>YUV411p16LE</dt>
+              <dd>planar YUV 411 16bps [LE]</dd>
+              <dt>YUV411p16LEu</dt>
+              <dd>planar YUV 411 16bps [LE] [ud]</dd>
+              <dt>YUV411p9BE</dt>
+              <dd>planar YUV 411 9bps [BE]</dd>
+              <dt>YUV411p9BEu</dt>
+              <dd>planar YUV 411 9bps [BE] [ud]</dd>
+              <dt>YUV411p9LE</dt>
+              <dd>planar YUV 411 9bps [LE]</dd>
+              <dt>YUV411p9LEu</dt>
+              <dd>planar YUV 411 9bps [LE] [ud]</dd>
+              <dt>YUV411p9p</dt>
+              <dd>planar YUV 411 9bps [bp]</dd>
+              <dt>YUV411p9pu</dt>
+              <dd>planar YUV 411 9bps [bp] [ud]</dd>
+              <dt>YUV420p10BE</dt>
+              <dd>planar YUV 420 10bps [BE]</dd>
+              <dt>YUV420p10BEu</dt>
+              <dd>planar YUV 420 10bps [BE] [ud]</dd>
+              <dt>YUV420p10LE</dt>
+              <dd>planar YUV 420 10bps [LE]</dd>
+              <dt>YUV420p10LEu</dt>
+              <dd>planar YUV 420 10bps [LE] [ud]</dd>
+              <dt>YUV420p10p</dt>
+              <dd>planar YUV 420 10bps [bp]</dd>
+              <dt>YUV420p10pu</dt>
+              <dd>planar YUV 420 10bps [bp] [ud]</dd>
+              <dt>YUV420p12BE</dt>
+              <dd>planar YUV 420 12bps [BE]</dd>
+              <dt>YUV420p12BEu</dt>
+              <dd>planar YUV 420 12bps [BE] [ud]</dd>
+              <dt>YUV420p12LE</dt>
+              <dd>planar YUV 420 12bps [LE]</dd>
+              <dt>YUV420p12LEu</dt>
+              <dd>planar YUV 420 12bps [LE] [ud]</dd>
+              <dt>YUV420p12p</dt>
+              <dd>planar YUV 420 12bps [bp]</dd>
+              <dt>YUV420p12pu</dt>
+              <dd>planar YUV 420 12bps [bp] [ud]</dd>
+              <dt>YUV420p14BE</dt>
+              <dd>planar YUV 420 14bps [BE]</dd>
+              <dt>YUV420p14BEu</dt>
+              <dd>planar YUV 420 14bps [BE] [ud]</dd>
+              <dt>YUV420p14LE</dt>
+              <dd>planar YUV 420 14bps [LE]</dd>
+              <dt>YUV420p14LEu</dt>
+              <dd>planar YUV 420 14bps [LE] [ud]</dd>
+              <dt>YUV420p14p</dt>
+              <dd>planar YUV 420 14bps [bp]</dd>
+              <dt>YUV420p14pu</dt>
+              <dd>planar YUV 420 14bps [bp] [ud]</dd>
+              <dt>YUV420p16BE</dt>
+              <dd>planar YUV 420 16bps [BE]</dd>
+              <dt>YUV420p16BEu</dt>
+              <dd>planar YUV 420 16bps [BE] [ud]</dd>
+              <dt>YUV420p16LE</dt>
+              <dd>planar YUV 420 16bps [LE]</dd>
+              <dt>YUV420p16LEu</dt>
+              <dd>planar YUV 420 16bps [LE] [ud]</dd>
+              <dt>YUV420p9BE</dt>
+              <dd>planar YUV 420 9bps [BE]</dd>
+              <dt>YUV420p9BEu</dt>
+              <dd>planar YUV 420 9bps [BE] [ud]</dd>
+              <dt>YUV420p9LE</dt>
+              <dd>planar YUV 420 9bps [LE]</dd>
+              <dt>YUV420p9LEu</dt>
+              <dd>planar YUV 420 9bps [LE] [ud]</dd>
+              <dt>YUV420p9p</dt>
+              <dd>planar YUV 420 9bps [bp]</dd>
+              <dt>YUV420p9pu</dt>
+              <dd>planar YUV 420 9bps [bp] [ud]</dd>
+              <dt>YUV422p10BE</dt>
+              <dd>planar YUV 422 10bps [BE]</dd>
+              <dt>YUV422p10BEu</dt>
+              <dd>planar YUV 422 10bps [BE] [ud]</dd>
+              <dt>YUV422p10LE</dt>
+              <dd>planar YUV 422 10bps [LE]</dd>
+              <dt>YUV422p10LEu</dt>
+              <dd>planar YUV 422 10bps [LE] [ud]</dd>
+              <dt>YUV422p10p</dt>
+              <dd>planar YUV 422 10bps [bp]</dd>
+              <dt>YUV422p10pu</dt>
+              <dd>planar YUV 422 10bps [bp] [ud]</dd>
+              <dt>YUV422p12BE</dt>
+              <dd>planar YUV 422 12bps [BE]</dd>
+              <dt>YUV422p12BEu</dt>
+              <dd>planar YUV 422 12bps [BE] [ud]</dd>
+              <dt>YUV422p12LE</dt>
+              <dd>planar YUV 422 12bps [LE]</dd>
+              <dt>YUV422p12LEu</dt>
+              <dd>planar YUV 422 12bps [LE] [ud]</dd>
+              <dt>YUV422p12p</dt>
+              <dd>planar YUV 422 12bps [bp]</dd>
+              <dt>YUV422p12pu</dt>
+              <dd>planar YUV 422 12bps [bp] [ud]</dd>
+              <dt>YUV422p14BE</dt>
+              <dd>planar YUV 422 14bps [BE]</dd>
+              <dt>YUV422p14BEu</dt>
+              <dd>planar YUV 422 14bps [BE] [ud]</dd>
+              <dt>YUV422p14LE</dt>
+              <dd>planar YUV 422 14bps [LE]</dd>
+              <dt>YUV422p14LEu</dt>
+              <dd>planar YUV 422 14bps [LE] [ud]</dd>
+              <dt>YUV422p14p</dt>
+              <dd>planar YUV 422 14bps [bp]</dd>
+              <dt>YUV422p14pu</dt>
+              <dd>planar YUV 422 14bps [bp] [ud]</dd>
+              <dt>YUV422p16BE</dt>
+              <dd>planar YUV 422 16bps [BE]</dd>
+              <dt>YUV422p16BEu</dt>
+              <dd>planar YUV 422 16bps [BE] [ud]</dd>
+              <dt>YUV422p16LE</dt>
+              <dd>planar YUV 422 16bps [LE]</dd>
+              <dt>YUV422p16LEu</dt>
+              <dd>planar YUV 422 16bps [LE] [ud]</dd>
+              <dt>YUV422p9BE</dt>
+              <dd>planar YUV 422 9bps [BE]</dd>
+              <dt>YUV422p9BEu</dt>
+              <dd>planar YUV 422 9bps [BE] [ud]</dd>
+              <dt>YUV422p9LE</dt>
+              <dd>planar YUV 422 9bps [LE]</dd>
+              <dt>YUV422p9LEu</dt>
+              <dd>planar YUV 422 9bps [LE] [ud]</dd>
+              <dt>YUV422p9p</dt>
+              <dd>planar YUV 422 9bps [bp]</dd>
+              <dt>YUV422p9pu</dt>
+              <dd>planar YUV 422 9bps [bp] [ud]</dd>
+              <dt>YUV444p10BE</dt>
+              <dd>planar YUV 444 10bps [BE]</dd>
+              <dt>YUV444p10BEu</dt>
+              <dd>planar YUV 444 10bps [BE] [ud]</dd>
+              <dt>YUV444p10LE</dt>
+              <dd>planar YUV 444 10bps [LE]</dd>
+              <dt>YUV444p10LEu</dt>
+              <dd>planar YUV 444 10bps [LE] [ud]</dd>
+              <dt>YUV444p10p</dt>
+              <dd>planar YUV 444 10bps [bp]</dd>
+              <dt>YUV444p10pu</dt>
+              <dd>planar YUV 444 10bps [bp] [ud]</dd>
+              <dt>YUV444p12BE</dt>
+              <dd>planar YUV 444 12bps [BE]</dd>
+              <dt>YUV444p12BEu</dt>
+              <dd>planar YUV 444 12bps [BE] [ud]</dd>
+              <dt>YUV444p12LE</dt>
+              <dd>planar YUV 444 12bps [LE]</dd>
+              <dt>YUV444p12LEu</dt>
+              <dd>planar YUV 444 12bps [LE] [ud]</dd>
+              <dt>YUV444p12p</dt>
+              <dd>planar YUV 444 12bps [bp]</dd>
+              <dt>YUV444p12pu</dt>
+              <dd>planar YUV 444 12bps [bp] [ud]</dd>
+              <dt>YUV444p14BE</dt>
+              <dd>planar YUV 444 14bps [BE]</dd>
+              <dt>YUV444p14BEu</dt>
+              <dd>planar YUV 444 14bps [BE] [ud]</dd>
+              <dt>YUV444p14LE</dt>
+              <dd>planar YUV 444 14bps [LE]</dd>
+              <dt>YUV444p14LEu</dt>
+              <dd>planar YUV 444 14bps [LE] [ud]</dd>
+              <dt>YUV444p14p</dt>
+              <dd>planar YUV 444 14bps [bp]</dd>
+              <dt>YUV444p14pu</dt>
+              <dd>planar YUV 444 14bps [bp] [ud]</dd>
+              <dt>YUV444p16BE</dt>
+              <dd>planar YUV 444 16bps [BE]</dd>
+              <dt>YUV444p16BEu</dt>
+              <dd>planar YUV 444 16bps [BE] [ud]</dd>
+              <dt>YUV444p16LE</dt>
+              <dd>planar YUV 444 16bps [LE]</dd>
+              <dt>YUV444p16LEu</dt>
+              <dd>planar YUV 444 16bps [LE] [ud]</dd>
+              <dt>YUV444p9BE</dt>
+              <dd>planar YUV 444 9bps [BE]</dd>
+              <dt>YUV444p9BEu</dt>
+              <dd>planar YUV 444 9bps [BE] [ud]</dd>
+              <dt>YUV444p9LE</dt>
+              <dd>planar YUV 444 9bps [LE]</dd>
+              <dt>YUV444p9LEu</dt>
+              <dd>planar YUV 444 9bps [LE] [ud]</dd>
+              <dt>YUV444p9p</dt>
+              <dd>planar YUV 444 9bps [bp]</dd>
+              <dt>YUV444p9pu</dt>
+              <dd>planar YUV 444 9bps [bp] [ud]</dd>
+              <dt>YVU410p10BE</dt>
+              <dd>planar YVU 410 10bps [BE]</dd>
+              <dt>YVU410p10BEu</dt>
+              <dd>planar YVU 410 10bps [BE] [ud]</dd>
+              <dt>YVU410p10LE</dt>
+              <dd>planar YVU 410 10bps [LE]</dd>
+              <dt>YVU410p10LEu</dt>
+              <dd>planar YVU 410 10bps [LE] [ud]</dd>
+              <dt>YVU410p10p</dt>
+              <dd>planar YVU 410 10bps [bp]</dd>
+              <dt>YVU410p10pu</dt>
+              <dd>planar YVU 410 10bps [bp] [ud]</dd>
+              <dt>YVU410p12BE</dt>
+              <dd>planar YVU 410 12bps [BE]</dd>
+              <dt>YVU410p12BEu</dt>
+              <dd>planar YVU 410 12bps [BE] [ud]</dd>
+              <dt>YVU410p12LE</dt>
+              <dd>planar YVU 410 12bps [LE]</dd>
+              <dt>YVU410p12LEu</dt>
+              <dd>planar YVU 410 12bps [LE] [ud]</dd>
+              <dt>YVU410p12p</dt>
+              <dd>planar YVU 410 12bps [bp]</dd>
+              <dt>YVU410p12pu</dt>
+              <dd>planar YVU 410 12bps [bp] [ud]</dd>
+              <dt>YVU410p14BE</dt>
+              <dd>planar YVU 410 14bps [BE]</dd>
+              <dt>YVU410p14BEu</dt>
+              <dd>planar YVU 410 14bps [BE] [ud]</dd>
+              <dt>YVU410p14LE</dt>
+              <dd>planar YVU 410 14bps [LE]</dd>
+              <dt>YVU410p14LEu</dt>
+              <dd>planar YVU 410 14bps [LE] [ud]</dd>
+              <dt>YVU410p14p</dt>
+              <dd>planar YVU 410 14bps [bp]</dd>
+              <dt>YVU410p14pu</dt>
+              <dd>planar YVU 410 14bps [bp] [ud]</dd>
+              <dt>YVU410p16BE</dt>
+              <dd>planar YVU 410 16bps [BE]</dd>
+              <dt>YVU410p16BEu</dt>
+              <dd>planar YVU 410 16bps [BE] [ud]</dd>
+              <dt>YVU410p16LE</dt>
+              <dd>planar YVU 410 16bps [LE]</dd>
+              <dt>YVU410p16LEu</dt>
+              <dd>planar YVU 410 16bps [LE] [ud]</dd>
+              <dt>YVU410p9BE</dt>
+              <dd>planar YVU 410 9bps [BE]</dd>
+              <dt>YVU410p9BEu</dt>
+              <dd>planar YVU 410 9bps [BE] [ud]</dd>
+              <dt>YVU410p9LE</dt>
+              <dd>planar YVU 410 9bps [LE]</dd>
+              <dt>YVU410p9LEu</dt>
+              <dd>planar YVU 410 9bps [LE] [ud]</dd>
+              <dt>YVU410p9p</dt>
+              <dd>planar YVU 410 9bps [bp]</dd>
+              <dt>YVU410p9pu</dt>
+              <dd>planar YVU 410 9bps [bp] [ud]</dd>
+              <dt>YVU411p10BE</dt>
+              <dd>planar YVU 411 10bps [BE]</dd>
+              <dt>YVU411p10BEu</dt>
+              <dd>planar YVU 411 10bps [BE] [ud]</dd>
+              <dt>YVU411p10LE</dt>
+              <dd>planar YVU 411 10bps [LE]</dd>
+              <dt>YVU411p10LEu</dt>
+              <dd>planar YVU 411 10bps [LE] [ud]</dd>
+              <dt>YVU411p10p</dt>
+              <dd>planar YVU 411 10bps [bp]</dd>
+              <dt>YVU411p10pu</dt>
+              <dd>planar YVU 411 10bps [bp] [ud]</dd>
+              <dt>YVU411p12BE</dt>
+              <dd>planar YVU 411 12bps [BE]</dd>
+              <dt>YVU411p12BEu</dt>
+              <dd>planar YVU 411 12bps [BE] [ud]</dd>
+              <dt>YVU411p12LE</dt>
+              <dd>planar YVU 411 12bps [LE]</dd>
+              <dt>YVU411p12LEu</dt>
+              <dd>planar YVU 411 12bps [LE] [ud]</dd>
+              <dt>YVU411p12p</dt>
+              <dd>planar YVU 411 12bps [bp]</dd>
+              <dt>YVU411p12pu</dt>
+              <dd>planar YVU 411 12bps [bp] [ud]</dd>
+              <dt>YVU411p14BE</dt>
+              <dd>planar YVU 411 14bps [BE]</dd>
+              <dt>YVU411p14BEu</dt>
+              <dd>planar YVU 411 14bps [BE] [ud]</dd>
+              <dt>YVU411p14LE</dt>
+              <dd>planar YVU 411 14bps [LE]</dd>
+              <dt>YVU411p14LEu</dt>
+              <dd>planar YVU 411 14bps [LE] [ud]</dd>
+              <dt>YVU411p14p</dt>
+              <dd>planar YVU 411 14bps [bp]</dd>
+              <dt>YVU411p14pu</dt>
+              <dd>planar YVU 411 14bps [bp] [ud]</dd>
+              <dt>YVU411p16BE</dt>
+              <dd>planar YVU 411 16bps [BE]</dd>
+              <dt>YVU411p16BEu</dt>
+              <dd>planar YVU 411 16bps [BE] [ud]</dd>
+              <dt>YVU411p16LE</dt>
+              <dd>planar YVU 411 16bps [LE]</dd>
+              <dt>YVU411p16LEu</dt>
+              <dd>planar YVU 411 16bps [LE] [ud]</dd>
+              <dt>YVU411p9BE</dt>
+              <dd>planar YVU 411 9bps [BE]</dd>
+              <dt>YVU411p9BEu</dt>
+              <dd>planar YVU 411 9bps [BE] [ud]</dd>
+              <dt>YVU411p9LE</dt>
+              <dd>planar YVU 411 9bps [LE]</dd>
+              <dt>YVU411p9LEu</dt>
+              <dd>planar YVU 411 9bps [LE] [ud]</dd>
+              <dt>YVU411p9p</dt>
+              <dd>planar YVU 411 9bps [bp]</dd>
+              <dt>YVU411p9pu</dt>
+              <dd>planar YVU 411 9bps [bp] [ud]</dd>
+              <dt>YVU420p10BE</dt>
+              <dd>planar YVU 420 10bps [BE]</dd>
+              <dt>YVU420p10BEu</dt>
+              <dd>planar YVU 420 10bps [BE] [ud]</dd>
+              <dt>YVU420p10LE</dt>
+              <dd>planar YVU 420 10bps [LE]</dd>
+              <dt>YVU420p10LEu</dt>
+              <dd>planar YVU 420 10bps [LE] [ud]</dd>
+              <dt>YVU420p10p</dt>
+              <dd>planar YVU 420 10bps [bp]</dd>
+              <dt>YVU420p10pu</dt>
+              <dd>planar YVU 420 10bps [bp] [ud]</dd>
+              <dt>YVU420p12BE</dt>
+              <dd>planar YVU 420 12bps [BE]</dd>
+              <dt>YVU420p12BEu</dt>
+              <dd>planar YVU 420 12bps [BE] [ud]</dd>
+              <dt>YVU420p12LE</dt>
+              <dd>planar YVU 420 12bps [LE]</dd>
+              <dt>YVU420p12LEu</dt>
+              <dd>planar YVU 420 12bps [LE] [ud]</dd>
+              <dt>YVU420p12p</dt>
+              <dd>planar YVU 420 12bps [bp]</dd>
+              <dt>YVU420p12pu</dt>
+              <dd>planar YVU 420 12bps [bp] [ud]</dd>
+              <dt>YVU420p14BE</dt>
+              <dd>planar YVU 420 14bps [BE]</dd>
+              <dt>YVU420p14BEu</dt>
+              <dd>planar YVU 420 14bps [BE] [ud]</dd>
+              <dt>YVU420p14LE</dt>
+              <dd>planar YVU 420 14bps [LE]</dd>
+              <dt>YVU420p14LEu</dt>
+              <dd>planar YVU 420 14bps [LE] [ud]</dd>
+              <dt>YVU420p14p</dt>
+              <dd>planar YVU 420 14bps [bp]</dd>
+              <dt>YVU420p14pu</dt>
+              <dd>planar YVU 420 14bps [bp] [ud]</dd>
+              <dt>YVU420p16BE</dt>
+              <dd>planar YVU 420 16bps [BE]</dd>
+              <dt>YVU420p16BEu</dt>
+              <dd>planar YVU 420 16bps [BE] [ud]</dd>
+              <dt>YVU420p16LE</dt>
+              <dd>planar YVU 420 16bps [LE]</dd>
+              <dt>YVU420p16LEu</dt>
+              <dd>planar YVU 420 16bps [LE] [ud]</dd>
+              <dt>YVU420p9BE</dt>
+              <dd>planar YVU 420 9bps [BE]</dd>
+              <dt>YVU420p9BEu</dt>
+              <dd>planar YVU 420 9bps [BE] [ud]</dd>
+              <dt>YVU420p9LE</dt>
+              <dd>planar YVU 420 9bps [LE]</dd>
+              <dt>YVU420p9LEu</dt>
+              <dd>planar YVU 420 9bps [LE] [ud]</dd>
+              <dt>YVU420p9p</dt>
+              <dd>planar YVU 420 9bps [bp]</dd>
+              <dt>YVU420p9pu</dt>
+              <dd>planar YVU 420 9bps [bp] [ud]</dd>
+              <dt>YVU422p10BE</dt>
+              <dd>planar YVU 422 10bps [BE]</dd>
+              <dt>YVU422p10BEu</dt>
+              <dd>planar YVU 422 10bps [BE] [ud]</dd>
+              <dt>YVU422p10LE</dt>
+              <dd>planar YVU 422 10bps [LE]</dd>
+              <dt>YVU422p10LEu</dt>
+              <dd>planar YVU 422 10bps [LE] [ud]</dd>
+              <dt>YVU422p10p</dt>
+              <dd>planar YVU 422 10bps [bp]</dd>
+              <dt>YVU422p10pu</dt>
+              <dd>planar YVU 422 10bps [bp] [ud]</dd>
+              <dt>YVU422p12BE</dt>
+              <dd>planar YVU 422 12bps [BE]</dd>
+              <dt>YVU422p12BEu</dt>
+              <dd>planar YVU 422 12bps [BE] [ud]</dd>
+              <dt>YVU422p12LE</dt>
+              <dd>planar YVU 422 12bps [LE]</dd>
+              <dt>YVU422p12LEu</dt>
+              <dd>planar YVU 422 12bps [LE] [ud]</dd>
+              <dt>YVU422p12p</dt>
+              <dd>planar YVU 422 12bps [bp]</dd>
+              <dt>YVU422p12pu</dt>
+              <dd>planar YVU 422 12bps [bp] [ud]</dd>
+              <dt>YVU422p14BE</dt>
+              <dd>planar YVU 422 14bps [BE]</dd>
+              <dt>YVU422p14BEu</dt>
+              <dd>planar YVU 422 14bps [BE] [ud]</dd>
+              <dt>YVU422p14LE</dt>
+              <dd>planar YVU 422 14bps [LE]</dd>
+              <dt>YVU422p14LEu</dt>
+              <dd>planar YVU 422 14bps [LE] [ud]</dd>
+              <dt>YVU422p14p</dt>
+              <dd>planar YVU 422 14bps [bp]</dd>
+              <dt>YVU422p14pu</dt>
+              <dd>planar YVU 422 14bps [bp] [ud]</dd>
+              <dt>YVU422p16BE</dt>
+              <dd>planar YVU 422 16bps [BE]</dd>
+              <dt>YVU422p16BEu</dt>
+              <dd>planar YVU 422 16bps [BE] [ud]</dd>
+              <dt>YVU422p16LE</dt>
+              <dd>planar YVU 422 16bps [LE]</dd>
+              <dt>YVU422p16LEu</dt>
+              <dd>planar YVU 422 16bps [LE] [ud]</dd>
+              <dt>YVU422p9BE</dt>
+              <dd>planar YVU 422 9bps [BE]</dd>
+              <dt>YVU422p9BEu</dt>
+              <dd>planar YVU 422 9bps [BE] [ud]</dd>
+              <dt>YVU422p9LE</dt>
+              <dd>planar YVU 422 9bps [LE]</dd>
+              <dt>YVU422p9LEu</dt>
+              <dd>planar YVU 422 9bps [LE] [ud]</dd>
+              <dt>YVU422p9p</dt>
+              <dd>planar YVU 422 9bps [bp]</dd>
+              <dt>YVU422p9pu</dt>
+              <dd>planar YVU 422 9bps [bp] [ud]</dd>
+              <dt>YVU444p10BE</dt>
+              <dd>planar YVU 444 10bps [BE]</dd>
+              <dt>YVU444p10BEu</dt>
+              <dd>planar YVU 444 10bps [BE] [ud]</dd>
+              <dt>YVU444p10LE</dt>
+              <dd>planar YVU 444 10bps [LE]</dd>
+              <dt>YVU444p10LEu</dt>
+              <dd>planar YVU 444 10bps [LE] [ud]</dd>
+              <dt>YVU444p10p</dt>
+              <dd>planar YVU 444 10bps [bp]</dd>
+              <dt>YVU444p10pu</dt>
+              <dd>planar YVU 444 10bps [bp] [ud]</dd>
+              <dt>YVU444p12BE</dt>
+              <dd>planar YVU 444 12bps [BE]</dd>
+              <dt>YVU444p12BEu</dt>
+              <dd>planar YVU 444 12bps [BE] [ud]</dd>
+              <dt>YVU444p12LE</dt>
+              <dd>planar YVU 444 12bps [LE]</dd>
+              <dt>YVU444p12LEu</dt>
+              <dd>planar YVU 444 12bps [LE] [ud]</dd>
+              <dt>YVU444p12p</dt>
+              <dd>planar YVU 444 12bps [bp]</dd>
+              <dt>YVU444p12pu</dt>
+              <dd>planar YVU 444 12bps [bp] [ud]</dd>
+              <dt>YVU444p14BE</dt>
+              <dd>planar YVU 444 14bps [BE]</dd>
+              <dt>YVU444p14BEu</dt>
+              <dd>planar YVU 444 14bps [BE] [ud]</dd>
+              <dt>YVU444p14LE</dt>
+              <dd>planar YVU 444 14bps [LE]</dd>
+              <dt>YVU444p14LEu</dt>
+              <dd>planar YVU 444 14bps [LE] [ud]</dd>
+              <dt>YVU444p14p</dt>
+              <dd>planar YVU 444 14bps [bp]</dd>
+              <dt>YVU444p14pu</dt>
+              <dd>planar YVU 444 14bps [bp] [ud]</dd>
+              <dt>YVU444p16BE</dt>
+              <dd>planar YVU 444 16bps [BE]</dd>
+              <dt>YVU444p16BEu</dt>
+              <dd>planar YVU 444 16bps [BE] [ud]</dd>
+              <dt>YVU444p16LE</dt>
+              <dd>planar YVU 444 16bps [LE]</dd>
+              <dt>YVU444p16LEu</dt>
+              <dd>planar YVU 444 16bps [LE] [ud]</dd>
+              <dt>YVU444p9BE</dt>
+              <dd>planar YVU 444 9bps [BE]</dd>
+              <dt>YVU444p9BEu</dt>
+              <dd>planar YVU 444 9bps [BE] [ud]</dd>
+              <dt>YVU444p9LE</dt>
+              <dd>planar YVU 444 9bps [LE]</dd>
+              <dt>YVU444p9LEu</dt>
+              <dd>planar YVU 444 9bps [LE] [ud]</dd>
+              <dt>YVU444p9p</dt>
+              <dd>planar YVU 444 9bps [bp]</dd>
+              <dt>YVU444p9pu</dt>
+              <dd>planar YVU 444 9bps [bp] [ud]</dd>
+            </dl>
+            <h3 id="yuv-planar-float-samples">YUV planar float samples</h3>
+            <dl class="properties">
+              <dt>UYV410pf</dt>
+              <dd>planar UYV 410 32bps [fp]</dd>
+              <dt>UYV410pfu</dt>
+              <dd>planar UYV 410 32bps [fp] [ud]</dd>
+              <dt>UYV411pf</dt>
+              <dd>planar UYV 411 32bps [fp]</dd>
+              <dt>UYV411pfu</dt>
+              <dd>planar UYV 411 32bps [fp] [ud]</dd>
+              <dt>UYV420pf</dt>
+              <dd>planar UYV 420 32bps [fp]</dd>
+              <dt>UYV420pfu</dt>
+              <dd>planar UYV 420 32bps [fp] [ud]</dd>
+              <dt>UYV422pf</dt>
+              <dd>planar UYV 422 32bps [fp]</dd>
+              <dt>UYV422pfu</dt>
+              <dd>planar UYV 422 32bps [fp] [ud]</dd>
+              <dt>UYV444pf</dt>
+              <dd>planar UYV 444 32bps [fp]</dd>
+              <dt>UYV444pfu</dt>
+              <dd>planar UYV 444 32bps [fp] [ud]</dd>
+              <dt>YUV410pf</dt>
+              <dd>planar YUV 410 32bps [fp]</dd>
+              <dt>YUV410pfu</dt>
+              <dd>planar YUV 410 32bps [fp] [ud]</dd>
+              <dt>YUV411pf</dt>
+              <dd>planar YUV 411 32bps [fp]</dd>
+              <dt>YUV411pfu</dt>
+              <dd>planar YUV 411 32bps [fp] [ud]</dd>
+              <dt>YUV420pf</dt>
+              <dd>planar YUV 420 32bps [fp]</dd>
+              <dt>YUV420pfu</dt>
+              <dd>planar YUV 420 32bps [fp] [ud]</dd>
+              <dt>YUV422pf</dt>
+              <dd>planar YUV 422 32bps [fp]</dd>
+              <dt>YUV422pfu</dt>
+              <dd>planar YUV 422 32bps [fp] [ud]</dd>
+              <dt>YUV444pf</dt>
+              <dd>planar YUV 444 32bps [fp]</dd>
+              <dt>YUV444pfu</dt>
+              <dd>planar YUV 444 32bps [fp] [ud]</dd>
+              <dt>YVU410pf</dt>
+              <dd>planar YVU 410 32bps [fp]</dd>
+              <dt>YVU410pfu</dt>
+              <dd>planar YVU 410 32bps [fp] [ud]</dd>
+              <dt>YVU411pf</dt>
+              <dd>planar YVU 411 32bps [fp]</dd>
+              <dt>YVU411pfu</dt>
+              <dd>planar YVU 411 32bps [fp] [ud]</dd>
+              <dt>YVU420pf</dt>
+              <dd>planar YVU 420 32bps [fp]</dd>
+              <dt>YVU420pfu</dt>
+              <dd>planar YVU 420 32bps [fp] [ud]</dd>
+              <dt>YVU422pf</dt>
+              <dd>planar YVU 422 32bps [fp]</dd>
+              <dt>YVU422pfu</dt>
+              <dd>planar YVU 422 32bps [fp] [ud]</dd>
+              <dt>YVU444pf</dt>
+              <dd>planar YVU 444 32bps [fp]</dd>
+              <dt>YVU444pfu</dt>
+              <dd>planar YVU 444 32bps [fp] [ud]</dd>
+            </dl>
+            <h3 id="yuv-packed-8-bit-samples">YUV packed 8-bit samples</h3>
+            <dl class="properties">
+              <dt>UYV444</dt>
+              <dd>packed UYV 444 8bps</dd>
+              <dt>UYV444i1</dt>
+              <dd>packed UYV 444 1bps</dd>
+              <dt>UYV444i1p</dt>
+              <dd>packed UYV 444 1bps [bp]</dd>
+              <dt>UYV444i1pu</dt>
+              <dd>packed UYV 444 1bps [bp] [ud]</dd>
+              <dt>UYV444i1u</dt>
+              <dd>packed UYV 444 1bps [ud]</dd>
+              <dt>UYV444u</dt>
+              <dd>packed UYV 444 8bps [ud]</dd>
+              <dt>UYVY422</dt>
+              <dd>packed UYVY 422 8bps</dd>
+              <dt>UYVY422i1</dt>
+              <dd>packed UYVY 422 1bps</dd>
+              <dt>UYVY422i1p</dt>
+              <dd>packed UYVY 422 1bps [bp]</dd>
+              <dt>UYVY422i1pu</dt>
+              <dd>packed UYVY 422 1bps [bp] [ud]</dd>
+              <dt>UYVY422i1u</dt>
+              <dd>packed UYVY 422 1bps [ud]</dd>
+              <dt>UYVY422u</dt>
+              <dd>packed UYVY 422 8bps [ud]</dd>
+              <dt>YUV444</dt>
+              <dd>packed YUV 444 8bps</dd>
+              <dt>YUV444i1</dt>
+              <dd>packed YUV 444 1bps</dd>
+              <dt>YUV444i1p</dt>
+              <dd>packed YUV 444 1bps [bp]</dd>
+              <dt>YUV444i1pu</dt>
+              <dd>packed YUV 444 1bps [bp] [ud]</dd>
+              <dt>YUV444i1u</dt>
+              <dd>packed YUV 444 1bps [ud]</dd>
+              <dt>YUV444u</dt>
+              <dd>packed YUV 444 8bps [ud]</dd>
+              <dt>YUYV422</dt>
+              <dd>packed YUYV 422 8bps</dd>
+              <dt>YUYV422i1</dt>
+              <dd>packed YUYV 422 1bps</dd>
+              <dt>YUYV422i1p</dt>
+              <dd>packed YUYV 422 1bps [bp]</dd>
+              <dt>YUYV422i1pu</dt>
+              <dd>packed YUYV 422 1bps [bp] [ud]</dd>
+              <dt>YUYV422i1u</dt>
+              <dd>packed YUYV 422 1bps [ud]</dd>
+              <dt>YUYV422u</dt>
+              <dd>packed YUYV 422 8bps [ud]</dd>
+              <dt>YVU444</dt>
+              <dd>packed YVU 444 8bps</dd>
+              <dt>YVU444i1</dt>
+              <dd>packed YVU 444 1bps</dd>
+              <dt>YVU444i1p</dt>
+              <dd>packed YVU 444 1bps [bp]</dd>
+              <dt>YVU444i1pu</dt>
+              <dd>packed YVU 444 1bps [bp] [ud]</dd>
+              <dt>YVU444i1u</dt>
+              <dd>packed YVU 444 1bps [ud]</dd>
+              <dt>YVU444u</dt>
+              <dd>packed YVU 444 8bps [ud]</dd>
+              <dt>YVYU422</dt>
+              <dd>packed YVYU 422 8bps</dd>
+              <dt>YVYU422i1</dt>
+              <dd>packed YVYU 422 1bps</dd>
+              <dt>YVYU422i1p</dt>
+              <dd>packed YVYU 422 1bps [bp]</dd>
+              <dt>YVYU422i1pu</dt>
+              <dd>packed YVYU 422 1bps [bp] [ud]</dd>
+              <dt>YVYU422i1u</dt>
+              <dd>packed YVYU 422 1bps [ud]</dd>
+              <dt>YVYU422u</dt>
+              <dd>packed YVYU 422 8bps [ud]</dd>
+            </dl>
+            <h3 id="yuv-packed-float-samples">YUV packed float samples</h3>
+            <dl class="properties">
+              <dt>UYV444f</dt>
+              <dd>packed UYV 444 32bps [fp]</dd>
+              <dt>UYV444fu</dt>
+              <dd>packed UYV 444 32bps [fp] [ud]</dd>
+              <dt>UYVY422f</dt>
+              <dd>packed UYVY 422 32bps [fp]</dd>
+              <dt>UYVY422fu</dt>
+              <dd>packed UYVY 422 32bps [fp] [ud]</dd>
+              <dt>YUV444f</dt>
+              <dd>packed YUV 444 32bps [fp]</dd>
+              <dt>YUV444fu</dt>
+              <dd>packed YUV 444 32bps [fp] [ud]</dd>
+              <dt>YUYV422f</dt>
+              <dd>packed YUYV 422 32bps [fp]</dd>
+              <dt>YUYV422fu</dt>
+              <dd>packed YUYV 422 32bps [fp] [ud]</dd>
+              <dt>YVU444f</dt>
+              <dd>packed YVU 444 32bps [fp]</dd>
+              <dt>YVU444fu</dt>
+              <dd>packed YVU 444 32bps [fp] [ud]</dd>
+              <dt>YVYU422f</dt>
+              <dd>packed YVYU 422 32bps [fp]</dd>
+              <dt>YVYU422fu</dt>
+              <dd>packed YVYU 422 32bps [fp] [ud]</dd>
+            </dl>
+            <h3 id="yuv-packed-16-bit-samples">YUV packed 16-bit samples</h3>
+            <dl class="properties">
+              <dt>UYV444i10BE</dt>
+              <dd>packed UYV 444 10bps [BE]</dd>
+              <dt>UYV444i10BEu</dt>
+              <dd>packed UYV 444 10bps [BE] [ud]</dd>
+              <dt>UYV444i10LE</dt>
+              <dd>packed UYV 444 10bps [LE]</dd>
+              <dt>UYV444i10LEu</dt>
+              <dd>packed UYV 444 10bps [LE] [ud]</dd>
+              <dt>UYV444i10p</dt>
+              <dd>packed UYV 444 10bps [bp]</dd>
+              <dt>UYV444i10pu</dt>
+              <dd>packed UYV 444 10bps [bp] [ud]</dd>
+              <dt>UYV444i12BE</dt>
+              <dd>packed UYV 444 12bps [BE]</dd>
+              <dt>UYV444i12BEu</dt>
+              <dd>packed UYV 444 12bps [BE] [ud]</dd>
+              <dt>UYV444i12LE</dt>
+              <dd>packed UYV 444 12bps [LE]</dd>
+              <dt>UYV444i12LEu</dt>
+              <dd>packed UYV 444 12bps [LE] [ud]</dd>
+              <dt>UYV444i12p</dt>
+              <dd>packed UYV 444 12bps [bp]</dd>
+              <dt>UYV444i12pu</dt>
+              <dd>packed UYV 444 12bps [bp] [ud]</dd>
+              <dt>UYV444i14BE</dt>
+              <dd>packed UYV 444 14bps [BE]</dd>
+              <dt>UYV444i14BEu</dt>
+              <dd>packed UYV 444 14bps [BE] [ud]</dd>
+              <dt>UYV444i14LE</dt>
+              <dd>packed UYV 444 14bps [LE]</dd>
+              <dt>UYV444i14LEu</dt>
+              <dd>packed UYV 444 14bps [LE] [ud]</dd>
+              <dt>UYV444i14p</dt>
+              <dd>packed UYV 444 14bps [bp]</dd>
+              <dt>UYV444i14pu</dt>
+              <dd>packed UYV 444 14bps [bp] [ud]</dd>
+              <dt>UYV444i16BE</dt>
+              <dd>packed UYV 444 16bps [BE]</dd>
+              <dt>UYV444i16BEu</dt>
+              <dd>packed UYV 444 16bps [BE] [ud]</dd>
+              <dt>UYV444i16LE</dt>
+              <dd>packed UYV 444 16bps [LE]</dd>
+              <dt>UYV444i16LEu</dt>
+              <dd>packed UYV 444 16bps [LE] [ud]</dd>
+              <dt>UYV444i9BE</dt>
+              <dd>packed UYV 444 9bps [BE]</dd>
+              <dt>UYV444i9BEu</dt>
+              <dd>packed UYV 444 9bps [BE] [ud]</dd>
+              <dt>UYV444i9LE</dt>
+              <dd>packed UYV 444 9bps [LE]</dd>
+              <dt>UYV444i9LEu</dt>
+              <dd>packed UYV 444 9bps [LE] [ud]</dd>
+              <dt>UYV444i9p</dt>
+              <dd>packed UYV 444 9bps [bp]</dd>
+              <dt>UYV444i9pu</dt>
+              <dd>packed UYV 444 9bps [bp] [ud]</dd>
+              <dt>UYVY422i10BE</dt>
+              <dd>packed UYVY 422 10bps [BE]</dd>
+              <dt>UYVY422i10BEu</dt>
+              <dd>packed UYVY 422 10bps [BE] [ud]</dd>
+              <dt>UYVY422i10LE</dt>
+              <dd>packed UYVY 422 10bps [LE]</dd>
+              <dt>UYVY422i10LEu</dt>
+              <dd>packed UYVY 422 10bps [LE] [ud]</dd>
+              <dt>UYVY422i10p</dt>
+              <dd>packed UYVY 422 10bps [bp]</dd>
+              <dt>UYVY422i10pu</dt>
+              <dd>packed UYVY 422 10bps [bp] [ud]</dd>
+              <dt>UYVY422i12BE</dt>
+              <dd>packed UYVY 422 12bps [BE]</dd>
+              <dt>UYVY422i12BEu</dt>
+              <dd>packed UYVY 422 12bps [BE] [ud]</dd>
+              <dt>UYVY422i12LE</dt>
+              <dd>packed UYVY 422 12bps [LE]</dd>
+              <dt>UYVY422i12LEu</dt>
+              <dd>packed UYVY 422 12bps [LE] [ud]</dd>
+              <dt>UYVY422i12p</dt>
+              <dd>packed UYVY 422 12bps [bp]</dd>
+              <dt>UYVY422i12pu</dt>
+              <dd>packed UYVY 422 12bps [bp] [ud]</dd>
+              <dt>UYVY422i14BE</dt>
+              <dd>packed UYVY 422 14bps [BE]</dd>
+              <dt>UYVY422i14BEu</dt>
+              <dd>packed UYVY 422 14bps [BE] [ud]</dd>
+              <dt>UYVY422i14LE</dt>
+              <dd>packed UYVY 422 14bps [LE]</dd>
+              <dt>UYVY422i14LEu</dt>
+              <dd>packed UYVY 422 14bps [LE] [ud]</dd>
+              <dt>UYVY422i14p</dt>
+              <dd>packed UYVY 422 14bps [bp]</dd>
+              <dt>UYVY422i14pu</dt>
+              <dd>packed UYVY 422 14bps [bp] [ud]</dd>
+              <dt>UYVY422i16BE</dt>
+              <dd>packed UYVY 422 16bps [BE]</dd>
+              <dt>UYVY422i16BEu</dt>
+              <dd>packed UYVY 422 16bps [BE] [ud]</dd>
+              <dt>UYVY422i16LE</dt>
+              <dd>packed UYVY 422 16bps [LE]</dd>
+              <dt>UYVY422i16LEu</dt>
+              <dd>packed UYVY 422 16bps [LE] [ud]</dd>
+              <dt>UYVY422i9BE</dt>
+              <dd>packed UYVY 422 9bps [BE]</dd>
+              <dt>UYVY422i9BEu</dt>
+              <dd>packed UYVY 422 9bps [BE] [ud]</dd>
+              <dt>UYVY422i9LE</dt>
+              <dd>packed UYVY 422 9bps [LE]</dd>
+              <dt>UYVY422i9LEu</dt>
+              <dd>packed UYVY 422 9bps [LE] [ud]</dd>
+              <dt>UYVY422i9p</dt>
+              <dd>packed UYVY 422 9bps [bp]</dd>
+              <dt>UYVY422i9pu</dt>
+              <dd>packed UYVY 422 9bps [bp] [ud]</dd>
+              <dt>YUV444i10BE</dt>
+              <dd>packed YUV 444 10bps [BE]</dd>
+              <dt>YUV444i10BEu</dt>
+              <dd>packed YUV 444 10bps [BE] [ud]</dd>
+              <dt>YUV444i10LE</dt>
+              <dd>packed YUV 444 10bps [LE]</dd>
+              <dt>YUV444i10LEu</dt>
+              <dd>packed YUV 444 10bps [LE] [ud]</dd>
+              <dt>YUV444i10p</dt>
+              <dd>packed YUV 444 10bps [bp]</dd>
+              <dt>YUV444i10pu</dt>
+              <dd>packed YUV 444 10bps [bp] [ud]</dd>
+              <dt>YUV444i12BE</dt>
+              <dd>packed YUV 444 12bps [BE]</dd>
+              <dt>YUV444i12BEu</dt>
+              <dd>packed YUV 444 12bps [BE] [ud]</dd>
+              <dt>YUV444i12LE</dt>
+              <dd>packed YUV 444 12bps [LE]</dd>
+              <dt>YUV444i12LEu</dt>
+              <dd>packed YUV 444 12bps [LE] [ud]</dd>
+              <dt>YUV444i12p</dt>
+              <dd>packed YUV 444 12bps [bp]</dd>
+              <dt>YUV444i12pu</dt>
+              <dd>packed YUV 444 12bps [bp] [ud]</dd>
+              <dt>YUV444i14BE</dt>
+              <dd>packed YUV 444 14bps [BE]</dd>
+              <dt>YUV444i14BEu</dt>
+              <dd>packed YUV 444 14bps [BE] [ud]</dd>
+              <dt>YUV444i14LE</dt>
+              <dd>packed YUV 444 14bps [LE]</dd>
+              <dt>YUV444i14LEu</dt>
+              <dd>packed YUV 444 14bps [LE] [ud]</dd>
+              <dt>YUV444i14p</dt>
+              <dd>packed YUV 444 14bps [bp]</dd>
+              <dt>YUV444i14pu</dt>
+              <dd>packed YUV 444 14bps [bp] [ud]</dd>
+              <dt>YUV444i16BE</dt>
+              <dd>packed YUV 444 16bps [BE]</dd>
+              <dt>YUV444i16BEu</dt>
+              <dd>packed YUV 444 16bps [BE] [ud]</dd>
+              <dt>YUV444i16LE</dt>
+              <dd>packed YUV 444 16bps [LE]</dd>
+              <dt>YUV444i16LEu</dt>
+              <dd>packed YUV 444 16bps [LE] [ud]</dd>
+              <dt>YUV444i9BE</dt>
+              <dd>packed YUV 444 9bps [BE]</dd>
+              <dt>YUV444i9BEu</dt>
+              <dd>packed YUV 444 9bps [BE] [ud]</dd>
+              <dt>YUV444i9LE</dt>
+              <dd>packed YUV 444 9bps [LE]</dd>
+              <dt>YUV444i9LEu</dt>
+              <dd>packed YUV 444 9bps [LE] [ud]</dd>
+              <dt>YUV444i9p</dt>
+              <dd>packed YUV 444 9bps [bp]</dd>
+              <dt>YUV444i9pu</dt>
+              <dd>packed YUV 444 9bps [bp] [ud]</dd>
+              <dt>YUYV422i10BE</dt>
+              <dd>packed YUYV 422 10bps [BE]</dd>
+              <dt>YUYV422i10BEu</dt>
+              <dd>packed YUYV 422 10bps [BE] [ud]</dd>
+              <dt>YUYV422i10LE</dt>
+              <dd>packed YUYV 422 10bps [LE]</dd>
+              <dt>YUYV422i10LEu</dt>
+              <dd>packed YUYV 422 10bps [LE] [ud]</dd>
+              <dt>YUYV422i10p</dt>
+              <dd>packed YUYV 422 10bps [bp]</dd>
+              <dt>YUYV422i10pu</dt>
+              <dd>packed YUYV 422 10bps [bp] [ud]</dd>
+              <dt>YUYV422i12BE</dt>
+              <dd>packed YUYV 422 12bps [BE]</dd>
+              <dt>YUYV422i12BEu</dt>
+              <dd>packed YUYV 422 12bps [BE] [ud]</dd>
+              <dt>YUYV422i12LE</dt>
+              <dd>packed YUYV 422 12bps [LE]</dd>
+              <dt>YUYV422i12LEu</dt>
+              <dd>packed YUYV 422 12bps [LE] [ud]</dd>
+              <dt>YUYV422i12p</dt>
+              <dd>packed YUYV 422 12bps [bp]</dd>
+              <dt>YUYV422i12pu</dt>
+              <dd>packed YUYV 422 12bps [bp] [ud]</dd>
+              <dt>YUYV422i14BE</dt>
+              <dd>packed YUYV 422 14bps [BE]</dd>
+              <dt>YUYV422i14BEu</dt>
+              <dd>packed YUYV 422 14bps [BE] [ud]</dd>
+              <dt>YUYV422i14LE</dt>
+              <dd>packed YUYV 422 14bps [LE]</dd>
+              <dt>YUYV422i14LEu</dt>
+              <dd>packed YUYV 422 14bps [LE] [ud]</dd>
+              <dt>YUYV422i14p</dt>
+              <dd>packed YUYV 422 14bps [bp]</dd>
+              <dt>YUYV422i14pu</dt>
+              <dd>packed YUYV 422 14bps [bp] [ud]</dd>
+              <dt>YUYV422i16BE</dt>
+              <dd>packed YUYV 422 16bps [BE]</dd>
+              <dt>YUYV422i16BEu</dt>
+              <dd>packed YUYV 422 16bps [BE] [ud]</dd>
+              <dt>YUYV422i16LE</dt>
+              <dd>packed YUYV 422 16bps [LE]</dd>
+              <dt>YUYV422i16LEu</dt>
+              <dd>packed YUYV 422 16bps [LE] [ud]</dd>
+              <dt>YUYV422i9BE</dt>
+              <dd>packed YUYV 422 9bps [BE]</dd>
+              <dt>YUYV422i9BEu</dt>
+              <dd>packed YUYV 422 9bps [BE] [ud]</dd>
+              <dt>YUYV422i9LE</dt>
+              <dd>packed YUYV 422 9bps [LE]</dd>
+              <dt>YUYV422i9LEu</dt>
+              <dd>packed YUYV 422 9bps [LE] [ud]</dd>
+              <dt>YUYV422i9p</dt>
+              <dd>packed YUYV 422 9bps [bp]</dd>
+              <dt>YUYV422i9pu</dt>
+              <dd>packed YUYV 422 9bps [bp] [ud]</dd>
+              <dt>YVU444i10BE</dt>
+              <dd>packed YVU 444 10bps [BE]</dd>
+              <dt>YVU444i10BEu</dt>
+              <dd>packed YVU 444 10bps [BE] [ud]</dd>
+              <dt>YVU444i10LE</dt>
+              <dd>packed YVU 444 10bps [LE]</dd>
+              <dt>YVU444i10LEu</dt>
+              <dd>packed YVU 444 10bps [LE] [ud]</dd>
+              <dt>YVU444i10p</dt>
+              <dd>packed YVU 444 10bps [bp]</dd>
+              <dt>YVU444i10pu</dt>
+              <dd>packed YVU 444 10bps [bp] [ud]</dd>
+              <dt>YVU444i12BE</dt>
+              <dd>packed YVU 444 12bps [BE]</dd>
+              <dt>YVU444i12BEu</dt>
+              <dd>packed YVU 444 12bps [BE] [ud]</dd>
+              <dt>YVU444i12LE</dt>
+              <dd>packed YVU 444 12bps [LE]</dd>
+              <dt>YVU444i12LEu</dt>
+              <dd>packed YVU 444 12bps [LE] [ud]</dd>
+              <dt>YVU444i12p</dt>
+              <dd>packed YVU 444 12bps [bp]</dd>
+              <dt>YVU444i12pu</dt>
+              <dd>packed YVU 444 12bps [bp] [ud]</dd>
+              <dt>YVU444i14BE</dt>
+              <dd>packed YVU 444 14bps [BE]</dd>
+              <dt>YVU444i14BEu</dt>
+              <dd>packed YVU 444 14bps [BE] [ud]</dd>
+              <dt>YVU444i14LE</dt>
+              <dd>packed YVU 444 14bps [LE]</dd>
+              <dt>YVU444i14LEu</dt>
+              <dd>packed YVU 444 14bps [LE] [ud]</dd>
+              <dt>YVU444i14p</dt>
+              <dd>packed YVU 444 14bps [bp]</dd>
+              <dt>YVU444i14pu</dt>
+              <dd>packed YVU 444 14bps [bp] [ud]</dd>
+              <dt>YVU444i16BE</dt>
+              <dd>packed YVU 444 16bps [BE]</dd>
+              <dt>YVU444i16BEu</dt>
+              <dd>packed YVU 444 16bps [BE] [ud]</dd>
+              <dt>YVU444i16LE</dt>
+              <dd>packed YVU 444 16bps [LE]</dd>
+              <dt>YVU444i16LEu</dt>
+              <dd>packed YVU 444 16bps [LE] [ud]</dd>
+              <dt>YVU444i9BE</dt>
+              <dd>packed YVU 444 9bps [BE]</dd>
+              <dt>YVU444i9BEu</dt>
+              <dd>packed YVU 444 9bps [BE] [ud]</dd>
+              <dt>YVU444i9LE</dt>
+              <dd>packed YVU 444 9bps [LE]</dd>
+              <dt>YVU444i9LEu</dt>
+              <dd>packed YVU 444 9bps [LE] [ud]</dd>
+              <dt>YVU444i9p</dt>
+              <dd>packed YVU 444 9bps [bp]</dd>
+              <dt>YVU444i9pu</dt>
+              <dd>packed YVU 444 9bps [bp] [ud]</dd>
+              <dt>YVYU422i10BE</dt>
+              <dd>packed YVYU 422 10bps [BE]</dd>
+              <dt>YVYU422i10BEu</dt>
+              <dd>packed YVYU 422 10bps [BE] [ud]</dd>
+              <dt>YVYU422i10LE</dt>
+              <dd>packed YVYU 422 10bps [LE]</dd>
+              <dt>YVYU422i10LEu</dt>
+              <dd>packed YVYU 422 10bps [LE] [ud]</dd>
+              <dt>YVYU422i10p</dt>
+              <dd>packed YVYU 422 10bps [bp]</dd>
+              <dt>YVYU422i10pu</dt>
+              <dd>packed YVYU 422 10bps [bp] [ud]</dd>
+              <dt>YVYU422i12BE</dt>
+              <dd>packed YVYU 422 12bps [BE]</dd>
+              <dt>YVYU422i12BEu</dt>
+              <dd>packed YVYU 422 12bps [BE] [ud]</dd>
+              <dt>YVYU422i12LE</dt>
+              <dd>packed YVYU 422 12bps [LE]</dd>
+              <dt>YVYU422i12LEu</dt>
+              <dd>packed YVYU 422 12bps [LE] [ud]</dd>
+              <dt>YVYU422i12p</dt>
+              <dd>packed YVYU 422 12bps [bp]</dd>
+              <dt>YVYU422i12pu</dt>
+              <dd>packed YVYU 422 12bps [bp] [ud]</dd>
+              <dt>YVYU422i14BE</dt>
+              <dd>packed YVYU 422 14bps [BE]</dd>
+              <dt>YVYU422i14BEu</dt>
+              <dd>packed YVYU 422 14bps [BE] [ud]</dd>
+              <dt>YVYU422i14LE</dt>
+              <dd>packed YVYU 422 14bps [LE]</dd>
+              <dt>YVYU422i14LEu</dt>
+              <dd>packed YVYU 422 14bps [LE] [ud]</dd>
+              <dt>YVYU422i14p</dt>
+              <dd>packed YVYU 422 14bps [bp]</dd>
+              <dt>YVYU422i14pu</dt>
+              <dd>packed YVYU 422 14bps [bp] [ud]</dd>
+              <dt>YVYU422i16BE</dt>
+              <dd>packed YVYU 422 16bps [BE]</dd>
+              <dt>YVYU422i16BEu</dt>
+              <dd>packed YVYU 422 16bps [BE] [ud]</dd>
+              <dt>YVYU422i16LE</dt>
+              <dd>packed YVYU 422 16bps [LE]</dd>
+              <dt>YVYU422i16LEu</dt>
+              <dd>packed YVYU 422 16bps [LE] [ud]</dd>
+              <dt>YVYU422i9BE</dt>
+              <dd>packed YVYU 422 9bps [BE]</dd>
+              <dt>YVYU422i9BEu</dt>
+              <dd>packed YVYU 422 9bps [BE] [ud]</dd>
+              <dt>YVYU422i9LE</dt>
+              <dd>packed YVYU 422 9bps [LE]</dd>
+              <dt>YVYU422i9LEu</dt>
+              <dd>packed YVYU 422 9bps [LE] [ud]</dd>
+              <dt>YVYU422i9p</dt>
+              <dd>packed YVYU 422 9bps [bp]</dd>
+              <dt>YVYU422i9pu</dt>
+              <dd>packed YVYU 422 9bps [bp] [ud]</dd>
+            </dl>
+            <h3 id="yuv-mixed-8-bit-samples">YUV mixed 8-bit samples</h3>
+            <dl class="properties">
+              <dt>YUVnv420</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 8bps</dd>
+              <dt>YUVnv420i1</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 1bps</dd>
+              <dt>YUVnv420i1p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 1bps [bp]</dd>
+              <dt>YUVnv420i1pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 1bps [bp] [ud]</dd>
+              <dt>YUVnv420i1u</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 1bps [ud]</dd>
+              <dt>YUVnv420u</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 8bps [ud]</dd>
+              <dt>YUVnv422</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 8bps</dd>
+              <dt>YUVnv422i1</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 1bps</dd>
+              <dt>YUVnv422i1p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 1bps [bp]</dd>
+              <dt>YUVnv422i1pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 1bps [bp] [ud]</dd>
+              <dt>YUVnv422i1u</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 1bps [ud]</dd>
+              <dt>YUVnv422u</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 8bps [ud]</dd>
+              <dt>YVUnv420</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 8bps</dd>
+              <dt>YVUnv420i1</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 1bps</dd>
+              <dt>YVUnv420i1p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 1bps [bp]</dd>
+              <dt>YVUnv420i1pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 1bps [bp] [ud]</dd>
+              <dt>YVUnv420i1u</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 1bps [ud]</dd>
+              <dt>YVUnv420u</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 8bps [ud]</dd>
+              <dt>YVUnv422</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 8bps</dd>
+              <dt>YVUnv422i1</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 1bps</dd>
+              <dt>YVUnv422i1p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 1bps [bp]</dd>
+              <dt>YVUnv422i1pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 1bps [bp] [ud]</dd>
+              <dt>YVUnv422i1u</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 1bps [ud]</dd>
+              <dt>YVUnv422u</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 8bps [ud]</dd>
+            </dl>
+            <h3 id="yuv-mixed-float-samples">YUV mixed float samples</h3>
+            <dl class="properties">
+              <dt>YUVnv420f</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 32bps [fp]</dd>
+              <dt>YUVnv420fu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 32bps [fp] [ud]</dd>
+              <dt>YUVnv422f</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 32bps [fp]</dd>
+              <dt>YUVnv422fu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 32bps [fp] [ud]</dd>
+              <dt>YVUnv420f</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 32bps [fp]</dd>
+              <dt>YVUnv420fu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 32bps [fp] [ud]</dd>
+              <dt>YVUnv422f</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 32bps [fp]</dd>
+              <dt>YVUnv422fu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 32bps [fp] [ud]</dd>
+            </dl>
+            <h3 id="yuv-mixed-16-bit-samples">YUV mixed 16-bit samples</h3>
+            <dl class="properties">
+              <dt>YUVnv420i10BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 10bps [BE]</dd>
+              <dt>YUVnv420i10BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 10bps [BE] [ud]</dd>
+              <dt>YUVnv420i10LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 10bps [LE]</dd>
+              <dt>YUVnv420i10LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 10bps [LE] [ud]</dd>
+              <dt>YUVnv420i10p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 10bps [bp]</dd>
+              <dt>YUVnv420i10pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 10bps [bp] [ud]</dd>
+              <dt>YUVnv420i12BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 12bps [BE]</dd>
+              <dt>YUVnv420i12BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 12bps [BE] [ud]</dd>
+              <dt>YUVnv420i12LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 12bps [LE]</dd>
+              <dt>YUVnv420i12LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 12bps [LE] [ud]</dd>
+              <dt>YUVnv420i12p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 12bps [bp]</dd>
+              <dt>YUVnv420i12pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 12bps [bp] [ud]</dd>
+              <dt>YUVnv420i14BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 14bps [BE]</dd>
+              <dt>YUVnv420i14BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 14bps [BE] [ud]</dd>
+              <dt>YUVnv420i14LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 14bps [LE]</dd>
+              <dt>YUVnv420i14LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 14bps [LE] [ud]</dd>
+              <dt>YUVnv420i14p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 14bps [bp]</dd>
+              <dt>YUVnv420i14pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 14bps [bp] [ud]</dd>
+              <dt>YUVnv420i16BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 16bps [BE]</dd>
+              <dt>YUVnv420i16BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 16bps [BE] [ud]</dd>
+              <dt>YUVnv420i16LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 16bps [LE]</dd>
+              <dt>YUVnv420i16LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 16bps [LE] [ud]</dd>
+              <dt>YUVnv420i9BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 9bps [BE]</dd>
+              <dt>YUVnv420i9BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 9bps [BE] [ud]</dd>
+              <dt>YUVnv420i9LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 9bps [LE]</dd>
+              <dt>YUVnv420i9LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 9bps [LE] [ud]</dd>
+              <dt>YUVnv420i9p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 9bps [bp]</dd>
+              <dt>YUVnv420i9pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 420 9bps [bp] [ud]</dd>
+              <dt>YUVnv422i10BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 10bps [BE]</dd>
+              <dt>YUVnv422i10BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 10bps [BE] [ud]</dd>
+              <dt>YUVnv422i10LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 10bps [LE]</dd>
+              <dt>YUVnv422i10LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 10bps [LE] [ud]</dd>
+              <dt>YUVnv422i10p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 10bps [bp]</dd>
+              <dt>YUVnv422i10pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 10bps [bp] [ud]</dd>
+              <dt>YUVnv422i12BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 12bps [BE]</dd>
+              <dt>YUVnv422i12BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 12bps [BE] [ud]</dd>
+              <dt>YUVnv422i12LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 12bps [LE]</dd>
+              <dt>YUVnv422i12LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 12bps [LE] [ud]</dd>
+              <dt>YUVnv422i12p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 12bps [bp]</dd>
+              <dt>YUVnv422i12pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 12bps [bp] [ud]</dd>
+              <dt>YUVnv422i14BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 14bps [BE]</dd>
+              <dt>YUVnv422i14BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 14bps [BE] [ud]</dd>
+              <dt>YUVnv422i14LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 14bps [LE]</dd>
+              <dt>YUVnv422i14LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 14bps [LE] [ud]</dd>
+              <dt>YUVnv422i14p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 14bps [bp]</dd>
+              <dt>YUVnv422i14pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 14bps [bp] [ud]</dd>
+              <dt>YUVnv422i16BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 16bps [BE]</dd>
+              <dt>YUVnv422i16BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 16bps [BE] [ud]</dd>
+              <dt>YUVnv422i16LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 16bps [LE]</dd>
+              <dt>YUVnv422i16LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 16bps [LE] [ud]</dd>
+              <dt>YUVnv422i9BE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 9bps [BE]</dd>
+              <dt>YUVnv422i9BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 9bps [BE] [ud]</dd>
+              <dt>YUVnv422i9LE</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 9bps [LE]</dd>
+              <dt>YUVnv422i9LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 9bps [LE] [ud]</dd>
+              <dt>YUVnv422i9p</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 9bps [bp]</dd>
+              <dt>YUVnv422i9pu</dt>
+              <dd>mixed (Y, interleaved chroma) YUV 422 9bps [bp] [ud]</dd>
+              <dt>YVUnv420i10BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 10bps [BE]</dd>
+              <dt>YVUnv420i10BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 10bps [BE] [ud]</dd>
+              <dt>YVUnv420i10LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 10bps [LE]</dd>
+              <dt>YVUnv420i10LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 10bps [LE] [ud]</dd>
+              <dt>YVUnv420i10p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 10bps [bp]</dd>
+              <dt>YVUnv420i10pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 10bps [bp] [ud]</dd>
+              <dt>YVUnv420i12BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 12bps [BE]</dd>
+              <dt>YVUnv420i12BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 12bps [BE] [ud]</dd>
+              <dt>YVUnv420i12LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 12bps [LE]</dd>
+              <dt>YVUnv420i12LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 12bps [LE] [ud]</dd>
+              <dt>YVUnv420i12p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 12bps [bp]</dd>
+              <dt>YVUnv420i12pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 12bps [bp] [ud]</dd>
+              <dt>YVUnv420i14BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 14bps [BE]</dd>
+              <dt>YVUnv420i14BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 14bps [BE] [ud]</dd>
+              <dt>YVUnv420i14LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 14bps [LE]</dd>
+              <dt>YVUnv420i14LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 14bps [LE] [ud]</dd>
+              <dt>YVUnv420i14p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 14bps [bp]</dd>
+              <dt>YVUnv420i14pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 14bps [bp] [ud]</dd>
+              <dt>YVUnv420i16BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 16bps [BE]</dd>
+              <dt>YVUnv420i16BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 16bps [BE] [ud]</dd>
+              <dt>YVUnv420i16LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 16bps [LE]</dd>
+              <dt>YVUnv420i16LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 16bps [LE] [ud]</dd>
+              <dt>YVUnv420i9BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 9bps [BE]</dd>
+              <dt>YVUnv420i9BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 9bps [BE] [ud]</dd>
+              <dt>YVUnv420i9LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 9bps [LE]</dd>
+              <dt>YVUnv420i9LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 9bps [LE] [ud]</dd>
+              <dt>YVUnv420i9p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 9bps [bp]</dd>
+              <dt>YVUnv420i9pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 420 9bps [bp] [ud]</dd>
+              <dt>YVUnv422i10BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 10bps [BE]</dd>
+              <dt>YVUnv422i10BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 10bps [BE] [ud]</dd>
+              <dt>YVUnv422i10LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 10bps [LE]</dd>
+              <dt>YVUnv422i10LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 10bps [LE] [ud]</dd>
+              <dt>YVUnv422i10p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 10bps [bp]</dd>
+              <dt>YVUnv422i10pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 10bps [bp] [ud]</dd>
+              <dt>YVUnv422i12BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 12bps [BE]</dd>
+              <dt>YVUnv422i12BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 12bps [BE] [ud]</dd>
+              <dt>YVUnv422i12LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 12bps [LE]</dd>
+              <dt>YVUnv422i12LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 12bps [LE] [ud]</dd>
+              <dt>YVUnv422i12p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 12bps [bp]</dd>
+              <dt>YVUnv422i12pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 12bps [bp] [ud]</dd>
+              <dt>YVUnv422i14BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 14bps [BE]</dd>
+              <dt>YVUnv422i14BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 14bps [BE] [ud]</dd>
+              <dt>YVUnv422i14LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 14bps [LE]</dd>
+              <dt>YVUnv422i14LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 14bps [LE] [ud]</dd>
+              <dt>YVUnv422i14p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 14bps [bp]</dd>
+              <dt>YVUnv422i14pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 14bps [bp] [ud]</dd>
+              <dt>YVUnv422i16BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 16bps [BE]</dd>
+              <dt>YVUnv422i16BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 16bps [BE] [ud]</dd>
+              <dt>YVUnv422i16LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 16bps [LE]</dd>
+              <dt>YVUnv422i16LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 16bps [LE] [ud]</dd>
+              <dt>YVUnv422i9BE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 9bps [BE]</dd>
+              <dt>YVUnv422i9BEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 9bps [BE] [ud]</dd>
+              <dt>YVUnv422i9LE</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 9bps [LE]</dd>
+              <dt>YVUnv422i9LEu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 9bps [LE] [ud]</dd>
+              <dt>YVUnv422i9p</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 9bps [bp]</dd>
+              <dt>YVUnv422i9pu</dt>
+              <dd>mixed (Y, interleaved chroma) YVU 422 9bps [bp] [ud]</dd>
+            </dl>
+            <h3 id="gray-8-bit-samples">Gray 8-bit samples</h3>
+            <dl class="properties">
+              <dt>gray</dt>
+              <dd>planar Y 444 8bps</dd>
+              <dt>gray1</dt>
+              <dd>planar Y 444 1bps</dd>
+              <dt>gray1p</dt>
+              <dd>planar Y 444 1bps [bp]</dd>
+              <dt>gray1pu</dt>
+              <dd>planar Y 444 1bps [bp] [ud]</dd>
+              <dt>gray1u</dt>
+              <dd>planar Y 444 1bps [ud]</dd>
+              <dt>grayu</dt>
+              <dd>planar Y 444 8bps [ud]</dd>
+            </dl>
+            <h3 id="gray-16-bit-samples">Gray 16-bit samples</h3>
+            <dl class="properties">
+              <dt>gray10BE</dt>
+              <dd>planar Y 444 10bps [BE]</dd>
+              <dt>gray10BEu</dt>
+              <dd>planar Y 444 10bps [BE] [ud]</dd>
+              <dt>gray10LE</dt>
+              <dd>planar Y 444 10bps [LE]</dd>
+              <dt>gray10LEu</dt>
+              <dd>planar Y 444 10bps [LE] [ud]</dd>
+              <dt>gray10p</dt>
+              <dd>planar Y 444 10bps [bp]</dd>
+              <dt>gray10pu</dt>
+              <dd>planar Y 444 10bps [bp] [ud]</dd>
+              <dt>gray12BE</dt>
+              <dd>planar Y 444 12bps [BE]</dd>
+              <dt>gray12BEu</dt>
+              <dd>planar Y 444 12bps [BE] [ud]</dd>
+              <dt>gray12LE</dt>
+              <dd>planar Y 444 12bps [LE]</dd>
+              <dt>gray12LEu</dt>
+              <dd>planar Y 444 12bps [LE] [ud]</dd>
+              <dt>gray12p</dt>
+              <dd>planar Y 444 12bps [bp]</dd>
+              <dt>gray12pu</dt>
+              <dd>planar Y 444 12bps [bp] [ud]</dd>
+              <dt>gray14BE</dt>
+              <dd>planar Y 444 14bps [BE]</dd>
+              <dt>gray14BEu</dt>
+              <dd>planar Y 444 14bps [BE] [ud]</dd>
+              <dt>gray14LE</dt>
+              <dd>planar Y 444 14bps [LE]</dd>
+              <dt>gray14LEu</dt>
+              <dd>planar Y 444 14bps [LE] [ud]</dd>
+              <dt>gray14p</dt>
+              <dd>planar Y 444 14bps [bp]</dd>
+              <dt>gray14pu</dt>
+              <dd>planar Y 444 14bps [bp] [ud]</dd>
+              <dt>gray16BE</dt>
+              <dd>planar Y 444 16bps [BE]</dd>
+              <dt>gray16BEu</dt>
+              <dd>planar Y 444 16bps [BE] [ud]</dd>
+              <dt>gray16LE</dt>
+              <dd>planar Y 444 16bps [LE]</dd>
+              <dt>gray16LEu</dt>
+              <dd>planar Y 444 16bps [LE] [ud]</dd>
+              <dt>gray9BE</dt>
+              <dd>planar Y 444 9bps [BE]</dd>
+              <dt>gray9BEu</dt>
+              <dd>planar Y 444 9bps [BE] [ud]</dd>
+              <dt>gray9LE</dt>
+              <dd>planar Y 444 9bps [LE]</dd>
+              <dt>gray9LEu</dt>
+              <dd>planar Y 444 9bps [LE] [ud]</dd>
+              <dt>gray9p</dt>
+              <dd>planar Y 444 9bps [bp]</dd>
+              <dt>gray9pu</dt>
+              <dd>planar Y 444 9bps [bp] [ud]</dd>
+            </dl>
+            <h3 id="gray-float-samples">Gray float samples</h3>
+            <dl class="properties">
+              <dt>grayf</dt>
+              <dd>planar Y 444 32bps [fp]</dd>
+              <dt>grayfu</dt>
+              <dd>planar Y 444 32bps [fp] [ud]</dd>
+            </dl>
+            <h3 id="aliases">Aliases</h3>
+            <dl class="properties">
+              <dt>RGB24</dt>
+              <dd>alias for RGB24u (standard name)</dd>
+              <dt>BGR24</dt>
+              <dd>alias for BGR24u (standard name)</dd>
+              <dt>RGB32</dt>
+              <dd>alias for RGBA32u (standard name)</dd>
+              <dt>BGR32</dt>
+              <dd>alias for BGRA32u (standard name)</dd>
+              <dt>YUV444p</dt>
+              <dd>alias for YUV444p (standard name)</dd>
+              <dt>YUV444</dt>
+              <dd>alias for YUV444 (standard name)</dd>
+              <dt>YUV422p</dt>
+              <dd>alias for YUV422p (standard name)</dd>
+              <dt>YUV422</dt>
+              <dd>alias for YUYV422 (standard name)</dd>
+              <dt>YUV420p</dt>
+              <dd>alias for YUV420p (standard name)</dd>
+              <dt>YUV444</dt>
+              <dd>alias for YUV444 (standard name)</dd>
+              <dt>YUV444 10bit</dt>
+              <dd>alias for YUV444p10LE (standard name)</dd>
+              <dt>YUV444 12bit</dt>
+              <dd>alias for YUV444p12LE (standard name)</dd>
+              <dt>YUV444 14bit</dt>
+              <dd>alias for YUV444p14LE (standard name)</dd>
+              <dt>YUV444 16bit</dt>
+              <dd>alias for YUV444p16LE (standard name)</dd>
+              <dt>RGB24 float</dt>
+              <dd>alias for RGBpf (standard name)</dd>
+              <dt>NV12</dt>
+              <dd>alias for YUVnv420 (standard name)</dd>
+              <dt>NV21</dt>
+              <dd>alias for YVUnv420 (standard name)</dd>
+              <dt>NV16</dt>
+              <dd>alias for YUVnv422 (standard name)</dd>
+              <dt>YUV</dt>
+              <dd>alias for YUV444p (old VQMT)</dd>
+              <dt>YUY2</dt>
+              <dd>alias for YUYV422 (old VQMT)</dd>
+              <dt>UYVY</dt>
+              <dd>alias for UYVY422 (old VQMT)</dd>
+              <dt>YV12</dt>
+              <dd>alias for YVU420p (old VQMT)</dd>
+              <dt>IYUV</dt>
+              <dd>alias for YUV420p (old VQMT)</dd>
+              <dt>NV12</dt>
+              <dd>alias for YUVnv420 (old VQMT)</dd>
+              <dt>NV16</dt>
+              <dd>alias for YUVnv422 (old VQMT)</dd>
+              <dt>Y</dt>
+              <dd>alias for gray (old VQMT)</dd>
+              <dt>YV16</dt>
+              <dd>alias for YVU422p (old VQMT)</dd>
+              <dt>Y410</dt>
+              <dd>alias for YUV444i10LE (old VQMT)</dd>
+              <dt>Y416</dt>
+              <dd>alias for YUV444i16LE (old VQMT)</dd>
+              <dt>P010</dt>
+              <dd>alias for YUV420p10LE (old VQMT)</dd>
+              <dt>P014</dt>
+              <dd>alias for YUV420p14LE (old VQMT)</dd>
+              <dt>P016</dt>
+              <dd>alias for YUV420p16LE (old VQMT)</dd>
+              <dt>P210</dt>
+              <dd>alias for YUV422p10LE (old VQMT)</dd>
+              <dt>P214</dt>
+              <dd>alias for YUV422p14LE (old VQMT)</dd>
+              <dt>P216</dt>
+              <dd>alias for YUV422p16LE (old VQMT)</dd>
+              <dt>P410</dt>
+              <dd>alias for YUV444p10LE (old VQMT)</dd>
+              <dt>P414</dt>
+              <dd>alias for YUV444p14LE (old VQMT)</dd>
+              <dt>P416</dt>
+              <dd>alias for YUV444p16LE (old VQMT)</dd>
+              <dt>P410_RGB</dt>
+              <dd>alias for RGBp10LE (old VQMT)</dd>
+              <dt>P414_RGB</dt>
+              <dd>alias for RGBp14LE (old VQMT)</dd>
+              <dt>P416_RGB</dt>
+              <dd>alias for RGBp16LE (old VQMT)</dd>
+            </dl>
+            <p>This page is automatically generated by 13.0 beta r12626 on 2021-02-05. In case of any question or suggestion, please mail us: <a href="video-measure@compression.ru">video-measure@compression.ru</a></p>
+          </div>
+          <div class="tiles-width meta">
+            <div class="share">
+              <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+              <!-- Sharingbutton Twitter -->
+              <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Video Quality Measurement Tool: Picture types&amp;url=
+http://localhost:4000/vqmt/online-help-13-0/picture-types/
+"
+   target="_blank" rel="noopener" aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton Telegram -->
+              <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Video Quality Measurement Tool: Picture types&amp;url=
+http://localhost:4000/vqmt/online-help-13-0/picture-types/
+" rel="noopener" target="_blank">
+                <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton Facebook -->
+              <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/vqmt/online-help-13-0/picture-types/
+" rel="noopener"
+   target="_blank">
+                <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton E-Mail -->
+              <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Video Quality Measurement Tool: Picture types&amp;body=
+http://localhost:4000/vqmt/online-help-13-0/picture-types/
+" target="_self" rel="noopener"
+   aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton LinkedIn -->
+              <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/vqmt/online-help-13-0/picture-types/
+&amp;title=MSU Video Quality Measurement Tool: Picture types&amp;summary=MSU Video Quality Measurement Tool: Picture types&amp;source=
+http://localhost:4000/vqmt/online-help-13-0/picture-types/
+"
+   target="_blank" rel="noopener" aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+            <span class="date">05 Feb 2021</span>
+          </div>
+          <div class="tiles-width separator"></div>
+          <div class="tiles-width see-also-title">
+            See Also
+          </div>
+          <div class="tiles wide">
+            <a class="tile" href="/benchmarks/deblurring.html">
+              <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+              <div class="title">MSU Video Deblurring Benchmark 2022</div>
+              <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+            </a>
+            <a class="tile" href="/vqmt/vqmt-doc-toc/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Documentation TOC</div>
+              <div class="text">Table of content for all version of MSU VQMT online help</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/picture-types/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Picture types</div>
+              <div class="text">VQMT 14.0 Online help: List of all picture types available in VQMT and their aliases</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/metrics/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI</div>
+              <div class="text">VQMT 14.0 Online help: Description of VQMT metrics, their parameters and using in CLI</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/info/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: VQMT various lists and tables</div>
+              <div class="text">VQMT 14.0 Online help: Information about VQMT visualization formats, read modes, etc...</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/help/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Command-line help</div>
+              <div class="text">VQMT 14.0 Online help: Information about all VQMT CLI options for Pro/Premium versions</div>
+            </a>
+          </div>
+          <div class="tiles-width separator"></div>
+          <div class="tiles-width markdown site-structure">
+            <span class="title">Site structure</span>
+            <ul>
+              <li>
+                <a href="/benchmarks/">MSU Benchmark Collection</a>
+                <ul>
+                  <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+                  <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+                  <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+                  <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+                  <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+                  <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+                  <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/codecs/">Codecs Comparisons & Optimization</a>
+                <ul>
+                  <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+                  <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+                  <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+                  <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+                  <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+                  <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/vqmt/">VQMT</a>
+                <ul>
+                  <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+                <ul>
+                  <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+                  <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+                  <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/datasets/">MSU Datasets Collection</a>
+                <ul>
+                </ul>
+              </li>
+              <li>
+                <a href="/metrics/">Metrics Research</a>
+                <ul>
+                </ul>
+              </li>
+              <li>
+                <a href="/video_filters/">Video Filters</a>
+                <ul>
+                  <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+                  <li><a href="/video_filters/public/">Free Filters</a></li>
+                  <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/other/">Other Projects</a>
+                <ul>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="global-footer">
+        <div class="footer">
+          <div class="footer-column copyright">
+            <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+            <div class="text">
+              MSU Graphics & Media Lab Video Group
+              <br>
+              2019&ndash;2022
+            </div>
+          </div>
+          <div class="footer-column">
+            <ul>
+              <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+              <li><a href="/vqmt/">VQMT</a></li>
+              <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+              <li><a href="/datasets/">MSU Datasets Collection</a></li>
+              <li><a href="/metrics/">Metrics Research</a></li>
+              <li><a href="/video_filters/">Video Filters</a></li>
+              <li><a href="/other/">Other Projects</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <ul>
+              <li><a href="/about/">About Us</a></li>
+              <li><a href="/benchmarks/">Benchmarks</a></li>
+              <li><a href="/projects/">Projects</a></li>
+              <li><a href="/publications/">Publications</a></li>
+              <li><a href="/contacts/">Contacts</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: [
+          "MathMenu.js",
+          "MathZoom.js",
+          "AssistiveMML.js",
+          "a11y/accessibility-menu.js"
+        ],
+        jax: ["input/TeX", "output/CommonHTML"],
+        TeX: {
+          extensions: [
+            "AMSmath.js",
+            "AMSsymbols.js",
+            "noErrors.js",
+            "noUndefined.js",
+          ]
+        }
+      });
+    </script>
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  </body>
+</html>

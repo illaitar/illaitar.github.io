@@ -1,0 +1,39 @@
+{% capture page_url %}
+{{ site.url }}{{ page.url }}
+{% endcapture %}
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: https://ogp.me/ns#">
+    {% if site.google_analytics and jekyll.environment == 'production' %}
+    {% include google_analytics.html %}
+    {% endif %}
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <meta property="og:title" content="{{ page.title }}">
+    {% if page.preview_img %}
+    <meta property="og:image" content="{{ site.url }}{{ page.preview_img }}">
+    {% else %}
+    <meta property="og:image" content="{{ site.url }}/assets/img/logo.svg">
+    {% endif %}
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    <meta property="og:description" content="{{ page.description }}">
+    {% endif %}
+    <meta property="og:url" content="{{ page_url }}">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+{% include header.html %}
+<div class="content">
+    {{ content }}
+</div>
+{% include footer.html %}
+</body>
+</html>

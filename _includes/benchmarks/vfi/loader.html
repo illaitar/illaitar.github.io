@@ -1,0 +1,298 @@
+<script src="/assets/js/benchmarks/upscalers/figures.js"></script>
+<script>
+   
+
+    function set_select(select_class, select_options){ //".videos_list" glob_videos
+
+        $(select_class).each(function(){
+            $(this).text("")
+            let val = 0
+            for (const key of select_options)
+            {
+                $(this).append("<option value='"+val+"'>"+key+"</option>");
+                val+=1
+            }
+        });
+    }
+
+
+   function unpack_3dict(packed_dict) {
+        let ans={};
+        let lv=packed_dict[0];
+        for (let i = 0; i < lv[0].length; i++){
+            ans[lv[0][i]]={};
+            for(let j=0; j< lv[1].length; j++){
+                ans[lv[0][i]][lv[1][j]]={};
+                for(let k=0; k<lv[2].length; k++){
+                    ans[lv[0][i]][lv[1][j]][lv[2][k]]=packed_dict[i+1][j][k];
+                }
+            }    
+        }
+        return ans;
+   }
+
+   function unpack_4dict(packed_dict) {
+        let ans={};
+        let lv=packed_dict[0];
+        let lv_other=lv.slice(1)
+        lv_other=[[...lv_other]]
+        for (let i = 0; i < lv[0].length; i++){
+            ans[lv[0][i]]=unpack_3dict(lv_other.concat(packed_dict[i+1]))
+        }
+        return ans;
+   }
+
+
+    const glob_videos=['Overall', 'sea_gauss', 'dogs_bicubic', 'climbers_bicubic', 'dress_bicubic', 'kuwait_bicubic', 'artist_bicubic', 'chase_bicubic', 'colors_bicubic', 'flowers_bicubic', 'bicycle_gauss', 'kids_gauss', 'tree_bicubic', 'fight_bicubic', 'cats_bicubic', 'kuwait_bicubic_bayer']
+    const glob_print_videos=['Overall', 'sea_gauss', 'dogs_bicubic', 'climbers_bicubic', 'dress_bicubic', 'kuwait_bicubic', 'artist_bicubic', 'chase_bicubic', 'colors_bicubic', 'flowers_bicubic', 'bicycle_gauss', 'kids_gauss', 'tree_bicubic', 'fight_bicubic', 'cats_bicubic', 'kuwait_bayer']
+    //used at latecode
+
+    data=[[["From 30 fps", "From 60 fps"], ['RIFE', 'Adobe Premiere Pro', 'CAIN', 'XVFI', 'Topaz VE', 'Super-SloMo', 'Frame Repeating', 'Frame Averaging'], ["Ggpxl-Art", "Ggpxl-Line", "Ggpxl-Lowres", "Ggpxl-Std", "Ggpxl-Vcomp", "DaVinci", "VEAI-AAA-9", "VEAI-AHQ-11", "VEAI-ALQ-12", "VEAI-ALQS-1", "VEAI-AMQ-12", "VEAI-AMQS-1", "VEAI-GCG-5", "VEAI-GHQ-5", "Adobe", "Anime4KCPP", "SRMD", "waifu2x-anime", "waifu2x-cunet", "waifu2x-photo", "iSeeBetter", "TecoGAN", "Real-ESRGAN", "DRRN", "ESPCN", "FRVSR", "RealSR", "RealSR-JPEG", "SPMC", "SRCNN", "VDSR", "VESPCN", "ESRGAN", "ESRGAN-PSNR", "DBVSR", "LGFN", "SOF-VSR-BD", "EGVSR", "SOF-VSR-BI", "DynaVSR-R", "Bicubic", "Ground truth"]], [[[0.98, 0.98, 1.0, 0.93, 1.1, 13.44, 11.14, 10.92, 10.63, 6.52, 6.47, 6.99, 5.8, 5.71, 0.35, 19.61, 10.35, 11.23, 9.76, 11.01, 0.07, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 64.63, -1]], [[50.89, 63.91, 38.04, 40.26, 44.66, 43.1, 34.22, 75.12, 65.46, 65.47, 74.53, 70.42, 33.51, 62.91, 47.43, 24.8, 51.45, 49.94, 47.64, 43.95, 51.98, 53.48, 89.38, 43.89, 23.96, 48.94, 46.31, 73.01, 36.25, 31.04, 7.04, 40.58, 47.81, 46.72, 48.02, 47.84, 51.49, 49.55, 46.45, 52.09, 5.58, 100.0]], [[0.968, 0.969, 0.968, 0.972, 0.951, 0.976, 0.977, 0.978, 0.976, 0.975, 0.976, 0.976, 0.976, 0.977, 0.98, 0.966, 0.98, 0.979, 0.98, 0.98, 0.982, 0.981, 0.968, 0.979, 0.975, 0.98, 0.977, 0.971, 0.979, 0.978, 0.973, 0.979, 0.977, 0.98, 0.981, 0.982, 0.98, 0.98, 0.981, 0.962, 0.973, -1]], [[28.44, 28.8, 28.99, 29.54, 26.63, 29.7, 29.74, 30.04, 29.76, 29.55, 29.77, 29.91, 29.59, 29.88, 30.68, 29.14, 30.76, 30.57, 30.79, 30.67, 31.06, 30.43, 28.53, 30.45, 29.29, 30.72, 29.66, 29.53, 30.48, 30.03, 28.93, 30.41, 29.67, 30.76, 30.83, 31.08, 30.32, 30.14, 30.75, 29.59, 29.0, -1]], [[82.78, 86.35, 75.27, 83.14, 71.73, 84.94, 78.45, 86.68, 85.24, 81.96, 85.5, 82.04, 76.88, 83.29, 84.76, 77.05, 82.73, 82.87, 83.4, 83.06, 85.24, 88.27, 75.5, 84.37, 78.0, 85.07, 80.5, 76.7, 82.5, 81.77, 74.89, 83.7, 83.34, 84.88, 85.12, 85.39, 88.56, 87.54, 84.84, 84.84, 75.94, -1]]], [[[0.8, 0.54, 0.77, 0.55, 0.68, 2.49, 3.01, 2.96, 2.18, 1.83, 1.77, 1.81, 3.35, 3.31, 0.35, 6.67, 4.28, 4.06, 2.53, 3.94, 0.07, 2.21, 0.48, 0.43, 0.59, 0.48, 0.51, 0.51, 0.39, 0.68, 0.62, 0.68, 1.32, 1.36, 0.2, 0.82, 0.57, 7.18, 0.58, 0.09, 21.18, -1]], [[39.55, 57.43, 31.32, 37.82, 39.19, 24.91, 34.51, 73.68, 50.16, 52.81, 59.42, 59.97, 32.24, 52.75, 37.78, 14.06, 43.38, 45.94, 41.5, 38.27, 38.12, 34.74, 75.24, 34.69, 12.94, 35.04, 31.61, 62.28, 30.7, 22.25, 6.23, 28.74, 29.31, 35.7, 37.58, 35.47, 31.06, 27.61, 32.82, 39.67, 4.36, 100.0]], [[0.917, 0.917, 0.911, 0.921, 0.888, 0.92, 0.927, 0.929, 0.927, 0.918, 0.933, 0.929, 0.925, 0.927, 0.935, 0.902, 0.935, 0.932, 0.934, 0.934, 0.939, 0.933, 0.917, 0.933, 0.926, 0.936, 0.924, 0.915, 0.933, 0.929, 0.917, 0.932, 0.919, 0.936, 0.937, 0.939, 0.935, 0.929, 0.937, 0.916, 0.918, -1]], [[25.49, 25.36, 25.97, 26.21, 24.09, 26.28, 26.47, 26.96, 26.66, 26.24, 27.07, 26.79, 26.47, 26.42, 27.11, 25.91, 27.19, 27.07, 27.21, 27.13, 27.42, 26.6, 25.48, 26.97, 26.25, 27.23, 26.06, 26.12, 26.99, 26.68, 25.89, 26.92, 25.75, 27.29, 27.28, 27.42, 26.74, 26.33, 27.14, 26.12, 25.94, -1]], [[53.45, 58.54, 43.35, 53.82, 41.38, 46.38, 43.25, 59.71, 58.27, 49.94, 58.85, 54.86, 45.6, 58.28, 57.86, 42.44, 54.76, 53.15, 53.8, 53.76, 57.91, 61.2, 56.47, 55.45, 47.19, 57.14, 54.47, 50.06, 51.96, 51.21, 36.46, 53.96, 56.6, 56.69, 57.39, 57.79, 61.14, 60.39, 56.45, 56.86, 37.94, -1]]]]
+    //will be used at graphs rank
+
+    const glob_event='dataavailable' 
+    //used at latecode, charts
+    
+    const glob_algs=data[0][3]
+    //will be used at vis
+    
+
+    data=unpack_4dict(data);
+
+
+
+
+    ///////////////////SCATTER GRAPHS//////////////
+
+    const highchart_symbols=['triangle','square','diamond','circle', 'triangle-down', 'pentagon']
+    const highchart_colors=['#5FADF5','#5FF5D2','#E6845E','#E3E645','#000000','#E66ADB','#AB9EE6','#407A5B']
+
+    let alg_color={}
+    let alg_symbol={}
+    
+    let color_ind=0
+    let symbol_ind=0
+    let was = new Set()
+
+    for (let i = 0; i < glob_algs.length; i++) {
+        let alg=glob_algs[i];
+        let cur_color=highchart_colors[color_ind%highchart_colors.length]
+        let cur_symbol=highchart_symbols[symbol_ind%highchart_symbols.length]
+                
+        while (was.has(cur_color+cur_symbol)){
+            color_ind+=1
+            cur_color=highchart_colors[color_ind%highchart_colors.length]
+        }
+            
+        was.add(cur_color+cur_symbol)
+        symbol_ind+=1
+        color_ind+=1
+        alg_color[alg]=cur_color
+        alg_symbol[alg]=cur_symbol
+    }
+
+
+    const metric_to_name = ['subjective', 'VMAF', 'MS-SSIM', 'PSNR'];
+    
+
+    const glob_metrics = ['Subjective', 'Shifted VMAF', 'Shifted MS-SSIM-Y', 'Shifted PSNR-Y'];
+    //used at latecode
+
+    function plot_options_initial(){
+        return {
+            chart: {
+                type: 'scatter',
+                zoomType: 'xy',
+                spacingBottom: 15,
+                spacingTop: 10,
+                spacingLeft: 10,
+                spacingRight: 10,
+                height: 500
+            },
+            title: {
+                text: ''
+            },
+            subtitle: {
+                text: 'Highlight the plot region where you want to zoom in'
+            },
+            xAxis: {
+                title: {
+                    text: 'FPS'
+                },
+                startOnTick: true,
+                endOnTick: true,
+                showLastLabel: true,
+                minPadding: 0,
+                maxPadding: 0,
+                type: 'logarithmic'
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                minPadding: 0,
+                maxPadding: 0
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+            plotOptions: {
+                series:{
+                    animationLimit:Infinity
+                },
+                scatter: {
+                    animationLimit:Infinity,
+                    marker: {
+                        radius: 5,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: ''
+                    }
+                }
+            },
+            navigation: {
+                buttonOptions: {
+                    enabled: false
+                }
+            },
+            series: [],
+            credits: {
+                text: 'videoprocessing.ai',
+                href: 'https://videoprocessing.ai/'
+            },
+
+        }
+    }   
+
+    function calculeRank(mappedValues){
+        cpy = mappedValues.sort(([arg1], [arg2]) => arg2 - arg1)
+        let ans = Array(cpy.length)
+        for (let i = 0; i < cpy.length; i++) {
+            ans[cpy[i][1]]=i
+        }
+        return ans
+    }
+
+    chart_objects = {}
+    function graphHelper(chart_id, metric_select_id, video_select_id, this_scale) {
+
+
+        let metric_select = document.getElementById(metric_select_id);
+        let video_select = document.getElementById(video_select_id);
+        let metric_name = metric_to_name[metric_select.selectedIndex];
+        let video_name = glob_videos[video_select.selectedIndex];
+        let plot_options = plot_options_initial();
+
+ 
+        
+        let ord_inds = glob_algs.map((item, index) => [data[this_scale][metric_name][video_name][item], index])
+        let leg_inds = calculeRank(ord_inds)
+        let min_fps=200
+        let max_fps=0
+        let min_val=200
+        let max_val=0
+
+        for (let i = 0; i < glob_algs.length; i++) {
+            let alg=glob_algs[i];
+            
+            if (alg != "Ground truth") {
+
+                let fps=data[this_scale]['FPS'][video_name][alg]
+                if (fps<0){
+                    fps=data[this_scale]['FPS']['Overall'][alg]
+                    if (fps<0){ //this is only possible at 2x
+                        other_scale="4" 
+                        fps=data[other_scale]['FPS']['Overall'][alg]
+                    }
+                }
+                let val=data[this_scale][metric_name][video_name][alg]
+                
+                if (fps<min_fps){
+                    min_fps=fps
+                }
+                if (fps>max_fps){
+                    max_fps=fps
+                }
+                if (val<min_val){
+                    min_val=val
+                }
+                if (val>max_val){
+                    max_val=val
+                }
+
+                plot_options.series.push({
+                    name: alg, 
+                    data: [{
+                        x:fps,
+                        y:val,
+                        id:alg
+                    }], 
+                    type: 'scatter',
+                    color: alg_color[alg],
+                    marker: {
+                        symbol: alg_symbol[alg]
+                    },
+                    legendIndex: leg_inds[i]
+                });
+
+
+            }
+        }
+    
+
+        plot_options.plotOptions.scatter.tooltip.pointFormat = 'FPS: {point.x}, '+
+        glob_metrics[metric_select.selectedIndex] +': {point.y}'
+
+        plot_options.title.text = glob_metrics[metric_select.selectedIndex] 
+        + " vs FPS on "+ this_scale + "× " + glob_print_videos[video_select.selectedIndex];
+
+        plot_options.yAxis.title.text = glob_metrics[metric_select.selectedIndex];
+        
+        if (chart_id in chart_objects && chart_objects[chart_id]['metric']!=metric_name){
+            chart_objects[chart_id]['chart'].xAxis[0].setExtremes(null, null, false, false)
+            chart_objects[chart_id]['chart'].yAxis[0].setExtremes(null, null, false, false)
+        }
+        if (chart_id in chart_objects && chart_objects[chart_id]['metric']==metric_name){
+            chart_objects[chart_id]['chart'].xAxis[0].setExtremes(
+                chart_objects[chart_id]['extremes'][0], 
+                chart_objects[chart_id]['extremes'][1], false, false)
+            chart_objects[chart_id]['chart'].yAxis[0].setExtremes(
+                chart_objects[chart_id]['extremes'][2], 
+                chart_objects[chart_id]['extremes'][3], false, false)
+        }
+
+        if (chart_id in chart_objects) {
+            chart_objects[chart_id]['chart'].update(plot_options);
+        }
+        else {
+            chart_objects[chart_id]={}
+            chart_objects[chart_id]['chart']=Highcharts.chart(chart_id, plot_options); 
+        }
+
+        if (chart_objects[chart_id]['metric']==metric_name){
+            chart_objects[chart_id]['chart'].xAxis[0].setExtremes(min_fps, max_fps)
+            chart_objects[chart_id]['chart'].yAxis[0].setExtremes(min_val, max_val)
+        }
+        chart_objects[chart_id]['metric']=metric_name
+        chart_objects[chart_id]['extremes']=[min_fps, max_fps, min_val, max_val]
+
+
+        
+    }
+</script>

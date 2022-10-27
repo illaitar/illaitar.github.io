@@ -1,0 +1,16 @@
+{% assign manual_see_also = site.posts | where_exp: "post", "page.see_also contains post.url" %}
+{% assign another_see_also = site.posts | where_exp: "post", "post.project != page.project" %}
+{% assign another_see_also_first = another_see_also | slice: 0, 1 %}
+{% assign another_see_also_tail = another_see_also | slice: 1, 6 %}
+{% assign project_see_also = site.posts | where: "project", page.project | where_exp: "post", "post.url != page.url" %}
+{% assign see_also = manual_see_also | concat: another_see_also_first | concat: project_see_also | concat: another_see_also_tail | uniq | where_exp: "post", "post.exclude_from_see_also != true" %}
+
+{% for post in see_also limit: 6 %}
+{% unless post.tag contains 'invisible' %}
+<a class="tile" href="{{ post.url }}">
+    <div class="image" style="background-image: url({{ post.preview_img | default: '/assets/img/preview_placeholder.png' }})"></div>
+    <div class="title">{{ post.title }}</div>
+    <div class="text">{{ post.description }}</div>
+</a>
+{% endunless %}
+{% endfor %}

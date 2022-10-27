@@ -1,0 +1,85 @@
+<div>
+    <table align="center" width="100%" cellpadding="10" style="border-collapse:collapse">
+        <tr>
+            <td bgcolor="#F4F6F6" colspan="2" width="30%">
+                <b>1. Launches</b>
+                <br>
+                <i><font size="=1"></font></i>
+            </td>
+            <td bgcolor="#F4F6F6">
+                We launch your algorithm with given options (or tune them if you would like to) and measure running time.
+                        <details close> <summary> Important notes:</summary>
+                        <style> 
+                            li {font-weight: normal;}
+                        </style>
+                        <ul style="font-weight: bold">
+                        <li>We expect the <b>output of your algorithm</b> to be in the following format: <br> json or csv file that contains three keys or columns ー cuts, dissolves and fades. <br>Each of these three must contain a list of frames with scene transitions according to the <a href="#methodology">Definition Section</a>  <br><a href="http://titan.gml-team.ru/18a_ant/MSU%20SBD%20Benchmark%202020_files/examples/output.json" target="_blank" download="output.json">Output  example</a>
+                        </li>
+                        <li>If your algorithm depends on <b>randomness</b> (KMeans, for example) we will launch it several times <br>to get the average of the outcomes.
+                        </li>
+                        <li>We have <b>time limitation</b> so your algorithm must process more than 5 frames per second.
+                        </li>
+
+                        </ul>
+                    </details>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right-style: dashed" width="15%">
+                <br>
+                <br>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" bgcolor="#F4F6F6" style="border-right-style: none" width="15%">
+                <b>2. Calculation</b>
+            </td>
+            <td bgcolor="#F4F6F6">
+                With given shot boundaries we calculate F1 score, Precision and Recall.
+                <p> Here are the formulas for these metrics:</p>
+
+                <div> 
+                    <img src="/assets/img/benchmarks/sbd/f.png">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right-style: dashed">
+                <br>
+                <br>
+            </td>
+            <td>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2" bgcolor="#F4F6F6" style="border-right-style: none" width="15%">
+                <b>3. Verification</b>
+            </td>
+            <td bgcolor="#F4F6F6">
+                We send you final results of your algorithm including metrics and visualisation on our video dataset.
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right-style: dashed">
+                <br>
+                <br>
+            </td>
+            <td>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2" bgcolor="#F4F6F6" style="border-right-style: none" width="25%">
+                <b>4. Publication</b>
+            </td>
+            <td bgcolor="#F4F6F6">
+            If you give us  permission we add results to the main of our benchmark alongside with others algorithms.
+            </td>
+        </tr>
+    </table>
+</div>

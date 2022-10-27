@@ -1,0 +1,37 @@
+---
+layout: vqmt
+add_css:
+- /assets/css/post.css
+---
+<div class="tiles-width nav-current">
+    <a href="{% link index.html %}">Main page</a> &mdash;
+    {% assign project = site.projects | where: "project", page.project %}
+    <a href="{{ project[0].url }}">{{ project[0].title }}</a>
+    {% assign subprojects = page.subprojects | split: " " %}
+    {% if subprojects.size > 0 %}
+    {% assign subproject = site.subprojects | where: "project", page.project | where: "subproject", subprojects[0] |
+    first %}
+    &mdash;
+    <a href="{{ subproject.url }}">{{ subproject.title }}</a>
+    {% endif %}
+</div>
+<div class="tiles-width markdown article">
+    {{ content }}
+</div>
+<div class="tiles-width meta">
+    <div class="share">
+        {% include sharingbuttons.html %}
+    </div>
+    <span class="date">{{ page.date | date_to_string }}</span>
+</div>
+<div class="tiles-width separator"></div>
+<div class="tiles-width see-also-title">
+    See Also
+</div>
+<div class="tiles wide">
+    {% include see_also.html %}
+</div>
+<div class="tiles-width separator"></div>
+<div class="tiles-width markdown site-structure">
+    {% include hierarchy.html %}
+</div>

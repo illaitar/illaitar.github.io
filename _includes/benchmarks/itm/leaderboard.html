@@ -1,0 +1,605 @@
+<!--<p>The table below shows a comparison of Video Super Resolution methods by subjective score and a few objective metrics on Bicubic interpolation (BI). Default ranking is by subjective score.<br>-->
+<!--    <b>You can click on the model's name in the table</b> to read information about the method. You can see information about all participants <a href="/benchmarks/video-super-resolution-participants.html">here</a>.-->
+<!--</p>-->
+
+<!--<p><b>Metrics:</b> Subjective assessment — <a href="/benchmarks/video-super-resolution-methodology.html#subjective">read about</a>,<br>-->
+<!--    ERQAv1.0 — <a href="/benchmarks/video-super-resolution-methodology.html#erqa">read about</a>,<br>-->
+<!--    PSNR-Y — <a href="/benchmarks/video-super-resolution-methodology.html#psnr">read about</a>,<br>-->
+<!--    SSIM-Y — <a href="/benchmarks/video-super-resolution-methodology.html#ssim">read about</a>,<br>-->
+<!--    QRCRv1.0 — <a href="/benchmarks/video-super-resolution-methodology.html#qrcr">read about</a>,<br>-->
+<!--    CRRMv1.0 — <a href="/benchmarks/video-super-resolution-methodology.html#crrm">read about</a>,<br>-->
+<!--    FPS — <a href="/benchmarks/video-super-resolution-methodology.html#fps">read about</a>.-->
+<!--</p>-->
+
+<p>Click on the labels to sort the table.<br>
+    In the <a href="/benchmarks/inverse-tone-mapping-methodology.html">methodology</a> you can read brief information about all metrics.<br>
+    You can scroll the table to see all the results.
+</p>
+<div class="datatable-container">
+    <div class="datatable-center">
+        <table id="leaderboard_bicubic" class="datatable display" style="background-color: #d4d4d4">
+            <thead>
+            <tr style="font-size: 90%; background-color: #3d6f96">    <th style="background-color: #3d6f96">Rank</th>
+                <th style="background-color: #3d6f96">Model</th>
+                <th style="background-color: #3d6f96">HDR-VQM</th>
+                <th style="background-color: #3d6f96">HDR-VDP-3</th>
+                <th style="background-color: #3d6f96">HDR-PSNR</th>
+                <th style="background-color: #3d6f96">HDR-SSIM</th>
+                <th style="background-color: #3d6f96">PQ-NIQE</th>
+                <th style="background-color: #3d6f96">PQ-PSNR</th>
+                <th style="background-color: #3d6f96">PQ-SSIM</th>
+                <th style="background-color: #3d6f96">PQ-VMAF</th>
+                <th style="background-color: #3d6f96">Shifted HDR-PSNR</th>
+                <th style="background-color: #3d6f96">FovVideoVDP</th>
+            </tr>
+            </thead><tbody>
+        <tr class="item">
+            <td>1</td>
+            <td>Kuo</td>
+            <td>8.6776</td>
+            <td><b>0.0579</b></td>
+            <td>40.7642</td>
+            <td><b>0.9954</b></td>
+            <td>5.0287</td>
+            <td>34.9679</td>
+            <td><b>0.9862</b></td>
+            <td><b>94.0270</b></td>
+            <td><b>47.4611</b></td>
+            <td>9.8880</td>
+        </tr>
+        <tr class="item">
+            <td>2</td>
+            <td>Maxon</td>
+            <td>8.2153</td>
+            <td>0.0622</td>
+            <td><b>45.6478</b></td>
+            <td>0.9949</td>
+            <td>4.9400</td>
+            <td><b>35.1188</b></td>
+            <td>0.9846</td>
+            <td>89.9478</td>
+            <td>45.3267</td>
+            <td>9.8374</td>
+        </tr>
+        <tr class="item">
+            <td>3</td>
+            <td>DeepHDR</td>
+            <td>8.0572</td>
+            <td>0.1000</td>
+            <td>33.5267</td>
+            <td>0.9907</td>
+            <td>5.0832</td>
+            <td>21.9155</td>
+            <td>0.9584</td>
+            <td>89.5382</td>
+            <td>37.0040</td>
+            <td>9.3205</td>
+        </tr>
+        <tr class="item">
+            <td>4</td>
+            <td>HDRTV</td>
+            <td>6.9813</td>
+            <td>0.1296</td>
+            <td>35.9721</td>
+            <td>0.9918</td>
+            <td>5.4744</td>
+            <td>22.4636</td>
+            <td>0.9555</td>
+            <td>85.6109</td>
+            <td>26.8880</td>
+            <td>9.8788</td>
+        </tr>
+        <tr class="item">
+            <td>5</td>
+            <td>KovOliv</td>
+            <td>7.4724</td>
+            <td>0.1329</td>
+            <td>32.4223</td>
+            <td>0.9937</td>
+            <td>4.8269</td>
+            <td>20.1296</td>
+            <td>0.9389</td>
+            <td>91.3117</td>
+            <td>28.9170</td>
+            <td>9.8861</td>
+        </tr>
+        <tr class="item">
+            <td>6</td>
+            <td>twostageHDR</td>
+            <td>6.6004</td>
+            <td>0.1350</td>
+            <td>31.6717</td>
+            <td>0.9864</td>
+            <td><b>7.7687</b></td>
+            <td>22.4022</td>
+            <td>0.9139</td>
+            <td>46.1830</td>
+            <td>TBP</td>
+            <td>TBP</td>
+        </tr>
+        <tr class="item">
+            <td>7</td>
+            <td>HuoPhys</td>
+            <td>7.0618</td>
+            <td>0.1518</td>
+            <td>32.6570</td>
+            <td>0.9946</td>
+            <td>5.0754</td>
+            <td>18.7458</td>
+            <td>0.9383</td>
+            <td>90.0419</td>
+            <td>22.1553</td>
+            <td>9.8866</td>
+        </tr>
+        <tr class="item">
+            <td>8</td>
+            <td>HDRUNet</td>
+            <td>6.6857</td>
+            <td>0.1830</td>
+            <td>34.9894</td>
+            <td>0.9845</td>
+            <td>6.7712</td>
+            <td>24.7347</td>
+            <td>0.9388</td>
+            <td>92.1209</td>
+            <td>TBP</td>
+            <td>TBP</td>
+        </tr>
+        <tr class="item">
+            <td>9</td>
+            <td>HDRCNN</td>
+            <td>6.3880</td>
+            <td>0.1919</td>
+            <td>33.0200</td>
+            <td>0.9663</td>
+            <td>4.9391</td>
+            <td>21.2604</td>
+            <td>0.8539</td>
+            <td>50.5081</td>
+            <td>35.0804</td>
+            <td>9.8778</td>
+        </tr>
+        <tr class="item">
+            <td>10</td>
+            <td>ExpNet</td>
+            <td>7.5910</td>
+            <td>0.1942</td>
+            <td>34.0555</td>
+            <td>0.9892</td>
+            <td>5.2161</td>
+            <td>24.2994</td>
+            <td>0.9321</td>
+            <td>61.6722</td>
+            <td>40.8574</td>
+            <td><b>9.8887</b></td>
+        </tr>
+        <tr class="item">
+            <td>11</td>
+            <td>Huo</td>
+            <td><b>8.9004</b></td>
+            <td>0.2103</td>
+            <td>30.0900</td>
+            <td>0.9720</td>
+            <td>4.9126</td>
+            <td>23.3886</td>
+            <td>0.9527</td>
+            <td>82.4653</td>
+            <td>44.4314</td>
+            <td>9.2408</td>
+        </tr>
+        <tr class="item">
+            <td>12</td>
+            <td>KUnet</td>
+            <td>6.1543</td>
+            <td>0.2126</td>
+            <td>32.5082</td>
+            <td>0.9838</td>
+            <td>7.3623</td>
+            <td>24.1380</td>
+            <td>0.9236</td>
+            <td>77.6478</td>
+            <td>TBP</td>
+            <td>TBP</td>
+        </tr>
+        <tr class="item">
+            <td>13</td>
+            <td>Akyuz</td>
+            <td>6.4114</td>
+            <td>0.2521</td>
+            <td>28.1420</td>
+            <td>0.9917</td>
+            <td>4.7872</td>
+            <td>14.6789</td>
+            <td>0.8535</td>
+            <td>71.5814</td>
+            <td>23.3069</td>
+            <td>9.8799</td>
+        </tr>
+        <tr class="item">
+            <td>14</td>
+            <td>SingleHDR</td>
+            <td>8.4180</td>
+            <td>0.2630</td>
+            <td>34.2872</td>
+            <td>0.9845</td>
+            <td>5.5764</td>
+            <td>25.8042</td>
+            <td>0.9606</td>
+            <td>70.6792</td>
+            <td>42.5944</td>
+            <td>9.8305</td>
+        </tr>
+        </tbody>
+
+        </table>
+
+        <script>$(document).ready(function () {
+            $('#leaderboard_bicubic').DataTable({
+                order: [[ 2, "asc" ]],
+                lengthChange: false,
+                paging: false,
+                searching: false,
+                "bInfo" : false
+            });
+        });</script>
+    </div>
+    <p>
+        TBP* – to be published
+    </p>
+</div>
+
+<!--<p><b>*To Be Published</b><br>-->
+<!--<b>**Shifted version (see <a href="/benchmarks/video-super-resolution-methodology.html">methodology</a> for more information)</b><br>-->
+<!--<sup style="color: #0000FF">1</sup> measured by MSU<br>-->
+<!--<sup style="color: #0000FF">2</sup> measured by participants</p>-->
+
+<!--<h3  id="difference" align="left" style="color: #3d6f96">The absolute difference between metric values on BI and BD degradation models</h3>-->
+
+<!--<div id="dif_plot_selector" class="mobile-plots">-->
+<!--    <p style="white-space: pre;">Metric: <label for="dif_plot_selector_metric"></label><select id="dif_plot_selector_metric" name="values">-->
+<!--        <option>ERQAv1.0</option>-->
+<!--        <option>PSNR-Y**</option>-->
+<!--        <option>SSIM-Y**</option>-->
+<!--        <option>CRRMv1.0</option>-->
+<!--        <option>QRCRv1.0</option>-->
+<!--    </select>-->
+<!--</p>-->
+
+<!--<div id="dif_plot" style="display: block" class="highcharts-figure">-->
+<!--    <script async src="/assets/js/benchmarks/vsr/dif_plot.js"></script>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    function onChangeHelper() {-->
+<!--        let speed_plot = document.getElementById("dif_plot");-->
+<!--        let this_div = document.getElementById("dif_plot_selector");-->
+
+<!--        speed_plot.remove();-->
+<!--        let new_plot = document.createElement('div');-->
+<!--        new_plot.setAttribute("id", "dif_plot");-->
+<!--        new_plot.setAttribute("class", "highcharts-figure");-->
+<!--        this_div.appendChild(new_plot);-->
+
+<!--        let sc = document.createElement("script");-->
+<!--        sc.src = '/assets/js/benchmarks/vsr/dif_plot.js';-->
+<!--        new_plot.appendChild(sc);-->
+<!--    }-->
+
+<!--    document.getElementById("dif_plot_selector_metric").onchange = onChangeHelper-->
+<!--</script>-->
+<!--</div>  -->
+
+<!--<details>-->
+<!--    <summary><b>Click here to see table with metrics on data prepared with BD degradation</b></summary>-->
+
+<!--    <p>Click on the labels to sort the table</p> -->
+<!--    <div class="datatable-container">-->
+<!--        <div class="datatable-center">-->
+<!--            <table id="leaderboard_gauss" class="datatable display" style="background-color: #d4d4d4">-->
+<!--    <thead>-->
+<!--        <tr style="font-size: 90%; background-color: #3d6f96">    <th style="background-color: #3d6f96">Rank</th>-->
+<!--        <th style="background-color: #3d6f96">Model</th>-->
+<!--        <th style="background-color: #3d6f96">Subjective</th>-->
+<!--        <th style="background-color: #3d6f96">ERQAv1.0</th>-->
+<!--        <th style="background-color: #3d6f96">QRCRv1.0</th>-->
+<!--        <th style="background-color: #3d6f96">SSIM-Y**</th>-->
+<!--        <th style="background-color: #3d6f96">CRRMv1.0</th>-->
+<!--        <th style="background-color: #3d6f96">PSNR-Y**</th>-->
+<!--        <th style="background-color: #3d6f96">FPS(s)</th>-->
+<!--    </tr>-->
+<!--    </thead><tbody>-->
+<!--    <tr class="item">-->
+<!--    <td>16</td>-->
+<!--    <td>D3Dnet<sup><a href="/benchmarks/video-super-resolution-participants.html#d3dnet">[16]</a></sup></td>-->
+<!--    <td><b>3.283</b></td>-->
+<!--    <td>0.538</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.831</td>-->
+<!--    <td>0.956</td>-->
+<!--    <td>27.093</td>-->
+<!--    <td>24.238<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>2</td>-->
+<!--    <td>DBVSR<sup><a href="/benchmarks/video-super-resolution-participants.html#dbvsr">[2]</a></sup></td>-->
+<!--    <td><b>5.247</b></td>-->
+<!--    <td>0.589</td>-->
+<!--    <td>0.557</td>-->
+<!--    <td>0.843</td>-->
+<!--    <td>0.964</td>-->
+<!--    <td>27.664</td>-->
+<!--    <td>TBP**</td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>15</td>-->
+<!--    <td>DUF-16L<sup><a href="/benchmarks/video-super-resolution-participants.html#duf">[15]</a></sup></td>-->
+<!--    <td><b>3.393</b></td>-->
+<!--    <td>0.533</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.820</td>-->
+<!--    <td>0.995</td>-->
+<!--    <td>24.969</td>-->
+<!--    <td>1.653<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>13</td>-->
+<!--    <td>DUF-28L<sup><a href="/benchmarks/video-super-resolution-participants.html#duf">[13]</a></sup></td>-->
+<!--    <td><b>3.571</b></td>-->
+<!--    <td>0.534</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.823</td>-->
+<!--    <td>0.976</td>-->
+<!--    <td>26.365</td>-->
+<!--    <td>2.392<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>5</td>-->
+<!--    <td>DynaVSR-R<sup><a href="/benchmarks/video-super-resolution-participants.html#dynavsr">[5]</a></sup></td>-->
+<!--    <td><b>4.403</b></td>-->
+<!--    <td>0.690</td>-->
+<!--    <td>0.619</td>-->
+<!--    <td>0.882</td>-->
+<!--    <td>0.977</td>-->
+<!--    <td>30.182</td>-->
+<!--    <td>5.664<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>20</td>-->
+<!--    <td>DynaVSR-V<sup><a href="/benchmarks/video-super-resolution-participants.html#dynavsr">[20]</a></sup></td>-->
+<!--    <td><b>2.554</b></td>-->
+<!--    <td>0.666</td>-->
+<!--    <td>0.629</td>-->
+<!--    <td>0.875</td>-->
+<!--    <td>0.986</td>-->
+<!--    <td>29.724</td>-->
+<!--    <td>6.660<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>22</td>-->
+<!--    <td>ESPCN<sup><a href="/benchmarks/video-super-resolution-participants.html#espcn">[22]</a></sup></td>-->
+<!--    <td><b>0.214</b></td>-->
+<!--    <td>0.411</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.784</td>-->
+<!--    <td>0.940</td>-->
+<!--    <td>25.672</td>-->
+<!--    <td>TBP**</td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>10</td>-->
+<!--    <td>ESRGAN<sup><a href="/benchmarks/video-super-resolution-participants.html#esrgan">[10]</a></sup></td>-->
+<!--    <td><b>3.674</b></td>-->
+<!--    <td>0.506</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.797</td>-->
+<!--    <td>0.964</td>-->
+<!--    <td>26.115</td>-->
+<!--    <td>0.996<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>4</td>-->
+<!--    <td>LGFN<sup><a href="/benchmarks/video-super-resolution-participants.html#lgfn">[4]</a></sup></td>-->
+<!--    <td><b>4.715</b></td>-->
+<!--    <td>0.618</td>-->
+<!--    <td>0.629</td>-->
+<!--    <td>0.853</td>-->
+<!--    <td>0.966</td>-->
+<!--    <td>28.020</td>-->
+<!--    <td>1.499<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>1</td>-->
+<!--    <td>RBPN<sup><a href="/benchmarks/video-super-resolution-participants.html#rbpn">[1]</a></sup></td>-->
+<!--    <td><b>5.325</b></td>-->
+<!--    <td>0.595</td>-->
+<!--    <td>0.629</td>-->
+<!--    <td>0.847</td>-->
+<!--    <td>0.966</td>-->
+<!--    <td>27.765</td>-->
+<!--    <td>TBP**</td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>12</td>-->
+<!--    <td>RRN-10L<sup><a href="/benchmarks/video-super-resolution-participants.html#rrn">[12]</a></sup></td>-->
+<!--    <td><b>3.587</b></td>-->
+<!--    <td>0.517</td>-->
+<!--    <td>0.609</td>-->
+<!--    <td>0.798</td>-->
+<!--    <td>0.977</td>-->
+<!--    <td>25.001</td>-->
+<!--    <td>0.390<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>17</td>-->
+<!--    <td>RRN-5L<sup><a href="/benchmarks/video-super-resolution-participants.html#rrn">[17]</a></sup></td>-->
+<!--    <td><b>3.245</b></td>-->
+<!--    <td>0.505</td>-->
+<!--    <td>0.549</td>-->
+<!--    <td>0.793</td>-->
+<!--    <td>0.977</td>-->
+<!--    <td>24.382</td>-->
+<!--    <td>0.365<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>7</td>-->
+<!--    <td>RSDN<sup><a href="/benchmarks/video-super-resolution-participants.html#rsdn">[7]</a></sup></td>-->
+<!--    <td><b>3.845</b></td>-->
+<!--    <td>0.554</td>-->
+<!--    <td>0.557</td>-->
+<!--    <td>0.826</td>-->
+<!--    <td>0.978</td>-->
+<!--    <td>25.767</td>-->
+<!--    <td>TBP**</td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>11</td>-->
+<!--    <td>Real-ESRGAN<sup><a href="/benchmarks/video-super-resolution-participants.html#real-esrgan">[11]</a></sup></td>-->
+<!--    <td><b>3.652</b></td>-->
+<!--    <td>0.656</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.764</td>-->
+<!--    <td>0.950</td>-->
+<!--    <td>24.239</td>-->
+<!--    <td>0.991<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>21</td>-->
+<!--    <td>Real-ESRnet<sup><a href="/benchmarks/video-super-resolution-participants.html#real-esrnet">[21]</a></sup></td>-->
+<!--    <td><b>1.830</b></td>-->
+<!--    <td>0.591</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.822</td>-->
+<!--    <td>0.955</td>-->
+<!--    <td>27.194</td>-->
+<!--    <td>0.982<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>14</td>-->
+<!--    <td>RealSR<sup><a href="/benchmarks/video-super-resolution-participants.html#realsr">[14]</a></sup></td>-->
+<!--    <td><b>3.520</b></td>-->
+<!--    <td>0.588</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.751</td>-->
+<!--    <td>0.948</td>-->
+<!--    <td>25.406</td>-->
+<!--    <td>TBP**</td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>18</td>-->
+<!--    <td>SOF-VSR-BD<sup><a href="/benchmarks/video-super-resolution-participants.html#sof-vsr">[18]</a></sup></td>-->
+<!--    <td><b>3.110</b></td>-->
+<!--    <td>0.536</td>-->
+<!--    <td>0.549</td>-->
+<!--    <td>0.826</td>-->
+<!--    <td>0.954</td>-->
+<!--    <td>26.808</td>-->
+<!--    <td>1.430<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>19</td>-->
+<!--    <td>SOF-VSR-BI<sup><a href="/benchmarks/video-super-resolution-participants.html#sof-vsr">[19]</a></sup></td>-->
+<!--    <td><b>3.041</b></td>-->
+<!--    <td>0.527</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.826</td>-->
+<!--    <td>0.955</td>-->
+<!--    <td>27.004</td>-->
+<!--    <td>1.750<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>9</td>-->
+<!--    <td>TDAN<sup><a href="/benchmarks/video-super-resolution-participants.html#tdan">[9]</a></sup></td>-->
+<!--    <td><b>3.718</b></td>-->
+<!--    <td>0.550</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.831</td>-->
+<!--    <td>0.964</td>-->
+<!--    <td>27.057</td>-->
+<!--    <td>TBP**</td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>8</td>-->
+<!--    <td>TGA<sup><a href="/benchmarks/video-super-resolution-participants.html#tga">[8]</a></sup></td>-->
+<!--    <td><b>3.832</b></td>-->
+<!--    <td>0.554</td>-->
+<!--    <td>0.557</td>-->
+<!--    <td>0.828</td>-->
+<!--    <td>0.976</td>-->
+<!--    <td>26.247</td>-->
+<!--    <td>1.417<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>6</td>-->
+<!--    <td>TMNet<sup><a href="/benchmarks/video-super-resolution-participants.html#tmnet">[6]</a></sup></td>-->
+<!--    <td><b>4.298</b></td>-->
+<!--    <td>0.537</td>-->
+<!--    <td>0.000</td>-->
+<!--    <td>0.827</td>-->
+<!--    <td>0.964</td>-->
+<!--    <td>26.918</td>-->
+<!--    <td>TBP**</td>-->
+<!--    </tr>-->
+<!--    <tr class="item">-->
+<!--    <td>3</td>-->
+<!--    <td>iSeeBetter<sup><a href="/benchmarks/video-super-resolution-participants.html#iseebetter">[3]</a></sup></td>-->
+<!--    <td><b>5.122</b></td>-->
+<!--    <td>0.596</td>-->
+<!--    <td>0.557</td>-->
+<!--    <td>0.848</td>-->
+<!--    <td>0.969</td>-->
+<!--    <td>27.712</td>-->
+<!--    <td>22.275<sup style="color: #0000FF">1</sup></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+
+<!--            </table>-->
+
+<!--            <script>$(document).ready(function () {-->
+<!--                $('#leaderboard_gauss').DataTable({-->
+<!--                    order: [[ 2, "desc" ]],-->
+<!--                    lengthChange: false,-->
+<!--                    paging: false,-->
+<!--                    searching: false-->
+<!--                });-->
+<!--            });</script>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <p><b>*To be published</b><br>-->
+<!--    <b>**Shifted version (see <a href="/benchmarks/video-super-resolution-methodology.html">methodology</a> for more information)</b><br>-->
+<!--    <sup style="color: #0000FF">1</sup> measured by MSU<br>-->
+<!--    <sup style="color: #0000FF">2</sup> measured by participants</p>-->
+<!--</details>-->
+
+<!--<h3 align="left" style="color: #3d6f96">Correlation of metrics with subjective assessment</h3>-->
+
+<!--<div id="corr_selector" class="mobile-plots">-->
+<!--    <p style="white-space: pre;">Correlation method: <label for="corr_selector_type"></label><select id="corr_selector_type" name="values">-->
+<!--        <option>Pearson</option>-->
+<!--        <option>Spearman</option>-->
+<!--    </select>-->
+<!--</p>-->
+
+<!--<div id="corr_plot" style="display: block" class="highcharts-figure">-->
+<!--    <script async src="/assets/js/benchmarks/vsr/corr_plot.js"></script>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    function onChangeHelper() {-->
+<!--        let speed_plot = document.getElementById("corr_plot");-->
+<!--        let this_div = document.getElementById("corr_selector");-->
+
+<!--        speed_plot.remove();-->
+<!--        let new_plot = document.createElement('div');-->
+<!--        new_plot.setAttribute("id", "corr_plot");-->
+<!--        new_plot.setAttribute("class", "highcharts-figure");-->
+<!--        this_div.appendChild(new_plot);-->
+
+<!--        let sc = document.createElement("script");-->
+<!--        sc.src = '/assets/js/benchmarks/vsr/corr_plot.js';-->
+<!--        new_plot.appendChild(sc);-->
+<!--    }-->
+
+<!--    document.getElementById("corr_selector_type").onchange = onChangeHelper-->
+<!--</script>-->
+<!--</div>  -->

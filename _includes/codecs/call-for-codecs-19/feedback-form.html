@@ -1,0 +1,153 @@
+<style>
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .form-control:focus{
+        color: #495057;
+        background-color: #fff;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 .2rem rgba(0,123,255,.25)
+    }
+
+    .btn:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
+
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .collapse:not(.show) {
+        display: none;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="/assets/js/codecs/hevc-2018/jquery.min.js"></script>
+<script src="/assets/js/codecs/hevc-2018/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+    var GForm = function (a, b, c) {
+        $("form", a).on("submit", function (d) {
+            if (d.isDefaultPrevented())
+                return !1;
+            var e = {};
+            $(":input", a).each(function () {
+                var a = b[this.name];
+                e[a] = this.value
+            });
+            var f = function () {
+                $(".success", a).removeClass("hidden"),
+                    $("form", a).addClass("hidden")
+                //ga("send", "event", "form-submit", a.attr("id"), a.attr("id"))
+            };
+            $('#form')[0].reset();
+            $("#request_alert").show();
+            return $.post(c, e, null, 'jsonp').done(f).fail(f), !1
+        })
+    };
+    $(function () {
+        var a = "https://docs.google.com/forms/d/e/1FAIpQLSfNfwzo04-9gcEUA-WlPruyVVK-QyPwPblpl1v7vJWHg4H05Q/formResponse";
+        var b = {
+            'useful_info': 'entry.1330063458',
+            'report_feedback': 'entry.1009221548',
+            'future_reports': 'entry.2142339205',
+            'name': 'entry.1432803909',
+            'email': 'entry.998738979'
+        };
+        GForm($("#feedback_form"), b, a);
+        return false;
+    });
+</script>
+
+<div class="form-area" id="feedback_form"
+     style="margin-top: 10px; margin-bottom: 30px; padding-left: 30px; padding-right: 30px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 2px 2px 5px #000; -webkit-box-shadow: 2px 2px 5px #000; box-shadow: 1px 1px 5px #000;">
+    <form id="form" role="form">
+        <br style="clear:both">
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">What information in previous comparison was the
+                most useful for you?</h4>
+            <textarea class="form-control" cols="3" id="useful_info" name="useful_info"></textarea>
+        </div>
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">Any feedback on previous comparison:</h4>
+            <textarea class="form-control" cols="3" id="report_feedback" name="report_feedback"></textarea>
+        </div>
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20"><b>What would you like to see in future
+                comparisons?</b> (additional use cases, video sequences, codecs, updated methodology, another metrics,
+                etc.)</h4>
+            <textarea class="form-control" cols="3" id="future_reports" name="future_reports"></textarea>
+        </div>
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">Your name (optional)</h4>
+            <input class="form-control" id="name" name="name" type="text">
+        </div>
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">Email (optional)</h4>
+            <input class="form-control" id="email" name="email" type="text">
+        </div>
+        <button class="btn btn-primary pull-left" id="submit" name="submit" type="submit">Submit response!</button>
+        <br>
+        <div class="alert alert-success collapse" id="request_alert" role="alert">Thank you for your feedback, we will
+            take into account your suggestions!
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var hashParams = window.location.hash.substr(1).split('&'); // substr(1) to remove the `#`
+    for (var i = 0; i < hashParams.length; i++) {
+        var p = hashParams[i].split('=');
+        document.getElementById(p[0]).value = decodeURIComponent(p[1]);
+        ;
+    }
+</script>

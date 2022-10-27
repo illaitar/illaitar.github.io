@@ -1,0 +1,30 @@
+<div class="tabs">
+    <button class="local-table-tablinks active-tablink" value="local-light">Light</button>
+    <button class="local-table-tablinks" value="local-medium-geom">Medium geometric</button>
+    <button class="local-table-tablinks" value="local-medium-color">Medium color</button>
+    <button class="local-table-tablinks" value="local-hard">Hard</button>
+</div>
+<p style="font-weight: bold">Leaderboard</p>
+<div class="datatable-container">
+    <div class="datatable-center">
+        <table id="table-local" class="table-fixed" style="background-color: #d4d4d4">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Name</th>
+                <th style="background-color: #3d6f96">Accuracy<br>0 frames error</th>
+                <th style="background-color: #3d6f96">Accuracy<br>3 frames error</th>
+                <th style="background-color: #3d6f96">Accuracy<br>10 frames error</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<p style="font-weight: bold">Charts</p>
+<select name="Method's name" id="filter-chart-local"></select>
+<p style="text-align: center">Highlight the plot region where you want to zoom in</p>
+<div id="chart-local-wrapper" class="mobile-plots">
+    <div id="chart-local" class="highcharts-figure"></div>
+</div>
+<div id="chart-local-error-wrapper" class="mobile-plots local local-light">
+    <div id="chart-local-error" class="highcharts-figure"></div>
+</div>

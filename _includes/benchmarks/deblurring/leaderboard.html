@@ -1,0 +1,114 @@
+<p>Click on the labels to sort the table.<br>
+    In the <a href="/benchmarks/deblurring-methodology.html">methodology</a> you can read brief information about all metrics.<br>
+    You can scroll the table to see all the results.
+</p>
+<div class="datatable-container">
+    <div class="datatable-center">
+        <table id="leaderboard_bicubic" class="datatable display" style="background-color: #d4d4d4">
+            <thead>
+            <tr style="font-size: 90%; background-color: #3d6f96">    
+                <th style="background-color: #3d6f96">Rank</th>
+                <th style="background-color: #3d6f96">Model</th>
+                <th style="background-color: #3d6f96">Y-PSNR</th>
+                <th style="background-color: #3d6f96">Y-SSIM</th>
+                <th style="background-color: #3d6f96">Y-VMAF</th>
+                <th style="background-color: #3d6f96">LPIPS</th>
+                <th style="background-color: #3d6f96">ERQAv2.0</th>
+            </tr>
+            </thead><tbody>
+        <tr class="item">
+            <td>1</td>
+            <td>NAFNet (REDS)</td>
+            <td> 30.5697</td>
+            <td> <b>0.9504</b></td>
+            <td> 66.7892</td>
+            <td> 0.0858</td>
+            <td> 0.7457</td>
+        </tr>
+        <tr class="item">
+            <td>2</td>
+            <td>Restormer</td>
+            <td> <b>31.7855</b></td>
+            <td> 0.9463</td>
+            <td> 66.3860 </td>
+            <td> 0.0825</td>
+            <td> 0.7482</td>
+        </tr>
+        <tr class="item">
+            <td>3</td>
+            <td>VRT (REDS)</td>
+            <td> 30.9915 </td>
+            <td> 0.9460</td>
+            <td>  66.7630</td>
+            <td> 0.0826</td>
+            <td> <b>   0.7509</b></td>
+        </tr>
+        <tr class="item">
+            <td>4</td>
+            <td>MPR (local)</td>
+            <td>  31.6742</td>
+            <td>  0.9454</td>
+            <td> <b>66.9960</b> </td>
+            <td> 0.0834</td>
+            <td> 0.7457</td>
+        </tr>
+        <tr class="item">
+            <td>5</td>
+            <td>VRT (GoPro)</td>
+            <td> 31.4457 </td>
+            <td> 0.9450 </td>
+            <td> 0.9450 </td>
+            <td> 0.0818</td>
+            <td> 0.7491</td>
+        </tr>
+        <tr class="item">
+            <td>6</td>
+            <td>Deeprft (GoPro)</td>
+            <td> 31.5951 </td>
+            <td> 0.9448</td>
+            <td> 66.5214</td>
+            <td> 0.0833</td>
+            <td>  0.7437</td>
+        </tr>
+        <tr class="item">
+            <td>7</td>
+            <td>Deeprft (REDS)</td>
+            <td> 31.3331</td>
+            <td> 0.9448 </td>
+            <td>  66.4491</td>
+            <td> <b> 0.0815</b></td>
+            <td> 0.7437</td>
+        </tr>
+        <tr class="item">
+            <td>8</td>
+            <td>DeblurGAN (Inception)</td>
+            <td>  31.1886</td>
+            <td>  0.9430</td>
+            <td>  66.8878</td>
+            <td>  0.0888</td>
+            <td> 0.7435</td>
+        </tr>
+        <tr class="item">
+            <td>9</td>
+            <td>Restormer (local)</td>
+            <td>  31.1470</td>
+            <td> 0.9422 </td>
+            <td> 65.2491 </td>
+            <td> 0.0826</td>
+            <td> 0.7391</td>
+        </tr>
+        </tbody>
+
+        </table>
+
+        <script>$(document).ready(function () {
+            $('#leaderboard_bicubic').DataTable({
+                order: [[ 3, "dsc" ]],
+                lengthChange: false,
+                paging: false,
+                searching: false,
+                "bInfo" : false
+            });
+        });</script>
+    </div>
+</div>

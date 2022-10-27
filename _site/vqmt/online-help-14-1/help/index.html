@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15281510-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'UA-15281510-2');
+    </script>
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Video Quality Measurement Tool: Command-line help</title>
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/vqmt/vqmt.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/assets/js/vqmt/interface.js"></script>
+  </head>
+  <body>
+    <div class="global-container">
+      <div class="global-content-and-header">
+        <div class="global-header">
+          <ul class="navbar">
+            <li class="navbar-header">
+              <a href="/" class="header">
+                <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+                <h1>Video processing, compression<br>
+                  and quality research group
+                  <div>Based in MSU Graphics & Media Laboratory</div>
+                </h1>
+              </a>
+              <a class="menu-toggle-button">
+                <div class="icon"></div>
+              </a>
+            </li>
+            <li>
+              <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+              <ul class="dropmenu">
+                <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+                <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+                <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+                <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+                <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+                <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+                <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+                <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+                <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+                <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+                <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+                <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+                <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+                <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+              <ul class="dropmenu">
+                <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+                <li><a href="/vqmt/">VQMT</a></li>
+                <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+                <li><a href="/datasets/">MSU Datasets Collection</a></li>
+                <li><a href="/metrics/">Metrics Research</a></li>
+                <li><a href="/video_filters/">Video Filters</a></li>
+                <li><a href="/other/">Other Projects</a></li>
+              </ul>
+            </li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contacts/">Contacts</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="tiles-width nav-current">
+            <a href="/index.html">Main page</a> &mdash;
+            <a href="/vqmt/">VQMT</a>
+          </div>
+          <div class="tiles-width markdown article">
+            <p>This is part of MSU Video Quality Measurement tool Online Help for <strong>MSU VQMT 14.1</strong></p>
+            <p>MSU Video Quality Measurement Tool (MSU VQMT) project:</p>
+            <ul>
+              <li><a href="https://compression.ru/vqmt"><strong>Main MSU VQMT page</strong></a> on compression.ru</li>
+              <li><a href="https://compression.ru/vqmt-pro"><strong>Download &amp; Purchase</strong></a> on compression.ru</li>
+              <li><a href="/vqmt/basic"><strong>Basic information</strong></a></li>
+              <li><a href="/vqmt/vqmt-doc-toc"><strong>Online help</strong></a></li>
+              <li><a href="/vqmt/metrics"><strong>Metrics reference</strong></a></li>
+              <li><a href="/vqmt/changelog"><strong>Version history &amp; Changelog</strong></a></li>
+            </ul>
+            <p>Online help for MSU VQMT 14.1 contents:</p>
+            <ul>
+              <li><strong>Command-line help</strong></li>
+              <li><a href="../info/">VQMT various lists and tables</a></li>
+              <li><a href="../metrics/">Usage of VQMT metrics in CLI</a></li>
+              <li><a href="../picture-types/">Picture types</a></li>
+              <li><a href="../config/">Configuration description</a></li>
+              <li><a href="https://download.compression.ru/vqmt/doc/MSU_VQMT_Documentation_14-1.pdf">PDF Documenation</a></li>
+              <li><a href="../../vqmt-doc-toc/">List of documentation pages for all versions</a></li>
+            </ul>
+            <h1 id="content">Content</h1>
+            <ul id="markdown-toc">
+              <li><a href="#content" id="markdown-toc-content">Content</a>    
+                <ul>
+                  <li><a href="#all-commands" id="markdown-toc-all-commands">All commands</a></li>
+                  <li><a href="#category-index" id="markdown-toc-category-index">Category index</a>        
+                    <ul>
+                      <li><a href="#help-information" id="markdown-toc-help-information">Help, information</a></li>
+                      <li><a href="#input" id="markdown-toc-input">Input</a></li>
+                      <li><a href="#metrics" id="markdown-toc-metrics">Metrics</a></li>
+                      <li><a href="#output" id="markdown-toc-output">Output</a></li>
+                      <li><a href="#visualization" id="markdown-toc-visualization">Visualization</a></li>
+                      <li><a href="#masking" id="markdown-toc-masking">Masking</a></li>
+                      <li><a href="#bad-frames" id="markdown-toc-bad-frames">Bad frames</a></li>
+                      <li><a href="#preprocessing" id="markdown-toc-preprocessing">Preprocessing</a></li>
+                      <li><a href="#indexing" id="markdown-toc-indexing">Indexing</a></li>
+                      <li><a href="#sample-interpretation" id="markdown-toc-sample-interpretation">Sample interpretation</a></li>
+                      <li><a href="#performance" id="markdown-toc-performance">Performance</a></li>
+                      <li><a href="#misc" id="markdown-toc-misc">Misc.</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#alphabet-index" id="markdown-toc-alphabet-index">Alphabet index</a></li>
+                  <li><a href="#description" id="markdown-toc-description">Description</a></li>
+                </ul>
+              </li>
+            </ul>
+            <p>CLI documentation for <strong>MSU VQMT 14.1 Pro/Premium</strong></p>
+            <h2 id="all-commands">All commands</h2>
+            <table>
+              <tbody>
+                <tr>
+                  <td><a href="#-activate">-activate</a></td>
+                  <td><a href="#-bad">-bad</a></td>
+                  <td><a href="#-bad-dir">-bad-dir</a></td>
+                  <td><a href="#-bad-format">-bad-format</a></td>
+                  <td><a href="#-bad-name">-bad-name</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-bad-num">-bad-num</a></td>
+                  <td><a href="#-bad-radius">-bad-radius</a></td>
+                  <td><a href="#-bad-threshold">-bad-threshold</a></td>
+                  <td><a href="#-bad-type">-bad-type</a></td>
+                  <td><a href="#-cng">-cng</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-config">-config</a></td>
+                  <td><a href="#-config-line">-config-line</a></td>
+                  <td><a href="#-config-stdin">-config-stdin</a></td>
+                  <td><a href="#-cs">-cs</a></td>
+                  <td><a href="#-csv">-csv</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-csv-default-file">-csv-default-file</a></td>
+                  <td><a href="#-csv-dir">-csv-dir</a></td>
+                  <td><a href="#-csv-file">-csv-file</a></td>
+                  <td><a href="#-ct">-ct</a></td>
+                  <td><a href="#-dev">-dev</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-display-luminance">-display-luminance</a></td>
+                  <td><a href="#-float-range">-float-range</a></td>
+                  <td><a href="#-forced-length">-forced-length</a></td>
+                  <td><a href="#-fpd">-fpd</a></td>
+                  <td><a href="#-gui">-gui</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-h-----help-1">-h, -?, --help (1)</a></td>
+                  <td><a href="#-h-----help-2">-h, -?, --help (2)</a></td>
+                  <td><a href="#-h-----help-3">-h, -?, --help (3)</a></td>
+                  <td><a href="#-h-----help-4">-h, -?, --help (4)</a></td>
+                  <td><a href="#-idx">-idx</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-idx-file">-idx-file</a></td>
+                  <td><a href="#-json">-json</a></td>
+                  <td><a href="#-json-default-file">-json-default-file</a></td>
+                  <td><a href="#-json-file">-json-file</a></td>
+                  <td><a href="#-json-fmt">-json-fmt</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-legacy-mode">-legacy-mode</a></td>
+                  <td><a href="#-list">-list</a></td>
+                  <td><a href="#-log">-log</a></td>
+                  <td><a href="#-mask">-mask</a></td>
+                  <td><a href="#-mask-type">-mask-type</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-metr-metric-name">-metr, &lt;metric name&gt;</a></td>
+                  <td><a href="#-metr-config">-metr-config</a></td>
+                  <td><a href="#-metric-parallelism">-metric-parallelism</a></td>
+                  <td><a href="#-no-upscale-uv">-no-upscale-uv</a></td>
+                  <td><a href="#-orig--in">-orig, -in</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-performance">-performance</a></td>
+                  <td><a href="#-project">-project</a></td>
+                  <td><a href="#-quiet">-quiet</a></td>
+                  <td><a href="#-range-range">-range, &lt;range&gt;</a></td>
+                  <td><a href="#-resize">-resize</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-ryt">-ryt</a></td>
+                  <td><a href="#-sample-conversion">-sample-conversion</a></td>
+                  <td><a href="#-set">-set</a></td>
+                  <td><a href="#-skip-frames">-skip-frames</a></td>
+                  <td><a href="#-slots">-slots</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-stdin--stdin-orig">-stdin, -stdin-orig</a></td>
+                  <td><a href="#-summary-accum">-summary-accum</a></td>
+                  <td><a href="#-summary-col">-summary-col</a></td>
+                  <td><a href="#-terminal">-terminal</a></td>
+                  <td><a href="#-threads">-threads</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-v---version">-v, --version</a></td>
+                  <td><a href="#-vis">-vis</a></td>
+                  <td><a href="#-vis-caption-pos">-vis-caption-pos</a></td>
+                  <td><a href="#-vis-colormap">-vis-colormap</a></td>
+                  <td><a href="#-vis-dir">-vis-dir</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis-gamma">-vis-gamma</a></td>
+                  <td><a href="#-vis-preset">-vis-preset</a></td>
+                  <td><a href="#-vis-print-frame">-vis-print-frame</a></td>
+                  <td><a href="#-vis-print-value">-vis-print-value</a></td>
+                  <td><a href="#-vis-type">-vis-type</a></td>
+                </tr>
+                <tr>
+                  <td><a href="#-vng">-vng</a></td>
+                  <td><a href="#open-mode">&lt;open mode&gt;</a></td>
+                  <td><a href="#picture-type">&lt;picture type&gt;</a></td>
+                  <td><a href="#resolution">&lt;resolution&gt;</a></td>
+                  <td> </td>
+                </tr>
+              </tbody>
+            </table>
+            <h2 id="category-index">Category index</h2>
+            <p><a name="categ-help"></a></p>
+            <h4 id="help-information">Help, information</h4>
+            <p>Getting help on command-line options, information about VQMT features, lists of metrics, supported formats and devices.</p>
+            <dl class="properties-short">
+              <dt><a href="#-h-----help-1">-h, -?, --help (1)</a></dt>
+              <dd>requesting CLI help</dd>
+              <dt><a href="#-h-----help-2">-h, -?, --help (2)</a></dt>
+              <dd>request information about a group of options</dd>
+              <dt><a href="#-h-----help-3">-h, -?, --help (3)</a></dt>
+              <dd>requesting help for metric</dd>
+              <dt><a href="#-h-----help-4">-h, -?, --help (4)</a></dt>
+              <dd>requesting help for VQMT config format</dd>
+              <dt><a href="#-v---version">-v, --version</a></dt>
+              <dd>getting information about this VQMT copy</dd>
+              <dt><a href="#-list">-list</a></dt>
+              <dd>Requesting additional information</dd>
+            </dl>
+            <p><a name="categ-input"></a></p>
+            <h4 id="input">Input</h4>
+            <p>Specifying video input files, streams, pipes, or image sequences. Setting options, colorspaces and formats for opening these files.</p>
+            <dl class="properties-short">
+              <dt><a href="#-orig--in">-orig, -in</a></dt>
+              <dd>specifying an input file to apply metrics</dd>
+              <dt><a href="#-stdin--stdin-orig">-stdin, -stdin-orig</a></dt>
+              <dd>specifying stdin as input yuv or y4m file</dd>
+              <dt><a href="#picture-type">&lt;picture type&gt;</a></dt>
+              <dd>specifying picture type for YUV file(s)</dd>
+              <dt><a href="#resolution">&lt;resolution&gt;</a></dt>
+              <dd>specifying resolution for YUV file(s)</dd>
+              <dt><a href="#-range-range">-range, &lt;range&gt;</a></dt>
+              <dd>specifying frame range for the last file</dd>
+              <dt><a href="#-float-range">-float-range</a></dt>
+              <dd>specifying value range for float sampled files</dd>
+              <dt><a href="#-cs">-cs</a></dt>
+              <dd>overriding input file colorspace</dd>
+              <dt><a href="#open-mode">&lt;open mode&gt;</a></dt>
+              <dd>specifying mode for reading a file</dd>
+              <dt><a href="#-no-upscale-uv">-no-upscale-uv</a></dt>
+              <dd>enabling of disabling upscaling for chroma components (UV) of subsampled files</dd>
+            </dl>
+            <p><a name="categ-metrics"></a></p>
+            <h4 id="metrics">Metrics</h4>
+            <p>Setting up metrics to apply to the input files. Setting color components for analysis and configuring metrics. Selection of devices.</p>
+            <dl class="properties-short">
+              <dt><a href="#-metr-metric-name">-metr, &lt;metric name&gt;</a></dt>
+              <dd>specifying metric and (optionally) color component</dd>
+              <dt><a href="#-metr-config">-metr-config</a></dt>
+              <dd>setting configuration line for plugin metrics</dd>
+              <dt><a href="#-set">-set</a></dt>
+              <dd>setting additional parameter for metric of file reader configuration</dd>
+              <dt><a href="#-summary-accum">-summary-accum</a></dt>
+              <dd>setting accumulator for summary output for a metric</dd>
+              <dt><a href="#-summary-col">-summary-col</a></dt>
+              <dd>setting column for summary output for a metric</dd>
+              <dt><a href="#-dev">-dev</a></dt>
+              <dd>specifying a device to perform the metric on</dd>
+            </dl>
+            <p><a name="categ-output"></a></p>
+            <h4 id="output">Output</h4>
+            <p>Setting up the output to JSON, CSV, stdout, log and other files that will contain the results of the analysis.</p>
+            <dl class="properties-short">
+              <dt><a href="#-json">-json</a></dt>
+              <dd>turning on json output</dd>
+              <dt><a href="#-json-file">-json-file</a></dt>
+              <dd>specifying a file for JSON output</dd>
+              <dt><a href="#-json-default-file">-json-default-file</a></dt>
+              <dd>requesting writing to the default JSON file instead of stdout</dd>
+              <dt><a href="#-json-fmt">-json-fmt</a></dt>
+              <dd>specifying legacy json format</dd>
+              <dt><a href="#-csv">-csv</a></dt>
+              <dd>turning on/off saving CSV file with results of metrics</dd>
+              <dt><a href="#-csv-file">-csv-file</a></dt>
+              <dd>specifying an exact file for CSV output</dd>
+              <dt><a href="#-csv-default-file">-csv-default-file</a></dt>
+              <dd>requesting writing to the default CSV file</dd>
+              <dt><a href="#-cng">-cng</a></dt>
+              <dd>specifying default name scheme for CSV, JSON files</dd>
+              <dt><a href="#-csv-dir">-csv-dir</a></dt>
+              <dd>specifying directory for default CSV and JSON files</dd>
+              <dt><a href="#-log">-log</a></dt>
+              <dd>specifying logfile</dd>
+              <dt><a href="#-ct">-ct</a></dt>
+              <dd>specifying csv data delimiter</dd>
+              <dt><a href="#-fpd">-fpd</a></dt>
+              <dd>setting floating point for CSV files</dd>
+            </dl>
+            <p><a name="categ-visualization"></a></p>
+            <h4 id="visualization">Visualization</h4>
+            <p>Setting the output of per-pixel metric values. Visualization will generate an image for each metric and each processed frame.</p>
+            <dl class="properties-short">
+              <dt><a href="#-vis">-vis</a></dt>
+              <dd>turning visualization on/off</dd>
+              <dt><a href="#-vng">-vng</a></dt>
+              <dd>specifying visualization filename scheme</dd>
+              <dt><a href="#-vis-type">-vis-type</a></dt>
+              <dd>specifying visualization format</dd>
+              <dt><a href="#-vis-preset">-vis-preset</a></dt>
+              <dd>specifying preset for selected visualization format</dd>
+              <dt><a href="#-vis-caption-pos">-vis-caption-pos</a></dt>
+              <dd>specifying the position of caption labeled over the visualization</dd>
+              <dt><a href="#-vis-print-value">-vis-print-value</a></dt>
+              <dd>enabling or disabling printing values of the metric on visualization</dd>
+              <dt><a href="#-vis-print-frame">-vis-print-frame</a></dt>
+              <dd>enabling or disabling printing frame number on visualization</dd>
+              <dt><a href="#-vis-gamma">-vis-gamma</a></dt>
+              <dd>specifying gamma correction for visualization</dd>
+              <dt><a href="#-vis-colormap">-vis-colormap</a></dt>
+              <dd>specifying colormap for visualization</dd>
+              <dt><a href="#-vis-dir">-vis-dir</a></dt>
+              <dd>specifying directory for visualization</dd>
+            </dl>
+            <p><a name="categ-masking"></a></p>
+            <h4 id="masking">Masking</h4>
+            <p>Setting region of interest (ROI) to indicate areas which the metric should consider with bigger or lesser weight. Can be an input video/image or set by parameters.</p>
+            <dl class="properties-short">
+              <dt><a href="#-mask">-mask</a></dt>
+              <dd>specifying mask file</dd>
+              <dt><a href="#-mask-type">-mask-type</a></dt>
+              <dd>specifying mask type and configuration</dd>
+            </dl>
+            <p><a name="categ-bad-frames"></a></p>
+            <h4 id="bad-frames">Bad frames</h4>
+            <p>Requesting output of frames of input video/image with extreme metric values. VQMT will save the requested number of images containing input frames.</p>
+            <dl class="properties-short">
+              <dt><a href="#-bad">-bad</a></dt>
+              <dd>turning on/off saving bad frames (frames with the worst metric values)</dd>
+              <dt><a href="#-bad-dir">-bad-dir</a></dt>
+              <dd>specifying directory for bad frames</dd>
+              <dt><a href="#-bad-type">-bad-type</a></dt>
+              <dd>specifying the type of bad frames</dd>
+              <dt><a href="#-bad-format">-bad-format</a></dt>
+              <dd>specifying bad frames format</dd>
+              <dt><a href="#-bad-num">-bad-num</a></dt>
+              <dd>specifying how many bad frames should be saved</dd>
+              <dt><a href="#-bad-radius">-bad-radius</a></dt>
+              <dd>specifying the minimum distance between bad frames</dd>
+              <dt><a href="#-bad-name">-bad-name</a></dt>
+              <dd>specifying scheme for naming bad frame files</dd>
+              <dt><a href="#-bad-threshold">-bad-threshold</a></dt>
+              <dd>specifying threshold to ignore bad frame for some metric values</dd>
+            </dl>
+            <p><a name="categ-preprocessing"></a></p>
+            <h4 id="preprocessing">Preprocessing</h4>
+            <p>Correction of images before applying metric. Setting of the scaling to bring the images to the same size or reduce the resolution.</p>
+            <dl class="properties-short">
+              <dt><a href="#-resize">-resize</a></dt>
+              <dd>turning on geometry correction of input video - scale and crop, configuring it</dd>
+            </dl>
+            <p><a name="categ-indexing"></a></p>
+            <h4 id="indexing">Indexing</h4>
+            <p>Preliminary analysis of input streams to improve the quality of seeking and accurate information about the progress of the analysis.</p>
+            <dl class="properties-short">
+              <dt><a href="#-idx">-idx</a></dt>
+              <dd>specifying index mode for reading input files</dd>
+              <dt><a href="#-idx-file">-idx-file</a></dt>
+              <dd>specifying a custom scheme for an index file</dd>
+            </dl>
+            <p><a name="categ-samples"></a></p>
+            <h4 id="sample-interpretation">Sample interpretation</h4>
+            <p>Additional setting of working color standards, transformations of input samples, screen luminance for HDR images.</p>
+            <dl class="properties-short">
+              <dt><a href="#-ryt">-ryt</a></dt>
+              <dd>specifying the default color standard for files</dd>
+              <dt><a href="#-display-luminance">-display-luminance</a></dt>
+              <dd>specifying display luminance for HDR metrics and colorspaces</dd>
+              <dt><a href="#-sample-conversion">-sample-conversion</a></dt>
+              <dd>changing integer sample interpretation</dd>
+              <dt><a href="#-legacy-mode">-legacy-mode</a></dt>
+              <dd>setting up legacy mode</dd>
+            </dl>
+            <p><a name="categ-performance"></a></p>
+            <h4 id="performance">Performance</h4>
+            <p>Adjusting CPU usage and memory consumption, skipping frames. Requesting output detailes information of VQMT performance after the analysis.</p>
+            <dl class="properties-short">
+              <dt><a href="#-skip-frames">-skip-frames</a></dt>
+              <dd>setting up frame skipping for increasing performance</dd>
+              <dt><a href="#-slots">-slots</a></dt>
+              <dd>setting the number of slots for simultaneous image processing</dd>
+              <dt><a href="#-metric-parallelism">-metric-parallelism</a></dt>
+              <dd>setting the number of instances of each metric that can work simultaneously</dd>
+              <dt><a href="#-threads">-threads</a></dt>
+              <dd>specifying the number of threads for basic VQMT operations</dd>
+              <dt><a href="#-forced-length">-forced-length</a></dt>
+              <dd>specifying expected file length</dd>
+              <dt><a href="#-performance">-performance</a></dt>
+              <dd>requesting information about VQMT performance to stdout</dd>
+            </dl>
+            <p><a name="categ-misc"></a></p>
+            <h4 id="misc">Misc.</h4>
+            <p>Performing VQMT activation or reactivation. Interface selection. Specifying a project file or JSON configuration file. Configuring output profile.</p>
+            <dl class="properties-short">
+              <dt><a href="#-quiet">-quiet</a></dt>
+              <dd>setting up silent mode</dd>
+              <dt><a href="#-terminal">-terminal</a></dt>
+              <dd>running CLI</dd>
+              <dt><a href="#-gui">-gui</a></dt>
+              <dd>running GUI (only Windows)</dd>
+              <dt><a href="#-activate">-activate</a></dt>
+              <dd>running activation wizard</dd>
+              <dt><a href="#-project">-project</a></dt>
+              <dd>specifying a project file, saved from GUI</dd>
+              <dt><a href="#-config">-config</a></dt>
+              <dd>specifying a JSON configuration file</dd>
+              <dt><a href="#-config-line">-config-line</a></dt>
+              <dd>specifying JSON configuration as command line argument</dd>
+              <dt><a href="#-config-stdin">-config-stdin</a></dt>
+              <dd>using STDIN for reading configuration JSON</dd>
+            </dl>
+            <h2 id="alphabet-index">Alphabet index</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Command</th>
+                  <th>Section</th>
+                  <th>Short description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#-activate">-activate</a></td>
+                  <td>Misc.</td>
+                  <td>running activation wizard</td>
+                </tr>
+                <tr>
+                  <td><a href="#-bad">-bad</a></td>
+                  <td>Bad frames</td>
+                  <td>turning on/off saving bad frames (frames with the worst metric values)</td>
+                </tr>
+                <tr>
+                  <td><a href="#-bad-dir">-bad-dir</a></td>
+                  <td>Bad frames</td>
+                  <td>specifying directory for bad frames</td>
+                </tr>
+                <tr>
+                  <td><a href="#-bad-format">-bad-format</a></td>
+                  <td>Bad frames</td>
+                  <td>specifying bad frames format</td>
+                </tr>
+                <tr>
+                  <td><a href="#-bad-name">-bad-name</a></td>
+                  <td>Bad frames</td>
+                  <td>specifying scheme for naming bad frame files</td>
+                </tr>
+                <tr>
+                  <td><a href="#-bad-num">-bad-num</a></td>
+                  <td>Bad frames</td>
+                  <td>specifying how many bad frames should be saved</td>
+                </tr>
+                <tr>
+                  <td><a href="#-bad-radius">-bad-radius</a></td>
+                  <td>Bad frames</td>
+                  <td>specifying the minimum distance between bad frames</td>
+                </tr>
+                <tr>
+                  <td><a href="#-bad-threshold">-bad-threshold</a></td>
+                  <td>Bad frames</td>
+                  <td>specifying threshold to ignore bad frame for some metric values</td>
+                </tr>
+                <tr>
+                  <td><a href="#-bad-type">-bad-type</a></td>
+                  <td>Bad frames</td>
+                  <td>specifying the type of bad frames</td>
+                </tr>
+                <tr>
+                  <td><a href="#-cng">-cng</a></td>
+                  <td>Output</td>
+                  <td>specifying default name scheme for CSV, JSON files</td>
+                </tr>
+                <tr>
+                  <td><a href="#-config">-config</a></td>
+                  <td>Misc.</td>
+                  <td>specifying a JSON configuration file</td>
+                </tr>
+                <tr>
+                  <td><a href="#-config-line">-config-line</a></td>
+                  <td>Misc.</td>
+                  <td>specifying JSON configuration as command line argument</td>
+                </tr>
+                <tr>
+                  <td><a href="#-config-stdin">-config-stdin</a></td>
+                  <td>Misc.</td>
+                  <td>using STDIN for reading configuration JSON</td>
+                </tr>
+                <tr>
+                  <td><a href="#-cs">-cs</a></td>
+                  <td>Input</td>
+                  <td>overriding input file colorspace</td>
+                </tr>
+                <tr>
+                  <td><a href="#-csv">-csv</a></td>
+                  <td>Output</td>
+                  <td>turning on/off saving CSV file with results of metrics</td>
+                </tr>
+                <tr>
+                  <td><a href="#-csv-default-file">-csv-default-file</a></td>
+                  <td>Output</td>
+                  <td>requesting writing to the default CSV file</td>
+                </tr>
+                <tr>
+                  <td><a href="#-csv-dir">-csv-dir</a></td>
+                  <td>Output</td>
+                  <td>specifying directory for default CSV and JSON files</td>
+                </tr>
+                <tr>
+                  <td><a href="#-csv-file">-csv-file</a></td>
+                  <td>Output</td>
+                  <td>specifying an exact file for CSV output</td>
+                </tr>
+                <tr>
+                  <td><a href="#-ct">-ct</a></td>
+                  <td>Output</td>
+                  <td>specifying csv data delimiter</td>
+                </tr>
+                <tr>
+                  <td><a href="#-dev">-dev</a></td>
+                  <td>Metrics</td>
+                  <td>specifying a device to perform the metric on</td>
+                </tr>
+                <tr>
+                  <td><a href="#-display-luminance">-display-luminance</a></td>
+                  <td>Sample interpretation</td>
+                  <td>specifying display luminance for HDR metrics and colorspaces</td>
+                </tr>
+                <tr>
+                  <td><a href="#-float-range">-float-range</a></td>
+                  <td>Input</td>
+                  <td>specifying value range for float sampled files</td>
+                </tr>
+                <tr>
+                  <td><a href="#-forced-length">-forced-length</a></td>
+                  <td>Performance</td>
+                  <td>specifying expected file length</td>
+                </tr>
+                <tr>
+                  <td><a href="#-fpd">-fpd</a></td>
+                  <td>Output</td>
+                  <td>setting floating point for CSV files</td>
+                </tr>
+                <tr>
+                  <td><a href="#-gui">-gui</a></td>
+                  <td>Misc.</td>
+                  <td>running GUI (only Windows)</td>
+                </tr>
+                <tr>
+                  <td><a href="#-h-----help-1">-h, -?, --help (1)</a></td>
+                  <td>Help, information</td>
+                  <td>requesting CLI help</td>
+                </tr>
+                <tr>
+                  <td><a href="#-h-----help-2">-h, -?, --help (2)</a></td>
+                  <td>Help, information</td>
+                  <td>request information about a group of options</td>
+                </tr>
+                <tr>
+                  <td><a href="#-h-----help-3">-h, -?, --help (3)</a></td>
+                  <td>Help, information</td>
+                  <td>requesting help for metric</td>
+                </tr>
+                <tr>
+                  <td><a href="#-h-----help-4">-h, -?, --help (4)</a></td>
+                  <td>Help, information</td>
+                  <td>requesting help for VQMT config format</td>
+                </tr>
+                <tr>
+                  <td><a href="#-idx">-idx</a></td>
+                  <td>Indexing</td>
+                  <td>specifying index mode for reading input files</td>
+                </tr>
+                <tr>
+                  <td><a href="#-idx-file">-idx-file</a></td>
+                  <td>Indexing</td>
+                  <td>specifying a custom scheme for an index file</td>
+                </tr>
+                <tr>
+                  <td><a href="#-json">-json</a></td>
+                  <td>Output</td>
+                  <td>turning on json output</td>
+                </tr>
+                <tr>
+                  <td><a href="#-json-default-file">-json-default-file</a></td>
+                  <td>Output</td>
+                  <td>requesting writing to the default JSON file instead of stdout</td>
+                </tr>
+                <tr>
+                  <td><a href="#-json-file">-json-file</a></td>
+                  <td>Output</td>
+                  <td>specifying a file for JSON output</td>
+                </tr>
+                <tr>
+                  <td><a href="#-json-fmt">-json-fmt</a></td>
+                  <td>Output</td>
+                  <td>specifying legacy json format</td>
+                </tr>
+                <tr>
+                  <td><a href="#-legacy-mode">-legacy-mode</a></td>
+                  <td>Sample interpretation</td>
+                  <td>setting up legacy mode</td>
+                </tr>
+                <tr>
+                  <td><a href="#-list">-list</a></td>
+                  <td>Help, information</td>
+                  <td>Requesting additional information</td>
+                </tr>
+                <tr>
+                  <td><a href="#-log">-log</a></td>
+                  <td>Output</td>
+                  <td>specifying logfile</td>
+                </tr>
+                <tr>
+                  <td><a href="#-mask">-mask</a></td>
+                  <td>Masking</td>
+                  <td>specifying mask file</td>
+                </tr>
+                <tr>
+                  <td><a href="#-mask-type">-mask-type</a></td>
+                  <td>Masking</td>
+                  <td>specifying mask type and configuration</td>
+                </tr>
+                <tr>
+                  <td><a href="#-metr-metric-name">-metr, &lt;metric name&gt;</a></td>
+                  <td>Metrics</td>
+                  <td>specifying metric and (optionally) color component</td>
+                </tr>
+                <tr>
+                  <td><a href="#-metr-config">-metr-config</a></td>
+                  <td>Metrics</td>
+                  <td>setting configuration line for plugin metrics</td>
+                </tr>
+                <tr>
+                  <td><a href="#-metric-parallelism">-metric-parallelism</a></td>
+                  <td>Performance</td>
+                  <td>setting the number of instances of each metric that can work simultaneously</td>
+                </tr>
+                <tr>
+                  <td><a href="#-no-upscale-uv">-no-upscale-uv</a></td>
+                  <td>Input</td>
+                  <td>enabling of disabling upscaling for chroma components (UV) of subsampled files</td>
+                </tr>
+                <tr>
+                  <td><a href="#-orig--in">-orig, -in</a></td>
+                  <td>Input</td>
+                  <td>specifying an input file to apply metrics</td>
+                </tr>
+                <tr>
+                  <td><a href="#-performance">-performance</a></td>
+                  <td>Performance</td>
+                  <td>requesting information about VQMT performance to stdout</td>
+                </tr>
+                <tr>
+                  <td><a href="#-project">-project</a></td>
+                  <td>Misc.</td>
+                  <td>specifying a project file, saved from GUI</td>
+                </tr>
+                <tr>
+                  <td><a href="#-quiet">-quiet</a></td>
+                  <td>Misc.</td>
+                  <td>setting up silent mode</td>
+                </tr>
+                <tr>
+                  <td><a href="#-range-range">-range, &lt;range&gt;</a></td>
+                  <td>Input</td>
+                  <td>specifying frame range for the last file</td>
+                </tr>
+                <tr>
+                  <td><a href="#-resize">-resize</a></td>
+                  <td>Preprocessing</td>
+                  <td>turning on geometry correction of input video - scale and crop, configuring it</td>
+                </tr>
+                <tr>
+                  <td><a href="#-ryt">-ryt</a></td>
+                  <td>Sample interpretation</td>
+                  <td>specifying the default color standard for files</td>
+                </tr>
+                <tr>
+                  <td><a href="#-sample-conversion">-sample-conversion</a></td>
+                  <td>Sample interpretation</td>
+                  <td>changing integer sample interpretation</td>
+                </tr>
+                <tr>
+                  <td><a href="#-set">-set</a></td>
+                  <td>Metrics</td>
+                  <td>setting additional parameter for metric of file reader configuration</td>
+                </tr>
+                <tr>
+                  <td><a href="#-skip-frames">-skip-frames</a></td>
+                  <td>Performance</td>
+                  <td>setting up frame skipping for increasing performance</td>
+                </tr>
+                <tr>
+                  <td><a href="#-slots">-slots</a></td>
+                  <td>Performance</td>
+                  <td>setting the number of slots for simultaneous image processing</td>
+                </tr>
+                <tr>
+                  <td><a href="#-stdin--stdin-orig">-stdin, -stdin-orig</a></td>
+                  <td>Input</td>
+                  <td>specifying stdin as input yuv or y4m file</td>
+                </tr>
+                <tr>
+                  <td><a href="#-summary-accum">-summary-accum</a></td>
+                  <td>Metrics</td>
+                  <td>setting accumulator for summary output for a metric</td>
+                </tr>
+                <tr>
+                  <td><a href="#-summary-col">-summary-col</a></td>
+                  <td>Metrics</td>
+                  <td>setting column for summary output for a metric</td>
+                </tr>
+                <tr>
+                  <td><a href="#-terminal">-terminal</a></td>
+                  <td>Misc.</td>
+                  <td>running CLI</td>
+                </tr>
+                <tr>
+                  <td><a href="#-threads">-threads</a></td>
+                  <td>Performance</td>
+                  <td>specifying the number of threads for basic VQMT operations</td>
+                </tr>
+                <tr>
+                  <td><a href="#-v---version">-v, --version</a></td>
+                  <td>Help, information</td>
+                  <td>getting information about this VQMT copy</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis">-vis</a></td>
+                  <td>Visualization</td>
+                  <td>turning visualization on/off</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis-caption-pos">-vis-caption-pos</a></td>
+                  <td>Visualization</td>
+                  <td>specifying the position of caption labeled over the visualization</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis-colormap">-vis-colormap</a></td>
+                  <td>Visualization</td>
+                  <td>specifying colormap for visualization</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis-dir">-vis-dir</a></td>
+                  <td>Visualization</td>
+                  <td>specifying directory for visualization</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis-gamma">-vis-gamma</a></td>
+                  <td>Visualization</td>
+                  <td>specifying gamma correction for visualization</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis-preset">-vis-preset</a></td>
+                  <td>Visualization</td>
+                  <td>specifying preset for selected visualization format</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis-print-frame">-vis-print-frame</a></td>
+                  <td>Visualization</td>
+                  <td>enabling or disabling printing frame number on visualization</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis-print-value">-vis-print-value</a></td>
+                  <td>Visualization</td>
+                  <td>enabling or disabling printing values of the metric on visualization</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vis-type">-vis-type</a></td>
+                  <td>Visualization</td>
+                  <td>specifying visualization format</td>
+                </tr>
+                <tr>
+                  <td><a href="#-vng">-vng</a></td>
+                  <td>Visualization</td>
+                  <td>specifying visualization filename scheme</td>
+                </tr>
+                <tr>
+                  <td><a href="#open-mode">&lt;open mode&gt;</a></td>
+                  <td>Input</td>
+                  <td>specifying mode for reading a file</td>
+                </tr>
+                <tr>
+                  <td><a href="#picture-type">&lt;picture type&gt;</a></td>
+                  <td>Input</td>
+                  <td>specifying picture type for YUV file(s)</td>
+                </tr>
+                <tr>
+                  <td><a href="#resolution">&lt;resolution&gt;</a></td>
+                  <td>Input</td>
+                  <td>specifying resolution for YUV file(s)</td>
+                </tr>
+              </tbody>
+            </table>
+            <h2 id="description">Description</h2>
+            <h4 class="no_toc" id="-h-----help-1" name="-h-----help-1"> -h, -?, --help (1)</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-h</code><br />
+                <code class="highlighter-rouge">-?</code><br />
+                <code class="highlighter-rouge">--help</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-help">Help, information</a></dd>
+              <dt>Brief:</dt>
+              <dd>requesting CLI help</dd>
+              <dt>Description:</dt>
+              <dd>Request help information about VQMT command-line section</dd>
+            </dl>
+            <h4 class="no_toc" id="-h-----help-2" name="-h-----help-2"> -h, -?, --help (2)</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-h </code><em>&lt;help section&gt;</em><br />
+                <code class="highlighter-rouge">-? </code><em>&lt;help section&gt;</em><br />
+                <code class="highlighter-rouge">--help </code><em>&lt;help section&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-help">Help, information</a></dd>
+              <dt>Brief:</dt>
+              <dd>request information about a group of options</dd>
+              <dt>Description:</dt>
+              <dd>Request information about specified group of options</dd>
+            </dl>
+            <h4 class="no_toc" id="-h-----help-3" name="-h-----help-3"> -h, -?, --help (3)</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-h </code><em>&lt;metric&gt;</em><br />
+                <code class="highlighter-rouge">-? </code><em>&lt;metric&gt;</em><br />
+                <code class="highlighter-rouge">--help </code><em>&lt;metric&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-help">Help, information</a></dd>
+              <dt>Brief:</dt>
+              <dd>requesting help for metric</dd>
+              <dt>Description:</dt>
+              <dd>Request extended information about the specified metric</dd>
+            </dl>
+            <h4 class="no_toc" id="-h-----help-4" name="-h-----help-4"> -h, -?, --help (4)</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-h config</code><br />
+                <code class="highlighter-rouge">-? config</code><br />
+                <code class="highlighter-rouge">--help config</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-help">Help, information</a></dd>
+              <dt>Brief:</dt>
+              <dd>requesting help for VQMT config format</dd>
+              <dt>Description:</dt>
+              <dd>Request VQMT configuration JSON description. Configuration file completely describes VQMT calculation process. You can configure VQMT via <code class="highlighter-rouge">-config</code> option</dd>
+            </dl>
+            <h4 class="no_toc" id="-v---version" name="-v---version"> -v, --version</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-v </code>[<code class="highlighter-rouge">json</code>]<br />
+                <code class="highlighter-rouge">--version </code>[<code class="highlighter-rouge">json</code>]</dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-help">Help, information</a></dd>
+              <dt>Brief:</dt>
+              <dd>getting information about this VQMT copy</dd>
+              <dt>Description:</dt>
+              <dd>Get information about VQMT version, edition, available license, build date, etc. It is possible to get this information in JSON format for automatical processing.</dd>
+            </dl>
+            <h4 class="no_toc" id="-list" name="-list"> -list</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-list</code><br />
+                <code class="highlighter-rouge">-list all</code><br />
+                <code class="highlighter-rouge">-list </code>[<code class="highlighter-rouge">json</code>]<code class="highlighter-rouge"> metrics</code><br />
+                <code class="highlighter-rouge">-list modes</code><br />
+                <code class="highlighter-rouge">-list </code>[<code class="highlighter-rouge">json</code>]<code class="highlighter-rouge"> colorspaces</code><br />
+                <code class="highlighter-rouge">-list </code>[<code class="highlighter-rouge">json</code>]<code class="highlighter-rouge"> devices</code><br />
+                <code class="highlighter-rouge">-list raw</code><br />
+                <code class="highlighter-rouge">-list visualizations</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-help">Help, information</a></dd>
+              <dt>Brief:</dt>
+              <dd>Requesting additional information</dd>
+              <dt>Description:</dt>
+              <dd>Request additional information about available:
+                <ul>
+                  <li><a href="../metrics">metrics</a> (<code class="highlighter-rouge">metrics</code>)</li>
+                  <li><a href="../info#list-of-open-modes">file reading modes</a> (<code class="highlighter-rouge">modes</code>)</li>
+                  <li><a href="../picture-types">picture types for YUV files</a> (<code class="highlighter-rouge">raw</code>)</li>
+                  <li><a href="../info#list-of-available-devices">computing devices: CPU, GPU, etc.</a> (<code class="highlighter-rouge">devices</code>)</li>
+                  <li><a href="../info#visualization-methods">visualization formats</a> (<code class="highlighter-rouge">visualizations</code>)</li>
+                  <li><a href="../info#list-of-color-standards">color standards</a> (<code class="highlighter-rouge">colorspaces</code>)</li>
+                  <li>all above (<code class="highlighter-rouge">all</code>)</li>
+                </ul>
+                <p>Some lists supports json output.</p>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-orig--in" name="-orig--in"> -orig, -in</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-orig </code><em>&lt;file&gt;</em><br />
+                <code class="highlighter-rouge">-in </code><em>&lt;file&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-input">Input</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying an input file to apply metrics</dd>
+              <dt>Description:</dt>
+              <dd>Use the specified file for metrics. Specify original file using <code class="highlighter-rouge">-orig</code>, distorted or other files using <code class="highlighter-rouge">-in</code></dd>
+            </dl>
+            <h4 class="no_toc" id="-stdin--stdin-orig" name="-stdin--stdin-orig"> -stdin, -stdin-orig</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-stdin </code><em>&lt;mode&gt;</em><br />
+                <code class="highlighter-rouge">-stdin-orig </code><em>&lt;mode&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-input">Input</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying stdin as input yuv or y4m file</dd>
+              <dt>Description:</dt>
+              <dd>Use when a source file (YUV) or Y4M file should be read from standard input. <em>&lt;mode&gt;</em> can be:
+                <ul>
+                  <li><code class="highlighter-rouge">raw</code></li>
+                  <li><code class="highlighter-rouge">y4m</code></li>
+                </ul>
+                <p>Use <code class="highlighter-rouge">-stdin-orig</code> for original file in case of reference metric</p>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="picture-type" name="picture-type"> &lt;picture type&gt;</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><em>&lt;picture type&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-input">Input</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying picture type for YUV file(s)</dd>
+              <dt>Description:</dt>
+              <dd>Use after file or stdin specification to specify picture type for RAW (.yuv) input file. The last specified type also will be used as the default one. Use before the first file or stdin specification to set forced default picture type for all RAW files and pipes. View the list of available picture types using <a href="../picture-types"><code class="highlighter-rouge">-list raw</code></a>.</dd>
+            </dl>
+            <h4 class="no_toc" id="resolution" name="resolution"> &lt;resolution&gt;</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><em>&lt;number&gt;</em><code class="highlighter-rouge">x</code><em>&lt;number&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-input">Input</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying resolution for YUV file(s)</dd>
+              <dt>Description:</dt>
+              <dd>Use after file or stdin specification to specify resolution (width and height) for RAW (.yuv) input file. The first declaration becomes the default for all other files.<br />
+                Note: resolution can be determined automatically from the file name, it will be preferred over the default.</dd>
+            </dl>
+            <h4 class="no_toc" id="-range-range" name="-range-range"> -range, &lt;range&gt;</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-range </code><em>&lt;offset type&gt;</em><code class="highlighter-rouge"> </code><em>&lt;range&gt;</em><br />
+                <code class="highlighter-rouge">-range </code><em>&lt;range&gt;</em><br />
+                <em>&lt;range&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-input">Input</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying frame range for the last file</dd>
+              <dt>Description:</dt>
+              <dd>Use to manually specify and limit frame range for last the input file.<br />
+                <code class="highlighter-rouge">&lt;range&gt;</code> is one of :
+                <ul>
+                  <li><code class="highlighter-rouge">&lt;number&gt;-&lt;number&gt;</code> : specifying the first and last frame of range;</li>
+                  <li><code class="highlighter-rouge">&lt;number&gt;-</code>: set range from the first frame to the end of the video.</li>
+                </ul>
+                <p><code class="highlighter-rouge">&lt;offset type&gt;</code> is one of :</p>
+                <ul>
+                  <li><code class="highlighter-rouge">seek</code>: go to the first frame immediately, if possible;</li>
+                  <li><code class="highlighter-rouge">skip</code>: read and skip some frames from the beginning of input file(can be slow for big offsets);</li>
+                  <li><code class="highlighter-rouge">auto</code>: (default) automatically choose between seeking and skipping.</li>
+                </ul>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-float-range" name="-float-range"> -float-range</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-float-range </code><em>&lt;min&gt;</em><code class="highlighter-rouge">..</code><em>&lt;max&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-input">Input</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying value range for float sampled files</dd>
+              <dt>Description:</dt>
+              <dd>Use after a file specification to manually set minimal (black) and maximum (white) value for the file with floating point samples. Applicable to EXR, YUV and other formats for which the range is not specified in the metadata. Float range by default is 0..1. <em>&lt;min&gt;</em> and <em>&lt;max&gt;</em> could be floating point numbers. For HDR metrics and colorspaces, the maximum color value is interpreted as the display maximum luminance.<br />
+                Note: this range will have no effect if range specified in the file metadata</dd>
+            </dl>
+            <h4 class="no_toc" id="-cs" name="-cs"> -cs</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-cs auto</code><br />
+                <code class="highlighter-rouge">-cs </code><em>&lt;colorspace&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-input">Input</a></dd>
+              <dt>Brief:</dt>
+              <dd>overriding input file colorspace</dd>
+              <dt>Description:</dt>
+              <dd>Use after file specification to manually set colorspace that will be considered the colorspace of the input file values. This setting always overrides the color space, even if it does not match the picture type. You can find the list of available colorspaces typing <a href="../colorspaces"><code class="highlighter-rouge">-list colorspaces</code></a>.<br />
+                Use <code class="highlighter-rouge">-cs auto</code> for automatic colorspace deducing (default). In this case VQMT will consider file metadata. If the metadata is not enough to determine the exact colorspace, the default color standard from <code class="highlighter-rouge">-ryt</code> setting will be used to choose the colorspace.</dd>
+            </dl>
+            <h4 class="no_toc" id="open-mode" name="open-mode"> &lt;open mode&gt;</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><em>&lt;open mode&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-input">Input</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying mode for reading a file</dd>
+              <dt>Description:</dt>
+              <dd>Specify mode for reading last the file. This will override the default reading mode. To see all available modes use <a href="../info#list-of-open-modes"><code class="highlighter-rouge">-list modes</code></a>;</dd>
+            </dl>
+            <h4 class="no_toc" id="-no-upscale-uv" name="-no-upscale-uv"> -no-upscale-uv</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-no-upscale-uv</code><br />
+                <code class="highlighter-rouge">-no_upscale_uv yes</code><br />
+                <code class="highlighter-rouge">-no_upscale_uv no</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-input">Input</a></dd>
+              <dt>Brief:</dt>
+              <dd>enabling of disabling upscaling for chroma components (UV) of subsampled files</dd>
+              <dt>Description:</dt>
+              <dd>Enable or disable upscale of chrome components for subsampled files (Y422, Y422 formats for example). If <code class="highlighter-rouge">no</code> (default), inputs will be upscaled to the resolution of Y-plane.</dd>
+            </dl>
+            <h4 class="no_toc" id="-metr-metric-name" name="-metr-metric-name"> -metr, &lt;metric name&gt;</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-metr </code><em>&lt;metric name&gt;</em><code class="highlighter-rouge"> </code>[<code class="highlighter-rouge">over </code><em>&lt;color component list&gt;</em>]<br />
+                <em>&lt;metric name&gt;</em><code class="highlighter-rouge"> </code>[<code class="highlighter-rouge">over </code><em>&lt;color component list&gt;</em>]</dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-metrics">Metrics</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying metric and (optionally) color component</dd>
+              <dt>Description:</dt>
+              <dd>Add a metric to compute overall specified files (original file vs. all other files for reference metric or each file separately for no-reference metric). <em>&lt;color component list&gt;</em> is a component or comma-separated list of components, for example, <code class="highlighter-rouge">Y,U,V</code>. If <code class="highlighter-rouge">over &lt;color component list&gt;</code> is not specified, VQMT will use default component or components according to the following algorithm:
+                <ul>
+                  <li>If a metric supports only one color component, it will be selected.</li>
+                  <li>If a metric supports none of Y, U, V, it will be calculated over supported channels from R, G, B.</li>
+                  <li>If a metric supports none of R, G, B, it will be calculated over supported channels from Y, U, V.</li>
+                  <li>If all input files for metric (1 or 2) are in YUV color space, colors from the set Y, U, V available for this metric will be used.</li>
+                  <li>If all input files for metric (1 or 2) are in RGB color space, colors from the set R, G, B available for this metric will be used.</li>
+                  <li>If input files have different colorspaces, an error is generated.</li>
+                </ul>
+                <p>Since VQMT 12 additional channels YUV and RGB added(supported by PSNR metric). To specify 3 separate channels, tell <code class="highlighter-rouge">Y,U,V</code>.<br />
+                  The list of available color components: Y, U, V, L, R, G, B, YUV, RGB. Use in metric list only components, supported by the specified metric.<br />
+                  <em>&lt;color components&gt;</em> can be <code class="highlighter-rouge">ALL</code> - it means all supported components for this metric.<br />
+                  Use <a href="../metrics"><code class="highlighter-rouge">-list metrics</code></a> to see all variants.</p>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-metr-config" name="-metr-config"> -metr-config</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-metr-config </code><em>&lt;config line&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-metrics">Metrics</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting configuration line for plugin metrics</dd>
+              <dt>Description:</dt>
+              <dd>Set metric configuration line (applicable for plugin metrics only)</dd>
+            </dl>
+            <h4 class="no_toc" id="-set" name="-set"> -set</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-set </code><em>&lt;key&gt;</em><code class="highlighter-rouge">=</code><em>&lt;value&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-metrics">Metrics</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting additional parameter for metric of file reader configuration</dd>
+              <dt>Description:</dt>
+              <dd>Use after file to set a parameter for file reader, or after metric to set a parameter for the metric. Use <code class="highlighter-rouge">-h &lt;metric&gt;</code> to see parameters available for specified metric.</dd>
+            </dl>
+            <h4 class="no_toc" id="-summary-accum" name="-summary-accum"> -summary-accum</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-summary-accum </code><em>&lt;accum name&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-metrics">Metrics</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting accumulator for summary output for a metric</dd>
+              <dt>Description:</dt>
+              <dd>Set default accumulator for outputing summary values. If multiple values are obtained for this metric, files in the output section SUMMARY will be ordered according to this accumulator.</dd>
+            </dl>
+            <h4 class="no_toc" id="-summary-col" name="-summary-col"> -summary-col</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-summary-col </code><em>&lt;column id&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-metrics">Metrics</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting column for summary output for a metric</dd>
+              <dt>Description:</dt>
+              <dd>Set default column id for outputing summary values. If multiple values are obtained for this metric, files in the output section SUMMARY will be ordered according to the column with this id.</dd>
+            </dl>
+            <h4 class="no_toc" id="-dev" name="-dev"> -dev</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-dev </code><em>&lt;device&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-metrics">Metrics</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying a device to perform the metric on</dd>
+              <dt>Description:</dt>
+              <dd>Specify a device to perform the last specified metric on. This is possible only if the metric supports this device. <em>&lt;device&gt;</em> is device id or a part of the device name. Get a list of available devices using <code class="highlighter-rouge">-list devices</code>. To see, what devices are supported by the metric use <code class="highlighter-rouge">-h &lt;metric name&gt;</code></dd>
+            </dl>
+            <h4 class="no_toc" id="-json" name="-json"> -json</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-json</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>turning on json output</dd>
+              <dt>Description:</dt>
+              <dd>Use to turn on JSON output to stdout</dd>
+            </dl>
+            <h4 class="no_toc" id="-json-file" name="-json-file"> -json-file</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-json-file </code><em>&lt;file&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying a file for JSON output</dd>
+              <dt>Description:</dt>
+              <dd>Specify a file to write JSON to. This option will enable JSON output. Note: <em>&lt;file&gt;</em> is the full path to the only JSON file will be written while VQMT is running. If it exists, will be silently overridden.</dd>
+            </dl>
+            <h4 class="no_toc" id="-json-default-file" name="-json-default-file"> -json-default-file</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-json-default-file</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>requesting writing to the default JSON file instead of stdout</dd>
+              <dt>Description:</dt>
+              <dd>Use to set up saving JSON to file without specifying a filename. Default filename will be used. The default filename includes information about the specified metric(s) and file(s).</dd>
+            </dl>
+            <h4 class="no_toc" id="-json-fmt" name="-json-fmt"> -json-fmt</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-json-fmt </code><em>&lt;version&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying legacy json format</dd>
+              <dt>Description:</dt>
+              <dd>Set json legacy format. <em>&lt;version&gt;</em> could be:
+                <ul>
+                  <li><code class="highlighter-rouge">11</code>,</li>
+                  <li><code class="highlighter-rouge">12</code> (default);</li>
+                </ul>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-csv" name="-csv"> -csv</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-csv</code><br />
+                <code class="highlighter-rouge">-csv yes</code><br />
+                <code class="highlighter-rouge">-csv no</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>turning on/off saving CSV file with results of metrics</dd>
+              <dt>Description:</dt>
+              <dd>Use to turn one saving CSV file with results of metrics. A default file will be used. If exists, the file will be silently overridden. Use <code class="highlighter-rouge">-csv no</code> to turn CSV saving off.</dd>
+            </dl>
+            <h4 class="no_toc" id="-csv-file" name="-csv-file"> -csv-file</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-csv-file </code><em>&lt;file&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying an exact file for CSV output</dd>
+              <dt>Description:</dt>
+              <dd>Specify a file to write CSV to. This option will enable CSV output. Note: <em>&lt;file&gt;</em> is the full path to the only CSV file will be written while VQMT is running. If it exists, will be silently overridden.</dd>
+            </dl>
+            <h4 class="no_toc" id="-csv-default-file" name="-csv-default-file"> -csv-default-file</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-csv-default-file</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>requesting writing to the default CSV file</dd>
+              <dt>Description:</dt>
+              <dd>Use to set up saving CSV to file without specifying a filename. Default filename will be used. The default filename includes information about the specified metric(s) and file(s).</dd>
+            </dl>
+            <h4 class="no_toc" id="-cng" name="-cng"> -cng</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-cng PREFIX</code><br />
+                <code class="highlighter-rouge">-cng POSTFIX</code><br />
+                <code class="highlighter-rouge">-cng CUSTOM </code><em>&lt;filename&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying default name scheme for CSV, JSON files</dd>
+              <dt>Description:</dt>
+              <dd>Specify scheme for default CSV or JSON file name:
+                <ul>
+                  <li><code class="highlighter-rouge">PREFIX</code> - metric before files</li>
+                  <li><code class="highlighter-rouge">POSTFIX</code> - files before metrics (default)</li>
+                  <li><code class="highlighter-rouge">CUSTOM</code> - manually specify filename (without extension)</li>
+                </ul>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-csv-dir" name="-csv-dir"> -csv-dir</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-csv-dir </code><em>&lt;dir name&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying directory for default CSV and JSON files</dd>
+              <dt>Description:</dt>
+              <dd>Set directory for saving CSV and JSON files (for default files). Default - original file directory</dd>
+            </dl>
+            <h4 class="no_toc" id="-log" name="-log"> -log</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-log </code><em>&lt;file name&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying logfile</dd>
+              <dt>Description:</dt>
+              <dd>Specify a file to write information about VQMT process</dd>
+            </dl>
+            <h4 class="no_toc" id="-ct" name="-ct"> -ct</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-ct ,</code><br />
+                <code class="highlighter-rouge">-ct ;</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying csv data delimiter</dd>
+              <dt>Description:</dt>
+              <dd>Set CSV file fields delimiter (default: <code class="highlighter-rouge">,</code>)</dd>
+            </dl>
+            <h4 class="no_toc" id="-fpd" name="-fpd"> -fpd</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-fpd .</code><br />
+                <code class="highlighter-rouge">-fpd ,</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-output">Output</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting floating point for CSV files</dd>
+              <dt>Description:</dt>
+              <dd>Set CSV file floating point (default: <code class="highlighter-rouge">.</code>)</dd>
+            </dl>
+            <h4 class="no_toc" id="-vis" name="-vis"> -vis</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vis</code><br />
+                <code class="highlighter-rouge">-vis yes</code><br />
+                <code class="highlighter-rouge">-vis no</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>turning visualization on/off</dd>
+              <dt>Description:</dt>
+              <dd>Turn on/off saving visualization for each frame and each running measure. The visualization shows pixel-wise metric values and can be saved to a sequence of images or video file</dd>
+            </dl>
+            <h4 class="no_toc" id="-vng" name="-vng"> -vng</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vng PREFIX</code><br />
+                <code class="highlighter-rouge">-vng POSTFIX</code><br />
+                <code class="highlighter-rouge">-vng CUSTOM </code><em>&lt;file mask&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying visualization filename scheme</dd>
+              <dt>Description:</dt>
+              <dd>Set the visualization file name scheme. A distorted file name and metric will be included in the filename. Specify one of:
+                <ul>
+                  <li><code class="highlighter-rouge">PREFIX</code> - metric before the file</li>
+                  <li><code class="highlighter-rouge">POSTFIX</code> - file before the metric (default)</li>
+                  <li><code class="highlighter-rouge">CUSTOM</code> - manually specify filename (without extension). Use <code class="highlighter-rouge">%d</code> for specifying a placeholder for frame number if needed. You can also use environement variables in it.</li>
+                </ul>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-vis-type" name="-vis-type"> -vis-type</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vis-type </code><em>&lt;type&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying visualization format</dd>
+              <dt>Description:</dt>
+              <dd>Set visualization format (image of video). Use <a href="../info#visualization-methods"><code class="highlighter-rouge">-list visualizations</code></a> to see all available formats</dd>
+            </dl>
+            <h4 class="no_toc" id="-vis-preset" name="-vis-preset"> -vis-preset</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vis-preset </code><em>&lt;preset&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying preset for selected visualization format</dd>
+              <dt>Description:</dt>
+              <dd>Set visualization method preset for the specified visualization format. Use <a href="../info#visualization-methods"><code class="highlighter-rouge">-list visualizations</code></a> to see all presets.</dd>
+            </dl>
+            <h4 class="no_toc" id="-vis-caption-pos" name="-vis-caption-pos"> -vis-caption-pos</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vis-caption-pos </code><em>&lt;pos&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying the position of caption labeled over the visualization</dd>
+              <dt>Description:</dt>
+              <dd>Set the position of caption labeled over the visualization where <em>&lt;pos&gt;</em> is <code class="highlighter-rouge">top</code> or <code class="highlighter-rouge">bottom</code>. You can turn off the caption by turning off its components in VQMT PRO</dd>
+            </dl>
+            <h4 class="no_toc" id="-vis-print-value" name="-vis-print-value"> -vis-print-value</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vis-print-value yes</code><br />
+                <code class="highlighter-rouge">-vis-print-value no</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>enabling or disabling printing values of the metric on visualization</dd>
+              <dt>Description:</dt>
+              <dd>Enable or disable printing value of the metric on visualization frames (default: <code class="highlighter-rouge">yes</code>)</dd>
+            </dl>
+            <h4 class="no_toc" id="-vis-print-frame" name="-vis-print-frame"> -vis-print-frame</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vis-print-frame yes</code><br />
+                <code class="highlighter-rouge">-vis-print-frame no</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>enabling or disabling printing frame number on visualization</dd>
+              <dt>Description:</dt>
+              <dd>Enable or disable printing frame number on visualization frames (default: <code class="highlighter-rouge">yes</code>)</dd>
+            </dl>
+            <h4 class="no_toc" id="-vis-gamma" name="-vis-gamma"> -vis-gamma</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vis-gamma </code><em>&lt;float value&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying gamma correction for visualization</dd>
+              <dt>Description:</dt>
+              <dd>Specify gamma correction for the visualization of the last specified metric. Use before the first metric specification for setting the default gamma correction for all the metrics. You can change the visualization contrast by varying this value. Visualization will still use the same colormap, but the colors of that colormap will be distributed the other way. <em>&lt;float value&gt;</em> is gamma correction value between 0.001 and 1000, default 1.</dd>
+            </dl>
+            <h4 class="no_toc" id="-vis-colormap" name="-vis-colormap"> -vis-colormap</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vis-colormap </code><em>&lt;colormap&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying colormap for visualization</dd>
+              <dt>Description:</dt>
+              <dd>Specify a colormap for the last metric visualization. Use before the first metric specification for setting the default colormap for all the metrics. Colormap is a pallete, which colors will be used for a single-channel visualization of a metric. This will not affect metrics with 3-channel visualization. <em>&lt;colormap&gt;</em> is one of:
+                <ul>
+                  <li><code class="highlighter-rouge">vlag</code></li>
+                  <li><code class="highlighter-rouge">vlag-inversed</code></li>
+                  <li><code class="highlighter-rouge">icefire</code></li>
+                  <li><code class="highlighter-rouge">icefire-inversed</code></li>
+                  <li><code class="highlighter-rouge">rocket-mako</code></li>
+                  <li><code class="highlighter-rouge">mako-rocket</code></li>
+                  <li><code class="highlighter-rouge">vqmt-traditional</code></li>
+                  <li><code class="highlighter-rouge">vqmt-traditional-inversed</code></li>
+                  <li><code class="highlighter-rouge">segment</code></li>
+                  <li><code class="highlighter-rouge">segment-inversed</code></li>
+                  <li><code class="highlighter-rouge">black-white</code></li>
+                  <li><code class="highlighter-rouge">white-black</code></li>
+                </ul>
+                <p>Default: <code class="highlighter-rouge">icefire</code></p>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-vis-dir" name="-vis-dir"> -vis-dir</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-vis-dir </code><em>&lt;directory&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-visualization">Visualization</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying directory for visualization</dd>
+              <dt>Description:</dt>
+              <dd>Set directory where visualization will be saved. Default - original file directory</dd>
+            </dl>
+            <h4 class="no_toc" id="-mask" name="-mask"> -mask</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-mask </code><em>&lt;file name&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-masking">Masking</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying mask file</dd>
+              <dt>Description:</dt>
+              <dd>Set mask file and enable masking. Mask sets interesting areas of an image where the metric will be considered with a bigger weight. The file is specified in the same way as described for <code class="highlighter-rouge">-in</code> parameter.<br />
+                Notes:
+                <ul>
+                  <li>Only the first color component is taken into account: Y for YUV, R for RGB</li>
+                  <li>Mask can also be a single image if it is static over frames</li>
+                  <li>In the case of a binary mask, each pixel either considered or not while metric calculation. The value will be considered if the corresponding mask color over 0.5 of the maximum color value</li>
+                  <li>A mask value of zero does not mean that the pixel will be completely ignored</li>
+                  <li>Some metrics have native mask support and some don’t have. Native support means that the metric will consider pixels that do not match the mask to be non-existent. Metric without native support will consider pixels to be the same for original and distorted but can produce incorrect values.</li>
+                </ul>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-mask-type" name="-mask-type"> -mask-type</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-mask-type </code><em>&lt;mask type&gt;</em><code class="highlighter-rouge"> </code><em>&lt;mask config&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-masking">Masking</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying mask type and configuration</dd>
+              <dt>Description:</dt>
+              <dd>Set mask type, where <em>&lt;mask type&gt;</em> and <em>&lt;mask config&gt;</em> could be:
+                <ul>
+                  <li><code class="highlighter-rouge">bin</code> <code class="highlighter-rouge">black</code> - binary mask, black for ignored areas</li>
+                  <li><code class="highlighter-rouge">bin</code> <code class="highlighter-rouge">white</code> - binary mask, white for ignored areas</li>
+                  <li><code class="highlighter-rouge">8bit</code> <code class="highlighter-rouge">black</code> - 8-bit mask, black for ignored areas</li>
+                  <li><code class="highlighter-rouge">8bit</code> <code class="highlighter-rouge">white</code> - 8-bit mask, white for ignored areas</li>
+                  <li><code class="highlighter-rouge">incl-rect</code> <em>&lt;rect spec&gt;</em>, <code class="highlighter-rouge">excl-rect</code> <em>&lt;rect spec&gt;</em> - mask consists of rectangle (included or excluded). <em>&lt;rect spec&gt;</em> is <code class="highlighter-rouge">;</code>-separated list of measurements in the order: top, right, bottom, left. Each measurement can be pixel value or percent value (floating point) if followed by ‘%’ sign. A negative value can be used to measure from the opposite side.</li>
+                </ul>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-bad" name="-bad"> -bad</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-bad</code><br />
+                <code class="highlighter-rouge">-bad yes</code><br />
+                <code class="highlighter-rouge">-bad no</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-bad-frames">Bad frames</a></dd>
+              <dt>Brief:</dt>
+              <dd>turning on/off saving bad frames (frames with the worst metric values)</dd>
+              <dt>Description:</dt>
+              <dd>Turn on/off saving bad frames - frames with the worst metric values. Saving of bad frames is done after all computations are completed by reopening and rereading input files</dd>
+            </dl>
+            <h4 class="no_toc" id="-bad-dir" name="-bad-dir"> -bad-dir</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-bad-dir </code><em>&lt;directory&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-bad-frames">Bad frames</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying directory for bad frames</dd>
+              <dt>Description:</dt>
+              <dd>Set directory to save bad frame. Default - original file dir</dd>
+            </dl>
+            <h4 class="no_toc" id="-bad-type" name="-bad-type"> -bad-type</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-bad-type </code><em>&lt;type&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-bad-frames">Bad frames</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying the type of bad frames</dd>
+              <dt>Description:</dt>
+              <dd>Set type of bad frames, where <em>&lt;type&gt;</em> is one of:
+                <ul>
+                  <li><code class="highlighter-rouge">ORIGPROC</code> : save frames with the max difference between first and second files;</li>
+                  <li><code class="highlighter-rouge">PROCPROC</code> : save frames with the max difference between second and third files (usually these files meant to be processed files to compare);</li>
+                  <li><code class="highlighter-rouge">FIRSTBETTER</code> : save frames where the second file is better than the third;</li>
+                  <li><code class="highlighter-rouge">SECONDBETTER</code> : save frames where the third file is better than the second;</li>
+                </ul>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-bad-format" name="-bad-format"> -bad-format</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-bad-format </code><em>&lt;format&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-bad-frames">Bad frames</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying bad frames format</dd>
+              <dt>Description:</dt>
+              <dd>Set an image format for bad frames. <em>&lt;format&gt;</em> can be one of: <code class="highlighter-rouge">TIFF</code> (default) or <code class="highlighter-rouge">BMP</code></dd>
+            </dl>
+            <h4 class="no_toc" id="-bad-num" name="-bad-num"> -bad-num</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-bad-num </code><em>&lt;number&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-bad-frames">Bad frames</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying how many bad frames should be saved</dd>
+              <dt>Description:</dt>
+              <dd>Set the maximum number of bad frames to be saved</dd>
+            </dl>
+            <h4 class="no_toc" id="-bad-radius" name="-bad-radius"> -bad-radius</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-bad-radius </code><em>&lt;number&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-bad-frames">Bad frames</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying the minimum distance between bad frames</dd>
+              <dt>Description:</dt>
+              <dd>Specify the radius of bad frames - minimum distance between bad frames</dd>
+            </dl>
+            <h4 class="no_toc" id="-bad-name" name="-bad-name"> -bad-name</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-bad-name </code><em>&lt;naming scheme&gt;</em><br />
+                <code class="highlighter-rouge">-bad-name CUSTOM </code><em>&lt;naming scheme&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-bad-frames">Bad frames</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying scheme for naming bad frame files</dd>
+              <dt>Description:</dt>
+              <dd>Specify scheme for naming bad frames. Where <em>&lt;naming type&gt;</em> is one of
+                <ul>
+                  <li><code class="highlighter-rouge">frame</code> - start file names from frame (default);</li>
+                  <li><code class="highlighter-rouge">file</code> - start file names from source file name;</li>
+                  <li><code class="highlighter-rouge">CUSTOM</code> - specify a custom name scheme;</li>
+                </ul>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-bad-threshold" name="-bad-threshold"> -bad-threshold</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-bad-threshold </code>[<em>&lt;lower threshold&gt;</em>]<code class="highlighter-rouge">..</code>[<em>&lt;upper threshold&gt;</em>]</dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-bad-frames">Bad frames</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying threshold to ignore bad frame for some metric values</dd>
+              <dt>Description:</dt>
+              <dd>Specify thresholds to ignore bad frames for some metric values. Specify at least one threshold. A lower threshold means that metric must be better than this threshold, upper threshold means that metric must be worse than it (lower threshold can be bigger than upper one if lower values of metric means better quality)</dd>
+            </dl>
+            <h4 class="no_toc" id="-resize" name="-resize"> -resize</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-resize </code>[[<em>&lt;implementation&gt;</em>]<code class="highlighter-rouge"> </code><em>&lt;mode&gt;</em><code class="highlighter-rouge"> </code>[<code class="highlighter-rouge">A</code>]]<code class="highlighter-rouge"> to </code><em>&lt;dst&gt;</em><code class="highlighter-rouge"> </code>[<code class="highlighter-rouge">crop</code>]</dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-preprocessing">Preprocessing</a></dd>
+              <dt>Brief:</dt>
+              <dd>turning on geometry correction of input video - scale and crop, configuring it</dd>
+              <dt>Description:</dt>
+              <dd>Set up geometry correction of input files or downsample for increasing performance. This is necessary if input files have different resolutions. <em>&lt;mode&gt;</em> can be:
+                <ul>
+                  <li><code class="highlighter-rouge">crop</code></li>
+                  <li><code class="highlighter-rouge">nearest</code></li>
+                  <li><code class="highlighter-rouge">linear</code></li>
+                  <li><code class="highlighter-rouge">cubic</code> (default)</li>
+                  <li><code class="highlighter-rouge">lanczos</code></li>
+                </ul>
+                <p>and <em>&lt;implementation&gt;</em> is the preferred algorithm implementation and can be:</p>
+                <ul>
+                  <li><code class="highlighter-rouge">ffmpeg</code> (default)</li>
+                  <li><code class="highlighter-rouge">intel</code></li>
+                </ul>
+                <p>and <em>&lt;dst&gt;</em> is destination size and can be:</p>
+                <ul>
+                  <li><code class="highlighter-rouge">orig</code> - original size or 1-st input size</li>
+                  <li><code class="highlighter-rouge">1/2 orig</code></li>
+                  <li><code class="highlighter-rouge">1/4 orig</code></li>
+                  <li><code class="highlighter-rouge">min</code> - the size of input with the smallest resolution</li>
+                  <li><code class="highlighter-rouge">max</code> - the size of input with the biggest resolution</li>
+                  <li><code class="highlighter-rouge">&lt;width&gt;x&lt;height&gt;</code></li>
+                </ul>
+                <p><code class="highlighter-rouge">A</code> means antialiasing, can not be used with <code class="highlighter-rouge">crop</code> and <code class="highlighter-rouge">nearest</code>. If you specified <code class="highlighter-rouge">crop</code> after <em>&lt;dst&gt;</em>, the scaling will preserve the ratio, and then the crop will be done. You can not specify <code class="highlighter-rouge">crop</code> after <em>&lt;dst&gt;</em> if <em>&lt;mode&gt;</em> is <code class="highlighter-rouge">crop</code></p>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-idx" name="-idx"> -idx</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-idx </code><em>&lt;index type&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-indexing">Indexing</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying index mode for reading input files</dd>
+              <dt>Description:</dt>
+              <dd>Specify index mode, which is preferable for reading some types of the input file (especially, coded streams). One of:
+                <ul>
+                  <li><code class="highlighter-rouge">no</code> - do not create an index file (default);</li>
+                  <li><code class="highlighter-rouge">needed</code> - create an index file only if needed;</li>
+                  <li><code class="highlighter-rouge">forced</code> - always create an index file;</li>
+                  <li><code class="highlighter-rouge">needed_mem</code> - build an index in memory if needed, no files created;</li>
+                  <li><code class="highlighter-rouge">forced_mem</code> - always build an index in memory (no files created);</li>
+                </ul>
+                <p>Default: <code class="highlighter-rouge">needed</code>;<br />
+                  Note: Index is needed if the source file cannot be correctly opened for seeking. Index file creation has a sense only if FFmpeg or Auto mode specified. While the calculation the file will be read frame by frame, and no index file will be created. The index file can be created when VQMT attempts to save bad frames</p>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-idx-file" name="-idx-file"> -idx-file</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-idx-file </code><em>&lt;file scheme&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-indexing">Indexing</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying a custom scheme for an index file</dd>
+              <dt>Description:</dt>
+              <dd>Set scheme for naming index file. A scheme can use special VQMT variables. Possible if index mode is one of:
+                <ul>
+                  <li><code class="highlighter-rouge">needed</code>,</li>
+                  <li><code class="highlighter-rouge">forced</code>.</li>
+                </ul>
+                <p>Default: <code class="highlighter-rouge">$(VQMTCacheDir)/FileIndexes/$(FileHash).vqmtidx</code></p>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-ryt" name="-ryt"> -ryt</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-ryt </code><em>&lt;color standard&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-samples">Sample interpretation</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying the default color standard for files</dd>
+              <dt>Description:</dt>
+              <dd>Specify color standard and quantization range (PC or TV) that will be used to find exact colorspace for files, where metadata not sufficient to specify exact colorspace. For example, for an integer-sampled file with YUV picture type, the quantized YUV colorspace from specified standard will be used. Use color standards with PC suffix to use PC range for quantized data. The default value is <code class="highlighter-rouge">BT.709</code>.<br />
+                Use <a href="../colorspaces"><code class="highlighter-rouge">-list colorspaces</code></a> to see all variants.</dd>
+            </dl>
+            <h4 class="no_toc" id="-display-luminance" name="-display-luminance"> -display-luminance</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-display-luminance </code><em>&lt;luminance value&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-samples">Sample interpretation</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying display luminance for HDR metrics and colorspaces</dd>
+              <dt>Description:</dt>
+              <dd>Specify the display luminance for some HDR colorspaces and metrics. This will be treated as the luminance of a maximum white pixel of an input file. This value will be also used in some metrics as maximum. <em>&lt;luminance value&gt;</em> is integer in the range 1..10000</dd>
+            </dl>
+            <h4 class="no_toc" id="-sample-conversion" name="-sample-conversion"> -sample-conversion</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-sample-conversion shift</code><br />
+                <code class="highlighter-rouge">-sample-conversion repeat</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-samples">Sample interpretation</a></dd>
+              <dt>Brief:</dt>
+              <dd>changing integer sample interpretation</dd>
+              <dt>Description:</dt>
+              <dd>Set integer samples interpretation. In the mode <code class="highlighter-rouge">shift</code> (default for VQMT 11 and earlier) 8-bit value 0xFF of the input file will be interpreted as 255/256. In the mode <code class="highlighter-rouge">repeat</code> (default since VQMT 12) 8-bit value 0xFF of the input file will be interpreted as 1.</dd>
+            </dl>
+            <h4 class="no_toc" id="-legacy-mode" name="-legacy-mode"> -legacy-mode</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-legacy-mode </code><em>&lt;number&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-samples">Sample interpretation</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting up legacy mode</dd>
+              <dt>Description:</dt>
+              <dd>Turn on legacy mode with specified VQMT version. This will affect the metric calculation, input interpretation, and conversion. Reproducibility of results of earlier VQMT versions is not guaranteed. Note: setting of other parameters of this group can break reproducibility. Currently supported versions: 11</dd>
+            </dl>
+            <h4 class="no_toc" id="-skip-frames" name="-skip-frames"> -skip-frames</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-skip-frames </code>[<em>&lt;skip mode&gt;</em>]<code class="highlighter-rouge"> fps </code><em>&lt;fps&gt;</em><br />
+                <code class="highlighter-rouge">-skip-frames </code>[<em>&lt;skip mode&gt;</em>]<code class="highlighter-rouge"> each </code><em>&lt;N&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-performance">Performance</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting up frame skipping for increasing performance</dd>
+              <dt>Description:</dt>
+              <dd>Set up frame skipping to increase performance. You can specify target <em>&lt;fps&gt;</em> and VQMT will try to achieve this fps, or you can set up processing if each <em>&lt;N&gt;</em>‘th frame, skipping N-1 out of every N.<br />
+                <code class="highlighter-rouge">&lt;skip mode&gt;</code> is one of :
+                <ul>
+                  <li><code class="highlighter-rouge">skip</code> - fully decode skipped frames (default),</li>
+                  <li><code class="highlighter-rouge">seek</code> - try to seek directly to the target frame.</li>
+                </ul>
+              </dd>
+            </dl>
+            <h4 class="no_toc" id="-slots" name="-slots"> -slots</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-slots </code><em>&lt;number&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-performance">Performance</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting the number of slots for simultaneous image processing</dd>
+              <dt>Description:</dt>
+              <dd>Set the number of slots that be allocated for each metric to process files simultaneously. <code class="highlighter-rouge">0</code> - default value. Increasing this value will slightly increase memory consumption, but can improve concurrency</dd>
+            </dl>
+            <h4 class="no_toc" id="-metric-parallelism" name="-metric-parallelism"> -metric-parallelism</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-metric-parallelism </code><em>&lt;number&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-performance">Performance</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting the number of instances of each metric that can work simultaneously</dd>
+              <dt>Description:</dt>
+              <dd>Set the metric parallelism level - how many instances of a single metric can work simultaneously. <code class="highlighter-rouge">0</code> - default value. Set small values to reduce memory consumption. High metric parallelism is quite useless if you computing many metrics simultaneously</dd>
+            </dl>
+            <h4 class="no_toc" id="-threads" name="-threads"> -threads</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-threads </code><em>&lt;number&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-performance">Performance</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying the number of threads for basic VQMT operations</dd>
+              <dt>Description:</dt>
+              <dd>Set number of threads for basic VQMT operations such as: metric calculation, input reading, input conversion, mask applying, geometry correction, etc. Note: VQMT can spawn additional threads, especially for reading files. This is a number means how many operations can be performed simultaneously</dd>
+            </dl>
+            <h4 class="no_toc" id="-forced-length" name="-forced-length"> -forced-length</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-forced-length </code><em>&lt;number&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-performance">Performance</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying expected file length</dd>
+              <dt>Description:</dt>
+              <dd>Manually set the expected number of frames (0 to disable). Note: this parameter affects only progress bar, to limit frames count length use <code class="highlighter-rouge">-range 0-&lt;last frame&gt;</code> after the file specification</dd>
+            </dl>
+            <h4 class="no_toc" id="-performance" name="-performance"> -performance</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-performance</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-performance">Performance</a></dd>
+              <dt>Brief:</dt>
+              <dd>requesting information about VQMT performance to stdout</dd>
+              <dt>Description:</dt>
+              <dd>Use this to request information about VQMT performance which will be printed in JSON format to stdout after VQMT finishes computation. This will suppress the common VQMT output. Performance information will contain info about performed operations</dd>
+            </dl>
+            <h4 class="no_toc" id="-quiet" name="-quiet"> -quiet</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-quiet</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-misc">Misc.</a></dd>
+              <dt>Brief:</dt>
+              <dd>setting up silent mode</dd>
+              <dt>Description:</dt>
+              <dd>Use to suppress printing common VQMT information to stdout. This will not affect JSON output if specified to stdout or performance information</dd>
+            </dl>
+            <h4 class="no_toc" id="-terminal" name="-terminal"> -terminal</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-terminal</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-misc">Misc.</a></dd>
+              <dt>Brief:</dt>
+              <dd>running CLI</dd>
+              <dt>Description:</dt>
+              <dd>Use with any VQMT executable to run in terminal mode (CLI)</dd>
+            </dl>
+            <h4 class="no_toc" id="-gui" name="-gui"> -gui</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-gui</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-misc">Misc.</a></dd>
+              <dt>Brief:</dt>
+              <dd>running GUI (only Windows)</dd>
+              <dt>Description:</dt>
+              <dd>Use with any VQMT executable to run in graphical mode (GUI). This is supported only on Windows systems</dd>
+            </dl>
+            <h4 class="no_toc" id="-activate" name="-activate"> -activate</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-activate</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-misc">Misc.</a></dd>
+              <dt>Brief:</dt>
+              <dd>running activation wizard</dd>
+              <dt>Description:</dt>
+              <dd>Use to manually run the activation wizard for registering Pro, Premium, or trial licence. Activation wizard allows you to change the active licence for VQMT. Running in this mode will ignore the existing license.<br />
+                This command is allowed for GUI mode</dd>
+            </dl>
+            <h4 class="no_toc" id="-project" name="-project"> -project</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-project </code><em>&lt;file&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-misc">Misc.</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying a project file, saved from GUI</dd>
+              <dt>Description:</dt>
+              <dd>Use to load a project, saved from GUI.<br />
+                This command allowed for GUI mode</dd>
+            </dl>
+            <h4 class="no_toc" id="-config" name="-config"> -config</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-config </code><em>&lt;file&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-misc">Misc.</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying a JSON configuration file</dd>
+              <dt>Description:</dt>
+              <dd>Specify file to use settings from. This file will override all other settings. Configuration file fully describes all VQMT settings. It has JSON format. Unlike <code class="highlighter-rouge">-project</code> this cannot be used in GUI mode, because CLI settings are wider than GUI. You can use autogenerated config from JSON output of VQMT to repeate the completed calculation, or use customly-generated JSON. Config of compatible versions will be automatically converted the current version format</dd>
+            </dl>
+            <h4 class="no_toc" id="-config-line" name="-config-line"> -config-line</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-config-line </code><em>&lt;json configuration&gt;</em></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-misc">Misc.</a></dd>
+              <dt>Brief:</dt>
+              <dd>specifying JSON configuration as command line argument</dd>
+              <dt>Description:</dt>
+              <dd>Specify this option and JSON configuration as the next CLI argument. See help for command <a href="#-config"><code class="highlighter-rouge">-config</code></a> for more information about VQMT JSON configuration</dd>
+            </dl>
+            <h4 class="no_toc" id="-config-stdin" name="-config-stdin"> -config-stdin</h4>
+            <dl class="properties-short">
+              <dt>Usage:</dt>
+              <dd><code class="highlighter-rouge">-config-stdin</code></dd>
+              <dt>Category:</dt>
+              <dd><a href="#categ-misc">Misc.</a></dd>
+              <dt>Brief:</dt>
+              <dd>using STDIN for reading configuration JSON</dd>
+              <dt>Description:</dt>
+              <dd>Specify this option to use STDIN for reading configuration JSON. VQMT will read exactly one JSON value from STDIN in ASCII encoding. See help for command <a href="#-config"><code class="highlighter-rouge">-config</code></a> for more information about VQMT JSON configuration</dd>
+            </dl>
+            <p>This page is automatically generated by 14.1 r12839 on 2022-06-24. In case of any question or suggestion, please mail us: <a href="video-measure@compression.ru">video-measure@compression.ru</a></p>
+          </div>
+          <div class="tiles-width meta">
+            <div class="share">
+              <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+              <!-- Sharingbutton Twitter -->
+              <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Video Quality Measurement Tool: Command-line help&amp;url=
+http://localhost:4000/vqmt/online-help-14-1/help/
+"
+   target="_blank" rel="noopener" aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton Telegram -->
+              <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Video Quality Measurement Tool: Command-line help&amp;url=
+http://localhost:4000/vqmt/online-help-14-1/help/
+" rel="noopener" target="_blank">
+                <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton Facebook -->
+              <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/vqmt/online-help-14-1/help/
+" rel="noopener"
+   target="_blank">
+                <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton E-Mail -->
+              <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Video Quality Measurement Tool: Command-line help&amp;body=
+http://localhost:4000/vqmt/online-help-14-1/help/
+" target="_self" rel="noopener"
+   aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton LinkedIn -->
+              <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/vqmt/online-help-14-1/help/
+&amp;title=MSU Video Quality Measurement Tool: Command-line help&amp;summary=MSU Video Quality Measurement Tool: Command-line help&amp;source=
+http://localhost:4000/vqmt/online-help-14-1/help/
+"
+   target="_blank" rel="noopener" aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+            <span class="date">24 Jun 2022</span>
+          </div>
+          <div class="tiles-width separator"></div>
+          <div class="tiles-width see-also-title">
+            See Also
+          </div>
+          <div class="tiles wide">
+            <a class="tile" href="/benchmarks/deblurring.html">
+              <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+              <div class="title">MSU Video Deblurring Benchmark 2022</div>
+              <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+            </a>
+            <a class="tile" href="/vqmt/vqmt-doc-toc/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Documentation TOC</div>
+              <div class="text">Table of content for all version of MSU VQMT online help</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/picture-types/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Picture types</div>
+              <div class="text">VQMT 14.0 Online help: List of all picture types available in VQMT and their aliases</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/metrics/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI</div>
+              <div class="text">VQMT 14.0 Online help: Description of VQMT metrics, their parameters and using in CLI</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/info/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: VQMT various lists and tables</div>
+              <div class="text">VQMT 14.0 Online help: Information about VQMT visualization formats, read modes, etc...</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/help/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Command-line help</div>
+              <div class="text">VQMT 14.0 Online help: Information about all VQMT CLI options for Pro/Premium versions</div>
+            </a>
+          </div>
+          <div class="tiles-width separator"></div>
+          <div class="tiles-width markdown site-structure">
+            <span class="title">Site structure</span>
+            <ul>
+              <li>
+                <a href="/benchmarks/">MSU Benchmark Collection</a>
+                <ul>
+                  <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+                  <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+                  <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+                  <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+                  <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+                  <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+                  <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/codecs/">Codecs Comparisons & Optimization</a>
+                <ul>
+                  <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+                  <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+                  <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+                  <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+                  <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+                  <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/vqmt/">VQMT</a>
+                <ul>
+                  <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+                <ul>
+                  <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+                  <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+                  <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/datasets/">MSU Datasets Collection</a>
+                <ul>
+                </ul>
+              </li>
+              <li>
+                <a href="/metrics/">Metrics Research</a>
+                <ul>
+                </ul>
+              </li>
+              <li>
+                <a href="/video_filters/">Video Filters</a>
+                <ul>
+                  <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+                  <li><a href="/video_filters/public/">Free Filters</a></li>
+                  <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/other/">Other Projects</a>
+                <ul>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="global-footer">
+        <div class="footer">
+          <div class="footer-column copyright">
+            <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+            <div class="text">
+              MSU Graphics & Media Lab Video Group
+              <br>
+              2019&ndash;2022
+            </div>
+          </div>
+          <div class="footer-column">
+            <ul>
+              <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+              <li><a href="/vqmt/">VQMT</a></li>
+              <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+              <li><a href="/datasets/">MSU Datasets Collection</a></li>
+              <li><a href="/metrics/">Metrics Research</a></li>
+              <li><a href="/video_filters/">Video Filters</a></li>
+              <li><a href="/other/">Other Projects</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <ul>
+              <li><a href="/about/">About Us</a></li>
+              <li><a href="/benchmarks/">Benchmarks</a></li>
+              <li><a href="/projects/">Projects</a></li>
+              <li><a href="/publications/">Publications</a></li>
+              <li><a href="/contacts/">Contacts</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: [
+          "MathMenu.js",
+          "MathZoom.js",
+          "AssistiveMML.js",
+          "a11y/accessibility-menu.js"
+        ],
+        jax: ["input/TeX", "output/CommonHTML"],
+        TeX: {
+          extensions: [
+            "AMSmath.js",
+            "AMSsymbols.js",
+            "noErrors.js",
+            "noUndefined.js",
+          ]
+        }
+      });
+    </script>
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  </body>
+</html>

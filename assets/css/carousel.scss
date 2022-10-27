@@ -1,0 +1,160 @@
+---
+---
+
+@import 'config.scss';
+
+.glide {
+    width: 100%;
+    background-color: $nav-color;
+    margin-bottom: 60px;
+
+    .glide__track {
+        position: relative;
+    }
+
+    .glide__slides {
+        display: flex;
+        align-items: stretch;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .glide__slide {
+        height: auto;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding-top: 30px;
+        padding-bottom: 122px;
+    }
+
+    .glide__slide a {
+        @import 'list.scss';
+
+        color: inherit;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .glide__image {
+            height: 150px;
+        }
+
+        h1 {
+            font-size: 42px;
+            line-height: 130%;
+            color: $accent-color;
+        }
+
+        p {
+            margin-top: 5px;
+        }
+
+        .motto {
+            color: $accent-color;
+            font-size: 24px;
+        }
+    }
+
+    .glide__arrow:hover, .glide__bullet:hover {
+        cursor: pointer;
+    }
+
+    .glide__arrows {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        pointer-events: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .glide__arrow {
+            pointer-events: auto;
+            height: 30px;
+        }
+
+        .left {
+            padding-left: 115px;
+            padding-right: 20px;
+        }
+
+        .right {
+            padding-left: 20px;
+            padding-right: 115px;
+        }
+    }
+
+    .glide__bullets {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 122px;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        .glide__bullet {
+            padding: 20px 10px 20px 10px;
+
+            .dash {
+                transition: width 0.1s ease, background-color 0.1s ease;
+                width: 20px;
+                height: 2px;
+                background-color: #bbbbbb;
+            }
+        }
+
+        .glide__bullet.glide__bullet--active .dash {
+            width: 50px;
+            background-color: $accent-color;
+        }
+    }
+}
+
+@media (max-width: $mobile-breakpoint) {
+    .glide {
+        margin-bottom: 0;
+
+        .glide__arrows {
+            display: none;
+        }
+
+        .glide__slide {
+            padding-bottom: 52px;
+        }
+
+        .glide__slide a {
+            margin-left: 10px;
+            margin-right: 10px;
+
+            .glide__image {
+                height: 80px;
+            }
+
+            .glide__text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+
+            .motto {
+                font-size: 16px;
+            }
+        }
+
+        .glide__bullets {
+            height: 52px;
+        }
+    }
+}

@@ -1,0 +1,2997 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Super-Resolution for Video Compression Benchmark 2022</title>
+    <meta property="og:title" content="MSU Super-Resolution for Video Compression Benchmark 2022">
+    <meta property="og:image" content="http://localhost:4000/assets/img/benchmarks/sr-codecs/preview.gif">
+    <meta name="description" content="Learn about the best SR methods for compressed videos and choose the best model to use with your codec">
+    <meta property="og:description" content="Learn about the best SR methods for compressed videos and choose the best model to use with your codec">
+    <meta property="og:url" content="
+http://localhost:4000/benchmarks/super-resolution-for-video-compression.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/benchmarks/">MSU Benchmark Collection</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <style>
+          .container{
+              box-shadow: 0 5px 10px 1px grey;
+              background: rgba(255, 255, 255, 0.90);
+              text-align: center;
+              border-radius: 5px;
+              overflow: hidden;
+              margin: 2.5em auto;
+              width: 100%;
+          }
+          
+          .product-details {
+              position: relative;
+              text-align: left;
+              overflow: hidden;
+              padding: 1px 15px;
+              height: 100%;
+              float: left;
+              width: 44%;
+          }
+          .container .product-details h1{
+              display: inline-block;
+              position: relative;
+              font-size: 20px;
+              color: #344055;
+              margin: 0;
+          }
+          
+          .control{
+              position: absolute;
+              bottom: 20%;
+              left: 22.8%;
+          }
+        </style>
+        <head><base target="_top" /></head>
+        <link rel="stylesheet" href="/assets/css/benchmarks/style.css" />
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css" />
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <h1 class="center" id="msu-super-resolution-for-video-compression-benchmark">MSU Super-Resolution for Video Compression Benchmark</h1>
+        <div id="buttons"></div>
+        <script>
+          __set_menu_buttons([
+          ['Home', '/benchmarks/super-resolution-for-video-compression.html'],
+          ['Participants','/benchmarks/super-resolution-for-video-compression-participants.html'],
+          ['Evaluation methodology', '/benchmarks/super-resolution-for-video-compression-methodology.html'],
+          ['How to participate', '#participate'],
+              ['Download report', '#report'],
+              ['Contact us', '#contacts']
+          ], 'Home')
+        </script>
+        <div class="current_content">
+          <h3 class="center" id="discover-sr-methods-for-compressed-videos-and-choose-the-best-model-to-use-with-your-codec">Discover SR methods for compressed videos and choose the best model to use with your codec</h3>
+          <div style="margin-left: 60%;">
+            <div><b>G&amp;M Lab head: Dr. Dmitriy Vatolin</b></div>
+            <div><b>Project adviser: Dr. Dmitriy Kulikov</b></div>
+            <div style="display: flex">
+              <div><b>Measurements, analysis:</b>&nbsp;</div>
+              <div><b>Evgeniy Bogatyrev,<br />
+                  Egor Sklyarov</b>
+              </div>
+            </div>
+          </div>
+          <p><br />
+          </p>
+          <div class="center">
+            <div>
+              <img style="width:100%" src="/assets/img/benchmarks/sr-codecs/main_plot.svg" />
+            </div>
+          </div>
+          <!--
+<div class="container" style="padding-top: 0px; margin-top: 10px;"> 
+## Key features of the Benchmark
+
+*   **H.264, H.265, H.266, AV1, AVS3 codec standards** to compress input data
+     * Find the method that produces great results working with various codecs
+*   **Different objective metrics** ranked by their correlation with the subjective assessment
+     * Test your method with metrics that correlate well with subjective score    
+*   Visual comparison for more than **90 SR+codec pairs**
+     * You can check visually how good each state-of-the-art method is
+*   A large set of SR mehtods, which is constantly updated with **new SOTA methods**
+</div>
+-->
+          <p><br />
+          </p>
+          <div class="container" style="padding-top: 0px; margin-top: 0px;">
+            <!-- <h2 style="align-self: center; padding-bottom: 0px;">Key features of the Benchmark</h2> -->
+            <div class="product-details" style="width: 29%; margin-left: 5px; padding-bottom: 0px;">
+              <h3 style="color: black; text-align: center;">Diverse dataset</h3>
+              <p class="information">
+                <ul>
+                  <li><b>H.264, H.265, H.266, AV1, AVS3</b> codec standards</li>
+                  <li>More than <b>260 test videos</b></li>
+                  <li>6 different bitrates</li>
+                </ul>
+              </p>
+            </div>
+            <div class="product-details" style="width: 29%; padding-bottom: 0px;">
+              <h3 style="color: black; text-align: center;">Various charts</h3>
+              <div class="information">
+                <ul>
+                  <li>Visual comparison for more than<br />
+                    <b>80 SR+codec pairs</b></li>
+                  <li>RD curves and bar charts<br />
+                    for 5 objective metrics</li>
+                  <li>SR+codec pairs ranked by BSQ-rate</li>
+                </ul>
+              </div>
+            </div>
+            <div class="product-details" style="width: 29%; padding-bottom: 0px;">
+              <h3 style="color: black; text-align: center;">Extensive report</h3>
+              <div class="information">
+                <ul>
+                  <li><b>80+ pages</b> with different plots</li>
+                  <li>15 SOTA SR methods<br />
+                    and 6 objective metrics</li>
+                  <li>Extensive subjective comparison<br />
+                    with <b>5300+ valid participants</b></li>
+                  <li>Powered by <a href="http://www.subjectify.us/">Subjectify.us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><br />
+          </p>
+          <div class="center">
+            <div>
+              <img style="width:70%" src="/assets/img/benchmarks/sr-codecs/pipeline.png" />
+              <p><i>The pipeline of our benchmark</i></p>
+            </div>
+          </div>
+          <h2 id="whats-new">What’s new</h2>
+          <ul>
+            <li><strong>21.07.2022</strong> Added <a href="#SRcodecs">SR codecs</a> to the benchmark. Added MDTVSFA correlation to the <a href="#charts">correlation chart</a>.</li>
+            <li><strong>12.04.2022</strong> Uploaded the results of extensive subjective comparison. See “Subjective score” in <a href="#charts">Charts</a> section.</li>
+            <li><strong>25.03.2022</strong> Added VRT, BasicVSR, RBPN, and COMISR. Updated <a href="#leaderboard">Leaderboards</a> and <a href="#visualization">Visualizations</a> sections.</li>
+            <li><strong>14.03.2022</strong> Uploaded new <a href="#participate">dataset</a>. Updated the <a href="/benchmarks/super-resolution-for-video-compression-methodology.html">Methodology</a>.</li>
+            <li><strong>26.10.2021</strong> Updated the <a href="/benchmarks/super-resolution-for-video-compression-methodology.html">Methodology</a>.</li>
+            <li><strong>12.10.2021</strong> Published <a href="#report">October Report</a>. Added 2 new videos to the dataset. Updated <a href="#charts">Charts</a> section and <a href="#visualization">Visualizations</a>.</li>
+            <li><strong>28.09.2021</strong> Improved the <a href="#leaderboard">Leaderboards</a> section to make it more user-friendly, updated the <a href="/benchmarks/super-resolution-for-video-compression-methodology.html">Methodology</a> and added ERQAv1.1 metric.</li>
+            <li><strong>21.09.2021</strong> Added 2 new videos to the dataset, new plots to the <a href="#charts">Charts</a> section, and new <a href="#visualization">Visualizations</a>.</li>
+            <li><strong>14.09.2021</strong> Public beta-version Release.</li>
+            <li><strong>31.08.2021</strong> Alpha-version Release.</li>
+          </ul>
+          <!--
+<p>Below you can see the comparison between some SR+codec pairs. FullHD video was downscaled twice and compressed with an approximate bitrate of 600 kbps. Then, Super-Resolution models were applied to the compressed input. In the picture, you can see cropped parts from models' outputs.</p>
+<div class="center">
+    <div>
+        <img style="width:70%" src="/assets/img/benchmarks/sr-codecs/head_pic2.png">
+        <p><i>Super-Resolution models paired with different codecs</i></p>
+    </div>
+</div>
+-->
+          <h2 id="charts"><span id="charts"></span> Charts</h2>
+          <p>
+            In this section, you can see RD curves, which show the bitrate/quality distribution of each SR+codec pair, and bar charts, which show the <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#bsq-rate">BSQ-rate</a> calculated for objective metrics and subjective scores.
+            <br />
+            <br />
+            Read about the participants <a href="/benchmarks/super-resolution-for-video-compression-participants.html">here</a>.
+            <br />
+            You can see the information about <b>codecs</b> in <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#codecs">the methodology</a>.
+          </p>
+          <p>
+            <b>Metrics:</b>
+            <ul>
+              <li> Subjective score — <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#subjective_comparison">more details</a></li>
+              <li> ERQAv2.0 — <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#erqa">more details</a></li>
+              <li> Y-PSNR — <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#psnr">more details</a></li>
+              <li> Y-MS-SSIM — <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#msssim">more details</a></li>
+              <li> Y-VMAF — <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#vmaf">more details</a></li>
+              <li> LPIPS — <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#lpips">more details</a></li>
+            </ul>
+          </p>
+          <h3 align="left" style="color: #3d6f96">Charts with metrics</h3>
+          <p>You can choose the <b>test sequence</b>, the <b>codec</b> that 
+            was used to compress it, and the <b>metric</b>.</p>
+          <p>If BSQ-rate of any method equals 0, then this method should be considered much better than reference codec (codec with no SR).</p>
+          <p><b>Highlight the plot region where you want to zoom in.</b></p>
+          <div id="charts_selector" class="mobile-plots">
+            <p style="white-space: pre;">Video: <label for="charts_selector_video"></label><select id="charts_selector_video" name="values">
+                <!--<option>ball</option>-->
+                <option selected="selected">Overall</option>
+                <option>child</option>
+                <option>colors</option>
+                <option>cuphead</option>
+                <option>dancing</option>
+                <option>dontstarve</option>
+                <option>restaurant</option>
+              </select>    Codec: <label for="charts_selector_codec"></label><select id="charts_selector_codec" name="values">
+                <option>x264</option>
+                <option selected="selected">x265</option>
+                <option>aomenc</option>
+                <option>VVenC</option>
+                <option>uavs3e</option>
+              </select>    Metric: <label for="charts_selector_metric"></label><select id="charts_selector_metric" name="values">
+                <option selected="selected">Subjective score</option>
+                <option>ERQAv2.0</option>
+                <option>Y-VMAF</option>
+                <option>Y-PSNR</option>
+                <option>Y-MS-SSIM</option>
+                <option>LPIPS</option>
+              </select></p>
+            <p id="hidden_curves">Show hidden curves:<label class="switch" for="bitrates_selector"><input id="bitrates_selector" type="checkbox" /><span class="slider round"></span></label></p>
+            <div id="charts_graph" style="display: block" class="highcharts-figure"> <!--onload="onChangeHelper()"-->
+            </div>
+            <div id="charts_bsqrate" style="display: block" class="highcharts-figure">
+            </div>
+            <script>
+              (function (H) {
+                          var aWidth = 25, aCap = 15, aHead = 80, bottomMargin = 74, rightMargin = 80, delta = 8;
+                          var gAnnotation = function(Ax,Ay,Bx,By,Tx,Ty,Tfi, opts, rnd, objects) {
+                              if (!opts) return;
+                              if (opts.text == "Better"){//(true || (opts.direction && opts.direction == 'inverse')) {
+                                  var t;
+                                  t = Ax; Ax = Bx; Bx = t;
+                                  t = Ay; Ay = By; By = t;
+                              } else return;
+                              if (!opts.double) {
+                                  var ar = rnd.path(drawArrow(Ax, Ay, Bx, By, aWidth, aCap, aHead));
+                                  ar.attr({stroke: 'black','stroke-width': 2}).add();
+                                  objects.push(ar);
+                                  if (opts.text) {
+                                      var txt = rnd.text(opts.text, Tx, Ty);
+                                      txt.attr({'text-anchor': "middle", "rotation":Tfi}).css({'font-size': '16px'}).add();
+                                      objects.push(txt);
+                                  }
+                              } else {
+                                  var center = (Bx-Ax + delta)/2;
+                                  var Ax_1 = Bx, Bx_1 = Ax;
+                                  var ar1 = rnd.path(drawArrow(Ax_1-center, Ay, Bx_1, By, aWidth, aCap, aHead));
+                                  var ar2 = rnd.path(drawArrow(Ax+center, Ay, Bx, By, aWidth, aCap, aHead));
+                                  ar1.attr({stroke: 'black','stroke-width': 2}).add();
+                                  ar2.attr({stroke: 'black','stroke-width': 2}).add();
+                                  objects.push(ar1);
+                                  objects.push(ar2);
+                                  if (opts.text) {
+                                      var txt1 = rnd.text(opts.text[0], Tx-center/2, Ty);
+                                      var txt2 = rnd.text(opts.text[1], Tx+center/2, Ty);
+                                      txt1.attr({'text-anchor': "middle", "rotation":Tfi}).css({'font-size': '16px'}).add();
+                                      txt2.attr({'text-anchor': "middle", "rotation":Tfi}).css({'font-size': '16px'}).add();
+                                      objects.push(txt1);
+                                      objects.push(txt2);
+                                  }
+                              }
+                          };
+                          var drawArrow = function(sX,eY,eX,sY,width,cap,head) {
+                              var fwdX = eX - sX, fwdY = eY - sY;
+                              var len = Math.sqrt(fwdX*fwdX + fwdY*fwdY);
+                              fwdX /= len; fwdY /= len;
+                              var ortX = fwdY, ortY = -fwdX;
+                              return [
+                                  'M', sX - ortX*width/2, sY - ortY*width/2,
+                                  'L', sX + ortX*width/2, sY + ortY*width/2,
+                                  'L', sX + ortX*width/2 + fwdX*(len-head), sY + ortY*width/2 + fwdY*(len-head),
+                                  'L', sX + ortX*(width/2+cap) + fwdX*(len-head), sY + ortY*(width/2+cap) + fwdY*(len-head),
+                                  'L', eX, eY,
+                                  'L', sX - ortX*(width/2+cap) + fwdX*(len-head), sY - ortY*(width/2+cap) + fwdY*(len-head),
+                                  'L', sX - ortX*(width/2) + fwdX*(len-head), sY - ortY*(width/2) + fwdY*(len-head),
+                                  'L', sX - ortX*(width/2) , sY - ortY*(width/2) ,
+                              ];
+                          };
+                          H.wrap(H.Chart.prototype, 'getAxisMargins', function (proceed) {
+                              var opts = this.userOptions.annotation;
+                              if( opts ) {
+                                  if( opts.yAxis ) {
+                                      this.marginRight =rightMargin;
+                                  }
+                                  if( opts.xAxis ) {
+                                      this.marginBottom =bottomMargin;
+                                  }
+                              }
+                              proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+                          });
+                          H.wrap(H.Chart.prototype, 'drawChartBox', function (proceed) {
+                              var rnd = this.renderer;
+                              if (this.annotation !== undefined) {
+                                  this.annotation.forEach(function(it) { it.destroy() } )
+                              }
+                              this.annotation = [];
+                              proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+                              if(!this.userOptions.annotation) return;
+                              gAnnotation(
+                                  this.plotLeft, this.plotTop + this.plotHeight + 80,
+                                  this.plotLeft + this.plotWidth, this.plotTop + this.plotHeight + 80,
+                                  this.plotLeft + this.plotWidth / 2, this.plotTop + this.plotHeight+80 + 4, 0,
+                                  this.userOptions.annotation.xAxis, rnd, this.annotation
+                              );
+                              gAnnotation(
+                                  this.plotLeft + this.plotWidth + 50, this.plotTop + this.plotHeight,
+                                  this.plotLeft + this.plotWidth + 50, this.plotTop,
+                                  this.plotLeft + this.plotWidth + 50 + 4, this.plotTop + this.plotHeight/2, 270,
+                                  this.userOptions.annotation.yAxis, rnd, this.annotation);
+                          });
+              
+                      }(Highcharts));
+              
+              
+                      chart_objects = {};
+                      data_graph = {};
+              
+                      $.getJSON('../assets/json/benchmarks/sr-codecs/bsqrate.json', function (data) {
+                          data_graph = data;
+                          $(document).ready(function(){
+                              onChangeHelper();
+                          });
+              
+              
+                      function onChangeHelper() {
+                          // Graph
+                          let charts_graph = document.getElementById("charts_graph");
+                          let this_div = document.getElementById("charts_selector");
+              
+                          plot_options = {
+                              annotation: {
+                                  yAxis: {
+                                      text: "Better"
+                                  }
+                              },
+                              chart: {
+                                  zoomType: 'xy',
+                                  height: 550,
+                              },
+                              title: {
+                                  text: ''
+                              },
+                              subtitle: {
+                                  text: ''
+                              },
+                              yAxis: {
+                                  title: {
+                                      text: ''
+                                  }
+                              },
+                              xAxis: {
+                                  title: {
+                                          text: ''
+                                  }
+                              },
+                              legend: {
+                                  layout: 'horizontal',
+                                  align: 'center',
+                                  floating: false,
+                              },
+                              colors: [
+                                  '#5FADF5',
+                                  '#5FF5D2',
+                                  '#E6845E',
+                                  '#E3E645',
+                                  '#000000',
+                                  '#E66ADB',
+                                  '#AB9EE6',
+                                  '#407A5B'
+                              ],
+                              toolpit: {
+                                  pointFormat: '{series.name}:<br>bitrate = {point.x} kbps<br>metric value = {point.y %.3}'
+                                  /*formatter: function() {
+                                      return "{series.name}:<br><b>bitrate = {point.x}<br>metric value = {point.y %.3}</b>"
+                                  }*/
+                              },
+                              plotOptions: {
+                                  series: {
+                                      label: {
+                                          connectorAllowed: false
+                                      }
+                                  }
+                              },
+                              navigation: {
+                                  buttonOptions: {
+                                      align: 'right',
+                                      verticalAlign: 'top',
+                                      y: 0
+                                  }
+                              },
+                              series: [],
+                              responsive: {
+                                  rules: [{
+                                      condition: {
+                                          maxWidth: 500
+                                      },
+                                      chartOptions: {
+                                          legend: {
+                                              layout: 'horizontal',
+                                              align: 'center',
+                                              verticalAlign: 'bottom'
+                                          }
+                                      }
+                                  }]
+                              },
+                              credits:{
+                                  "enabled":true,
+                                  "href":"https://videoprocessing.ai/",
+                                  "text":"videoprocessing.ai",
+                                  "position":{
+                                      "align":"left",
+                                      "x":65,
+                                      "verticalAlign":"top",
+                                      "y":70,
+                                      "alignTo":"plotBox"
+                                  },
+                                  "style" : {
+                                      "fontSize" : "16px"
+                                  }
+                              }
+                          };
+              
+                          function getName(alg, codec_name) {
+                              if (alg == "only_compressed") {
+                                  return "only " + codec_name;
+                              }
+                              if (alg == 'comisr') {
+                                  return 'COMISR';
+                              }
+                              return alg;
+                          }
+              
+                          var codec_select = document.getElementById("charts_selector_codec");
+                          var metric_select = document.getElementById("charts_selector_metric");
+                          var video_select = document.getElementById("charts_selector_video");
+              
+                          var switch_value = document.getElementById("bitrates_selector");
+              
+                          var showAll = false;
+                          if ($(switch_value).is(':checked')) {
+                              showAll = true;
+                          }
+              
+                          var codec_to_name = ['x264', 'x265', 'aomenc', 'vvenc', 'uavs3e'];
+                          var metric_to_name = ["Subjective", 'ERQA', 'Y-VMAF', 'Y-PSNR', 'YUV-MS-SSIM', 'LPIPS'];
+                          var video_to_name_graphs = ['overall', 'child', 'colors', 'cuphead', 'dancing', 'dontstarve', 'restaurant'];
+              
+                          var print_codec_to_name = ['x264', 'x265', 'aomenc', 'vvenc', 'uavs3e'];
+                          var print_metric_to_name = ["Subjective score", 'ERQAv2.0', 'Y-VMAF', 'Y-PSNR', 'Y-MS-SSIM', 'LPIPS'];
+              
+                          var print_video_to_name_graphs = ['Overall', 'child', 'colors', 'cuphead', 'dancing', 'dontstarve', 'restaurant'];
+              
+                          var codec_name = codec_to_name[codec_select.selectedIndex];
+                          var metric_name = metric_to_name[metric_select.selectedIndex];
+                          var video_name = video_to_name_graphs[video_select.selectedIndex];
+              
+                          if (video_name != "overall")
+                          {
+                              $.each(data_graph[video_name][codec_name][metric_name], function( alg, val ) {
+                                  if ((showAll || data_graph[video_name][codec_name][metric_name][alg]["bsqrate"] >= 0) && (alg != "only_compressed")) {
+                                      let points = [];
+                                      let bitrates = data_graph[video_name][codec_name][metric_name][alg]["bitrates"];
+                                      let values = data_graph[video_name][codec_name][metric_name][alg]["values"];
+                                      for (let i = 0; i < bitrates.length; ++i) {
+                                          let b = parseFloat(bitrates[i].toFixed(3));
+                                          let v = parseFloat(values[i].toFixed(3));
+                                          points.push([b, v]);
+                                      }
+                                      plot_options.series.push({name: getName(alg, codec_name), data: points});
+                                  }
+              
+                              });
+              
+                              let points = [];
+                              let bitrates = data_graph[video_name][codec_name][metric_name]['only_compressed']["bitrates"];
+                              let values = data_graph[video_name][codec_name][metric_name]['only_compressed']["values"];
+                              for (let i = 0; i < bitrates.length; ++i) {
+                                  let b = parseFloat(bitrates[i].toFixed(3));
+                                  let v = parseFloat(values[i].toFixed(3));
+                                  points.push([b, v]);
+                              }
+                              plot_options.series.push({name: getName("only_compressed", codec_name), data: points, marker: {radius: 6, symbol: 'circle'}});
+              
+              
+                              plot_options.title.text = "Bitrate/quality, Sequence: " + print_video_to_name_graphs[video_select.selectedIndex] + ", Codec: " + print_codec_to_name[codec_select.selectedIndex] + ", Metric: " + print_metric_to_name[metric_select.selectedIndex];
+                              plot_options.subtitle.text =  "";
+                              plot_options.yAxis.title.text = print_metric_to_name[metric_select.selectedIndex];
+                              plot_options.xAxis.title.text = "Bitrate (Kbps)";
+                          }
+                          chart_id = 'charts_graph'
+                          if (chart_id in chart_objects) {
+                              let speed_plot = document.getElementById("charts_graph");
+                              let this_div = document.getElementById("charts_selector");
+              
+                              if (speed_plot != null)
+                              {
+                                  speed_plot.remove();
+                              }
+              
+                              if (video_name != "overall")
+                              {
+                                  let new_plot = document.createElement('div');
+                                  new_plot.setAttribute("id", "charts_graph");
+                                  new_plot.setAttribute("class", "highcharts-figure");
+                                  this_div.insertBefore(new_plot, document.getElementById("charts_bsqrate"));
+              
+                                  Highcharts.chart(chart_id, plot_options);
+                              }
+                          }
+                          else {
+                              if (video_name != "overall")
+                              {
+                                  chart_objects[chart_id]={}
+                                  chart_objects[chart_id]['chart'] = Highcharts.chart(chart_id, plot_options);
+                              }
+                          }
+              
+                          // Barchart
+                          var bar_options = {
+                              annotation: {
+                                  xAxis: {
+                                      text: "Better"
+                                  }
+                              },
+                              title: {
+                                  text: ''
+                              },
+                              subtitle: {
+                                  text: ''
+                              },
+                              chart: {
+                                  height: 500,
+                                  type: 'bar',
+                                  zoomType: 'xy',
+                                  events: {
+                                      load() {
+                                          let chart = this,
+                                              tickLength = chart.xAxis[0].tickPositions.length;
+              
+                                          chart.series.forEach(s => {
+                                              s.points.forEach(p => {
+                                              if (p.category.substring(0, 4) == "only")
+                                              {
+                                                  p.update({
+                                                      color: '#F5A52C' //'#a6c96a'
+                                                  })
+                                              } else {
+                                                  p.update({
+                                                      color: '#7cb5ec'
+                                                  })
+                                              }
+                                              })
+                                          })
+                                      },
+                                      update() {
+                                          let chart = this,
+                                              tickLength = chart.xAxis[0].tickPositions.length;
+              
+                                          chart.series.forEach(s => {
+                                              s.points.forEach(p => {
+                                              if (p.category.substring(0, 4) == "only")
+                                              {
+                                                  p.update({
+                                                      color: '#F5A52C' //'#a6c96a'
+                                                  })
+                                              } else {
+                                                  p.update({
+                                                      color: '#7cb5ec'
+                                                  })
+                                              }
+                                              })
+                                          })
+                                      }
+                                  }
+                              },
+                              legend: {
+                                  enabled: false
+                              },
+                              xAxis: {
+                                  title: {
+                                      text: ''
+                                  }
+                              },
+                              tooltip: {
+                                  formatter: function() {
+                                      return false; // now you don't
+                                  }
+                              },
+                              yAxis: {min: 0, title: {text: ''}},
+                              plotOptions: {bar: {dataLabels: {enabled: true}}},
+                              series: [],
+                              credits:{
+                                  "enabled":true,
+                                  "href":"https://videoprocessing.ai/",
+                                  "text":"videoprocessing.ai",
+                                  "position":{
+                                      "align":"right",
+                                      "x":-10,
+                                      "verticalAlign":"top",
+                                      "y":60,
+                                      "alignTo":"plotBox"
+                                  },
+                                  "style" : {
+                                      "fontSize" : "16px"
+                                  }
+                              }
+                          };
+              
+                          var codec_select = document.getElementById("charts_selector_codec");
+                          var metric_select = document.getElementById("charts_selector_metric");
+                          var video_select = document.getElementById("charts_selector_video");
+              
+                          var codec_to_name = ['x264', 'x265', 'aomenc', 'vvenc', 'uavs3e'];
+                          var metric_to_name = ["Subjective", 'ERQA', 'Y-VMAF', 'Y-PSNR', 'YUV-MS-SSIM', 'LPIPS'];
+                          var video_to_name = ['overall', 'child', 'colors', 'cuphead', 'dancing', 'dontstarve', 'restaurant'];
+              
+                          var print_codec_to_name = ['x264', 'x265', 'aomenc', 'vvenc', 'uavs3e'];
+                          var print_metric_to_name = ["Subjective score", 'ERQA', 'Y-VMAF', 'Y-PSNR', 'Y-MS-SSIM', 'LPIPS'];
+              
+                          var print_video_to_name = ['Overall', 'child', 'colors', 'cuphead', 'dancing', 'dontstarve', 'restaurant'];
+              
+                          var codec_name = codec_to_name[codec_select.selectedIndex];
+                          var metric_name = metric_to_name[metric_select.selectedIndex];
+                          var video_name = video_to_name[video_select.selectedIndex];
+              
+                          function getName(alg, codec_name) {
+                              if (alg == "only_compressed") {
+                                  return "only " + codec_name;
+                              }
+                              if (alg == 'comisr') {
+                                  return 'COMISR';
+                              }
+                              return alg;
+                          }
+              
+              
+                          let array = [];
+                          let labels = [];
+                          let found = false;
+                          document.getElementById("hidden_curves").style.visibility="hidden";
+                          $.each(data_graph[video_name][codec_name][metric_name], function( alg, val ) {
+                              if (val["bsqrate"] != -1)
+                              {
+                                  labels.push(getName(alg, codec_name));
+                                  array.push(parseFloat(val["bsqrate"].toFixed(3)));
+                              } else {
+                                  found = true;
+                              }
+                              if (found) {
+                                  document.getElementById("hidden_curves").style.visibility="visible";
+                              }
+                          });
+              
+                          for (let i = 0; i < array.length; ++i) {
+                              for (let j = 0; j < array.length; ++j) {
+                                  if (array[i] < array[j]) {
+                                      let tmp = array[j];
+                                      array[j] = array[i];
+                                      array[i] = tmp;
+              
+                                      tmp = labels[j];
+                                      labels[j] = labels[i];
+                                      labels[i] = tmp;
+                                  }
+                              }
+                          }
+              
+                          bar_options.title.text = "BSQ-rate, Sequence: " + print_video_to_name[video_select.selectedIndex] + ", Codec: " + print_codec_to_name[codec_select.selectedIndex] + ", Metric: " + print_metric_to_name[metric_select.selectedIndex];
+                          bar_options.subtitle.text = "";
+                          bar_options.series.push({name: '', data: array});
+                          bar_options.xAxis.categories = labels;
+                          bar_options.yAxis.title.text = "BSQ-rate (" + print_metric_to_name[metric_select.selectedIndex] +  ")";
+                          chart_id = "charts_bsqrate"
+                          if (chart_id in chart_objects) {
+                              chart_objects[chart_id]['chart'].update(bar_options);
+                              chart_objects[chart_id]['chart'].update(bar_options);
+                          }
+                          else {
+                              chart_objects[chart_id]={}
+                              chart_objects[chart_id]['chart'] = Highcharts.chart(chart_id, bar_options);
+                          }
+              
+                      }
+              
+                      document.getElementById("charts_selector_codec").onchange = onChangeHelper
+                      document.getElementById("charts_selector_metric").onchange = onChangeHelper
+                      document.getElementById("charts_selector_video").onchange = onChangeHelper
+                      document.getElementById("bitrates_selector").onchange = onChangeHelper
+              
+                      window.onload = onChangeHelper
+                  });
+            </script>
+          </div>
+          <!--
+<h3 align="left" style="color: #3d6f96">Subjective assessment</h3>
+
+<div id="subjective_charts_selector" class="mobile-plots">
+    <p style="white-space: pre;">Video: <label for="subjective_charts_selector_video"></label><select id="subjective_charts_selector_video" name="values">
+        <option>animation clip (1)</option>
+        <option selected="selected">animation clip (2)</option>
+        <option>skiing (1)</option>
+        <option>skiing (2)</option>
+        <option>street show (1)</option>
+        <option>street show (2)</option>
+    </select></p>
+
+    <p>
+        Extrapolated:* <label class="switch" for="subjective_bitrates_selector">
+            <input id="subjective_bitrates_selector" type="checkbox">
+            <span class="slider round"></span>
+        </label><br>
+        <b>*You can see the information about extrapolation and subjective BSQ-rate calculation <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#extrapolation">here</a>.</b>
+    </p>
+
+    <div id="subjective_charts_graph" style="display: block" class="highcharts-figure">
+        <script async src="/assets/js/benchmarks/sr-codecs/subjective_charts_graph.js"></script>
+    </div>
+
+    <div id="highlight2" style="text-align:center">
+        <p><b>Highlight the plot region where you want to zoom in</b></p>
+    </div>
+
+    <div id="subjective_charts_bsqrate" style="display: block" class="highcharts-figure">
+        <script async src="/assets/js/benchmarks/sr-codecs/subjective_charts_bsqrate.js"></script>
+    </div>
+
+    <script>
+        function onChangeHelper2() {
+            let speed_plot = document.getElementById("subjective_charts_graph");
+            let this_div = document.getElementById("subjective_charts_selector");
+
+            speed_plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "subjective_charts_graph");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+
+            let sc = document.createElement("script");
+            sc.src = '/assets/js/benchmarks/sr-codecs/subjective_charts_graph.js'; 
+            new_plot.appendChild(sc);
+
+            let old = document.getElementById('highlight2');
+            old.remove();
+            let new_text = document.createElement('div');
+            new_text.setAttribute("style", "text-align:center");
+            new_text.setAttribute("id", "highlight2");
+            new_text.innerHTML = "<p><b>Highlight the plot region where you want to zoom in</b></p>";
+            this_div.appendChild(new_text);
+
+            speed_plot = document.getElementById("subjective_charts_bsqrate");
+            this_div = document.getElementById("subjective_charts_selector");
+
+            speed_plot.remove();
+            new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "subjective_charts_bsqrate");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+
+            sc = document.createElement("script");
+            sc.src = '/assets/js/benchmarks/sr-codecs/subjective_charts_bsqrate.js'; 
+            new_plot.appendChild(sc);
+        }
+
+        document.getElementById("subjective_charts_selector_video").onchange = onChangeHelper2;
+        document.getElementById("subjective_bitrates_selector").onchange = onChangeHelper2;
+    
+    </script>
+</div>
+-->
+          <h3 align="left" style="color: #3d6f96">Correlation of metrics with subjective assessment</h3>
+          <p>We calculated objective metrics on the crops used for <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#subjective_comparison">subjective comparison</a> and calculated a correlation between the subjective and objective results. Below you can see the average correlation of metrics over all test cases.</p>
+          <div id="correlation_plot" style="display: block" class="highcharts-figure">
+            <script async="" src="/assets/js/benchmarks/sr-codecs/correlation.js"></script>
+          </div>
+          <p>* ERQA-MDTVSFA is calculated by multiplying MDTVSFA and ERQA values over the video.</p>
+          <!--
+<h3 align="left" style="color: #3d6f96">Correlation of metrics with subjective assessment via extrapolated BSQ-rate</h3>
+
+<p>We calculated the correlation of metrics via the correlation of BSQ-rates, evaluated over metrics’ values.</p>
+
+<div id="correlation_bsqrate_plot" style="display: block" class="highcharts-figure">
+    <script async src="/assets/js/benchmarks/sr-codecs/correlation_bsqrate.js"></script>
+</div>
+-->
+          <!--
+<h3 align="left" style="color: #3d6f96">Subjective assessment</h3>
+
+<div id="subjective_charts_selector" class="mobile-plots">
+    <p style="white-space: pre;">Video: <label for="subjective_charts_selector_video"></label><select id="subjective_charts_selector_video" name="values">
+        <option>animation clip (1)</option>
+        <option selected="selected">animation clip (2)</option>
+        <option>skiing (1)</option>
+        <option>skiing (2)</option>
+        <option>street show (1)</option>
+        <option>street show (2)</option>
+    </select></p>
+
+    <p>
+        Extrapolated:* <label class="switch" for="subjective_bitrates_selector">
+            <input id="subjective_bitrates_selector" type="checkbox">
+            <span class="slider round"></span>
+        </label><br>
+        <b>*You can see the information about extrapolation and subjective BSQ-rate calculation <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#extrapolation">here</a>.</b>
+    </p>
+
+    <div id="subjective_charts_graph" style="display: block" class="highcharts-figure">
+        <script async src="/assets/js/benchmarks/sr-codecs/subjective_charts_graph.js"></script>
+    </div>
+
+    <div id="highlight2" style="text-align:center">
+        <p><b>Highlight the plot region where you want to zoom in</b></p>
+    </div>
+
+    <div id="subjective_charts_bsqrate" style="display: block" class="highcharts-figure">
+        <script async src="/assets/js/benchmarks/sr-codecs/subjective_charts_bsqrate.js"></script>
+    </div>
+
+    <script>
+        function onChangeHelper2() {
+            let speed_plot = document.getElementById("subjective_charts_graph");
+            let this_div = document.getElementById("subjective_charts_selector");
+
+            speed_plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "subjective_charts_graph");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+
+            let sc = document.createElement("script");
+            sc.src = '/assets/js/benchmarks/sr-codecs/subjective_charts_graph.js'; 
+            new_plot.appendChild(sc);
+
+            let old = document.getElementById('highlight2');
+            old.remove();
+            let new_text = document.createElement('div');
+            new_text.setAttribute("style", "text-align:center");
+            new_text.setAttribute("id", "highlight2");
+            new_text.innerHTML = "<p><b>Highlight the plot region where you want to zoom in</b></p>";
+            this_div.appendChild(new_text);
+
+            speed_plot = document.getElementById("subjective_charts_bsqrate");
+            this_div = document.getElementById("subjective_charts_selector");
+
+            speed_plot.remove();
+            new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "subjective_charts_bsqrate");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+
+            sc = document.createElement("script");
+            sc.src = '/assets/js/benchmarks/sr-codecs/subjective_charts_bsqrate.js'; 
+            new_plot.appendChild(sc);
+        }
+
+        document.getElementById("subjective_charts_selector_video").onchange = onChangeHelper2;
+        document.getElementById("subjective_bitrates_selector").onchange = onChangeHelper2;
+    
+    </script>
+</div>
+-->
+          <h3 align="left" style="color: #3d6f96">Speed/BSQ-rate trade-off</h3>
+          <p>Read about Frames per Second (FPS) calculation <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#computational_complexity">here</a>.
+            Read about BSQ-rate over Subjective score <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#bsq-rate">here</a>.</p>
+          <div id="time" style="display: block" class="highcharts-figure">
+            <script async="" src="/assets/js/benchmarks/sr-codecs/subj_to_fps.js"></script>
+          </div>
+          <h2 id="visualization"><span id="visualization"></span> Visualization</h2>
+          <style type="text/css">
+            .img-zoom-container {
+                position: relative;
+                margin: 1em auto;
+            
+                width: 100%;
+            }
+            
+            .img-zoom-lens {
+                position: absolute;
+                border: 4px solid #ff0000;
+                /*set the size of the lens:*/
+            
+                width: 40px;
+                height: 40px;
+            }
+            
+            /*Three image containers (use 25% for four, and 50% for two, etc)*/
+            .column {
+                box-sizing: border-box;
+                float: left;
+                width: 24%;
+                padding: 5px;
+            }
+            
+            
+            /*Clear floats after image containers*/
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+          </style>
+          <p>In this section, you can choose the sequence, see a cropped part of a frame from it, <b>shifted Y-PSNR</b> visualization, and <b><a href="/benchmarks/super-resolution-for-video-compression-methodology.html#erqa">ERQAv2.0</a></b> Visualization for this crop. 
+            For shifted Y-PSNR we find the optimal shift for Y-PSNR and apply MSU VQMT PSNR to frames with this shift. See the <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#psnr">methodology</a> for more information.
+          </p>
+          <div class="comparison_selector_div mobile-visualization">
+            <script>
+              function imageZoom(imgIDs, resultIDs, vqmtIDs, edgeIDs, zoomx, zoomy) {
+                  let imgs = [];
+                  for (let i = 0; i < imgIDs.length; i++) {
+                      let imgID = imgIDs[i];
+                      let img = document.getElementById(imgID);
+                      imgs.push(img);
+                  }
+              
+                  let results = [];
+                  for (let i = 0; i < resultIDs.length; i++) {
+                      let resultID = resultIDs[i];
+                      let result = document.getElementById(resultID);
+                      results.push(result);
+                  }
+              
+                  let vqmts = [];
+                  for (let i = 0; i < vqmtIDs.length; i++) {
+                      let vqmtID = vqmtIDs[i];
+                      let vqmt = document.getElementById(vqmtID);
+                      vqmts.push(vqmt);
+                  }
+              
+                  let edges = [];
+                  for (let i = 0; i < edgeIDs.length; i++) {
+                      let edgeID = edgeIDs[i];
+                      let edge = document.getElementById(edgeID);
+                      edges.push(edge);
+                  }
+              
+                  let lenses = [];
+                  let x = Math.floor(zoomx / 1080 * imgs[0].height);
+                  let y = Math.floor(zoomy / 1920 * imgs[0].width);
+              
+                  for (let i = 0; i < imgs.length; i++) {
+                      let pastLens = document.getElementById("lens" + i.toString());
+                      if (pastLens) {
+                          pastLens.remove();
+                      }
+                      let lens = document.createElement("DIV");
+                      lens.setAttribute("class", "img-zoom-lens");
+                      lens.setAttribute("id", "lens" + i.toString());
+                      imgs[i].parentElement.insertBefore(lens, imgs[i]);
+                      lenses.push(lens);
+                  }
+                  let cxs = [], cys = [];
+                  for (let i = 0; i < results.length; i++) {
+                      let cx = results[i].offsetWidth / lenses[i].offsetWidth;
+                      let cy = results[i].offsetHeight / lenses[i].offsetHeight;
+                      cxs.push(cx);
+                      cys.push(cy);
+                  }
+              
+                  /* Set background properties for the result DIV */
+                  for (let i = 0; i < results.length; i++) {
+                      //results[i].style.backgroundImage = "url('" + imgs[i].src + "')";
+                      results[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                  }
+              
+                  for (let i = 0; i < vqmts.length; i++) {
+                      vqmts[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                      edges[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                  }
+              
+                  for (let i = 0; i < lenses.length; i++) {
+                      lenses[i].style.top = x + "px";
+                      lenses[i].style.left = y + "px";
+                      results[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                      if (i < vqmts.length) {
+                          vqmts[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                          edges[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                      }
+                  }
+              
+                  /* Execute a function when someone moves the cursor over the image, or the lens: */
+                  for (let i = 0; i < lenses.length; i++) {
+                      lenses[i].addEventListener("mousedown", mousedown);
+                      lenses[i].addEventListener("mouseup", mouseup);
+                      /* And also for touch screens: */
+                      /* Or touched (for touch screens: */
+                      imgs[i].addEventListener("click", moveLens);
+                      /* And also for touch screens: */
+                      /* Or touched (for touch screens: */
+              
+              
+                      lenses[i].addEventListener("touchstart", mousedown);
+                      lenses[i].addEventListener("touchend", mouseup);
+                  }
+              
+                  let clicked = 0;
+              
+              
+                  function mousedown(e) {
+                      for (let i = 0; i < lenses.length; i++) {
+                          lenses[i].addEventListener("mousemove", moveLens);
+                          imgs[i].addEventListener("mousemove", moveLens);
+                          lenses[i].addEventListener("touchmove", moveLens);
+                          imgs[i].addEventListener("touchmove", moveLens);
+                      }
+                      clicked = 1;
+                  }
+              
+                  function mouseup(e) {
+                      for (let i = 0; i < lenses.length; i++) {
+                          lenses[i].removeEventListener("mousemove", moveLens);
+                          imgs[i].removeEventListener("mousemove", moveLens);
+                          lenses[i].removeEventListener("touchmove", moveLens);
+                          imgs[i].removeEventListener("touchmove", moveLens);
+                      }
+                      clicked = 0;
+                  }
+              
+              
+                  function moveLens(e) {
+                      /*if (!clicked) {
+                          return;
+                      }*/
+                      let pos, x, y;
+                      /* Prevent any other actions that may occur when moving over the image */
+                      e.preventDefault();
+                      /* Get the cursor's x and y positions: */
+                      pos = getCursorPos(e);
+                      /* Calculate the position of the lens: */
+                      x = pos.x - (lenses[0].offsetWidth / 2);
+                      y = pos.y - (lenses[0].offsetHeight / 2);
+                      /* Prevent the lens from being positioned outside the image: */
+                      if (x > imgs[0].width - lenses[0].offsetWidth) {
+                          x = imgs[0].width - lenses[0].offsetWidth;
+                      }
+                      if (x < 0) {
+                          x = 0;
+                      }
+                      if (y > imgs[0].height - lenses[0].offsetHeight) {
+                          y = imgs[0].height - lenses[0].offsetHeight;
+                      }
+                      if (y < 0) {
+                          y = 0;
+                      }
+                      /* Set the position of the lens: */
+                      for (let i = 0; i < lenses.length; i++) {
+                          lenses[i].style.left = x + "px";
+                          lenses[i].style.top = y + "px";
+                          /* Display what the lens "sees": */
+                          results[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                          if (i < vqmts.length) {
+                              vqmts[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                              edges[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                          }
+                      }
+                  }
+              
+                  function getCursorPos(e) {
+                      let x = 0, y = 0;
+                      e = e || window.event;
+                      /* Get the x and y positions of the image: */
+                      let boundingRects = [];
+                      for (let i = 0; i < imgs.length; i++) {
+                          let a = imgs[i].getBoundingClientRect();
+                          boundingRects.push(a);
+                      }
+              
+                      let i = boundingRects.length - 1;
+                      while (i > 0 && e.pageX < boundingRects[i].left) {
+                          i--;
+                      }
+              
+                      /* Calculate the cursor's x and y coordinates, relative to the image: */
+                      x = e.pageX - boundingRects[i].left;
+                      y = e.pageY - boundingRects[i].top;
+                      /* Consider any page scrolling: */
+                      x = x - window.pageXOffset;
+                      y = y - window.pageYOffset;
+                      return {x: x, y: y};
+                  }
+              }
+            </script>
+            <p style="white-space: pre;">Video: <label for="comp_video_selector"></label><select id="comp_video_selector" name="values">
+                <!--<option selected="selected">ball</option>-->
+                <option>child</option>
+                <option>colors</option>
+                <option>cuphead</option>
+                <option>dancing</option>
+                <option>dontstarve</option>
+                <option>restaurant</option>
+              </select>    Codec: <label for="comp_codec_selector"></label><select id="comp_codec_selector" name="values">
+                <option selected="selected">x264</option>
+                <option>x265</option>
+                <option>aomenc</option>
+                <option>vvenc</option>
+                <option>uavs3e</option>
+              </select>   Approximate bitrate: <label for="comp_bitrate_selector"></label><select id="comp_bitrate_selector" name="values">
+                <option selected="selected">600 kbps</option>
+                <option>1000 kbps</option>
+                <option>2000 kbps</option>
+              </select></p>
+            <p style="white-space: pre;">Model 1: <label for="comp_model1_selector"></label><select id="comp_model1_selector" name="values">
+                <option>ahq-11</option>
+                <option>amq-12</option>
+                <option>BasicVSR</option>
+                <option>bicubic</option>
+                <option>COMISR</option>
+                <option>DBVSR</option>
+                <option>EGVSR</option>
+                <option>LGFN</option>
+                <option selected="selected">Only codec</option>
+                <option>RBPN</option>
+                <option>Real-ESRGAN</option>
+                <option>RealSR</option>
+                <option>RSDN</option>
+                <option>SOF-VSR-BD</option>
+                <option>SOF-VSR-BI</option>
+                <option>SwinIR</option>
+                <option>TMNet</option>
+                <option>VRT</option>
+              </select>    Model 2: <label for="comp_model2_selector"></label><select id="comp_model2_selector" name="values">
+                <option>ahq-11</option>
+                <option>amq-12</option>
+                <option>BasicVSR</option>
+                <option>bicubic</option>
+                <option>COMISR</option>
+                <option>DBVSR</option>
+                <option>EGVSR</option>
+                <option>LGFN</option>
+                <option>Only codec</option>
+                <option>RBPN</option>
+                <option>Real-ESRGAN</option>
+                <option>RealSR</option>
+                <option>RSDN</option>
+                <option>SOF-VSR-BD</option>
+                <option>SOF-VSR-BI</option>
+                <option>SwinIR</option>
+                <option>TMNet</option>
+                <option selected="selected">VRT</option>
+              </select>    Model 3: <label for="comp_model3_selector"></label><select id="comp_model3_selector" name="values">
+                <option>ahq-11</option>
+                <option>amq-12</option>
+                <option>BasicVSR</option>
+                <option>bicubic</option>
+                <option selected="selected">COMISR</option>
+                <option>DBVSR</option>
+                <option>EGVSR</option>
+                <option>LGFN</option>
+                <option>Only codec</option>
+                <option>RBPN</option>
+                <option>Real-ESRGAN</option>
+                <option>RealSR</option>
+                <option>RSDN</option>
+                <option>SOF-VSR-BD</option>
+                <option>SOF-VSR-BI</option>
+                <option>SwinIR</option>
+                <option>TMNet</option>
+                <option>VRT</option>
+              </select></p>
+            <p style="text-align: center"><b>Drag a red rectangle to the area that you want to see zoomed-in</b></p>
+            <div class="row">
+              <div class="column">
+                <h3 style="text-align: center">GT</h3>
+                <div class="img-zoom-container">
+                  <img id="imagegt" style="width: 200vw" src="/assets/img/benchmarks/sr-codecs/ball-small.png" />
+                  <div id="resultgt" class="img-zoom-result" style="width: 100%; padding-top: 100%;"></div>
+                  <img id="fake_vqmt" style="width: 100%;" src="/assets/img/benchmarks/sr-codecs/shifted_psnr.png" />
+                  <img id="fake_edge" style="width: 100%;" src="/assets/img/benchmarks/sr-codecs/erqa.png" />
+                </div>
+              </div>
+              <div class="column">
+                <h3 id="comp_label1" style="text-align: center">amq-12</h3>
+                <div class="img-zoom-container">
+                  <img id="image1" style="width: 200vw" src="/assets/img/benchmarks/sr-codecs/ball-small.png" />
+                  <div id="result1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="vqmt1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="edge1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                </div>
+              </div>
+              <div class="column">
+                <h3 id="comp_label2" style="text-align: center">ahq-11</h3>
+                <div class="img-zoom-container">
+                  <img id="image2" style="width: 200vw" src="/assets/img/benchmarks/sr-codecs/ball-small.png" />
+                  <div id="result2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="vqmt2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="edge2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                </div>
+              </div>
+              <div class="column">
+                <h3 id="comp_label3" style="text-align: center">amqs-1</h3>
+                <div class="img-zoom-container">
+                  <img id="image3" style="width: 200vw" src="/assets/img/benchmarks/sr-codecs/ball-small.png" />
+                  <div id="result3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="vqmt3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="edge3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                </div>
+              </div>
+              <script>
+                imageZoom(["imagegt", "image1", "image2", "image3"],
+                    ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 540, 960);
+                onChangeHelper();
+                
+                function onChangeHelper() {
+                    let videoToName = ['child', 'colors', 'cuphead', 'dancing', 'dontstarve', 'restaurant'];
+                    let codecToName = ["x264", "x265", "aomenc", "vvenc", "uavs3e"];
+                    let bitrateToName = ['0', '1', '2'];
+                    let numToName = ["ahq-11", "amq-12", "BasicVSR", "bicubic", "comisr", "DBVSR", "EGVSR",
+                                     "LGFN", "only_compressed", "RBPN", "Real-ESRGAN", "RealSR", "RSDN",
+                                     "SOF-VSR-BD", "SOF-VSR-BI", "SwinIR", "TMNet", "VRT"];
+                
+                    let printName = ["ahq-11", "amq-12", "BasicVSR", "bicubic", "COMISR", "DBVSR", "EGVSR",
+                                     "LGFN", "Only compressed", "RBPN", "Real-ESRGAN", "RealSR", "RSDN",
+                                     "SOF-VSR-BD", "SOF-VSR-BI", "SwinIR", "TMNet", "VRT"];
+                
+                
+                    let video_select = document.getElementById("comp_video_selector");
+                    let selected_video = videoToName[video_select.selectedIndex];
+                
+                    let codec_select = document.getElementById("comp_codec_selector");
+                    let selected_codec = codecToName[codec_select.selectedIndex];
+                
+                    let bitrate_select = document.getElementById("comp_bitrate_selector");
+                    let selected_bitrate = bitrateToName[bitrate_select.selectedIndex];
+                
+                    let model1select = document.getElementById("comp_model1_selector");
+                    let model2select = document.getElementById("comp_model2_selector");
+                    let model3select = document.getElementById("comp_model3_selector");
+                
+                
+                    let selected_model1 = numToName[model1select.selectedIndex];
+                    let selected_model2 = numToName[model2select.selectedIndex];
+                    let selected_model3 = numToName[model3select.selectedIndex];
+                
+                    let pic_gt = document.getElementById("imagegt");
+                    let pic1 = document.getElementById("image1");
+                    let pic2 = document.getElementById("image2");
+                    let pic3 = document.getElementById("image3");
+                
+                    let res_gt = document.getElementById("resultgt");
+                    let res1 = document.getElementById("result1");
+                    let res2 = document.getElementById("result2");
+                    let res3 = document.getElementById("result3");
+                
+                    let fake_vqmt = document.getElementById("fake_vqmt");
+                    let vqmt1 = document.getElementById("vqmt1");
+                    let vqmt2 = document.getElementById("vqmt2");
+                    let vqmt3 = document.getElementById("vqmt3");
+                
+                    let fake_edge = document.getElementById("fake_edge");
+                    let edge1 = document.getElementById("edge1");
+                    let edge2 = document.getElementById("edge2");
+                    let edge3 = document.getElementById("edge3");
+                
+                
+                    let img_prefix = "https://storage.videoprocessing.ai/benchmarks/sr-codecs/";
+                
+                    let src_gt = img_prefix + "small_images/" + selected_video + "@GT.png";
+                    let src_1 = img_prefix + "small_images/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model1 + ".png"
+                    let src_2 = img_prefix + "small_images/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model2 + ".png"
+                    let src_3 = img_prefix + "small_images/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model3 + ".png"
+                
+                
+                    let resultgt_src = img_prefix + "visuals/" + selected_video + "@GT.png";
+                    let result1_src = img_prefix + "visuals/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model1 + ".png"
+                    let result2_src = img_prefix + "visuals/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model2 + ".png"
+                    let result3_src = img_prefix + "visuals/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model3 + ".png"
+                
+                    let vqmt1_src = img_prefix + "psnr/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model1 + ".png"
+                    let vqmt2_src = img_prefix + "psnr/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model2 + ".png"
+                    let vqmt3_src = img_prefix + "psnr/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model3 + ".png"
+                
+                    let edge1_src = img_prefix + "erqa/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model1 + ".png"
+                    let edge2_src = img_prefix + "erqa/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model2 + ".png"
+                    let edge3_src = img_prefix + "erqa/" + selected_video + "@" + selected_codec + "@" + selected_bitrate + "@" + selected_model3 + ".png"
+                
+                    let comp_label1 = document.getElementById("comp_label1");
+                    let comp_label2 = document.getElementById("comp_label2");
+                    let comp_label3 = document.getElementById("comp_label3");
+                
+                    res_gt.style.backgroundImage = "url('" + resultgt_src + "')";
+                    res1.style.backgroundImage = "url('" + result1_src + "')";
+                    res2.style.backgroundImage = "url('" + result2_src + "')";
+                    res3.style.backgroundImage = "url('" + result3_src + "')";
+                
+                    vqmt1.style.backgroundImage = "url('" + vqmt1_src + "')";
+                    vqmt2.style.backgroundImage = "url('" + vqmt2_src + "')";
+                    vqmt3.style.backgroundImage = "url('" + vqmt3_src + "')";
+                
+                    edge1.style.backgroundImage = "url('" + edge1_src + "')";
+                    edge2.style.backgroundImage = "url('" + edge2_src + "')";
+                    edge3.style.backgroundImage = "url('" + edge3_src + "')";
+                
+                    comp_label1.innerText = printName[model1select.selectedIndex];
+                    comp_label2.innerText = printName[model2select.selectedIndex];
+                    comp_label3.innerText = printName[model3select.selectedIndex];
+                
+                    if (comp_label1.innerText == "Only compressed") {
+                        comp_label1.innerText = "Only " + selected_codec;
+                    }
+                    if (comp_label2.innerText == "Only compressed") {
+                        comp_label2.innerText = "Only " + selected_codec;
+                    }
+                    if (comp_label3.innerText == "Only compressed") {
+                        comp_label3.innerText = "Only " + selected_codec;
+                    }
+                
+                    pic_gt.src = src_gt;
+                    pic1.src = src_1;
+                    pic2.src = src_2;
+                    pic3.src = src_3;
+                
+                    imageZoom(["imagegt", "image1", "image2", "image3"],
+                        ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 540, 960);
+                }
+                
+                document.getElementById("comp_video_selector").onchange = onChangeHelper;
+                document.getElementById("comp_codec_selector").onchange = onChangeHelper;
+                document.getElementById("comp_bitrate_selector").onchange = onChangeHelper;
+                document.getElementById("comp_model1_selector").onchange = onChangeHelper;
+                document.getElementById("comp_model2_selector").onchange = onChangeHelper;
+                document.getElementById("comp_model3_selector").onchange = onChangeHelper;
+                window.addEventListener("load",onChangeHelper);
+                document.addEventListener('DOMContentLoaded', onChangeHelper);
+              </script>
+            </div>
+          </div>
+          <h2 id="leaderboards"><span id="leaderboard"></span> Leaderboards</h2>
+          <!--
+<p>
+    The table below shows a comparison of Super-Resolution algorithms paired with different codecs 
+    by subjective score and a few objective metrics. 
+    <ul>
+    <li>Each column contains the codec that was used to compress the input video. </li>
+    <li>Each row contains a Super-Resolution algorithm, that was applied to that input.</li>
+    </ul>
+    You can choose a <b>metric</b> and a <b>method of comparison</b> that we used to calculate the BSQ-rate. 
+    Read the information about the methods of comparison <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#methods">here</a>. 
+<br>
+    Click on the model's name in the table to read information about the method.<br>
+    You can see information about all participants <a href="/benchmarks/super-resolution-for-video-compression-participants.html">here</a>. 
+<br>
+    Click on the labels to sort the table.
+</p>
+
+<div id="leaderboard_w">
+    <p style="white-space: pre;">Metric: <label for="leaderboard_metric_selector"></label><select id="leaderboard_metric_selector" name="values">
+        <option>ERQAv1.0</option>
+        <option>Y-PSNR</option>
+        <option>YUV-MS-SSIM</option>
+        <option>Y-VMAF</option>
+        <option>Y-VMAF NEG</option>
+        <option>LPIPS</option>
+        <option>Subjective</option>
+    </select>    Method: <label for="leaderboard_method_selector"></label><select id="leaderboard_method_selector" name="values">
+        <option>relative to x264</option>
+        <option>relative to self</option>
+        <option>max. relative to self</option>
+    </select></p>
+
+    <div class="datatable-container">
+    <div class="datatable-center">
+        <table id="leaderboard_table" class="display" style="background-color: #ffffff;width:99.5%">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Model</th>
+                <th style="background-color: #3d6f96">x264</th>
+                <th style="background-color: #3d6f96">x265</th>
+                <th style="background-color: #3d6f96">aomenc</th>
+                <th style="background-color: #3d6f96">VVenC</th>
+                <th style="background-color: #3d6f96">uavs3e</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+
+
+
+    <script>
+    
+    function getName(alg) {
+
+        if (alg == "only_compressed") {
+            return "only compressed";
+        }
+        if (alg == "waifu2xAnime") {
+            return "waifu2x-anime";
+        }
+        if (alg == "waifu2xCunet") {
+            return "waifu2x-cunet";
+        }
+        if (alg == "topaz-amq-12") {
+            return "amq-12";
+        } 
+        if (alg == "topaz-ahq-11") {
+            return "ahq-11";
+        }
+        if (alg == "topaz-amqs-1") {
+            return "amqs-1";
+        }
+        return alg;
+    }
+
+    function getHref(alg) {
+
+        
+        if (alg == "waifu2xAnime") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#waifu2x";
+        }
+        if (alg == "waifu2xCunet") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#waifu2x";
+        }
+        if (alg == "topaz-amq-12" || alg == "topaz-amqs-1" || alg == "topaz-ahq-11") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#topaz";
+        }
+        if (alg == "SOF-VSR-BI" || alg == "SOF-VSR-BD") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#sof-vsr";
+        }
+        if (alg == "LGFN") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#lgfn";
+        }
+        if (alg == "DBVSR") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#dbvsr";
+        }
+        if (alg == "EGVSR") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#egvsr";
+        }
+        if (alg == "iSeeBetter") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#iSeeBetter";
+        }
+        if (alg == "DynaVSR-R") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#dynavsr";
+        }
+        if (alg == "RealSR") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#realsr";
+        }
+        
+    }
+
+    function getIndex(alg) {
+        
+        if (alg == "waifu2xAnime") {
+            return "7";
+        }
+        if (alg == "waifu2xCunet") {
+            return "6";
+        }
+        if (alg == "topaz-amq-12") {
+            return "1";
+        }
+        if (alg == "topaz-amqs-1") {
+            return "3";
+        }
+        if (alg == "topaz-ahq-11") {
+            return "2";
+        }
+        if (alg == "SOF-VSR-BI") {
+            return "8";
+        }
+        if (alg == "SOF-VSR-BD") {
+            return "11";
+        }
+        if (alg == "LGFN") {
+            return "12";
+        }
+        if (alg == "DBVSR") {
+            return "9";
+        }
+        if (alg == "EGVSR") {
+            return "13";
+        }
+        if (alg == "iSeeBetter") {
+            return "10";
+        }
+        if (alg == "DynaVSR-R") {
+            return "4";
+        }
+        if (alg == "RealSR") {
+            return "5";
+        }
+    }
+
+    function onChangeHelper() {
+        
+        var metric_select = document.getElementById("leaderboard_metric_selector");
+        var metricToName = ['ERQA', 'PSNR', 'MSSSIM', 'VMAFCLIPPED', 'VMAFNEG', 'LPIPS', 'Subjective'];
+        var metric_name = metricToName[metric_select.selectedIndex];
+
+        var method_select = document.getElementById("leaderboard_method_selector");
+        var methodToName = ['x264', 'self', 'best_self'];
+        var method_name = methodToName[method_select.selectedIndex];
+
+
+        let text = "<thead>\n" +
+        "<tr style=\"font-size: large; background-color: #3d6f96\">" +
+        "    <th style=\"background-color: #3d6f96;padding: 10px;\">Model</th>" +
+        "    <th style=\"background-color: #3d6f96\">x264</th>" +
+        "    <th style=\"background-color: #3d6f96\">x265</th>" +
+        "    <th style=\"background-color: #3d6f96\">aomenc</th>" +
+        "    <th style=\"background-color: #3d6f96\">VVenC</th>" +
+        "    <th style=\"background-color: #3d6f96\">uavs3e</th>" +
+        "</tr>\n" +
+        "</thead>\n" +
+        "<tbody>\n";
+
+        let codecs = ['x264', 'x265', 'libaom-av1', 'H.266', 'AVS3'];
+
+        if (metric_name != 'Subjective') {
+            $.getJSON('../assets/json/benchmarks/sr-codecs/leaderboard.json', function (data) {
+                $.each( data[metric_name], function( alg, val ) {
+                    
+                    if (alg != "only_compressed_540") {
+                        text += "<tr class=\"item\">\n";
+                        if (alg != "bicubic" && alg != "only_compressed") {
+                            text += "<td>" + getName(alg) + "<sup><a href='" + getHref(alg) + "'>[" + getIndex(alg) + "]</a></sup></td>\n";
+                        } else if (alg == "bicubic"){
+                            text += "<td>" + getName(alg) + "</td>\n";
+                        } else {
+                            text += "<td style='background-color:#FAF18C'>" + getName(alg) + "</td>\n";
+                        }
+
+                        for (codec of codecs) { 
+                            if (alg != "only_compressed") {
+                                text += "<td>" + val[codec][method_name].toFixed(3) + "</td>\n";
+                            } else {
+                                text += "<td style='background-color:#FAF18C'>" + val[codec][method_name].toFixed(3) + "</td>\n";
+                            }
+                        }
+                        text += "</tr>\n";
+                    }
+                });
+                text += "</tbody>\n";
+            
+                let table = document.getElementById('leaderboard_table');
+                table.innerHTML = text;
+
+                let TBP1 = document.getElementById("TBP1");
+                TBP1.innerHTML = "";
+                
+
+                $('#leaderboard_table').DataTable().destroy();
+
+                $('#leaderboard_table').DataTable({
+                    
+                    lengthChange: false,
+                    paging: false,
+                    searching: false,
+                    ordering: true,
+                    order: [[1, 'asc']]
+                });
+            });
+        } else {
+            $.getJSON('../assets/json/benchmarks/sr-codecs/subjective.json', function (data) {
+                $.each( data, function( alg, val ) {
+                    
+                    if (alg != "only_compressed_540") {
+                        text += "<tr class=\"item\">\n";
+                        if (alg != "bicubic" && alg != "only_compressed") {
+                            text += "<td>" + getName(alg) + "<sup><a href='" + getHref(alg) + "'>[" + getIndex(alg) + "]</a></sup></td>\n";
+                        } else if (alg == "bicubic"){
+                            text += "<td>" + getName(alg) + "</td>\n";
+                        } else {
+                            text += "<td style='background-color:#FAF18C'>" + getName(alg) + "</td>\n";
+                        }
+
+                        for (codec of codecs) { 
+                            if (codec == 'x264') {
+
+                                if (method_name == 'best_self') {
+                                    data = val['best']
+                                } else {
+                                    data = val['self']
+                                }
+
+                                if (data < 0) {
+                                    data = "TBP*";
+                                } else {
+                                    data = data.toFixed(3);
+                                }
+                            } else {
+                                data = "TBP*";
+                            }
+                            if (alg != "only_compressed") {
+                                text += "<td>" + data + "</td>\n";
+                            } else {
+                                text += "<td style='background-color:#FAF18C'>" + data + "</td>\n";
+                            }
+                        }
+                        text += "</tr>\n";
+                    }
+                });
+                text += "</tbody>\n";
+            
+                let table = document.getElementById('leaderboard_table');
+                table.innerHTML = text;
+
+                let TBP1 = document.getElementById("TBP1");
+                TBP1.innerHTML = "<p><b>*To Be Published</b></p>"
+                
+
+                $('#leaderboard_table').DataTable().destroy();
+
+                $('#leaderboard_table').DataTable({
+                    
+                    lengthChange: false,
+                    paging: false,
+                    searching: false,
+                    ordering: true,
+                    order: [[1, 'asc']]
+                });
+            });
+        }
+    }
+
+    document.getElementById("leaderboard_metric_selector").onchange = onChangeHelper;
+    document.getElementById("leaderboard_method_selector").onchange = onChangeHelper;
+    onChangeHelper();
+
+    </script>
+
+</div>
+
+<div id="TBP1"><p><b>*To Be Published</b></p></div>
+
+<h3 align="left" style="color: #3d6f96">Best sequence for each model</h3>
+
+<p>
+    The table below shows the best sequence for each Super-Resolution algorithm
+    based on the subjective score and a few objective metrics. The best video is the one in which the algorithm has the highest metric value among other videos.
+    Sequences are represented by different colors. You can see the list of videos in the <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#dataset_table">methodology</a>. 
+</p>
+
+<div id="leaderboard_best_video">
+    <p>     Metric: <label for="leaderboard_video_metric_selector"></label><select id="leaderboard_video_metric_selector" name="values">
+        <option>ERQA</option>
+        <option>Y-PSNR</option>
+        <option>YUV-MS-SSIM</option>
+        <option>Y-VMAF</option>
+        <option>Y-VMAF NEG</option>
+        <option>LPIPS</option>
+        <option>Subjective</option>
+    </select>
+    </p>
+
+    <div class="datatable-container">
+    <div class="datatable-center">
+        <table id="leaderboard_video_table" class="display" style="background-color: #ffffff;width:99.5%">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Model</th>
+                <th style="background-color: #3d6f96">x264</th>
+                <th style="background-color: #3d6f96">x265</th>
+                <th style="background-color: #3d6f96">aomenc</th>
+                <th style="background-color: #3d6f96">VVenC</th>
+                <th style="background-color: #3d6f96">uavs3e</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    <script>
+        function onChangeHelper() {
+        
+        var metric_select = document.getElementById("leaderboard_video_metric_selector");
+        var metricToName = ['ERQA', 'PSNR', 'MSSSIM', 'VMAFCLIPPED', 'VMAFNEG', 'LPIPS', 'Subjective'];
+        var metric_name = metricToName[metric_select.selectedIndex];
+
+
+        let text = "<thead>\n" +
+        "<tr style=\"font-size: large; background-color: #3d6f96\">" +
+        "    <th style=\"background-color: #3d6f96; padding: 10px;\">Model</th>" +
+        "    <th style=\"background-color: #3d6f96\">x264</th>" +
+        "    <th style=\"background-color: #3d6f96\">x265</th>" +
+        "    <th style=\"background-color: #3d6f96\">aomenc</th>" +
+        "    <th style=\"background-color: #3d6f96\">VVenC</th>" +
+        "    <th style=\"background-color: #3d6f96\">uavs3e</th>" +
+        "</tr>\n" +
+        "</thead>\n" +
+        "<tbody>\n";
+
+        let codecs = ['x264', 'x265', 'libaom-av1', 'H.266', 'AVS3'];
+
+        if (metric_name != 'Subjective') {
+            $.getJSON('../assets/json/benchmarks/sr-codecs/leaderboard_videos.json', function (data) {
+                let index = 3;
+                $.each( data[metric_name], function( alg, val ) {
+                    
+                    if (alg != "only_compressed_540") {
+                        text += "<tr class=\"item\">\n";
+                        if (alg != "bicubic" && alg != "only_compressed") {
+                            let cur_index = index + 1;
+                            if (alg == "topaz-ahq-11") {
+                                cur_index = 1;
+                            } else if (alg == "topaz-amq-12") {
+                                cur_index = 2;
+                            } else if (alg == "topaz-amqs-1") {
+                                cur_index = 3;
+                            } else {
+                                index += 1;
+                            }
+                            text += "<td>" + getName(alg) + "<sup><a href='" + getHref(alg) + "'>[" + cur_index.toString() + "]</a></sup></td>\n";
+                            
+                        } else {
+                            text += "<td>" + getName(alg) + "</td>\n";
+                        } 
+
+                        for (codec of codecs) { 
+                            if (val[codec] == 'animation clip') {
+                                text += "<td style='background-color:#3CB371'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'skiing') {
+                                text += "<td style='background-color:#2E8B57'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'street show') {
+                                text += "<td style='background-color:#228B22'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'glass') {
+                                text += "<td style='background-color:#6B8E23'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'professor') {
+                                text += "<td style='background-color:#9ACD32'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'lift') {
+                                text += "<td style='background-color:#74CC64'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'wedding') {
+                                text += "<td style='background-color:#548F62'>" + val[codec] + "</td>\n";
+                            }
+                        }
+                        text += "</tr>\n";
+                    }
+                });
+                text += "</tbody>\n";
+            
+                let table = document.getElementById('leaderboard_video_table');
+                table.innerHTML = text;
+
+                let TBP = document.getElementById('TBP2');
+                TBP.innerHTML = "";
+                
+
+                $('#leaderboard_video_table').DataTable().destroy();
+
+                $('#leaderboard_video_table').DataTable({
+                    
+                    lengthChange: false,
+                    paging: false,
+                    searching: false,
+                    ordering: true,
+                    order: [[0, 'asc']]
+                });
+            });
+        } else {
+            $.getJSON('../assets/json/benchmarks/sr-codecs/subjective.json', function (data) {
+                let index = 3;
+                $.each( data, function( alg, val ) {
+                    
+                    if (alg != "only_compressed_540") {
+                        text += "<tr class=\"item\">\n";
+                        if (alg != "bicubic" && alg != "only_compressed") {
+                            let cur_index = index + 1;
+                            if (alg == "topaz-ahq-11") {
+                                cur_index = 1;
+                            } else if (alg == "topaz-amq-12") {
+                                cur_index = 2;
+                            } else if (alg == "topaz-amqs-1") {
+                                cur_index = 3;
+                            } else {
+                                index += 1;
+                            }
+                            text += "<td>" + getName(alg) + "<sup><a href='" + getHref(alg) + "'>[" + cur_index.toString() + "]</a></sup></td>\n";
+                        } else {
+                            text += "<td>" + getName(alg) + "</td>\n";
+                        }
+
+                        for (codec of codecs) { 
+                            if (codec == 'x264') {
+                                data = val['video']
+                            } else {
+                                data = "TBP*";
+                            }
+                            if (data == 'animation clip') {
+                                text += "<td style='background-color:#3CB371'>" + data + "</td>\n";
+                            } else if (data == 'skiing') {
+                                text += "<td style='background-color:#2E8B57'>" + data + "</td>\n";
+                            } else if (data == 'street show') {
+                                text += "<td style='background-color:#228B22'>" + data + "</td>\n";
+                            } else {
+                                text += "<td>" + data + "</td>\n"; 
+                            }
+                        }
+                        text += "</tr>\n";
+                    }
+                });
+                text += "</tbody>\n";
+            
+                let table = document.getElementById('leaderboard_video_table');
+                table.innerHTML = text;
+                
+                let TBP2 = document.getElementById("TBP2");
+                TBP2.innerHTML = "<p><b>*To Be Published</b></p>"
+
+                $('#leaderboard_video_table').DataTable().destroy();
+
+                $('#leaderboard_video_table').DataTable({
+                    
+                    lengthChange: false,
+                    paging: false,
+                    searching: false,
+                    ordering: true,
+                    order: [[0, 'asc']]
+                });
+            });
+        }
+    }
+
+    document.getElementById("leaderboard_video_metric_selector").onchange = onChangeHelper;
+    onChangeHelper();
+    </script>
+</div>
+
+<div id="TBP2"><p><b>*To Be Published</b></p></div>
+-->
+          <style>
+            .dataTables_paginate {margin-top: 15px;}
+            .dataTables_length {margin-bottom: 15px;}
+          </style>
+          <h3 align="left" style="color: #3d6f96">SR+codec pairs leaderboard</h3>
+          <p>
+            The table below shows a comparison of all pairs of Super-Resolution algorithms and codecs.
+            Each column shows <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#bsq-rate">BSQ-rate</a> over a specific metric. You can sort the table by any column. 
+            <br />
+            All methods that took part in subjective comparison are ranked by BSQ-rate over subjective score. Other methods are ranked by BSQ-rate over ERQA.
+            <br />
+            If BSQ-rate of any method equals 0, then this method should be considered much better than reference codec.<br />
+            If BSQ-rate of any method is striving to eternity (marked as '∞'), then this method should be considered much worse than reference codec.<br />
+            "TBP" means that this SR+codec pair did not take part in subjective comparison.
+          </p>
+          <div id="leaderboard_pairs">
+            <p>     Video: <label for="leaderboard_video_selector"></label><select id="leaderboard_video_selector" name="values">
+                <option>Overall</option>
+                <option>child</option>
+                <option>cuphead</option>
+                <option>dancing</option>
+                <option>dontstarve</option>
+                <option>restaurant</option>
+                <option>colors</option>
+              </select> <button id="video_button_left">&#60;</button>  <button id="video_button_right">&#62;</button></p>
+            <div class="datatable-container">
+              <div class="datatable-center">
+                <table id="leaderboard_pairs_table" class="display" style="background-color: #ffffff;width:99.5%">
+                  <thead>
+                    <tr style="font-size: large; background-color: #3d6f96">
+                      <th style="background-color: #3d6f96">Rank</th>
+                      <th style="background-color: #3d6f96">SR + codec</th>
+                      <th style="background-color: #3d6f96">Y-VMAF</th>
+                      <th style="background-color: #3d6f96">ERQAv2.0</th>
+                      <th style="background-color: #3d6f96">Y-PSNR</th>
+                      <th style="background-color: #3d6f96">Y-MS-SSIM</th>
+                      <th style="background-color: #3d6f96">LPIPS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <script>
+              const video_button_left_id = 'video_button_left'
+              const video_button_right_id = 'video_button_right'
+              const video_select_id = 'leaderboard_video_selector'
+              
+              $('#'+video_button_left_id).click(function(){
+                  var video_select = document.getElementById(video_select_id);
+                  var total_sz = video_select.options.length;
+                  video_select.selectedIndex -= 1;
+                  if (video_select.selectedIndex < 0) video_select.selectedIndex = total_sz - 1;
+                  onChangeHelper();
+              })
+              $('#'+video_button_right_id).click(function(){
+                  var video_select = document.getElementById(video_select_id);
+                  var total_sz = video_select.options.length;
+                  if (video_select.selectedIndex >= total_sz - 1) video_select.selectedIndex = 0;
+                  else video_select.selectedIndex += 1;
+                  //video_select.selectedIndex %= total_sz;
+                  onChangeHelper();
+              })
+              
+              
+              function onChangeHelper() {
+              
+                  var video_select = document.getElementById("leaderboard_video_selector");
+                  var videoToName = ['Overall', 'child', 'cuphead', 'dancing', 'dontstarve', 'restaurant', 'colors'];
+                  var video_name = videoToName[video_select.selectedIndex];
+              
+              
+                  let text = "<thead>\n" +
+                  "<tr style=\"font-size: medium; background-color: #3d6f96\">" +
+                  "    <th style=\"background-color: #3d6f96\">Rank</th>" +
+                  "        <th style=\"background-color: #3d6f96\">SR+codec</th>" +
+                  "        <th style=\"background-color: #3d6f96\">Subjective score</th>" +
+                  "        <th style=\"background-color: #3d6f96\">Y-VMAF</th>" +
+                  "        <th style=\"background-color: #3d6f96\">ERQA</th>" +
+                  "        <th style=\"background-color: #3d6f96\">Y-PSNR</th>" +
+                  "        <th style=\"background-color: #3d6f96\">Y-MS-SSIM</th>" +
+                  "        <th style=\"background-color: #3d6f96\">LPIPS</th>" +
+                  "</tr>\n" +
+                  "</thead>\n" +
+                  "<tbody>\n";
+              
+                  let metrics = ["Subjective", 'Y-VMAF', 'ERQA', 'Y-PSNR', 'YUV-MS-SSIM', 'LPIPS'];
+              
+                  $.getJSON('../assets/json/benchmarks/sr-codecs/leaderboard.json', function (data) {
+                      $.each( data[video_name], function( pair, val ) {
+              
+                          if (pair.substring(0, 4) == 'only') {
+                              td = "<td style='background-color:#FAF18C'>";
+                          } else {
+                              td = "<td>";
+                          }
+                          text += "<tr class=\"item\">\n";
+                          text += td + val["rank"] + "</td>\n" + td + pair + "</td>\n";
+                          for (metric of metrics) {
+                              let value = parseFloat(val[metric]).toFixed(3);
+                              if (value == "NaN") {
+                                  value = "TBP";
+                              }
+                              text += td + value + "</td>\n";
+                          }
+                          text += "</tr>\n";
+                      });
+              
+                      text += "</tbody>\n";
+              
+                      let table = document.getElementById('leaderboard_pairs_table');
+                      table.innerHTML = text;
+              
+              
+                      $('#leaderboard_pairs_table').DataTable().destroy();
+              
+                      $('#leaderboard_pairs_table').DataTable({
+                          searching: false,
+                          ordering: true,
+                          order: [[0, 'asc']],
+                          "lengthMenu": [ [15, 40, -1], [15, 40, "All"] ],
+                          bInfo : false,
+                          dom: 'Blfrtip',
+                      });
+                  });
+              }
+              
+              document.getElementById("leaderboard_video_selector").onchange = onChangeHelper;
+              onChangeHelper();
+            </script>
+          </div>
+          <!--
+<style>
+    .paper-preview-container img:hover {
+        filter: brightness(80%);
+    }
+
+    #paper-preview01 {
+        padding: 0;
+        clear: both;
+        border: 1px solid black;
+        box-shadow: 5px 5px 3px #888888;
+        width: 150px;
+    }
+</style>
+
+**Read the Benchmark's paper**
+
+
+<div style="display: inline-block; text-align: center" class="paper-preview-container">
+    <a href="/"><img src="/assets/img/benchmarks/deinterlacer/paper_preview.png" id="paper-preview01"></a><br/>
+    <a href="/">Download (pdf)</a>
+</div> -->
+          <h2 id="sr-codecs"><span id="SRcodecs">SR codecs</span></h2>
+          <p>You can find information about SR codecs on the <a href="/benchmarks/super-resolution-for-video-compression-participants.html#codecs_table">participants page.</a></p>
+          <p>You can choose the <b>test sequence</b> and the <b>metric</b>.</p>
+          <p><b>Highlight the plot region where you want to zoom in.</b></p>
+          <div id="codecs_selector" class="mobile-plots">
+            <p style="white-space: pre;">Video: <label for="codecs_selector_video"></label><select id="codecs_selector_video" name="values">
+                <!--<option>ball</option>-->
+                <option selected="selected">child</option>
+                <option>colors</option>
+                <option>cuphead</option>
+                <option>dancing</option>
+                <option>dontstarve</option>
+                <option>restaurant</option>
+              </select>    Metric: <label for="codecs_selector_metric"></label><select id="codecs_selector_metric" name="values">
+                <option selected="selected">ERQAv2.0</option>
+                <option>Y-VMAF</option>
+                <option>Y-PSNR</option>
+                <option>Y-MS-SSIM</option>
+                <option>LPIPS</option>
+              </select></p>
+            <div id="codecs_graph" style="display: block" class="highcharts-figure"> <!--onload="onChangeHelper()"-->
+            </div>
+            <script>
+              (function (H) {
+                          var aWidth = 25, aCap = 15, aHead = 80, bottomMargin = 74, rightMargin = 80, delta = 8;
+                          var gAnnotation = function(Ax,Ay,Bx,By,Tx,Ty,Tfi, opts, rnd, objects) {
+                              if (!opts) return;
+                              if (opts.text == "Better"){//(true || (opts.direction && opts.direction == 'inverse')) {
+                                  var t;
+                                  t = Ax; Ax = Bx; Bx = t;
+                                  t = Ay; Ay = By; By = t;
+                              } else return;
+                              if (!opts.double) {
+                                  var ar = rnd.path(drawArrow(Ax, Ay, Bx, By, aWidth, aCap, aHead));
+                                  ar.attr({stroke: 'black','stroke-width': 2}).add();
+                                  objects.push(ar);
+                                  if (opts.text) {
+                                      var txt = rnd.text(opts.text, Tx, Ty);
+                                      txt.attr({'text-anchor': "middle", "rotation":Tfi}).css({'font-size': '16px'}).add();
+                                      objects.push(txt);
+                                  }
+                              } else {
+                                  var center = (Bx-Ax + delta)/2;
+                                  var Ax_1 = Bx, Bx_1 = Ax;
+                                  var ar1 = rnd.path(drawArrow(Ax_1-center, Ay, Bx_1, By, aWidth, aCap, aHead));
+                                  var ar2 = rnd.path(drawArrow(Ax+center, Ay, Bx, By, aWidth, aCap, aHead));
+                                  ar1.attr({stroke: 'black','stroke-width': 2}).add();
+                                  ar2.attr({stroke: 'black','stroke-width': 2}).add();
+                                  objects.push(ar1);
+                                  objects.push(ar2);
+                                  if (opts.text) {
+                                      var txt1 = rnd.text(opts.text[0], Tx-center/2, Ty);
+                                      var txt2 = rnd.text(opts.text[1], Tx+center/2, Ty);
+                                      txt1.attr({'text-anchor': "middle", "rotation":Tfi}).css({'font-size': '16px'}).add();
+                                      txt2.attr({'text-anchor': "middle", "rotation":Tfi}).css({'font-size': '16px'}).add();
+                                      objects.push(txt1);
+                                      objects.push(txt2);
+                                  }
+                              }
+                          };
+                          var drawArrow = function(sX,eY,eX,sY,width,cap,head) {
+                              var fwdX = eX - sX, fwdY = eY - sY;
+                              var len = Math.sqrt(fwdX*fwdX + fwdY*fwdY);
+                              fwdX /= len; fwdY /= len;
+                              var ortX = fwdY, ortY = -fwdX;
+                              return [
+                                  'M', sX - ortX*width/2, sY - ortY*width/2,
+                                  'L', sX + ortX*width/2, sY + ortY*width/2,
+                                  'L', sX + ortX*width/2 + fwdX*(len-head), sY + ortY*width/2 + fwdY*(len-head),
+                                  'L', sX + ortX*(width/2+cap) + fwdX*(len-head), sY + ortY*(width/2+cap) + fwdY*(len-head),
+                                  'L', eX, eY,
+                                  'L', sX - ortX*(width/2+cap) + fwdX*(len-head), sY - ortY*(width/2+cap) + fwdY*(len-head),
+                                  'L', sX - ortX*(width/2) + fwdX*(len-head), sY - ortY*(width/2) + fwdY*(len-head),
+                                  'L', sX - ortX*(width/2) , sY - ortY*(width/2) ,
+                              ];
+                          };
+                          H.wrap(H.Chart.prototype, 'getAxisMargins', function (proceed) {
+                              var opts = this.userOptions.annotation;
+                              if( opts ) {
+                                  if( opts.yAxis ) {
+                                      this.marginRight =rightMargin;
+                                  }
+                                  if( opts.xAxis ) {
+                                      this.marginBottom =bottomMargin;
+                                  }
+                              }
+                              proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+                          });
+                          H.wrap(H.Chart.prototype, 'drawChartBox', function (proceed) {
+                              var rnd = this.renderer;
+                              if (this.annotation !== undefined) {
+                                  this.annotation.forEach(function(it) { it.destroy() } )
+                              }
+                              this.annotation = [];
+                              proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+                              if(!this.userOptions.annotation) return;
+                              gAnnotation(
+                                  this.plotLeft, this.plotTop + this.plotHeight + 80,
+                                  this.plotLeft + this.plotWidth, this.plotTop + this.plotHeight + 80,
+                                  this.plotLeft + this.plotWidth / 2, this.plotTop + this.plotHeight+80 + 4, 0,
+                                  this.userOptions.annotation.xAxis, rnd, this.annotation
+                              );
+                              gAnnotation(
+                                  this.plotLeft + this.plotWidth + 50, this.plotTop + this.plotHeight,
+                                  this.plotLeft + this.plotWidth + 50, this.plotTop,
+                                  this.plotLeft + this.plotWidth + 50 + 4, this.plotTop + this.plotHeight/2, 270,
+                                  this.userOptions.annotation.yAxis, rnd, this.annotation);
+                          });
+              
+                      }(Highcharts));
+              
+              
+                      chart_objects = {};
+                      data_graph_codecs = {};
+              
+                      $.getJSON('../assets/json/benchmarks/sr-codecs/codecs_data.json', function (data2) {
+                          data_graph_codecs = data2;
+                          $(document).ready(function(){
+                              onChangeHelper34();
+                          });
+                      });
+              
+                      function onChangeHelper34() {
+                          // Graph
+                          let codecs_graph = document.getElementById("codecs_graph");
+                          let this_div = document.getElementById("codecs_selector");
+              
+                          plot_options = {
+                              annotation: {
+                                  yAxis: {
+                                      text: "Better"
+                                  }
+                              },
+                              chart: {
+                                  zoomType: 'xy',
+                                  height: 550,
+                              },
+                              title: {
+                                  text: ''
+                              },
+                              subtitle: {
+                                  text: ''
+                              },
+                              yAxis: {
+                                  title: {
+                                      text: ''
+                                  }
+                              },
+                              xAxis: {
+                                  title: {
+                                          text: ''
+                                  }
+                              },
+                              legend: {
+                                  layout: 'horizontal',
+                                  align: 'center',
+                                  floating: false,
+                              },
+                              colors: [
+                                  '#5FADF5',
+                                  '#5FF5D2',
+                                  '#E6845E',
+                                  '#E3E645',
+                                  '#000000',
+                                  '#E66ADB',
+                                  '#AB9EE6',
+                                  '#407A5B'
+                              ],
+                              toolpit: {
+                                  pointFormat: '{series.name}:<br>bitrate = {point.x} kbps<br>metric value = {point.y %.3}'
+                                  /*formatter: function() {
+                                      return "{series.name}:<br><b>bitrate = {point.x}<br>metric value = {point.y %.3}</b>"
+                                  }*/
+                              },
+                              plotOptions: {
+                                  series: {
+                                      label: {
+                                          connectorAllowed: false
+                                      }
+                                  }
+                              },
+                              navigation: {
+                                  buttonOptions: {
+                                      align: 'right',
+                                      verticalAlign: 'top',
+                                      y: 0
+                                  }
+                              },
+                              series: [],
+                              responsive: {
+                                  rules: [{
+                                      condition: {
+                                          maxWidth: 500
+                                      },
+                                      chartOptions: {
+                                          legend: {
+                                              layout: 'horizontal',
+                                              align: 'center',
+                                              verticalAlign: 'bottom'
+                                          }
+                                      }
+                                  }]
+                              },
+                              credits:{
+                                  "enabled":true,
+                                  "href":"https://videoprocessing.ai/",
+                                  "text":"videoprocessing.ai",
+                                  "position":{
+                                      "align":"left",
+                                      "x":65,
+                                      "verticalAlign":"top",
+                                      "y":70,
+                                      "alignTo":"plotBox"
+                                  },
+                                  "style" : {
+                                      "fontSize" : "16px"
+                                  }
+                              }
+                          };
+              
+                          function getName(alg) {
+                              if (alg == "rrdncnn") {
+                                  return "RR-DnCNN";
+                              }
+                              if (alg == "rrdcnn2") {
+                                  return "RR-DnCNN v2.0";
+                              }
+                              if (alg == "vistra") {
+                                  return "ViSTRA";
+                              }
+                              if (alg == "srvc") {
+                                  return "SRVC";
+                              }
+                              if (alg == "SVTAV1") {
+                                  return "SVT-AV1";
+                              }
+                              return alg;
+                          }
+              
+                          var metric_select = document.getElementById("codecs_selector_metric");
+                          var video_select = document.getElementById("codecs_selector_video");
+              
+                          var metric_to_name = ['ERQA', 'VMAF', 'YUVPSNR', 'MS-SSIM', 'LPIPS'];
+                          var video_to_name_codecs = ['child', 'colors', 'cuphead', 'dancing', 'dontstarve', 'restaurant'];
+              
+                          var print_metric_to_name = ['ERQAv2.0', 'Y-VMAF', 'Y-PSNR', 'Y-MS-SSIM', 'LPIPS'];
+                          var print_video_to_name_codecs = ['child', 'colors', 'cuphead', 'dancing', 'dontstarve', 'restaurant'];
+              
+                          var metric_name = metric_to_name[metric_select.selectedIndex];
+                          var video_name = video_to_name_codecs[video_select.selectedIndex];
+              
+                          $.each(data_graph_codecs[video_name][metric_name], function( alg, val ) {
+                              let points = [];
+                              let bitrates = data_graph_codecs[video_name][metric_name][alg]["bitrate"];
+                              let values = data_graph_codecs[video_name][metric_name][alg]["metric"];
+                              for (let i = 0; i < bitrates.length; ++i) {
+                                  let b = parseFloat(bitrates[i].toFixed(3));
+                                  let v = parseFloat(values[i].toFixed(3));
+                                  points.push([b, v]);
+                              }
+                              plot_options.series.push({name: getName(alg), data: points});
+                          });
+              
+                          //let points = [];
+                          //let bitrates = data_graph_codecs[video_name][codec_name][metric_name]['only_compressed']["bitrates"];
+                          //let values = data_graph_codecs[video_name][codec_name][metric_name]['only_compressed']["values"];
+                          //for (let i = 0; i < bitrates.length; ++i) {
+                          //    let b = parseFloat(bitrates[i].toFixed(3));
+                          //    let v = parseFloat(values[i].toFixed(3));
+                          //    points.push([b, v]);
+                          //}
+                          //plot_options.series.push({name: getName("only_compressed", codec_name), data: points, marker: {radius: 6, symbol: 'circle'}});-->
+              
+              
+                          plot_options.title.text = "Bitrate/quality, Sequence: " + print_video_to_name_codecs[video_select.selectedIndex] + ", Metric: " + print_metric_to_name[metric_select.selectedIndex];
+                          plot_options.subtitle.text =  "";
+                          plot_options.yAxis.title.text = print_metric_to_name[metric_select.selectedIndex];
+                          plot_options.xAxis.title.text = "Bitrate (Kbps)";
+              
+                          chart_id = 'codecs_graph'
+                          if (chart_id in chart_objects) {
+                              let speed_plot = document.getElementById("codecs_graph");
+                              let this_div = document.getElementById("codecs_selector");
+              
+                              speed_plot.remove();
+                              let new_plot = document.createElement('div');
+                              new_plot.setAttribute("id", "codecs_graph");
+                              new_plot.setAttribute("class", "highcharts-figure");
+                              this_div.appendChild(new_plot);
+              
+                              Highcharts.chart(chart_id, plot_options);
+                          }
+                          else {
+                              chart_objects[chart_id]={}
+                              chart_objects[chart_id]['chart'] = Highcharts.chart(chart_id, plot_options);
+                          }
+              
+                      document.getElementById("codecs_selector_metric").onchange = onChangeHelper34
+                      document.getElementById("codecs_selector_video").onchange = onChangeHelper34
+              
+                      window.onload = onChangeHelper34
+                      }
+            </script>
+          </div>
+          <h2 id="srcodec-benchmark-roadmap"><span id="Roadmap"></span> SR+codec Benchmark Roadmap</h2>
+          <div>
+            <table style="border-collapse: collapse; background-color: #ffffff;width: 99%;table-layout:fixed;overflow: visible; align:center">
+              <thead style="border: 2px solid black">
+                <tr style="font-size: 120%; background-color: #3d6f96">
+                  <th style="background-color: #3d6f96;color:white"><b>Feature</b></th>
+                  <th style="background-color: #3d6f96;color:white"><b>What it achieves</b></th>
+                  <th style="background-color: #3d6f96;color:white"><b>Release date</b></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="item">
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;"><b>More test sequences</b></td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">We will extend our dataset to make it more diverse and cover more<br />
+                    use cases. We expect it to contain 9×6×5=<b>270 Full HD videos.</b></td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;text-align:center"><b>14.03.2022</b></td>
+                </tr>
+                <tr class="item">
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;"><b>Extensive subjective<br />
+                      comparison</b></td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">We plan to conduct a bigger subjective comparison for <b>all codecs</b><br />
+                    to get a more accurate ranking for more SR+codec pairs. The subjective<br />
+                    comparison with that many video pairs will be <b>very expensive</b>. If you<br />
+                    want to support our benchmark, please contact us:<br />
+                    <a href="mailto:sr-codecs-benchmark@videoprocessing.ai">sr-codecs-benchmark@videoprocessing.ai</a></td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;text-align:center"><b>12.04.2022</b></td>
+                </tr>
+                <tr class="item">
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;"><b>More state-of-the-art<br />
+                      Super-Resolution methods</b></td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">New Super-Resolution methods are constantly being developed.<br />
+                    We will add new qualitative SR methods to our benchmark<br />
+                    as they appear. We also expect developers to submit<br />
+                    their methods to us.<br />
+                    <b>You can submit your method <a href="/benchmarks/super-resolution-for-video-compression.html#participate">here</a>.</b></td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;text-align:center">Q4 2022</td>
+                </tr>
+                <tr class="item">
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;"><b>Enterprise report</b></td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">We will compile an enterprise report with <b>more test sequences</b><br />
+                    and different <b>objective and subjective metrics</b>. You can see<br />
+                    the example in the <a href="#report">Report section</a>.</td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;text-align:center">Q1 2023</td>
+                </tr>
+                <tr class="item">
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;"><b>A new metric to<br />
+                      measure compressed video<br />
+                      restoration quality</b></td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">Subjective comparison showed that the most popular video quality<br />
+                    metrics — PSNR and SSIM — are not applicable to the<br />
+                    Super-Resolution task. We are researching our metric<br />
+                    for compressed video restoration quality that will <b>correlate<br />
+                      well with subjective assessment</b>.</td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;text-align:center">Q1 2023</td>
+                </tr>
+                <tr class="item">
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;"><b>“Real-time” and “restoration”<br />
+                      categories</b></td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">Some Super-Resolution models work faster than others, while slow<br />
+                    methods can achieve results of much better quality.<br />
+                    We plan to divide the leaderboard of our benchmark into 2 categories:
+                    <ul>
+                      <li>The <b>“real-time”</b> category will contain fast SR methods that can be<br />
+                        used to enhance videos in real-time</li>
+                      <li>The <b>“restoration”</b> category will contain SR methods that can<br />
+                        produce high-quality results over any period of time</li>
+                    </ul>
+                  </td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;text-align:center">Q2 2023</td>
+                </tr>
+              </tbody>
+            </table>
+            <script>
+              $(document).ready(function () {
+                          $('#roadmap_table').DataTable({
+                              lengthChange: true,
+                              paging: true,
+                              searching: false,
+                              ordering: false,
+                          });
+                      });
+            </script>
+          </div>
+          <h2 id="submit-your-method"><span id="participate"></span> Submit your method</h2>
+          <p><strong>Verify your method’s ability to restore compressed videos and compare it with other algorithms.</strong><br />
+            You can go to <a href="/benchmarks/super-resolution-for-video-compression-participants.html">the page with information</a> about other participants.
+            <br />
+          </p>
+          <style>
+            tt {
+                font-family: "Lucida Console", "Menlo", "Monaco", "Courier",
+                             monospace;
+              }
+          </style>
+          <div>
+            <table align="center" width="99.5%" cellpadding="10" style="border-collapse:collapse; table-layout: fixed; word-break: break-all;">
+              <tr>
+                <td bgcolor="#F4F6F6" colspan="2" width="30%" style="word-break: break-all;">
+                  <b style="font-size:18px">1. Download input data</b>
+                  <i><font size="=1"></font></i>
+                </td>
+                <td bgcolor="#F4F6F6" style="word-break: break-all;">
+                  <b>Download low-resolution input videos as sequences of frames in PNG format.
+                    <br />
+                    There are 2 available options:</b>
+                  <ol type="A">
+                    <li style="font-weight: bold;">
+                      <p style="font-weight: normal;">Download 1 folder with all videos joined in one sequence <a href="https://drive.google.com/file/d/1bvmzmQWA-1xAYhbCovcjpBjSPcrkNm_U/view?usp=sharing">here</a>.<br />
+                        Neighboring videos are separated  <!--https://drive.google.com/file/d/1WlvctghSqg832jg4gs4PQkFxvUST6nZQ/view?usp=sharing-->
+                        by 5 black frames, which will be skipped<br />
+                        for evaluation.</p>
+                    </li>
+                    <li style="font-weight: bold;">
+                      <p style="font-weight: normal;">If you worry this strategy can affect your performance, you can download<br />
+                        269 folders with each video <a href="https://drive.google.com/file/d/1EBP2O9vZBnYMy8aYSNhhfrcTfv17BFJo/view?usp=sharing">here</a>.</p>
+                    </li>
+                     <!--https://drive.google.com/file/d/15aszMfzMc3aeg8iLwynMoTHJa11_zbgl/view?usp=sharing-->
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <br />
+                </td>
+                <td>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td style="word-break: break-all;" colspan="2" bgcolor="#F4F6F6" width="15%">
+                  <b style="font-size:18px">2. Apply your algorithm</b>
+                </td>
+                <td bgcolor="#F4F6F6" style="word-break: break-all;">
+                  <b>Apply your Super-Resolution algorithm to upscale frames to 1920×1080 resolution.</b><br />
+                  You can also send us the code of your method or the executable file<br />
+                  with the instructions on how to run it and we will run it ourselves.<br />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <br />
+                </td>
+                <td>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="2" bgcolor="#F4F6F6" style="word-break: break-all;" width="15%">
+                  <b style="font-size:18px">3. Send us result</b>
+                </td>
+                <td bgcolor="#F4F6F6" style="word-break: break-all;">
+                  <b>Send us an email to <a href="mailto:sr-codecs-benchmark@videoprocessing.ai?subject=Submission to MSU SR+codec Benchmark">sr-codecs-benchmark@videoprocessing.ai</a>
+                    with the following<br />
+                    information: </b>
+                  <ul><b>A. </b>Name of your method that will be specified in our benchmark</ul>
+                  <ul><b>B. </b>A way for us to download your method's output frames (e.g. link<br />
+                    to the cloud drive)<br />
+                  </ul>
+                  <ul><b>C. </b>(Optional) Any additional information about the method:
+                    <ul>1. Full name of your model</ul>
+                    <ul>2. Parameters which were used</ul>
+                    <ul>3. A link to the code of your model, if it is available</ul>
+                    <ul>4. A link to the paper about your model, if it is available</ul>
+                    <ul>5. Execution time of your algorithm and information about used GPU, if it was used</ul>
+                    <ul>6. Any other additional information</ul>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+            <p><b>You can verify the results of current participants or estimate the perfomance of your method on public samples
+                of our dataset. Just send an email to <a href="mailto:sr-codecs-benchmark@videoprocessing.ai?subject=Public samples of MSU SR+codec Benchmark">sr-codecs-benchmark@videoprocessing.ai</a> with a request to share them with you.</b></p>
+            <p><b>Our policy:</b>
+              <ul>
+                <li>We won't publish the results of your method without your permission.</li>
+                <li>We share only public samples of our dataset as it is private.</li>
+              </ul>
+            </p>
+          </div>
+          <h2 id="download-the-report"><span id="report"></span> Download the Report</h2>
+          <!-- To use this button, first add to the top of the file -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+          <style>
+            .download-button {
+                appearance: button;
+                background-color: #779ce5;
+                border: solid transparent;
+                border-radius: 8px;
+                box-sizing: border-box;
+                color: white;
+                cursor: pointer;
+                display: inline-block;
+                letter-spacing: 0.8px;
+                line-height: 20px;
+                margin: 0;
+                outline: none;
+                overflow: visible;
+                padding: 5px;
+                text-align: center;
+                /*  text-transform: uppercase;*/
+                touch-action: manipulation;
+                transform: translateZ(0);
+                transition: filter 0.2s;
+                user-select: none;
+                -webkit-user-select: none;
+                vertical-align: middle;
+                white-space: nowrap;
+            }
+            
+            .download-button:main,
+            .download-button:focus {
+                user-select: auto;
+            }
+            
+            .download-button:hover:not(:disabled) {
+                filter: brightness(1.1);
+            }
+            
+            .download-button:disabled {
+                cursor: auto;
+            }
+            
+            .download-button-caption {
+                color: #666;
+                font-size: small;
+                margin-top: 5px;
+            }
+          </style>
+          <div class="center">
+            <table style="background-color: #ffffff;width: 83%;table-layout:fixed;border: 2px solid black;border-collapse: collapse;overflow: hidden">
+              <tbody>
+                <tr>
+                  <td rowspan="4" style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;text-align:center">
+                    <b> Download the report</b>
+                    <br />
+                    <b>(free download)</b>
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                      <button class="download-button" role="button" onclick="location.href = 'http://storage.videoprocessing.ai/benchmarks/sr-codecs/Super-Resolution_for_Video_Compression_benchmark.pdf'">
+                        <i class="fa fa-download"></i>
+                        Download Full Text
+                      </button>
+                      <p class="download-button-caption">(PDF,&nbsp;25,5&nbsp;MB)</p>
+                    </div>
+                    <br />
+                    <br />
+                    Released on October, 12
+                  </td>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">
+                    <b style="font-size:20px">75 SR+codec pairs</b><br />
+                    x264, x265, aomenc, VVenC, uavs3 codecs
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">
+                    <b style="font-size:20px">3 Full HD video sequences</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">
+                    <b style="font-size:20px">6 different objective metrics and subjective comparison</b><br />
+                    Y-PSNR, YUV-MS-SSIM, Y-VMAF, Y-VMAF NEG, LPIPS, ERQA
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 2px solid black;border-collapse: collapse;padding: 10px;word-wrap:break-word;">
+                    <b style="font-size:20px">80+ pages with plots</b>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <script>
+              $(document).ready(function () {
+                              $('#roadmap_table').DataTable({
+                                  lengthChange: false,
+                                  paging: false,
+                                  searching: false,
+                                  ordering: false,
+                              });
+                          });
+            </script>
+          </div>
+          <p><strong>Videos used in the report:</strong><br />
+          </p>
+          <ul>
+            <li><a href="https://vimeo.com/239189580">The Alberta Retired Teachers’ Association</a> by SAVIAN<br />
+            </li>
+            <li><a href="https://vimeo.com/207867490">First Day</a> by Outside Adventure Media<br />
+            </li>
+          </ul>
+          <p><strong>Acknowledgements:</strong><br />
+          </p>
+          <ul>
+            <li>Subjective comparison was supported by <a href="https://toloka.ai/academy/grants#aaaa-3">Toloka Research Grants Program</a>.<br />
+            </li>
+          </ul>
+          <!--See more information on the <a href="/benchmarks/helloworld.html#participate">GitHub page</a>-->
+          <h2 id="contact-us"><span id="contacts"></span> Contact Us</h2>
+          <p>For questions and propositions, please contact us: <a href="mailto:sr-codecs-benchmark@videoprocessing.ai">sr-codecs-benchmark@videoprocessing.ai</a></p>
+          <p>You can subscribe to updates on our benchmark:</p>
+          <style>
+            input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
+                font-size: 0.75em;
+                color: #999;
+                top: -5px;
+                -webkit-transition: all 0.225s ease;
+                transition: all 0.225s ease;
+            }
+            
+            
+            .styled-input {
+                float: left;
+                width: 293px;
+                margin: 1rem 0;
+                position: relative;
+                border-radius: 4px;
+            }
+            
+            /*
+            @media only screen and (max-width: 768px){
+                .styled-input {
+                    width:100%;
+                }
+            }
+            */
+            
+            .styled-input label {
+                color: black;
+                padding: 1.3rem 30px 1rem 30px;
+                position: absolute;
+                top: 10px;
+                left: 0;
+                -webkit-transition: all 0.25s ease;
+                transition: all 0.25s ease;
+                pointer-events: none;
+            }
+            
+            
+            .styled-input.wide {
+                width: 500px;
+                max-width: 100%;
+            }
+            
+            input,
+            textarea {
+                padding: 30px;
+                border: 0;
+                font-size: 1rem;
+                background-color: #F0F0F0;
+                color: black;
+                border-radius: 4px;
+            }
+            
+            input:focus,
+            textarea:focus { outline: 0; }
+            
+            input:focus ~ span,
+            textarea:focus ~ span {
+                width: 100%;
+                -webkit-transition: all 0.075s ease;
+                transition: all 0.075s ease;
+            }
+            
+            textarea {
+                width: 100%;
+                min-height: 15em;
+            }
+            
+            .input-container {
+                width: 650px;
+                max-width: 100%;
+            }
+            
+            .submit-btn {
+                float: center;
+                padding: 7px 35px;
+                border-radius: 4px;
+                display: inline-block;
+                background-color: #496E93;
+                color: white;
+                font-size: 18px;
+                cursor: pointer;
+                box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
+                0 2px 10px 0 rgba(0,0,0,0.07);
+                -webkit-transition: all 300ms ease;
+                transition: all 300ms ease;
+                width:150px;
+            }
+            
+            .wrapper {text-align: center;}
+            
+            .submit-btn:hover {
+                transform: translateY(1px);
+                box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
+                0 1px 1px 0 rgba(0,0,0,0.09);
+            }
+            
+            @media (max-width: 768px) {
+                .submit-btn {
+                    width:100%;
+                    float: none;
+                    text-align:center;
+                }
+            }
+            
+            .cont2{
+                width:70%;
+                display:inline-block;
+            }
+            
+            .f_form{
+                background-color: #9EB6CE;
+                border-radius:15px;
+            }
+          </style>
+          <div class="cont2">
+            <div class=".f_form">
+              <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfFkGya5alyaGEBDXuuDjhtTJcZRcY4HhIdFFJ0s8mGb_7NmA/formResponse">
+                <div class="input-container">
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" type="text" name="entry.1309389104" required="" />
+                      <label>E-mail</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" name="entry.1620786694" type="text" required="" />
+                      <label>Name</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" type="text" name="entry.53270573" required="" />
+                      <label>Company name (developer)</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" type="text" name="entry.757844861" required="" />
+                      <label>How did you hear about us</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="styled-input wide">
+                      <input style="width:100%" type="text" name="entry.2026551973" required="" />
+                      <label>Questions and suggestions</label>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="styled-input wide">
+                    <input style="width:50%" type="submit" value="Send" class="submit-btn" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Super-Resolution for Video Compression Benchmark 2022&amp;url=
+http://localhost:4000/benchmarks/super-resolution-for-video-compression.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Super-Resolution for Video Compression Benchmark 2022&amp;url=
+http://localhost:4000/benchmarks/super-resolution-for-video-compression.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/benchmarks/super-resolution-for-video-compression.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Super-Resolution for Video Compression Benchmark 2022&amp;body=
+http://localhost:4000/benchmarks/super-resolution-for-video-compression.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/benchmarks/super-resolution-for-video-compression.html
+&amp;title=MSU Super-Resolution for Video Compression Benchmark 2022&amp;summary=MSU Super-Resolution for Video Compression Benchmark 2022&amp;source=
+http://localhost:4000/benchmarks/super-resolution-for-video-compression.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">14 Mar 2022</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/vfi/main.webp)"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

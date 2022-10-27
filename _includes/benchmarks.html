@@ -1,0 +1,8 @@
+{% assign benchmarks = site.posts | where:"project", "benchmarks" %}
+{% for benchmark in benchmarks %}
+{% if benchmark.tag != "invisible" %}
+<li><a href="{{ benchmark.url }}">{{ benchmark.title }}</a></li>
+{% endif %}
+{% endfor %}
+<li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+<li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>

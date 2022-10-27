@@ -1,0 +1,96 @@
+<p class="no_toc"><a name="stssim" id="stssim"></a></p>
+<h2 id="st-ssim-spatio-temporal-ssim-index">ST-SSIM (Spatio-Temporal SSIM Index)</h2>
+<h4 class="no_toc" id="general-info">General info</h4>
+<dl class="properties">
+  <dt>Metric type</dt>
+  <dd>
+    <p><span class="hover-help">full-reference<span class="help-content stdhelp-full-reference">
+        </span></span> <span class="hover-help">temporal<span class="help-content stdhelp-temporal-metric">
+        </span></span> metric</p>
+  </dd>
+  <dt>MSU VQMT implementations</dt>
+  <dd>
+    <p>this metric was temporary excluded from VQMT due to unstability of results</p>
+  </dd>
+  <dt>External links</dt>
+  <dd>
+    <p><a href="http://compression-debug.gml-team.ru/video/quality_measure/stssim.pdf" _target="_blank">original paper (A. K. Moorthy and A. C. Bovik)</a></p>
+  </dd>
+</dl>
+<h4 class="no_toc" id="algorithm-description">Algorithm description</h4>
+<p>The idea of this algorithm is to use motion-oriented weighted windows for SSIM Index. MSU Motion Estimation algorithm is used to retrieve this information. Based on the ME results, weighting window is constructed for every pixel. This window can use up to 33 consecutive frames (16 + current frame + 16). Then SSIM Index is calculated for every window to take into account temporal distortions as well. In addition, another spooling technique is used in this implementation. We use only lower 6% of metric values for the frame to calculate frame metric value. This causes larger metric values difference for difference files.</p>
+<h4 class="no_toc" id="benchmark">Benchmark</h4>
+<div class="benchmark-choose">
+  Choose benchmark:
+  <select class="benchmark-choose" metric="stssim">
+    <option value="result_linux_14">VQMT 14.0 on 64 cores, GPU: NVIDIA CUDA/TITAN RTX</option>
+    <option value="output_vqmt13">VQMT 13.1 on 8 cores, GPU: NVIDIA CUDA/GeForce GTX 660 Ti</option>
+    <option value="output_vqmt14" selected="">VQMT 14.0 on 8 cores, GPU: NVIDIA CUDA/GeForce GTX 660 Ti</option>
+  </select>
+</div>
+<div benchmark_name="result_linux_14" class="benchmark-table" formetric="stssim">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 14.0 BETA r12792 PRO for Linux.<br />
+    CPU:  Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz, 64 cores<br />
+    GPU: NVIDIA CUDA/TITAN RTX<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<div benchmark_name="output_vqmt13" class="benchmark-table" formetric="stssim">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 13.1 r12792 PRO for Windows.<br />
+    CPU: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz, 8 cores<br />
+    GPU: NVIDIA CUDA/GeForce GTX 660 Ti<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<div benchmark_name="output_vqmt14" class="benchmark-table selected" formetric="stssim">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 14.0 BETA r12792 PRO for Windows.<br />
+    CPU: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz, 8 cores<br />
+    GPU: NVIDIA CUDA/GeForce GTX 660 Ti<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<h4 class="no_toc" id="legacy-notes">Legacy notes</h4>
+<p>This metric was temporary removed in VQMT 10.</p>
+<p><a href="#top" class="toplink"></a></p>

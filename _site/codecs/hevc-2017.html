@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)</title>
+    <meta property="og:title" content="HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)">
+    <meta property="og:image" content="http://localhost:4000/assets/img/codecs/hevc-2017/preview.png">
+    <meta name="description" content="12th MSU video codecs comparison">
+    <meta property="og:description" content="12th MSU video codecs comparison">
+    <meta property="og:url" content="
+http://localhost:4000/codecs/hevc-2017.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/codecs/">Codecs Comparisons & Optimization</a>
+        &mdash;
+        <a href="/codecs/reports/">All Codecs Comparison Reports</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <h1 id="hevc-video-codecs-comparison-2017-twelfth-msu-video-codecs-comparison">HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codecs Comparison)</h1>
+        <ul>
+          <li>UPDATE 22/01/2018
+            <ul>
+              <li>High-quality encoders (inc. VP9, AV1) comparison is released</li>
+            </ul>
+          </li>
+          <li>UPDATE 11/01/2018
+            <ul>
+              <li>High-speed encoders comparison is released</li>
+            </ul>
+          </li>
+          <li>UPDATE 01/12/2017
+            <ul>
+              <li>4K video encoders comparison is released</li>
+              <li>Subjective video encoders comparison is released</li>
+            </ul>
+          </li>
+          <li>Video group head: Dr. Dmitriy Vatolin</li>
+          <li>Project head: Dr. Dmitriy Kulikov</li>
+          <li>Measurements, analysis: Dr. Mikhail Erofeev, Stanislav Dolganov, Sergey Zvezdakov</li>
+        </ul>
+        <p><span id="version_comparison"></span></p>
+        <div class="center" style="text-align: center">
+          <table border="" cellspacing="1" cellpadding="7" bordercolor="#CCCCCC">
+            <colgroup>
+              <col style="width: 20%" />
+              <col style="width: 20%" />
+              <col style="width: 20%" />
+              <col style="width: 20%" />
+              <col style="width: 20%" />
+            </colgroup>
+            <tr>
+              <th>
+                <p></p>
+              </th>
+              <th>Part 1: FullHD content, objective comparison. <br />
+                Free Version</th>
+              <th>Part 2: 4K content, <br />
+                objective comparison. <br />
+                Free Version</th>
+              <th>Part 3: FullHD content, subjective comparison. <br />
+                Free Version</th>
+              <th>Part 4: High-speed encoders (GPU and software), objective comparison. <br />
+                Free Version</th>
+              <th>Part 5: High-quality encoders (inc. VP9, AV1), objective comparison. <br />
+                Free Version</th>
+              <th>Pro Version (Enterprise). <br />
+                Part1, Part2, Part3, Part4 and Part5</th>
+            </tr>
+            <tr>
+              <td align="left" bgcolor="#F0F0F0">Objective Metrics and color-planes</td>
+              <td colspan="2">Only integral YUV-SSIM</td>
+              <td align="center"><img src="/assets/img/codecs/hevc-2017/minus.gif" width="42" border="0" alt="None" /></td>
+              <td colspan="2">Only integral YUV-SSIM</td>
+              <td colspan="2"><strong>SSIM and PSNR, 3 color planes (Y,U,V) and intgegral YUV</strong></td>
+            </tr>
+            <tr>
+              <td align="left" bgcolor="#F0F0F0">Subjective comparison</td>
+              <td colspan="2" align="center"><img src="/assets/img/codecs/hevc-2017/minus.gif" width="42" height="45" border="0" alt="None" /></td>
+              <td align="center"><img src="/assets/img/codecs/hevc-2017/plus.gif" width="42" height="45" alt="YES" /></td>
+              <td colspan="2" align="center"><img src="/assets/img/codecs/hevc-2017/minus.gif" width="42" height="45" alt="YES" /></td>
+              <td align="center"><img src="/assets/img/codecs/hevc-2017/plus.gif" width="42" height="45" alt="YES" /></td>
+            </tr>
+            <tr>
+              <td align="left" bgcolor="#F0F0F0">Different types of analysis<br />
+              </td>
+              <td colspan="2">Encoding quality, encoding speed, bitrate handling, speed/quality analysis etc. (some graphs)</td>
+              <td>Encoding quality and speed/quality analysis for subjective comparison</td>
+              <td colspan="2">Encoding quality, encoding speed, bitrate handling, speed/quality analysis etc. (some graphs)</td>
+              <td><strong>Encoding quality, encoding speed, bitrate handling, speed/quality analysis, subjective comparison etc.</strong></td>
+            </tr>
+            <tr>
+              <td align="left" bgcolor="#F0F0F0">Graphs</td>
+              <td colspan="5" align="center">Some graphs</td>
+              <td><strong>All the graphs for all the sequences, codecs and presets</strong></td>
+            </tr>
+            <tr>
+              <td align="left" bgcolor="#F0F0F0">Test video sequences</td>
+              <td>31 HD video (only description)</td>
+              <td>10 4K video (only description)</td>
+              <td>4 video (only description)</td>
+              <td colspan="2">31 HD video (only description)</td>
+              <td><strong>31 HD video + 10 4K video (available for download)</strong></td>
+            </tr>
+            <tr>
+              <td align="left" bgcolor="#F0F0F0">Tested uses-cases</td>
+              <td>3 different use cases:<br />
+                Fast Transcoding, Universal and Ripping (some graphs)</td>
+              <td>1 use case:<br />
+                4K preset(some graphs)</td>
+              <td>1 use case:<br />
+                Ripping</td>
+              <td>1 use case:<br />
+                Fast Transcoding</td>
+              <td>1 use case:<br />
+                Ripping</td>
+              <td><strong>4 different use cases:<br />
+                  Fast Transcoding, Universal, Ripping and 4K</strong></td>
+            </tr>
+            <tr>
+              <td align="left" bgcolor="#F0F0F0">Number of figures</td>
+              <td colspan="2" align="center"><strong>33</strong></td>
+              <td colspan="3" align="center"><strong>37</strong></td>
+              <td align="center"><strong>5000+</strong></td>
+            </tr>
+            <tr bgcolor="#CCFFCC" id="prices">
+              <td align="left"><strong>Price</strong></td>
+              <td colspan="5" align="center">Free</td>
+              <td align="center"><strong>$950</strong></td>
+            </tr>
+            <tr>
+              <td align="left" bgcolor="#F0F0F0" rowspan="2" colspan="1">Purchase</td>
+              <td><a href="http://compression.ru/video/codec_comparison/hevc_2017/MSU_HEVC_comparison_2017_free.pdf" target="_blank"><img src="/assets/img/codecs/hevc-2017/download.gif" border="0" alt="Download" /></a></td>
+              <td><a href="http://compression.ru/video/codec_comparison/hevc_2017/MSU_HEVC_comparison_2017_P2_4K_free.pdf" target="_blank"><img src="/assets/img/codecs/hevc-2017/download.gif" border="0" alt="Download" /></a></td>
+              <td><a href="http://compression.ru/video/codec_comparison/hevc_2017/MSU_HEVC_comparison_2017_P3_subjective.pdf" target="_blank"><img src="/assets/img/codecs/hevc-2017/download.gif" border="0" alt="Download" /></a></td>
+              <td><a href="http://compression.ru/video/codec_comparison/hevc_2017/MSU_HEVC_comparison_2017_P4_HS_encoders.pdf" target="_blank"><img src="/assets/img/codecs/hevc-2017/download.gif" border="0" alt="Download" /></a></td>
+              <td><a href="http://compression.ru/video/codec_comparison/hevc_2017/MSU_HEVC_comparison_2017_P5_HQ_encoders.pdf" target="_blank"><img src="/assets/img/codecs/hevc-2017/download.gif" border="0" alt="Download" /></a></td>
+              <td><a href="https://shopper.mycommerce.com/checkout/cart/add/16995-31" target="_blank"><img src="/assets/img/codecs/hevc-2017/buy.gif" border="0" alt="Buy" /></a></td>
+            </tr>
+            <tr>
+              <td colspan="5"></td>
+              <td> Hint: You can remove "Extended download" service while purchasing to save money.</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="7">We can help you to <a href="#private_participation">analyze your codec</a></td>
+            </tr>
+          </table>
+        </div>
+        <center>
+          Pro version of comparison will be available immediately after report
+          purchasing.
+        </center>
+        <p><span id="Video_Codecs"></span></p>
+        <h2 id="video-codecs-that-were-tested">Video Codecs that Were Tested</h2>
+        <div class="center" style="text-align: center;">
+          <table cellpadding="10" border="1" style="border-collapse:collapse;">
+            <tr>
+              <td>
+              </td>
+              <td>
+                <b>Codec name</b>
+              </td>
+              <td>
+                <b>Use cases</b>
+              </td>
+              <td>
+                <b>HEVC</b>
+              </td>
+              <td>
+                <b>Hardware/GA</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                1
+              </td>
+              <td>
+                <b>AV1</b>
+                <br />
+                Alliance for Open Media
+              </td>
+              <td>
+                Ripping (in Part 5: High-quality encoders)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" /><br />
+                (AV1)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                2
+              </td>
+              <td>
+                <b>Kingsoft HEVC Encoder</b>
+                <br />
+                Kingsoft
+              </td>
+              <td>
+                Fast, Universal, Ripping
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/plus.gif" width="22" height="25" alt="Yes" />
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                3
+              </td>
+              <td>
+                <b>nj264</b>
+                <br />
+                Nanjing Yunyan
+              </td>
+              <td>
+                Fast, Universal, Ripping
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" /><br />
+                (H.264)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                4
+              </td>
+              <td>
+                <b>nj265</b>
+                <br />
+                Nanjing Yunyan
+              </td>
+              <td>
+                Fast, Universal, Ripping
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/plus.gif" width="22" height="25" alt="Yes" />
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                5
+              </td>
+              <td>
+                <b>NVIDIA NVENC SDK</b>
+                <br />
+                NVIDIA Corporation
+              </td>
+              <td>
+                Fast (in Part 4: High-speed encoders)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/plus.gif" width="22" height="25" alt="Yes" />
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/plus.gif" width="22" height="25" alt="Yes" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                6
+              </td>
+              <td>
+                <b>SIF encoder</b>
+                <br />
+                SIF Encoder Team
+              </td>
+              <td>
+                Universal, Ripping
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" /><br />
+                (SIF)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                7
+              </td>
+              <td>
+                <b>Telecast</b>
+                <br />
+                Telecast Technology Corporation
+              </td>
+              <td>
+                Fast (in Part 4: High-speed encoders)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/plus.gif" width="22" height="25" alt="Yes" />
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/plus.gif" width="22" height="25" alt="Yes" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                8
+              </td>
+              <td>
+                <b>uAVS2</b>
+                <br />
+                Digital Media R&amp;D Center, Peking University, Shenzhen Graduate School
+              </td>
+              <td>
+                Fast, Universal, Ripping
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" /><br />
+                (AVS2)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                9
+              </td>
+              <td>
+                <b>VP9</b>
+                <br />
+                The WebM Project (Google)
+              </td>
+              <td>
+                Ripping (in Part 5: High-quality encoders)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" /><br />
+                (VP9)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                10
+              </td>
+              <td>
+                <b>x264</b>
+                <br />
+                x264 Developer Team
+              </td>
+              <td>
+                Fast, Universal, Ripping
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" /><br />
+                (H.264)
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                11
+              </td>
+              <td>
+                <b>x265</b>
+                <br />
+                MulticoreWare, Inc.
+              </td>
+              <td>
+                Fast, Universal, Ripping
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/plus.gif" width="22" height="25" alt="Yes" />
+              </td>
+              <td>
+                <embed src="/assets/img/codecs/hevc-2017/minus_blue.png" width="17" border="0" alt="No" />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <p><span id="Overview"></span></p>
+        <h2 id="overview">Overview</h2>
+        <p><span id="Objectives_and_Testing_Rules"></span></p>
+        <h3 id="objectives-and-testing-tools">Objectives and Testing Tools</h3>
+        <h4 id="hevc-codec-testing-objectives">HEVC Codec Testing Objectives</h4>
+        <p>The main goal of this report is the presentation of a comparative
+          evaluation of the quality of new HEVC codecs and codecs of other
+          standards using objective measures of assessment. The comparison was
+          done using settings provided by the developers of each codec.
+          Nevertheless, we required all presets to satisfy minimum speed
+          requirement on the particular use case. The main task of the comparison
+          is to analyze different encoders for the task of transcoding
+          video — e.g., compressing video for personal use.</p>
+        <h4 id="hevc-codec-testing-rules">HEVC Codec Testing Rules</h4>
+        <p>The comparison was performed on Corei7 6700K (Skylake) @4Ghz, RAM 8GB,
+          Windows8.1. For this platform we considered three key use cases with
+          different speed requirements.</p>
+        <ul>
+          <li>Fast/High Density — 1080@60fps</li>
+          <li>Universal/Broadcast VQ — 1080p@25fps</li>
+          <li>Ripping/Pristine VQ — 1080p@1fps and SSIM-RD curve better than
+            x264-veryslow</li>
+        </ul>
+        <h4 id="video-sequences-selection">Video sequences selection</h4>
+        <p>In “MSU Video Codecs Comparison 2016” we introduced a new technique
+          for test dataset sequences’ selection. This technique was designed to
+          create dataset containing representative set of sequences that encoders
+          are facing in everyday life. In this report we use the same methodology
+          for video sequences selection, but we have dramatically updated video
+          database from which we sample videos for encoders’ comparison. We
+          analyzed over 512,000 videos hosted at Vimeo looking for 4K and FullHD
+          videos with high bitrates (50 Mbps was selected as a lower bitrate
+          boundary). This enabled us to find and download, 662 new 4K videos and
+          1993 new FullHD videos.</p>
+        <p><img src="/assets/img/codecs/hevc-2017/videos.png" alt="Video sequecnes selection" style="width:100.0%" /></p>
+        <p><span id="Overall_Conclusions"></span></p>
+        <h2 id="overall-conclusions">Overall Conclusions</h2>
+        <p>Overall, the leaders in this comparison are Kingsoft HEVC encoder and
+          x265! Here are some graphs from report:</p>
+        <p><img src="/assets/img/codecs/hevc-2017/graph1.png" alt="Speed/Quality trade-off for Fast use-case (YUV-SSIM metric)" style="width:100.0%" /></p>
+        <p><img src="/assets/img/codecs/hevc-2017/graph2.png" alt="Average bitrate for Universal use-case (YUV-SSIM metric)" style="width:100.0%" /></p>
+        <p><img src="/assets/img/codecs/hevc-2017/graph3.png" alt="Average bitrate for all use-cases (YUV-SSIM metric)" style="width:100.0%" /></p>
+        <h2 id="professional-versions-of-comparison-report">Professional Versions of Comparison Report</h2>
+        <p><a href="/codecs/hevc-2017.html#version_comparison">HEVC Comparison Report Pro 2017
+            version</a>
+          contains:</p>
+        <ul>
+          <li>Additional objective metrics (PSNR, SSIM)</li>
+          <li>All metrics results for all colorplanes (Y,U,V and overall)</li>
+          <li>Results for all the sequences, codecs and presets used in comparison</li>
+          <li>Much more figures</li>
+          <li>etc.</li>
+        </ul>
+        <h2 id="acknowledgments">Acknowledgments</h2>
+        <p>The Graphics &amp; Media Lab Video Group would like to express its gratitude
+          to the following companies for providing the codecs and settings used in
+          this report:</p>
+        <ul>
+          <li>SIF developer team</li>
+          <li>AVS2 developer team</li>
+          <li>Nanjing Yunyan</li>
+          <li>Kingsoft</li>
+        </ul>
+        <p>The Video Group would also like to thank these companies for their help
+          and technical support during the tests.</p>
+        <h2 id="thanks">Thanks</h2>
+        <p>Special thanks to the following contributors of our previous comparisons</p>
+        <table class="center" style="text-align: center">
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/hevc-2017/google_logo.png" alt="Google" /></td>
+              <td><img src="/assets/img/codecs/hevc-2017/intel_logo.png" alt="Intel" /></td>
+              <td><a href="http://www.amd.com"><img src="/assets/img/codecs/hevc-2017/amd_logo.png" alt="AMD" /></a></td>
+              <td><img src="/assets/img/codecs/hevc-2017/nvidia_logo.png" alt="NVidia" /></td>
+            </tr>
+            <tr class="even">
+              <td><img src="/assets/img/codecs/hevc-2017/ati_logo.png" alt="ATI" /></td>
+              <td><a href="http://www.adobe.com"><img src="/assets/img/codecs/hevc-2017/adobe_logo.png" alt="Adobe" /></a></td>
+              <td><img src="/assets/img/codecs/hevc-2017/isphone_logo.png" alt="ISPhone" /></td>
+              <td><img src="/assets/img/codecs/hevc-2017/dicas_logo.png" alt="dicas" /></td>
+            </tr>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/hevc-2017/kddi_logo.png" alt="KDDI R&amp;D labs" /></td>
+              <td><img src="/assets/img/codecs/hevc-2017/dolby_logo.png" alt="Dolby" /></td>
+              <td><img src="/assets/img/codecs/hevc-2017/tata_logo.png" alt="Tata Elxsi " /></td>
+              <td><img src="/assets/img/codecs/hevc-2017/octasic_logo.png" alt="Octasic" /></td>
+            </tr>
+            <tr class="even">
+              <td><a href="http://www.qualcomm.com"><img src="/assets/img/codecs/hevc-2017/qualcomm_logo.png" alt="Qualcomm" /></a></td>
+              <td><img src="/assets/img/codecs/hevc-2017/voceweb_logo.png" alt="Voceweb" /></td>
+              <td><img src="/assets/img/codecs/hevc-2017/elgato_logo.png" alt="Elgato" /></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <p><span id="private_participation"></span></p>
+        <h2 id="codec-analysis-and-tuning-for-codec-developers-and-codec-users">Codec Analysis and Tuning for Codec Developers and Codec Users</h2>
+        <p>Computer Graphics and Multimedia Laboratory of Moscow State University:</p>
+        <ul>
+          <li>12 years working in the area of video codec analysis and tuning using
+            objective quality metrics and subjective comparisons.</li>
+          <li>27+ reports of video codec comparisons and analysis (H.264, MPEG-4
+            MPEG-2, decoders’ error recovery).</li>
+          <li>Methods and algorithms for codec comparison and analysis development,
+            separate codec’s features and codec’s options analysis.</li>
+        </ul>
+        <p>We could perform next task for codec developers and codec users.</p>
+        <h3 id="strong-and-weak-points-of-your-codec">Strong and Weak Points of Your Codec</h3>
+        <ul>
+          <li>Deep encoder parts analysis (ME, RC on GOP, mode decision, etc).</li>
+          <li>Weak and strong points for your encoder and complete information about
+            encoding quality on different content types.</li>
+          <li>Encoding Quality improvement by the pre and post filtering (including
+            technologies licensing).</li>
+        </ul>
+        <h3 id="independent-codec-estimation-comparing-to-other-codecs-for-different-use-cases">Independent Codec Estimation Comparing to Other Codecs for Different Use-cases</h3>
+        <ul>
+          <li>Comparative analysis of your encoder and other encoders.</li>
+          <li>We have direct contact with many codec developers.</li>
+          <li>You will know place of your encoder between other newest well-known
+            encoders (compare encoding quality, speed, bitrate handling, etc.).</li>
+        </ul>
+        <h3 id="encoder-features-implementation-optimality-analysis">Encoder Features Implementation Optimality Analysis</h3>
+        <p>We perform encoder features effectiveness (speed/quality trade-off)
+          analysis that could lead up to 30% increase in the speed/quality
+          characteristics of your codec. We can help you to tune your codec and
+          find best encoding parameters.</p>
+        <h2 id="contacts">Contacts</h2>
+        <p>E-mail: <a href="mailto:videocodec-testing@graphics.cs.msu.ru">videocodec-testing@graphics.cs.msu.ru</a></p>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)&amp;url=
+http://localhost:4000/codecs/hevc-2017.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)&amp;url=
+http://localhost:4000/codecs/hevc-2017.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/codecs/hevc-2017.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)&amp;body=
+http://localhost:4000/codecs/hevc-2017.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/codecs/hevc-2017.html
+&amp;title=HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)&amp;summary=HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)&amp;source=
+http://localhost:4000/codecs/hevc-2017.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">05 Oct 2018</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-19.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-19/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2019</div>
+          <div class="text">Fourteen modern video codec comparison</div>
+        </a>
+        <a class="tile" href="/codecs/hevc-2018.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/hevc-2018/preview.png)"></div>
+          <div class="title">HEVC Video Codecs Comparison 2018 (Thirteen MSU Video Codec Comparison)</div>
+          <div class="text">13th MSU video codecs comparison</div>
+        </a>
+        <a class="tile" href="/codecs/comparisons.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/comparisons/preview.png)"></div>
+          <div class="title">MSU Video Codec Comparisons (6 test of lossless, MPEG-4 and MPEG-4 AVC)</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-18.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-18/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2018</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/codecs/optimization.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/optimization/preview.jpg)"></div>
+          <div class="title">Effective Video Transcoding</div>
+          <div class="text"></div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 20px;
+
+    > li::before {
+        content: "•";
+        color: $accent-color;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+}
+
+li {
+    margin-top: 4px;
+    margin-bottom: 4px;
+
+    p {
+        display: inline;
+        margin: 0;
+        padding: 0;
+    }
+}

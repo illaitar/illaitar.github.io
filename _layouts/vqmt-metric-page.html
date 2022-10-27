@@ -1,0 +1,27 @@
+---
+layout: vqmt
+add_css:
+- /assets/css/post.css
+- /assets/css/vqmt/metric_page.css
+add_js:
+- /assets/js/vqmt/metric_page.js
+---
+{{ content }}
+
+<div class="tiles-width meta">
+    <div class="share">
+        {% include sharingbuttons.html %}
+    </div>
+    <span class="date">{{ page.date | date_to_string }}</span>
+</div>
+<div class="tiles-width separator"></div>
+<div class="tiles-width see-also-title">
+    See Also
+</div>
+<div class="tiles wide">
+    {% include see_also.html %}
+</div>
+<div class="tiles-width separator"></div>
+<div class="tiles-width markdown site-structure">
+    {% include hierarchy.html %}
+</div>

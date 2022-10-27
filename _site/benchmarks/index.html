@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Benchmark Collection</title>
+    <meta property="og:title" content="MSU Benchmark Collection">
+    <meta property="og:image" content="http://localhost:4000/assets/img/logo.svg">
+    <meta property="og:url" content="
+http://localhost:4000/benchmarks/
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/benchmarks/">MSU Benchmark Collection</a>
+      </div>
+      <div class="tiles-width markdown">
+        <h1>MSU Benchmark Collection</h1>
+        <hr class="btnsep">
+      </div>
+      <div class="tiles-width nav-current">
+      </div>
+      <div class="tiles-width markdown">
+        <h1> News </h1>
+        <style>
+          .date{
+            background:#496E93;
+            color:white;
+            display:inline-block;
+            padding:10px;
+            border-radius:7px;
+            margin-right:5px;
+            margin-bottom:10px;
+            }
+            .single{
+            color:white;
+            background:#496E93;
+            display:inline-block;
+            padding:10px;
+            border-radius:7px;
+            position: relative;
+            z-index: 100;
+            cursor:pointer;
+            }
+        </style>
+        <ul>
+          <li><b>25.10.2022 </b> <a href="/benchmarks/deblurring.html">[MSU Deblurring Benchmark]</a> Beta-version Release</li>
+          <li><b>09.10.2022 </b> <a href="/benchmarks/full-reference-video-quality-metrics.html">[MSU Full-Reference Video Quality Metric Benchmark]</a> Added new algorithms and Cite Us section</li>
+          <li><b>09.10.2022 </b> <a href="/benchmarks/no-reference-video-quality-metrics.html">[MSU No-Reference Video Quality Metric Benchmark]</a> Added new algorithms and Cite Us section</li>
+          <li><b>28.08.2022 </b> <a href="/benchmarks/video-upscalers.html">[MSU Video Upscalers Benchmark 2022: Quality Enhancement]</a> Release of the benchmark</li>
+          <li><b>08.06.2022 </b><a href="/benchmarks/inverse-tone-mapping.html">[MSU HDR Video Reconstruction Benchmark 2022]</a> Alpha-version Release</li>
+          <li><b>06.04.2022 </b><a href="/benchmarks/video-super-resolution.html">[MSU Video Super Resolution Benchmark: Detail Restoration]</a> Added 8 new algorithms and LPIPS metric</li>
+          <li><b>16.03.2022 </b><a href="/benchmarks/video-super-resolution.html">[MSU Video Super Resolution Benchmark: Detail Restoration]</a> Preprint of our paper <a href="https://arxiv.org/abs/2203.08923">"Towards True Detail Restoration for Super-Resolution: A Benchmark and a Quality Metric"</a> was released on arXiv</li>
+          <li><b>15.11.2021 </b><a href="/benchmarks/video-super-resolution.html">[MSU Video Super Resolution Benchmark: Detail Restoration]</a> Our paper <a href="https://arxiv.org/abs/2110.09992">"ERQA: Edge-restoration Quality Assessment for Video Super-Resolution"</a> was accepted to  VISAPP 2022</li>
+          <li><b>09.11.2021 </b> <a href="/benchmarks/video-upscalers.html">[MSU Video Upscalers Benchmark 2022: Quality Enhancement]</a> Alpha-version Release</li>
+          <li><b>26.10.2021 </b>  <a href="/benchmarks/super-resolution-for-video-compression.html">[MSU Super-Resolution for Video Compression Benchmark 2021]</a> Updated the <a href="https://videoprocessing.ai/benchmarks/super-resolution-for-video-compression-methodology.html">Methodology</a></li>
+          <li><b>22.10.2021 </b> <a href="/benchmarks/aligners.html">[MSU Video Alignment and Retrieval Benchmark]</a> Public beta-version Release</li>
+          <li><b>12.10.2021 </b> <a href="/benchmarks/super-resolution-for-video-compression.html">[MSU Super-Resolution for Video Compression Benchmark 2021]</a> Published <a href="">October Report</a>. Added 2 new videos to the dataset. Updated <a href="">Charts</a> section and <a href="">Visualizations</a></li>
+          <li><b>06.10.2021 </b> <a href="/benchmarks/aligners.html">[MSU Video Alignment and Retrieval Benchmark]</a>   Alpha-version Release</li>
+          <li><b>01.10.2021 </b><a href="/benchmarks/mobile-video-codec-benchmark.html">[MSU Mobile Video Codecs Benchmark 2021]</a> Beta-version Release</li>
+          <li><b>14.09.2021 </b> <a href="/benchmarks/super-resolution-for-video-compression.html">[MSU Super-Resolution for Video Compression Benchmark 2021]</a> Public beta-version Release</li>
+          <li><b>31.08.2021 </b><a href="/benchmarks/super-resolution-for-video-compression.html">[MSU Super-Resolution for Video Compression Benchmark 2021]</a>  Alpha-version Release</li>
+          <li><b>26.04.2021 </b><a href="/benchmarks/video-super-resolution.html">[MSU Video Super Resolution Benchmark: Detail Restoration]</a>    Beta-version Release</li>
+          <li><b>05.05.2021 </b><a href="/benchmarks/shot-boundary-detection.html">[MSU Shot Boundary Detection Benchmark 2020]</a> Main Release</li>
+        </ul>
+        <p><a name="b_list"></a></p>
+        <h1>Released benchmarks list</h1>
+        <ol>
+          <li><a href="#frm">MSU Full-Reference Video Quality Metric Benchmark</a></li>
+          <li><a href="#nrm">MSU No-Reference Video Quality Metric Benchmark</a></li>
+          <li><a href="#upscalers">MSU Video Upscalers Benchmark 2022: Quality Enhancement</a></li>
+          <li><a href="#itm">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="#alignment">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="#srcomp">MSU Super-Resolution for Video Compression Benchmark 2021</a></li>
+          <li><a href="#mobile">MSU Mobile Video Codecs Benchmark</a></li>
+          <li><a href="#srvideo">MSU Video Super Resolution Benchmark: Detail Restoration</a></li>
+          <li><a href="#sbd">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="#deblurring">MSU Deblurring Benchmark 2022</a></li>
+          <li><a href="#deinterlacer">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="#matting">The VideoMatting Project</a></li>
+          <li><a href="#completion">Video Completion</a></li>
+          <li>(soon) MSU Video Frame Interpolation Benchmark</li>
+          <li>(soon) MSU Super Precision Benchmark</li>
+        </ol>
+        <p><a name="s_res"></a></p>
+        <h1>Super-Resolution Benchmarks</h1>
+        <style>
+          .container{
+              box-shadow: 0 15px 30px 1px grey;
+              background: rgba(255, 255, 255, 0.90);
+              text-align: center;
+              border-radius: 5px;
+              overflow: hidden;
+              margin: 2.5em auto;
+              width: 100%;
+          }
+          
+          .product-details {
+              position: relative;
+              text-align: left;
+              overflow: hidden;
+              padding: 30px;
+              height: 100%;
+              float: left;
+              width: 40%;
+          }
+          .container .product-details h1{
+              display: inline-block;
+              position: relative;
+              font-size: 23px;
+              color: #344055;
+              margin: 0;
+          }
+          .container .product-details h1:before{
+              position: absolute;
+              content: '';
+              right: 0%;
+              top: 0%;
+              transform: translate(25px, -15px);
+              display: none;
+              background: #ffe6e6;
+              border-radius: 5px;
+              font-size: 105%;
+              padding: 5px;
+              color: white;
+              margin: 0;
+              animation: chan-sh 6s ease infinite;
+          }
+          .container .product-details > p {
+              text-align: left;
+              /*font-size: 2.5vw;*/
+               font-size: 105%;
+              color: black;
+          }
+          
+          .control{
+              position: absolute;
+              bottom: 20%;
+              left: 22.8%;
+          }
+          .btn {
+              transform: translateY(0px);
+              transition: 0.3s linear;
+              background:  #809fff;
+              border-radius: 5px;
+              position: relative;
+              overflow: hidden;
+              cursor: pointer;
+              outline: none;
+              border: none;
+              color: #eee;
+              padding: 0;
+              margin: 0;
+          }
+          .product-image {
+              transition: all 0.3s ease-out;
+              display: inline-block;
+              position: relative;
+              overflow: hidden;
+              float: right;
+              width: 45%;
+              height:100px;
+              display: inline-block;
+          }
+          .container img {width: 100%;height: 100%;}
+          .info {
+              background: rgba(27, 26, 26, 1);
+              position: absolute;
+              line-height: 1.8;
+              text-align: left;
+              font-size: 105%;
+              color: #FFF;
+              overflow: hidden;
+              width: 100%;
+              height:100%;
+              left: 0;
+              top: 0;
+          }
+          .info h2 {text-align: center}
+          .info ul li{transition: 0.3s ease;}
+          .info ul li:hover{transform: translateX(5px) scale(1.03);}
+          @media (max-width: 420px) {
+              .container .product-details > p {
+                  font-size: 4.5vw;
+              }
+              .product-details {
+                  padding: 0px 0px 20px 20px;
+              }
+              .product-image {
+                  width: 35%;
+              }
+              .container .product-details h1{
+                  margin-top: 10px;
+                  font-size: 4.5vw;
+              }
+              .info {
+                  font-size: 3.5vw;
+              }
+          }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <p><a name="upscalers"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/video-upscalers.html">
+              <h1>MSU Video Upscalers Benchmark 2022: Quality Enhancement</h1>
+            </a>
+            <br />
+            <p class="information">
+              Our benchmark determines the best upscaling methods for increasing video resolution
+              and improving visual quality using our compact yet comprehensive dataset and features
+              the most extensive comparison of video super-resolution (VSR) algorithms by subjective
+              quality. Everyone is welcome to participate! Run your favorite super-resolution method on our
+              compact test video and send us the result to see how well it performs.
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Over 3700 people
+                  have participated in the verified pairwise subjective comparison</li>
+                <li>30 test clips
+                  with both camera-shot
+                  and 2D-animated content</li>
+                <li>41 upscalers tested
+                  with both 4× and 2× scaling on video
+                  with complex distortion</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="srcomp"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/super-resolution-for-video-compression.html">
+              <h1>MSU Super-Resolution for Video Compression Benchmark 2021</h1>
+            </a>
+            <br />
+            <p class="information">
+              With the emergence of new video resolution standards, more efficient video encoding and decoding techniques are required. Our benchmark can help determine the best SR models to work with each of the different codec standards. This information will help make video coding with downsampling more effective.
+            </p>
+          </div>
+          <div class="product-image" id="content_all">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Subjective comparison with more than 1900 valid participants</li>
+                <li>Different objective metrics ranked by their correlation with the subjective assessment</li>
+                <li>75 SR+codec pairs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="srvideo"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/video-super-resolution.html">
+              <h1>MSU Video Super Resolution Benchmark: Detail Restoration</h1>
+            </a>
+            <br />
+            <p class="information">
+              Super-Resolution is the process of calculating high-resolution samples from their low-resolution counterparts. Working with images we can utilize natural preferences and make a high-resolution image, which is only in a way similar to the real one. Our benchmark is aimed to find the best algorithms for the restoration of real details with Video Super-Resolution.
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Subjective comparison with more than 1900 valid participants</li>
+                <li>ERQAv1.0 metric</li>
+                <li>32 Methods</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="other"></a></p>
+        <h1> Other benchmarks </h1>
+        <p><a name="frm"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/full-reference-video-quality-metrics.html">
+              <h1>MSU Full-Reference Video Quality Metrics Benchmark 2022</h1>
+            </a>
+            <br />
+            <p class="information">
+              Video-quality measurement is a critical task in video processing. We present a new benchmark for video-quality metrics that evaluates video compression. It is based on a new dataset consisting of 2500+ streams encoded using different standards, including AVC, HEVC, AV1, and VVC. The list of evaluated metrics includes recent ones based on machine learning and neural networks.
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Diverse dataset with 40+ codecs and 2500+ compressed streams</li>
+                <li>Subjective comparison with more then 10000 viewers and 780000+ subjective scores</li>
+                <li>20+ metrics with different variations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="nrm"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/No-reference-video-quality-metrics.html">
+              <h1>MSU No-Reference Video Quality Metrics Benchmark 2022</h1>
+            </a>
+            <br />
+            <p class="information">
+              Video-quality measurement is a critical task in video processing. We present a new benchmark for video-quality metrics that evaluates video compression. It is based on a new dataset consisting of 2500+ streams encoded using different standards, including AVC, HEVC, AV1, and VVC. The list of evaluated metrics includes recent ones based on machine learning and neural networks.
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Diverse dataset with 40+ codecs and 2500+ compressed streams</li>
+                <li>Subjective comparison with more then 10000 viewers and 780000+ subjective scores</li>
+                <li>20+ metrics with different variations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="itm"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/inverse-tone-mapping.html">
+              <h1>MSU HDR Video Reconstruction Benchmark 2022</h1>
+            </a>
+            <br />
+            <p class="information">
+              HDR restoration is the process of creating an HDR video from its SDR version by restoring brightness. Our benchmark evaluates the quality of HDR video recovery from SDR using various algorithms. This benchmark will help you find the method with the most natural restoration of HDR video.
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Comparison of 20 methods of HDR video reconstruction</li>
+                <li>A new private dataset for testing. 20 different scenes: fireworks, flowers, soccer and others</li>
+                <li>10 metrics for restoration quality assessment</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="mobile"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/mobile-video-codec-benchmark.html">
+              <h1>MSU Mobile Video Codecs Benchmark</h1>
+            </a>
+            <br />
+            <p class="information">
+              Measurement of the speed and power efficiency of different codecs on different mobile platforms allows for deeper understanding of their suitability for different devices, and allows manufacturers to fine-tune their codec integration
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Speed and power efficiency measurement</li>
+                <li>Video playback time increase by up to 22 hours</li>
+                <li>147 Android models, 6 compression standards.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="sbd"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/shot-boundary-detection.html">
+              <h1>MSU Shot Boundary Detection Benchmark 2020</h1>
+            </a>
+            <br />
+            <p class="information">
+              One of the basic steps in video processing is video scene splitting. For example, scene cutting is a necessary step in video annotation and indexing, keyframe searching, and automatic video format changing. Our benchmark is aimed at measuring the performance of video scene splitting algorithms
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Extensive and diverse datasets</li>
+                <li>Beautiful and easy-interpreting visualizations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="deinterlacer"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/deinterlacer.html">
+              <h1>MSU Deinterlacer Benchmark</h1>
+            </a>
+            <br />
+            <p class="information">
+              Deinterlacing is the process of converting interlaced video into a non-interlaced or progressive form. Interlaced video signals are commonly found in analog television, digital television, some DVD titles, and a smaller number of Blu-ray discs. Our benchmark is aimed at measuring the performance of video deinterlacing algorithms
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Сhoose deinterlacing method that is the best for your speed and quality requirements</li>
+                <li>Discover the newest deinterlacing methods’ achievements</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="aligners"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="/benchmarks/aligners.html">
+              <h1>MSU Video Alignment and Retrieval Benchmark</h1>
+            </a>
+            <br />
+            <p class="information">Often, broadcasted video sequences can have some freeze frames. Because of this, the process of comparing the initial sequence and the result one is very obstructed. Video alignment aims at finding point correspondences between two video sequences to overcome this problem. Our benchmark is aimed at measuring the performance of video alignment algorithms
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>4 Methods</li>
+                <li>3 tracks varying on distortions type</li>
+                <li>560 test pairs in each track with a total duration of ~2 million frames</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="matting"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="https://videomatting.com">
+              <h1>The Video­Mat­ting pro­ject</h1>
+            </a>
+            <br />
+            <p class="information">The Video­Mat­ting pro­ject is the first pub­lic ob­jec­tive bench­mark for video-mat­ting meth­ods. We be­lieve our work will help rank ex­ist­ing meth­ods and aid de­vel­op­ers of new meth­ods in im­prov­ing their re­sults.
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>Green screen dataset</li>
+                <li>Stop motion dataset</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p><a name="completion"></a></p>
+        <div class="container">
+          <div class="product-details">
+            <a href="https://videocompletion.org">
+              <h1>Video completion</h1>
+            </a>
+            <br />
+            <p class="information">The Video­Com­ple­tion pro­ject in­tro­duces the first bench­mark for video-com­ple­tion meth­ods. We pre­sent re­sults for dif­fer­ent meth­ods on a range of di­verse test se­quences which are avail­able for view­ing on a player equipped with a mov­able zoom re­gion. We be­lieve that our work can help rank ex­ist­ing meth­ods and as­sist de­vel­op­ers of new gen­eral-pur­pose video-com­ple­tion meth­ods.
+            </p>
+          </div>
+          <div class="product-image">
+            <div class="image"></div>
+            <div class="info">
+              <h2>Key features</h2>
+              <ul>
+                <li>7 video se­quences </li>
+                <li>Different objective metrics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <script>
+          window.addEventListener('load', (event) => {
+              var containers = document.querySelectorAll(".container");
+              for (var i= 0; i < containers.length ; i++) {
+                  ll = containers[i].clientHeight + "px";
+                  containers[i].childNodes[3].style.height = ll;
+              }
+          });
+          window.addEventListener('resize', (event) => {
+              var containers = document.querySelectorAll(".container");
+              for (var i= 0; i < containers.length ; i++) {
+                  ll = containers[i].clientHeight + "px";
+                  containers[i].childNodes[3].style.height = ll;
+              }
+          });
+        </script>
+        <p><a name="planned"></a></p>
+        <h1> Planned benchmarks</h1>
+        <style>
+          .container2{
+            box-shadow: 0 15px 30px 1px grey;
+            background: #E2E2E2;
+            text-align: center;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 2.5em auto;
+            width: 100%;
+              }
+          
+              .product-details2 {
+            position: relative;
+            text-align: left;
+            overflow: hidden;
+            padding: 30px;
+            height: 100%;
+            float: left;
+            width: 40%;
+              }
+              .container2 .product-details2 h1{
+            display: inline-block;
+            position: relative;
+            font-size: 23px;
+            color: #344055;
+            margin: 0;
+              }
+              .container2 .product-details2 h1:before{
+            position: absolute;
+            content: '';
+            right: 0%;
+            top: 0%;
+            transform: translate(25px, -15px);
+            display: none;
+            background: #ffe6e6;
+            border-radius: 5px;
+            font-size: 105%;
+            padding: 5px;
+            color: white;
+            margin: 0;
+            animation: chan-sh 6s ease infinite;
+              }
+              .container2 .product-details2 > p {
+            text-align: left;
+            /*font-size: 2.5vw;*/
+             font-size: 105%;
+            color: black;
+              }
+          
+              .control{
+            position: absolute;
+            bottom: 20%;
+            left: 22.8%;
+              }
+              .btn {
+            transform: translateY(0px);
+            transition: 0.3s linear;
+            background:  #809fff;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            color: #eee;
+            padding: 0;
+            margin: 0;
+              }
+              .product-image2 {
+            transition: all 0.3s ease-out;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            float: right;
+            width: 45%;
+            height:100px;
+            display: inline-block;
+              }
+              .container2 img {width: 100%;height: 100%;}
+              .info2 {
+            background: rgba(27, 26, 26, 1);
+            position: absolute;
+            line-height: 1.8;
+            text-align: left;
+            font-size: 105%;
+            color: #FFF;
+            overflow: hidden;
+            width: 100%;
+            height:100%;
+            left: 0;
+            top: 0;
+              }
+              .info2 h2 {text-align: center}
+              .info2 ul li{transition: 0.3s ease;}
+              .info2 ul li:hover{transform: translateX(5px) scale(1.03);}
+              @media (max-width: 420px) {
+            .container2 .product-details2 > p {
+                font-size: 4.5vw;
+            }
+            .product-details2 {
+                padding: 0px 0px 20px 20px;
+            }
+            .product-image2 {
+                width: 35%;
+            }
+            .container2 .product-details2 h1{
+                margin-top: 10px;
+                font-size: 4.5vw;
+            }
+            .info2 {
+                font-size: 3.5vw;
+            }
+              }
+        </style>
+        <div class="container2">
+          <div class="product-details2">
+            <h1>MSU Video Deblurring Benchmark</h1>
+            <br />
+            <p class="information2"> Blur often obscures the process of extracting details. Our bechmark aims at measuring the performance of details restoration by modern deblurring algorithms
+            </p>
+          </div>
+          <div class="product-image2">
+            <div class="image2"></div>
+            <div class="info2">
+              <h2>Key features</h2>
+              <ul>
+                <li>Large subjective comparison</li>
+                <li>Dataset with real blur</li>
+                <li>2 Tracks: motion deblurring and defocus deblurring</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="container2">
+          <div class="product-details2">
+            <h1>MSU Video Frame Interpolation Benchmark</h1>
+            <br />
+            <p class="information2"> A low frame rate causes aliasing, yields abrupt motion artifacts, and degrades the video quality. To solve this problem a lot of video frame interpolation algorithms have been created so far. Our benchmark will rank these algorithms and determine which is the best by means of interpolation quality.
+            </p>
+          </div>
+          <div class="product-image2">
+            <div class="image2"></div>
+            <div class="info2">
+              <h2>Key features</h2>
+              <ul>
+                <li>Large subjective comparison</li>
+                <li>The most comprehensive comparison of frame interpolation algorithms</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <script>
+          window.addEventListener('load', (event) => {
+              var containers = document.querySelectorAll(".container2");
+              for (var i= 0; i < containers.length ; i++) {
+                  ll = containers[i].clientHeight + "px";
+                  containers[i].childNodes[3].style.height = ll;
+              }
+          });
+          window.addEventListener('resize', (event) => {
+              var containers = document.querySelectorAll(".container2");
+              for (var i= 0; i < containers.length ; i++) {
+                  ll = containers[i].clientHeight + "px";
+                  containers[i].childNodes[3].style.height = ll;
+              }
+          });
+        </script>
+        <p><a name="feedback"></a></p>
+        <h1> Feedback</h1>
+        <style>
+          input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
+              font-size: 0.75em;
+              color: #999;
+              top: -5px;
+              -webkit-transition: all 0.225s ease;
+              transition: all 0.225s ease;
+          }
+          
+          .styled-input {
+              float: left;
+              width: 293px;
+              margin: 1rem 0;
+              position: relative;
+              border-radius: 4px;
+          }
+          
+          @media only screen and (max-width: 768px){
+              .styled-input {
+                  width:100%;
+              }
+          }
+          
+          .styled-input label {
+              color: black;
+              padding: 1.3rem 30px 1rem 30px;
+              position: absolute;
+              top: 10px;
+              left: 0;
+              -webkit-transition: all 0.25s ease;
+              transition: all 0.25s ease;
+              pointer-events: none;
+          }
+          
+          .styled-input.wide {
+              width: 500px;
+              max-width: 100%;
+          }
+          
+          input,
+          textarea {
+              padding: 30px;
+              border: 0;
+              width: 100%;
+              font-size: 1rem;
+              background-color: #F0F0F0;
+              color: black;
+              border-radius: 4px;
+          }
+          
+          input:focus,
+          textarea:focus { outline: 0; }
+          
+          input:focus ~ span,
+          textarea:focus ~ span {
+              width: 100%;
+              -webkit-transition: all 0.075s ease;
+              transition: all 0.075s ease;
+          }
+          
+          textarea {
+              width: 100%;
+              min-height: 15em;
+          }
+          
+          .input-container {
+              width: 650px;
+              max-width: 100%;
+          }
+          
+          .submit-btn {
+              float: center;
+              padding: 7px 35px;
+              border-radius: 4px;
+              display: inline-block;
+              background-color: #496E93;
+              color: white;
+              font-size: 18px;
+              cursor: pointer;
+              box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
+              0 2px 10px 0 rgba(0,0,0,0.07);
+              -webkit-transition: all 300ms ease;
+              transition: all 300ms ease;
+              width:300px;
+          }
+          
+          .wrapper {text-align: center;}
+          
+          .submit-btn:hover {
+              transform: translateY(1px);
+              box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
+              0 1px 1px 0 rgba(0,0,0,0.09);
+          }
+          
+          @media (max-width: 768px) {
+              .submit-btn {
+                  width:100%;
+                  float: none;
+                  text-align:center;
+              }
+          }
+          
+          input[type=checkbox] + label {
+              color: #ccc;
+              font-style: italic;
+          }
+          
+          input[type=checkbox]:checked + label {
+              color: #f00;
+              font-style: normal;
+          }
+          
+          .cont2{
+              width:70%;
+              display:inline-block;
+          }
+          
+          .f_form{
+              background-color: #9EB6CE;
+              border-radius:15px;
+          }
+        </style>
+        <div class="cont2">
+          <div class=".f_form">
+            <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScNpY2isLePgCoxJ5ijoJkzRJAvLsQXTG7F3D4i2Cj5GvXhyQ/formResponse">
+              <div class="input-container">
+                <div>
+                  <div class="styled-input wide">
+                    <input type="text" required="" />
+                    <label>What benchmark are you most interested in?</label>
+                  </div>
+                </div>
+                <div>
+                  <div class="styled-input wide">
+                    <input type="text" required="" />
+                    <label>What benchmark would you like to see in the future?</label>
+                  </div>
+                </div>
+                <div>
+                  <div class="styled-input wide">
+                    <input name="entry.108533139_sentinel" type="text" required="" />
+                    <label>Email (optional)</label>
+                  </div>
+                </div>
+                <div>
+                  <div class="styled-input wide">
+                    <input type="text" required="" />
+                    <label>Name (optional)</label>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="styled-input wide">
+                  <input type="submit" value="Send" class="submit-btn" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <p><a name="about"></a></p>
+        <h1>About our benchmarks</h1>
+        <p>The development of benchmarks is important for many reasons:</p>
+        <ul>
+          <li>They motivate developers to create cool new methods in this scientific field</li>
+          <li>There are few high-quality and constantly updated benchmarks in some scientific fields. Our mission is to fix it</li>
+          <li>PSNR and SSIM are not suitable for video comparison anymore. Our goal is to prove it to everyone </li>
+          <li>Benchmark creation is a first step in developing new metrics, better than PSNR and SSIM (and even VMAF!). It is much easier to develop a metric, if you have the benchmark</li>
+        </ul>
+        <style>
+          .tiles{
+              display: none;
+          }
+        </style>
+      </div>
+      <div class="tiles">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/deblurring/preview.png
+        
+                )"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/vfi/main.webp
+        
+                )"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-upscalers.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/upscalers/MSU_VUB.webp
+        
+                )"></div>
+          <div class="title">MSU Video Upscalers Benchmark 2022</div>
+          <div class="text">The most extensive comparison of video super-resolution (VSR) algorithms by subjective quality</div>
+        </a>
+        <a class="tile" href="/benchmarks/inverse-tone-mapping.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/itm/main.webp
+        
+                )"></div>
+          <div class="title">MSU HDR Video Reconstruction Benchmark 2022</div>
+          <div class="text">The most comprehensive comparison of HDR video reconstruction methods</div>
+        </a>
+        <a class="tile" href="/benchmarks/super-resolution-for-video-compression.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/sr-codecs/preview.gif
+        
+                )"></div>
+          <div class="title">MSU Super-Resolution for Video Compression Benchmark 2022</div>
+          <div class="text">Learn about the best SR methods for compressed videos and choose the best model to use with your codec</div>
+        </a>
+        <a class="tile" href="/benchmarks/no-reference-video-quality-metrics.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/frm/main.png
+        
+                )"></div>
+          <div class="title">MSU No-Reference Video Quality Metrics Benchmark 2022</div>
+          <div class="text">Explore newest No-Reference Video Quality Metrics and find the most appropriate for you.</div>
+        </a>
+        <a class="tile" href="/benchmarks/full-reference-video-quality-metrics.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/frm/main.png
+        
+                )"></div>
+          <div class="title">MSU Full-Reference Video Quality Metrics Benchmark 2022</div>
+          <div class="text">Explore newest Full-Reference Video Quality Metrics and find the most appropriate for you.</div>
+        </a>
+        <a class="tile" href="/benchmarks/aligners.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/aligners/kdpv_main.gif
+        
+                )"></div>
+          <div class="title">MSU Video Alignment and Retrieval Benchmark</div>
+          <div class="text">Explore the best algorithms in different video alignment tasks</div>
+        </a>
+        <a class="tile" href="/benchmarks/mobile-video-codec-benchmark.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/mvc/mvc_preview480x270.png
+        
+                )"></div>
+          <div class="title">MSU Mobile Video Codecs Benchmark 2021</div>
+          <div class="text">Discover Android devices with the longest video playback time and find the most power-efficient video-decoder on your Android device and</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-super-resolution.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/vsr/main_page.gif
+        
+                )"></div>
+          <div class="title">MSU Video Super-Resolution Benchmark</div>
+          <div class="text">Discover the newest VSR methods and find the most appropriate method for your tasks</div>
+        </a>
+        <a class="tile" href="/benchmarks/shot-boundary-detection.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/sbd/fade.gif
+        
+                )"></div>
+          <div class="title">MSU Shot Boundary Detection Benchmark 2020</div>
+          <div class="text">Discover the best Shot Boundary Detection method for your case</div>
+        </a>
+        <a class="tile" href="/benchmarks/deinterlacer.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/deinterlacer/deinterlacing_preview480x270.png
+        
+                )"></div>
+          <div class="title">MSU Deinterlacer Benchmark</div>
+          <div class="text">The most comprehensive comparison of deinterlacing methods</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

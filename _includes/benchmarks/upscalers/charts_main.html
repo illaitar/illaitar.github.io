@@ -1,0 +1,388 @@
+<style>
+
+
+
+
+    .highcharts-a11y-proxy-group-legend ul {
+        display: none;
+    }
+
+
+
+</style>
+<script src="/assets/js/benchmarks/upscalers/figures.js"></script>
+<script>
+
+
+
+    chart_objects = {}
+    function BuildChart(this_scale, data, other_data, glob_videos, subjcorrect){
+
+
+        const metric_translate={
+            'fps':'FPS',
+            'lpips':'LPIPS',
+            'ssim':'SSIM',
+            'psnr':'PSNR',
+            'subjective':'Subjective (Top 10)'
+        }
+
+
+        const filescale = this_scale.split('_')[0]
+
+        const highchart_symbols=['triangle','square','diamond','circle', 'triangle-down', 'pentagon']
+        //const highchart_colors=['#5FADF5','#5FF5D2','#E6845E','#E3E645','#000000','#E66ADB','#AB9EE6','#407A5B']
+        const highchart_colors=["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#2b908f"] //#e4d354 "#91e8e1" "#f45b5b"
+
+
+        let alg_color={}
+        let alg_symbol={}
+
+        let color_ind=0
+        let symbol_ind=0
+        let was = new Set()
+
+        for (let i = 0; i < glob_algs.length; i++) {
+            let alg=glob_algs[i];
+
+            if (hide_algs.has(alg)){
+                alg_color[alg]='#a2a2a2'
+                alg_symbol[alg]='square'
+
+            }
+            else{
+
+                let cur_color=highchart_colors[color_ind%highchart_colors.length]
+                let cur_symbol=highchart_symbols[symbol_ind%highchart_symbols.length]
+
+                while (was.has(cur_color+cur_symbol)){
+                    color_ind+=1
+                    cur_color=highchart_colors[color_ind%highchart_colors.length]
+                }
+
+                was.add(cur_color+cur_symbol)
+                symbol_ind+=1
+                color_ind+=1
+                alg_color[alg]=cur_color
+                alg_symbol[alg]=cur_symbol
+            }
+        }
+
+
+
+        function plot_options_initial(){
+            return {
+                chart: {
+                    type: 'scatter',
+                    zoomType: 'xy',
+                    //spacingBottom: 10,
+                    //spacingTop: 10,
+                    //spacingLeft: 10,
+                    //spacingRight: 10,
+                    height: 500
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: 'Highlight the plot region where you want to zoom in'
+                },
+                xAxis: {
+                    title: {
+                        text: 'FPS',
+                        style:{
+                            fontSize: 15
+                        }
+                    },
+                    startOnTick: false,
+                    endOnTick: false,
+                    minPadding: 0,
+                    maxPadding: 0,
+                    type: 'logarithmic',
+                    //showLastLabel: true,
+                },
+                yAxis: {
+                    title: {
+                        text: '',
+                        style:{
+                            fontSize: 15
+                        }
+                    },
+                    startOnTick: false,
+                    endOnTick: false,
+                    minPadding: 0,
+                    maxPadding: 0,
+                    type: 'logarithmic'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+                plotOptions: {
+                    series:{
+                        animationLimit:Infinity
+                    },
+                    scatter: {
+                        animationLimit:Infinity,
+                        marker: {
+                            radius: 5,
+                            states: {
+                                hover: {
+                                    enabled: true,
+                                    lineColor: 'rgb(100,100,100)'
+                                }
+                            }
+                        },
+                        states: {
+                            hover: {
+                                marker: {
+                                    enabled: false
+                                }
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{series.name}</b><br>',
+                            pointFormat: ''
+                        }
+                    }
+                },
+                navigation: {
+                    buttonOptions: {
+                        enabled: false
+                    }
+                },
+                series: [],
+                credits: {
+                    text: 'videoprocessing.ai',
+                    href: 'https://videoprocessing.ai/'
+                },
+
+            }
+        }
+
+
+        const chart_id='charts_graph_'+this_scale
+        const metric_select_id='charts_selector_metric_'+this_scale
+        const video_select_id='charts_selector_video_'+this_scale
+        const video_button_left_id = 'video_button_left_'+this_scale
+        const video_button_right_id = 'video_button_right_'+this_scale
+        const checkbox_id = 'charts_checkbox_'+this_scale
+
+
+        function graphHelper() {
+
+
+            let checkbox=$('#'+checkbox_id).is(':checked')
+
+            let metric_select = document.getElementById(metric_select_id);
+            let video_select = document.getElementById(video_select_id);
+            let metric_name = glob_metrics[metric_select.selectedIndex];
+            let video_name = glob_videos[video_select.selectedIndex];
+            let plot_options = plot_options_initial();
+
+
+
+            const ord_inds = glob_algs.map((item) => [data[metric_name][video_name][item], item])
+            const cpy = ord_inds.sort(([arg1], [arg2]) => arg2 - arg1)
+            let ans = {}
+            let ans_i=0
+            for (let i = 0; i < cpy.length; i++) {
+                if (cpy[i][1]!='gt' && (!checkbox || !hide_algs.has(cpy[i][1]))){
+                    ans[cpy[i][1]]=ans_i
+                    ans_i+=1
+                }
+            }
+            let max_val_tot=Math.exp(cpy[0][0])
+
+
+
+
+            let min_fps=1000
+            let max_fps=0
+            let min_val=1000
+            let max_val=0
+
+
+
+            for (let i = 0; i < glob_algs.length; i++) {
+                let alg=glob_algs[i];
+
+                if (alg != 'gt' && (!checkbox || !hide_algs.has(alg)) && (metric_name!='subjective' || subjcorrect.has(alg))) {
+
+                    let fps=data['fps'][video_name][alg]
+
+                    if (no_fps_4x.has(alg) && filescale=='4x'){
+                        let v1 = data['fps'][video_name][alg]
+                        let v2 = other_data['fps'][video_name][alg]
+                        //console.log((1/(1/v1+1/v2)), precisions['fps'], (1/(1/v1+1/v2)).toFixed(precisions['fps']))
+
+                        fps=Number((1/(1/v1+1/v2)).toFixed(precisions['fps']))
+                    }
+
+                    let val=data[metric_name][video_name][alg]
+
+                    if (metric_name=='subjective'){
+                        val=Number((Math.exp(val)/max_val_tot*100).toFixed(precisions[metric_name]))
+                    }
+
+                    if (fps<min_fps){
+                        min_fps=fps
+                    }
+                    if (fps>max_fps){
+                        max_fps=fps
+                    }
+                    if (val<min_val){
+                        min_val=val
+                    }
+                    if (val>max_val){
+                        max_val=val
+                    }
+
+                    plot_options.series.push({
+                        name: alg_translate[alg],
+                        data: [{
+                            x:fps,
+                            y:val,
+                            id:alg
+                        }],
+                        type: 'scatter',
+                        color: alg_color[alg],
+                        marker: {
+                            symbol: alg_symbol[alg]
+                        },
+                        legendIndex: ans[alg]
+                    });
+
+
+                }
+            }
+
+
+            plot_options.plotOptions.scatter.tooltip.pointFormat = 'FPS: {point.x}, '+
+            metric_translate[metric_name] +': {point.y}'
+
+            //plot_options.yAxis.min=min_val
+            //plot_options.yAxis.max=max_val
+            //plot_options.xAxis.min=min_fps
+            //plot_options.xAxis.max=max_fps
+
+            //console.log(plot_options.series)
+
+            plot_options.title.text = metric_translate[metric_name]
+            + " vs FPS on "+ filescale[0] + "× " + vid_translate[video_name];
+
+            plot_options.yAxis.title.text = '';
+
+            if (metric_name=='lpips'){
+                plot_options.yAxis.title.text+='<span style="font-size:10px">◄ ◄ ◄ Better ◄ ◄ ◄<br><br></span>'
+            }
+            else{
+                plot_options.yAxis.title.text+='<span style="font-size:10px">► ► ► Better ► ► ►<br><br></span>'
+            }
+
+            plot_options.yAxis.title.text += '<br>'+metric_translate[metric_name];
+
+            //plot_options.yAxis.title.text='<div>'+plot_options.yAxis.title.text+'</div>'
+
+
+
+            if (chart_id in chart_objects){
+                /*
+                chart_objects[chart_id]['chart'].xAxis[0].setExtremes(
+                    chart_objects[chart_id]['extremes'][0],
+                    chart_objects[chart_id]['extremes'][1], false, false)
+                chart_objects[chart_id]['chart'].yAxis[0].setExtremes(
+                    chart_objects[chart_id]['extremes'][2],
+                    chart_objects[chart_id]['extremes'][3], false, false)
+                */
+                chart_objects[chart_id]['chart'].update(plot_options);
+            }
+            else {
+                chart_objects[chart_id]={}
+                chart_objects[chart_id]['chart']=Highcharts.chart(chart_id, plot_options);
+            }
+
+
+            min_fps*=0.9
+            max_fps*=1.1
+            min_val*=0.9
+            max_val*=1.1
+
+
+
+            chart_objects[chart_id]['chart'].xAxis[0].setExtremes(min_fps, max_fps)
+            chart_objects[chart_id]['chart'].yAxis[0].setExtremes(min_val, max_val)
+            chart_objects[chart_id]['metric']=metric_name
+            chart_objects[chart_id]['extremes']=[min_fps, max_fps, min_val, max_val]
+
+        }
+
+
+
+
+
+        document.write(`
+            <div class="mobile-plots">
+                <div style="display:inline-block">
+                    <div style="text-align:center;">
+                        <span class=groupborder>
+                        Clip:<select style="display:inline-block" id="`+video_select_id+`">
+                            <option>Loading...</option>
+                        </select>
+                        <a id="`+video_button_left_id+`" class="button compact">◄</a>
+                        <a id="`+video_button_right_id+`" class="button compact">►</a>
+                        </span>
+                        Metric:<select style="display:inline-block" id="`+metric_select_id+`">
+                            <option>Loading...</option>
+                        </select>
+                        Hide similar models: <input type="checkbox" id="`+checkbox_id+`" checked>
+                    </div>
+                </div>
+                <div id="`+chart_id+`" style="display: block; margin: 10px auto;" class="highcharts-figure"></div>
+            </div>
+        `)
+
+        //checked
+
+        let glob_print_metrics=[]
+        for (const x of glob_metrics) {
+            glob_print_metrics.push(metric_translate[x])
+        }
+
+        let glob_print_videos=[]
+        for (const x of glob_videos) {
+            glob_print_videos.push(vid_translate[x])
+        }
+        single_select('#'+video_select_id, glob_print_videos)
+        single_select('#'+metric_select_id, glob_print_metrics)
+
+        graphHelper();
+
+
+        document.getElementById(metric_select_id).onchange = function(){
+            chart_objects[chart_id]['chart'].destroy()
+            delete chart_objects[chart_id]
+            graphHelper()
+        }
+
+        document.getElementById(video_select_id).onchange = graphHelper
+
+        $('#'+checkbox_id).change(function(){
+            chart_objects[chart_id]['chart'].destroy()
+            delete chart_objects[chart_id]
+            graphHelper()
+        })
+
+        $('#'+video_button_left_id).click(function(){
+            buttonHelper(video_select_id, -1)
+        })
+        $('#'+video_button_right_id).click(function(){
+            buttonHelper(video_select_id, 1)
+        })
+
+
+    }
+
+
+</script>

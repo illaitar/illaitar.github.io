@@ -1,0 +1,481 @@
+<style type="text/css">
+    .img-zoom-container {
+        position: relative;
+        margin: 1em auto;
+
+        width: 100%;
+    }
+
+    .img-zoom-lens {
+        position: absolute;
+        border: 1px solid #ff0000;
+        /*set the size of the lens:*/
+
+        width: 15px;
+        height: 15px;
+    }
+
+    /*Three image containers (use 25% for four, and 50% for two, etc)*/
+    .column {
+        box-sizing: border-box;
+        float: left;
+        width: 32%;
+        padding: 5px;
+    }
+
+
+    /*Clear floats after image containers*/
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+
+<div class="comparison_selector_div">
+    <script>
+        var bad_count = 3;
+        var deint_num_to_zoom = {
+            "nnedi0": [300, 50],
+            "nnedi1": [175, 675],
+            "nnedi2": [25, 850],
+
+            "palinter0": [325, 50],
+            "palinter1": [50, 875],
+            "palinter2": [75, 750],
+
+            "eedi30": [300, 50],
+            "eedi31": [175, 675],
+            "eedi32": [25, 775],
+
+            "bob0": [300, 50],
+            "bob1": [175, 675],
+            "bob2": [25, 850],
+
+            "deintmap0": [375, 425],
+            "deintmap1": [600, 425],
+            "deintmap2": [300, 50],
+
+            "yadif0": [325, 50],
+            "yadif1": [25, 450],
+            "yadif2": [50, 900],
+
+            "msudeint0": [300, 50],
+            "msudeint1": [75, 100],
+            "msudeint2": [675, 800],
+
+            "asvzzzdeint0": [300, 50],
+            "asvzzzdeint1": [175, 675],
+            "asvzzzdeint2": [25, 900],
+
+            "tdeint0": [300, 50],
+            "tdeint1": [175, 675],
+            "tdeint2": [25, 775],
+
+            "kerndeint_tuned0": [600, 425],
+            "kerndeint_tuned1": [0, 375],
+            "kerndeint_tuned2": [300, 50],
+
+            "w3fdif0": [300, 50],
+            "w3fdif1": [50, 875],
+            "w3fdif2": [75, 750],
+
+            "bwdif0": [625, 1225],
+            "bwdif1": [300, 50],
+            "bwdif2": [25, 450],
+
+            "mcdeint0": [575, 725],
+            "mcdeint1": [1025, 950],
+            "mcdeint2": [550, 950],
+
+            "deepdeint0": [600, 1375],
+            "deepdeint1": [0, 1550],
+            "deepdeint2": [950, 925],
+
+            "muksun0": [300, 50],
+            "muksun1": [175, 675],
+            "muksun2": [25, 900],
+
+            "kerndeint0": [375, 425],
+            "kerndeint1": [600, 425],
+            "kerndeint2": [300, 50],
+        };
+    </script>
+    <script>
+
+        function imageZoom(imgIDs, resultIDs, vqmtIDs, zoomx, zoomy) {
+            let imgs = [];
+            for (let i = 0; i < imgIDs.length; i++) {
+                let imgID = imgIDs[i];
+                let img = document.getElementById(imgID);
+                imgs.push(img);
+            }
+
+            let results = [];
+            for (let i = 0; i < resultIDs.length; i++) {
+                let resultID = resultIDs[i];
+                let result = document.getElementById(resultID);
+                results.push(result);
+            }
+
+            let vqmts = [];
+            for (let i = 0; i < vqmtIDs.length; i++) {
+                let vqmtID = vqmtIDs[i];
+                let vqmt = document.getElementById(vqmtID);
+                vqmts.push(vqmt);
+            }
+
+            let lenses = [];
+            let x = Math.floor(zoomx / 1080 * imgs[0].height);
+            let y = Math.floor(zoomy / 1920 * imgs[0].width);
+
+            for (let i = 0; i < imgs.length; i++) {
+                let pastLens = document.getElementById("lens" + i.toString());
+                if (pastLens) {
+                    pastLens.remove();
+                }
+                let lens = document.createElement("DIV");
+                lens.setAttribute("class", "img-zoom-lens");
+                lens.setAttribute("id", "lens" + i.toString());
+                imgs[i].parentElement.insertBefore(lens, imgs[i]);
+                lenses.push(lens);
+            }
+            let cxs = [], cys = [];
+            for (let i = 0; i < results.length; i++) {
+                let cx = results[i].offsetWidth / lenses[i].offsetWidth;
+                let cy = results[i].offsetHeight / lenses[i].offsetHeight;
+                cxs.push(cx);
+                cys.push(cy);
+            }
+
+            /* Set background properties for the result DIV */
+            for (let i = 0; i < results.length; i++) {
+                results[i].style.backgroundImage = "url('" + imgs[i].src + "')";
+                results[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+            }
+
+            for (let i = 0; i < vqmts.length; i++) {
+                vqmts[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+            }
+
+
+            for (let i = 0; i < lenses.length; i++) {
+                lenses[i].style.top = x + "px";
+                lenses[i].style.left = y + "px";
+                results[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                if (i < vqmts.length) {
+                    vqmts[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                }
+            }
+
+            /* Execute a function when someone moves the cursor over the image, or the lens: */
+            for (let i = 0; i < lenses.length; i++) {
+                lenses[i].addEventListener("mousedown", mousedown);
+                //imgs[i].addEventListener("mousedown", mousedown);
+                lenses[i].addEventListener("mouseup", mouseup);
+                //imgs[i].addEventListener("mouseup", mouseup);
+                /* And also for touch screens: */
+                /* Or touched (for touch screens: */
+                //lenses[i].addEventListener("click", moveLens);
+                imgs[i].addEventListener("click", moveLens);
+                /* And also for touch screens: */
+                /* Or touched (for touch screens: */
+
+
+                lenses[i].addEventListener("touchstart", mousedown);
+                //imgs[i].addEventListener("touchstart", mousedown);
+                lenses[i].addEventListener("touchend", mouseup);
+                //imgs[i].addEventListener("touchend", mouseup);
+            }
+
+            let clicked = 0;
+
+
+            function mousedown(e) {
+                for (let i = 0; i < lenses.length; i++) {
+                    lenses[i].addEventListener("mousemove", moveLens);
+                    imgs[i].addEventListener("mousemove", moveLens);
+                    lenses[i].addEventListener("touchmove", moveLens);
+                    imgs[i].addEventListener("touchmove", moveLens);
+                }
+                clicked = 1;
+            }
+
+            function mouseup(e) {
+                for (let i = 0; i < lenses.length; i++) {
+                    lenses[i].removeEventListener("mousemove", moveLens);
+                    imgs[i].removeEventListener("mousemove", moveLens);
+                    lenses[i].removeEventListener("touchmove", moveLens);
+                    imgs[i].removeEventListener("touchmove", moveLens);
+                }
+                clicked = 0;
+            }
+
+
+            function moveLens(e) {
+                /*if (!clicked) {
+                    return;
+                }*/
+                let pos, x, y;
+                /* Prevent any other actions that may occur when moving over the image */
+                e.preventDefault();
+                /* Get the cursor's x and y positions: */
+                pos = getCursorPos(e);
+                /* Calculate the position of the lens: */
+                x = pos.x - (lenses[0].offsetWidth / 2);
+                y = pos.y - (lenses[0].offsetHeight / 2);
+                /* Prevent the lens from being positioned outside the image: */
+                if (x > imgs[0].width - lenses[0].offsetWidth) {
+                    x = imgs[0].width - lenses[0].offsetWidth;
+                }
+                if (x < 0) {
+                    x = 0;
+                }
+                if (y > imgs[0].height - lenses[0].offsetHeight) {
+                    y = imgs[0].height - lenses[0].offsetHeight;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+                /* Set the position of the lens: */
+                for (let i = 0; i < lenses.length; i++) {
+                    lenses[i].style.left = x + "px";
+                    lenses[i].style.top = y + "px";
+                    /* Display what the lens "sees": */
+                    results[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                    if (i < vqmts.length) {
+                        vqmts[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                    }
+                }
+            }
+
+            function getCursorPos(e) {
+                let x = 0, y = 0;
+                e = e || window.event;
+                /* Get the x and y positions of the image: */
+                let boundingRects = [];
+                for (let i = 0; i < imgs.length; i++) {
+                    let a = imgs[i].getBoundingClientRect();
+                    boundingRects.push(a);
+                }
+
+                let i = boundingRects.length - 1;
+                while (i > 0 && e.pageX < boundingRects[i].left) {
+                    i--;
+                }
+
+                /* Calculate the cursor's x and y coordinates, relative to the image: */
+                x = e.pageX - boundingRects[i].left;
+                y = e.pageY - boundingRects[i].top;
+                /* Consider any page scrolling: */
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return {x: x, y: y};
+            }
+        }
+    </script>
+
+    <p style="font-size: medium; text-align: center; width: 80%; margin-left: 10%"> Drag a red rectangle in the area
+        which you want to crop</p>
+
+
+    <p>The frame to compare on: <label for="comp_num_selector"></label><select id="comp_num_selector" name="values">
+        <option>Tokyo market</option>
+        <option>Dancing crowd</option>
+        <option>Deity</option>
+        <option>Forest bicycle</option>
+        <option>Girls</option>
+        <option>Logo letters</option>
+        <option>House</option>
+        <option>Soulfruit promo</option>
+        <option>Mountain view</option>
+        <option>Ocean panorama</option>
+
+
+    </select>
+        <br>
+        Deinterlacer 1: <label for="comp_deint1_selector"></label><select id="comp_deint1_selector"
+                                                                          name="values">
+            <option>Adobe Premiere Pro Built-In</option>
+            <option>ASVZZZ Deinterlacer</option>
+            <option>Bob</option>
+            <option>Bob-Weave Deinterlacer</option>
+            <option>Real-Time Deep Deinterlacer</option>
+            <option>Motion and Area Pixel Deinterlacer</option>
+            <option>DfRes 122000 G2e 3</option>
+            <option>DfRes</option>
+            <option>DfRes SA</option>
+            <option>DUF</option>
+            <option>EDVR</option>
+            <option>EDVR_woTSA</option>
+            <option>Vapoursynth EEDI3</option>
+            <option>FLAD</option>
+            <option>Kernel Deinterlacer</option>
+            <option>Kernel Deinterlacer (optimal parameters)</option>
+            <option>Motion Compensation Deinterlacer</option>
+            <option>MFDIN</option>
+            <option selected="selected">MFDIN L</option>
+            <option>MSU Deinterlacer</option>
+            <option>Muksun Deinterlacer</option>
+            <option>NNEDI</option>
+            <option>PAL Interpolation</option>
+            <option>SonyVegas Blend Field</option>
+            <option>SonyVegas Interpolate Field</option>
+            <option>ST-Deint</option>
+            <option>SwinDI</option>
+            <option>TDAN</option>
+            <option>Vapoursynth TDeintMod</option>
+            <option>Weston 3-Field Deinterlacer</option>
+            <option>YADIF</option>
+
+
+        </select>
+        <br>
+        Deinterlacer 2: <label for="comp_deint2_selector"></label><select id="comp_deint2_selector"
+                                                                          name="values">
+            <option>Adobe Premiere Pro Built-In</option>
+            <option>ASVZZZ Deinterlacer</option>
+            <option>Bob</option>
+            <option>Bob-Weave Deinterlacer</option>
+            <option>Real-Time Deep Deinterlacer</option>
+            <option>Motion and Area Pixel Deinterlacer</option>
+            <option>DfRes 122000 G2e 3</option>
+            <option>DfRes</option>
+            <option selected="selected">DfRes SA</option>
+            <option>DUF</option>
+            <option>EDVR</option>
+            <option>EDVR_woTSA</option>
+            <option>Vapoursynth EEDI3</option>
+            <option>FLAD</option>+
+            <option>Kernel Deinterlacer</option>
+            <option>Kernel Deinterlacer (optimal parameters)</option>
+            <option>Motion Compensation Deinterlacer</option>
+            <option>MFDIN</option>
+            <option>MFDIN L</option>
+            <option>MSU Deinterlacer</option>
+            <option>Muksun Deinterlacer</option>
+            <option>NNEDI</option>
+            <option>PAL Interpolation</option>
+            <option>SonyVegas Blend Field</option>
+            <option>SonyVegas Interpolate Field</option>
+            <option>ST-Deint</option>
+            <option>SwinDI</option>
+            <option>TDAN</option>
+            <option>Vapoursynth TDeintMod</option>
+            <option>Weston 3-Field Deinterlacer</option>
+            <option>YADIF</option>
+
+        </select></p>
+
+
+    <div class="row">
+        <div class="column">
+            <h3 style="text-align: center">GT</h3>
+            <div class="img-zoom-container">
+                <img id="imagegt" style="width: 100%; height: 12vw"
+                     src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/imgs_new/0/gt.png">
+                <div id="resultgt" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="fake_vqmt" class="img-zoom-result" style="width: 100%; ">
+                    <p style="font-size: large; text-align: center">In this row you can see VQMT PSNR Visualization</p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <h3 id="comp_label1" style="text-align: center">MFDIN L</h3>
+            <div class="img-zoom-container">
+                <img id="image1" style="width: 100%; height: 12vw"
+                     src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/imgs_new/0/mfdin_l.png">
+                <div id="result1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="vqmt1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+            </div>
+        </div>
+        <div class="column">
+            <h3 id="comp_label2" style="text-align: center">DfRes SA</h3>
+            <div class="img-zoom-container">
+                <img id="image2" style="width: 100%; height: 12vw"
+                     src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/imgs_new/0/dfres_sa.png">
+                <div id="result2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="vqmt2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+            </div>
+        </div>
+        <script>
+            imageZoom(["imagegt", "image1", "image2"],
+                ["resultgt", "result1", "result2"], ["fake_vqmt", "vqmt1", "vqmt2"], 500, 500);
+            onChangeHelper();
+
+            function onChangeHelper() {
+                let video_numbers = [0, 8, 11, 12, 14, 15, 16, 23, 26, 27];
+                let bignumToName = ['adobe_pp', 'asvzzzdeint', 'bob', 'bwdif', 'deepdeint', 'deintmap',
+                    'dfres_122000_G2e_3', 'dfres_r', 'dfres_sa_u', 'duf_u', 'edvr_u', 'edvr_wotsa_u', 'eedi3', 'flad',
+                    'kerndeint', 'kerndeint_tuned', 'mcdeint', 'mfdin', 'mfdin_l', 'msudeint', 'muksun', 'nnedi',
+                    'palinter', 'sony_vegas_bf', 'sony_vegas_if', 'st_deint', 'swin_di', 'tdan_u', 'tdeint',
+                    'w3fdif', 'yadif'];
+                let bignumToOfficialName = ['Adobe Premiere Pro Built-In', 'ASVZZZ Deinterlacer',
+                    'Bob', 'Bob-Weave Deinterlacer', 'Real-Time Deep Deinterlacer',
+                    'Motion and Area Pixel Deinterlacer', 'DfRes 122000 G2e 3', 'DfRes',
+                    'DfRes SA', 'DUF', 'EDVR', 'EDVR_woTSA', 'Vapoursynth EEDI3', 'FLAD',
+                    'Kernel Deinterlacer', 'Kernel Deinterlacer (optimal parameters)',
+                    'Motion Compensation Deinterlacer', 'MFDIN', 'MFDIN L',
+                    'MSU Deinterlacer', 'Muksun Deinterlacer', 'NNEDI',
+                    'PAL Interpolation', 'SonyVegas Blend Field',
+                    'SonyVegas Interpolate Field', 'ST-Deint', 'SwinDI',
+                    'TDAN', 'Vapoursynth TDeintMod', 'Weston 3-Field Deinterlacer', 'YADIF'];
+
+                let numselect = document.getElementById("comp_num_selector");
+                let selected_video = video_numbers[numselect.selectedIndex];
+
+                let deint1select = document.getElementById("comp_deint1_selector");
+                let deint2select = document.getElementById("comp_deint2_selector");
+
+                let pic_gt = document.getElementById("imagegt");
+                let pic1 = document.getElementById("image1");
+                let pic2 = document.getElementById("image2");
+
+                let fake_vqmt = document.getElementById("fake_vqmt");
+                let vqmt1 = document.getElementById("vqmt1");
+                let vqmt2 = document.getElementById("vqmt2");
+
+                let name1 = bignumToName[deint1select.selectedIndex];
+                let name2 = bignumToName[deint2select.selectedIndex];
+
+                let img_prefix = "https://storage.videoprocessing.ai/benchmarks/deinterlacer/";
+                let src_gt = img_prefix + "imgs_new/" + selected_video + "/gt.png";
+                let src1 = img_prefix + "imgs_new/" + selected_video + "/" + name1 + ".png";
+                let src2 = img_prefix + "imgs_new/" + selected_video + "/" + name2 + ".png";
+
+                let vqmt1_src = img_prefix + "vqmts_new/" + selected_video + "/" + name1 + ".png";
+                let vqmt2_src = img_prefix + "vqmts_new/" + selected_video + "/" + name2 + ".png";
+
+                let comp_label1 = document.getElementById("comp_label1");
+                let comp_label2 = document.getElementById("comp_label2");
+
+
+                //fake_vqmt.style.backgroundImage = "url('" + 'black.png' + "')";
+                vqmt1.style.backgroundImage = "url('" + vqmt1_src + "')";
+                vqmt2.style.backgroundImage = "url('" + vqmt2_src + "')";
+
+
+                let label1 = bignumToOfficialName[deint1select.selectedIndex];
+                let label2 = bignumToOfficialName[deint2select.selectedIndex];
+                comp_label1.innerText = label1;
+                comp_label2.innerText = label2;
+
+                pic_gt.src = src_gt;
+                pic1.src = src1;
+                pic2.src = src2;
+
+                let zoomx = 500;
+                let zoomy = 500;
+
+                imageZoom(["imagegt", "image1", "image2"],
+                    ["resultgt", "result1", "result2"], ["vqmt1", "vqmt2"], zoomx, zoomy);
+            }
+
+            document.getElementById("comp_num_selector").onchange = onChangeHelper;
+            document.getElementById("comp_deint1_selector").onchange = onChangeHelper;
+            document.getElementById("comp_deint2_selector").onchange = onChangeHelper;
+
+        </script>
+    </div>
+</div>

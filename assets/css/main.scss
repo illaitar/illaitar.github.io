@@ -1,0 +1,33 @@
+---
+---
+
+@import 'config.scss';
+@import 'tiles.scss';
+
+.page-switcher {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 0 80px 0;
+
+    .button {
+        text-decoration: none;
+        background-color: #2f80ed;
+        color: #ffffff;
+        display: inline-block;
+        border-radius: 3px;
+        width: 145px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        vertical-align: middle;
+        user-select: none;
+        margin: 20px;
+    }
+
+    .button.disabled {
+        background-color: #dddddd;
+        color: $text-color;
+    }
+}

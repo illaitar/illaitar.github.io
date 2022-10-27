@@ -1,0 +1,124 @@
+<p>In this section, you can see barcharts and speed-to-performance plots. You can choose metric, motion, content, and degradation type, see tests with or without noise.<br>
+    You can see information about all participants <a href="/benchmarks/video-super-resolution-participants.html">here</a>.</p>
+
+<div id="arrow_selector" class="mobile-plots">
+    <p style="white-space: pre;">Metric: <label for="arrow_selector_metric"></label><select id="arrow_selector_metric" name="values">
+        <option>ERQAv1.0</option>
+        <option>ERQAv2.0</option>
+        <option>LPIPS</option>
+        <option>shifted PSNR-Y</option>
+        <option>shifted SSIM-Y</option>
+        <option>QRCRv1.0</option>
+        <option>Subjective</option>
+    </select>    Test: <label for="arrow_selector_test"></label><select id="arrow_selector_test" name="values">
+        <option>Hand tremor + BI degradation + w/o noise</option>
+        <option>Hand tremor + BI degradation + w/ noise</option>
+        <option>Hand tremor + BD degradation + w/o noise</option>
+        <option>Hand tremor + BD degradation + w/ noise</option>
+        <option>Parallel motion + BI degradation + w/o noise</option>
+        <option>Parallel motion + BI degradation + w/ noise</option>
+        <option>Parallel motion + BD degradation + w/o noise</option>
+        <option>Parallel motion + BD degradation + w/ noise</option>
+        <option>Rotation + BI degradation + w/o noise</option>
+        <option>Rotation + BI degradation + w/ noise</option>
+        <option>Rotation + BD degradation + w/o noise</option>
+        <option>Rotation + BD degradation + w/ noise</option>
+    </select>    Content: <label for="arrow_selector_part"></label><select id="arrow_selector_part" name="values">
+        <option>Full frame</option>
+        <option>Board</option>
+        <option>QR</option>
+        <option>Text</option>
+        <option>Metal paper</option>
+        <option>Color lines</option>
+        <option>Car numbers</option>
+        <option>Noise</option>
+        <option>Mira</option>
+    </select>
+</p>
+
+<div id="arrow_plot" style="display: block" class="highcharts-figure">
+    <script async src="/assets/js/benchmarks/vsr/arrow.js"></script>
+</div>
+
+<script>
+    function onChangeHelper() {
+        let speed_plot = document.getElementById("arrow_plot");
+        let this_div = document.getElementById("arrow_selector");
+
+        speed_plot.remove();
+        let new_plot = document.createElement('div');
+        new_plot.setAttribute("id", "arrow_plot");
+        new_plot.setAttribute("class", "highcharts-figure");
+        this_div.appendChild(new_plot);
+
+        let sc = document.createElement("script");
+        sc.src = '/assets/js/benchmarks/vsr/arrow.js';
+        new_plot.appendChild(sc);
+    }
+
+    document.getElementById("arrow_selector_test").onchange = onChangeHelper
+    document.getElementById("arrow_selector_part").onchange = onChangeHelper
+    document.getElementById("arrow_selector_metric").onchange = onChangeHelper
+</script>
+</div>  
+
+<div id="time_plot_selector" class="mobile-plots">
+    <p style="white-space: pre;">Metric: <label for="time_plot_selector_metric"></label><select id="time_plot_selector_metric" name="values">
+        <option>ERQAv1.0</option>
+        <option>ERQAv2.0</option>
+        <option>LPIPS</option>
+        <option>shifted PSNR-Y</option>
+        <option>shifted SSIM-Y</option>
+        <option>QRCRv1.0</option>
+        <option>Subjective</option>
+    </select>    Test: <label for="time_plot_selector_test"></label><select id="time_plot_selector_test" name="values">
+        <option>Hand tremor + BI degradation + w/o noise</option>
+        <option>Hand tremor + BI degradation + w/ noise</option>
+        <option>Hand tremor + BD degradation + w/o noise</option>
+        <option>Hand tremor + BD degradation + w/ noise</option>
+        <option>Parallel motion + BI degradation + w/o noise</option>
+        <option>Parallel motion + BI degradation + w/ noise</option>
+        <option>Parallel motion + BD degradation + w/o noise</option>
+        <option>Parallel motion + BD degradation + w/ noise</option>
+        <option>Rotation + BI degradation + w/o noise</option>
+        <option>Rotation + BI degradation + w/ noise</option>
+        <option>Rotation + BD degradation + w/o noise</option>
+        <option>Rotation + BD degradation + w/ noise</option>
+    </select>    Content: <label for="time_plot_selector_part"></label><select id="time_plot_selector_part" name="values">
+        <option>Full frame</option>
+        <option>Board</option>
+        <option>QR</option>
+        <option>Text</option>
+        <option>Metal paper</option>
+        <option>Color lines</option>
+        <option>Car numbers</option>
+        <option>Noise</option>
+        <option>Mira</option>
+    </select></p>
+
+    <div id="time_plot" style="display: block" class="highcharts-figure">
+        <script async src="/assets/js/benchmarks/vsr/time_scatter.js"></script>
+    </div>
+
+    <script>
+        function onChangeHelper() {
+            let speed_plot = document.getElementById("time_plot");
+            let this_div = document.getElementById("time_plot_selector");
+
+            speed_plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "time_plot");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+
+            let sc = document.createElement("script");
+            sc.src = '/assets/js/benchmarks/vsr/time_scatter.js'; 
+            new_plot.appendChild(sc);
+        }
+
+        document.getElementById("time_plot_selector_test").onchange = onChangeHelper
+        document.getElementById("time_plot_selector_part").onchange = onChangeHelper
+        document.getElementById("time_plot_selector_metric").onchange = onChangeHelper
+    </script>
+</div>
+<p style="text-align: center">Highlight the plot region where you want to zoom in</p>

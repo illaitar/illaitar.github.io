@@ -1,0 +1,88 @@
+---
+---
+
+@import 'config.scss';
+
+$hover-animation: 0.2s ease-in-out;
+$error-color: #ff0000;
+$error-placeholder-color: #ff0000;
+
+.block-form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+
+    input, textarea, select {
+        padding-left: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 10px 0 10px 0;
+        background-color: transparent;
+    }
+
+    input[type="text"], input[type="email"], select {
+        height: 36px;
+        font-size: 16px;
+        line-height: 36px;
+        vertical-align: middle;
+        border: none;
+        border-bottom: solid 1px #cccccc;
+        transition: border $hover-animation;
+
+        &:hover, &:active {
+            border-bottom: solid 1px $accent-color;
+        }
+    }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        -webkit-border-radius: 0;
+        border-radius: 0;
+        background: url(/assets/icons/dropdown.svg) 98% / 12px no-repeat;
+    }
+
+    select::-ms-expand {
+        display: none;
+    }
+
+    textarea {
+        font-size: 16px;
+        line-height: 20px;
+        vertical-align: middle;
+        border: 1px solid #cccccc;
+        transition: border $hover-animation;
+    }
+
+    textarea:hover {
+        border: 1px solid $accent-color;
+    }
+
+    input[type="submit"] {
+        font-size: 16px;
+        height: 72px;
+        background-color: #ffffff;
+        border: solid 1px $accent-color;
+        color: $accent-color;
+        transition: color $hover-animation, background-color $hover-animation;
+    }
+
+    input[type="submit"]:hover {
+        cursor: pointer;
+        background-color: $accent-color;
+        color: #ffffff;
+    }
+
+    input, textarea, select {
+        &.error {
+            color: $error-color;
+            border-color: $error-color;
+
+            &::placeholder {
+                color: $error-placeholder-color;
+            }
+        }
+    }
+}

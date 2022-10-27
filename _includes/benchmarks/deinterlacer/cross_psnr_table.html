@@ -1,0 +1,4151 @@
+<div id="cross_psnr_div">
+    <link rel="stylesheet" href="/assets/css/benchmarks/deinterlacer/style.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+    <p>Deinterlacer: <label for="close_psnr_selector"></label><select id="close_psnr_selector" name="values">
+        <option>Adobe Premiere Pro</option>
+        <option>ASVZZZ Deinterlacer</option>
+        <option selected="selected">Bob</option>
+        <option>Bob-Weave Deinterlacer</option>
+        <option>Real-Time Deep Deinterlacer</option>
+        <option>Motion and Area Pixel Deinterlacer</option>
+        <option>DfRes 122000 G2e 3</option>
+        <option>DfRes</option>
+        <option>DfRes SA</option>
+        <option>DUF</option>
+        <option>EDVR</option>
+        <option>EDVR_woTSA</option>
+        <option>Vapoursynth EEDI3</option>
+        <option>FLAD</option>
+        <option>Kernel Deinterlacer</option>
+        <option>Kernel Deinterlacer (optimal parameters)</option>
+        <option>Motion Compensation Deinterlacer</option>
+        <option>MFDIN</option>
+        <option>MFDIN L</option>
+        <option>MSU Deinterlacer</option>
+        <option>Muksun Deinterlacer</option>
+        <option>NNEDI</option>
+        <option>PAL Interpolation</option>
+        <option>SonyVegas Blend Field</option>
+        <option>SonyVegas Interpolate Field</option>
+        <option>ST-Deint</option>
+        <option>SwinDI</option>
+        <option>TDAN</option>
+        <option>Vapoursynth TDeintMod</option>
+        <option>Weston 3-Field Deinterlacer</option>
+        <option>YADIF</option>
+    </select></p>
+
+
+    <table id="cross_psnr_table" class="display" style="background-color: #ffffff;">
+        <thead>
+        <tr style="font-size: large; background-color: #3d6f96">
+            <th style="background-color: #3d6f96"></th>
+            <th style="background-color: #3d6f96">PSNR</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            $('#cross_psnr_table').DataTable({
+                lengthChange: false,
+                paging: false,
+                searching: false,
+                colReorder: false,
+                rowReorder: false,
+                "ordering": false
+
+            });
+        });
+    </script>
+
+    <script>function onChangeHelper() {
+        let innerTexts = [
+            "<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>26.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>23.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>23.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>23.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>23.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>23.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>23.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>22.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>22.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>22.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>22.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>100.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>28.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>28.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>27.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>60.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>41.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>40.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>37.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>35.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>35.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>34.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>28.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>35.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>35.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>34.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>34.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>34.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>34.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>32.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>29.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>28.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>35.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>35.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>35.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>33.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>31.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>30.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>31.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>31.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>29.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>29.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>26.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>36.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>33.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>33.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>33.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>32.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>32.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>31.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>29.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>26.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>34.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>33.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>33.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>33.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>33.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>32.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>31.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>31.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>30.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>25.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>24.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>22.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>36.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>32.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>32.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>32.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>32.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>28.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>28.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>28.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>25.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>33.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>32.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>32.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>31.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>28.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>26.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>33.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>33.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>32.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>32.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>32.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>31.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>31.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>31.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>28.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>26.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>33.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>33.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>32.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>32.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>31.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>29.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>28.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>25.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>39.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>39.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>35.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>34.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>32.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>35.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>34.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>32.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>32.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>31.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>31.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>30.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>30.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>29.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>28.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>28.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>28.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>28.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>28.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>26.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>24.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>22.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>46.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>40.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>40.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>36.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>35.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>34.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>34.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>31.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>31.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>30.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>30.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>46.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>42.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>41.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>36.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>36.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>34.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>34.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>31.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>31.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>26.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>24.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>23.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>23.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>23.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>23.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>23.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>23.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>23.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>23.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>23.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>23.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>23.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>23.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>23.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>23.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>23.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>22.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>21.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>33.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>33.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>32.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>32.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>32.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>32.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>31.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>31.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>31.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>26.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>35.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>33.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>31.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>29.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>29.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>29.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>27.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>27.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>27.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>26.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>25.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>24.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>22.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>22.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>33.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>33.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>32.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>32.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>31.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>26.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>100.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>28.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>28.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>27.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>37.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>37.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>36.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>35.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>35.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>34.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>33.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>28.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>28.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>28.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>28.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>28.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>28.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>28.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>27.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>27.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>27.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>27.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>27.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>27.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>27.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>27.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>27.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>27.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>27.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>26.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>26.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>24.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>24.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>25.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>25.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>25.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>25.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>25.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>25.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>25.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>25.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>25.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>25.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>25.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>25.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>24.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>24.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>24.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>24.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>60.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>42.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>40.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>39.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>39.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>37.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>35.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>35.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>35.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>34.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>31.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>28.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>28.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>27.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>27.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>27.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>27.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>27.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>27.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>27.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>27.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>27.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>27.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>26.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>26.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>26.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>26.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>26.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>26.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>26.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>25.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>25.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>25.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>25.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>25.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>24.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>21.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>35.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>35.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>35.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>34.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>34.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>34.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>33.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>33.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>32.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>32.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>32.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>32.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>31.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>31.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>33.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>31.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>31.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>30.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>30.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>30.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>29.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>29.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>28.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>28.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>26.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>39.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>39.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>35.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>33.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>31.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>31.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>30.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>29.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>29.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>29.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>22.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>36.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>36.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>34.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>34.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>34.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>33.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>32.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>31.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>30.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>30.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>29.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>29.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>29.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>29.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>29.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>28.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>28.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>28.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>27.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>23.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>","<thead>\n" +
+            "        <tr style=\"font-size: large; background-color: #3d6f96\">\n" +
+            "            <th style=\"background-color: #3d6f96\"></th>\n" +
+            "            <th style=\"background-color: #3d6f96\">PSNR</th>\n" +
+            "        </tr>\n" +
+            "        </thead>\n" +
+            "        <tbody>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>YADIF</td>\n" +
+            "            <td>inf</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SwinDI</td>\n" +
+            "            <td>30.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Muksun Deinterlacer</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ASVZZZ Deinterlacer</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>NNEDI</td>\n" +
+            "            <td>30.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Interpolate Field</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob</td>\n" +
+            "            <td>30.3</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer (optimal parameters)</td>\n" +
+            "            <td>30.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Kernel Deinterlacer</td>\n" +
+            "            <td>30.0</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Bob-Weave Deinterlacer</td>\n" +
+            "            <td>29.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Weston 3-Field Deinterlacer</td>\n" +
+            "            <td>29.2</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion and Area Pixel Deinterlacer</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN</td>\n" +
+            "            <td>29.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DUF</td>\n" +
+            "            <td>28.9</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR</td>\n" +
+            "            <td>28.8</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>TDAN</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes 122000 G2e 3</td>\n" +
+            "            <td>28.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>EDVR_woTSA</td>\n" +
+            "            <td>28.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes SA</td>\n" +
+            "            <td>28.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>DfRes</td>\n" +
+            "            <td>28.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>FLAD</td>\n" +
+            "            <td>28.1</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MFDIN L</td>\n" +
+            "            <td>27.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>PAL Interpolation</td>\n" +
+            "            <td>27.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>ST-Deint</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>SonyVegas Blend Field</td>\n" +
+            "            <td>25.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Motion Compensation Deinterlacer</td>\n" +
+            "            <td>24.4</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Adobe Premiere Pro</td>\n" +
+            "            <td>23.5</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>MSU Deinterlacer</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth EEDI3</td>\n" +
+            "            <td>15.7</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Real-Time Deep Deinterlacer</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        <tr class=\"item\">\n" +
+            "            <td>Vapoursynth TDeintMod</td>\n" +
+            "            <td>15.6</td>\n" +
+            "        </tr>\n" +
+            "\n" +"        </tbody>",
+        ];
+
+        let ind = document.getElementById('close_psnr_selector').selectedIndex;
+        let tabl = document.getElementById('cross_psnr_table');
+        tabl.innerHTML = innerTexts[ind];
+
+    }
+
+    document.getElementById("close_psnr_selector").onchange = onChangeHelper;
+    onChangeHelper();
+
+    </script>
+
+</div>

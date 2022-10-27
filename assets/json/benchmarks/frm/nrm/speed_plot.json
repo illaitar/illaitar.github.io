@@ -1,0 +1,374 @@
+{
+    "pearson": {
+        "data": [
+            {
+                "name": "NR KonCept512",
+                "data": [
+                    {
+                        "x": 4.187015526867232,
+                        "y": 0.8463627460270138,
+                        "id": "NR KonCept512"
+                    }
+                ]
+            },
+            {
+                "name": "NR LINEARITY",
+                "data": [
+                    {
+                        "x": 3.411925876102003,
+                        "y": 0.9106391669540088,
+                        "id": "NR LINEARITY"
+                    }
+                ]
+            },
+            {
+                "name": "NR MDTVSFA",
+                "data": [
+                    {
+                        "x": 9.12,
+                        "y": 0.943079223562441,
+                        "id": "NR MDTVSFA"
+                    }
+                ]
+            },
+            {
+                "name": "NR MEON",
+                "data": [
+                    {
+                        "x": 2.27,
+                        "y": 0.2897742438513541,
+                        "id": "NR MEON"
+                    }
+                ]
+            },
+            {
+                "name": "NR NIMA",
+                "data": [
+                    {
+                        "x": 7.2,
+                        "y": 0.8783568280062584,
+                        "id": "NR NIMA"
+                    }
+                ]
+            },
+            {
+                "name": "NR PaQ-2-PiQ",
+                "data": [
+                    {
+                        "x": 11.1,
+                        "y": 0.8548810035830011,
+                        "id": "NR PaQ-2-PiQ"
+                    }
+                ]
+            },
+            {
+                "name": "NR SPAQ BL",
+                "data": [
+                    {
+                        "x": 6.49,
+                        "y": 0.8854670618417123,
+                        "id": "NR SPAQ BL"
+                    }
+                ]
+            },
+            {
+                "name": "NR SPAQ MT-A",
+                "data": [
+                    {
+                        "x": 6.66,
+                        "y": 0.8824280720400584,
+                        "id": "NR SPAQ MT-A"
+                    }
+                ]
+            },
+            {
+                "name": "NR SPAQ MT-S",
+                "data": [
+                    {
+                        "x": 6.48,
+                        "y": 0.8813989772249021,
+                        "id": "NR SPAQ MT-S"
+                    }
+                ]
+            },
+            {
+                "name": "NR VIDEVAL",
+                "data": [
+                    {
+                        "x": 0.62,
+                        "y": 0.7716679686584679,
+                        "id": "NR VIDEVAL"
+                    }
+                ]
+            },
+            {
+                "name": "NR VSFA",
+                "data": [
+                    {
+                        "x": 9.26,
+                        "y": 0.9179803602427185,
+                        "id": "NR VSFA"
+                    }
+                ]
+            },
+            {
+                "name": "NR Y-NIQE",
+                "data": [
+                    {
+                        "x": 80,
+                        "y": 0.6712542459877117,
+                        "id": "NR Y-NIQE"
+                    }
+                ]
+            }
+        ]
+    },
+    "spearman": {
+        "data": [
+            {
+                "name": "NR KonCept512",
+                "data": [
+                    {
+                        "x": 4.187015526867232,
+                        "y": 0.8360228465743762,
+                        "id": "NR KonCept512"
+                    }
+                ]
+            },
+            {
+                "name": "NR LINEARITY",
+                "data": [
+                    {
+                        "x": 3.411925876102003,
+                        "y": 0.9104194182694104,
+                        "id": "NR LINEARITY"
+                    }
+                ]
+            },
+            {
+                "name": "NR MDTVSFA",
+                "data": [
+                    {
+                        "x": 9.12,
+                        "y": 0.9289437094965854,
+                        "id": "NR MDTVSFA"
+                    }
+                ]
+            },
+            {
+                "name": "NR MEON",
+                "data": [
+                    {
+                        "x": 2.27,
+                        "y": 0.506577667731803,
+                        "id": "NR MEON"
+                    }
+                ]
+            },
+            {
+                "name": "NR NIMA",
+                "data": [
+                    {
+                        "x": 7.2,
+                        "y": 0.8493509505283733,
+                        "id": "NR NIMA"
+                    }
+                ]
+            },
+            {
+                "name": "NR PaQ-2-PiQ",
+                "data": [
+                    {
+                        "x": 11.1,
+                        "y": 0.8705124410348588,
+                        "id": "NR PaQ-2-PiQ"
+                    }
+                ]
+            },
+            {
+                "name": "NR SPAQ BL",
+                "data": [
+                    {
+                        "x": 6.49,
+                        "y": 0.8799258507253193,
+                        "id": "NR SPAQ BL"
+                    }
+                ]
+            },
+            {
+                "name": "NR SPAQ MT-A",
+                "data": [
+                    {
+                        "x": 6.66,
+                        "y": 0.8793808797291274,
+                        "id": "NR SPAQ MT-A"
+                    }
+                ]
+            },
+            {
+                "name": "NR SPAQ MT-S",
+                "data": [
+                    {
+                        "x": 6.48,
+                        "y": 0.8822373236782073,
+                        "id": "NR SPAQ MT-S"
+                    }
+                ]
+            },
+            {
+                "name": "NR VIDEVAL",
+                "data": [
+                    {
+                        "x": 0.62,
+                        "y": 0.7286327155613572,
+                        "id": "NR VIDEVAL"
+                    }
+                ]
+            },
+            {
+                "name": "NR VSFA",
+                "data": [
+                    {
+                        "x": 9.26,
+                        "y": 0.9049029201312748,
+                        "id": "NR VSFA"
+                    }
+                ]
+            },
+            {
+                "name": "NR Y-NIQE",
+                "data": [
+                    {
+                        "x": 80,
+                        "y": 0.5985156661771587,
+                        "id": "NR Y-NIQE"
+                    }
+                ]
+            }
+        ]
+    },
+    "kendall": {
+        "data": [
+            {
+                "name": "NR KonCept512",
+                "data": [
+                    {
+                        "x": 4.187015526867232,
+                        "y": 0.6608075298053062,
+                        "id": "NR KonCept512"
+                    }
+                ]
+            },
+            {
+                "name": "NR LINEARITY",
+                "data": [
+                    {
+                        "x": 3.411925876102003,
+                        "y": 0.758892455513565,
+                        "id": "NR LINEARITY"
+                    }
+                ]
+            },
+            {
+                "name": "NR MDTVSFA",
+                "data": [
+                    {
+                        "x": 9.12,
+                        "y": 0.7883155529146698,
+                        "id": "NR MDTVSFA"
+                    }
+                ]
+            },
+            {
+                "name": "NR MEON",
+                "data": [
+                    {
+                        "x": 2.27,
+                        "y": 0.3755437147199078,
+                        "id": "NR MEON"
+                    }
+                ]
+            },
+            {
+                "name": "NR NIMA",
+                "data": [
+                    {
+                        "x": 7.2,
+                        "y": 0.6745237606833732,
+                        "id": "NR NIMA"
+                    }
+                ]
+            },
+            {
+                "name": "NR PaQ-2-PiQ",
+                "data": [
+                    {
+                        "x": 11.1,
+                        "y": 0.7079032393510342,
+                        "id": "NR PaQ-2-PiQ"
+                    }
+                ]
+            },
+            {
+                "name": "NR SPAQ BL",
+                "data": [
+                    {
+                        "x": 6.49,
+                        "y": 0.7106225792912513,
+                        "id": "NR SPAQ BL"
+                    }
+                ]
+            },
+            {
+                "name": "NR SPAQ MT-A",
+                "data": [
+                    {
+                        "x": 6.66,
+                        "y": 0.7148011568940963,
+                        "id": "NR SPAQ MT-A"
+                    }
+                ]
+            },
+            {
+                "name": "NR SPAQ MT-S",
+                "data": [
+                    {
+                        "x": 6.48,
+                        "y": 0.7186335750737345,
+                        "id": "NR SPAQ MT-S"
+                    }
+                ]
+            },
+            {
+                "name": "NR VIDEVAL",
+                "data": [
+                    {
+                        "x": 0.62,
+                        "y": 0.5414119229283437,
+                        "id": "NR VIDEVAL"
+                    }
+                ]
+            },
+            {
+                "name": "NR VSFA",
+                "data": [
+                    {
+                        "x": 9.26,
+                        "y": 0.7482822431094092,
+                        "id": "NR VSFA"
+                    }
+                ]
+            },
+            {
+                "name": "NR Y-NIQE",
+                "data": [
+                    {
+                        "x": 80,
+                        "y": 0.4214609997744882,
+                        "id": "NR Y-NIQE"
+                    }
+                ]
+            }
+        ]
+    }
+}

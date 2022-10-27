@@ -1,0 +1,37 @@
+
+<div id="container_speed" class="mobile-plots">
+
+    <p style="white-space: pre; margin-bottom: 0; line-height: 1;">Correlation type: <label for="selector_correlation_standards_speed"></label><select id="selector_correlation_standards_speed" name="values">
+            <option>Spearman</option>
+            <option>Pearson</option>
+            <option>Kendall</option>
+        </select>
+    </p>
+
+    <div id="speed_plot" style="display: block" class="highcharts-figure">
+        <script async src="/assets/js/benchmarks/frm/speed_plot.js"></script>
+    </div>
+
+    <script>
+        function onChangeHelper() {
+            let speed_plot = document.getElementById("speed_plot");
+            let this_div = document.getElementById("container_speed");
+
+            speed_plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "speed_plot");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+
+            let sc = document.createElement("script");
+            sc.src = '/assets/js/benchmarks/frm/speed_plot.js';
+            new_plot.appendChild(sc);
+
+        }
+
+
+        document.getElementById("selector_correlation_standards_speed").onchange = onChangeHelper;
+
+
+    </script>
+</div>

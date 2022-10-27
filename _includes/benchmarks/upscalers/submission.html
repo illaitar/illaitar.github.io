@@ -1,0 +1,157 @@
+<style>
+
+
+details>summary {
+ list-style: none;
+}
+summary::-webkit-details-marker {
+ display: none
+}
+
+summary::after {
+ content: '►';
+
+ background: none;
+    border-color: #3d6f96;
+    color: #3d6f96;
+    font-size: 16px;
+    border: 2px solid;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.25s;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+    padding: 1px 4px;
+    margin: 4px 4px;
+
+}
+
+
+
+details:hover summary:after  {
+    background-color: #3d6f96;
+    text-decoration: none;
+    cursor: pointer;
+    border-color: #3d6f96;
+    color: #FFFFFF;
+}
+
+
+
+
+details[open] summary:after {
+ content: "▼";
+}
+
+
+
+.partitable td{
+    padding: 10px;
+    background:#F4F6F6;
+}
+
+.partitable tr td:first-child{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.partitable tr td:last-child{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.partitable{
+
+    border-spacing: 20px;
+    border-spacing: 0px 20px;
+}
+
+.partitable .partihead{
+    font-weight: bold;
+    font-size:20px;
+}
+
+
+</style>
+
+
+
+
+
+
+
+
+<p style="margin:auto">To add your upscaling method to the benchmark, follow these steps:</p>
+<table class="partitable">
+    <tr>
+        <td class="partihead">
+            1. Download the input
+        </td>
+        <td>
+            <b>Download <a href="https://storage.videoprocessing.ai/benchmarks/upscalers/test.mp4">the test video</a></b>
+            <br>
+            <details><summary>If your upscaler requires extracting frames,<br>we recommend using this command:</summary>
+                <code style="max-width:390px;word-break:normal;white-space: normal;margin-bottom: 0px;">ffmpeg -i test.mp4 wrong_gamma/frame%04d.png &&<br>ffmpeg -i wrong_gamma/frame%04d.png test/frame%04d.png</code>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td class="partihead">
+            2. Apply your upscaler
+        </td>
+        <td>
+            <b>Apply your 2× or 4× upscaling method to the video</b><br>
+            Configure it for lossless (CRF0/PNG) output, if possible. <br>
+            If your upscaler outputs images, we recommend <details><summary>using this command after upscaling:</summary>
+            <code>ffmpeg -i result/frame%04d.png -crf 0 -pix_fmt yuv444p<br>
+                            -vf scale=out_range=tv:out_color_matrix=bt709:<br>
+                            flags=full_chroma_int+accurate_rnd+full_chroma_inp<br>
+                            -color_primaries bt709 -color_trc bt709<br>
+                            -colorspace bt709 -color_range tv result.mp4</code>
+                        </details>
+        </td>
+    </tr>
+    <tr>
+        <td class="partihead">
+            3. Send us the result
+        </td>
+        <td>
+            <details><summary>Send <b><a href="mailto:video-upscalers-benchmark@videoprocessing.ai?subject=Submission to Video Upscalers Benchmark">video-upscalers-benchmark@videoprocessing.ai</a></b><br>the following information:</summary>
+                <ul style="max-width:390px;word-break:normal;white-space: normal;margin-bottom: 0px;">
+                    <li>The full and short names of the upscaling method
+                        that we will specify in our benchmark.</li>
+                    <li>An MP4 file with upscaled frames.
+                        The link must be valid within a month after receiving it.
+                        Please ensure that you permit us to download the file.
+                        By submitting this video, you agree that third parties may use it.
+                    </li>
+                    <li>The exact upscaling commands, options, versions of used programs, etc. Each submission must
+                        contain results of exactly one model with fixed settings. Please do not fine-tune model parameters by hand
+                        for each video segment.
+                    </li>
+                    <li>If you want us to verify your method, send us the upscaler’s executable, and we will run it ourselves.
+                        Then we will mark the FPS of your algorithm as “Verified” in charts and tables.
+                        Executable's arguments must include paths to the folder with input PNG images and the folder for
+                        output PNG images. By submitting this executable, you agree that third parties may use it.
+                    </li>
+                    <li>You can verify the results of current participants or estimate the performance of your method on
+                        public samples of our dataset (clips “Fire” and “Pier”).
+                        Send us an email with a request to share them with you.
+                    </li>
+                </ul>
+            </details>
+            </td>
+    </tr>
+
+
+
+</table>
+<p style="margin:auto">If you have any suggestions or questions, please contact us: <b><a href="mailto:video-upscalers-benchmark@videoprocessing.ai">video-upscalers-benchmark@videoprocessing.ai</a></b></p>
+

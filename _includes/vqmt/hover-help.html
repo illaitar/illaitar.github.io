@@ -1,0 +1,1 @@
+<span class="hover-help">{{include.text}}<span class="help-content {{include.contentClass | default: ''}}">{{include.helpText | markdownify | remove: '<p>' | remove: '</p>' | default: '' }}</span></span>

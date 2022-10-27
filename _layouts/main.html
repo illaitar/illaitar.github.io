@@ -1,0 +1,35 @@
+---
+layout: default
+---
+{% include carousel.html %}
+<link href="/assets/css/main.css" rel="stylesheet" type="text/css">
+<div class="tiles">
+    {% for post in paginator.posts %}
+    <a class="tile" href="{{ post.url }}">
+        <div class="image" style="background-image: url(
+        {% if post.preview_img %}
+            {{ post.preview_img }}
+        {% else %}
+                /assets/img/preview_placeholder.png
+        {% endif %}
+                )"></div>
+        <div class="title">{{ post.title }}</div>
+        <div class="text">{{ post.description }}</div>
+    </a>
+    {% endfor %}
+</div>
+<div class="tiles-width separator"></div>
+<div class="page-switcher">
+    <div>
+        {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="button">Previous</a>
+        {% else %}
+        <a class="button disabled">Previous</a>
+        {% endif %}
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="button">Next</a>
+        {% else %}
+        <a class="button disabled">Next</a>
+        {% endif %}
+    </div>
+</div>

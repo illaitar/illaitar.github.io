@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>PSNR and SSIM: application areas and criticism</title>
+    <meta property="og:title" content="PSNR and SSIM: application areas and criticism">
+    <meta property="og:image" content="http://localhost:4000/assets/img/metrics/psnr_and_ssim/main.gif">
+    <meta name="description" content="Learn about limits and applicability of the most popular metrics">
+    <meta property="og:description" content="Learn about limits and applicability of the most popular metrics">
+    <meta property="og:url" content="
+http://localhost:4000/metrics/ways-of-cheating-on-popular-objective-metrics.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/metrics/">Metrics Research</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <h1 class="center" id="ways-of-cheating-on-popular-objective-metrics-blurring-noise-super-resolution-and-others">Ways of cheating on popular objective metrics: blurring, noise, super-resolution and others</h1>
+        <h2 id="introduction">Introduction</h2>
+        <p>Recently, the Graphics &amp; Media Lab Video Group organized several Super-Resolution (SR) <a href="https://videoprocessing.ai/benchmarks/">benchmarks</a> and it was necessary to select suitable quality metrics. Subjective comparison showed that the most popular video quality metrics — <a href="https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio">PSNR</a> and <a href="https://en.wikipedia.org/wiki/Structural_similarity">SSIM</a> — are not applicable to this task.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic1.png" />
+            <p><i>Fig. 1. Our examples of PSNR negative correlation with visual quality for Super-Resolution task</i></p>
+          </div>
+        </div>
+        <p>We collected some evidence for PSNR and SSIM inapplicability for SR, they are presented in this article below (section super-resolution).</p>
+        <p>Despite the drawbacks, PSNR still remains the most popular metric for estimating quality of SR. We analyzed 378 SR papers and it turned out that PSNR dominates at all times.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic2.png" />
+            <p><i>Fig. 2. The result of analysis of 378 SR articles</i></p>
+          </div>
+        </div>
+        <p>Popularity of PSNR, in our opinion, is caused by a number of attractive features:</p>
+        <p>• simple to compute (the running time of the metrics is a critical factor for many real applications)</p>
+        <p>• long history of usage (it's easy to compare performance of new algorithms to elder ones, which were evaluated using only PSNR)</p>
+        <p>• has clear physical meaning</p>
+        <p>• mathematically convenient in the context of optimization</p>
+        <p>Furthermore, there are other applications besides SR in which PSNR and SSIM exhibit weak performance, but are still commonly used. One of the main aims of this article is to summarize the criticisms of PSNR and SSIM. We are also going to cover topics like why so many people use PSNR and SSIM and where the limits of applicability of these metrics are.</p>
+        <h2 id="well-known-examples-of-criticism">Well-known examples of criticism</h2>
+        <p>An illustrative example of shortcomings of the MSE (hence of the PSNR) is shown in the paper [<a href="https://ieeexplore.ieee.org/document/1284395">1</a>], where an original image is altered by different types of distortion and the distorted images have obviously different visual quality. However, MSE scores of the distorted images are identical.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic3.png" />
+            <p><i>Fig. 3. Comparison of &quot;Boat&quot; images with different types of distortions, all with MSE = 210</i></p>
+          </div>
+        </div>
+        <p>Another example is found in the paper [<a href="https://ieeexplore.ieee.org/document/4775883">2</a>]: MSE scores are almost the same, but the visual quality of the right image is much worse. However SSIM handles this more faithfully.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic4.png" />
+            <p><i>Fig. 4. Comparison of &quot;Einstein&quot; images with different types of distortions and almost the same MSE</i></p>
+          </div>
+        </div>
+        <p>According to the authors, it happens because SSIM seeks to measure structural distortion, while MSE does not. And it is what truly sets SSIM apart from PSNR. The human visual system is highly sensitive to structural distortions and easily compensates for nonstructural distortions.</p>
+        <p>However SSIM suffers from the same problem as PSNR. A similar example when SSIM scores are almost the same, but the visual quality differs a lot, can be found in the article [<a href="https://www.researchgate.net/publication/226012211_Experimental_Comparison_of_PSNR_and_SSIM_Metrics_for_Video_Quality_Estimation">3</a>].</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic5.png" />
+            <p><i>Fig. 5. Comparison of &quot;The hills&quot; images with different types of distortions and almost the same SSIM</i></p>
+          </div>
+        </div>
+        <p>Another funny example of unpredictable SSIM behavior can be found in [<a href="https://arxiv.org/pdf/1802.09653.pdf">4</a>].</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic6.png" />
+            <p><i>Fig. 6. Comparison of images with different types of distortions and their SSIM scores</i></p>
+          </div>
+        </div>
+        <p>Let's go through all the major types of distortions one at a time and detect advantages and drawbacks of PSNR and SSIM.</p>
+        <h2 id="blurring">Blurring</h2>
+        <p>As often happens, structural changes such as blurring can occur. But it has been demonstrated in [<a href="https://www.researchgate.net/publication/262157566_SSIM_image_quality_metric_for_denoised_images">5</a>] that MSE-based metrics may not be able to capture this reality.</p>
+        <p>When the algorithm causes blurring of images, SSIM reflects this fact more accurately, while MSE remains the same throughout the experiments. For this reason, it may be more appropriate to use the SSIM as a metric for any cases where blur may occur.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic7.png" />
+            <p><i>Fig. 7. Comparison of &quot;Lena&quot; images with different amount of blur, all with MSE=255</i></p>
+          </div>
+        </div>
+        <p>SSIM's ability to estimate the amount of blur was discussed in the article [<a href="https://media.gradebuddy.com/documents/2105719/478f7e3c-c9d4-4fd5-86cf-1d4b862ca0f9.pdf">6</a>]. We see a high correlation overall, but between images with SSIM=0.73 and SSIM=0.74, it is not immediately clear that they are about the same in terms of blurring. Most people would say that the image with SSIM=0.74 is more blurred.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic8.png" />
+            <p><i>Fig. 8. Comparison of &quot;Cameraman&quot; images with different amount of blur</i></p>
+          </div>
+        </div>
+        <p>In [<a href="https://arxiv.org/pdf/2005.01338v2.pdf">7</a>] it has been demonstrated that DISTS and LPIPS metrics are superior to the other IQA (image quality assessment) models in the task of deblurring, when they are used as an objective for optimizing DNNs (deep neural networks).</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic9.png" />
+            <p><i>Fig. 9. Comparison of images recovered from blurred images by optimizing different IQA models. The best results are highlighted in green</i></p>
+          </div>
+        </div>
+        <h2 id="noise">Noise</h2>
+        <p>In the article [<a href="https://ieeexplore.ieee.org/document/4775883">2</a>] the comparison of MAE and SSIM maps for noisy images is presented. The energy distribution of the MAE is uniform, hence all image pixels are treated equally in the formulation of the MSE. However, the perceived noise level is a space-variant (noise in smooth-intensity regions appears rather severe, yet is visually negligible in other regions containing patterns and textures), which is reflected in the SSIM map.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic10.png" />
+            <p><i>Fig. 10. Comparison of MAE and SSIM maps for noisy image</i></p>
+          </div>
+        </div>
+        <p>In [<a href="https://www.researchgate.net/publication/226012211_Experimental_Comparison_of_PSNR_and_SSIM_Metrics_for_Video_Quality_Estimation">3</a>] experimental comparison of PSNR and SSIM dependencies on the Gaussian noise is presented. Introduction of Gaussian noise of only 10% causes quite a large decrease of both PSNR and SSIM metrics.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic11.png" />
+            <p><i>Fig. 11. Comparison of PSNR and SSIM decreases due to increase in gaussian noise</i></p>
+          </div>
+        </div>
+        <p>In [<a href="https://arxiv.org/pdf/2005.01338v2.pdf">7</a>] it has been demonstrated that MS-SSIM is superior to the other IQA (image quality assessment) models in the task of denoising (and has almost identical performance with MAE), when it is used as an objective for optimizing DNNs (deep neural networks).</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic12.png" />
+            <p><i>Fig. 12. Comparison of images recovered from noisy images by optimizing different IQA models. The best results are highlighted in green</i></p>
+          </div>
+        </div>
+        <h2 id="changes-in-brightness-contrast-hue-and-saturation">Changes in brightness, contrast, hue and saturation</h2>
+        <p>All these types of distortions aren't structural. Therefore, it can be assumed that the SSIM poorly catches them, which may or may not be good in particular situations.</p>
+        <p>Confirmation of this statement is presented in [<a href="https://www.researchgate.net/publication/226012211_Experimental_Comparison_of_PSNR_and_SSIM_Metrics_for_Video_Quality_Estimation">3</a>] in the form of experimental comparisons of PSNR and SSIM dependences on the changes in brightness and hue. These charts clearly describe the shortcomings that PSNR has. Little changes in brightness and hue have negligible influence on the visual quality and, as it can be seen, on SSIM scores. While for PSNR the opposite is true.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic13.png" />
+            <p><i>Fig. 13. Comparison of PSNR and SSIM decreases due to changes in brightness</i></p>
+          </div>
+        </div>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic14.png" />
+            <p><i>Fig. 14. Comparison of PSNR and SSIM changes due to changes in hue</i></p>
+          </div>
+        </div>
+        <h2 id="compression">Compression</h2>
+        <p>Image compression algorithms traditionally optimize the MSE under the constraint of a limited file size.</p>
+        <p>In the paper[<a href="https://www.researchgate.net/publication/3404638_Scope_of_validity_of_PSNR_in_imagevideo_quality_assessment">8</a>] it has been shown that PSNR can be used as a metric when the content and codec are fixed across the test conditions, e.g. in comparing codec optimization settings for a given video content, but PSNR is an unreliable metric when content isn't fixed. When each video is considered individually, PSNR and subjective quality always increase monotonically with bit rate (more examples in the article). But there is an example where PSNR would indicate that the quality for SRC3 is always higher than the quality of SRC9 at all bit rates, while subjective data shows that this is not true.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic15.png" />
+            <p><i>Fig. 15. PSNR and subjective quality variation with bit rate, across contents</i></p>
+          </div>
+        </div>
+        <p>Also in that article it has been demonstrated that the correlation between PSNR and subjective quality gets worse if PSNR is used across contents, than if PSNR is used for each video separately. It means, although the monotonic relationship between PSNR and subjective quality exists separately per content, it does not exist across contents.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic16.png" />
+            <p><i>Fig. 16. Correlation between PSNR and quality per content and across contents</i></p>
+          </div>
+        </div>
+        <p>This is a well-known drawback of full-reference metrics usage for different content comparisons. In these cases, correlations should be aggregated across content using Fisher transform, or the comparison should be performed with no-reference metrics.</p>
+        <p>In the article [<a href="https://ieeexplore.ieee.org/document/4775883">2</a>] the comparison of MAE and SSIM maps for compressed images is presented. There are annoying pseudo-contouring effects (in the sky region) and blocking artifacts (along the boundaries of the building) on the compressed image. These distortions are successfully captured by the SSIM index, yet poorly predicted by the absolute error map. Since absolute error affects MSE evenly in terms of pixel distribution in space, MSE suffers from the same problem.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic17.png" />
+            <p><i>Fig. 17. Comparison of MAE and SSIM maps for compressed image</i></p>
+          </div>
+        </div>
+        <p>Since structural distortions occur after compression, it makes more sense to use SSIM, than PSNR.</p>
+        <p>In [<a href="https://arxiv.org/pdf/2005.01338v2.pdf">7</a>] it has been demonstrated that DISTS and LPIPS metrics are superior to the other IQA (image quality assessment) models in the task of compression, when they are used as an objective for optimizing DNNs (deep neural networks).</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic18.png" />
+            <p><i>Fig. 18. Comparison of images recovered from compressed images by optimizing different IQA models. The best results are highlighted in green</i></p>
+          </div>
+        </div>
+        <h2 id="rotations-and-spatial-shifts">Rotations and spatial shifts</h2>
+        <p>As had been shown in [<a href="https://ieeexplore.ieee.org/document/4775883">2</a>], PSNR and SSIM are highly sensitive to rotations, spatial shifts and scalings.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic19.png" />
+            <p><i>Fig. 19. Comparison of &quot;Einstein&quot; images with rotation, spatial shift and spatial scaling</i></p>
+          </div>
+        </div>
+        <p>To deal with this problem, a wavelet domain version of SSIM or CW-SSIM was developed [<a href="https://ieeexplore.ieee.org/document/1415469">9</a>]. As you can see from Fig. 19, CW-SSIM really does a better job with these types of distortions. The disadvantages of this metric should be noted. First, the CW-SSIM does not provide any correspondence information between the pixels of the two images being compared. Second, the method works only when the amount of translation, scaling and rotation is small compared to the wavelet filter size.</p>
+        <h2 id="super-resolution">Super-resolution</h2>
+        <p>The inapplicability of PSNR and SSIM for the SR has also been discussed in other studies [<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.124.4971&amp;rep=rep1&amp;type=pdf">10</a>], [<a href="https://ieeexplore.ieee.org/document/4106955">11</a>].</p>
+        <p>Our examples of the inapplicability of the PSNR and MS-SSIM for the SR are presented below. As often happens, the SR algorithms produce pixel shifts and as result in pure form PSNR and SSIM give bad scores. To avoid this problem, a shifted version of the metrics is often used, and our benchmark is no exception [<a href="https://videoprocessing.ai/benchmarks/video-super-resolution.html">12</a>]. However, even with shift compensation, most metrics have a low correlation with subjective assessment.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic20.png" />
+            <p><i>Fig. 20. Our examples of SSIM negative correlation with visual quality for Super-Resolution task</i></p>
+          </div>
+        </div>
+        <p>Subjective comparisons were made using Subjectify.us on cropped video clips to make it easier for respondents.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic21.png" />
+            <p><i>Fig. 21. Our examples of PSNR negative correlation with visual quality for Super-Resolution task</i></p>
+          </div>
+        </div>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic22.png" />
+            <p><i>Fig. 22. Our examples of MS-SSIM negative correlation with visual quality for Super-Resolution task</i></p>
+          </div>
+        </div>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic23.png" />
+            <p><i>Fig. 23. Our result of analyzing the correlation of metrics with subjective quality for Super-Resolution tasks. The ERQA metric was developed specifically for the benchmark VSR [<a href="https://videoprocessing.ai/benchmarks/video-super-resolution.html">12</a>]</i></p>
+          </div>
+        </div>
+        <p>Crops for subjective comparison and correlation of metrics are taken from the <a href="https://videoprocessing.ai/benchmarks/super-resolution-for-video-compression.html">Super-Resolution for Video Compression Benchmark</a>.</p>
+        <p>Currently, there is no metric to verify the ability of SR to restore real details. We are working on this issue and developing our own metric for the task of Super-Resolution as well as assessing SR's ability to recover video after compression. As you can see from Fig. 23, <a href="https://videoprocessing.ai/benchmarks/video-super-resolution-methodology.html#erqa">ERQA</a> is superior to other metrics in terms of correlation with subjective assessment.</p>
+        <h2 id="conclusion">Conclusion</h2>
+        <p>It can easily be concluded that the PSNR metric is not a good metric for quality estimation. There are too many parameters that highly influence the PSNR value and barely affect the visual quality (for example little changes in brightness, contrast, hue and saturation). On the other hand, SSIM metric has quite better performance compared to PSNR. But SSIM is almost insensitive to changes in brightness, contrast, hue and saturation.</p>
+        <p>In general, the number of newly created image quality metrics rises every year.</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic24.jpg" />
+            <p><i>Fig. 24. Our result of analyzing interest in video quality metrics</i></p>
+          </div>
+        </div>
+        <p>However, industry and researchers still commonly use classical methods, although there is a lot of criticism. This doesn't mean that some methods are bad and some are good, you just need to clearly define the boundaries of applicability of any metric. According to our research, we can draw the following conclusion:</p>
+        <p>PSNR is good for:</p>
+        <ul>
+          <li>testing different codec optimisation strategies designed to maximise the subjective quality of a specified content (i.e. the content remains the same between the optimisations)</li>
+          <li>capturing noise</li>
+          <li>capturing changes in brightness, contrast, hue and saturation</li>
+        </ul>
+        <p>but can not be applicated to:</p>
+        <ul>
+          <li>estimating content-dependent distortions</li>
+          <li>capturing blurring</li>
+          <li>testing different codec quality when content  doesn't remain the same between tests</li>
+          <li>quality assessment of Super-Resolution algorithms</li>
+          <li>capturing rotations and spatial shifts</li>
+        </ul>
+        <p>SSIM is good for:</p>
+        <ul>
+          <li>estimating content-dependent distortions</li>
+          <li>capturing noise</li>
+          <li>capturing blurring</li>
+        </ul>
+        <p>but can not be applicated to:</p>
+        <ul>
+          <li>quality assessment of Super-Resolution algorithms</li>
+          <li>capturing rotations and spatial shifts</li>
+          <li>capturing changes in brightness, contrast, hue and saturation</li>
+        </ul>
+        <p>New quality metrics are being actively developed now. Recent works in neural network metrics — LPIPS and DISTS — show high correlations with subjective assessment [<a href="https://arxiv.org/pdf/2005.01338v2.pdf">7</a>].</p>
+        <div class="center">
+          <div>
+            <img style="width:80%" src="/assets/img/metrics/psnr_and_ssim/pic25.png" />
+            <p><i>Fig. 25. SRCC of objective ranking scores from the IQA models against subjective ranking scores</i></p>
+          </div>
+        </div>
+        <p>Also, special metrics for specific recovery tasks (e.g. SR or deblurring) appear and show better results [<a href="https://videoprocessing.ai/benchmarks/video-super-resolution.html">12</a>]. You can already find a metric for many tasks that is more suitable than PSNR and SSIM.</p>
+        <h2 id="references">References</h2>
+        <p>[1] Zhou Wang, A. C. Bovik, H. R. Sheikh and E. P. Simoncelli, "Image quality assessment: from error visibility to structural similarity," in IEEE Transactions on Image Processing, vol. 13, no. 4, pp. 600-612, April 2004, doi: 10.1109/TIP.2003.819861</p>
+        <p><a href="https://ieeexplore.ieee.org/document/1284395">https://ieeexplore.ieee.org/document/1284395</a></p>
+        <p>[2] Z. Wang and A. C. Bovik, "Mean squared error: Love it or leave it? A new look at Signal Fidelity Measures," in IEEE Signal Processing Magazine, vol. 26, no. 1, pp. 98-117, January 2009, doi: 10.1109/MSP.2008.930649.</p>
+        <p><a href="https://ieeexplore.ieee.org/document/4775883">https://ieeexplore.ieee.org/document/4775883</a></p>
+        <p>[3] Zoran Kotevski and Pece Mitrevski, "Experimental Comparison of PSNR and SSIM Metrics for Video Quality Estimation," in book: <a href="https://www.researchgate.net/publication/321552739_ICT_Innovations_2009">ICT Innovations 2009 (pp.357-366)</a>, January 2010, doi:<a href="http://dx.doi.org/10.1007/978-3-642-10781-8_37">10.1007/978-3-642-10781-8_37</a></p>
+        <p><a href="https://www.researchgate.net/publication/226012211_Experimental_Comparison_of_PSNR_and_SSIM_Metrics_for_Video_Quality_Estimation">https://www.researchgate.net/publication/226012211_Experimental_Comparison_of_PSNR_and_SSIM_Metrics_for_Video_Quality_Estimation</a></p>
+        <p>[4] <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Sharif%2C+M">Mahmood Sharif</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Bauer%2C+L">Lujo Bauer</a> and <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Reiter%2C+M+K">Michael K. Reiter</a>, "On the Suitability of Lp-norms for Creating and Preventing Adversarial Examples", July 2018</p>
+        <p><a href="https://arxiv.org/pdf/1802.09653.pdf">https://arxiv.org/pdf/1802.09653.pdf</a></p>
+        <p>[5] Peter Ndajah, Hisakazu Kikuchi, Masahiro Yukawa, Hidenori Watanabe and Shogo Muramatsu,"SSIM Image Quality Metric for Denoised Images" in conference: "Proceedings of the 3rd WSEAS international conference on Visualization, imaging and simulation", September 3, 2010</p>
+        <p><a href="https://www.researchgate.net/publication/262157566_SSIM_image_quality_metric_for_denoised_images">https://www.researchgate.net/publication/262157566_SSIM_image_quality_metric_for_denoised_images</a></p>
+        <p>[6] Aditya Anchuri, "Image Blur Metrics", Stanford University, 2011</p>
+        <p><a href="https://media.gradebuddy.com/documents/2105719/478f7e3c-c9d4-4fd5-86cf-1d4b862ca0f9.pdf">https://media.gradebuddy.com/documents/2105719/478f7e3c-c9d4-4fd5-86cf-1d4b862ca0f9.pdf</a></p>
+        <p>[7] Keyan Ding, Kede Ma, Shiqi Wang and Eero P. Simoncelli, "Comparison of Image Quality Models for Optimization of Image Processing Systems", May 5, 2020</p>
+        <p><a href="https://arxiv.org/pdf/2005.01338v2.pdf">https://arxiv.org/pdf/2005.01338v2.pdf</a></p>
+        <p>[8] <a href="https://www.researchgate.net/scientific-contributions/Quan-Huynh-Thu-74895678">Q. Huynh-Thu</a> and<a href="https://www.researchgate.net/profile/Mohammed-Ghanbari">Mohammed Ghanbari</a>, "Scope of validity of PSNR in image/video quality assessment", February 2008, doi: <a href="http://dx.doi.org/10.1049/el:20080522">10.1049/el:20080522</a></p>
+        <p><a href="https://www.researchgate.net/publication/3404638_Scope_of_validity_of_PSNR_in_imagevideo_quality_assessment">https://www.researchgate.net/publication/3404638_Scope_of_validity_of_PSNR_in_imagevideo_quality_assessment</a></p>
+        <p>[9] Z. Wang and E.P. Simoncelli, "Translation insensitive image similarity in complex wavelet domain," in Proc. IEEE Int. Conf. Acoustics, Speech, Signal Processing, Mar. 2005, pp. 573–576, doi: 10.1109/ICASSP.2005.1415469</p>
+        <p><a href="https://ieeexplore.ieee.org/document/1415469">https://ieeexplore.ieee.org/document/1415469</a></p>
+        <p>[10] Amy R. Reibman and Thilo Schaper, "Subjective performance evaluation of super-resolution image enhancement", January 2006</p>
+        <p><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.124.4971&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.124.4971&amp;rep=rep1&amp;type=pdf</a></p>
+        <p>[11] A. R. Reibman, R. M. Bell and S. Gray, "Quality assessment for super-resolution image enhancement," in <em>2006 International Conference on Image Processing</em>, 2006, pp. 2017-2020, doi: 10.1109/ICIP.2006.312895.</p>
+        <p><a href="https://ieeexplore.ieee.org/document/4106955">https://ieeexplore.ieee.org/document/4106955</a></p>
+        <p>[12] <a href="https://videoprocessing.ai/benchmarks/video-super-resolution.html">https://videoprocessing.ai/benchmarks/video-super-resolution.html</a></p>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=PSNR and SSIM: application areas and criticism&amp;url=
+http://localhost:4000/metrics/ways-of-cheating-on-popular-objective-metrics.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=PSNR and SSIM: application areas and criticism&amp;url=
+http://localhost:4000/metrics/ways-of-cheating-on-popular-objective-metrics.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/metrics/ways-of-cheating-on-popular-objective-metrics.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=PSNR and SSIM: application areas and criticism&amp;body=
+http://localhost:4000/metrics/ways-of-cheating-on-popular-objective-metrics.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/metrics/ways-of-cheating-on-popular-objective-metrics.html
+&amp;title=PSNR and SSIM: application areas and criticism&amp;summary=PSNR and SSIM: application areas and criticism&amp;source=
+http://localhost:4000/metrics/ways-of-cheating-on-popular-objective-metrics.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">02 Sep 2021</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/vfi/main.webp)"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

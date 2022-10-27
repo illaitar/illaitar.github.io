@@ -1,0 +1,99 @@
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+
+
+
+<p style="text-align: center;"><em>Click on the labels to sort the table.</em></p>
+
+
+<div class="center" class="datatable-container full-bleed">
+  <div align="center" class="datatable-center">
+    <div align="center" id="double_performance_table_wrapper" class="dataTables_wrapper no-footer"><table id="double_performance_table" class="display dataTable no-footer" role="grid" aria-describedby="double_performance_table_info">
+      <thead>
+        <tr role="row">
+          <th style="background-color: rgb(61, 111, 150); color: rgb(255, 255, 255); width: 50px;" class="sorting" tabindex="0" aria-controls="double_performance_table" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Rank</th>
+          <th style="background-color: rgb(61, 111, 150); color: rgb(255, 255, 255); width: 200px;" class="sorting" tabindex="0" aria-controls="double_performance_table" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Name</th>
+          <th style="background-color: rgb(61, 111, 150); color: rgb(255, 255, 255); width: 300px;" class="sorting" tabindex="0" aria-controls="double_performance_table" rowspan="1" colspan="1" aria-label="PSNR: activate to sort column ascending">F1 score <!-- ↑ --></th>
+          <th style="background-color: rgb(61, 111, 150); color: rgb(255, 255, 255); width: 150px;" class="sorting" tabindex="0" aria-controls="double_performance_table" rowspan="1" colspan="1" aria-label="FPS on CPU: activate to sort column ascending">
+            FPS <!-- ↑ -->
+          </th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr class="item odd" role="row">
+        <td>1</td>
+        <td style="text-align: left;"> <a href="./shot-boundary-detection-participants.html">NITS-CV-Lab-v1.0</a></td>
+        <td>0.8470</td>
+        <td>24</td>
+      </tr>
+      <tr class="item even" role="row">
+        <td>2</td>
+        <td style="text-align: left;"> <a href="./shot-boundary-detection-participants.html">Saeid Dadkhan</a></td>
+        <td>0.7686</td>
+        <td>93</td>
+      </tr>
+
+      <tr class="item odd" role="row">
+        <td>3</td>
+        <td style="text-align: left;"> <a href="./shot-boundary-detection-participants.html">PyScene-v2</a></td>
+        <td>0.7534</td>
+        <td>86</td>
+      </tr>
+
+      <tr class="item even" role="row">
+        <td>4</td>
+        <td style="text-align: left;"> <a href="./shot-boundary-detection-participants.html">johmathe</a></td>
+        <td>0.7492</td>
+        <td>94</td>
+      </tr>
+      <tr class="item odd" role="row">
+        <td>5</td>
+        <td style="text-align: left;"><a href="./shot-boundary-detection-participants.html">VQMT</a></td>
+        <td>0.7484</td>
+        <td>111</td>
+      </tr>
+      <tr class="item even" role="row">
+        <td>6</td>
+        <td style="text-align: left;"> <a href="./shot-boundary-detection-participants.html">aysebil</a></td>
+        <td>0.7440</td>
+        <td>71</td>
+      </tr>
+      <tr class="item odd" role="row">
+        <td>7</td>
+        <td style="text-align: left;"> <a href="./shot-boundary-detection-participants.html">PyScene</a></td>
+        <td >0.7349</td>
+        <td>86</td>
+      </tr>
+      <tr class="item even" role="row">
+        <td>8</td>
+        <td style="text-align: left;"><a href="./shot-boundary-detection-participants.html">FFmpeg</a></td>
+        <td>0.7314</td>
+        <td>125</td>
+      </tr>
+      <tr class="item odd" role="row">
+        <td>9</td>
+        <td style="text-align: left;"> <a href="./shot-boundary-detection-participants.html">MaxReimann</a></td>
+        <td>0.7279</td>
+        <td>61</td>
+      </tr>
+      <tr class="item even" role="row">
+        <td>10</td>
+        <td style="text-align: left;"> <a href="./shot-boundary-detection-participants.html">GStreamer</a></td>
+        <td>0.7087</td>
+        <td>163</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+    <script>
+      $(document).ready(function () {
+          $('#double_performance_table').DataTable({
+              lengthChange: false,
+              paging: false,
+              searching: false
+          });
+      });
+    </script>
+
+  </div>
+</div>

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>First Annual MSU MPEG-4 AVC/H.264 Video Codec Comparison. Part 3</title>
+    <meta property="og:title" content="First Annual MSU MPEG-4 AVC/H.264 Video Codec Comparison. Part 3">
+    <meta property="og:image" content="http://localhost:4000/assets/img/codecs/mpeg4-avc-h264-2004-part3/preview.jpg">
+    <meta name="description" content="Third part of First MPEG-4 AVC/H.264 Video Codecs Comparison">
+    <meta property="og:description" content="Third part of First MPEG-4 AVC/H.264 Video Codecs Comparison">
+    <meta property="og:url" content="
+http://localhost:4000/codecs/mpeg4-avc-h264-2004-part3.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/codecs/">Codecs Comparisons & Optimization</a>
+        &mdash;
+        <a href="/codecs/reports/">All Codecs Comparison Reports</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <h1 id="first-annual-msu-mpeg-4-avch264-video-codec-comparison">First Annual MSU MPEG-4 AVC/H.264 Video Codec Comparison</h1>
+        <p><strong>For professional users and codec authors</strong></p>
+        <p>Return to <a href="/codecs/mpeg4-avc-h264-2004.html">first H.264/AVC comparison home
+            page!</a></p>
+        <p><strong>Part 3. Additional testing</strong></p>
+        <h2 id="average-brightness-shift-diagrams">Average brightness shift diagrams</h2>
+        <p>These diagrams show average shift of brightness produced by the codecs.
+          Coordinates of the basic points represent average brightness values for the whole sequence
+          and the number of measurement (bit rate). So each branch contains ten points that correspond
+          to different bit rates.</p>
+        <h3 id="bankomatdi-sequence">Bankomatdi sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image082.gif" width="554" height="414" /><br />
+            Picture 36. Y-difference. Sequence bankomatdi
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>All the H.264 codecs raise average brightness in the sequence. The more is the bit rate the more brightness changes.</li>
+          <li>Fraunhofer codec raises brightness stronger than the other codecs.</li>
+        </ul>
+        <h3 id="battle-sequence">Battle sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image084.gif" width="554" height="412" /><br />
+            Picture 37. Y-difference. Sequence battle
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>All the H.264 codecs raise average brightness in the sequence. The more is the bit rate the more brightness changes.</li>
+          <li>Videosoft codec raises brightness stronger than the other codecs.</li>
+        </ul>
+        <h3 id="bbc3di-sequence">Bbc3di sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image086.gif" width="554" height="414" /><br />
+            Picture 38. Y-difference. Sequence bbc3di
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>All the H.264 codecs raise average brightness in the sequence on the average and high bit rates. The more is the bit rate the more brightness changes.</li>
+          <li>Change of brightness on the low bit rates is small.</li>
+        </ul>
+        <h3 id="foreman-sequence">Foreman sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image088.gif" width="554" height="412" /><br />
+            Picture 39. Y-difference. Sequence foreman
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>All the H.264 codecs except Fraunhofer strongly raise average brightness in the sequence. The more is the bit rate the more brightness changes.</li>
+        </ul>
+        <h3 id="susidi-sequence">Susidi sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image090.gif" width="554" height="414" /><br />
+            Picture 40. Y-difference. Sequence susidi
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>All the H.264 codecs strongly raise average brightness in the sequence. This change is approximately constant for all the bit rates.</li>
+        </ul>
+        <div>
+          <h1 id="bit-rate-handling-diagrams" style="margin-top:0cm;margin-right:4.55pt;margin-bottom:3.0pt;margin-left: 7.1pt;border:none;mso-border-alt:solid windowtext 3.0pt;padding:0cm;mso-padding-alt: 1.0pt 4.0pt 1.0pt 6.0pt">Bit rate handling diagrams</h1>
+        </div>
+        <p>These diagrams show how codecs handle different bit rates. Every branch consists of ten points that correspond to different bit rates. Value “1” means that the codec keeps the specified bit rate; value more than “1” means that the codec actually compresses with the higher bit rate than was specified.</p>
+        <h3 id="bankomatdi-sequence-1">Bankomatdi sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image092.gif" width="554" height="400" /><br />
+            Picture 41. Bit rate handling. Sequence bankomatdi
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>Videosoft codec slightly increases specified low bit rates.</li>
+          <li>DivX codec increases specified low bit rates.</li>
+        </ul>
+        <h3 id="battle-sequence-1">Battle sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image094.gif" width="554" height="393" /><br />
+            Picture 42. Bit rate handling. Sequence battle
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>Videosoft codec slightly increases specified low bit rates.</li>
+          <li>DivX and MainConcept codecs strongly increase specified low bit rates.</li>
+        </ul>
+        <h3 id="bbc3di-sequence-1">Bbc3di sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image096.gif" width="554" height="400" /><br />
+            Picture 43. Bit rate handling. Sequence bbc3di
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>All the H.264 codecs slightly increase specified low bit rates.</li>
+          <li>DivX codec strongly increases specified low bit rates.</li>
+        </ul>
+        <h3 id="foreman-sequence-1">Foreman sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image098.gif" width="554" height="393" /><br />
+            Picture 44. Bit rate handling. Sequence foreman
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>MainConcept significantly decreases specified bit rates.</li>
+          <li>DivX increases specified bit rates.</li>
+        </ul>
+        <h3 id="susidi-sequence-1">Susidi sequence</h3>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image100.gif" width="554" height="400" /><br />
+            Picture 45. Bit rate handling. Sequence susidi
+          </div>
+        </div>
+        <p><strong>Conclusions</strong>:</p>
+        <ul>
+          <li>DivX increases specified low bit rates.</li>
+        </ul>
+        <div>
+          <h1 id="per-frame-sequences-comparison">Per frame sequences comparison</h1>
+        </div>
+        <p>These diagrams show how compression quality changes from frame to frame. X-axis coordinate represents the number of the frame and Y-axis coordinate represents PSNR-value for this frame. Significant constant difference on the susidi diagram is caused by the noise suppression in every second frame (B-frames options in MPEG-2 coder).</p>
+        <h3 id="bankomatdi-sequence-2">Bankomatdi sequence</h3>
+        <h4 id="bit-rate--100-kbsec">Bit rate = 100 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image102.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image104.gif" width="623" height="207" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image106.gif" width="623" height="196" /></p>
+        <h4 id="bit-rate--700-kbsec">Bit rate = 700 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image108.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image110.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image112.gif" width="623" height="203" /></p>
+        <h4 id="bit-rate--2340-kbsec">Bit rate = 2340 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image114.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image116.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image118.gif" width="623" height="203" /></p>
+        <h3 id="battle-sequence-2">Battle sequence</h3>
+        <h4 id="bit-rate--100-kbsec-1">Bit rate = 100 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image120.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image122.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image124.gif" width="623" height="213" /></p>
+        <h4 id="bit-rate--700-kbsec-1">Bit rate = 700 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image126.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image128.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image130.gif" width="623" height="213" /></p>
+        <h4 id="bit-rate--2340-kbsec-1">Bit rate = 2340 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image132.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image134.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image136.gif" width="623" height="213" /></p>
+        <h3 id="bbc3di-sequence-2">Bbc3di sequence</h3>
+        <h4 id="bit-rate--100-kbsec-2">Bit rate = 100 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image138.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image140.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image142.gif" width="623" height="203" /></p>
+        <h4 id="bit-rate--700-kbsec-2">Bit rate = 700 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image144.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image146.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image148.gif" width="623" height="203" /></p>
+        <h4 id="bit-rate--2340-kbsec-2">Bit rate = 2340 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image150.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image152.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image154.gif" width="623" height="203" /></p>
+        <h3 id="foreman-sequence-2">Foreman sequence</h3>
+        <h4 id="bit-rate--100-kbsec-3">Bit rate = 100 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image156.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image158.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image160.gif" width="623" height="213" /></p>
+        <h4 id="bit-rate--700-kbsec-3">Bit rate = 700 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image162.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image164.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image166.gif" width="623" height="213" /></p>
+        <h4 id="bit-rate--2340-kbsec-3">Bit rate = 2340 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image168.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image170.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image172.gif" width="623" height="213" /></p>
+        <h3 id="susidi-sequence-2">Susidi sequence</h3>
+        <h4 id="bit-rate--100-kbsec-4">Bit rate = 100 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image174.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image176.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image178.gif" width="623" height="203" /></p>
+        <h4 id="bit-rate--700-kbsec-4">Bit rate = 700 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image180.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image182.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image184.gif" width="623" height="203" /></p>
+        <h4 id="bit-rate--2340-kbsec-4">Bit rate = 2340 Kb/sec</h4>
+        <p><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image186.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image188.gif" width="623" height="213" />
+          <img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image190.gif" width="623" height="203" /></p>
+        <div>
+          <h1 id="visual-comparison-of-h.264-and-divx-codecs">Visual comparison of H.264 and DivX codecs</h1>
+        </div>
+        <ul>
+          <li>Comparison was performed between the Ateme and DivX codecs.</li>
+          <li>Bit rate was set to 700 Kb/sec.</li>
+          <li>Bbc2di and foreman video sequences were used.</li>
+        </ul>
+        <h3 id="bbc3di-sequence-frame-280">Bbc3di sequence, frame 280</h3>
+        <p>The following examples demonstrate better image quality after compression with the H.264 codec in comparison with DivX.</p>
+        <table class="center" style="text-align: center">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image192.jpg" width="307" height="190" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image194.jpg" width="307" height="190" /></td>
+            </tr>
+            <tr class="even">
+              <td>Picture 46. Bbc3di frame 280. Ateme</td>
+              <td>Picture 47. Bbc3di frame 280. DivX</td>
+            </tr>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image196.jpg" width="307" height="190" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image198.jpg" width="307" height="190" /></td>
+            </tr>
+            <tr class="even">
+              <td>Picture 48. Bbc3di frame 280. Ateme</td>
+              <td>Picture 49. Bbc3di frame 280. DivX</td>
+            </tr>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image200.jpg" width="307" height="190" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image202.jpg" width="307" height="190" /></td>
+            </tr>
+            <tr class="even">
+              <td>Picture 50. Bbc3di frame 280. Ateme</td>
+              <td>Picture 51. Bbc3di frame 280. DivX</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 id="foreman-sequence-frames-282-and-9">Foreman sequence, frames 282 and 9</h3>
+        <p>The following examples demonstrate better image quality after compression with the H.264 codec in comparison with DivX.</p>
+        <table class="center" style="text-align: center">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image204.jpg" width="307" height="190" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image206.jpg" width="307" height="190" /></td>
+            </tr>
+            <tr class="even">
+              <td>Picture 52. Foreman frame 282. Ateme</td>
+              <td>Picture 53. Foreman frame 282. DivX</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="center" style="text-align: center">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image208.jpg" width="307" height="190" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image210.jpg" width="307" height="190" /></td>
+            </tr>
+            <tr class="even">
+              <td>Picture 54. Foreman frame 282. Ateme</td>
+              <td>Picture 55. Foreman frame 282. DivX</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="center" style="text-align: center">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image212.jpg" width="307" height="190" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image214.jpg" width="307" height="190" /></td>
+            </tr>
+            <tr class="even">
+              <td>Picture 56. Foreman frame 282. Ateme</td>
+              <td>Picture 57. Foreman frame 282. DivX</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Conclusion</strong>:</p>
+        <ul>
+          <li>On similar PSNR values H.264 standard codecs show significantly better visual quality than previous standard codecs.</li>
+          <li>Most of tested codecs are optimized for maximum speed on current day computers and do not implement all possibilities of H.264 format</li>
+        </ul>
+        <p>The following examples demonstrate close results from the image quality point of view for DivX and H.264.</p>
+        <table class="center" style="text-align: center">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image216.jpg" width="307" height="190" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image218.jpg" width="307" height="190" /></td>
+            </tr>
+            <tr class="even">
+              <td>Picture 58. Foreman frame 9. Ateme</td>
+              <td>Picture 59. Foreman frame 9. DivX</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="center" style="text-align: center">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image220.jpg" width="307" height="190" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image222.jpg" width="307" height="190" /></td>
+            </tr>
+            <tr class="even">
+              <td>Picture 60. Foreman frame 9. Ateme</td>
+              <td>Picture 61. Foreman frame 9. DivX</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="center" style="text-align: center">
+          <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+          </colgroup>
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image224.jpg" width="307" height="190" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2004-part3/image226.jpg" width="307" height="190" /></td>
+            </tr>
+            <tr class="even">
+              <td>Picture 62. Foreman frame 9. Ateme</td>
+              <td>Picture 63. Foreman frame 9. DivX</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=First Annual MSU MPEG-4 AVC/H.264 Video Codec Comparison. Part 3&amp;url=
+http://localhost:4000/codecs/mpeg4-avc-h264-2004-part3.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=First Annual MSU MPEG-4 AVC/H.264 Video Codec Comparison. Part 3&amp;url=
+http://localhost:4000/codecs/mpeg4-avc-h264-2004-part3.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/codecs/mpeg4-avc-h264-2004-part3.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=First Annual MSU MPEG-4 AVC/H.264 Video Codec Comparison. Part 3&amp;body=
+http://localhost:4000/codecs/mpeg4-avc-h264-2004-part3.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/codecs/mpeg4-avc-h264-2004-part3.html
+&amp;title=First Annual MSU MPEG-4 AVC/H.264 Video Codec Comparison. Part 3&amp;summary=First Annual MSU MPEG-4 AVC/H.264 Video Codec Comparison. Part 3&amp;source=
+http://localhost:4000/codecs/mpeg4-avc-h264-2004-part3.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">10 Mar 2011</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-19.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-19/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2019</div>
+          <div class="text">Fourteen modern video codec comparison</div>
+        </a>
+        <a class="tile" href="/codecs/hevc-2018.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/hevc-2018/preview.png)"></div>
+          <div class="title">HEVC Video Codecs Comparison 2018 (Thirteen MSU Video Codec Comparison)</div>
+          <div class="text">13th MSU video codecs comparison</div>
+        </a>
+        <a class="tile" href="/codecs/hevc-2017.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/hevc-2017/preview.png)"></div>
+          <div class="title">HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)</div>
+          <div class="text">12th MSU video codecs comparison</div>
+        </a>
+        <a class="tile" href="/codecs/comparisons.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/comparisons/preview.png)"></div>
+          <div class="title">MSU Video Codec Comparisons (6 test of lossless, MPEG-4 and MPEG-4 AVC)</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-18.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-18/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2018</div>
+          <div class="text"></div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

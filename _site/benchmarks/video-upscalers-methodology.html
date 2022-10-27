@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Video Upscalers Benchmark Methodology</title>
+    <meta property="og:title" content="MSU Video Upscalers Benchmark Methodology">
+    <meta property="og:image" content="http://localhost:4000/assets/img/benchmarks/upscalers/MSU_VUB.webp">
+    <meta name="description" content="The methodology of the MSU Video Upscalers Benchmark">
+    <meta property="og:description" content="The methodology of the MSU Video Upscalers Benchmark">
+    <meta property="og:url" content="
+http://localhost:4000/benchmarks/video-upscalers-methodology.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/benchmarks/">MSU Benchmark Collection</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <link rel="stylesheet" href="/assets/css/benchmarks/style.css" />
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css" />
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <h1 id="-the-methodology-of-the-msu-video-upscalers-benchmark"><span id="methodology_home"></span> The Methodology of the MSU Video Upscalers Benchmark</h1>
+        <div id="buttons"></div>
+        <script>
+          __set_menu_buttons([
+          ['Home', '/benchmarks/video-upscalers.html#home'],
+          ['How to participate', '/benchmarks/video-upscalers.html#participate'],
+              ['Methodology', '#methodology_home'],
+          ['Participants','/benchmarks/video-upscalers-participants.html#participants_home']
+          ], 'Methodology')
+        </script>
+        <div class="current_content">
+          <style>
+            .top_gif{
+            display: block;
+            margin: 0 auto;
+            width:75%;
+            }
+          </style>
+          <p>Our benchmark aims to find the algorithms that produce the most
+            visually pleasant image possible and generalize well to a broad range
+            of content. We check each submission on private clips to prevent
+            upscalers tuning to our test videos.</p>
+          <h2>The Test Video</h2>
+          <p><img class="top_gif" src="/assets/img/benchmarks/upscalers/camera.jpg" /></p>
+          <p>Our test video consists of 30 clips and contains:</p>
+          <ul>
+            <li> 15 2D-animated segments losslessly recorded from various videogames</li>
+            <li> 15 camera-shot segments from high-bitrate YUV444 sources
+              <ul>
+                <li> half of the camera-shot segments include humans, and the other half features animals and architecture </li>
+              </ul>
+            </li>
+            <li> spatially complex and simple segments (textures, fine details) with high and low SI<sup><a href="#references">[1]</a></sup></li>
+            <li> temporally complex and simple segments (camera and object movement) with high and low TI<sup><a href="#references">[1]</a></sup></li>
+            <li> multiple bicubic downscaling mixed with sharpening to simulate complex real-world camera degradation. </li>
+          </ul>
+          <p>Our test video is slightly compressed and converted to YUV420
+            to simulate a practical use case. The resolution of our test video is 480×270.
+            It is ¼ of the most popular modern video resolution: 1920×1080.
+            One could argue that this resolution is too small for an actual use case.
+            Still, fine details (which significantly affect the perceived restoration quality)
+            in a 1920×1080 video are comparable to medium-sized objects in a 480×270 video.
+          </p>
+          <p>While preparing our test video, we converted the sources to BT.709 TV color
+            space with YUV 4:4:4 pixel format. Then we extracted RGB24 PNG frames
+            from the videos. Additional YUV⇔RGB conversions will not lead to any precision loss.
+          </p>
+          <p>All test segments are combined into a single test video file for convenience.
+            We separate different parts by five black frames to avoid upscalers misbehaving
+            due to scene changes. There are no scene changes inside the segments themselves.
+            Additionally, the test video starts and ends with five black frames.
+          </p>
+          <p>We extract the most salient<sup><a href="#references">[2]</a></sup> spatial crops from upscaling results for
+            our calculations. The segment length varies between 48 and 100 frames.
+            We don’t account for the first and last five frames to improve the results
+            of algorithms that use temporal information.
+          </p>
+          <p>We ensured that our test video had good algorithm behavior coverage while reducing
+            the number of redundant clips by running the algorithms on a more extensive set
+            of clips, then clustering the clips by Pearson correlation of the LPIPS metric.
+            Our selected group of clips showed the widest variety of super-resolution
+            algorithm behavior.
+          </p>
+          <p><img class="top_gif" src="/assets/img/benchmarks/upscalers/animation.jpg" /></p>
+          <h2>The Subjective Comparison and Metrics</h2>
+          <p>Crowd-sourced subjective comparison with over 3700 valid participants was conducted using Subjectify<sup><a href="#references">[3]</a></sup>.
+            Frames from the clips we showed to the participants are available in the
+            “Visualizations” sections. Participants were to choose the most visually
+            appealing clip in a pair, the clips being the results of the upscalers on our
+            test video. Participants were told not to select algorithms that purposely
+            stylize video for camera-shot segments instead of restoring it.
+          </p>
+          <p>
+            The Bradley–Terry model calculated subjective quality values in the tables.
+            Values in the tables are the natural exponential of Bradley–Terry values to allow
+            linear comparison between different models: the ratio of subjective values equals
+            the proportion of votes. The complete comparison is only conducted for well-performing
+            models. These models are decided during the comparison according to current
+            confidence intervals. Therefore proportional values comparison is valid only for
+            models reaching the top 10 (top 11 with source) in rating (they have 99% confidence
+            intervals). Ranks of subjective comparison are correct for all models.
+          </p>
+          <p>Upscalers often slightly displace object borders.
+            It’s not noticeable subjectively but decreases the values of
+            some objective metrics. To combat this, we search for the best values
+            of the metrics by going over pixel shifts of upscalers’ results with ¼ pixel
+            precision (using bilinear scaling for float shifts). We do it for each segment
+            individually for all frames at once.
+          </p>
+          <p>We use the LPIPS metric to cluster methods and avoid comparing similar super-resolution models.
+            We hide these similar models by default, and you can view them using checkboxes. For each cluster,
+            the subjective comparison has been conducted only for the method achieving the best LPIPS value.
+            Similar models share the same rank in the tables with the selected one.
+          </p>
+          <p>We calculate most metrics using VQMT<sup><a href="#references">[4]</a></sup>,
+            including shifted SSIM-Y
+            error maps (we refer to them as “Structural Distortion Maps”).
+            We compute PSNR and SSIM over the Y color component.
+          </p>
+          <p>We run upscalers on NVIDIA Titan Xp, reading and writing from virtual disk in RAM
+            to minimize the impact of drive instability and delays.
+            Usually, upscalers utilize only GPU for neural network inference,
+            but some also use CPU. We run upscalers on Intel Xeon E5-2683 v3 @ 2.00GHz.
+            Therefore, some CPU-intensive upscaling applications (e.g., Topaz GUI)
+            may run faster on your machine. All models were tested on Windows and may be
+            slightly slower than Linux implementations.
+          </p>
+          <p>To obtain 2× results for models which support only 4× upscaling, we apply these
+            models and scale results with bicubic downscaling. FPS values are the same as for
+            4× upscaling. These models and their FPS values are underlined in the tables,
+            and you can read their notes by hovering your mouse over them.
+          </p>
+          <p>
+            Charts with correlation values of different metrics with our subjective comparison
+            results will be available in our upcoming paper, along with a more in-depth
+            explanation of the test video preparation process and a new proposed super-resolution
+            quality evaluation metric. Subscribe to this benchmark's updates using
+            <a href="/benchmarks/video-upscalers.html#form">the form</a>
+            and get notified when the paper is available.
+          </p>
+          <h2 id="references">References</h2>
+          <ol>
+            <li><a href="https://www.itu.int/rec/T-REC-P.910">
+                ITU-T Recommendation P.910: Subjective video quality assessment methods for multimedia applications, 1999. – 37 p.</a></li>
+            <li><a href="https://github.com/alexanderkroner/saliency">
+                https://github.com/alexanderkroner/saliency</a></li>
+            <li><a href="https://www.subjectify.us/">
+                https://www.subjectify.us/</a></li>
+            <li><a href="https://www.compression.ru/video/quality_measure/vqmt_download.html">
+                https://www.compression.ru/video/quality_measure/vqmt_download.html</a></li>
+          </ol>
+          <div>
+          </div>
+        </div>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Video Upscalers Benchmark Methodology&amp;url=
+http://localhost:4000/benchmarks/video-upscalers-methodology.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Video Upscalers Benchmark Methodology&amp;url=
+http://localhost:4000/benchmarks/video-upscalers-methodology.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/benchmarks/video-upscalers-methodology.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Video Upscalers Benchmark Methodology&amp;body=
+http://localhost:4000/benchmarks/video-upscalers-methodology.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/benchmarks/video-upscalers-methodology.html
+&amp;title=MSU Video Upscalers Benchmark Methodology&amp;summary=MSU Video Upscalers Benchmark Methodology&amp;source=
+http://localhost:4000/benchmarks/video-upscalers-methodology.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">28 Aug 2022</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/vfi/main.webp)"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

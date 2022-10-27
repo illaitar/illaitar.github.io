@@ -1,0 +1,64 @@
+<p>
+    We shot 100 different scenes to create the dataset. The video selection process for the final version of the dataset can be divided into several steps:
+<ul>
+    <li><b>Manual selection</b>. At this step, we have selected visually different scenes, so that the objects, the amount of movement and the type of lighting are different.</li>
+    <li><b>Feature calculation</b>. We consider the following features:<br><br>
+        <p align="center">
+            <img width="70%" src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/forms.png">
+        </p>
+        <br>
+<!--        <p align="center">-->
+<!--            <img width="70%" src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/disc.png">-->
+<!--        </p>-->
+    </li>
+    <li>
+        After calculating the features, we selected videos to get an uniform distribution.
+    </li>
+</ul>
+Below you can see the distribution of features for all captured videos
+</p>
+
+<style type="text/css">
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+    }
+</style>
+
+<div class="kkk">
+    <div class="hhh">
+        <img src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/meanDiff_maxD.png">
+<!--        <p class="label">HDRCNN, DeepHDR, ExpNet</p>-->
+    </div>
+    <div class="hhh">
+        <img src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/meanDiff_meanK.png">
+<!--        <p class="label">SingleHDR, Akyuz</p>-->
+    </div>
+    <div class="hhh">
+        <img src="https://storage.videoprocessing.ai/benchmarks/itm/visualizations/info/meanL_meanC.png">
+<!--        <p class="label">HDRTVNet</p>-->
+    </div>
+</div>
+
+<style type="text/css">
+    .kkk {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .hhh {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        /*margin-left: 0.5em;*/
+        /*margin-right: 0.5em;*/
+    }
+
+    .label {
+        font-style: italic;
+    }
+</style>

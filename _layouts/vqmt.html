@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include google_analytics.html %}
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/vqmt/vqmt.css" rel="stylesheet" type="text/css">
+{% for css_file in layout.add_css %}
+    <link href="{{ css_file }}" rel="stylesheet" type="text/css">
+{% endfor %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/assets/js/vqmt/interface.js"></script>
+{% for js_file in layout.add_js %}
+    <script src="{{ js_file }}"></script>
+{% endfor %}
+</head>
+<body>
+<div class="global-container">
+<div class="global-content-and-header">
+<div class="global-header">
+{% include header.html %}
+</div>
+<div class="content">
+    {{ content }}
+</div>
+</div>
+<div class="global-footer">
+{% include footer.html %}
+</div>
+</div>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: [
+      "MathMenu.js",
+      "MathZoom.js",
+      "AssistiveMML.js",
+      "a11y/accessibility-menu.js"
+    ],
+    jax: ["input/TeX", "output/CommonHTML"],
+    TeX: {
+      extensions: [
+        "AMSmath.js",
+        "AMSsymbols.js",
+        "noErrors.js",
+        "noUndefined.js",
+      ]
+    }
+  });
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</body>
+</html>

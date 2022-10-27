@@ -1,0 +1,61 @@
+---
+---
+
+@import 'config.scss';
+
+$hover-animation: 0.2s ease-in-out;
+
+.resp-sharing-button__link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.resp-sharing-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    width: 43px;
+    height: 43px;
+    border: 1px solid #a9a9a9;
+    border-radius: 22px;
+    box-sizing: border-box;
+    transition: border $hover-animation, background-color $hover-animation;
+    margin: 10px;
+
+    svg {
+        width: 20px;
+        fill: $accent-color;
+        transition: fill $hover-animation;
+    }
+}
+
+.resp-sharing-button:hover {
+    background-color: $accent-color;
+    border: solid 1px $accent-color;
+
+    svg {
+        fill: #ffffff;
+    }
+}
+
+.resp-sharing-button--twitter svg {
+    margin-top: 1px;
+}
+
+.resp-sharing-button--telegram svg {
+    margin-top: 2px;
+    margin-left: -3px;
+}
+
+.resp-sharing-button--facebook svg {
+
+}
+
+.resp-sharing-button--email svg {
+    margin-left: 2px;
+}
+
+.resp-sharing-button--linkedin svg {
+    margin-top: -3px;
+}

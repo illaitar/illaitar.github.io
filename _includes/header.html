@@ -1,0 +1,28 @@
+<ul class="navbar">
+    <li class="navbar-header">
+        <a href="/" class="header">
+            <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+            <h1>Video processing, compression<br>and quality research group
+                <div>Based in MSU Graphics & Media Laboratory</div>
+            </h1>
+        </a>
+        <a class="menu-toggle-button">
+            <div class="icon"></div>
+        </a>
+    </li>
+    <li>
+        <a href="{% link _projects/benchmarks.md %}">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+            {% include benchmarks.html %}
+        </ul>
+    </li>
+    <li>
+        <a href="{% link about/projects.md %}">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+            {% include projects.html %}
+        </ul>
+    </li>
+    <li><a href="{% link about/publications.md %}">Publications</a></li>
+    <li><a href="{% link about/about.md %}">About Us</a></li>
+    <li><a href="{% link about/contacts.md %}">Contacts</a></li>
+</ul>

@@ -1,0 +1,55 @@
+---
+layout: default
+---
+<link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+
+<div class="tiles-width nav-current">
+    <a href="{% link index.html %}">Main page</a> &mdash;
+    {% assign project = site.projects | where: "project", page.project | first %}
+    <a href="{{ project.url }}">{{ project.title }}</a> &mdash;
+    <a href="{{ page.url }}">{{ page.title }}</a>
+</div>
+<div class="tiles-width markdown">
+    <h1>{{page.title}}</h1>
+    <hr class="btnsep">
+</div>
+<div class="tiles-width nav-current">
+    {% assign project = site.projects | where: "project", page.project | first %}
+    {% assign subprojects = site.subprojects | where: "project", page.project %}
+    {% if subprojects.size > 0 %}
+    <div class="subproject-links">
+        {% for subproject in subprojects %}
+        {% if subproject.title == page.title %}
+        <a href="{{ subproject.url }}" class="button current_button">{{ subproject.title }}</a>
+        {% else %}
+        <a href="{{ subproject.url }}" class="button">{{ subproject.title }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+<div class="tiles-width markdown">
+    {{ content }}
+</div>
+
+<div class="tiles">
+    {% assign posts = site.posts | where: "project", page.project | where_exp: "post", "post.tag contains 'visible'" |
+    where_exp: "post", "post.subprojects contains page.subproject" %}
+    {% for post in posts %}
+    <a class="tile" href="{{ post.url }}">
+        <div class="image" style="background-image: url(
+        {% if post.preview_img %}
+            {{ post.preview_img }}
+        {% else %}
+                /assets/img/preview_placeholder.png
+        {% endif %}
+                )"></div>
+        <div class="title">{{ post.title }}</div>
+        <div class="text">{{ post.description }}</div>
+    </a>
+    {% endfor %}
+</div>
+<div class="tiles-width separator"></div>
+<div class="tiles-width markdown site-structure">
+    {% include hierarchy.html %}
+</div>

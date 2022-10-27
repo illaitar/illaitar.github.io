@@ -1,0 +1,85 @@
+<div id="participate_div">
+    <p style="font-size: medium">
+        To submit, you can either <b>send us any executable file or code of your deinterlacer</b>, or follow these 3 simple steps
+    </p>
+    <ol style="font-size: medium">
+        <li><b>Download the interlaced video <a
+                href="https://disk.yandex.ru/d/MNEM2C2j1YAFMA">here</a>.</b>
+            <details>
+                <summary>We have more available formats, if YUV is not suitable. Just click on this text
+                </summary>
+                <br>
+                There are 3 available options:
+                <ul>a. Download frames of the video sequence in .png format <a
+                        href="https://disk.yandex.ru/d/civZ4UCkufLBlQ">here</a></ul>
+                <ul>b. Download .yuv video file generated from frames via <p style="background-color: #c3bfc1"><tt>ffmpeg
+                    -i %04d.png -c:v rawvideo -pix_fmt
+                    yuv444p sequences.yuv</tt></p>
+                    <a href="https://disk.yandex.ru/d/MNEM2C2j1YAFMA">here</a>
+                </ul>
+                <ul>c. Download lossless encoded .mkv video generated from frames via <p
+                        style="background-color: #c3bfc1"><tt>ffmpeg -i %04d.png -c:v
+                    libx264
+                    -preset ultrafast -crf 0 -pix_fmt yuv444p lossless.mkv</tt></p>
+
+                    <a href="https://disk.yandex.ru/i/I4apcl98SznWkw">here</a>
+                </ul>
+            </details>
+
+        </li>
+        <br>
+        <li><b>Deinterlace downloaded video</b>
+            <br>
+            The details, which may help you
+            <ul>
+                TFF interlacing was used to get interlaced sequence from GT
+            </ul>
+            <ul>
+                The video consists of 28 videos, each separated by 5 black frames. Black frames are ignored
+                while measuring
+            </ul>
+
+            <br>
+
+        </li>
+        <br>
+        <li><b>Send us an email to <a href="mailto:deinterlacer-benchmark@videoprocessing.ai">deinterlacer-benchmark@videoprocessing.ai</a>
+            with the following information: </b>
+            <ul><b>A. </b>Name of the deinterlacing method that will be specified in our benchmark</ul>
+            <br>
+            <ul><b>B. </b>Link to the cloud drive (Google Drive, OneDrive, Dropbox, etc.), containing deinterlaced
+                video.
+            </ul>
+            <br>
+            <ul><b>C. </b>(Optional) Any additional information about the method
+                <details>
+                    <summary>Click here to see what may be included in additional information</summary>
+                    <ul>Technical information about deinterlaced video (e.g. colorspace, file-type, codec)</ul>
+                    <ul>The name of the theoretical method used</ul>
+                    <ul>Full name of the deinterlacing method or product</ul>
+                    <ul>The version that was used</ul>
+                    <ul>The parameter set that was used</ul>
+                    <ul>Any other additional information</ul>
+                    <ul>A link to the code of your deinterlacing method, if it is open-source</ul>
+                    <ul>A link to the paper about your deinterlacing method</ul>
+                    <ul>A link to the documentation of your deinterlacing method. For example, this is suitable for
+                        deinterlacing methods that are implemented as a part of a video processing framework.
+                    </ul>
+                    <ul>A link to the page, where users can purchase or download your product (for example,
+                        VirtualDub
+                        Plugin)
+                    </ul>
+                </details>
+            </ul>
+            <br>
+            <ul><b>D. </b>(Optional) If you would like us to tune the parameters of your deinterlacing method, you
+                should
+                give us an ability to launch it. You can do it by sending us a code or an
+                executable file, providing us a free test version of your product, or any other possible way, that
+                is convenient for you
+            </ul>
+
+        </li>
+    </ol>
+
+</div>

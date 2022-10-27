@@ -1,0 +1,81 @@
+.transparent {
+	fill-opacity: 0.3;
+}
+
+.invisible {
+	display: none;
+}
+
+.colored-box {
+	margin-right: 5px;
+	width: 40px;
+}
+
+.video-box {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center
+}
+
+.video-box > div {
+	text-align: center
+}
+
+.video-box > div > b {
+	line-height: 1.5
+}
+
+.video-box > div > video {
+	height: 300px
+}
+
+.video-box > div:first-child {
+	margin-right: 2px
+}
+
+#stats {
+	margin: auto;
+	display: table
+}
+
+#stats td:first-child {
+	text-align: right
+}
+
+#logo {
+	display: block;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto
+}
+
+#legend {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center
+}
+
+#legend > div {
+	display: flex;
+	margin-bottom: 5px
+}
+
+#content {
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	padding: 20px !important;
+	position: relative
+}
+
+#bottom-text {
+	text-align: center
+}
+
+#poster {
+	position: absolute;
+	right: 20px
+}
+
+#poster > img {
+	height: 150px
+}

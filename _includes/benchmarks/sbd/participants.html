@@ -1,0 +1,272 @@
+<html lang="en">
+
+
+<head style="text-align: center"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link href="http://catfish.my.to:4000/assets/favicon/icon128.png" rel="icon" sizes="128x128" type="image/png">
+  <link href="http://catfish.my.to:4000/assets/favicon/icon64.png" rel="icon" sizes="64x64" type="image/png">
+  <link href="http://catfish.my.to:4000/assets/favicon/icon32.png" rel="icon" sizes="32x32" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>MSU SBD Benchmark 2020</title>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+</head>
+
+
+<p style="text-align: center;"><em>Click on the labels to sort the table.</em></p>
+<table id="double_performance_table" class="datatable-center" role="grid" aria-describedby="double_performance_table_info" style="width: 100%; text-align: center;">
+    <thead>
+      <tr role="row">
+        <th style="background-color: rgb(61, 111, 150); color: rgb(255, 255, 255);" class="sorting" tabindex="0" aria-controls="double_performance_table" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Name</th>
+        <th style="background-color: rgb(61, 111, 150); color: rgb(255, 255, 255);" class="sorting" tabindex="0" aria-controls="double_performance_table" rowspan="1" colspan="1" aria-label="FPS on CPU: activate to sort column ascending">
+          Detects gradual transitions
+        </th>
+        <th style="background-color: rgb(61, 111, 150); color: rgb(255, 255, 255);" class="sorting" tabindex="0" aria-controls="double_performance_table" rowspan="1" colspan="1" aria-label="FPS on CPU: activate to sort column ascending">
+          Free
+        </th>
+        <th style="background-color: rgb(61, 111, 150); color: rgb(255, 255, 255);" class="sorting" tabindex="0" aria-controls="double_performance_table" rowspan="1" colspan="1" aria-label="FPS on CPU: activate to sort column ascending">
+          Open source
+        </th>
+        <th style="background-color: rgb(61, 111, 150); color: rgb(255, 255, 255);" class="sorting" tabindex="0" aria-controls="double_performance_table" rowspan="1" colspan="1" aria-label="FPS on CPU: activate to sort column ascending">
+          Uses machine learning
+        </th>
+
+      </tr>
+    </thead>
+  <tbody>
+    <!-- <tr class="item odd" role="row">
+      <td style="text-align: left;"> <a href="">Beta proposed</a> </td>
+      <td style="color: #FF0000; ">No</td>
+      <td style="color: #FF0000; ">No</td>
+      <td style="color: #FF0000; ">No</td>
+      <td style="color: #FF0000; ">No</td>
+    </tr> -->
+    <tr class="item even" role="row">
+      <td style="text-align: left;"> <a href="https://github.com/SaeidDadkhah/Shot-Boundary-Detection">Saeid Dadkhan</a></td>
+      <td style="color: #FF0000; ">No</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #FF0000; ">No</td>
+    </tr>
+    <tr class="item odd" role="row">
+      <td style="text-align: left;"> <a href="https://github.com/MaxReimann/Shot-Boundary-Detection">MaxReimann</a></td>
+      <td style="color: #FF0000; ">No</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #218838; ">Yes</td> 
+    </tr>
+    <tr class="item even" role="row">
+      <td style="text-align: left;"><a href="https://github.com/aysebilgegunduz/ShotBoundaryDetection">aysebil</a></td>
+      <td style="color: #FF0000; ">No</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #218838; ">Yes</td>
+    </tr>
+    <tr class="item odd" role="row">
+      <td style="text-align: left;"><a href="https://pyscenedetect.readthedocs.io/en/latest/">PyScene</a></td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #FF0000; ">No</td>
+    </tr>
+    <tr class="item even" role="row">
+      <td style="text-align: left;"> <a href="https://www.compression.ru/video/quality_measure/metric_plugins/scd_en.htm">VQMT</a></td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #FF0000; ">No</td>
+      <td style="color: #FF0000; ">No</td>
+      <td style="color: #FF0000; ">No</td>
+    </tr>
+    <tr class="item odd" role="row">
+      <td style="text-align: left;"> <a href="https://ffmpeg.org/">FFmpeg</a></td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #218838; ">Yes</td>
+      <td style="color: #FF0000; ">No</td>
+    </tr>
+    <tr class="item even" role="row">
+      <td style="text-align: left;"> <a href="https://github.com/johmathe/Shotdetect">johmathe</a></td>
+      <td style="color: #FF0000;">No</td>
+      <td style="color: #218838;">Yes</td>
+      <td style="color: #218838;">Yes</td>
+      <td style="color: #FF0000;">No</td>
+    </tr>
+    <tr class="item even" role="row">
+      <td style="text-align: left;"> <a href="https://github.com/alokssingh/Temporal-segmentation-Shot-boundary">NITS-CV-Lab-v1.0</a></td>
+      <td style="color: #FF0000;">No</td>
+      <td style="color: #218838;">Yes</td>
+      <td style="color: #218838;">Yes</td>
+      <td style="color: #FF0000;">No</td>
+    </tr>
+    <tr class="item even" role="row">
+      <td style="text-align: left;"> <a href="https://gstreamer.freedesktop.org/documentation/index.html?gi-language=c">GStreamer 1.16.2</a></td>
+      <td style="color: #FF0000;">No</td>
+      <td style="color: #218838;">Yes</td>
+      <td style="color: #218838;">Yes</td>
+      <td style="color: #FF0000;">No</td>
+    </tr>
+  </tbody>
+  </table>
+
+
+
+  <script>
+    $(document).ready(function () {
+        $('#double_performance_table').DataTable({
+            lengthChange: false,
+            paging: false,
+            searching: false,
+            scrollX: true
+        });
+    });
+  </script>
+
+<body>
+
+  <div class="content">
+
+
+    <div class="tiles-width markdown article">
+      <style>
+        
+
+ 
+        p { text-indent: 10; text-align: justify; }
+      </style> 
+
+
+      
+
+     
+
+      <style> p {margin-bottom: 0px} </style>
+    
+
+
+      <h4>aysebil </h4>
+      <div>
+          <p>Version: -</p>
+          <p>Added to the benchmark by: MSU</p>
+          <p>Parameters: </p>
+          <p>Links: <a href="https://github.com/aysebilgegunduz/ShotBoundaryDetection">GitHub</a></p>
+          <p></p>
+      </div>
+
+
+      <!-- <h4>Beta proposed</h4>
+      <div>
+          <p>Version: -</p>
+          <p>Added to the benchmark by: MSU</p>
+          <p>Parameters: </p>
+          <p>Links: No</p>
+          <p></p>
+      </div> -->
+
+
+      <h4>FFmpeg v4.2 </h4>
+      <div>
+          <p>Version: v4.2</p>
+          <p>Added to the benchmark by: MSU</p>
+          <p>Parameters: </p>
+          <p>Links: <a href="https://ffmpeg.org/">Documentation</a></p>
+          <p></p>
+      </div>
+
+
+      <h4>johmathe</h4>
+      <div>
+          <p>Version: -</p>
+          <p>Added to the benchmark by: MSU</p>
+          <p>Parameters: </p>
+          <p>Links: <a href="https://github.com/johmathe/Shotdetect">GitHub</a></p>
+          <p></p>
+      </div>
+
+
+      <h4>Max Remain</h4>
+      <div>
+          <p>Version: -</p>
+          <p>Added to the benchmark by: MSU</p>
+          <p>Parameters: </p>
+          <p>Links: <a href="https://github.com/MaxReimann/Shot-Boundary-Detection">GitHub</a></p>
+          <p></p>
+      </div>
+
+
+      <h4>PyScene v0.5.4</h4>
+      <div>
+          <p>Version: v0.5.4</p>
+          <p>Added to the benchmark by: MSU</p>
+          <p>Command: <i>scenedetect -i {input} -o {output} detect-content list-scenes</i></p>
+          <p>Links: <a href="https://pyscenedetect.readthedocs.io/en/latest/">Documentation</a></p>
+          <p></p>
+      </div>
+
+
+      <h4>PyScene v0.5.4 (<i>thr = 27</i>)</h4>
+      <div>
+          <p>Version: v0.5.4</p>
+          <p>Added to the benchmark by: submitted by authors</p>
+          <p>Command: <i>scenedetect -i {input} -o {output} detect-content -t 27 list-scenes</i></p>
+          <p>Links: <a href="https://pyscenedetect.readthedocs.io/en/latest/">Documentation</a></p>
+          <p></p>
+      </div>
+
+
+      <h4>Saeid Dadkhan</h4>
+      <div>
+          <p>Version: -</p>
+          <p>Added to the benchmark by: MSU</p>
+          <p>Parameters: </p>
+          <p>Links: <a href="https://github.com/SaeidDadkhah/Shot-Boundary-Detection">GitHub</a></p>
+          <p></p>
+      </div>
+
+
+      <h4>VQMT</h4>
+      <div>
+          <p>Version: v1.2</p>
+          <p>Added to the benchmark by: MSU</p>
+          <p>Parameters: </p>
+          <p>Links: <a href="https://www.compression.ru/video/quality_measure/metric_plugins/scd_en.htm">Information</a></p>
+          <p></p>
+      </div>
+
+
+
+      <h4>NITS-CV-Lab-v1.0</h4>
+      <div>
+          <p>Version: v1.0</p>
+          <p>Added to the benchmark by: submitted by authors</p>
+          <p>Parameters: </p>
+          <p>Links: <a href="https://github.com/alokssingh/Temporal-segmentation-Shot-boundary">GitHub</a></p>
+          <p style="width: 85%">Paper: Singh, Alok, Dalton Meitei Thounaojam, and Saptarshi Chakraborty. "A novel automatic shot boundary detection algorithm: robust to illumination and motion effect." Signal, Image and Video Processing (2019): 1-9. https://doi.org/10.1007/s11760-019-01593-3</p>
+      </div>
+
+
+      <h4>GStreamer 1.16.2</h4>
+      <div>
+          <p>Version: v1.16.2</p>
+          <p>Added to the benchmark by: submitted by authors</p>
+          <p>Command: gst-launch-1.0 -v filesrc location={input} ! decodebin ! scenechange ! theoraenc ! fakesink</p>
+          <p>Links: <a href="https://gstreamer.freedesktop.org/documentation/index.html?gi-language=c">Documentation</a></p>
+      </div>
+
+
+  </div>
+
+  </div>
+
+</body></html>

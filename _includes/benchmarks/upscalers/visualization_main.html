@@ -1,0 +1,528 @@
+
+
+
+<style>
+
+    .vqmtcontainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 208px;
+    }
+    .vqmtcontent{
+        font-weight: bold;
+        font-size: 27px;
+        line-height: 1.5;
+        text-align: center;
+        color: #3d6f96;
+    }
+
+    /*vis*/
+    .img-zoom-container {
+        position: relative;
+        margin: 1em auto;
+
+        width: 100%;
+    }
+
+    .img-zoom-lens {
+        position: absolute;
+        border: 5px solid #ff0000;
+        /*set the size of the lens:*/
+
+        width: 75px;
+        height: 75px;
+    }
+
+    /*Three image containers (use 25% for four, and 50% for two, etc)*/
+    .column {
+        box-sizing: border-box;
+        float: left;
+        width: 25%;
+        padding: 5px;
+    }
+
+
+    /*Clear floats after image containers*/
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    /*vis*/
+
+</style>
+
+
+
+<script>
+
+    vis_selected_models={}
+    function build_vis(scale, poss, glob_videos, data)
+    {
+
+
+
+        const video_select_id = 'visualization_video_selector_'+scale
+        const checkbox_lock_id  = 'remember_'+scale
+        const lens_id = 'lens'+scale
+
+        const imagegt = 'imagegt_'+scale
+        const resultgt = 'resultgt_'+scale
+        const fake_vqmt = 'fake_vqmt_'+scale
+
+
+        const comp_model_selector_base = 'comp_model1_selecto'+scale
+        const comp_label_base = 'comp_label'+scale
+        const image_base = 'image'+scale
+        const result_base = 'result'+scale
+        const vqmt_base = 'vqmt'+scale
+
+        const button_left_id = 'vis_button_left_'+scale
+        const button_right_id = 'vis_button_right_'+scale
+
+        const button_model_left_id = 'vis_model_button_left_'+scale
+        const button_model_right_id = 'vis_model_button_right_'+scale
+
+        const row_id = 'vis_row_'+scale
+
+        const checkbox_id = 'vis_checkbox_'+scale
+
+
+        let comp_model_selectors = []
+        let comp_labels = []
+        let images = []
+        let results = []
+        let vqmts = []
+
+        const n_models=3
+
+
+        for (let i = 0; i < n_models; i++) {
+            comp_model_selectors.push(comp_model_selector_base+i.toString())
+            comp_labels.push(comp_label_base+i.toString())
+            images.push(image_base+i.toString())
+            results.push(result_base+i.toString())
+            vqmts.push(vqmt_base+i.toString())
+        }
+
+
+
+
+
+
+        let select_html=""
+        for (let i = 0; i < n_models; i++) {
+            select_html+=`
+                Model `+(i+1).toString()+`:<select id=`+comp_model_selectors[i]+`>
+                    <option>Loading...</option>
+                </select>
+            `
+        }
+
+        let column_html = ""
+
+        for (let i = 0; i < n_models; i++) {
+            column_html+=`
+                <div class="column">
+                    <h3 id=`+comp_labels[i]+` style="text-align: center">undef</h3>
+                    <div class="img-zoom-container">
+                        <img id=`+images[i]+`>
+                        <div id=`+results[i]+` class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                        <div id=`+vqmts[i]+` class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                    </div>
+                </div>
+            `
+        }
+
+        document.write(`
+                <div class="comparison_selector_div mobile-visualization">
+                    <p>
+                        <span class=groupborder>
+                        Clip:<select id=`+video_select_id+`>
+                            <option>Loading...</option>
+                        </select>
+                        <a id=`+button_left_id+` class="button compact">◄</a>
+                        <a id=`+button_right_id+` class="button compact">►</a>
+                        </span>
+                        <span class=groupborder>
+                        Models 2-3 cycle:
+                        <a id=`+button_model_left_id+` class="button compact">◄</a>
+                        <a id=`+button_model_right_id+` class="button compact">►</a>
+                        </span>
+                        Auto select the best Models 2-3: <input type="checkbox" id=`+checkbox_lock_id+` checked>
+                        <br><br>
+                        Hide similar models: <input type="checkbox" id=`+checkbox_id+` checked>
+                        <span class=groupborder>`+select_html+`</span>
+                    </p>
+                    <p style="text-align: center"><b>Drag a red rectangle to the area that you want to see zoomed-in</b></p>
+
+                    <div class="row" id=`+row_id+`>
+                        <div class="column">
+                            <h3 style="text-align: center">Source</h3>
+                            <div class="img-zoom-container">
+                                <img id=`+imagegt+`>
+                                <div id=`+resultgt+` class="img-zoom-result" style="width: 100%; padding-top: 100%;"></div>
+                                <div id=`+fake_vqmt+` class="img-zoom-result vqmtcontainer"></div>
+                            </div>
+                        </div>
+                        `+column_html+`
+                    </div>
+            </div>
+        `)
+
+        for (let i = 0; i < n_models; i++) {
+            document.getElementById(comp_model_selectors[i]).onchange = function(){updateVis(false)}
+        }
+
+
+        $('#'+button_left_id).click(function(){
+            buttonHelper(video_select_id, -1)
+        })
+        $('#'+button_right_id).click(function(){
+            buttonHelper(video_select_id, 1)
+        })
+
+        $('#'+button_model_left_id).click(function(){
+            for (let i = 1; i < n_models; i++) {
+                buttonHelper(comp_model_selectors[i], -1)
+            }
+        })
+        $('#'+button_model_right_id).click(function(){
+            for (let i = 1; i < n_models; i++) {
+                buttonHelper(comp_model_selectors[i], 1)
+            }
+        })
+
+
+        let glob_print_vis_vids=[]
+        for (const x of glob_videos.slice(1)) {
+            glob_print_vis_vids.push(vid_translate[x])
+        }
+
+        single_select('#'+video_select_id, glob_print_vis_vids)
+
+
+        const imgIDs=[imagegt, ...images]
+        const resultIDs=[resultgt, ...results]
+        const vqmtIDs=[fake_vqmt, ...vqmts]
+
+        function imageZoom(clip) {
+
+            let zoomx=320/2
+            let zoomy=270/2
+
+            let imgs = [];
+            for (let i = 0; i < imgIDs.length; i++) {
+                let imgID = imgIDs[i];
+                let img = document.getElementById(imgID);
+                imgs.push(img);
+            }
+
+            let results = [];
+            for (let i = 0; i < resultIDs.length; i++) {
+                let resultID = resultIDs[i];
+                let result = document.getElementById(resultID);
+                results.push(result);
+            }
+
+            let vqmts = [];
+            for (let i = 0; i < vqmtIDs.length; i++) {
+                let vqmtID = vqmtIDs[i];
+                let vqmt = document.getElementById(vqmtID);
+                vqmts.push(vqmt);
+            }
+
+
+            let lenses = [];
+
+            let x=poss[clip][0]
+            let y=poss[clip][1]
+
+
+            for (let i = 0; i < imgs.length; i++) {
+                let pastLens = document.getElementById(lens_id + i.toString());
+                if (pastLens) {
+                    pastLens.remove();
+                }
+                let lens = document.createElement("DIV");
+                lens.setAttribute("class", "img-zoom-lens");
+                lens.setAttribute("id", lens_id + i.toString());
+                imgs[i].parentElement.insertBefore(lens, imgs[i]);
+                lenses.push(lens);
+            }
+            let cxs = [], cys = [];
+            for (let i = 0; i < results.length; i++) {
+                let cx = results[i].offsetWidth / lenses[i].offsetWidth;
+                let cy = results[i].offsetHeight / lenses[i].offsetHeight;
+                cxs.push(cx);
+                cys.push(cy);
+            }
+
+            /* Set background properties for the result DIV */
+            for (let i = 0; i < results.length; i++) {
+                //results[i].style.backgroundImage = "url('" + imgs[i].src + "')";
+                results[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+            }
+
+            for (let i = 0; i < vqmts.length; i++) {
+                vqmts[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+
+            }
+
+            for (let i = 0; i < lenses.length; i++) {
+                lenses[i].style.left = x + "px";
+                lenses[i].style.top = y + "px";
+                /* Display what the lens "sees": */
+                results[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                if (i < vqmts.length) {
+                    vqmts[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+
+                }
+            }
+
+            /* Execute a function when someone moves the cursor over the image, or the lens: */
+            for (let i = 0; i < lenses.length; i++) {
+                lenses[i].addEventListener("mousedown", mousedown);
+                lenses[i].addEventListener("mouseup", mouseup);
+                /* And also for touch screens: */
+                /* Or touched (for touch screens: */
+                imgs[i].addEventListener("click", moveLens);
+
+                document.getElementById(row_id).addEventListener("mouseleave", mouseup);
+                /* And also for touch screens: */
+                /* Or touched (for touch screens: */
+
+
+                lenses[i].addEventListener("touchstart", mousedown);
+                lenses[i].addEventListener("touchend", mouseup);
+            }
+
+            let clicked = 0;
+
+
+            function mousedown(e) {
+                //console.log('down', e['type'])
+                for (let i = 0; i < lenses.length; i++) {
+                    lenses[i].addEventListener("mousemove", moveLens);
+                    imgs[i].addEventListener("mousemove", moveLens);
+                    lenses[i].addEventListener("touchmove", moveLens);
+                    imgs[i].addEventListener("touchmove", moveLens);
+                }
+                clicked = 1;
+            }
+
+            function mouseup(e) {
+                //console.log('up', e['type'])
+                for (let i = 0; i < lenses.length; i++) {
+                    lenses[i].removeEventListener("mousemove", moveLens);
+                    imgs[i].removeEventListener("mousemove", moveLens);
+                    lenses[i].removeEventListener("touchmove", moveLens);
+                    imgs[i].removeEventListener("touchmove", moveLens);
+                }
+                clicked = 0;
+            }
+
+
+            function moveLens(e) {
+
+                //console.log('move', e['type'])
+
+
+                /*if (!clicked) {
+                    return;
+                }*/
+                let pos, x, y;
+                /* Prevent any other actions that may occur when moving over the image */
+
+                e.preventDefault();
+
+                /* Get the cursor's x and y positions: */
+                pos = getCursorPos(e);
+                /* Calculate the position of the lens: */
+                x = pos.x - (lenses[0].offsetWidth / 2);
+                y = pos.y - (lenses[0].offsetHeight / 2);
+                /* Prevent the lens from being positioned outside the image: */
+                if (x > imgs[0].width - lenses[0].offsetWidth) {
+                    x = imgs[0].width - lenses[0].offsetWidth;
+                }
+                if (x < 0) {
+                    x = 0;
+                }
+                if (y > imgs[0].height - lenses[0].offsetHeight) {
+                    y = imgs[0].height - lenses[0].offsetHeight;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+
+                /* Set the position of the lens: */
+                for (let i = 0; i < lenses.length; i++) {
+                    lenses[i].style.left = x + "px";
+                    lenses[i].style.top = y + "px";
+                    /* Display what the lens "sees": */
+                    results[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                    if (i < vqmts.length) {
+                        vqmts[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+
+                    }
+                }
+
+
+                //console.log(clip, ':', '[', Number(x.toFixed(0)), ',', Number(y.toFixed(0)), '],')
+            }
+
+            function getCursorPos(e) {
+                let x = 0, y = 0;
+                e = e || window.event;
+                /* Get the x and y positions of the image: */
+                let boundingRects = [];
+                for (let i = 0; i < imgs.length; i++) {
+                    let a = imgs[i].getBoundingClientRect();
+                    boundingRects.push(a);
+                }
+
+                let i = boundingRects.length - 1;
+                while (i > 0 && e.pageX < boundingRects[i].left) {
+                    i--;
+                }
+
+                /* Calculate the cursor's x and y coordinates, relative to the image: */
+                x = e.pageX - boundingRects[i].left;
+                y = e.pageY - boundingRects[i].top;
+                /* Consider any page scrolling: */
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return {x: x, y: y};
+            }
+        }
+
+        updateVis(true);
+
+
+        function updateVis(select_rebuild){
+
+            //console.log(select_rebuild)
+
+            //console.log('change_model_selects', change_model_selects)
+            //console.log('preserve_model_selection', preserve_model_selection)
+            //console.log('is_model_select', is_model_select)
+            //console.log('end')
+
+
+
+
+            const checkbox=$('#'+checkbox_id).is(':checked')
+
+            const video_select = document.getElementById(video_select_id);
+            const video_name = glob_videos[1+video_select.selectedIndex];
+
+            const checkbox_lock = document.getElementById(checkbox_lock_id);
+
+            const ord_inds = glob_algs.map((item) => [data['subjective'][video_name][item], item])
+            const cpy = ord_inds.sort(([arg1], [arg2]) => arg2 - arg1)
+            let ans = Array(cpy.length)
+            let translate = Array(cpy.length)
+            let ans_i=0
+            for (let i = 0; i < cpy.length; i++) {
+                if (cpy[i][1]!='gt' && (!checkbox || !hide_algs.has(cpy[i][1]))){
+                    ans[ans_i]=cpy[i][1]
+                    translate[ans_i]=alg_translate[ans[ans_i]]
+                    ans_i+=1
+                }
+            }
+            ans.length=ans_i
+            translate.length=ans_i
+
+
+            let modelselects = []
+
+            for (let i = 0; i < n_models; i++) {
+                modelselects.push(document.getElementById(comp_model_selectors[i]))
+            }
+
+
+
+            if (select_rebuild){
+                if (!checkbox_lock.checked){
+                    for (let i = 0; i < n_models; i++) {
+                        single_select('#'+comp_model_selectors[i], translate, vis_selected_models[scale][i], null)
+                    }
+                }
+                else{
+                    single_select('#'+comp_model_selectors[0], translate, alg_translate['davinci_bicubic'], null)
+                    for (let i = 1; i < n_models; i++) {
+                        single_select('#'+comp_model_selectors[i], translate, null, i-1)
+                    }
+                }
+            }
+
+
+            let selected_models = []
+            for (let i = 0; i < n_models; i++) {
+                selected_models.push(ans[modelselects[i].selectedIndex])
+            }
+
+
+            vis_selected_models[scale]=[]
+            for (let i = 0; i < n_models; i++) {
+                vis_selected_models[scale].push(alg_translate[selected_models[i]])
+            }
+            //console.log(vis_selected_models[scale])
+
+
+
+            const img_prefix = "https://storage.videoprocessing.ai/benchmarks/upscalers/jpg_frames/"
+
+
+
+
+            //vis4x/vrt_vimeo_bi
+
+            const filescale = scale.split('_')[0]
+
+            const src_gt = img_prefix + "gt"+filescale+"/" + video_name+".jpg";
+
+            let pic_gt = document.getElementById(imagegt);
+            pic_gt.src = src_gt;
+            let res_gt = document.getElementById(resultgt);
+            res_gt.style.backgroundImage = "url('" + src_gt + "')";
+
+
+            for (let i = 0; i < n_models; i++) {
+                const src = img_prefix + "model"+filescale+"/" + selected_models[i] + "/" + video_name+".jpg";
+                let pic = document.getElementById(images[i]);
+                pic.src = src;
+                let res = document.getElementById(results[i]);
+                res.style.backgroundImage = "url('" + src + "')";
+            }
+
+
+            let vfake_vqmt = document.getElementById(fake_vqmt);
+            vfake_vqmt.innerHTML='<span class=\"vqmtcontent\">Structural<br>Distortion Map:</span>';
+
+            for (let i = 0; i < n_models; i++) {
+                let vvqmt = document.getElementById(vqmts[i]);
+                const vqmt_src = img_prefix + "vis"+filescale+"/" + selected_models[i] + "/" + video_name+".jpg";
+                vvqmt.style.backgroundImage = "url('" + vqmt_src + "')";
+            }
+
+            for (let i = 0; i < n_models; i++) {
+                let ccomp_label = document.getElementById(comp_labels[i]);
+                ccomp_label.innerText = translate[modelselects[i].selectedIndex];
+            }
+
+            imageZoom(video_name);
+        }
+
+        window.addEventListener("load", function(){updateVis(true)})
+        document.addEventListener('DOMContentLoaded', function(){updateVis(true)});
+
+        document.getElementById(video_select_id).onchange = function(){updateVis(true)}
+        $('#'+checkbox_id).change(function(){updateVis(true)});
+        $('#'+checkbox_lock_id).change(function(){updateVis(true)});
+
+    }
+
+</script>

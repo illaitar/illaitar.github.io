@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Video Quality Measurement Tool 3D</title>
+    <meta property="og:title" content="Video Quality Measurement Tool 3D">
+    <meta property="og:image" content="http://localhost:4000/assets/img/logo.svg">
+    <meta name="description" content="Video Quality Measurement Tool 3D provides automatic analysis and correction of stereoscopic 3D movie artifacts">
+    <meta property="og:description" content="Video Quality Measurement Tool 3D provides automatic analysis and correction of stereoscopic 3D movie artifacts">
+    <meta property="og:url" content="
+http://localhost:4000/stereo_quality/
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+      </div>
+      <div class="tiles-width markdown">
+        <h1>Video Quality Measurement Tool 3D</h1>
+        <hr class="btnsep">
+      </div>
+      <div class="tiles-width nav-current">
+        <div class="subproject-links">
+          <a href="/stereo_quality/correction/" class="button">Stereo Artifacts Correction</a>
+          <a href="/stereo_quality/metrics/" class="button">Stereo Quality Metrics</a>
+          <a href="/stereo_quality/reports/" class="button">All Stereo Quality Reports</a>
+        </div>
+      </div>
+      <div class="tiles-width markdown">
+        <p><img src="/assets/img/vqmt3d/vqmt3d/blurays.jpg" alt="More than 100 blu-ray discs were tested" /></p>
+        <div style="margin-left: 40%;">
+          <i>
+            <div>Projects, ideas: Dr. Dmitriy Vatolin</div>
+            <div style="display: flex">
+              <div>Implementation:&nbsp;</div>
+              <div>Alexander Voronov, Denis Sumin, Marat Arsaev, Vyacheslav Napadovsky, Alexander Bokov, Alexey Fedorov, Alexander Belous, Alexey Shalpegin, Vladimir Yanushkovsky, Sergey Lavrushkin, Anastasia Antsiferova
+              </div>
+            </div>
+            <div>In cooperation with <a href="http://www.iitp.ru/en/about">IITP RAS</a>: Prof. <a href="http://www.iitp.ru/en/users/484.htm">Galina Rozhkova</a></div>
+          </i>
+        </div>
+        <h2 id="introduction">Introduction</h2>
+        <p>VQMT3D (Video Quality Measurement Tool 3D) project was created to improve stereoscopic films. Our aim is to help filmmakers produce high-quality 3D video by finding inexpensive ways to automatically improve 3D film quality. Technical errors made during production of stereo 3D movies are often neglected, but according to <a href="/stereo_quality/forecasting-of-viewers-discomfort.html">our experiments</a> these errors cause viewers to experience headaches.</p>
+        <blockquote class="fancyquote">
+          <p>I will find it very interesting to go through your report in detail, film by film. I had always thought that a major factor holding back the greater success of stereo 3D cinema could be technical problems like those your group has enumerated.</p>
+        </blockquote>
+        <div style="margin-left: 40%;">
+          <b>John Meritt</b>, Senior Consulting Scientist at The Merritt Group; Founding Chair of the Stereoscopic Displays and Applications Conference
+        </div>
+        <p>People stop watching 3D movies after experiencing pain just once. Therefore we focus on finding and fixing technical problems that could potentially cause headaches. These are the key contributions of the project:</p>
+        <h3 id="1-metric-collection-for-stereo-quality-assessment">#1 metric collection for stereo quality assessment</h3>
+        <p>We have developed the largest set of metrics that detects technical problems in stereoscopic movies.</p>
+        <ul>
+          <li>18 metrics in total</li>
+          <li>14 metrics, including 5 unique ones, provide quality estimation of <strong>2D-to-3D conversion</strong></li>
+        </ul>
+        <h3 id="1-stereoscopic-movie-quality-evaluation">#1 stereoscopic movie quality evaluation</h3>
+        <p>A large-scale evaluation of full-length 3D Blu-ray discs with detailed visualizations of technical errors.</p>
+        <ul>
+          <li>Over 100 analyzed movies</li>
+          <li>9 reports published for industry professionals</li>
+          <li>3,100 pages in total</li>
+          <li>100 stereographers were contacted, 32 of them contributed to the evaluation</li>
+        </ul>
+        <h3 id="1-study-of-stereoscopic-error-influence-on-viewers">#1 study of stereoscopic error influence on viewers</h3>
+        <p>The largest study of reaction to stereoscopic errors. The collected data is crucial for research on visual fatigue.</p>
+        <ul>
+          <li>Over 300 people participated</li>
+          <li>22,200 discomfort scores acquired</li>
+        </ul>
+        <h2 id="list-of-metrics">List of Metrics</h2>
+        <p>Our laboratory has been researching stereo quality and stereo artefacts that cause headaches for 11 years. During this time about 20 quality metrics have been created, and some metrics were significantly improved. For example, the metric for detecting swapped channels has gone through 3 generations of improvement (see <a href="/stereo_quality/swapped-views-detection-s3d.html">channel mismatch metric</a>), each time significantly improving accuracy. At the same time, the computational efficiency of the developed metrics remained better than those of our colleagues, which allowed us to actively use them to analyze real movies.</p>
+        <style type="text/css">
+          .left-column {
+              text-align: left;
+          }
+          
+          .center-column {
+              text-align: center;
+          }
+        </style>
+        <table class="center fancytable">
+          <tr>
+            <th>Metric</th>
+            <th>Class</th>
+            <th>Type</th>
+            <th>Applicable to</th>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/parallax-range-estimation-s3d.html">1. Horizontal disparity</a> </td>
+            <td class="center-column">Standard</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/geometric-distortions-correction-s3d.html">2. Vertical disparity</a> </td>
+            <td class="center-column">Standard</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/geometric-distortions-correction-s3d.html">3. Scale mismatch</a> </td>
+            <td class="center-column">Standard</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/geometric-distortions-correction-s3d.html">4. Rotation mismatch</a> </td>
+            <td class="center-column">Standard</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/color-mismatch-estimation.html">5. Color mismatch</a> </td>
+            <td class="center-column">Standard</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/sharpness-mismatch-detection-s3d.html">6. Sharpness mismatch</a> </td>
+            <td class="center-column">Advanced</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Native 3D capture</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/stereo-window-violation.html">7. Stereo window violation</a> </td>
+            <td class="center-column">Advanced</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/artifacts-detection-in-converted-s3d.html">8. Crosstalk noticeability</a> </td>
+            <td class="center-column">Advanced</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/depth-continuity-s3d.html">9. Depth continuity</a> </td>
+            <td class="center-column">Advanced</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/artifacts-detection-in-converted-s3d.html">10. Cardboard effect</a> </td>
+            <td class="center-column">Advanced</td>
+            <td class="center-column">Qualitative</td>
+            <td class="center-column">2D-to-3D conversion</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/artifacts-detection-in-converted-s3d.html">11. Edge-sharpness mismatch</a> </td>
+            <td class="center-column">Unique</td>
+            <td class="center-column">Qualitative</td>
+            <td class="center-column">2D-to-3D conversion</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/swapped-views-detection-s3d.html">12. Channel mismatch</a> </td>
+            <td class="center-column">Unique</td>
+            <td class="center-column">Qualitative</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/temporal-shift-estimation.html">13. Temporal asynchrony</a> </td>
+            <td class="center-column">Unique</td>
+            <td class="center-column">Measurable</td>
+            <td class="center-column">Native 3D capture</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/boundary-inconsistencies.html">14. Stuck-to-background objects</a> </td>
+            <td class="center-column">Unique</td>
+            <td class="center-column">Qualitative</td>
+            <td class="center-column">2D-to-3D conversion</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/production-method-classification.html">15. Classification by production type</a> </td>
+            <td class="center-column">Unique</td>
+            <td class="center-column">Qualitative</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/detection-analysis-techniques.html">16. Comparison with the 2D version</a> </td>
+            <td class="center-column">Unique</td>
+            <td class="center-column">Qualitative</td>
+            <td class="center-column">2D-to-3D conversion</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/perspective-distortions-estimation.html">17. Perspective distortions</a> </td>
+            <td class="center-column">Unique</td>
+            <td class="center-column">Qualitative</td>
+            <td class="center-column">Any content</td>
+          </tr>
+          <tr>
+            <td class="left-column"> <a href="/stereo_quality/converged-axes-detection.html"> 18. Converged axes</a> </td>
+            <td class="center-column">Unique</td>
+            <td class="center-column">Qualitative</td>
+            <td class="center-column">Any content</td>
+          </tr>
+        </table>
+        <h2 id="reports-overview">Reports overview</h2>
+        <p>Many stereographers have asked us, for example, if the MSU Scale Mismatch metric value of 4% is high or low for a movie. Originally, we didn’t have a clear answer. So we made a very good attempt to directly connect the values of metrics with perceived discomfort, making, perhaps, the most large-scale study on fragments of real movies with artifacts.</p>
+        <p>Then we tried to approach this problem from another side. With support from Intel, Cisco and Verizon, we bought more than 150 Blu-ray 3D movies and ran them all through our metrics. This project was complex on both the technical and organizational sides, but as a result we got a clear picture of how different metrics depend on the release date of a movie, its budget and production technology.</p>
+        <div class="center">
+          <img src="/assets/img/vqmt3d/vqmt3d/blurays_reports.jpg" alt="Blu-rays used in the reports" /><br />
+        </div>
+        <style>
+          .report_overview_table {
+              border-collapse: collapse;
+              white-space: normal; /* is overwritten by post.css .markdown*/
+          }
+          
+          .report_overview_table td {
+              border: 1px solid;
+              padding: 6px;
+              padding-bottom: 10px;
+              border: 1px solid #ccc;
+          }
+          
+          .report_overview_table td p {
+             margin-top: 0;
+             margin-bottom: 4px;
+          }
+          
+          .released {
+          
+          }
+          
+          .not_released {
+              background: #eee
+          }
+        </style>
+        <table class="report_overview_table" style="background: white; white-space: normal;">
+          <tr class="released">
+            <td width="50%">
+              <a href="/stereo_quality/report1.html"><b>
+                  Report 1 (<i>S3D&nbsp;shooting</i> quality analysis of 5 movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report1.html#download">Download</a><br />
+              <i>(<a href="/stereo_quality/report1-additional.html">Additional
+                  info for bloggers and press</a>)</i>
+            </td>
+            <td>
+              Pages: 246<br />
+              Figures: 295
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report2.html"><b>
+                  Report 2 (<i>S3D&nbsp;shooting</i> quality analysis of 5 movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report2.html#download">Download</a><br />
+              <i>(<a href="/stereo_quality/report2-additional.html">Additional
+                  info for bloggers and press</a>)</i>
+            </td>
+            <td>
+              Pages: 342<br />
+              Figures: 442
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report3.html"><b>Report 3 (<i>2D-3D&nbsp;conversion</i> quality analysis of
+                  5
+                  movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report3.html#download">Download</a><br />
+              (<i><a href="/stereo_quality/report3-additional.html">Additional info for bloggers
+                  and press</a></i>)
+            </td>
+            <td>
+              Pages: 305<br />
+              Figures: 336
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report4.html"><b>Report 4 (<i>S3D&nbsp;shooting</i> quality analysis of 5
+                  movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report4.html#download">Download</a>
+            </td>
+            <td>
+              Pages: 301<br />
+              Figures: 402
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report5.html"><b>Report 5 (<i>2D-3D&nbsp;conversion</i> quality analysis of
+                  5
+                  movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report5.html#download">Download</a><br />
+              (<i><a href="/stereo_quality/report5-additional.html">Additional info for bloggers
+                  and press</a></i>)
+            </td>
+            <td>
+              Pages: 384<br />
+              Figures: 404
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report6.html"><b>Report 6 (<i>Stereo Window</i> analysis of 10
+                  movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report6.html#download">Download</a><br />
+              (<i><a href="/stereo_quality/report6-additional.html">Additional info for bloggers
+                  and press</a></i>)
+            </td>
+            <td>
+              Pages: 415<br />
+              Figures: 455
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report7.html"><b>Report 7 (<i>Stereo Window</i> analysis of 10
+                  movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report7.html#download">Download</a><br />
+              (<i><a href="/stereo_quality/report7-additional.html">Additional info for bloggers
+                  and press</a></i>)
+            </td>
+            <td>
+              Pages: 333<br />
+              Figures: 348
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report8.html"><b>Report 8 (<i>Rotate Analysis</i>, <i>Temporal Shift</i>,
+                  <i>Channels
+                    Swap</i>, <i>Zoom Mismatch</i> in 25 movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report8.html#download">Download</a><br />
+              (<i><a href="/stereo_quality/report8-additional.html">Additional info for bloggers
+                  and press</a></i>)
+            </td>
+            <td>
+              Pages: 366<br />
+              Figures: 361
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report9.html"><b>Report 9 (<i>Temporal Shift</i>, <i>Stuck-to-Background Objects</i>, <i>2D to S3D conversion in
+                    Captured Films</i>)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report9.html#download">Download</a><br />
+              (<i><a href="/stereo_quality/report9-additional.html">Additional info for bloggers
+                  and press</a></i>)
+            </td>
+            <td>
+              Pages: 467<br />
+              Figures: 529
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report10.html"><b>Report 10 (Overall analysis of 105 movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report10.html#download">Download</a>
+            </td>
+            <td>
+              Pages: 211<br />
+              Figures: 270
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report11.html"><b>Report 11 (Overall analysis of 10 selected Chinese movies)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report11.html#download">Download</a>
+            </td>
+            <td>
+              Pages: 322<br />
+              Figures: 566
+            </td>
+          </tr>
+          <tr class="released">
+            <td>
+              <a href="/stereo_quality/report12.html"><b>Report 12 (VR180 Quality Analysis)</b></a>
+            </td>
+            <td>
+              <a href="/stereo_quality/report12.html#download">Download</a>
+            </td>
+            <td>
+              Pages: 348<br />
+              Figures: 362
+            </td>
+          </tr>
+        </table>
+        <h2 id="viewer-discomfort-study">Viewer discomfort study</h2>
+        <p>We have conducted a study to determine the amount of pain caused to the spectator by each of the stereoscopic error types. The data obtained from our experiment is the largest among similar experiments worldwide.</p>
+        <p class="center"><img src="/assets/img/vqmt3d/forecasting-of-viewers-discomfort/experiment_process.jpg" alt="The experiment process" /></p>
+        <p class="center"><img src="/assets/img/vqmt3d/forecasting-of-viewers-discomfort/glasses.jpg" alt="Passive stereoscopic glasses" /></p>
+        <link href="/assets/css/vqmt3d/style.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+          .fixed-container {
+              overflow: auto;
+          }
+          
+          .fancytable {
+              border-spacing: 0;
+              width: 100%;
+          }
+          
+          .col2 td:nth-child(2),
+          .col3 td:nth-child(3),
+          .col4 td:nth-child(4),
+          .col5 td:nth-child(5),
+          .col6 td:nth-child(6),
+          .col7 td:nth-child(7),
+          .col8 td:nth-child(8),
+          .col9 td:nth-child(9) { text-align: center; }
+        </style>
+        <div class="fixed-container full-bleed">
+          <table class="fancytable table-fixed col2 col3 col4 col5 col6 col7 col8 col9" style="display: table">
+            <thead>
+              <tr>
+                <th>University</th>
+                <th>#subjects</th>
+                <th>#subjects per video</th>
+                <th>Duration</th>
+                <th>#videos</th>
+                <th>#videos per test</th>
+                <th>#scores</th>
+                <th>Year</th>
+                <th>3D tech.</th>
+                <th>Stimuli</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://doi.org/10.1109/3DTV.2010.5506331">University of Surrey</a></td>
+                <td>30</td>
+                <td>30</td>
+                <td>25</td>
+                <td>40</td>
+                <td>40</td>
+                <td>1200</td>
+                <td>2010</td>
+                <td>Autostereo.</td>
+                <td>Synthetic S3D seq., encoding with different QP</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.semanticscholar.org/paper/An-Assessment-of-Visual-Discomfort-Caused-by-in-3D-Cho-Kang/c490e2c57d8626b1c012db180bd1c757efaf01bf">Catholic University of Korea</a></td>
+                <td>20</td>
+                <td>20</td>
+                <td>18</td>
+                <td>36</td>
+                <td>36</td>
+                <td>720</td>
+                <td>2011</td>
+                <td>Passive</td>
+                <td>Captured S3D seq., different parallax and motion</td>
+              </tr>
+              <tr>
+                <td><a href="https://hal.archives-ouvertes.fr/hal-00724563/">Telecom Innovation Labs</a></td>
+                <td>24</td>
+                <td>24</td>
+                <td>50</td>
+                <td>64</td>
+                <td>64</td>
+                <td>1536</td>
+                <td>2011</td>
+                <td>Active</td>
+                <td>Open S3D DB, different parallax</td>
+              </tr>
+              <tr>
+                <td><a href="https://doi.org/10.1016/j.displa.2011.05.012">Philips Research Labs</a></td>
+                <td>24</td>
+                <td>24</td>
+                <td>24</td>
+                <td>7</td>
+                <td>7</td>
+                <td>168</td>
+                <td>2011</td>
+                <td>Autostereo.</td>
+                <td>3D movie (converted), different parallax</td>
+              </tr>
+              <tr>
+                <td><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/aos.12006">Beijing Institute of Ophthal.</a></td>
+                <td>30</td>
+                <td>30</td>
+                <td>30</td>
+                <td>1</td>
+                <td>1</td>
+                <td>30</td>
+                <td>2012</td>
+                <td>Active+passive</td>
+                <td>3D movie (captured)</td>
+              </tr>
+              <tr>
+                <td><a href="https://hal.archives-ouvertes.fr/hal-00717865/">LUNAM University</a></td>
+                <td>29</td>
+                <td>29</td>
+                <td>28</td>
+                <td>110</td>
+                <td>110</td>
+                <td>3190</td>
+                <td>2012</td>
+                <td>Active</td>
+                <td>Open S3D DB (NAMA3DS1-COSPAD1),<br />
+                  different degradations</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.researchgate.net/publication/271488946_Towards_standardized_3DTV_QoE_assessment_Cross-lab_study_on_display_technology_and_viewing_environment_parameters">Yonsei University</a></td>
+                <td>28</td>
+                <td>28</td>
+                <td>29</td>
+                <td>110</td>
+                <td>110</td>
+                <td>3080</td>
+                <td>2013</td>
+                <td>Passive</td>
+                <td>Open S3D DB,10 degradation types</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.researchgate.net/publication/271488946_Towards_standardized_3DTV_QoE_assessment_Cross-lab_study_on_display_technology_and_viewing_environment_parameters">Acreo Institute</a></td>
+                <td>48</td>
+                <td>28</td>
+                <td>29</td>
+                <td>110</td>
+                <td>110</td>
+                <td>5280</td>
+                <td>2013</td>
+                <td>Passive</td>
+                <td>Open S3D DB,10 degradation types</td>
+              </tr>
+              <tr>
+                <td><a href="https://link.springer.com/article/10.1007/s11760-013-0439-0">Tampere University of Tech.</a></td>
+                <td>10</td>
+                <td>10</td>
+                <td>45</td>
+                <td>40</td>
+                <td>40</td>
+                <td>400</td>
+                <td>2013</td>
+                <td>Passive</td>
+                <td>Captured S3D seq., encoding with different QP</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.researchgate.net/publication/272196362_Visual_discomfort_while_watching_stereoscopic_three-dimensional_movies_at_the_cinema">Roma Tre University</a></td>
+                <td>854</td>
+                <td>43-255</td>
+                <td>90</td>
+                <td>-</td>
+                <td>1</td>
+                <td>854</td>
+                <td>2014</td>
+                <td>Passive</td>
+                <td>Screening after watching S3D movies in cinemas</td>
+              </tr>
+              <tr>
+                <td><a href="http://live.ece.utexas.edu/publications/2014/MISCQ%20TMM.pdf">Yonsei University</a></td>
+                <td>56</td>
+                <td>56</td>
+                <td>10.5</td>
+                <td>30.1</td>
+                <td>31</td>
+                <td>1736</td>
+                <td>2014</td>
+                <td>Autostereo.</td>
+                <td>Open S3D DB, different SI and TI</td>
+              </tr>
+              <tr>
+                <td><a href="http://www.eeng.dcu.ie/~munteang/papers/2015_ICCW_YH.pdf">University College Dublin</a></td>
+                <td>40</td>
+                <td>4</td>
+                <td>5.5</td>
+                <td>25.11</td>
+                <td>33</td>
+                <td>1320</td>
+                <td>2015</td>
+                <td>Active</td>
+                <td>Open S3D DB, packet losses</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/1803.04832">University of British Columbia</a></td>
+                <td>88</td>
+                <td>88</td>
+                <td>48</td>
+                <td>208</td>
+                <td>208</td>
+                <td>18304</td>
+                <td>2015</td>
+                <td>Passive</td>
+                <td>Open S3D DB, different SI/TI and compression degradations</td>
+              </tr>
+              <tr>
+                <td><a href="https://link.springer.com/article/10.1007/s11042-015-3172-6">University North</a></td>
+                <td>146</td>
+                <td>18</td>
+                <td>8</td>
+                <td>184</td>
+                <td>26</td>
+                <td>146</td>
+                <td>2016</td>
+                <td>Active</td>
+                <td>Open S3D DB, 22 degradation types<br />
+                  (packet losses, encoding, resizing,<br />
+                  disparity, brightness, geometry etc.)</td>
+              </tr>
+              <tr>
+                <td><a href="https://api.semanticscholar.org/CorpusID:6725639">University of Coimbra</a></td>
+                <td>35</td>
+                <td>2-6</td>
+                <td>7-1</td>
+                <td>184</td>
+                <td>26</td>
+                <td>146</td>
+                <td>2016</td>
+                <td>Active</td>
+                <td>Open S3D DB, 22 degradation types<br />
+                  (packet losses, encoding, resizing,<br />
+                  disparity, brightness, geometry etc.)</td>
+              </tr>
+              <tr>
+                <td><strong><a href="/stereo_quality/forecasting-of-viewers-discomfort.html">Lomonosov MSU</a></strong></td>
+                <td><strong>302</strong></td>
+                <td><strong>370</strong></td>
+                <td><strong>40</strong></td>
+                <td><strong>60</strong></td>
+                <td><strong>60</strong></td>
+                <td><strong>22200</strong></td>
+                <td><strong>2017</strong></td>
+                <td><strong>Passive</strong></td>
+                <td><strong>Scenes from 3D movies (captured), 4 types of S3D distortions,<br />
+                    5 intensities</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><span id="visualizations"></span></p>
+        <h2 id="visualization-of-stereoscopic-errors">Visualization of stereoscopic errors</h2>
+        <p>Our visualizations distinctly demonstrate the stereoscopic errors. The reports of movie analysis include these visualizations.</p>
+        <div class="center">
+          <div>
+            <img src="/assets/img/vqmt3d/vqmt3d/example01_harold_horiz-disp.jpg" /><br />
+            <i>An example of detected strong horizontal disparity from A Very Harold &amp; Kumar 3D Christmas</i>
+          </div>
+        </div>
+        <div class="center">
+          <div>
+            <img src="/assets/img/vqmt3d/vqmt3d/example02_stepup_vertical.jpg" /><br />
+            <i>An example of detected vertical disparity from Step Up Revolution</i>
+          </div>
+        </div>
+        <div class="center">
+          <div>
+            <img src="/assets/img/vqmt3d/vqmt3d/example03_amazing_color.jpg" /><br />
+            <i>An example of detected color mismatch from The Amazing Spiderman</i>
+          </div>
+        </div>
+        <div class="center">
+          <div>
+            <img src="/assets/img/vqmt3d/vqmt3d/example04_alice_sharpness.jpg" /><br />
+            <i>An example of detected sharpness mismatch from Alice in Wonderland</i>
+          </div>
+        </div>
+        <h2 id="publications">Publications</h2>
+        <p>
+          If you want to make a reference to this project, please refer to one of the following
+          publications:
+        </p>
+        <style>
+          .publications-list li {
+              margin-top: 10px;
+          }
+        </style>
+        <ol class="publications-list">
+          <li>Mikhail Erofeev, Dmitriy Vatolin, Alexander Voronov, Alexey Fedorov,<br />
+            <span class="bold">&ldquo;Toward an Objective Stereo-Video Quality Metric: Depth Perception of Textured Areas,&rdquo;</span><br />
+            International Conference on 3D Imaging,<br />
+            2012. <a href="http://dx.doi.org/doi:10.1109/IC3D.2012.6615120">doi:10.1109/IC3D.2012.6615120</a>
+            <a href="https://istina.msu.ru/download/21001653/1iwpfq:YFu8xISDA5_iAl0PJqogT7UenQs/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Dmitriy Akimov, Alexey Shestov, Alexander Voronov, Dmitriy Vatolin,<br />
+            <span class="bold">&ldquo;Automatic Left-Right Channel Swap Detection,&rdquo;</span><br />
+            International Conference on 3D Imaging,<br />
+            2012. <a href="http://dx.doi.org/doi:10.1109/IC3D.2012.6615126">doi:10.1109/IC3D.2012.6615126</a>
+            <a href="https://istina.msu.ru/download/21001691/1iwpfn:eMcBtYI-4Ppmo3cPZMV_FqCoeO0/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Alexander Voronov, Alexey Borisov, Dmitriy Vatolin,<br />
+            <span class="bold">&ldquo;System for automatic detection of distorted scenes in stereo video,&rdquo;</span><br />
+            International Workshop on Video Processing and Quality Metrics for Consumer Electronic (VPQM-2012),<br />
+            pp. 138&ndash;143, 2012. <a href="https://istina.msu.ru/download/21001647/1iwpfp:khYyftU_71uwxvSVVtIG5y81KXg/">(download)<span class="pdf"></span></a></li>
+          <li>Alexander Voronov, Dmitriy Vatolin, Denis Sumin, Vyacheslav Napadovsky, Alexey Borisov,<br />
+            <span class="bold">&ldquo;Towards Automatic Stereo-video Quality Assessment and Detection of Color and Sharpness Mismatch,&rdquo;</span><br />
+            International Conference on 3D Imaging,<br />
+            2012. <a href="http://dx.doi.org/doi:10.1109/IC3D.2012.6615121">doi:10.1109/IC3D.2012.6615121</a>
+            <a href="https://istina.msu.ru/download/21001654/1iwpfr:m2jE2HKkc0U8G1XUIsR3s00m7P8/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Alexander Voronov, Dmitriy Vatolin, Denis Sumin, Vyacheslav Napadovsky, Alexey Borisov,<br />
+            <span class="bold">&ldquo;Methodology for stereoscopic motion-picture quality assessment,&rdquo;</span><br />
+            Proc. SPIE 8648, Stereoscopic Displays and Applications XXIV,<br />
+            vol. 8648, pp. 864810-1&ndash;864810-14, 2013. <a href="http://dx.doi.org/doi:10.1117/12.2008485">doi:10.1117/12.2008485</a>
+            <a href="https://istina.msu.ru/download/21001622/1iwpfm:I0_IFSYvIHzG8JpVHN0CvFEUxg0/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Alexander Bokov, Dmitriy Vatolin, Anton Zachesov, Alexander Belous, Mikhail Erofeev,<br />
+            <span class="bold">&ldquo;Automatic detection of artifacts in converted S3D video,&rdquo;</span><br />
+            Proc. SPIE 9011, Stereoscopic Displays and Applications XXV (March 6, 2014),<br />
+            vol. 901112, 2014. <a href="http://dx.doi.org/doi:10.1117/12.2054330">doi:10.1117/12.2054330</a>
+            <a href="https://istina.msu.ru/download/21001608/1iwpfk:JIIvDLCWmoMPRmuqjVYWo7sxWYw/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Stanislav Dolganov, Mikhail Erofeev, Dmitriy Vatolin, Yury Gitman,<br />
+            <span class="bold">&ldquo;Detection of stuck-to-background objects in converted S3D movies,&rdquo;</span><br />
+            2015 International Conference on 3D Imaging, IC3D 2015,<br />
+            2015. <a href="http://dx.doi.org/doi:10.1109/IC3D.2015.7391839">doi:10.1109/IC3D.2015.7391839</a>
+            <a href="https://istina.msu.ru/download/21000692/1iwpfi:cAYTk9UqdcekytWDqFnN9gboqgI/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Yury Gitman, Can Bal, Mikhail Erofeev, Ankit Jain, Sergey Matyunin, Kyoung-Rok Lee, Alexander Voronov, Jason
+            Juang, Dmitriy Vatolin, Truong Nguyen,<br />
+            <span class="bold">&ldquo;Delivering Enhanced 3D Video,&rdquo;</span><br />
+            Intel Technology Journal,<br />
+            vol. 19, pp. 162&ndash;200, 2015. <a href="https://istina.msu.ru/download/21000688/1iwpfi:HqGqX1t7DjkFgnV3iB3VAE891K0/">(download)<span class="pdf"></span></a></li>
+          <li>Dmitriy Vatolin, Alexander Bokov, Mikhail Erofeev, Vyacheslav Napadovsky,<br />
+            <span class="bold">&ldquo;Trends in S3D-Movie Quality Evaluated on 105 Films Using 10 Metrics,&rdquo;</span><br />
+            Proceedings of Stereoscopic Displays and Applications XXVII,<br />
+            pp. SDA-439.1&ndash;SDA-439.10, 2016. <a href="http://dx.doi.org/doi:10.2352/ISSN.2470-1173.2016.5.SDA-439">doi:10.2352/ISSN.2470-1173.2016.5.SDA-439</a>
+            <a href="https://istina.msu.ru/download/21016700/1iwpfh:tz827V7kUb4jCaynKNBVd4VuYjA/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Alexander Bokov, Sergey Lavrushkin, Mikhail Erofeev, Dmitriy Vatolin, Alexey Fedorov,<br />
+            <span class="bold">&ldquo;Toward fully automatic channel-mismatch detection and discomfort prediction for S3D video,&rdquo;</span><br />
+            2016 International Conference on 3D Imaging (IC3D),<br />
+            2016. <a href="http://dx.doi.org/doi:10.1109/IC3D.2016.7823462">doi:10.1109/IC3D.2016.7823462</a>
+            <a href="https://istina.msu.ru/download/97061763/1iwpfg:yCiDZxVOIOMyvB2VZ6IT6UENPmM/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Dmitriy Vatolin, Sergey Lavrushkin,<br />
+            <span class="bold">&ldquo;Investigating and predicting the perceptibility protect of channel mismatch in stereoscopic video,&rdquo;</span><br />
+            Moscow University Computational Mathematics and Cybernetics,<br />
+            vol. 40, pp. 185&ndash;191, 2016. <a href="http://dx.doi.org/doi:10.3103/s0278641916040075">doi:10.3103/s0278641916040075</a>
+            <a href="https://istina.msu.ru/download/101825896/1iwpff:7jM2FfWcMjwHtcsc0Rsi1_niRBs/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Anastasia Antsiferova, Dmitriy Vatolin,<br />
+            <span class="bold">&ldquo;The influence of 3D video artifacts on discomfort of 302 viewers,&rdquo;</span><br />
+            2017 International Conference on 3D Immersion (IC3D),<br />
+            2017. <a href="http://dx.doi.org/doi:10.1109/IC3D.2017.8251897">doi:10.1109/IC3D.2017.8251897</a>
+            <a href="https://istina.msu.ru/download/97061755/1iwpfe:HJ4UHXgVtxTGb9k4lDiLnrpA9IQ/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Dmitriy Vatolin, Alexander Bokov,<br />
+            <span class="bold">&ldquo;Sharpness Mismatch and 6 Other Stereoscopic Artifacts Measured on 10 Chinese S3D Movies,&rdquo;</span><br />
+            Proceedings of Stereoscopic Displays and Applications XXVIII,<br />
+            pp. 137&ndash;144, 2017. <a href="http://dx.doi.org/doi:10.2352/ISSN.2470-1173.2017.5.SDA-340">doi:10.2352/ISSN.2470-1173.2017.5.SDA-340</a>
+            <a href="https://istina.msu.ru/download/97061753/1iwpfd:DfGih9ykd-2z1X9VvbZCRJrmqlo/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Sergey Lavrushkin, Vitaliy Lyudvichenko, Dmitriy Vatolin,<br />
+            <span class="bold">&ldquo;Local Method of Color-Difference Correction Between Stereoscopic-Video Views,&rdquo;</span><br />
+            Proceedings of the 2018 3DTV Conference: The True Vision - Capture, Transmission and Display of 3D Video
+            (3DTV-CON),<br />
+            2018. <a href="http://dx.doi.org/doi:10.1109/3DTV.2018.8478453">doi:10.1109/3DTV.2018.8478453</a>
+            <a href="https://istina.msu.ru/download/170150413/1iwpfa:jdy80vLBT8wZ91XhhcYpXpr48C4/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Aidar Khatiullin, Mikhail Erofeev, Dmitriy Vatolin,<br />
+            <span class="bold">&ldquo;Fast Occlusion Filling Method For Multiview Video Generation,&rdquo;</span><br />
+            Proceedings of the 2018 3DTV Conference: The True Vision - Capture, Transmission and Display of 3D Video
+            (3DTV-CON),<br />
+            2018. <a href="http://dx.doi.org/doi:10.1109/3DTV.2018.8478562">doi:10.1109/3DTV.2018.8478562</a>
+            <a href="https://istina.msu.ru/download/173008011/1iwpfa:M7wzDTQiw0TPj4KpssAMDm2CMD8/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Sergey Lavrushkin, Dmitriy Vatolin,<br />
+            <span class="bold">&ldquo;Channel-Mismatch Detection Algorithm for Stereoscopic Video Using Convolutional Neural Network,&rdquo;</span><br />
+            Proceedings of the 2018 3DTV Conference: The True Vision - Capture, Transmission and Display of 3D Video
+            (3DTV-CON),<br />
+            2018. <a href="http://dx.doi.org/doi:10.1109/3DTV.2018.8478542">doi:10.1109/3DTV.2018.8478542</a>
+            <a href="https://istina.msu.ru/download/170150423/1iwpfZ:k7NTUymlclHShXS2QkpIGf9QJ4w/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Alexander Ploshkin, Dmitriy Vatolin,<br />
+            <span class="bold">&ldquo;Accurate Method of Temporal Shift Estimation for 3D Video,&rdquo;</span><br />
+            Proceedings of the 2018 3DTV Conference: The True Vision - Capture, Transmission and Display of 3D Video
+            (3DTV-CON),<br />
+            2018. <a href="http://dx.doi.org/doi:10.1109/3DTV.2018.8478431">doi:10.1109/3DTV.2018.8478431</a>
+            <a href="https://istina.msu.ru/download/172728093/1iwpfY:OtcJLggCDeUg3b7-O1kM2U3McX8/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Sergey Lavrushkin, Konstantin Kozhemyakov, Dmitriy Vatolin,<br />
+            <span class="bold">&ldquo;Neural-Network-Based Detection Methods for Color, Sharpness, and Geometry Artifacts in Stereoscopic and VR180 Videos,&rdquo;</span><br />
+            International Conference on 3D Immersion (IC3D),<br />
+            2020. <a href="http://dx.doi.org/10.1109/IC3D51119.2020.9376385">doi:10.1109/IC3D51119.2020.9376385</a>
+            <a href="https://istina.msu.ru/download/368760707/1lt6NN:VW4mtsunsy9L9cDWAJUO9gksz10/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Kirill Malyshev, Sergey Lavrushkin, Dmitriy Vatolin,<br />
+            <span class="bold">&ldquo;Stereoscopic Dataset from A Video Game: Detecting Converged Axes and Perspective Distortions in S3D Videos,&rdquo;</span><br />
+            International Conference on 3D Immersion (IC3D),<br />
+            2020. <a href="http://dx.doi.org/10.1109/IC3D51119.2020.9376375">doi:10.1109/IC3D51119.2020.9376375</a>
+            <a href="https://istina.msu.ru/download/368764824/1lt6Ng:8LyexOoLyV2lbs7urHbfXnrEvLs/">(download)<span class="pdf"></span></a>
+          </li>
+          <li>Lavrushkin Sergey, Molodetskikh Ivan, Kozhemyakov Konstantin, Vatolin Dmitriy,<br />
+            <span class="bold">&ldquo;Stereoscopic quality assessment of 1,000 VR180 videos using 8 metrics,&rdquo;</span><br />
+            Electronic Imaging, 3D Measurement and Data Processing,<br />
+            2021. <a href="http://dx.doi.org/10.2352/issn.2470-1173.2021.2.sda-350">doi:10.2352/issn.2470-1173.2021.2.sda-350</a>
+            <a href="https://istina.msu.ru/download/368760697/1lt6Oq:ZSyQSuwdOhf5KVZwq_Oc1kgX4x8/">(download)<span class="pdf"></span></a>
+          </li>
+        </ol>
+        <h2 id="acknowledgments">Acknowledgments</h2>
+        <p>We wish to acknowledge the help provided by CMC Faculty of Lomonosov
+          Moscow State University.<br />
+          CMC Faculty provided us with extra computational capabilities and disk
+          space which was needed for our research.</p>
+        <p>This work is partially supported by the Intel/Cisco Video Aware Wireless
+          Network (VAWN) Program and by grant 10-01-00697a from the Russian
+          Foundation for Basic Research.</p>
+        <p>Our project “Development of a system for automatic objective quality assessment and correction of stereoscopic video and video in VR180 format” was supported under the START program of <a href="http://fasie.ru">State Fund for Support of Small Enterprises in the Scientific-Technical Fields</a>.</p>
+        <div style="text-align: center;">
+          <a href="http://fasie.ru" class="thumbnail"><img src="/assets/img/vqmt3d/vqmt3d/logo_fasie.png" width="15%" height="15%" /></a>
+        </div>
+        <h2 id="invitation-to-the-project">Invitation to the Project</h2>
+        <p>We invite stereographers, researchers and proofreaders to join our
+          3D-film analysis project. We are open for collaboration and appreciate
+          your ideas and contributions. We love to receive feedback and learn from
+          the experience of people in the film-production industry.</p>
+        <p>If you would like to participate, please contact us: <a href="mailto:3dmovietest@graphics.cs.msu.ru">3dmovietest@graphics.cs.msu.ru</a></p>
+        <h2 id="contacts">Contacts</h2>
+        <p>For questions and propositions, please contact us: <a href="mailto:3dmovietest@graphics.cs.msu.ru">3dmovietest@graphics.cs.msu.ru</a></p>
+      </div>
+      <div class="tiles">
+        <a class="tile" href="/stereo_quality/report12.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report12/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 12</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report11.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report11/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 11</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report10.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report10/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 10</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/stereo-window-violation.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/stereo-window-violation/scheme.png
+        
+                )"></div>
+          <div class="title">Detection of stereo window violation</div>
+          <div class="text">How to find objects that are present only in one view?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/depth-continuity-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/depth-continuity-s3d/scheme.png
+        
+                )"></div>
+          <div class="title">Depth continuity estimation in S3D video</div>
+          <div class="text">How smooth is the depth transition between scenes?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/converged-axes-detection.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/converged-axes-detection/scheme.png
+        
+                )"></div>
+          <div class="title">Detection of 3D movie scenes shot on converged axes</div>
+          <div class="text">Another cause of headaches when watching 3D movies.</div>
+        </a>
+        <a class="tile" href="/stereo_quality/parallax-range-estimation-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/parallax-range-estimation-s3d/negative_parallax.png
+        
+                )"></div>
+          <div class="title">Parallax range estimation in S3D video</div>
+          <div class="text">The parallax range should be both comfortable and entertaining for spectators.</div>
+        </a>
+        <a class="tile" href="/stereo_quality/geometric-distortions-correction-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/geometric-distortions-correction-s3d/example01_silent.gif
+        
+                )"></div>
+          <div class="title">Geometric distortions analysis and correction</div>
+          <div class="text">Automatic correction of vertical disparity, rotation mismatch and scale mismatch.</div>
+        </a>
+        <a class="tile" href="/stereo_quality/artifacts-detection-in-converted-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/artifacts-detection-in-converted-s3d/cardboard02.jpg
+        
+                )"></div>
+          <div class="title">Automatic detection of artifacts in converted S3D videos</div>
+          <div class="text">We detect edge sharpness mismatch, cardboard effect, and crosstalk noticeability.</div>
+        </a>
+        <a class="tile" href="/stereo_quality/temporal-shift-estimation.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/temporal-shift-estimation/preview.gif
+        
+                )"></div>
+          <div class="title">Temporal shift estimation for stereoscopic videos</div>
+          <div class="text">How to take into account geometric distortions in the estimation of the temporal shift?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/production-method-classification.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/production-method-classification/preview.png
+        
+                )"></div>
+          <div class="title">Neural network-based algorithm for classification of stereoscopic video by the production method</div>
+          <div class="text">What method was used to create the 3D scene?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/perspective-distortions-estimation.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/perspective-distortions-estimation/preview.png
+        
+                )"></div>
+          <div class="title">Perspective distortions estimation</div>
+          <div class="text">How to detect a mismatch in the vertical position of the cameras?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/interest-region-selection.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/interest-region-selection/preview.png
+        
+                )"></div>
+          <div class="title">Method for region of interest selection with noticeable stereoscopic distortions in S3D videos</div>
+          <div class="text">How to find foreground objects that are stuck to the background?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/forecasting-of-viewers-discomfort.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/forecasting-of-viewers-discomfort/preview.jpg
+        
+                )"></div>
+          <div class="title">Forecasting of viewers’ discomfort</div>
+          <div class="text">How do distortions in a stereo movie affect the discomfort of viewers?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/detection-analysis-techniques.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/detection-analysis-techniques/preview.gif
+        
+                )"></div>
+          <div class="title">Automatic detection and analysis of techniques for 2D to 3D video conversion</div>
+          <div class="text">What conversion methods were used and how much the original frames are distorted?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/color-mismatch-estimation.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/color-mismatch-estimation/preview.gif
+        
+                )"></div>
+          <div class="title">Automatic color mismatch estimation in S3D videos using confidence maps</div>
+          <div class="text">How to detect color distortion between the angles of a 3D video?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/boundary-inconsistencies.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/boundary-inconsistencies/preview.png
+        
+                )"></div>
+          <div class="title">Detection of object boundary inconsistencies between 2D-3D conversion results and depth maps</div>
+          <div class="text">How to find foreground objects that are stuck to the background?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/local-color-correction-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/local-color-correction-s3d/bird_03.gif
+        
+                )"></div>
+          <div class="title">Automatic local color correction in S3D video</div>
+          <div class="text">How to eliminate color distortion between stereo video views?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/swapped-views-detection-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/swapped-views-detection-s3d/swapped_views.png
+        
+                )"></div>
+          <div class="title">Detection of swapped views in S3D movies</div>
+          <div class="text">Channel mismatch is hard to detect, but our neural network method shows very high precision.</div>
+        </a>
+        <a class="tile" href="/stereo_quality/sharpness-mismatch-detection-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/sharpness-mismatch-detection-s3d/example_02.gif
+        
+                )"></div>
+          <div class="title">Automatic sharpness mismatch detection and compensation in stereo</div>
+          <div class="text">While watching movies with sharpness mismatch the spectator may lose sense of 3D or even get a headache.</div>
+        </a>
+        <a class="tile" href="/stereo_quality/report9.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report9/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 9</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report9-additional.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report9/preview-additional.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 9 press release</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report8.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report8/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 8</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report8-additional.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report8/preview-additional.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 8 press release</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report7.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report7/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 7</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report7-additional.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report7/preview-additional.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 7 press release</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report6.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report6/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 6</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report6-additional.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report6/preview-additional.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 6 press release</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report5.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report5/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 5</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report5-additional.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report5/preview-additional.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 5 press release</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report4.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report4/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 4</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report3.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report3/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 3</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report3-additional.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report3/preview-additional.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 3 press release</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report2.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report2/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 2</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report2-additional.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report2/preview-additional.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 2 press release</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report1.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report1/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 1</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/report1-additional.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report1/preview-additional.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 1 press release</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/3d-device-testing.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/3d-device-testing/problem_example.jpg
+        
+                )"></div>
+          <div class="title">3D Device Testing: About</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/3d-device-testing-participate.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/3d-device-testing-participate/preview.jpg
+        
+                )"></div>
+          <div class="title">3D Device Testing: Participate</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/3d-device-testing-archive.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/3d-device-testing-archive/screen-zalman.jpg
+        
+                )"></div>
+          <div class="title">3D Device Testing: Tested devices</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/3d-video-capturing.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/3d-video-capturing/preview.jpg
+        
+                )"></div>
+          <div class="title">MSU 3D Display Video Capture (video capture for glasses-free 3D display)</div>
+          <div class="text">Our laboratory was challenged to make a 3d film using cheap widespread devices - web-cameras.</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

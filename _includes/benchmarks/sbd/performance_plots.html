@@ -1,0 +1,91 @@
+<div id="overall_pref_plot" style="width: 80%; margin-left: 10%">
+  <div id="overall_pref_container"></div>
+  <script type="text/javascript" src="/assets/js/benchmarks/sbd/highcharts/overall_perf1.js"></script>
+
+</div>
+
+<hr style="height:2px;border-width:0;color:rgb(61, 111, 150);background-color:rgb(61, 111, 150)">
+
+<h4 style="font-size: 18px; text-align: center;">Per-video F1 score on different datasets</h4>
+
+<p style="text-align: center; font-style: italic">Choose dataset to see detailed perfomance</p>
+
+<div id="frame_plots" style="width: 80%; margin-left: 10%">
+  <p>Dataset: <label for="frame_plots_selector"></label><select id="frame_plots_selector" name="values">
+      <option>RAI</option>
+      <option>MSU SBD Dataset</option>
+  </select></p>
+
+
+
+  <div id="container_perf" class="highcharts-figure">
+    <script async src="/assets/js/benchmarks/sbd/highcharts/rai_f1.js"></script>
+  </div>
+
+  <script>
+      document.getElementById("frame_plots_selector").onchange = function () {
+          let speed_plot = document.getElementById("container_perf");
+          let this_div = document.getElementById("frame_plots");
+
+          speed_plot.remove();
+          let new_plot = document.createElement('div');
+          new_plot.setAttribute("id", "container_perf");
+          new_plot.setAttribute("class", "highcharts-figure");
+
+          this_div.appendChild(new_plot);
+          let sc = document.createElement("script");
+
+          if (this.selectedIndex == 0) {
+              sc.src = "/assets/js/benchmarks/sbd/highcharts/rai_f1.js";
+          } else {
+              sc.src = "/assets/js/benchmarks/sbd/highcharts/osd_f1.js";
+          }
+          new_plot.appendChild(sc);
+      }
+  </script>
+
+</div>
+
+
+
+<hr style="height:2px;border-width:0;color:rgb(61, 111, 150);background-color:rgb(61, 111, 150)">
+
+<h4 style="font-size: 18px; text-align: center;">Speed/F1 score — resolution dependency</h4>
+
+<div id="resolution_plots" style="width: 80%; margin-left: 10%">
+
+  <p><label for="resolution_plots_selector"></label><select id="resolution_plots_selector" name="values">
+      <option>F1 score - resolution correlation</option>
+      <option>Running time - resolution correlation</option>
+  </select></p>
+
+  <div id="container_res" class="highcharts-figure">
+    <script async src="/assets/js/benchmarks/sbd/highcharts/resolution/res_speed.js"></script>
+  </div>
+
+  <script>
+      document.getElementById("resolution_plots_selector").onchange = function () {
+          let speed_plot = document.getElementById("container_res");
+          let this_div = document.getElementById("resolution_plots");
+
+          speed_plot.remove();
+          let new_plot = document.createElement('div');
+          new_plot.setAttribute("id", "container_res");
+          new_plot.setAttribute("class", "highcharts-figure");
+
+          this_div.appendChild(new_plot);
+          let sc = document.createElement("script");
+
+          if (this.selectedIndex === 1) {
+              sc.src = "/assets/js/benchmarks/sbd/highcharts/resolution/res_speed.js";
+
+          } 
+          else {
+              sc.src = "/assets/js/benchmarks/sbd/highcharts/resolution/res_score.js";
+          }
+          new_plot.appendChild(sc);
+      }
+  </script> 
+
+</div>
+

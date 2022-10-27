@@ -1,0 +1,414 @@
+<style>
+
+
+    /*tables*/
+
+    .dataTables_paginate {margin-top: 15px;}
+    .dataTables_length {margin-bottom: 15px;}
+
+    .hover-help {
+        border-bottom: 1px dotted;
+        position: relative;
+        cursor:pointer;
+    }
+    .hover-help>.help-content {
+        visibility:hidden;
+        opacity:0;
+        transition: visibility .1s linear, opacity .1s linear;
+        display:block;
+        position:absolute;
+        left:0;
+        background: #5a5a5ae0;
+        padding: 10px 15px;
+        z-index: 100;
+        border-radius: 10px;
+        color: #ddd;
+        font-size:80%;
+    }
+    .hover-help:hover>.help-content {
+        visibility:visible;
+        opacity:1;
+        transition: visibility 0s linear, opacity .1s linear;
+    }
+
+    .details {
+        position: relative;
+    }
+
+    sup { vertical-align: top; position: relative;
+        top: -0.45em; margin-left: -0.35em; left: 0.4em; }
+    /*tables*/
+
+
+</style>
+
+<script>
+
+    table_objects = {}
+
+    function TableCreator(cur_scale, data, other_data, glob_videos, subjcorrect){
+
+        const filescale = cur_scale.split('_')[0]
+
+        const name_ind = 1
+        const subj_vis_ind = 2
+        const cols=['Rank', 'Model', 'Subjective', 'Subjective',
+        'LPIPS', 'LPIPS',
+        'SSIM', 'SSIM',
+        'PSNR', 'PSNR', 'FPS', 'FPS']
+
+        const table_id = 'leaderboard_table_'+cur_scale
+        const video_select_id = 'leaderboard_selector_'+cur_scale
+        const button_left_id = 'leaderboard_button_left_'+cur_scale
+        const button_right_id = 'leaderboard_button_right_'+cur_scale
+        const checkbox_id = 'leaderboard_checkbox_'+cur_scale
+
+        function form_header(close){
+
+
+            let ans = "<thead>\n" +
+            "<tr style=\"font-size: large; background-color: #3d6f96\">"
+            for (let i = 0; i < cols.length; i++){
+                ans+="    \<th style=\"background-color: #3d6f96;\"\>"
+                ans+=cols[i]
+                ans+="</th>"
+            }
+            ans+="</tr>\n" +
+            "</thead>\n" +
+            "<tbody>\n";
+            if (close){
+                ans+="</tbody>\n";
+            }
+            return ans
+        }
+        function create_cell_sub(cell_options){
+
+            let helpadd=''
+            let ans=''
+
+            for (let i = 0; i < cell_options['help'].length; i++) {
+                helpadd+=cell_options['help'][i]
+                if (i+1<cell_options['help'].length){
+                    helpadd+='<br><br>'
+                }
+            }
+            ans+="<td"
+            if (cell_options['color']!=null){
+                ans+=" style='background-color:"+cell_options['color']+"'"
+            }
+            if (helpadd!=''){
+                ans+=" class=\'details\'";
+            }
+            ans+=">";
+            if (helpadd!=''){
+                ans+="<span class=\"hover-help\">";
+            }
+            ans+=cell_options['key'];
+            if (helpadd!=''){
+                ans+="<sup>*</sup><span class=\"help-content\">";
+                ans+=helpadd
+                ans+="</span></span>"
+            }
+            ans+="</td>\n"
+            return ans
+        }
+        function create_cell(cell_options, need_sort){
+
+            if(cell_options['sort_key']!=null){
+                cell_options['sort_key']=cell_options['sort_key'].toString()
+            }
+            cell_options['key']=cell_options['key'].toString()
+
+            let ans=create_cell_sub(cell_options)
+            if (need_sort){
+                let key=cell_options['sort_key']
+                if (key==null){
+                    key=cell_options['key']
+                }
+                ans+=create_cell_sub({
+                    'help':[],
+                    'key':key,
+                    'color':null
+                })
+            }
+            return ans
+        }
+        function empty_cell_options(){
+            let ans = {}
+            //key, sort_key, color, help
+            ans['help']=[]
+            ans['color']=null
+            ans['sort_key']=null
+            return ans
+        }
+
+
+
+
+
+        function tableHelper() {
+
+            let checkbox=$('#'+checkbox_id).is(':checked')
+
+            let cur_len=11
+            let cur_order=[[subj_vis_ind, 'desc']]
+            if (table_objects[table_id]!=null){
+                cur_order=table_objects[table_id].order()
+                cur_len=table_objects[table_id].page.len()
+            }
+
+            let video_select = document.getElementById(video_select_id)
+            let video_name = glob_videos[video_select.selectedIndex]
+
+
+            let text = form_header(false)
+
+            let metrics = [...glob_metrics]
+            metrics.push('fps')
+
+            let ord_inds = glob_algs.map((item) => [data['subjective'][glob_videos[0]][item], item])
+            let cpy = ord_inds.sort(([arg1], [arg2]) => arg2 - arg1)
+            let ans = Array(cpy.length)
+            let rank=0
+            ans[cpy[0][1]]=rank
+            for (let i = 1; i < cpy.length; i++) {
+                if (cpy[i][0]!=cpy[i-1][0] && !hide_algs.has(cpy[i][1])){
+                    rank+=1
+                }
+                //may also just compare by rounded values
+                ans[cpy[i][1]]=rank
+            }
+
+
+
+            let cur_ord_inds = glob_algs.map((item) => [data['subjective'][video_name][item], item])
+            let cur_cpy = cur_ord_inds.sort(([arg1], [arg2]) => arg2 - arg1)
+            let cur_ans = Array(cur_cpy.length)
+            let cur_rank=0
+            cur_ans[cur_cpy[0][1]]=cur_rank
+            for (let i = 1; i < cur_cpy.length; i++) {
+                if (cur_cpy[i][0]!=cur_cpy[i-1][0] && !hide_algs.has(cur_cpy[i][1])){
+                    cur_rank+=1
+                }
+                //may also just compare by rounded values
+                cur_ans[cur_cpy[i][1]]=cur_rank
+            }
+            let cur_max_val=Math.exp(cur_cpy[0][0])
+
+
+
+            for (let i = 0; i < glob_algs.length; i++) {
+
+
+                let alg=glob_algs[i]
+
+                if (checkbox){
+                    if (hide_algs.has(alg)){
+                        continue
+                    }
+                }
+
+
+
+                text += "<tr class=\"item\">\n";
+
+                let new_cell = empty_cell_options()
+                if (hide_algs.has(alg)){
+                    new_cell['color']='#a2a2a2'
+                }
+
+                new_cell['key']=ans[glob_algs[i]]+1
+                if (alg=='gt'){
+                    new_cell['color']='#FAF18C'
+                }
+
+                text+=create_cell(new_cell, false)
+
+
+                new_cell = empty_cell_options()
+                if (hide_algs.has(alg)){
+                    new_cell['color']='#a2a2a2'
+                }
+
+                if (alg=='gt'){
+                    new_cell['color']='#FAF18C'
+                }
+                if(no_fps_4x.has(alg) && filescale=='4x'){
+                    help_msg="This implementation doesn't support 4× scaling<br>Obtained by applying 2× scaling twice"
+                    new_cell['help'].push(help_msg)
+                }
+                if(no_fps_2x.has(alg) && filescale=='2x'){
+                    help_msg="This implementation doesn't support 2× scaling<br>Obtained from 4× scaling using bicubic downscaling"
+                    new_cell['help'].push(help_msg)
+                }
+
+                new_cell['key']=alg_translate[alg]
+
+                text+=create_cell(new_cell, false)
+
+                for (const metric of metrics) {
+
+                    let prec=precisions[metric]
+
+                    new_cell = empty_cell_options()
+
+                    if (hide_algs.has(alg)){
+                        new_cell['color']='#a2a2a2'
+                    }
+                    if(alg=='gt'){
+                        new_cell['color']='#FAF18C'
+                        if (metric=='lpips'){
+                            new_cell['key']='0.000'
+                        }
+                        else if (metric=='ssim'){
+                            new_cell['key']='1.000'
+                        }
+                        else if (metric=='psnr'){
+                            new_cell['key']='∞'
+                            new_cell['sort_key']='1000'
+                        }
+                        else if (metric=='fps'){
+                            new_cell['key']='—'
+                            new_cell['sort_key']='1000'
+                        }
+                        else if (metric=='subjective'){
+                            new_cell['key']=(Math.exp(data[metric][video_name][alg])/cur_max_val*100).toFixed(prec)
+                        }
+                    }
+                    else {
+
+                        new_cell['key']=data[metric][video_name][alg]
+                        if (metric=='fps'){
+                            if (no_fps_4x.has(alg) && filescale=='4x'){
+                                let v1 = data[metric][video_name][alg]
+                                let v2 = other_data[metric][video_name][alg]
+                                new_cell['help'].push(
+                                    'First 2× step: '+v2.toFixed(prec)+
+                                    ' <br> '+'Second 2× step: '+v1.toFixed(prec))
+                                new_cell['key']=(1/(1/v1+1/v2))
+                            }
+                            if (no_fps_2x.has(alg) && filescale=='2x'){
+                                new_cell['help'].push('Copied from 4× table')
+                            }
+                        }
+
+                        if (hide_algs.has(alg) && metric=='subjective'){
+                            new_cell['sort_key']=Math.exp(new_cell['key'])/cur_max_val*100
+                            new_cell['key']='?'
+                        }
+                        else if (!subjcorrect.has(alg) && metric=='subjective'){
+                            new_cell['sort_key']=Math.exp(new_cell['key'])/cur_max_val*100
+                            new_cell['key']='Rank '+(cur_ans[glob_algs[i]]+1).toString()
+                        }
+                        else if (metric=='subjective'){
+                            new_cell['key']=(Math.exp(new_cell['key'])/cur_max_val*100).toFixed(prec)
+                        }
+                        else{
+                            new_cell['key']=new_cell['key'].toFixed(prec)
+                        }
+
+
+                    }
+                    text+=create_cell(new_cell, true)
+                }
+                text += "</tr>\n";
+            }
+
+            text += "</tbody>\n";
+
+            if (table_objects[table_id]!=null){
+                table_objects[table_id].destroy();
+            }
+
+            let table = document.getElementById(table_id);
+            table.innerHTML = text;
+
+
+            let columnDefs = [{"className": "dt-center", "targets": "_all"}]
+            let targets=[]
+            for (let i = 0; i < metrics.length; i++){
+                let vis_entry = subj_vis_ind+i*2
+                let hid_entry = vis_entry + 1
+                targets.push(hid_entry)
+                columnDefs.push({ "orderData": hid_entry, "targets": vis_entry })
+            }
+            columnDefs.push({ "type": "num", "targets": targets })
+            columnDefs.push({ "visible": false, "targets": targets })
+
+            columnDefs.push({ width: 140, targets: name_ind })
+
+            table_objects[table_id] = $('#'+table_id).DataTable({
+
+                columnDefs: columnDefs,
+                pageLength: cur_len,
+                lengthMenu: [ [11, 20, -1], [11, 20, "All"] ],
+
+                bInfo : false,
+                searching: false,
+                ordering: true,
+                order: cur_order
+            });
+
+
+        }
+
+
+
+
+        document.write(`
+
+            <div style="display:inline-block">
+                <div style="text-align:center">
+                    <span class=groupborder>
+                    Clip:<select id="`+video_select_id+`">
+                        <option>Loading...</option>
+                    </select>
+                    <a id="`+button_left_id+`" class="button compact">◄</a>
+                    <a id="`+button_right_id+`" class="button compact">►</a>
+                    </span>
+                    Hide similar models: <input type="checkbox" id="`+checkbox_id+`" checked>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+
+            <div class="datatable-container" style="overflow-x: visible">
+                <div class="datatable-center">
+                    <table id="`+table_id+`" class="display" style="width:99.5%">
+                    </table>
+                </div>
+            </div>
+
+        `)
+
+        let glob_print_videos=[]
+        for (const x of glob_videos) {
+            glob_print_videos.push(vid_translate[x])
+        }
+
+        single_select('#'+video_select_id, glob_print_videos)
+
+        let table = document.getElementById(table_id);
+        table.innerHTML = form_header(true);
+
+        tableHelper()
+
+        $('#'+checkbox_id).change(tableHelper);
+
+
+        document.getElementById(video_select_id).onchange = tableHelper
+
+        $('#'+button_left_id).click(function(){
+            buttonHelper(video_select_id, -1)
+        })
+        $('#'+button_right_id).click(function(){
+            buttonHelper(video_select_id, 1)
+        })
+
+
+
+    }
+
+
+</script>

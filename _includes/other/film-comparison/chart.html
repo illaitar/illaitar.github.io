@@ -1,0 +1,75 @@
+This is a shot-by-shot comparison between the theatrical and director's cut of the movie. You can explore the matching, moved and deleted fragments on the timeline chart below.
+
+<a href="film-comparison.html">View other comparisons for other movies.</a>
+
+<table id="stats">
+    <tr>
+        <td>{{ from_name }} length</td>
+        <td>{{ from_length }}</td>
+    </tr>
+    <tr>
+        <td>{{ to_name }} length</td>
+        <td>{{ to_length }}</td>
+    </tr>
+    <tr>
+        <td>Added in {{ to_name | downcase }}</td>
+        <td>{{ to_added }}</td>
+    </tr>
+    <tr>
+        <td>Moved</td>
+        <td>{{ moved }}</td>
+    </tr>
+</table>
+<br>
+
+<div id="legend">
+    <div style="margin-right: 10px">
+        <div class="colored-box" style="background-color: rgb(43, 144, 143)"></div>
+        <div>Matching fragment</div>
+    </div>
+    <div style="margin-right: 10px">
+        <div class="colored-box" style="background-color: rgb(124, 181, 236)"></div>
+        <div>Moved fragment</div>
+    </div>
+    <div style="margin-right: 10px">
+        <div class="colored-box" style="background-color: rgb(144, 237, 125)"></div>
+        <div>Fragment present only in one of the versions</div>
+    </div>
+    <div>
+        <div class="colored-box" style="background-color: rgb(244, 91, 91)"></div>
+        <div>Current movie position</div>
+    </div>
+</div>
+
+<div style="text-align: center">
+    <br>
+    Clicking on a fragment starts video playback from the beginning of the fragment.
+</div>
+
+<div id="container">
+    <div id="detail-container" style="height: 200px"></div>
+    <div id="master-container" style="height: 150px"></div>
+</div>
+
+<div class="video-box">
+    <div>
+        <b>{{ from_name }}</b><br>
+        <video id="from" controls muted>
+            <source src="{{ from_link }}" type="video/mp4">
+                Not supported
+        </video>
+    </div>
+    <div>
+        <b>{{ to_name }}</b><br>
+        <video id="to" controls muted>
+            <source src="{{ to_link }}" type="video/mp4">
+                Not supported
+        </video>
+    </div>
+</div>
+
+<div id="bottom-text">
+Note: On first fragment click the playback of the two videos might not begin
+simultaneously due to videos being loaded. Following clicks usually start the
+playback more precisely.
+</div>

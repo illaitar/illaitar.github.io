@@ -1,0 +1,365 @@
+<style>
+
+    /*checkboxes*/
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+
+    /*Select text*/
+
+    /*
+    a.bigtext{
+        //font-size:21px;
+
+
+        position: relative;
+        top: 0.025em;
+        //
+        color:#333;
+    }
+    a.bigtext:hover{
+        text-decoration:none;
+    }
+    */
+
+
+
+    .groupborder {
+        border: 1px solid #3d6f96;
+        border-radius: 10px;
+        padding: 10px 10px;
+        margin: auto 10px;
+    }
+
+
+    select {
+    background: none;
+    border-color: #3d6f96;
+    color: #3d6f96;
+    font-size: 16px;
+    border: 2px solid;
+    /*line-height: 1;*/
+    text-align: center;
+    text-decoration: none;
+    transition: 0.25s;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+
+    padding: 3px 9px;
+    margin: 4px 4px;
+    }
+
+
+
+    a.compact {
+        padding: 3px 9px;
+        margin: 4px 4px;
+    }
+
+
+
+
+
+</style>
+
+
+<script>
+
+
+
+
+    function single_select(select_id, select_options, selected_name, selected_val){
+
+
+        $(select_id).text("")
+
+        let val = 0
+        for (const key of select_options)
+        {
+            let selected=''
+            if (selected_name!=null && selected_name==key ||
+                selected_val!=null && selected_val==val){
+                selected='selected'
+            }
+            $(select_id).append('<option value=\"'+val+'\" '+selected+' >'+key+'</option>');
+            val+=1
+        }
+
+
+    }
+
+
+    function buttonHelper(video_select_id, dir){
+        let total = $('#'+video_select_id+' > option').length
+        let cur = $('#'+video_select_id).prop('selectedIndex')
+        cur+=dir
+        cur+=total
+        cur%=total
+        $('#'+video_select_id).val(cur).trigger('change');
+    }
+
+    //TODO add $.csv.toObjects(csv) to data in future
+
+    const glob_algs=['gt', ...Object.keys(fps4x)]
+
+
+    hide_algs=new Set([])
+    no_fps_2x=new Set()
+
+
+    let all_clips=Object.keys(data2x['subjective'])   //[...animation_clips, ...camera_clips]
+
+    //let all_clips_woo=[...animation_clips.slice(1),
+    //    ...camera_clips.slice(1)]
+
+    for (const [alg1, alg2s] of Object.entries(similar)) {
+        for (const alg2 of alg2s) {
+            hide_algs.add(alg2)
+            for (const clip of all_clips){
+                data2x['subjective'][clip][alg2]=data2x['subjective'][clip][alg1]-data2x['lpips'][clip][alg2]*0.0001
+                data4x['subjective'][clip][alg2]=data4x['subjective'][clip][alg1]-data4x['lpips'][clip][alg2]*0.0001
+
+
+            }
+        }
+    }
+
+
+    data4x['fps']={}
+    data2x['fps']={}
+
+    for (const clip of all_clips){
+        data4x['fps'][clip]={}
+        data2x['fps'][clip]={}
+    }
+
+    for (const [alg, clip_obj] of Object.entries(fps4x)) {
+        for (const [clip, val] of Object.entries(clip_obj)) {
+            data4x['fps'][clip][alg]=val
+            if (!(alg in fps2x)){
+                no_fps_2x.add(alg)
+                data2x['fps'][clip][alg]=val
+            }
+        }
+    }
+
+    for (const [alg, clip_obj] of Object.entries(fps2x)) {
+        for (const [clip, val] of Object.entries(clip_obj)) {
+            data2x['fps'][clip][alg]=val
+        }
+    }
+
+    for (const alg of glob_algs.slice(1)){
+        let meanfps4x=0
+        let meanfps2x=0
+        for (const clip of animation_clips.slice(1)){
+            meanfps4x+=data4x['fps'][clip][alg]
+            meanfps2x+=data2x['fps'][clip][alg]
+        }
+        meanfps4x/=animation_clips.length
+        meanfps4x=Number(meanfps4x.toFixed(precisions['fps']))
+        data4x['fps'][animation_clips[0]][alg]=meanfps4x
+
+        meanfps2x/=animation_clips.length
+        meanfps2x=Number(meanfps2x.toFixed(precisions['fps']))
+        data2x['fps'][animation_clips[0]][alg]=meanfps2x
+    }
+
+    for (const alg of glob_algs.slice(1)){
+        let meanfps4x=0
+        let meanfps2x=0
+        for (const clip of camera_clips.slice(1)){
+            meanfps4x+=data4x['fps'][clip][alg]
+            meanfps2x+=data2x['fps'][clip][alg]
+        }
+        meanfps4x/=camera_clips.length
+        meanfps4x=Number(meanfps4x.toFixed(precisions['fps']))
+        data4x['fps'][camera_clips[0]][alg]=meanfps4x
+
+        meanfps2x/=camera_clips.length
+        meanfps2x=Number(meanfps2x.toFixed(precisions['fps']))
+        data2x['fps'][camera_clips[0]][alg]=meanfps2x
+    }
+
+
+
+
+
+
+
+
+
+
+
+    const alg_translate={
+        'gt':                           'Source',
+        'aam-10':                       'VEAI-AAM-10',
+        'ad-2':                         'VEAI-AD-2',
+        'adobe':                        'Adobe SupRes',
+        'ahq-12':                       'VEAI-AHQ-12',
+        'alq-13':                       'VEAI-ALQ-13',
+        'amq-13':                       'VEAI-AMQ-13',
+        'asd-2':                        'VEAI-ASD-2',
+        'basicvsr_plusplus_reds':       'BasicVsr++RD',
+        'basicvsr_plusplus_vimeo_bd':   'BasicVsr++BD',
+        'basicvsr_plusplus_vimeo_bi':   'BasicVsr++BI',
+        'bsrgan':                       'BSRGAN',
+        'bsrnet':                       'BSRNET',
+        'comisr':                       'COMISR',
+        'davinci_bicubic':              'Input (Bicubic)',
+        'davinci_super':                'Davinci SupScl',
+        'gcg-5':                        'VEAI-GCG-5',
+        'ghq-5':                        'VEAI-GHQ-5',
+        'gp-art':                       'GP-Art',
+        'gp-lines':                     'GP-Lines',
+        'gp-low_res':                   'GP-LowRes',
+        'gp-standard':                  'GP-Std',
+        'gp-very_compressed':           'GP-Comp',
+        'real-cugan':                   'Real-CUGAN',
+        'realbasicvsr':                 'RealBasicVSR',
+        'realsr':                       'RealSR',
+        'real_esrgan':                  'RealEsrgan',
+        'real_esrgan_anime':            'RealEsrgan-A',
+        'real_esrgan_anime_video':      'RealEsrgan-V',
+        'real_esrgan_face':             'RealEsrgan-F',
+        'real_esrnet':                  'RealEsrnet',
+        'real_esrnet_face':             'RealEsrnet-F',
+        'srmd':                         'SRMD',
+        'swinir_classical_big':         'SwinIR-Clas-B',
+        'swinir_classical_small':       'SwinIR-Clas-S',
+        'swinir_lightweight':           'SwinIR-Light',
+        'swinir_real_big':              'SwinIR-Real-B',
+        'swinir_real_small':            'SwinIR-Real-S',
+        'vrt_reds_long':                'VRT-Reds-L',
+        'vrt_reds_short':               'VRT-Reds-S',
+        'vrt_vimeo_bd':                 'VRT-Vim-BD',
+        'vrt_vimeo_bi':                 'VRT-Vim-BI'
+    }
+
+    //console.log(all_clips)
+    const vid_translate={
+        'carnaval':'Carnaval',
+        'castle':'Castle',
+        'deer': 'Deer',
+        'ferris_wheel': 'Ferris Wheel',
+        'glasses_man': 'Glasses Man',
+        'gman_closeup': 'Gman Close',
+        'guitarist': 'Guitarist',
+        'overall_camera': 'Overall Camera',
+        'seagull1': 'Seafront',
+        'seagull2': 'Seagull',
+        'sealions1': 'Pier',
+        'sealions2': 'Sea Lion',
+        'sealions3': 'Rest',
+        'shaggy_closeup': 'Shaggy Close',
+        'shaggy': 'Shaggy',
+        'woman': 'Woman',
+        'airplane': 'Airplane',
+        'butterflies': 'Butterflies',
+        'colosseum': 'Colosseum',
+        'crystal_dash': 'Dash',
+        'fire': 'Fire',
+        'forest': 'Forest',
+        'grimmchild': 'Familiar',
+        'hill': 'Hill',
+        'mae_jump': 'Jump',
+        'mae_run': 'Run',
+        'map': 'Map',
+        'overall_animation': 'Overall Animation',
+        'run': 'Woods',
+        'savanna': 'Savanna',
+        'town': 'Town',
+        'tree': 'Tree'
+    }
+
+
+
+    coords_2x={
+        seagull2 : [ 77 , 51 ],
+        gman_closeup : [ 83 , 59 ],
+        castle : [ 64 , 62 ],
+        deer : [ 75 , 24 ],
+        carnaval : [ 43 , 0 ],
+        ferris_wheel : [ 67 , 17 ],
+        sealions3 : [ 107 , 34 ],
+        woman : [ 59 , 8 ],
+        seagull1 : [ 59 , 49 ],
+        shaggy_closeup : [ 73 , 48 ],
+        sealions1 : [ 66 , 53 ],
+        glasses_man : [ 29 , 47 ],
+        guitarist : [ 66 , 56 ],
+        shaggy : [ 55 , 30 ],
+        sealions2 : [ 55 , 42 ],
+        grimmchild : [ 36 , 25 ],
+        savanna : [ 74 , 33 ],
+        forest : [ 63 , 64 ],
+        mae_run : [ 77 , 37 ],
+        crystal_dash : [ 63 , 20 ],
+        map : [ 71 , 74 ],
+        hill : [ 57 , 77 ],
+        town : [ 102 , 39 ],
+        colosseum : [ 53 , 18 ],
+        airplane : [ 61 , 30 ],
+        run : [ 108 , 15 ],
+        fire : [ 101 , 19 ],
+        butterflies : [ 90 , 72 ],
+        tree : [ 49 , 46 ],
+        mae_jump : [ 69 , 14 ]
+    }
+
+
+    coords_4x={
+        seagull2 : [ 89 , 29 ],
+        gman_closeup : [ 46 , 38 ],
+        castle : [ 91 , 99 ],
+        deer : [ 88 , 34 ],
+        carnaval : [ 81 , 15 ],
+        ferris_wheel : [ 17 , 0 ],
+        sealions3 : [ 77 , 22 ],
+        woman : [ 0 , 0 ],
+        seagull1 : [ 30 , 33 ],
+        shaggy_closeup : [ 25 , 3 ],
+        sealions1 : [ 66 , 0 ],
+        glasses_man : [ 59 , 56 ],
+        guitarist : [ 93 , 57 ],
+        shaggy : [ 62 , 46 ],
+        sealions2 : [ 57 , 0 ],
+        grimmchild : [ 22 , 21 ],
+        savanna : [ 63 , 56 ],
+        forest : [ 97 , 62 ],
+        mae_run : [ 82 , 14 ],
+        crystal_dash : [ 39 , 36 ],
+        map : [ 102 , 54 ],
+        hill : [ 93 , 52 ],
+        town : [ 102 , 16 ],
+        colosseum : [ 45 , 5 ],
+        airplane : [ 74 , 48 ],
+        run : [ 72 , 50 ],
+        fire : [ 92 , 66 ],
+        butterflies : [ 65 , 57 ],
+        tree : [ 0 , 17 ],
+        mae_jump : [ 57 , 6 ]
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,316 @@
+<div id="leaderboard" style="width: 90%; margin-left: 5%">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+    <table id="overall_performance_table" class="datatable display" style="background-color: #ffffff">
+        <thead>
+        <tr style="font-size: large; background-color: #3d6f96">
+            <th style="background-color: #3d6f96">Rank</th>
+            <th style="background-color: #3d6f96">Name</th>
+            <th style="background-color: #3d6f96">MOS</th>
+            <th style="background-color: #3d6f96">PSNR</th>
+            <th style="background-color: #3d6f96">SSIM</th>
+            <th style="background-color: #3d6f96">VMAF</th>
+            <th style="background-color: #3d6f96">FPS on CPU</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="item">
+            <td>1.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">MFDIN L</a></td>
+            <td>1.110</td>
+            <td>42.547</td>
+            <td>0.977</td>
+            <td>97.429</td>
+            <td>1.580</td>
+        </tr>
+        <tr class="item">
+            <td>2.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">FLAD</a></td>
+            <td>No data</td>
+            <td>41.964</td>
+            <td>0.975</td>
+            <td>95.836</td>
+            <td>0.050</td>
+        </tr>
+        <tr class="item">
+            <td>3.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">DfRes SA</a></td>
+            <td>0.981</td>
+            <td>42.177</td>
+            <td>0.969</td>
+            <td>95.177</td>
+            <td>0.020</td>
+        </tr>
+        <tr class="item">
+            <td>4.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">DfRes 122000 G2e 3</a></td>
+            <td>0.898</td>
+            <td>41.891</td>
+            <td>0.969</td>
+            <td>94.848</td>
+            <td>No data</td>
+        </tr>
+        <tr class="item">
+            <td>5.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">SwinDI</a></td>
+            <td>No data</td>
+            <td>39.812</td>
+            <td>0.967</td>
+            <td>95.268</td>
+            <td>No data</td>
+        </tr>
+        <tr class="item">
+            <td>6.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">ST-Deint</a></td>
+            <td>0.590</td>
+            <td>40.974</td>
+            <td>0.965</td>
+            <td>94.445</td>
+            <td>2.700</td>
+        </tr>
+        <tr class="item">
+            <td>8.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">DfRes</a></td>
+            <td>0.965</td>
+            <td>39.247</td>
+            <td>0.968</td>
+            <td>93.212</td>
+            <td>0.420</td>
+        </tr>
+        <tr class="item">
+            <td>8.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">EDVR_woTSA</a></td>
+            <td>0.543</td>
+            <td>39.686</td>
+            <td>0.961</td>
+            <td>93.327</td>
+            <td>0.580</td>
+        </tr>
+        <tr class="item">
+            <td>9.667</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">EDVR</a></td>
+            <td>0.521</td>
+            <td>39.337</td>
+            <td>0.959</td>
+            <td>92.805</td>
+            <td>0.560</td>
+        </tr>
+        <tr class="item">
+            <td>10.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">MFDIN</a></td>
+            <td>1.007</td>
+            <td>38.494</td>
+            <td>0.956</td>
+            <td>94.455</td>
+            <td>1.580</td>
+        </tr>
+        <tr class="item">
+            <td>10.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">MSU Deinterlacer</a></td>
+            <td>0.768</td>
+            <td>38.556</td>
+            <td>0.963</td>
+            <td>92.141</td>
+            <td>1.300</td>
+        </tr>
+        <tr class="item">
+            <td>11.667</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">DUF</a></td>
+            <td>0.373</td>
+            <td>38.512</td>
+            <td>0.957</td>
+            <td>91.595</td>
+            <td>0.740</td>
+        </tr>
+        <tr class="item">
+            <td>13.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">NNEDI</a></td>
+            <td>0.511</td>
+            <td>37.099</td>
+            <td>0.954</td>
+            <td>93.246</td>
+            <td>1.910</td>
+        </tr>
+        <tr class="item">
+            <td>14.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Bob-Weave Deinterlacer</a></td>
+            <td>0.377</td>
+            <td>37.948</td>
+            <td>0.953</td>
+            <td>91.309</td>
+            <td>46.450</td>
+        </tr>
+        <tr class="item">
+            <td>16.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Real-Time Deep Deinterlacer</a></td>
+            <td>0.581</td>
+            <td>37.031</td>
+            <td>0.953</td>
+            <td>90.964</td>
+            <td>0.270</td>
+        </tr>
+        <tr class="item">
+            <td>16.667</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Vapoursynth EEDI3</a></td>
+            <td>0.427</td>
+            <td>37.061</td>
+            <td>0.954</td>
+            <td>90.122</td>
+            <td>51.900</td>
+        </tr>
+        <tr class="item">
+            <td>16.667</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Vapoursynth TDeintMod</a></td>
+            <td>0.284</td>
+            <td>37.617</td>
+            <td>0.951</td>
+            <td>91.044</td>
+            <td>50.290</td>
+        </tr>
+        <tr class="item">
+            <td>17.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">TDAN</a></td>
+            <td>0.258</td>
+            <td>37.625</td>
+            <td>0.952</td>
+            <td>89.876</td>
+            <td>0.680</td>
+        </tr>
+        <tr class="item">
+            <td>20.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">SonyVegas Interpolate Field</a></td>
+            <td>0.178</td>
+            <td>36.649</td>
+            <td>0.951</td>
+            <td>90.151</td>
+            <td>3.310</td>
+        </tr>
+        <tr class="item">
+            <td>20.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Kernel Deinterlacer (optimal parameters)</a></td>
+            <td>0.095</td>
+            <td>36.449</td>
+            <td>0.947</td>
+            <td>90.757</td>
+            <td>37.910</td>
+        </tr>
+        <tr class="item">
+            <td>21.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Bob</a></td>
+            <td>0.143</td>
+            <td>36.668</td>
+            <td>0.951</td>
+            <td>87.242</td>
+            <td>52.830</td>
+        </tr>
+        <tr class="item">
+            <td>21.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Weston 3-Field Deinterlacer</a></td>
+            <td>0.240</td>
+            <td>36.788</td>
+            <td>0.947</td>
+            <td>89.625</td>
+            <td>36.750</td>
+        </tr>
+        <tr class="item">
+            <td>22.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Kernel Deinterlacer</a></td>
+            <td>0.076</td>
+            <td>35.712</td>
+            <td>0.939</td>
+            <td>90.250</td>
+            <td>37.850</td>
+        </tr>
+        <tr class="item">
+            <td>22.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">YADIF</a></td>
+            <td>0.672</td>
+            <td>36.918</td>
+            <td>0.945</td>
+            <td>87.240</td>
+            <td>48.960</td>
+        </tr>
+        <tr class="item">
+            <td>24.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Motion and Area Pixel Deinterlacer</a></td>
+            <td>No data</td>
+            <td>35.278</td>
+            <td>0.932</td>
+            <td>88.882</td>
+            <td>2.150</td>
+        </tr>
+        <tr class="item">
+            <td>26.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Muksun Deinterlacer</a></td>
+            <td>0.400</td>
+            <td>34.486</td>
+            <td>0.928</td>
+            <td>86.873</td>
+            <td>1.950</td>
+        </tr>
+        <tr class="item">
+            <td>27.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">ASVZZZ Deinterlacer</a></td>
+            <td>No data</td>
+            <td>34.486</td>
+            <td>0.928</td>
+            <td>86.873</td>
+            <td>1.900</td>
+        </tr>
+        <tr class="item">
+            <td>28.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">PAL Interpolation</a></td>
+            <td>No data</td>
+            <td>32.901</td>
+            <td>0.901</td>
+            <td>82.662</td>
+            <td>2.850</td>
+        </tr>
+        <tr class="item">
+            <td>29.667</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Motion Compensation Deinterlacer</a></td>
+            <td>No data</td>
+            <td>29.259</td>
+            <td>0.830</td>
+            <td>64.436</td>
+            <td>1.450</td>
+        </tr>
+        <tr class="item">
+            <td>30.000</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">Adobe Premiere Pro Built-In</a></td>
+            <td>No data</td>
+            <td>30.772</td>
+            <td>0.813</td>
+            <td>57.538</td>
+            <td>6.530</td>
+        </tr>
+        <tr class="item">
+            <td>30.333</td>
+            <td><a href="/benchmarks/deinterlacer-participants.html">SonyVegas Blend Field</a></td>
+            <td>No data</td>
+            <td>28.344</td>
+            <td>0.856</td>
+            <td>49.308</td>
+            <td>3.510</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+    <script>$(document).ready(function () {
+        $('#overall_performance_table').DataTable({
+            lengthChange: false,
+            paging: false,
+            searching: false
+        });
+    });</script>
+</div>

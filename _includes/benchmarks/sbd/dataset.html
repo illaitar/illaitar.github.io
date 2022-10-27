@@ -1,0 +1,53 @@
+<details close> <summary> Click to open spatio-temporal distribution and examples of video dataset</summary>
+    <h5 style="text-align: center; font-size: 24px">Detailed SI-TI of each scene in dataset</h5>
+    <div id="speed_plots" style="width: 80%; margin-left: 10%">
+        <p style="text-align: center"><i>Select the area to zoom in</i></p>
+
+        <p>SI-TI metric: <label for="speed_plots_selector"></label>
+            <select id="speed_plots_selector" name="values">
+                <option>Plane scenes</option>
+                <option>Difference between scenes</option>
+                <option>Proportions between scenes</option>
+                <option>Difference between scenes divided by maximum</option>
+            </select>
+        </p>
+
+        <div id="container_si_ti" class="highcharts-figure">
+            <script async src="/assets/js/benchmarks/sbd/highcharts/si-ti/si_ti1.js"></script>
+        </div>
+
+        <script>
+            document.getElementById("speed_plots_selector").onchange = function () {
+                let speed_plot = document.getElementById("container_si_ti");
+                let this_div = document.getElementById("speed_plots");
+
+                speed_plot.remove();
+                let new_plot = document.createElement('div');
+                new_plot.setAttribute("id", "container_si_ti");
+                new_plot.setAttribute("class", "highcharts-figure");
+
+                this_div.appendChild(new_plot);
+                let sc = document.createElement("script");
+
+                if (this.selectedIndex === 0) {
+                    sc.src = "/assets/js/benchmarks/sbd/highcharts/si-ti/si_ti1.js";
+                } else if (this.selectedIndex === 1) {
+                    sc.src = "/assets/js/benchmarks/sbd/highcharts/si-ti/si_ti_diff.js";
+                } else if (this.selectedIndex === 2) {
+                    sc.src = "/assets/js/benchmarks/sbd/highcharts/si-ti/si_ti_div.js";
+                } else {
+                    sc.src = "/assets/js/benchmarks/sbd/highcharts/si-ti/si_ti_diff_div.js";
+                }
+                new_plot.appendChild(sc);
+            }
+        </script> 
+
+    </div>
+
+
+    <h5 style="text-align: center; font-size: 24px" >Dataset examples</h5>
+    <div class="center">
+        <img src="/assets/img/benchmarks/sbd/dataset_examples_small.jpg" /> 
+    </div> 
+
+</details>

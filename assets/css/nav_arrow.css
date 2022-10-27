@@ -1,0 +1,69 @@
+#nav_arrow {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 20px; /* Place the button at the bottom of the page */
+  left: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #496E93; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 15%; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+  opacity:100%;
+}
+
+#nav_arrow:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+
+#__menu {
+  display:none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 99;
+
+  border-spacing: 0;
+  color: #858585;
+  background-color: white;
+  border-radius: 15px;
+  font-size: 13px;
+  border: none;
+}
+
+#__menu td{
+  border: 0.5px solid #e2e2e29b;
+  box-shadow: 0px 0px 2.5px #0000002e;
+  text-align:center;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-width:110px;
+}
+
+
+#__menu tr:last-child td {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+#__menu tr:first-child td {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#__menu td:hover {
+  background-color: #eeeeeea8;
+  text-decoration: none;
+  cursor: pointer;
+  color: #6d6d6d;
+}
+
+@media screen and (max-width: 1270px){
+  #__menu {display: none !important;}
+ }

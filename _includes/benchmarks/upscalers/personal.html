@@ -1,0 +1,134 @@
+<style>
+
+
+details>summary {
+ list-style: none;
+}
+summary::-webkit-details-marker {
+ display: none
+}
+
+summary::after {
+ content: '►';
+
+ background: none;
+    border-color: #3d6f96;
+    color: #3d6f96;
+    font-size: 16px;
+    border: 2px solid;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.25s;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+    padding: 1px 4px;
+    margin: 4px 4px;
+
+}
+
+
+
+details:hover summary:after  {
+    background-color: #3d6f96;
+    text-decoration: none;
+    cursor: pointer;
+    border-color: #3d6f96;
+    color: #FFFFFF;
+}
+
+
+
+
+details[open] summary:after {
+ content: "▼";
+}
+
+
+
+.partitable td{
+    padding: 10px;
+    background:#F4F6F6;
+}
+
+.partitable tr td:first-child{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.partitable tr td:last-child{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.partitable{
+    border-spacing: 20px;
+    border-spacing: 0px 20px;
+}
+
+.partitable .partihead{
+    font-weight: bold;
+    font-size:20px;
+}
+
+</style>
+
+<table class="partitable" style="margin-top: -20px">
+    <tr>
+        <td>
+            <details><summary>Choose the best upscaler for <u><b>your content</b></u>:</summary>
+                <p style="max-width:500px;word-break:normal;white-space: normal;margin-bottom: 0px;">
+                    This benchmark uses complex distortions to prepare a test video for real-world
+                    simulation. However, a completely different combination of distortion, noise,
+                    and compression may be present in your content, leading to contrasting
+                    upscalers behavior.
+                   </p></details></td>
+    </tr>
+    <tr>
+        <td>
+            <details><summary>Choose the best upscaler for <u><b>your usage</b></u>:</summary>
+                <p style="max-width:500px;word-break:normal;white-space: normal;margin-bottom: 0px;">
+                    This benchmark covers only upscaling the test video generated from sources
+                    downscaled four times: from 1920×1080 to 480×270. It is a good solution for
+                    comparing the limits of different upscalers but may not correspond to your intended
+                    upscaling usage.</p></details></td>
+    </tr>
+    <tr>
+        <td>
+            <details><summary>See the whole picture and temporal artifacts:</summary>
+                <p style="max-width:500px;word-break:normal;white-space: normal;margin-bottom: 0px;">
+                    In this benchmark, we provide only fragments from single frames to prevent
+                    participants from cheating. For your content, we can present the full
+                    results allowing you to see the whole picture and detect temporal
+                    instability and artifacts (random noise, flicker, morphing).
+            </p></details></td>
+    </tr>
+    <tr>
+        <td>
+            <b>Personal Upscalers Comparison is coming this year!</b>
+            <p style="max-width:500px;word-break:normal;white-space: normal;margin-bottom: 0px;">
+                Subscribe to this benchmark's updates using
+                <a href="#form">the form above</a> and be the first to
+                learn about the release of Personal Upscalers Comparison.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>We need your feedback!</b>
+            <p style="max-width:500px;word-break:normal;white-space: normal;margin-bottom: 0px;">
+                How do upscalers help you with your work? Which of the features above are you interested in the most?
+                Share your feedback before the release of Personal Upscalers Comparison and receive a 20% discount
+                (tied to a specified email address).
+            </p>
+        </td>
+    </tr>
+</table>
+
+

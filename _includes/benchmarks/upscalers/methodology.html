@@ -1,0 +1,141 @@
+<style>
+    .top_gif{
+    display: block;
+    margin: 0 auto;
+    width:75%;
+    }
+</style>
+
+
+<p>Our benchmark aims to find the algorithms that produce the most
+    visually pleasant image possible and generalize well to a broad range
+    of content. We check each submission on private clips to prevent
+    upscalers tuning to our test videos.</p>
+
+<h2>The Test Video</h2>
+
+<img class="top_gif" src="/assets/img/benchmarks/upscalers/camera.jpg">
+
+Our test video consists of 30 clips and contains:
+<ul>
+<li> 15 2D-animated segments losslessly recorded from various videogames</li>
+<li> 15 camera-shot segments from high-bitrate YUV444 sources
+    <ul><li> half of the camera-shot segments include humans, and the other half features animals and architecture </li></ul>
+</li>
+<li> spatially complex and simple segments (textures, fine details) with high and low SI<sup><a href="#references">[1]</a></sup></li>
+<li> temporally complex and simple segments (camera and object movement) with high and low TI<sup><a href="#references">[1]</a></sup></li>
+<li> multiple bicubic downscaling mixed with sharpening to simulate complex real-world camera degradation. </li>
+</ul>
+
+<p>Our test video is slightly compressed and converted to YUV420
+    to simulate a practical use case. The resolution of our test video is 480×270.
+    It is ¼ of the most popular modern video resolution: 1920×1080.
+    One could argue that this resolution is too small for an actual use case.
+    Still, fine details (which significantly affect the perceived restoration quality)
+    in a 1920×1080 video are comparable to medium-sized objects in a 480×270 video.
+</p>
+
+<p>While preparing our test video, we converted the sources to BT.709 TV color
+    space with YUV 4:4:4 pixel format. Then we extracted RGB24 PNG frames
+    from the videos. Additional YUV⇔RGB conversions will not lead to any precision loss.
+</p>
+
+<p>All test segments are combined into a single test video file for convenience.
+    We separate different parts by five black frames to avoid upscalers misbehaving
+    due to scene changes. There are no scene changes inside the segments themselves.
+    Additionally, the test video starts and ends with five black frames.
+</p>
+
+<p>We extract the most salient<sup><a href="#references">[2]</a></sup> spatial crops from upscaling results for
+    our calculations. The segment length varies between 48 and 100 frames.
+    We don’t account for the first and last five frames to improve the results
+    of algorithms that use temporal information.
+</p>
+
+<p>We ensured that our test video had good algorithm behavior coverage while reducing
+    the number of redundant clips by running the algorithms on a more extensive set
+    of clips, then clustering the clips by Pearson correlation of the LPIPS metric.
+    Our selected group of clips showed the widest variety of super-resolution
+    algorithm behavior.
+</p>
+
+<img class="top_gif" src="/assets/img/benchmarks/upscalers/animation.jpg">
+
+<h2>The Subjective Comparison and Metrics</h2>
+
+<p>Crowd-sourced subjective comparison with over 3700 valid participants was conducted using Subjectify<sup><a href="#references">[3]</a></sup>.
+    Frames from the clips we showed to the participants are available in the
+    “Visualizations” sections. Participants were to choose the most visually
+    appealing clip in a pair, the clips being the results of the upscalers on our
+    test video. Participants were told not to select algorithms that purposely
+    stylize video for camera-shot segments instead of restoring it.
+</p>
+
+<p>
+    The Bradley–Terry model calculated subjective quality values in the tables.
+    Values in the tables are the natural exponential of Bradley–Terry values to allow
+    linear comparison between different models: the ratio of subjective values equals
+    the proportion of votes. The complete comparison is only conducted for well-performing
+    models. These models are decided during the comparison according to current
+    confidence intervals. Therefore proportional values comparison is valid only for
+    models reaching the top 10 (top 11 with source) in rating (they have 99% confidence
+    intervals). Ranks of subjective comparison are correct for all models.
+</p>
+
+<p>Upscalers often slightly displace object borders.
+    It’s not noticeable subjectively but decreases the values of
+    some objective metrics. To combat this, we search for the best values
+    of the metrics by going over pixel shifts of upscalers’ results with ¼ pixel
+    precision (using bilinear scaling for float shifts). We do it for each segment
+    individually for all frames at once.
+</p>
+
+<p>We use the LPIPS metric to cluster methods and avoid comparing similar super-resolution models.
+    We hide these similar models by default, and you can view them using checkboxes. For each cluster,
+    the subjective comparison has been conducted only for the method achieving the best LPIPS value.
+    Similar models share the same rank in the tables with the selected one.
+</p>
+
+<p>We calculate most metrics using VQMT<sup><a href="#references">[4]</a></sup>,
+    including shifted SSIM-Y
+    error maps (we refer to them as “Structural Distortion Maps”).
+    We compute PSNR and SSIM over the Y color component.
+</p>
+
+<p>We run upscalers on NVIDIA Titan Xp, reading and writing from virtual disk in RAM
+    to minimize the impact of drive instability and delays.
+    Usually, upscalers utilize only GPU for neural network inference,
+    but some also use CPU. We run upscalers on Intel Xeon E5-2683 v3 @ 2.00GHz.
+    Therefore, some CPU-intensive upscaling applications (e.g., Topaz GUI)
+    may run faster on your machine. All models were tested on Windows and may be
+    slightly slower than Linux implementations.
+</p>
+
+<p>To obtain 2× results for models which support only 4× upscaling, we apply these
+    models and scale results with bicubic downscaling. FPS values are the same as for
+    4× upscaling. These models and their FPS values are underlined in the tables,
+    and you can read their notes by hovering your mouse over them.
+</p>
+
+<p>
+    Charts with correlation values of different metrics with our subjective comparison
+    results will be available in our upcoming paper, along with a more in-depth
+    explanation of the test video preparation process and a new proposed super-resolution
+    quality evaluation metric. Subscribe to this benchmark's updates using
+    <a href="/benchmarks/video-upscalers.html#form">the form</a>
+    and get notified when the paper is available.
+</p>
+
+<h2 id="references">References</h2>
+
+<ol>
+    <li><a href="https://www.itu.int/rec/T-REC-P.910">
+        ITU-T Recommendation P.910: Subjective video quality assessment methods for multimedia applications, 1999. – 37 p.</a></li>
+    <li><a href="https://github.com/alexanderkroner/saliency">
+        https://github.com/alexanderkroner/saliency</a></li>
+    <li><a href="https://www.subjectify.us/">
+        https://www.subjectify.us/</a></li>
+    <li><a href="https://www.compression.ru/video/quality_measure/vqmt_download.html">
+        https://www.compression.ru/video/quality_measure/vqmt_download.html</a></li>
+</ol>
+

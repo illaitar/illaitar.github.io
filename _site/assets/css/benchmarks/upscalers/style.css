@@ -1,0 +1,5 @@
+.authors {
+margin-left: 60%; }
+@media (max-width: 950px) {
+.authors {
+margin-left: 25%; } }

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15281510-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'UA-15281510-2');
+    </script>
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI</title>
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/vqmt/vqmt.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/assets/js/vqmt/interface.js"></script>
+  </head>
+  <body>
+    <div class="global-container">
+      <div class="global-content-and-header">
+        <div class="global-header">
+          <ul class="navbar">
+            <li class="navbar-header">
+              <a href="/" class="header">
+                <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+                <h1>Video processing, compression<br>
+                  and quality research group
+                  <div>Based in MSU Graphics & Media Laboratory</div>
+                </h1>
+              </a>
+              <a class="menu-toggle-button">
+                <div class="icon"></div>
+              </a>
+            </li>
+            <li>
+              <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+              <ul class="dropmenu">
+                <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+                <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+                <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+                <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+                <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+                <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+                <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+                <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+                <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+                <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+                <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+                <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+                <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+                <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+              <ul class="dropmenu">
+                <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+                <li><a href="/vqmt/">VQMT</a></li>
+                <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+                <li><a href="/datasets/">MSU Datasets Collection</a></li>
+                <li><a href="/metrics/">Metrics Research</a></li>
+                <li><a href="/video_filters/">Video Filters</a></li>
+                <li><a href="/other/">Other Projects</a></li>
+              </ul>
+            </li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contacts/">Contacts</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="tiles-width nav-current">
+            <a href="/index.html">Main page</a> &mdash;
+            <a href="/vqmt/">VQMT</a>
+          </div>
+          <div class="tiles-width markdown article">
+            <p>This is part of MSU Video Quality Measurement tool Online Help for <strong>MSU VQMT 12.1</strong></p>
+            <p>MSU Video Quality Measurement Tool (MSU VQMT) project:</p>
+            <ul>
+              <li><a href="https://compression.ru/vqmt"><strong>Main MSU VQMT page</strong></a> on compression.ru</li>
+              <li><a href="https://compression.ru/vqmt-pro"><strong>Download &amp; Purchase</strong></a> on compression.ru</li>
+              <li><a href="/vqmt/basic"><strong>Basic information</strong></a></li>
+              <li><a href="/vqmt/vqmt-doc-toc"><strong>Online help</strong></a></li>
+              <li><a href="/vqmt/metrics"><strong>Metrics reference</strong></a></li>
+              <li><a href="/vqmt/changelog"><strong>Version history &amp; Changelog</strong></a></li>
+            </ul>
+            <p>Online help for MSU VQMT 12.1 contents:</p>
+            <ul>
+              <li><a href="../help">Command-line help</a></li>
+              <li><a href="../info">VQMT various lists and tables</a></li>
+              <li><strong>Usage of VQMT metrics in CLI</strong></li>
+              <li><a href="../picture-types">Picture types</a></li>
+              <li><a href="../config">Configuration description</a></li>
+              <li><a href="../../vqmt-doc-toc">List of documentation pages for all versions</a></li>
+            </ul>
+            <h1 id="content">Content</h1>
+            <ul id="markdown-toc">
+              <li><a href="#content" id="markdown-toc-content">Content</a>    
+                <ul>
+                  <li><a href="#list-of-available-metrics" id="markdown-toc-list-of-available-metrics">List of available metrics</a>        
+                    <ul>
+                      <li><a href="#psnr" id="markdown-toc-psnr">psnr</a></li>
+                      <li><a href="#identity" id="markdown-toc-identity">identity</a></li>
+                      <li><a href="#ssim" id="markdown-toc-ssim">ssim</a></li>
+                      <li><a href="#msssim" id="markdown-toc-msssim">msssim</a></li>
+                      <li><a href="#3ssim" id="markdown-toc-3ssim">3ssim</a></li>
+                      <li><a href="#vqm" id="markdown-toc-vqm">vqm</a></li>
+                      <li><a href="#blocking" id="markdown-toc-blocking">blocking</a></li>
+                      <li><a href="#blurring" id="markdown-toc-blurring">blurring</a></li>
+                      <li><a href="#delta" id="markdown-toc-delta">delta</a></li>
+                      <li><a href="#msad" id="markdown-toc-msad">msad</a></li>
+                      <li><a href="#mse" id="markdown-toc-mse">mse</a></li>
+                      <li><a href="#time-shift" id="markdown-toc-time-shift">time-shift</a></li>
+                      <li><a href="#si" id="markdown-toc-si">si</a></li>
+                      <li><a href="#ti" id="markdown-toc-ti">ti</a></li>
+                      <li><a href="#niqe" id="markdown-toc-niqe">niqe</a></li>
+                      <li><a href="#vmaf" id="markdown-toc-vmaf">vmaf</a></li>
+                      <li><a href="#test" id="markdown-toc-test">Test</a></li>
+                      <li><a href="#testocl" id="markdown-toc-testocl">testocl</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <h2 id="list-of-available-metrics">List of available metrics</h2>
+            <h4 id="psnr">psnr</h4>
+            <p><strong>PSNR</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#psnr">http://www.compression.ru/video/quality_measure/info.html#psnr</a></p>
+            <ul>
+              <li><em>Color components:</em> Y U V L R G B RGB YUV</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr psnr</code> &lt;color component&gt;</li>
+            </ul>
+            <h4 id="identity">identity</h4>
+            <p><strong>Identity</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#identity">http://www.compression.ru/video/quality_measure/info.html#identity</a></p>
+            <ul>
+              <li><em>Color components:</em> Y U V L R G B RGB YUV</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr identity</code> &lt;color component&gt;</li>
+            </ul>
+            <p>This metric can be configured using next parameter(s):</p>
+            <ul>
+              <li>Type  <br />
+                Possible types:
+                <ul>
+                  <li>binary - 1 images are similar, 0 in other case</li>
+                  <li>pixels - proportion of similar pixels, 1 - all pixels are same (0..1)  <br />
+                    <em>Default value:</em> <code class="highlighter-rouge">binary</code>  <br />
+                    <em>Usage:</em> <code class="highlighter-rouge">-set "type=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:</li>
+                  <li><code class="highlighter-rouge">binary</code></li>
+                  <li><code class="highlighter-rouge">pixels</code></li>
+                </ul>
+              </li>
+            </ul>
+            <h4 id="ssim">ssim</h4>
+            <p><strong>SSIM</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#ssim">http://www.compression.ru/video/quality_measure/info.html#ssim</a></p>
+            <ul>
+              <li><em>Color components:</em> Y U V</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr ssim</code> &lt;color component&gt;</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr ssim_precise</code> &lt;color component&gt;</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr ssim_gpu_id</code> &lt;color component&gt;</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr ssim_cuda</code> &lt;color component&gt;</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr ssim</code> &lt;color component&gt; <code class="highlighter-rouge">-dev OpenCL0</code></li>
+            </ul>
+            <h4 id="msssim">msssim</h4>
+            <p><strong>MSSSIM</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#msssim">http://www.compression.ru/video/quality_measure/info.html#msssim</a></p>
+            <ul>
+              <li><em>Color components:</em> Y U V</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr msssim</code> &lt;color component&gt;</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr msssim_precise</code> &lt;color component&gt;</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr msssim_cuda</code> &lt;color component&gt;</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr msssim</code> &lt;color component&gt; <code class="highlighter-rouge">-dev OpenCL0</code></li>
+            </ul>
+            <h4 id="3ssim">3ssim</h4>
+            <p><strong>3SSIM</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#3ssim">http://www.compression.ru/video/quality_measure/info.html#3ssim</a></p>
+            <ul>
+              <li><em>Color components:</em> Y U V</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr 3ssim</code> &lt;color component&gt;</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr 3ssim_cuda</code> &lt;color component&gt;</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr 3ssim</code> &lt;color component&gt; <code class="highlighter-rouge">-dev OpenCL0</code></li>
+            </ul>
+            <h4 id="vqm">vqm</h4>
+            <p><strong>VQM</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#vqm">http://www.compression.ru/video/quality_measure/info.html#vqm</a></p>
+            <ul>
+              <li><em>Color components:</em> Y</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr vqm</code> &lt;color component&gt;</li>
+            </ul>
+            <h4 id="blocking">blocking</h4>
+            <p><strong>Blocking</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#blockingmeasure">http://www.compression.ru/video/quality_measure/info.html#blockingmeasure</a></p>
+            <ul>
+              <li><em>Color components:</em> Y</li>
+              <li><em>Type:</em> no-reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr blocking</code> &lt;color component&gt;</li>
+            </ul>
+            <h4 id="blurring">blurring</h4>
+            <p><strong>Blurring</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#ybluringmeasure">http://www.compression.ru/video/quality_measure/info.html#ybluringmeasure</a></p>
+            <ul>
+              <li><em>Color components:</em> Y R G B</li>
+              <li><em>Type:</em> no-reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr blurring</code> &lt;color component&gt;</li>
+              <li><em>Color components:</em> Y U V R G B</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr blurring_delta</code> &lt;color component&gt;</li>
+            </ul>
+            <h4 id="delta">delta</h4>
+            <p><strong>Delta</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#delta">http://www.compression.ru/video/quality_measure/info.html#delta</a></p>
+            <ul>
+              <li><em>Color components:</em> Y U V L R G B</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr delta</code> &lt;color component&gt;</li>
+            </ul>
+            <h4 id="msad">msad</h4>
+            <p><strong>MSAD</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#msad">http://www.compression.ru/video/quality_measure/info.html#msad</a></p>
+            <ul>
+              <li><em>Color components:</em> Y U V L R G B</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr msad</code> &lt;color component&gt;</li>
+            </ul>
+            <h4 id="mse">mse</h4>
+            <p><strong>MSE</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#mse">http://www.compression.ru/video/quality_measure/info.html#mse</a></p>
+            <ul>
+              <li><em>Color components:</em> Y U V L R G B</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr mse</code> &lt;color component&gt;</li>
+            </ul>
+            <h4 id="time-shift">time-shift</h4>
+            <p><strong>Time shift</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#shift">http://www.compression.ru/video/quality_measure/info.html#shift</a></p>
+            <ul>
+              <li><em>Color components:</em> Y</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr time-shift</code> &lt;color component&gt;</li>
+            </ul>
+            <p>This metric can be configured using next parameter(s):</p>
+            <ul>
+              <li>Max. shift  <br />
+                Maximum shift, that can be detected. Note: large values leads big memory consumption  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">5</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "max-shift=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li>value in range 0..25</li>
+                </ul>
+              </li>
+              <li>Direction  <br />
+                Detect only positive shifts (frame dups), negatives (frame drops) or both  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">both</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "direction=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li><code class="highlighter-rouge">positive</code></li>
+                  <li><code class="highlighter-rouge">negative</code></li>
+                  <li><code class="highlighter-rouge">both</code></li>
+                </ul>
+              </li>
+              <li>Destination metric  <br />
+                This metric will be used to measure similarity between frames  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">psnr</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "metric=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li><code class="highlighter-rouge">psnr</code></li>
+                  <li><code class="highlighter-rouge">ssim</code></li>
+                </ul>
+              </li>
+              <li>Show metric values  <br />
+                Metric will output now only shift, but destination metric values  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">false</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "show-metric=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li><code class="highlighter-rouge">true</code></li>
+                  <li><code class="highlighter-rouge">false</code></li>
+                </ul>
+              </li>
+              <li>Threshold  <br />
+                We will consider shift only if metric for neighbour frame better than this thresold multiplied to metric for similar frame  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">0.99500000476837158</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "threshold=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li>any floating point number</li>
+                </ul>
+              </li>
+              <li>Smoothing  <br />
+                Will smooth metric values over time. If equal n, than smoothing will be in the interval frame-n..frame+n  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">1</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "smoothing=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li>value in range 0..25</li>
+                </ul>
+              </li>
+            </ul>
+            <h4 id="si">si</h4>
+            <p><strong>SI / TI</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#si">http://www.compression.ru/video/quality_measure/info.html#si</a></p>
+            <ul>
+              <li><em>Color components:</em> Y</li>
+              <li><em>Type:</em> no-reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr si</code> &lt;color component&gt; <code class="highlighter-rouge">-dev CPU</code></li>
+            </ul>
+            <h4 id="ti">ti</h4>
+            <p><strong>SI / TI</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#ti">http://www.compression.ru/video/quality_measure/info.html#ti</a></p>
+            <ul>
+              <li><em>Color components:</em> Y</li>
+              <li><em>Type:</em> no-reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr ti</code> &lt;color component&gt; <code class="highlighter-rouge">-dev CPU</code></li>
+            </ul>
+            <h4 id="niqe">niqe</h4>
+            <p><strong>NIQE</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#niqe">http://www.compression.ru/video/quality_measure/info.html#niqe</a></p>
+            <ul>
+              <li><em>Color components:</em> Y</li>
+              <li><em>Type:</em> no-reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr niqe</code> &lt;color component&gt;</li>
+            </ul>
+            <p>This metric can be configured using next parameter(s):</p>
+            <ul>
+              <li>Mean threshold  <br />
+                Values of metric greater than this value will be skipped during mean calculation. 0 for disable skipping  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">15.000000000000000</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "mean_thresh=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li>any floating point number</li>
+                </ul>
+              </li>
+              <li>Threshold smoothing  <br />
+                Values of metric greater than ‘Mean threshold’ + ‘Threshold smoothing’ will be skipped, values less than ‘Mean threshold’ - ‘Threshold smoothing’ will be assumed with weight 1. Intermediate values will be taken with intermediate weight  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">5.0000000000000000</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "mean_thresh_smoothing=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li>any floating point number</li>
+                </ul>
+              </li>
+              <li>Type of normalization
+                <ul>
+                  <li>fast - the fastest algorithm, low precision
+                    <ul>
+                      <li>native - like in native NIQE implementation. Slowest one</li>
+                      <li>precise - the most precise algorithm  <br />
+                        <em>Default value:</em> <code class="highlighter-rouge">native</code>  <br />
+                        <em>Usage:</em> <code class="highlighter-rouge">-set "norm_alg=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:</li>
+                    </ul>
+                  </li>
+                  <li><code class="highlighter-rouge">fast</code></li>
+                  <li><code class="highlighter-rouge">native</code></li>
+                  <li><code class="highlighter-rouge">precise</code></li>
+                </ul>
+              </li>
+            </ul>
+            <h4 id="vmaf">vmaf</h4>
+            <p><strong>Netflix VMAF</strong></p>
+            <ul>
+              <li><em>Color components:</em> Y</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr vmaf</code> &lt;color component&gt;</li>
+            </ul>
+            <p>This metric can be configured using next parameter(s):</p>
+            <ul>
+              <li>Model preset  <br />
+                Choose built-in model or ‘custom’ for loading model from file. Built-in models:
+                <ul>
+                  <li>default - VMAF default behaviour:
+                    <ul>
+                      <li>VMAF v0.6.1 for running without confidence interval and per-model values</li>
+                      <li>VMAF v0.6.1 4k for previous case if applying 4k model</li>
+                      <li>VMAF v0.6.3 for running with confidence interval or per-model values</li>
+                      <li>VMAF v0.6.2 4k for previous case if applying 4k model (NOTE: no v0.6.3 for 4k)</li>
+                    </ul>
+                  </li>
+                  <li>vmaf_v061 - Netflix model VMAF v0.6.1 (2k or 4k)</li>
+                  <li>vmaf_v062 - Netflix model VMAF v0.6.2 (2k or 4k), supports confidence interval</li>
+                  <li>vmaf_v063 - Netflix model VMAF v0.6.3 (only 2k), supports confidence interval</li>
+                  <li>all_models - vmaf_v061 - vmaf_v063 computed sumultaneously</li>
+                  <li>basic_features - view only basic features from VMAF. Model will not be applied</li>
+                  <li>standard_features - features that is used in VMAF v0.6.1 and VMAF score (2k or 4k)</li>
+                  <li>all_features - view all features from VMAF. Model will not be applied</li>
+                  <li>all - all feature and next models:
+                    <ul>
+                      <li>VMAF v0.6.1 (2k or 4k)</li>
+                      <li>VMAF v0.6.2 (2k or 4k)</li>
+                      <li>VMAF v0.6.3  <br />
+                        <em>Default value:</em> <code class="highlighter-rouge">default</code>  <br />
+                        <em>Usage:</em> <code class="highlighter-rouge">-set "model_preset=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:</li>
+                    </ul>
+                  </li>
+                  <li><code class="highlighter-rouge">default</code></li>
+                  <li><code class="highlighter-rouge">vmaf_v061</code></li>
+                  <li><code class="highlighter-rouge">vmaf_v062</code></li>
+                  <li><code class="highlighter-rouge">vmaf_v063</code></li>
+                  <li><code class="highlighter-rouge">vmaf_v060</code></li>
+                  <li><code class="highlighter-rouge">all_models</code></li>
+                  <li><code class="highlighter-rouge">basic_features</code></li>
+                  <li><code class="highlighter-rouge">standard_features</code></li>
+                  <li><code class="highlighter-rouge">all_features</code></li>
+                  <li><code class="highlighter-rouge">all</code></li>
+                  <li><code class="highlighter-rouge">custom</code></li>
+                </ul>
+              </li>
+              <li>Custom model (*.pkl)  <br />
+                you can specify path to *.pkl file here (or multiple ;-separated *.pkl files). Model file should be placed near pkl file.  <br />
+                NOTE: this only means if preset is set to ‘custom’  <br />
+                <em>Default value:</em> ``  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "custom_model_files=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li>any string</li>
+                </ul>
+              </li>
+              <li>4k  <br />
+                selection 4k model policy:
+                <ul>
+                  <li>auto - select 4k if exists suitable model and input video is 4k</li>
+                  <li>forced_2k - always 2k model</li>
+                  <li>forced_4k - 4k if exsists: VMAF v0.6.1-2  <br />
+                    NOTE: this param does not affects custom model  <br />
+                    <em>Default value:</em> <code class="highlighter-rouge">auto</code>  <br />
+                    <em>Usage:</em> <code class="highlighter-rouge">-set "4k=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:</li>
+                  <li><code class="highlighter-rouge">auto</code></li>
+                  <li><code class="highlighter-rouge">forced_2k</code></li>
+                  <li><code class="highlighter-rouge">forced_4k</code></li>
+                </ul>
+              </li>
+              <li>Confidence interval  <br />
+                turn on additional VMAF features: 95%-confidence interval output and other statistical information  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">false</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "confidence_interval=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li><code class="highlighter-rouge">true</code></li>
+                  <li><code class="highlighter-rouge">false</code></li>
+                </ul>
+              </li>
+              <li>Per-model values  <br />
+                output values for all bootstrap models if confidence interval is on  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">false</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "permodel_values=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li><code class="highlighter-rouge">true</code></li>
+                  <li><code class="highlighter-rouge">false</code></li>
+                </ul>
+              </li>
+              <li>Visualize algorithm (if on)  <br />
+                if visualization turned on you can select feature to visualize. It’s impossible to calculate distribution of real VMAF value, so you can only visualize one of supposed features  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">default</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "visualize_alg=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li><code class="highlighter-rouge">default</code></li>
+                  <li><code class="highlighter-rouge">adm</code></li>
+                  <li><code class="highlighter-rouge">ansnr</code></li>
+                  <li><code class="highlighter-rouge">motion</code></li>
+                  <li><code class="highlighter-rouge">vif</code></li>
+                </ul>
+              </li>
+              <li>Use phone model  <br />
+                turn on postprocessing of metric value that produces more precise results for handheld devices. Select ‘both’ to see both results with and without postprocessing  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">no</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "phone_model=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li><code class="highlighter-rouge">no</code></li>
+                  <li><code class="highlighter-rouge">yes</code></li>
+                  <li><code class="highlighter-rouge">both</code></li>
+                </ul>
+              </li>
+              <li>Disable clipping values  <br />
+                turn off clipping value to range set by model (0..100 for example)  <br />
+                <em>Default value:</em> <code class="highlighter-rouge">false</code>  <br />
+                <em>Usage:</em> <code class="highlighter-rouge">-set "disable_clip=</code>&lt;value&gt;<code class="highlighter-rouge">"</code>, where &lt;value&gt; can be:
+                <ul>
+                  <li><code class="highlighter-rouge">true</code></li>
+                  <li><code class="highlighter-rouge">false</code></li>
+                </ul>
+              </li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr vmaf</code> &lt;color component&gt; <code class="highlighter-rouge">-dev OpenCL0</code></li>
+            </ul>
+            <h4 id="test">Test</h4>
+            <p><strong>Test OpenCL</strong></p>
+            <h4 id="testocl">testocl</h4>
+            <p><strong>testocl</strong></p>
+            <p><a href="http://www.compression.ru/video/quality_measure/info.html#">http://www.compression.ru/video/quality_measure/info.html#</a></p>
+            <ul>
+              <li><em>Color components:</em> Y U V L R G B</li>
+              <li><em>Type:</em> reference metric</li>
+              <li><em>Usage:</em> <code class="highlighter-rouge">-metr testocl</code> &lt;color component&gt; <code class="highlighter-rouge">-dev OpenCL0</code></li>
+            </ul>
+            <p>This page is automatically generated by 12.1 dev2 r12640 on 2021-02-05. In case of any question or suggestion, please mail us: <a href="video-measure@compression.ru">video-measure@compression.ru</a></p>
+          </div>
+          <div class="tiles-width meta">
+            <div class="share">
+              <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+              <!-- Sharingbutton Twitter -->
+              <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI&amp;url=
+http://localhost:4000/vqmt/online-help-12-1/metrics/
+"
+   target="_blank" rel="noopener" aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton Telegram -->
+              <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI&amp;url=
+http://localhost:4000/vqmt/online-help-12-1/metrics/
+" rel="noopener" target="_blank">
+                <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton Facebook -->
+              <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/vqmt/online-help-12-1/metrics/
+" rel="noopener"
+   target="_blank">
+                <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton E-Mail -->
+              <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI&amp;body=
+http://localhost:4000/vqmt/online-help-12-1/metrics/
+" target="_self" rel="noopener"
+   aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+                  </svg>
+                </div>
+              </a>
+              <!-- Sharingbutton LinkedIn -->
+              <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/vqmt/online-help-12-1/metrics/
+&amp;title=MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI&amp;summary=MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI&amp;source=
+http://localhost:4000/vqmt/online-help-12-1/metrics/
+"
+   target="_blank" rel="noopener" aria-label="">
+                <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+            <span class="date">05 Feb 2021</span>
+          </div>
+          <div class="tiles-width separator"></div>
+          <div class="tiles-width see-also-title">
+            See Also
+          </div>
+          <div class="tiles wide">
+            <a class="tile" href="/benchmarks/deblurring.html">
+              <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+              <div class="title">MSU Video Deblurring Benchmark 2022</div>
+              <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+            </a>
+            <a class="tile" href="/vqmt/vqmt-doc-toc/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Documentation TOC</div>
+              <div class="text">Table of content for all version of MSU VQMT online help</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/picture-types/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Picture types</div>
+              <div class="text">VQMT 14.0 Online help: List of all picture types available in VQMT and their aliases</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/metrics/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Usage of VQMT metrics in CLI</div>
+              <div class="text">VQMT 14.0 Online help: Description of VQMT metrics, their parameters and using in CLI</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/info/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: VQMT various lists and tables</div>
+              <div class="text">VQMT 14.0 Online help: Information about VQMT visualization formats, read modes, etc...</div>
+            </a>
+            <a class="tile" href="/vqmt/online-help-14-0/help/">
+              <div class="image" style="background-image: url(/assets/img/vqmt/online-help/cover.svg)"></div>
+              <div class="title">MSU Video Quality Measurement Tool: Command-line help</div>
+              <div class="text">VQMT 14.0 Online help: Information about all VQMT CLI options for Pro/Premium versions</div>
+            </a>
+          </div>
+          <div class="tiles-width separator"></div>
+          <div class="tiles-width markdown site-structure">
+            <span class="title">Site structure</span>
+            <ul>
+              <li>
+                <a href="/benchmarks/">MSU Benchmark Collection</a>
+                <ul>
+                  <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+                  <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+                  <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+                  <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+                  <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+                  <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+                  <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+                  <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/codecs/">Codecs Comparisons & Optimization</a>
+                <ul>
+                  <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+                  <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+                  <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+                  <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+                  <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+                  <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/vqmt/">VQMT</a>
+                <ul>
+                  <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+                <ul>
+                  <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+                  <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+                  <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/datasets/">MSU Datasets Collection</a>
+                <ul>
+                </ul>
+              </li>
+              <li>
+                <a href="/metrics/">Metrics Research</a>
+                <ul>
+                </ul>
+              </li>
+              <li>
+                <a href="/video_filters/">Video Filters</a>
+                <ul>
+                  <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+                  <li><a href="/video_filters/public/">Free Filters</a></li>
+                  <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/other/">Other Projects</a>
+                <ul>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="global-footer">
+        <div class="footer">
+          <div class="footer-column copyright">
+            <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+            <div class="text">
+              MSU Graphics & Media Lab Video Group
+              <br>
+              2019&ndash;2022
+            </div>
+          </div>
+          <div class="footer-column">
+            <ul>
+              <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+              <li><a href="/vqmt/">VQMT</a></li>
+              <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+              <li><a href="/datasets/">MSU Datasets Collection</a></li>
+              <li><a href="/metrics/">Metrics Research</a></li>
+              <li><a href="/video_filters/">Video Filters</a></li>
+              <li><a href="/other/">Other Projects</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <ul>
+              <li><a href="/about/">About Us</a></li>
+              <li><a href="/benchmarks/">Benchmarks</a></li>
+              <li><a href="/projects/">Projects</a></li>
+              <li><a href="/publications/">Publications</a></li>
+              <li><a href="/contacts/">Contacts</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: [
+          "MathMenu.js",
+          "MathZoom.js",
+          "AssistiveMML.js",
+          "a11y/accessibility-menu.js"
+        ],
+        jax: ["input/TeX", "output/CommonHTML"],
+        TeX: {
+          extensions: [
+            "AMSmath.js",
+            "AMSsymbols.js",
+            "noErrors.js",
+            "noUndefined.js",
+          ]
+        }
+      });
+    </script>
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  </body>
+</html>

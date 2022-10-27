@@ -1,0 +1,286 @@
+<meta charset="UTF-8">
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
+<p style="text-align: center">Highlight the plot region where you want to zoom in</p>
+<div id="overall_plot_wrapper" style="width: 80%; margin-left: 10%">
+
+    <p>Metric: <label for="overall_plots_selector"></label><select id="overall_plots_selector" name="values">
+        <option>PSNR</option>
+        <option>SSIM</option>
+        <option>VMAF</option>
+        <option>MOS</option>
+    </select></p>
+
+
+    <div id="overall-plot" class="highcharts-figure">
+        <script src="../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_overall.js"></script>
+    </div>
+
+    <script>
+        document.getElementById("overall_plots_selector").onchange = function () {
+            let speed_plot = document.getElementById("overall-plot");
+            let this_div = document.getElementById("overall_plot_wrapper");
+
+            let children = ["../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_overall.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/ssim_overall.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/vmaf_overall.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/mos_overall.js",];
+            speed_plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "overall-plot");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+            let sc = document.createElement("script");
+            sc.src = children[this.selectedIndex];
+            new_plot.appendChild(sc);
+        }
+
+    </script>
+</div>
+
+<div id="speed_plots" style="width: 80%; margin-left: 10%">
+
+    <p>Metric: <label for="speed_plots_selector"></label><select id="speed_plots_selector" name="values">
+        <option>PSNR</option>
+        <option>SSIM</option>
+        <option>VMAF</option>
+        <option>MOS</option>
+    </select></p>
+
+    <div id="speed_plot" class="highcharts-figure">
+        <script src="../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_to_speed.js"></script>
+    </div>
+
+    <script>
+        document.getElementById("speed_plots_selector").onchange = function () {
+            let speed_plot = document.getElementById("speed_plot");
+            let this_div = document.getElementById("speed_plots");
+
+            let children = ["../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_to_speed.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/ssim_to_speed.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/vmaf_to_speed.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/mos_to_speed.js"];
+            speed_plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "speed_plot");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+            let sc = document.createElement("script");
+            sc.src = children[this.selectedIndex];
+            new_plot.appendChild(sc);
+        }
+
+    </script>
+
+</div>
+<p style="text-align: center">FPS is calculated on Intel-Core i7 10700K CPU</p>
+
+<div id="frame_plots" style="width: 80%; margin-left: 10%">
+
+    <p>Metric: <label for="frame_plots_selector"></label><select id="frame_plots_selector" name="values">
+        <option>PSNR</option>
+        <option>SSIM</option>
+        <option>VMAF</option>
+    </select></p>
+
+    <div id="framenum_plot" class="highcharts-figure">
+        <script src="../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_framenum.js"></script>
+    </div>
+
+    <script>
+        document.getElementById("frame_plots_selector").onchange = function () {
+            let speed_plot = document.getElementById("framenum_plot");
+            let this_div = document.getElementById("frame_plots");
+
+            let children = ["../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_framenum.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/ssim_framenum.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/vmaf_framenum.js"];
+            speed_plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "framenum_plot");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+            let sc = document.createElement("script");
+            sc.src = children[this.selectedIndex];
+            new_plot.appendChild(sc);
+        }
+
+    </script>
+</div>
+
+<div id="vid_plots" style="width: 80%; margin-left: 10%">
+    <!--<p style="text-align: center">The following plot shows difference between every method and Bob, because Bob is
+        considered as the least complicated deinterlacing method</p>-->
+    <p>Metric: <label for="vid_plots_selector"></label><select id="vid_plots_selector" name="values">
+        <option>PSNR</option>
+        <option>SSIM</option>
+        <option>VMAF</option>
+        <option>MOS</option>
+    </select></p>
+
+    <div id="vidnum_plot" class="highcharts-figure">
+        <script src="../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_vidnum.js"></script>
+    </div>
+
+    <script>
+        document.getElementById("vid_plots_selector").onchange = function () {
+
+            let children = ["../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_vidnum.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/ssim_vidnum.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/vmaf_vidnum.js",
+                "../../../assets/js/benchmarks/deinterlacer/highcharts/mos_vidnum.js"]
+            let plot = document.getElementById("vidnum_plot");
+            let this_div = document.getElementById("vid_plots");
+
+            plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "vidnum_plot");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+            let sc = document.createElement("script");
+            sc.src = children[this.selectedIndex];
+            new_plot.appendChild(sc);
+
+        }
+
+    </script>
+</div>
+
+<div id="perf_plots_selector_div" style="width: 80%; margin-left: 10%">
+    <p>Sequence №: <label for="perf_plots_selector"></label><select id="perf_plots_selector" name="values">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+        <option>24</option>
+        <option>25</option>
+        <option>26</option>
+        <option>27</option>
+    </select>
+        Metric: <label for="perf_metric_selector"></label><select id="perf_metric_selector" name="values">
+            <option>PSNR</option>
+            <option>SSIM</option>
+            <option>VMAF</option>
+            <option>MOS</option>
+        </select></p>
+
+    <div id="perf-plot" style="display: block" class="highcharts-figure">
+        <script async src="../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_0.js"></script>
+    </div>
+
+    <script>
+        function onChangeHelper() {
+            let metrics = ['psnr', 'ssim', 'vmaf', 'mos'];
+            let numselect = document.getElementById("perf_plots_selector");
+            let metricselect = document.getElementById("perf_metric_selector");
+
+            let plot = document.getElementById("perf-plot");
+            let this_div = document.getElementById("perf_plots_selector_div");
+
+            plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "perf-plot");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+            let sc = document.createElement("script");
+            sc.src = "../../../assets/js/benchmarks/deinterlacer/highcharts/" + (metrics[metricselect.selectedIndex]).toString() + "_" + (numselect.selectedIndex).toString() + ".js";
+            new_plot.appendChild(sc);
+
+        }
+
+        document.getElementById("perf_plots_selector").onchange = onChangeHelper
+        document.getElementById("perf_metric_selector").onchange = onChangeHelper
+    </script>
+</div>
+
+
+<div id="framevid_plots_selector_div" style="width: 80%; margin-left: 10%">
+    <p>Sequence №: <label for="framevid_plots_selector"></label><select id="framevid_plots_selector" name="values">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+        <option>24</option>
+        <option>25</option>
+        <option>26</option>
+        <option>27</option>
+    </select> Metric: <label for="framevid_plots_selector_metric"></label><select
+            id="framevid_plots_selector_metric" name="values">
+        <option>PSNR</option>
+        <option>SSIM</option>
+        <option>VMAF</option>
+    </select></p>
+
+    <div id="detailed" style="display: block" class="highcharts-figure">
+        <script async src="../../../assets/js/benchmarks/deinterlacer/highcharts/psnr_framenum0.js"></script>
+    </div>
+
+    <script>
+        function onChangeHelper() {
+            let metrics = ['psnr', 'ssim', 'vmaf'];
+            let numselect = document.getElementById("framevid_plots_selector");
+            let metricselect = document.getElementById("framevid_plots_selector_metric");
+
+            let plot = document.getElementById("detailed");
+            let this_div = document.getElementById("framevid_plots_selector_div");
+
+            plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "detailed");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+            let sc = document.createElement("script");
+            sc.src = "../../../assets/js/benchmarks/deinterlacer/highcharts/" + metrics[metricselect.selectedIndex] + "_framenum" + (numselect.selectedIndex).toString() + ".js";
+            new_plot.appendChild(sc);
+        }
+
+        document.getElementById("framevid_plots_selector").onchange = onChangeHelper
+        document.getElementById("framevid_plots_selector_metric").onchange = onChangeHelper
+    </script>
+</div>

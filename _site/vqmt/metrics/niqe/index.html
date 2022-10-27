@@ -1,0 +1,744 @@
+<p class="no_toc"><a name="niqe" id="niqe"></a></p>
+<h2 id="niqe-naturalness-image-quality-evaluator">NIQE (Naturalness Image Quality Evaluator)</h2>
+<h4 class="no_toc" id="general-info">General info</h4>
+<dl class="properties">
+  <dt>Metric type</dt>
+  <dd>
+    <p><span class="hover-help">no-reference<span class="help-content stdhelp-no-reference">
+        </span></span>  <span class="hover-help">image<span class="help-content stdhelp-image-metric">
+        </span></span> metric</p>
+  </dd>
+  <dt>Value range</dt>
+  <dd>
+    <p>(very natural) 0..∞ (not natural)</p>
+  </dd>
+  <dt>Value interpretation</dt>
+  <dd>
+    <p>lesser metric values - better quality (naturalness)<br />
+      normal metric values are in range about 3..20. Also, there can be values NAN and 0, which are abnormal and should be considered as symptom of not natural image</p>
+  </dd>
+  <dt>MSU VQMT implementations</dt>
+  <dd>
+    <p><span class="hover-help">CPU multithreaded<span class="help-content stdhelp-cpu-multithreaded">
+        </span></span> <span class="hover-help">OpenCL<span class="help-content stdhelp-opencl">
+        </span></span> (since VQMT 13)</p>
+  </dd>
+  <dt>MSU VQMT visualization</dt>
+  <dd>
+    <p>block-wise</p>
+  </dd>
+  <dt>Available colorspaces</dt>
+  <dd>
+    <p>Y</p>
+  </dd>
+  <dt>Output values</dt>
+  <dd>
+    <p>metric value</p>
+  </dd>
+  <dt>Aggregated values</dt>
+  <dd>
+    <p><span class="hover-help">standard set<span class="help-content stdhelp-avg-std">
+        </span></span>, NIQE mean</p>
+  </dd>
+  <dt>MSU VQMT usages</dt>
+  <dd>
+    <p><code class="highlighter-rouge">-metr niqe [-dev &lt;OpenCL device&gt;]</code></p>
+  </dd>
+  <dt>External links</dt>
+  <dd>
+    <p><a href="http://live.ece.utexas.edu/research/Quality/niqe_spl.pdf" target="_blank">original paper (A. Mittal, R. Soundararajan and A. C. Bovik)</a>, <a href="https://www.researchgate.net/publication/337396113_Barriers_Towards_No-reference_Metrics_Application_to_Compressed_Video_Quality_Analysis_on_the_Example_of_No-reference_Metric_NIQE" target="_blank">MSU paper</a></p>
+  </dd>
+</dl>
+<h4 class="no_toc" id="algorithm-description">Algorithm description</h4>
+<p>NIQE performs feature extraction for every 96x96 block of image on 2 scales. Than it computes correlations of features between all blocks and applies leaned model. For more details, please refer to <a href="http://live.ece.utexas.edu/research/Quality/niqe_spl.pdf" target="_blank">original paper</a>. Since version 13 VQMT can build a block-wise visualization showing contribution of each block to the final result.</p>
+<p>This metric has a special aggregated value NIQE mean, it takes a weighted mean filtering abnormal metric values and taking suspicies values with low weight. You can turn this mode using metric settings. Also, please see <a href="https://www.researchgate.net/publication/337396113_Barriers_Towards_No-reference_Metrics_Application_to_Compressed_Video_Quality_Analysis_on_the_Example_of_No-reference_Metric_NIQE" _target="_blank">our paper</a>.</p>
+<p>This metric only applicable to filmed scenes. Metric can produce inadequate result if some graphics is on it (including credits, subtitles, etc.). Please, run NIQE excluding all rendered scenes, they can fatally spoil average value. Also, this metric can produce bad result on scenes containing noisy objects, like sand or grass, however on scenes with big constant areas, like monotonic sky. In common case normal metric results lies in the interval 3..20.</p>
+<p>Sometimes, metric shows better result for the compressed image and this correlates with human perception. Compressed image not always is perceived as worse. It can occur for example in case of noisy images (if the noise has non-compression nature). This is only metric in VQMT now that can detect increasing of subjective quality in comparison to original.</p>
+<p>Sometimes, codec can allow geometry transformation (like shift of heterogeneous objects in frame), that not critical for subjective perception. Objective-reference metrics are very perceptive to such transformation, and in this cases no-reference metric can show result closer to subjective score.</p>
+<h4 class="no_toc" id="benchmark">Benchmark</h4>
+<div class="benchmark-choose">
+  Choose benchmark:
+  <select class="benchmark-choose" metric="niqe">
+    <option value="result_linux_14">VQMT 14.0 on 64 cores, GPU: NVIDIA CUDA/TITAN RTX</option>
+    <option value="output_vqmt13">VQMT 13.1 on 8 cores, GPU: NVIDIA CUDA/GeForce GTX 660 Ti</option>
+    <option value="output_vqmt14" selected="">VQMT 14.0 on 8 cores, GPU: NVIDIA CUDA/GeForce GTX 660 Ti</option>
+  </select>
+</div>
+<div benchmark_name="result_linux_14" class="benchmark-table" formetric="niqe">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VQMT 14.0 OpenCL</td>
+        <td>OpenCL</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>4.29</td>
+        <td>0.293</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 OpenCL</td>
+        <td>OpenCL</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>4.24</td>
+        <td>0.3</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 OpenCL</td>
+        <td>OpenCL</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>4.22</td>
+        <td>0.325</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>136.31</td>
+        <td>0.009</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>38.66</td>
+        <td>0.034</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>5.21</td>
+        <td>0.279</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>14.17</td>
+        <td>0.071</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>7.67</td>
+        <td>0.131</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>2.19</td>
+        <td>0.467</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 14.0 BETA r12792 PRO for Linux.<br />
+    CPU:  Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz, 64 cores<br />
+    GPU: NVIDIA CUDA/TITAN RTX<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<div benchmark_name="output_vqmt13" class="benchmark-table" formetric="niqe">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VQMT 13.1 OpenCL</td>
+        <td>OpenCL</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>88.87</td>
+        <td>0.014</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 OpenCL</td>
+        <td>OpenCL</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>42.24</td>
+        <td>0.027</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 OpenCL</td>
+        <td>OpenCL</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>10.68</td>
+        <td>0.104</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>47.71</td>
+        <td>0.022</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>21.1</td>
+        <td>0.051</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>4.8</td>
+        <td>0.241</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>12.46</td>
+        <td>0.083</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>5.55</td>
+        <td>0.186</td>
+      </tr>
+      <tr>
+        <td>VQMT 13.1 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>1.37</td>
+        <td>0.762</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 13.1 r12792 PRO for Windows.<br />
+    CPU: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz, 8 cores<br />
+    GPU: NVIDIA CUDA/GeForce GTX 660 Ti<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<div benchmark_name="output_vqmt14" class="benchmark-table selected" formetric="niqe">
+  <table class="table-info table-striped">
+    <thead>
+      <tr>
+        <th>Implementation <span class="red-foot-note"></span></th>
+        <th>System &amp; settings</th>
+        <th>Colors</th>
+        <th>Resolution</th>
+        <th>FPS</th>
+        <th>Sec. per frame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VQMT 14.0 OpenCL</td>
+        <td>OpenCL</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>89.39</td>
+        <td>0.014</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 OpenCL</td>
+        <td>OpenCL</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>41.94</td>
+        <td>0.027</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 OpenCL</td>
+        <td>OpenCL</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>10.61</td>
+        <td>0.107</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>47.76</td>
+        <td>0.023</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>21.35</td>
+        <td>0.051</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>multithreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>4.83</td>
+        <td>0.243</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>HD 720p</td>
+        <td>12.42</td>
+        <td>0.084</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>FullHD 1080p</td>
+        <td>5.56</td>
+        <td>0.189</td>
+      </tr>
+      <tr>
+        <td>VQMT 14.0 default</td>
+        <td>singlethreaded</td>
+        <td>Y</td>
+        <td>4K 2160p</td>
+        <td>1.38</td>
+        <td>0.769</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="red-foot-note">Measurements were done on VQMT 14.0 BETA r12792 PRO for Windows.<br />
+    CPU: Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz, 8 cores<br />
+    GPU: NVIDIA CUDA/GeForce GTX 660 Ti<br />
+    Values can vary depending on system configuration, input format and other factors
+  </div>
+</div>
+<h4 class="no_toc" id="example">Example</h4>
+<div>
+  <input class="flexible-check" checked="" type="checkbox" id="checkbox_NIQE_cion" name="checkbox_NIQE_cion" />
+  <label class="flexible-controller" for="checkbox_NIQE_cion">cion</label>
+  <div class="flexible-body">
+    <div class="sample-choose">
+      Choose example:
+      <select class="sample-choose" metric="NIQE" dataset="cion">
+        <option value="y LQ H264">y LQ H264</option>
+        <option value="y Blurring">y Blurring</option>
+        <option value="y Random points">y Random points</option>
+        <option value="y Luminance shift">y Luminance shift</option>
+        <option value="y JPEG Q=2">y JPEG Q=2</option>
+        <option value="y JPEG Q=5">y JPEG Q=5</option>
+        <option value="y JPEG Q=10">y JPEG Q=10</option>
+        <option value="y JPEG Q=15">y JPEG Q=15</option>
+        <option value="y JPEG Q=20">y JPEG Q=20</option>
+        <option value="y JPEG Q=40">y JPEG Q=40</option>
+        <option value="y JPEG Q=80">y JPEG Q=80</option>
+      </select>
+    </div>
+    <div class="sample-group selected" formetric="NIQE" fordataset="cion" fordist="y LQ H264">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lq-6.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lq-d_niqe_y_B_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-lqPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lq-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lq-6.png" /><span class="label">LQ H264, NIQE-y=5.09</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lq-d_niqe_y_B_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lq-d_niqe_y_B_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y Blurring">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/blur-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/blur-d_niqe_y_C_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-blurJpg.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/blur-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/blur-6.jpg" /><span class="label">Blurring, NIQE-y=9.46</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/blur-d_niqe_y_C_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/blur-d_niqe_y_C_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y Random points">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/pt-6.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/pt-d_niqe_y_D_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-ptPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/pt-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/pt-6.png" /><span class="label">Random points, NIQE-y=3.86</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/pt-d_niqe_y_D_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/pt-d_niqe_y_D_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y Luminance shift">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lum-6.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lum-d_niqe_y_E_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-lumPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lum-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lum-6.png" /><span class="label">Luminance shift, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lum-d_niqe_y_E_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lum-d_niqe_y_E_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y JPEG Q=2">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj2-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj2-d_niqe_y_F_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-lqjJpg2.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj2-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj2-6.jpg" /><span class="label">JPEG Q=2, NIQE-y=20.39</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj2-d_niqe_y_F_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj2-d_niqe_y_F_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y JPEG Q=5">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj5-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj5-d_niqe_y_G_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-lqjJpg5.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj5-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj5-6.jpg" /><span class="label">JPEG Q=5, NIQE-y=11.91</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj5-d_niqe_y_G_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj5-d_niqe_y_G_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y JPEG Q=10">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj10-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj10-d_niqe_y_H_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-lqjJpg10.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj10-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj10-6.jpg" /><span class="label">JPEG Q=10, NIQE-y=8.29</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj10-d_niqe_y_H_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj10-d_niqe_y_H_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y JPEG Q=15">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj15-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj15-d_niqe_y_I_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-lqjJpg15.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj15-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj15-6.jpg" /><span class="label">JPEG Q=15, NIQE-y=6.89</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj15-d_niqe_y_I_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj15-d_niqe_y_I_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y JPEG Q=20">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj20-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj20-d_niqe_y_J_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-lqjJpg20.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj20-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj20-6.jpg" /><span class="label">JPEG Q=20, NIQE-y=6.34</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj20-d_niqe_y_J_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj20-d_niqe_y_J_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y JPEG Q=40">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj40-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj40-d_niqe_y_K_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-lqjJpg40.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj40-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj40-6.jpg" /><span class="label">JPEG Q=40, NIQE-y=4.57</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj40-d_niqe_y_K_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj40-d_niqe_y_K_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="cion" fordist="y JPEG Q=80">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj80-6.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj80-d_niqe_y_L_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/anim/niqe-cion-y-lqjJpg80.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/ref-6.png" /><span class="label">Original, NIQE-y=3.62</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj80-6_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/cion/lqj80-6.jpg" /><span class="label">JPEG Q=80, NIQE-y=3.55</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj80-d_niqe_y_L_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_cion/lqj80-d_niqe_y_L_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <input class="flexible-check" type="checkbox" id="checkbox_NIQE_singapore" name="checkbox_NIQE_singapore" />
+  <label class="flexible-controller" for="checkbox_NIQE_singapore">singapore</label>
+  <div class="flexible-body">
+    <div class="sample-choose">
+      Choose example:
+      <select class="sample-choose" metric="NIQE" dataset="singapore">
+        <option value="y LQ H264">y LQ H264</option>
+        <option value="y Blurring">y Blurring</option>
+        <option value="y Random points">y Random points</option>
+        <option value="y Luminance shift">y Luminance shift</option>
+        <option value="y JPEG Q=2">y JPEG Q=2</option>
+        <option value="y JPEG Q=5">y JPEG Q=5</option>
+        <option value="y JPEG Q=10">y JPEG Q=10</option>
+        <option value="y JPEG Q=15">y JPEG Q=15</option>
+        <option value="y JPEG Q=20">y JPEG Q=20</option>
+        <option value="y JPEG Q=40">y JPEG Q=40</option>
+        <option value="y JPEG Q=80">y JPEG Q=80</option>
+      </select>
+    </div>
+    <div class="sample-group selected" formetric="NIQE" fordataset="singapore" fordist="y LQ H264">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lq-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lq-d_niqe_y_B_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-lqPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lq-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lq-10.png" /><span class="label">LQ H264, NIQE-y=6.03</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lq-d_niqe_y_B_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lq-d_niqe_y_B_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y Blurring">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/blur-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/blur-d_niqe_y_C_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-blurJpg.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/blur-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/blur-10.jpg" /><span class="label">Blurring, NIQE-y=8.18</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/blur-d_niqe_y_C_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/blur-d_niqe_y_C_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y Random points">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/pt-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/pt-d_niqe_y_D_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-ptPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/pt-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/pt-10.png" /><span class="label">Random points, NIQE-y=5.46</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/pt-d_niqe_y_D_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/pt-d_niqe_y_D_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y Luminance shift">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lum-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lum-d_niqe_y_E_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-lumPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lum-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lum-10.png" /><span class="label">Luminance shift, NIQE-y=5.23</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lum-d_niqe_y_E_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lum-d_niqe_y_E_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y JPEG Q=2">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj2-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj2-d_niqe_y_F_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-lqjJpg2.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj2-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj2-10.jpg" /><span class="label">JPEG Q=2, NIQE-y=12.05</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj2-d_niqe_y_F_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj2-d_niqe_y_F_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y JPEG Q=5">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj5-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj5-d_niqe_y_G_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-lqjJpg5.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj5-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj5-10.jpg" /><span class="label">JPEG Q=5, NIQE-y=9.81</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj5-d_niqe_y_G_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj5-d_niqe_y_G_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y JPEG Q=10">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj10-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj10-d_niqe_y_H_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-lqjJpg10.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj10-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj10-10.jpg" /><span class="label">JPEG Q=10, NIQE-y=7.66</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj10-d_niqe_y_H_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj10-d_niqe_y_H_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y JPEG Q=15">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj15-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj15-d_niqe_y_I_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-lqjJpg15.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj15-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj15-10.jpg" /><span class="label">JPEG Q=15, NIQE-y=6.76</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj15-d_niqe_y_I_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj15-d_niqe_y_I_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y JPEG Q=20">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj20-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj20-d_niqe_y_J_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-lqjJpg20.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj20-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj20-10.jpg" /><span class="label">JPEG Q=20, NIQE-y=6.57</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj20-d_niqe_y_J_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj20-d_niqe_y_J_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y JPEG Q=40">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj40-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj40-d_niqe_y_K_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-lqjJpg40.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj40-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj40-10.jpg" /><span class="label">JPEG Q=40, NIQE-y=5.74</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj40-d_niqe_y_K_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj40-d_niqe_y_K_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="singapore" fordist="y JPEG Q=80">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj80-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj80-d_niqe_y_L_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/anim/niqe-singapore-y-lqjJpg80.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/ref-10.png" /><span class="label">Original, NIQE-y=5.17</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj80-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/singapore/lqj80-10.jpg" /><span class="label">JPEG Q=80, NIQE-y=4.88</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj80-d_niqe_y_L_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_singapore/lqj80-d_niqe_y_L_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <input class="flexible-check" type="checkbox" id="checkbox_NIQE_kayak" name="checkbox_NIQE_kayak" />
+  <label class="flexible-controller" for="checkbox_NIQE_kayak">kayak</label>
+  <div class="flexible-body">
+    <div class="sample-choose">
+      Choose example:
+      <select class="sample-choose" metric="NIQE" dataset="kayak">
+        <option value="y LQ H264">y LQ H264</option>
+        <option value="y Blurring">y Blurring</option>
+        <option value="y Random points">y Random points</option>
+        <option value="y Luminance shift">y Luminance shift</option>
+        <option value="y JPEG Q=2">y JPEG Q=2</option>
+        <option value="y JPEG Q=5">y JPEG Q=5</option>
+        <option value="y JPEG Q=10">y JPEG Q=10</option>
+        <option value="y JPEG Q=15">y JPEG Q=15</option>
+        <option value="y JPEG Q=20">y JPEG Q=20</option>
+        <option value="y JPEG Q=40">y JPEG Q=40</option>
+        <option value="y JPEG Q=80">y JPEG Q=80</option>
+      </select>
+    </div>
+    <div class="sample-group selected" formetric="NIQE" fordataset="kayak" fordist="y LQ H264">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lq-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lq-d_niqe_y_B_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-lqPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lq-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lq-10.png" /><span class="label">LQ H264, NIQE-y=8.85</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lq-d_niqe_y_B_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lq-d_niqe_y_B_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y Blurring">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/blur-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/blur-d_niqe_y_C_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-blurJpg.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/blur-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/blur-10.jpg" /><span class="label">Blurring, NIQE-y=9.15</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/blur-d_niqe_y_C_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/blur-d_niqe_y_C_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y Random points">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/pt-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/pt-d_niqe_y_D_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-ptPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/pt-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/pt-10.png" /><span class="label">Random points, NIQE-y=3.29</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/pt-d_niqe_y_D_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/pt-d_niqe_y_D_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y Luminance shift">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lum-10.png" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lum-d_niqe_y_E_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-lumPng.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lum-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lum-10.png" /><span class="label">Luminance shift, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lum-d_niqe_y_E_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lum-d_niqe_y_E_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y JPEG Q=2">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj2-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj2-d_niqe_y_F_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-lqjJpg2.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj2-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj2-10.jpg" /><span class="label">JPEG Q=2, NIQE-y=17.10</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj2-d_niqe_y_F_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj2-d_niqe_y_F_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y JPEG Q=5">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj5-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj5-d_niqe_y_G_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-lqjJpg5.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj5-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj5-10.jpg" /><span class="label">JPEG Q=5, NIQE-y=11.13</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj5-d_niqe_y_G_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj5-d_niqe_y_G_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y JPEG Q=10">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj10-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj10-d_niqe_y_H_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-lqjJpg10.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj10-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj10-10.jpg" /><span class="label">JPEG Q=10, NIQE-y=6.85</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj10-d_niqe_y_H_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj10-d_niqe_y_H_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y JPEG Q=15">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj15-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj15-d_niqe_y_I_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-lqjJpg15.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj15-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj15-10.jpg" /><span class="label">JPEG Q=15, NIQE-y=5.57</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj15-d_niqe_y_I_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj15-d_niqe_y_I_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y JPEG Q=20">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj20-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj20-d_niqe_y_J_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-lqjJpg20.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj20-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj20-10.jpg" /><span class="label">JPEG Q=20, NIQE-y=4.95</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj20-d_niqe_y_J_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj20-d_niqe_y_J_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y JPEG Q=40">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj40-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj40-d_niqe_y_K_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-lqjJpg40.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj40-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj40-10.jpg" /><span class="label">JPEG Q=40, NIQE-y=3.74</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj40-d_niqe_y_K_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj40-d_niqe_y_K_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+    <div class="sample-group" formetric="NIQE" fordataset="kayak" fordist="y JPEG Q=80">
+      <div class="dl-links">Download (<a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" target="_blank">orig</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj80-10.jpg" target="_blank">dist</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj80-d_niqe_y_L_1.png" target="_blank">vis</a> | <a href="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/anim/niqe-kayak-y-lqjJpg80.png" target="_blank">animation</a>) <a href="#license"><span class="attrib-icons" alt="Creative commons attribution license"></span></a>
+      </div>
+      <div class="hover-tip"></div>
+      <div class="thumb-cells">
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/ref-10.png" /><span class="label">Original, NIQE-y=3.21</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj80-10_thumb.jpg" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/kayak/lqj80-10.jpg" /><span class="label">JPEG Q=80, NIQE-y=2.76</span></div>
+        <div class="cell"><img src="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj80-d_niqe_y_L_1_thumb.png" fullimage="//storage.videoprocessing.ai/vqmt/metric_images_rev2/visualizations/niqe_kayak/lqj80-d_niqe_y_L_1.png" /><span class="label">MSU VQMT visualization</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<h4 class="no_toc" id="legacy-notes">Legacy notes</h4>
+<p><a href="#top" class="toplink"></a></p>

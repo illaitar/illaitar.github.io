@@ -1,0 +1,29 @@
+---
+---
+
+@import 'config.scss';
+
+@media (min-width: $mobile-breakpoint) {
+    /* Sticky top row */
+    .table-fixed thead th {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+    }
+
+    /* Fixed leftmost cell of top row */
+    .table-fixed thead th:nth-child(1) {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 1;
+    }
+
+    /* Fixed left column */
+    .table-fixed td:nth-child(1) {
+        background-color: #ffffff; /* By default is transparent */
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+    }
+}

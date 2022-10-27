@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Lossless Video Codec</title>
+    <meta property="og:title" content="MSU Lossless Video Codec">
+    <meta property="og:image" content="http://localhost:4000/assets/img/codecs/lossless-video-codec/preview.gif">
+    <meta name="description" content="The codec gives the highest compression ratio in the lossless video compression field.">
+    <meta property="og:description" content="The codec gives the highest compression ratio in the lossless video compression field.">
+    <meta property="og:url" content="
+http://localhost:4000/codecs/lossless-video-codec-2004.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/codecs/">Codecs Comparisons & Optimization</a>
+        &mdash;
+        <a href="/codecs/lossless/">Lossless Codecs Comparison</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <h1 id="msu-lossless-video-codecgives-the-highest-compression-ratio-in-the-lossless-video-compression-field">MSU Lossless Video Codec<br />
+          gives the highest compression ratio in the lossless video compression field</h1>
+        <ul>
+          <li>Project, ideas: Dmitriy Vatolin</li>
+          <li>Ideas, algorithm realization: Dmitry Popov</li>
+          <li>Ver.0, denoising, motion compensation: Sergey Putilin</li>
+        </ul>
+        <p><strong>News:</strong></p>
+        <ul>
+          <li>[19.09.2005] Version 0.6.0 released.</li>
+          <li>[20.03.2005] Version 0.5.8 released.</li>
+          <li>[14.02.2005] Version 0.5.6 released.</li>
+          <li>[06.02.2005] Version 0.5.2 released.</li>
+          <li>[01.10.2004] Version 0.2.4 patched - with Uninstall &amp; Win98 support!</li>
+          <li>[24.09.2004] Version 0.2.4 released with some installer’s bugfixes!**<br />
+            <a href="/codecs/lossless-video-codec-2004.html#Download"><strong>Download now!
+                (v0.6.0)</strong></a></li>
+        </ul>
+        <p>This codec is free for non-commercial use.<br />
+          To use it in commercial projects buy a license
+          <a href="http://secure.emetrix.com/order/product.asp?PID=94113038&amp;DID=92287129&amp;ID=&amp;Q=1&amp;DC=&amp;CUR=">here</a>.</p>
+        <h2 id="changes-in-version-060">Changes in version 0.6.0:</h2>
+        <ul>
+          <li>New compression algorithm implemented. Compression speed increased
+            1.5-2 times, decompression speed increased 2-2.5 times!</li>
+          <li>New interface: more simple and clear.</li>
+          <li>Can decompress files created by 0.5.x version, can compress with the
+            old algorithm also.</li>
+        </ul>
+        <h2 id="changes-in-version-058">Changes in version 0.5.8:</h2>
+        <ul>
+          <li>Now stable in Win98.</li>
+          <li>Visually lossless mode now faster (+10-12%) and with better
+            compression</li>
+        </ul>
+        <h2 id="changes-in-version-056">Changes in version 0.5.6:</h2>
+        <ul>
+          <li>Compression speed increased 1.7 times!</li>
+          <li>Small fix in compressed image view in VirtualDub.</li>
+        </ul>
+        <h2 id="changes-in-version-052">Changes in version 0.5.2:</h2>
+        <ul>
+          <li>Better compression (up to +10%)!</li>
+          <li>Compression speed increased 2.5 times!</li>
+          <li>Added YV12 support. Now taking as input RGB24, RGB32, YUY2, YUYV and
+            YV12.</li>
+          <li>Now works in Adobe Premiere.</li>
+          <li>Controllable compressing speed.</li>
+          <li>P-frames can be disabled, key-frames max interval can be set.</li>
+          <li>VirtualDub jobs support.</li>
+          <li>And main advantage - new MSU photo! ;)</li>
+        </ul>
+        <p><strong>This codec is intended for <em>lossless</em> video compression (used for
+            saving master copies or intermediate rendering results).</strong></p>
+        <h2 id="several-codecs-compression-ratio-comparison">Several codecs compression ratio comparison</h2>
+        <p>We’ve compared results of proposed algorithm with other available codecs
+          results.</p>
+        <p>The comparison was made mostly on classic sequences frequently used for
+          codecs comparisons, their descriptions are given below. Also we added
+          two sequences ms2.avi and ms32.avi taken from “The Matrix: Reloaded”
+          movie passed through DivX.</p>
+        <table class="center" style="text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="10" cellspacing="1">
+          <tbody>
+            <tr>
+              <td style="border-style: solid none; border-color: green -moz-use-text-color; border-width: 1.5pt medium 0.75pt; vertical-align: middle; padding-top: 0cm; padding-bottom: 0cm;">
+                <p style="margin: 0cm 0cm 0.0001pt;">Caption</p>
+              </td>
+              <td style="border-style: solid none; border-color: green -moz-use-text-color; border-width: 1.5pt medium 0.75pt; vertical-align: middle; padding-top: 0cm; padding-bottom: 0cm;">
+                <p>Resolution and number of frames<br />
+                </p>
+              </td>
+              <td style="border-style: solid none; border-color: green -moz-use-text-color; border-width: 1.5pt medium 0.75pt; vertical-align: middle; padding-top: 0cm; padding-bottom: 0cm;">
+                <p align="center">File size, Mb</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">bus.avi</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">352x288,
+                  150</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <div style="text-align: center;"> </div>
+                <p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: center;">43,52<span style="font-size: 10pt;"></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">flower.avi</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">352x288,
+                  250</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">72,52<span style="font-size: 10pt;"></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">foreman.avi</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">352x288,
+                  300</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">87,03<span style="font-size: 10pt;"></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">mobl(resized).avi</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">352x288,
+                  373</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">108,2<span style="font-size: 10pt;"></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">waterfall.avi</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">352x288,
+                  260</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">75,42<span style="font-size: 10pt;"></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">ms2.avi</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">640<span>x272, 250</span></p>
+              </td>
+              <td style="border: medium none ; padding: 0cm 5.4pt" valign="top">
+                <p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">124,52<span style="font-size: 10pt;"></span></p>
+              </td>
+            </tr>
+            <tr>
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">ms32.<span>avi</span></p>
+              </td>
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0cm 5.4pt" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt;">640<span>x272, 200</span></p>
+              </td>
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0cm 5.4pt" valign="top">
+                <p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">99,62<span style="font-size: 10pt;"></span></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Codecs used for the comparison:</p>
+        <table class="center" style="border: medium none ; text-align: left; margin-left: auto; margin-right: auto; border-collapse: collapse;" border="0" cellpadding="1" cellspacing="1">
+          <tbody>
+            <tr style="height: 12.75pt;">
+              <td style="border-style: solid none; border-color: green -moz-use-text-color; border-width: 1.5pt medium 0.75pt; padding: 0.5pt 0.5pt 0cm" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">Lossless codec</p>
+              </td>
+              <td style="border-style: solid none; border-color: green -moz-use-text-color; border-width: 1.5pt medium 0.75pt; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">Version</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border: medium none ; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">HuffYUV</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm" valign="top">
+                <p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">2.1.1<span style="font-size: 10pt;"></span></p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border: medium none ; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">CorePNG</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">0.8.2</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border: medium none ; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">Alparysoft Lossless Video Codec</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">1.6</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border: medium none ; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">CamCodec</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">1.0</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border: medium none ; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">LEAD JPEG</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">1.0.0.17</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border: medium none ; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">PicVideo
+                  JPEG</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">2.10.0.18</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">AVIzlib</p>
+              </td>
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">2.2.3</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">Lagarith</p>
+              </td>
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">1.3.6</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">FFV1 (from ffdshow)</p>
+              </td>
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">19.06.05</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">H264 Lossless (from ffdshow)</p>
+              </td>
+              <td style="border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color green; border-width: medium medium 1.5pt; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">19.06.05</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border: medium none ; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">MSU Lossless Video Codec</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">0.2.4</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border: medium none ; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">MSU Lossless Video Codec</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">0.5.2</p>
+              </td>
+            </tr>
+            <tr style="height: 12.75pt;">
+              <td style="border: medium none ; padding: 0.5pt 0.5pt 0cm; height: 12.75pt;" nowrap="nowrap" valign="bottom">
+                <p style="margin: 0cm 0cm 0.0001pt;">MSU Lossless Video Codec</p>
+              </td>
+              <td style="border: medium none ; padding: 0cm" valign="top">
+                <p style="margin: 0cm 0cm 0.0001pt; text-align: center;" align="center">0.6.0</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p><br />
+        </p>
+        <div class="center">
+          <img src="/assets/img/codecs/lossless-video-codec/rgb060.gif" />
+        </div>
+        <div class="center">
+          <img src="/assets/img/codecs/lossless-video-codec/yuv060.gif" />
+        </div>
+        <div class="center">
+          <img src="/assets/img/codecs/lossless-video-codec/yv060.gif" />
+        </div>
+        <p>The comparison was made in RGB and YUV color spaces because usually
+          models used by codecs and their efficiency differ a lot depending on the
+          color space. Also, not all of the codecs support YUV though it usually
+          gives a better compression.</p>
+        <p>As seen from the graphs below, MSU Lossless Video Codec gives <strong>the best
+            result compared to all of the available codecs</strong>.</p>
+        <h2 id="configuration">Configuration</h2>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/lossless-video-codec/parameters.gif" />
+            <img src="/assets/img/codecs/lossless-video-codec/advanced.gif" />
+          </div>
+        </div>
+        <p>In the main configuration dialog you can set two main parameters - video
+          quality and compression mode. There are following variants of video
+          quality:</p>
+        <ul>
+          <li><strong>Absolutely lossless</strong> - absolutely lossless mode: the data after
+            decompression is bitwise equal to the source data. This mode has the
+            smallest compression ratio. Input may be in RGB, YUY2 and YV12
+            formats, output will be in the same format as input.</li>
+          <li>
+            <p><strong>Allow colorspace conversion</strong> - works in YV12 color space. It
+              means if you had some video in YV12 format (quite often case) then
+              after decompression the data is equal to the source. And if the
+              source data were in 24-bit RGB or 16-bit YUY2, then you lose on RGB
+              to YUV conversion. This mode leads to much better compression ratio.</p>
+            <p>Also the codec has so called “visually lossless” modes. It means
+              these modes allow some information losses that are visually
+              unnoticeable giving you compression ratio boost. This is done by
+              denoising, so all you really lose is the noise. In many cases image
+              quality increases.</p>
+          </li>
+          <li><strong>Allow denoising</strong> - differs from previous one by having a slight
+            denoising. Visually image stays the same but compression improves.</li>
+          <li><strong>Allow stronger denoising</strong> - differs from the previous one by
+            stronger denoising. Visually image quality doesn’t get worse (in
+            most cases it gets better) and the compression ratio grows
+            further.<br />
+            You can set up denoising parameters manually to get wanted
+            compression/quality ratio. Parameters are set in a separate window
+            called by the “Advanced” button.</li>
+        </ul>
+        <p>Compression <strong>Mode</strong> influences compression ratio and
+          compression/decompression speeds with given quality. You can choose one
+          of preset parameters sets or the manual tuning mode.</p>
+        <p>When choosing any variant of quality and compression mode, graphics in
+          the top side of the window show expected quality, compression ratio,
+          compression speed and decompression speed.</p>
+        <p>When compressing interlaced sequences you can turn on the <strong>Compressing
+            interlaced movie</strong> option. In some cases it improves compression.</p>
+        <p>The <strong>Advanced</strong> window:<br />
+          Again, any changes of parameters cause graphics to show expected
+          results.</p>
+        <p><strong>Compression method</strong> allows you to choose compression algorithm - the
+          new one or the old one. The new one is much faster on compression and
+          decompression, but the old one gives better compression on most files
+          (but on some files the new method works better).</p>
+        <p>In <em>Denoising</em> area you can set denoising parameters for Custom
+          compression mode.</p>
+        <ul>
+          <li><strong>Temporal denoising threshold</strong> controls the temporal part of
+            denoising. Must be a positive integer number. The “Good compression”
+            mode has this parameter set to 30, the “High compression” mode - 50.</li>
+          <li><strong>Spatial denoising intensity</strong> controls the spatial part of
+            denoising. Must be a positive real number. The “Good compression”
+            mode has this parameter set to 4, the High one - 20.</li>
+        </ul>
+        <p>In <em>Delta-Frames</em> area you can set up codec’s use of previous frames.</p>
+        <ul>
+          <li><strong>Enable Delta-Frames</strong> turns on delta-frames use. If you turn it
+            off, all frames will be key-frames. This will cause growth of file
+            size, so don’t turn it off unless you’re sure you need to.</li>
+          <li><strong>Force Key-Frames every N frames</strong> tells codec to insert a
+            key-frame at least once an N frames.</li>
+        </ul>
+        <p>In <em>Motion Estimation</em> you can control compression speed and ratio. You
+          can use one of presets or set the following options manually.</p>
+        <ul>
+          <li><strong>FullSearch</strong> turns on use of slow but precise algorithm of motion
+            compensation. It makes compression much slower but much better.</li>
+          <li><strong>After DVD or DivX</strong>: turning this option on allows you to compress
+            better video which passed through a lossy codec.</li>
+          <li><strong>PP-frame</strong> - search in pre-previous frame. Makes compression a bit
+            slower but better. Recommended to keep it turned on.</li>
+        </ul>
+        <p><span id="Download"></span></p>
+        <h2 id="download">Download</h2>
+        <p><strong>MSU Lossless video codec version 0.6.0 from 19.09.2005</strong></p>
+        <ul>
+          <li><a href="http://compression.ru/video/ls-codec/msu-ls-codec.exe">MSU Lossless video codec 0.6.0, EXE
+              installer</a>
+            (157kb)</li>
+          <li><a href="http://compression.ru/video/ls-codec/msu-ls-codec.zip">MSU Lossless video codec 0.6.0, EXE installer in ZIP (for some
+              firewalls)</a>
+            (126kb)</li>
+        </ul>
+        <h3 id="known-problems">Known problems:</h3>
+        <ul>
+          <li>Behaves badly if you abort compression in VDub.</li>
+          <li>(Please let us know in case of any problems!)</li>
+        </ul>
+        <h2 id="contacts">Contacts</h2>
+        <p>E-mail: <a href="mailto:ls-codec@compression.ru">ls-codec@compression.ru</a></p>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Lossless Video Codec&amp;url=
+http://localhost:4000/codecs/lossless-video-codec-2004.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Lossless Video Codec&amp;url=
+http://localhost:4000/codecs/lossless-video-codec-2004.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/codecs/lossless-video-codec-2004.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Lossless Video Codec&amp;body=
+http://localhost:4000/codecs/lossless-video-codec-2004.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/codecs/lossless-video-codec-2004.html
+&amp;title=MSU Lossless Video Codec&amp;summary=MSU Lossless Video Codec&amp;source=
+http://localhost:4000/codecs/lossless-video-codec-2004.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">10 Mar 2011</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-19.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-19/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2019</div>
+          <div class="text">Fourteen modern video codec comparison</div>
+        </a>
+        <a class="tile" href="/codecs/hevc-2018.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/hevc-2018/preview.png)"></div>
+          <div class="title">HEVC Video Codecs Comparison 2018 (Thirteen MSU Video Codec Comparison)</div>
+          <div class="text">13th MSU video codecs comparison</div>
+        </a>
+        <a class="tile" href="/codecs/hevc-2017.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/hevc-2017/preview.png)"></div>
+          <div class="title">HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)</div>
+          <div class="text">12th MSU video codecs comparison</div>
+        </a>
+        <a class="tile" href="/codecs/comparisons.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/comparisons/preview.png)"></div>
+          <div class="title">MSU Video Codec Comparisons (6 test of lossless, MPEG-4 and MPEG-4 AVC)</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-18.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-18/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2018</div>
+          <div class="text"></div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

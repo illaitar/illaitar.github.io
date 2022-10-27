@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Deinterlacer Benchmark Participants</title>
+    <meta property="og:title" content="MSU Deinterlacer Benchmark Participants">
+    <meta property="og:image" content="http://localhost:4000/assets/img/benchmarks/deinterlacer/deinterlacing_preview480x270.png">
+    <meta property="og:url" content="
+http://localhost:4000/benchmarks/deinterlacer-participants.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/benchmarks/">MSU Benchmark Collection</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <link rel="stylesheet" href="/assets/css/benchmarks/deinterlacer/style.css" />
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css" />
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <h1 id="list-of-participants-of-msu-dib-2020">List of participants of MSU DIB 2020</h1>
+        <hr class="btnsep" />
+        <div id="buttons"></div>
+        <script>
+          __set_menu_buttons([
+          ['Home', '/benchmarks/deinterlacer.html'],
+          ['Participants','/benchmarks/deinterlacer-participants.html'],
+          ['Evaluation methodology', '/benchmarks/deinterlacer.html#methodology'],
+          ['How to participate', '/benchmarks/deinterlacer.html#participate'],
+              ['Contact us', '/benchmarks/deinterlacer.html#contacts']
+          ], 'Participants')
+        </script>
+        <div class="current_content">
+          <div id="comm_comp_div" class="datatable-container full-bleed">
+            <div class="datatable-center">
+              <table id="char_table" class="display">
+                <thead>
+                  <tr>
+                    <th style="background-color: #3d6f96; color: #ffffff">Features</th>
+                    <th style="background-color: #3d6f96; color: #ffffff">Unpaid</th>
+                    <th style="background-color: #3d6f96; color: #ffffff">Open Source</th>
+                    <th style="background-color: #3d6f96; color: #ffffff">Has Double FrameRate Mode</th>
+                    <th style="background-color: #3d6f96; color: #ffffff">Uses Neural Networks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="item">
+                    <td><a href="#flad">FLAD</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#sonyvegas">Sony Vegas Built-In</a></td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#swin_di">SwinDI</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #c3c317">Coming Soon</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#mfdin">MFDIN</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #c3c317">Coming Soon</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#evdr">EVDR</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#duf">DUF</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#tdan">TDAN</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#adobe_pp">Abobe Premiere Pro Built-In</a></td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#dfres">DfRes</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #c3c317">Coming Soon</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#st_deint">ST-Deint</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #c3c317">Coming Soon</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#msudeint">MSU Deinterlacer</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#nnedi">NNEDI</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#deepdeint">Real-Time Deep Video Deinterlacer</a> </td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#bwdif">Bob-Weave Deinterlacer</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#w3fdif">Weston 3-Field Deinterlacer</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#bob">Bob</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#kerndeint">Kernel Deinterlacer</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#yadif">YADIF</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#mapdeint">Motion and Area Pixel Deinterlacer</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#muksun">Muksun</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#palinter">PAL Interpolation</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#asvzzzdeint">ASVZZZ Deinterlacer</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#eedi3">Vapoursynth EEDI3</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#tdeint">Vapoursynth TDeintMod</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                  <tr class="item">
+                    <td><a href="#mcdeint">Motion Compensation Deinterlacer</a></td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #218838">Yes</td>
+                    <td style="color: #d11d12">No</td>
+                    <td style="color: #d11d12">No</td>
+                  </tr>
+                </tbody>
+              </table>
+              <script>
+                $(document).ready(function () {
+                            $('#char_table').DataTable({
+                                lengthChange: false,
+                                paging: false,
+                                searching: false
+                            });
+                        });
+              </script>
+            </div>
+          </div>
+          <h2 id="adobe_pp">Adobe Premiere Pro Built-In</h2>
+          <ul>Version: v14.4.0 (Build 38)</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: YUV444P</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://www.adobe.com/ru/products/premiere.html">Product page</a></ul>
+          <p><img src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/screenshots/adobePremiereDefault_screen.png" /></p>
+          <h2 id="asvzzzdeint">ASVZZZ Deinterlacer</h2>
+          <ul>Version: v2.0</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://pctuner.club/files/capture/vdub/asvzzz_deinterlace_20.zip">Download</a></ul>
+          <h2 id="bob">Bob</h2>
+          <ul>Version: custom</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: No</ul>
+          <h2 id="bwdif">Bob-Weave (ffmpeg bwdif)</h2>
+          <ul>Version: ffmpeg version 4.2.4-1ubuntu0.1</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://ffmpeg.org/">ffmpeg documentaion</a>
+            <br />
+            <a href="https://github.com/FFmpeg/FFmpeg">ffmpeg open-source code</a></ul>
+          <p><img src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/screenshots/bwdif_screen.png" /></p>
+          <h2 id="dfres">DfRes</h2>
+          <ul>Versions: SA U, 122000 G2e 3, V R, R, 61000 </ul>
+          <ul>Added to the benchmark by: Ronglei Ji</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Author email: rji19@ku.edu.tr</ul>
+          <h2 id="duf">DUF</h2>
+          <ul>Version: U </ul>
+          <ul>Added to the benchmark by: Ronglei Ji</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: rji19@ku.edu.tr</ul>
+          <h2 id="evdr">EVDR</h2>
+          <ul>Version: U </ul>
+          <ul>Added to the benchmark by: Ronglei Ji</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: rji19@ku.edu.tr</ul>
+          <h2 id="flad">FLAD</h2>
+          <ul>Added to the benchmark by: Shuichang Lai from Bytedance Inc.</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links:  zhangkexin.1996@bytedance.com </ul>
+          <h2 id="kerndeint">Kernel Deinterlacer (ffmpeg kerndeint)</h2>
+          <ul>Version: ffmpeg version 4.2.4-1ubuntu0.1</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGBA</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://ffmpeg.org/">ffmpeg documentaion</a>
+            <br />
+            <a href="https://github.com/FFmpeg/FFmpeg">ffmpeg open-source code</a></ul>
+          <p><img src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/screenshots/kerndeint_screen.png" /></p>
+          <h2 id="mapdeint">Motion and Area Pixel Deinterlacer</h2>
+          <ul>Version: v1.0</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://pctuner.club/files/capture/vdub/deinterlace_map10.zip">Download</a></ul>
+          <h2 id="mcdeint">Motion Compensation Deinterlacer (ffmpeg mcdeint)</h2>
+          <ul>Version: ffmpeg version 4.2.4-1ubuntu0.1</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://ffmpeg.org/">ffmpeg documentaion</a>
+            <br />
+            <a href="https://github.com/FFmpeg/FFmpeg">ffmpeg open-source code</a></ul>
+          <p><img src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/screenshots/mcdeint_screen.png" /></p>
+          <h2 id="mfdin">MFDIN</h2>
+          <ul>Added to the benchmark by: Yang Zhao</ul>
+          <ul>Versions: base and L</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Author email: 1602592035@qq.com, yzhao@hfut.edu.cn</ul>
+          <ul><a href="https://arxiv.org/abs/2109.14151">Related paper</a></ul>
+          <h2 id="msudeint">MSU Deinterlacer</h2>
+          <ul>Version: v2.0</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://compression.ru/video/deinterlacer/index.html">Download</a></ul>
+          <h2 id="muksun">Muksun</h2>
+          <ul>Version: v1.0</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="http://acobw.narod.ru/deinterlace.html">Download</a></ul>
+          <h2 id="nnedi">NNEDI</h2>
+          <ul>Version: v12</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://github.com/dubhater/vapoursynth-nnedi3">github open-source code</a></ul>
+          <p><img src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/screenshots/nnedi_screen.png" /></p>
+          <h2 id="palinter">PAL Interpolation</h2>
+          <ul>Version: v1.0</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://pctuner.club/files/capture/vdub/deinterlace_pal_interpolation_10b1.zip">Download</a></ul>
+          <h2 id="deepdeint">Real-Time Deep Video Deinterlacer</h2>
+          <ul>Version: - </ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://arxiv.org/pdf/1708.00187.pdf">ArXiV paper</a>
+            <br />
+            <a href="https://github.com/lszhuhaichao/Deep-Video-Deinterlacing">github open-source code</a></ul>
+          <h2 id="sonyvegas">Sony Vegas Built-In</h2>
+          <ul>Version: v13.0</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="http://sony.vegas/">Product page</a></ul>
+          <h2 id="st_deint">ST-Deint</h2>
+          <ul>Added to the benchmark by: Yuqing Liu from Dalian University of Technology</ul>
+          <ul>Versions: -</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Author email: liuyuqing@mail.dlut.edu.cn</ul>
+          <ul><a href="https://ieeexplore.ieee.org/abstract/document/9428121">Related paper</a></ul>
+          <h2 id="swin_di">SwinDI</h2>
+          <ul>Added to the benchmark by: Jinhua Hao,  Kuaishou Technology &amp; Peking University</ul>
+          <ul>Versions: -</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Author email: haojinhua206@163.com</ul>
+          <h2 id="tdan">TDAN</h2>
+          <ul>Version: U </ul>
+          <ul>Added to the benchmark by: Ronglei Ji</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: rji19@ku.edu.tr</ul>
+          <h2 id="eedi3">Vapoursynth EEDI3</h2>
+          <ul>Version: plugin - r4, VapourSynth - r52</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3">open-source code</a>
+            <br />
+            <a href="https://www.vapoursynth.com/">VapourSynth official site</a></ul>
+          <h2 id="tdeint">Vapoursynth TDeintMod</h2>
+          <ul>Version: plugin - r10.1, VapourSynth - r52</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod">open-source code</a>
+            <br />
+            <a href="https://www.vapoursynth.com/">VapourSynth official site</a></ul>
+          <h2 id="w3fdif">Weston 3-Field (ffmpeg w3fdif)</h2>
+          <ul>Version: ffmpeg version 4.2.4-1ubuntu0.1</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://ffmpeg.org/">ffmpeg documentaion</a>
+            <br />
+            <a href="https://github.com/FFmpeg/FFmpeg">ffmpeg open-source code</a></ul>
+          <p><img src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/screenshots/w3fdif_screen.png" /></p>
+          <h2 id="yadif">YADIF (ffmpeg yadif)</h2>
+          <ul>Version: ffmpeg version 4.2.4-1ubuntu0.1</ul>
+          <ul>Added to the benchmark by: MSU</ul>
+          <ul>Colorspace: RGB24</ul>
+          <ul>Metrics: PSNR-Y, SSIM-Y, VMAF</ul>
+          <ul>Links: <a href="https://ffmpeg.org/">ffmpeg documentaion</a>
+            <br />
+            <a href="https://github.com/FFmpeg/FFmpeg">ffmpeg open-source code</a></ul>
+          <p><img src="https://storage.videoprocessing.ai/benchmarks/deinterlacer/screenshots/yadif_screen.png" /></p>
+        </div>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Deinterlacer Benchmark Participants&amp;url=
+http://localhost:4000/benchmarks/deinterlacer-participants.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Deinterlacer Benchmark Participants&amp;url=
+http://localhost:4000/benchmarks/deinterlacer-participants.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/benchmarks/deinterlacer-participants.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Deinterlacer Benchmark Participants&amp;body=
+http://localhost:4000/benchmarks/deinterlacer-participants.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/benchmarks/deinterlacer-participants.html
+&amp;title=MSU Deinterlacer Benchmark Participants&amp;summary=MSU Deinterlacer Benchmark Participants&amp;source=
+http://localhost:4000/benchmarks/deinterlacer-participants.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">05 Nov 2020</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/vfi/main.webp)"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

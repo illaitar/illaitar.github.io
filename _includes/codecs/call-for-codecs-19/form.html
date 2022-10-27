@@ -1,0 +1,289 @@
+<style>
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .form-control:focus{
+        color: #495057;
+        background-color: #fff;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 .2rem rgba(0,123,255,.25)
+    }
+
+    .btn:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
+
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .collapse:not(.show) {
+        display: none;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+</style>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/assets/js/codecs/hevc-2018/jquery.min.js"></script>
+<script src="/assets/js/codecs/hevc-2018/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+      var GForm = function(a, b, c) {
+        $("form", a).on("submit", function(d) {
+            if (d.isDefaultPrevented())
+                return !1;
+            var e = {};
+            var standards = [];
+            var use_cases = [];
+            var participation_type = '';
+            $(":input", a).each(function() {
+                var a = b[this.name];
+                if (this.name.substr(0, 8) == 'standard') {
+                    if (this.name.substr(9, 5) == 'other') {
+                        e['entry.827013180.other_option_response'] = this.value;
+                        standards.push('__other_option__');
+                    }
+                    if (this.checked) {
+                        standards.push(this.id);
+                    }
+                }
+                else if (this.name.substr(0, 8) == 'use_case') {
+                    if (this.name.substr(9, 5) == 'other') {
+                        e['entry.609840944.other_option_response'] = this.value;
+                        use_cases.push('__other_option__');
+                    }
+                    if (this.checked) {
+                        use_cases.push(this.id);
+                    }
+                }
+                else if (this.name.substr(0, 18) == 'participation_type') {
+                    console.log(this.id);
+                    console.log(this.value);
+                    if (this.checked) {
+                        participation_type = this.id;
+                    }
+                }
+                else {
+                    e[a] = this.value;
+                }
+            });
+            e['entry.827013180'] = standards;
+            e['entry.609840944'] = use_cases;
+            e['entry.825091883'] = participation_type;
+            console.log(e);
+            var f = function() {
+                $(".success", a).removeClass("hidden"),
+                $("form", a).addClass("hidden")
+                //ga("send", "event", "form-submit", a.attr("id"), a.attr("id"))
+            };
+            $('#form')[0].reset();
+            $("#request_alert").show();
+            var data = $.param(e, true);
+            console.log(data);
+            return $.post(c, data, null, 'jsonp').done(f).fail(f), !1
+        })
+      };
+      $(function(){
+        var a = "https://docs.google.com/forms/d/e/1FAIpQLSeP62CvvBXEEvoJAndFskcAEbIVl5ImbGiBkuGMuZKovIFRYQ/formResponse";
+        var b = {
+          'email': 'entry.472649987',
+          'codec_name': 'entry.2011710210',
+          'standard': 'entry.827013180',
+          'company': 'entry.1708093531',
+          'use_cases': 'entry.609840944',
+          'participation_type': 'entry.825091883'
+        };
+        GForm($("#call_for_codecs_form"), b, a);
+        return false;
+      });
+    </script>
+
+<div class="form-area" id="call_for_codecs_form" style="
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 10px #000;
+    -webkit-box-shadow: 1px 1px 10px #000;
+    box-shadow: 1px 1px 10px #000;">
+    <form id="form" role="form" style="display: inline-block;">
+        <br style="clear:both">
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">Email</h4>
+            <input class="form-control" id="email" name="email" required type="email"/>
+        </div>
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">Codec name</h4>
+            <input class="form-control" id="codec_name" name="codec_name" required rows="1" type="text"/>
+        </div>
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">Standard</h4>
+            <ul>
+                <li>
+                    <label for="H.265/HEVC">
+                        <input checked class="checkbox-inline" id="H.265/HEVC" name="standard_h265" type="checkbox">
+                        H.265/HEVC
+                    </label>
+                </li>
+                <li>
+                    <label for="H.264/MPEG-4 AVC">
+                        <input class="checkbox-inline" id="H.264/MPEG-4 AVC" name="standard_h264" type="checkbox">
+                        H.264/MPEG-4 AVC
+                    </label>
+                </li>
+                <li>
+                    Other
+                    <input class="form-control" id="Other" name="standard_other" rows="1" type="text"/>
+                </li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">Company name (developer)</h4>
+            <input class="form-control" id="company" name="company" type="text">
+        </div>
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">Nominations (encoding use-cases) in which you
+                want to participate:</h4>
+            <ul>
+                <li>
+                    <label for="FullHD: Fast (60fps)">
+                        <input checked class="checkbox-inline" id="FullHD: Fast (60fps)" name="use_case_fast"
+                               type="checkbox">
+                        FullHD: Fast (60fps)
+                    </label>
+                </li>
+                <li>
+                    <label for="FullHD: Universal (25fps)">
+                        <input checked class="checkbox-inline" id="FullHD: Universal (25fps)" name="use_case_universal"
+                               type="checkbox">
+                        FullHD: Universal (25fps)
+                    </label>
+                </li>
+                <li>
+                    <label for="FullHD: Ripping (1fps)">
+                        <input checked class="checkbox-inline" id="FullHD: Ripping (1fps)" name="use_case_ripping"
+                               type="checkbox">
+                        FullHD: Ripping (1fps)
+                    </label>
+                </li>
+                <li>
+                    <label for="FullHD: Ultra-Ripping">
+                        <input checked class="checkbox-inline" id="FullHD: Ultra-Ripping" name="use_case_ultra_ripping"
+                               type="checkbox">
+                        FullHD: Ultra-Ripping
+                    </label>
+                </li>
+                <li>
+                    <label for="4K (20fps)">
+                        <input checked class="checkbox-inline" id="4K (20fps)" name="use_case_4k" type="checkbox">
+                        4K (20fps)
+                    </label>
+                </li>
+                <li>
+                    <label for="Subjective comparison">
+                        <input checked class="checkbox-inline" id="Subjective comparison" name="use_case_subjective"
+                               type="checkbox">
+                        Subjective comparison
+                    </label>
+                </li>
+                <li>
+                    <label for="Cloud solution">
+                        <input class="checkbox-inline" id="Cloud solution" name="use_case_cloud"
+                               style="display:inline-block;" type="checkbox">
+                        Cloud solutions
+                    </label>
+                </li>
+                <li>
+                    Other
+                    <input class="form-control" id="Other" name="use_case_other" type="text">
+                </li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <h4 style="font-family: Times; color: black; font-size: 20">There are 2 kinds of participation for codec
+                developers. Please choose one:</h4>
+            <ul style="list-style-type: none">
+                <li>
+                    <label for="Free/public - we test your encoder and publish all results">
+                        <input checked class="radio-inline"
+                               id="Free/public - we test your encoder and publish all results" name="participation_type"
+                               type="radio">
+                        Free/public - we test your encoder and publish all results
+                    </label>
+                </li>
+                <label for="Private - you pay a participation fee, we test your encoder and send you the results, then you make the decision to publish results or not">
+                    <input class="radio-inline"
+                           id="Private - you pay a participation fee, we test your encoder and send you the results, then you make the decision to publish results or not"
+                           name="participation_type" type="radio">
+                    Private - you pay a participation fee, we test your encoder and send you the results, then you make
+                    the decision to publish results or not
+                </label>
+                <li>
+                    <label for="Not yet decided">
+                        <input class="radio-inline" id="Not yet decided" name="participation_type" type="radio">
+                        Not yet decided
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <button class="btn btn-primary pull-left" id="submit" name="submit" type="submit">Participate!</button>
+        <br>
+        <div class="alert alert-success collapse" id="request_alert" role="alert">OK! We contact you to discuss the
+            details of the participation.
+        </div>
+    </form>
+</div>

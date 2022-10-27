@@ -1,0 +1,141 @@
+<style>
+    .dataTables_paginate {margin-top: 15px;}
+    .dataTables_length {margin-bottom: 15px;}
+</style>
+
+<h3 align="left" style="color: #3d6f96">SR+codec pairs leaderboard</h3>
+<p>
+    The table below shows a comparison of all pairs of Super-Resolution algorithms and codecs.
+    Each column shows <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#bsq-rate">BSQ-rate</a> over a specific metric. You can sort the table by any column. 
+    <br>
+    All methods that took part in subjective comparison are ranked by BSQ-rate over subjective score. Other methods are ranked by BSQ-rate over ERQA.
+    <br>
+    If BSQ-rate of any method equals 0, then this method should be considered much better than reference codec.<br>
+    If BSQ-rate of any method is striving to eternity (marked as '∞'), then this method should be considered much worse than reference codec.<br>
+    "TBP" means that this SR+codec pair did not take part in subjective comparison.
+</p>
+
+<div id="leaderboard_pairs">
+    <p>     Video: <label for="leaderboard_video_selector"></label><select id="leaderboard_video_selector" name="values">
+        <option>Overall</option>
+        <option>child</option>
+        <option>cuphead</option>
+        <option>dancing</option>
+        <option>dontstarve</option>
+        <option>restaurant</option>
+        <option>colors</option>
+    </select> <button id="video_button_left">&#60;</button>  <button id="video_button_right">&#62;</button></p>
+
+    <div class="datatable-container">
+    <div class="datatable-center">
+        <table id="leaderboard_pairs_table" class="display" style="background-color: #ffffff;width:99.5%">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Rank</th>
+                <th style="background-color: #3d6f96">SR + codec</th>
+                <th style="background-color: #3d6f96">Y-VMAF</th>
+                <th style="background-color: #3d6f96">ERQAv2.0</th>
+                <th style="background-color: #3d6f96">Y-PSNR</th>
+                <th style="background-color: #3d6f96">Y-MS-SSIM</th>
+                <th style="background-color: #3d6f96">LPIPS</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    <script>
+
+    
+    const video_button_left_id = 'video_button_left'
+    const video_button_right_id = 'video_button_right'
+    const video_select_id = 'leaderboard_video_selector'
+
+    $('#'+video_button_left_id).click(function(){
+        var video_select = document.getElementById(video_select_id);
+        var total_sz = video_select.options.length; 
+        video_select.selectedIndex -= 1;
+        if (video_select.selectedIndex < 0) video_select.selectedIndex = total_sz - 1;
+        onChangeHelper();
+    })
+    $('#'+video_button_right_id).click(function(){ 
+        var video_select = document.getElementById(video_select_id);
+        var total_sz = video_select.options.length; 
+        if (video_select.selectedIndex >= total_sz - 1) video_select.selectedIndex = 0;
+        else video_select.selectedIndex += 1;
+        //video_select.selectedIndex %= total_sz;
+        onChangeHelper();
+    })
+    
+
+    function onChangeHelper() {
+        
+        var video_select = document.getElementById("leaderboard_video_selector");
+        var videoToName = ['Overall', 'child', 'cuphead', 'dancing', 'dontstarve', 'restaurant', 'colors'];
+        var video_name = videoToName[video_select.selectedIndex];
+
+
+        let text = "<thead>\n" +
+        "<tr style=\"font-size: medium; background-color: #3d6f96\">" +
+        "    <th style=\"background-color: #3d6f96\">Rank</th>" +
+        "        <th style=\"background-color: #3d6f96\">SR+codec</th>" +
+        "        <th style=\"background-color: #3d6f96\">Subjective score</th>" +
+        "        <th style=\"background-color: #3d6f96\">Y-VMAF</th>" +
+        "        <th style=\"background-color: #3d6f96\">ERQA</th>" +
+        "        <th style=\"background-color: #3d6f96\">Y-PSNR</th>" +
+        "        <th style=\"background-color: #3d6f96\">Y-MS-SSIM</th>" +
+        "        <th style=\"background-color: #3d6f96\">LPIPS</th>" +
+        "</tr>\n" +
+        "</thead>\n" +
+        "<tbody>\n";
+
+        let metrics = ["Subjective", 'Y-VMAF', 'ERQA', 'Y-PSNR', 'YUV-MS-SSIM', 'LPIPS'];
+
+        $.getJSON('../assets/json/benchmarks/sr-codecs/leaderboard.json', function (data) {
+            $.each( data[video_name], function( pair, val ) {
+                
+                if (pair.substring(0, 4) == 'only') {
+                    td = "<td style='background-color:#FAF18C'>";
+                } else {
+                    td = "<td>";
+                }
+                text += "<tr class=\"item\">\n";
+                text += td + val["rank"] + "</td>\n" + td + pair + "</td>\n";
+                for (metric of metrics) {
+                    let value = parseFloat(val[metric]).toFixed(3);
+                    if (value == "NaN") {
+                        value = "TBP";
+                    }
+                    text += td + value + "</td>\n";
+                }
+                text += "</tr>\n";                    
+            });
+    
+            text += "</tbody>\n";
+            
+            let table = document.getElementById('leaderboard_pairs_table');
+            table.innerHTML = text;
+                
+
+            $('#leaderboard_pairs_table').DataTable().destroy();
+
+            $('#leaderboard_pairs_table').DataTable({
+                searching: false,
+                ordering: true,
+                order: [[0, 'asc']],
+                "lengthMenu": [ [15, 40, -1], [15, 40, "All"] ],
+                bInfo : false,
+                dom: 'Blfrtip',
+            });
+        });
+    }  
+
+    document.getElementById("leaderboard_video_selector").onchange = onChangeHelper;
+    onChangeHelper();
+
+    </script>
+
+</div>

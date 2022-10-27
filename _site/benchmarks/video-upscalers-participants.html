@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Video Upscalers Benchmark Participants</title>
+    <meta property="og:title" content="MSU Video Upscalers Benchmark Participants">
+    <meta property="og:image" content="http://localhost:4000/assets/img/benchmarks/upscalers/MSU_VUB.webp">
+    <meta name="description" content="The list of the participants of the MSU Video Upscalers Benchmark">
+    <meta property="og:description" content="The list of the participants of the MSU Video Upscalers Benchmark">
+    <meta property="og:url" content="
+http://localhost:4000/benchmarks/video-upscalers-participants.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/benchmarks/">MSU Benchmark Collection</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <link rel="stylesheet" href="/assets/css/benchmarks/style.css" />
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css" />
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <h1 id="-the-list-of-the-participants-of-the-msu-video-upscalers-benchmark"><span id="participants_home"></span> The List of the Participants of the MSU Video Upscalers Benchmark</h1>
+        <div id="buttons"></div>
+        <script>
+          __set_menu_buttons([
+          ['Home', '/benchmarks/video-upscalers.html#home'],
+          ['How to participate', '/benchmarks/video-upscalers.html#participate'],
+              ['Methodology', '/benchmarks/video-upscalers-methodology.html#methodology_home'],
+          ['Participants','#participants_home']
+          ], 'Participants', 'margin-bottom: 20px')
+        </script>
+        <div class="current_content">
+          <div id="comm_comp_div" class="datatable-container" style="overflow-x: visible">
+            <div class="datatable-center">
+              <table id="char_table" class="display" style="width:99%">
+                <thead>
+                  <tr>
+                    <th style="background-color: #3d6f96; color: #ffffff">Name</th>
+                    <th style="background-color: #3d6f96; color: #ffffff">Implementation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="item">
+                    <td>Topaz VEAI AAM-10</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz VEAI AD-2</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz VEAI AHQ-12</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz VEAI ALQ-13</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz VEAI AMQ-13</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz VEAI ASD-2</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz VEAI GCG-5</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz VEAI GHQ-5</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Adobe Lightroom Super Resolution</td>
+                    <td><a href="https://www.adobe.com/products/photoshop-lightroom-classic.html">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>BasicVSR++ REDS</td>
+                    <td><a href="https://github.com/ckkelvinchan/BasicVSR_PlusPlus">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>BasicVSR++ Vimeo BD</td>
+                    <td><a href="https://github.com/ckkelvinchan/BasicVSR_PlusPlus">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>BasicVSR++ Vimeo BI</td>
+                    <td><a href="https://github.com/ckkelvinchan/BasicVSR_PlusPlus">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>BSRGAN</td>
+                    <td><a href="https://github.com/cszn/BSRGAN">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>BSRNET</td>
+                    <td><a href="https://github.com/cszn/BSRGAN">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>COMISR</td>
+                    <td><a href="https://github.com/google-research/google-research/tree/master/comisr">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Davinci Resolve Bicubic</td>
+                    <td><a href="https://www.blackmagicdesign.com/products/davinciresolve">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Davinci Resolve Super Scale</td>
+                    <td><a href="https://www.blackmagicdesign.com/products/davinciresolve">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz Gigapixel Art</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz Gigapixel Lines</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz Gigapixel Low Resolution</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz Gigapixel Standard</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Topaz Gigapixel Very Compressed</td>
+                    <td><a href="https://topazlabs.com/downloads/">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>Real-CUGAN</td>
+                    <td><a href="https://github.com/bilibili/ailab/tree/main/Real-CUGAN">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>RealBasicVSR</td>
+                    <td><a href="https://github.com/ckkelvinchan/RealBasicVSR">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>RealSR</td>
+                    <td><a href="https://github.com/jixiaozhong/RealSR">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>RealESRGAN</td>
+                    <td><a href="https://github.com/xinntao/Real-ESRGAN">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>RealESRGAN Anime (“A”)</td>
+                    <td><a href="https://github.com/xinntao/Real-ESRGAN">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>RealESRGAN Anime Video (“V”)</td>
+                    <td><a href="https://github.com/xinntao/Real-ESRGAN">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>RealESRGAN + GFPGAN (Face Enhance) (“F”)</td>
+                    <td><a href="https://github.com/xinntao/Real-ESRGAN">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>RealESRNET</td>
+                    <td><a href="https://github.com/xinntao/Real-ESRGAN">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>RealESRNET + GFPGAN (Face Enhance) (“F”)</td>
+                    <td><a href="https://github.com/xinntao/Real-ESRGAN">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>SRMD</td>
+                    <td><a href="https://github.com/cszn/SRMD">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>SwinIR Classical Big</td>
+                    <td><a href="https://github.com/JingyunLiang/SwinIR">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>SwinIR Classical Small</td>
+                    <td><a href="https://github.com/JingyunLiang/SwinIR">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>SwinIR Lightweight</td>
+                    <td><a href="https://github.com/JingyunLiang/SwinIR">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>SwinIR Real Big</td>
+                    <td><a href="https://github.com/JingyunLiang/SwinIR">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>SwinIR Real Small</td>
+                    <td><a href="https://github.com/JingyunLiang/SwinIR">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>VRT REDS Long</td>
+                    <td><a href="https://github.com/JingyunLiang/VRT">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>VRT REDS Short</td>
+                    <td><a href="https://github.com/JingyunLiang/VRT">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>VRT Vimeo BD</td>
+                    <td><a href="https://github.com/JingyunLiang/VRT">Link</a></td>
+                  </tr>
+                  <tr class="item">
+                    <td>VRT Vimeo BI</td>
+                    <td><a href="https://github.com/JingyunLiang/VRT">Link</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <script>
+                //$(document).ready(function () {
+                $('#char_table').DataTable({
+                    bInfo : false,
+                    lengthChange: false,
+                    paging: false,
+                    searching: false,
+                    scrollX: true
+                });
+                        //});
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Video Upscalers Benchmark Participants&amp;url=
+http://localhost:4000/benchmarks/video-upscalers-participants.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Video Upscalers Benchmark Participants&amp;url=
+http://localhost:4000/benchmarks/video-upscalers-participants.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/benchmarks/video-upscalers-participants.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Video Upscalers Benchmark Participants&amp;body=
+http://localhost:4000/benchmarks/video-upscalers-participants.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/benchmarks/video-upscalers-participants.html
+&amp;title=MSU Video Upscalers Benchmark Participants&amp;summary=MSU Video Upscalers Benchmark Participants&amp;source=
+http://localhost:4000/benchmarks/video-upscalers-participants.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">28 Aug 2022</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/vfi/main.webp)"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

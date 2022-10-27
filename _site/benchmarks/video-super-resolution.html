@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>MSU Video Super-Resolution Benchmark</title>
+    <meta property="og:title" content="MSU Video Super-Resolution Benchmark">
+    <meta property="og:image" content="http://localhost:4000/assets/img/benchmarks/vsr/main_page.gif">
+    <meta name="description" content="Discover the newest VSR methods and find the most appropriate method for your tasks">
+    <meta property="og:description" content="Discover the newest VSR methods and find the most appropriate method for your tasks">
+    <meta property="og:url" content="
+http://localhost:4000/benchmarks/video-super-resolution.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/benchmarks/">MSU Benchmark Collection</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <link rel="stylesheet" href="/assets/css/benchmarks/style.css" />
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css" />
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <h1 class="center" id="msu-video-super-resolution-benchmark-detail-restoration--find-the-best-upscaler">MSU Video Super-Resolution Benchmark: Detail Restoration — find the best upscaler</h1>
+        <div id="buttons"></div>
+        <script>
+          __set_menu_buttons([
+          ['Home', '/benchmarks/video-super-resolution.html'],
+          ['Participants','/benchmarks/video-super-resolution-participants.html'],
+          ['Evaluation methodology', '/benchmarks/video-super-resolution-methodology.html'],
+          ['How to participate', '#participate'],
+              ['Contact us', '#contacts']
+          ], 'Home')
+        </script>
+        <div class="current_content">
+          <h3 class="center" id="discover-the-newest-methods-and-find-the-most-appropriate-method-for-your-tasks">Discover the newest methods and find the most appropriate method for your tasks</h3>
+          <div style="margin-left: 60%;">
+            <div><b>Video group head: Dr. Dmitriy Vatolin</b></div>
+            <div style="display: flex">
+              <div><b>Measurements, analysis:</b>&nbsp;</div>
+              <div><b>Anastasia Kirillova,<br />
+                  Eugene Lyapustin</b>
+              </div>
+            </div>
+          </div>
+          <p></p>
+          <div class="center">
+            <div>
+              <img width="50%" src="/assets/img/benchmarks/vsr/artefact_3.png" />
+            </div>
+          </div>
+          <h2 id="whats-new">What’s new</h2>
+          <p>
+            <ul>
+              <li> <b>06.04.2022</b> Added 8 new algorithms and <a href="https://github.com/richzhang/PerceptualSimilarity"> LPIPS</a> metric </li>
+              <li> <b>16.03.2022</b> Preprint of our paper <a href="https://arxiv.org/abs/2203.08923">"Towards True Detail Restoration for Super-Resolution: A Benchmark and a Quality Metric"</a> was released on arXiv </li>
+              <li> <b>15.11.2021</b> Our paper <a href="https://arxiv.org/abs/2110.09992">"ERQA: Edge-restoration Quality Assessment for Video Super-Resolution"</a> was accepted to  VISAPP 2022 </li>
+              <li> <b>10.09.2021</b> Our ERQA metric was published on <a href="https://github.com/msu-video-group/ERQA"> GitHub</a> and can be installed with pip install erqa </li>
+            </ul>
+            <details>
+              <summary>
+                <font color="#1E90FF">Click here to see more news</font>
+              </summary>
+              <ul>
+                <li> <b>26.08.2021</b> Added 8 new algorithms </li>
+                <li> <b>15.07.2021</b> Improved <a href="#visualization">Visualization</a> section to be more user-friendly and added plots with the metric difference on BI and BD degradation to <a href="/benchmarks/video-super-resolution.html#difference">Leaderboard</a> section </li>
+                <li> <b>26.04.2021</b> Beta-version Release </li>
+              </ul>
+            </details>
+          </p>
+          <h2 id="key-features-of-the-benchmark">Key features of the Benchmark</h2>
+          <ul>
+            <li><strong>New metrics for the detail restoration quality</strong>
+              <ul>
+                <li>Check methods’ ability to restore real details</li>
+              </ul>
+            </li>
+            <li><strong>The most complex content for restoration task</strong>: faces, text, QR-codes, car numbers, unpatterned textures, small details
+              <ul>
+                <li>See plots and visualizations for particular content types</li>
+              </ul>
+            </li>
+            <li><strong>Different degradation types to lower the resolution</strong>: bicubic interpolation (BI) and Gaussian blurring and downsampling (BD), with and without noise
+              <ul>
+                <li>Many methods use only one degradation type for their training datasets (e.g. bicubic interpolation) and do not work well on others. <strong>Choose the method that didn’t overfit the test dataset</strong></li>
+              </ul>
+            </li>
+            <li>Subjective comparison of new and popular Super-Resolution methods</li>
+          </ul>
+          <h2 id="leaderboard"><span id="leaderboard"></span> Leaderboard</h2>
+          <style>
+            .dataTables_paginate {margin-top: 15px;}
+            .dataTables_length {margin-bottom: 15px;}
+          </style>
+          <p>
+            The table below shows a comparison of Video Super Resolution methods by subjective score and a few objective metrics. Default ranking is by subjective score.
+            <b>You can click on the model's name in the table</b> to read information about the method. You can see information about all participants <a href="/benchmarks/video-super-resolution-participants.html">here</a>.
+          </p>
+          <div id="leaderboard_pairs">
+            <div class="datatable-container">
+              <div class="datatable-center">
+                <table id="leaderboard_pairs_table" class="display" style="background-color: #ffffff;width:99.5%">
+                  <thead>
+                    <tr style="font-size: large; background-color: #3d6f96">
+                      <th style="background-color: #3d6f96">Rank</th>
+                      <th style="background-color: #3d6f96">Model</th>
+                      <th style="background-color: #3d6f96">Subjective</th>
+                      <th style="background-color: #3d6f96">ERQAv1.0</th>
+                      <th style="background-color: #3d6f96">LPIPS</th>
+                      <th style="background-color: #3d6f96">SSIM-Y**</th>
+                      <th style="background-color: #3d6f96">QRCRv1.0</th>
+                      <th style="background-color: #3d6f96">PSNR-Y**</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <script>
+              function onChangeHelper() {
+              
+                  let text = "<thead>\n" +
+                  "<tr style=\"font-size: large; background-color: #3d6f96\">" +
+                  "    <th style=\"background-color: #3d6f96\">Rank</th>" +
+                  "        <th style=\"background-color: #3d6f96\">Model</th>" +
+                  "        <th style=\"background-color: #3d6f96\">Subjective</th>" +
+                  "        <th style=\"background-color: #3d6f96\">ERQAv1.0</th>" +
+                  "        <th style=\"background-color: #3d6f96\">LPIPS</th>" +
+                  "        <th style=\"background-color: #3d6f96\">SSIM-Y**</th>" +
+                  "        <th style=\"background-color: #3d6f96\">QRCRv1.0</th>" +
+                  "        <th style=\"background-color: #3d6f96\">PSNR-Y**</th>" +
+                  "</tr>\n" +
+                  "</thead>\n" +
+                  "<tbody>\n";
+              
+                  let metrics = ['subjective', 'erqa10', 'lpips', 'ssim', 'qr-metric', 'psnr'];
+              
+                  $.getJSON('../assets/json/benchmarks/vsr/leaderboard.json', function (data) {
+                      $.each( data['bicubic'], function( pair, val ) {
+              
+                          if (pair.substring(0, 4) == 'only') {
+                              td = "<td style='background-color:#FAF18C'>";
+                          } else {
+                              td = "<td>";
+                          }
+                          text += "<tr class=\"item\">\n";
+                          text += td + val["ranking"] + "</td>\n" + td + val["official_name"] + "</td>\n";
+                          for (metric of metrics) {
+                              text += td + val[metric] + "</td>\n";
+                          }
+                          text += "</tr>\n";
+                      });
+              
+                      text += "</tbody>\n";
+              
+                      let table = document.getElementById('leaderboard_pairs_table');
+                      table.innerHTML = text;
+              
+              
+                      $('#leaderboard_pairs_table').DataTable().destroy();
+              
+                      $('#leaderboard_pairs_table').DataTable({
+                          searching: false,
+                          ordering: true,
+                          order: [[0, 'asc']],
+                          "lengthMenu": [ [15, 40, -1], [15, 40, "All"] ],
+                          bInfo : false,
+                          dom: 'Blfrtip',
+                      });
+                  });
+              }
+              
+              onChangeHelper();
+            </script>
+          </div>
+          <h2 id="charts"><span id="charts"></span> Charts</h2>
+          <p>In this section, you can see barcharts and speed-to-performance plots. You can choose metric, motion, content, and degradation type, see tests with or without noise.<br />
+            You can see information about all participants <a href="/benchmarks/video-super-resolution-participants.html">here</a>.</p>
+          <div id="arrow_selector" class="mobile-plots">
+            <p style="white-space: pre;">Metric: <label for="arrow_selector_metric"></label><select id="arrow_selector_metric" name="values">
+                <option>ERQAv1.0</option>
+                <option>ERQAv2.0</option>
+                <option>LPIPS</option>
+                <option>shifted PSNR-Y</option>
+                <option>shifted SSIM-Y</option>
+                <option>QRCRv1.0</option>
+                <option>Subjective</option>
+              </select>    Test: <label for="arrow_selector_test"></label><select id="arrow_selector_test" name="values">
+                <option>Hand tremor + BI degradation + w/o noise</option>
+                <option>Hand tremor + BI degradation + w/ noise</option>
+                <option>Hand tremor + BD degradation + w/o noise</option>
+                <option>Hand tremor + BD degradation + w/ noise</option>
+                <option>Parallel motion + BI degradation + w/o noise</option>
+                <option>Parallel motion + BI degradation + w/ noise</option>
+                <option>Parallel motion + BD degradation + w/o noise</option>
+                <option>Parallel motion + BD degradation + w/ noise</option>
+                <option>Rotation + BI degradation + w/o noise</option>
+                <option>Rotation + BI degradation + w/ noise</option>
+                <option>Rotation + BD degradation + w/o noise</option>
+                <option>Rotation + BD degradation + w/ noise</option>
+              </select>    Content: <label for="arrow_selector_part"></label><select id="arrow_selector_part" name="values">
+                <option>Full frame</option>
+                <option>Board</option>
+                <option>QR</option>
+                <option>Text</option>
+                <option>Metal paper</option>
+                <option>Color lines</option>
+                <option>Car numbers</option>
+                <option>Noise</option>
+                <option>Mira</option>
+              </select>
+            </p>
+            <div id="arrow_plot" style="display: block" class="highcharts-figure">
+              <script async="" src="/assets/js/benchmarks/vsr/arrow.js"></script>
+            </div>
+            <script>
+              function onChangeHelper() {
+                  let speed_plot = document.getElementById("arrow_plot");
+                  let this_div = document.getElementById("arrow_selector");
+              
+                  speed_plot.remove();
+                  let new_plot = document.createElement('div');
+                  new_plot.setAttribute("id", "arrow_plot");
+                  new_plot.setAttribute("class", "highcharts-figure");
+                  this_div.appendChild(new_plot);
+              
+                  let sc = document.createElement("script");
+                  sc.src = '/assets/js/benchmarks/vsr/arrow.js';
+                  new_plot.appendChild(sc);
+              }
+              
+              document.getElementById("arrow_selector_test").onchange = onChangeHelper
+              document.getElementById("arrow_selector_part").onchange = onChangeHelper
+              document.getElementById("arrow_selector_metric").onchange = onChangeHelper
+            </script>
+          </div>
+          <div id="time_plot_selector" class="mobile-plots">
+            <p style="white-space: pre;">Metric: <label for="time_plot_selector_metric"></label><select id="time_plot_selector_metric" name="values">
+                <option>ERQAv1.0</option>
+                <option>ERQAv2.0</option>
+                <option>LPIPS</option>
+                <option>shifted PSNR-Y</option>
+                <option>shifted SSIM-Y</option>
+                <option>QRCRv1.0</option>
+                <option>Subjective</option>
+              </select>    Test: <label for="time_plot_selector_test"></label><select id="time_plot_selector_test" name="values">
+                <option>Hand tremor + BI degradation + w/o noise</option>
+                <option>Hand tremor + BI degradation + w/ noise</option>
+                <option>Hand tremor + BD degradation + w/o noise</option>
+                <option>Hand tremor + BD degradation + w/ noise</option>
+                <option>Parallel motion + BI degradation + w/o noise</option>
+                <option>Parallel motion + BI degradation + w/ noise</option>
+                <option>Parallel motion + BD degradation + w/o noise</option>
+                <option>Parallel motion + BD degradation + w/ noise</option>
+                <option>Rotation + BI degradation + w/o noise</option>
+                <option>Rotation + BI degradation + w/ noise</option>
+                <option>Rotation + BD degradation + w/o noise</option>
+                <option>Rotation + BD degradation + w/ noise</option>
+              </select>    Content: <label for="time_plot_selector_part"></label><select id="time_plot_selector_part" name="values">
+                <option>Full frame</option>
+                <option>Board</option>
+                <option>QR</option>
+                <option>Text</option>
+                <option>Metal paper</option>
+                <option>Color lines</option>
+                <option>Car numbers</option>
+                <option>Noise</option>
+                <option>Mira</option>
+              </select></p>
+            <div id="time_plot" style="display: block" class="highcharts-figure">
+              <script async="" src="/assets/js/benchmarks/vsr/time_scatter.js"></script>
+            </div>
+            <script>
+              function onChangeHelper() {
+                  let speed_plot = document.getElementById("time_plot");
+                  let this_div = document.getElementById("time_plot_selector");
+              
+                  speed_plot.remove();
+                  let new_plot = document.createElement('div');
+                  new_plot.setAttribute("id", "time_plot");
+                  new_plot.setAttribute("class", "highcharts-figure");
+                  this_div.appendChild(new_plot);
+              
+                  let sc = document.createElement("script");
+                  sc.src = '/assets/js/benchmarks/vsr/time_scatter.js';
+                  new_plot.appendChild(sc);
+              }
+              
+              document.getElementById("time_plot_selector_test").onchange = onChangeHelper
+              document.getElementById("time_plot_selector_part").onchange = onChangeHelper
+              document.getElementById("time_plot_selector_metric").onchange = onChangeHelper
+            </script>
+          </div>
+          <p style="text-align: center">Highlight the plot region where you want to zoom in</p>
+          <h2 id="visualization"><span id="visualization"></span> Visualization</h2>
+          <p>In this section, you can choose a part of the frame with particular content, see a cropped piece from this, <b>MSU VQMT PSNR</b>* Visualization, and <b>ERQAv1.0</b> Visualization for this crop. 
+            In part "QR-codes" codes, which can be detected, are surrounded by a blue rectangle. You can see information about all participants <a href="/benchmarks/video-super-resolution-participants.html">here</a>.<br />
+            *We visualize shifted PSNR metric by applying MSU VQMT PSNR Visualization to frames with optimal shift for PSNR.
+          </p>
+          <style type="text/css">
+            .img-zoom-container {
+                position: relative;
+                margin: 1em auto;
+            
+                width: 100%;
+            }
+            
+            .img-zoom-lens {
+                position: absolute;
+                border: 2px solid #ff0000;
+                /*set the size of the lens:*/
+            
+                width: 15px;
+                height: 15px;
+            }
+            
+            /*Three image containers (use 25% for four, and 50% for two, etc)*/
+            .column {
+                box-sizing: border-box;
+                float: left;
+                width: 24%;
+                padding: 5px;
+            }
+            
+            
+            /*Clear floats after image containers*/
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+          </style>
+          <div class="comparison_selector_div mobile-visualization">
+            <script>
+              function imageZoom(imgIDs, resultIDs, vqmtIDs, edgeIDs, zoomx, zoomy) {
+                  let imgs = [];
+                  for (let i = 0; i < imgIDs.length; i++) {
+                      let imgID = imgIDs[i];
+                      let img = document.getElementById(imgID);
+                      imgs.push(img);
+                  }
+              
+                  let results = [];
+                  for (let i = 0; i < resultIDs.length; i++) {
+                      let resultID = resultIDs[i];
+                      let result = document.getElementById(resultID);
+                      results.push(result);
+                  }
+              
+                  let vqmts = [];
+                  for (let i = 0; i < vqmtIDs.length; i++) {
+                      let vqmtID = vqmtIDs[i];
+                      let vqmt = document.getElementById(vqmtID);
+                      vqmts.push(vqmt);
+                  }
+              
+                  let edges = [];
+                  for (let i = 0; i < edgeIDs.length; i++) {
+                      let edgeID = edgeIDs[i];
+                      let edge = document.getElementById(edgeID);
+                      edges.push(edge);
+                  }
+              
+                  let lenses = [];
+                  let x = Math.floor(zoomx / 1080 * imgs[0].height);
+                  let y = Math.floor(zoomy / 1920 * imgs[0].width);
+              
+                  for (let i = 0; i < imgs.length; i++) {
+                      let pastLens = document.getElementById("lens" + i.toString());
+                      if (pastLens) {
+                          pastLens.remove();
+                      }
+                      let lens = document.createElement("DIV");
+                      lens.setAttribute("class", "img-zoom-lens");
+                      lens.setAttribute("id", "lens" + i.toString());
+                      imgs[i].parentElement.insertBefore(lens, imgs[i]);
+                      lenses.push(lens);
+                  }
+                  let cxs = [], cys = [];
+                  for (let i = 0; i < results.length; i++) {
+                      let cx = results[i].offsetWidth / lenses[i].offsetWidth;
+                      let cy = results[i].offsetHeight / lenses[i].offsetHeight;
+                      cxs.push(cx);
+                      cys.push(cy);
+                  }
+              
+                  /* Set background properties for the result DIV */
+                  for (let i = 0; i < results.length; i++) {
+                      //results[i].style.backgroundImage = "url('" + imgs[i].src + "')";
+                      results[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                  }
+              
+                  for (let i = 0; i < vqmts.length; i++) {
+                      vqmts[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                      edges[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                  }
+              
+                  for (let i = 0; i < lenses.length; i++) {
+                      lenses[i].style.top = x + "px";
+                      lenses[i].style.left = y + "px";
+                      results[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                      if (i < vqmts.length) {
+                          vqmts[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                          edges[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                      }
+                  }
+              
+                  /* Execute a function when someone moves the cursor over the image, or the lens: */
+                  for (let i = 0; i < lenses.length; i++) {
+                      lenses[i].addEventListener("mousedown", mousedown);
+                      lenses[i].addEventListener("mouseup", mouseup);
+                      /* And also for touch screens: */
+                      /* Or touched (for touch screens: */
+                      imgs[i].addEventListener("click", moveLens);
+                      /* And also for touch screens: */
+                      /* Or touched (for touch screens: */
+              
+              
+                      lenses[i].addEventListener("touchstart", mousedown);
+                      lenses[i].addEventListener("touchend", mouseup);
+                  }
+              
+                  let clicked = 0;
+              
+              
+                  function mousedown(e) {
+                      for (let i = 0; i < lenses.length; i++) {
+                          lenses[i].addEventListener("mousemove", moveLens);
+                          imgs[i].addEventListener("mousemove", moveLens);
+                          lenses[i].addEventListener("touchmove", moveLens);
+                          imgs[i].addEventListener("touchmove", moveLens);
+                      }
+                      clicked = 1;
+                  }
+              
+                  function mouseup(e) {
+                      for (let i = 0; i < lenses.length; i++) {
+                          lenses[i].removeEventListener("mousemove", moveLens);
+                          imgs[i].removeEventListener("mousemove", moveLens);
+                          lenses[i].removeEventListener("touchmove", moveLens);
+                          imgs[i].removeEventListener("touchmove", moveLens);
+                      }
+                      clicked = 0;
+                  }
+              
+              
+                  function moveLens(e) {
+                      /*if (!clicked) {
+                          return;
+                      }*/
+                      let pos, x, y;
+                      /* Prevent any other actions that may occur when moving over the image */
+                      e.preventDefault();
+                      /* Get the cursor's x and y positions: */
+                      pos = getCursorPos(e);
+                      /* Calculate the position of the lens: */
+                      x = pos.x - (lenses[0].offsetWidth / 2);
+                      y = pos.y - (lenses[0].offsetHeight / 2);
+                      /* Prevent the lens from being positioned outside the image: */
+                      if (x > imgs[0].width - lenses[0].offsetWidth) {
+                          x = imgs[0].width - lenses[0].offsetWidth;
+                      }
+                      if (x < 0) {
+                          x = 0;
+                      }
+                      if (y > imgs[0].height - lenses[0].offsetHeight) {
+                          y = imgs[0].height - lenses[0].offsetHeight;
+                      }
+                      if (y < 0) {
+                          y = 0;
+                      }
+                      /* Set the position of the lens: */
+                      for (let i = 0; i < lenses.length; i++) {
+                          lenses[i].style.left = x + "px";
+                          lenses[i].style.top = y + "px";
+                          /* Display what the lens "sees": */
+                          results[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                          if (i < vqmts.length) {
+                              vqmts[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                              edges[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                          }
+                      }
+                  }
+              
+                  function getCursorPos(e) {
+                      let x = 0, y = 0;
+                      e = e || window.event;
+                      /* Get the x and y positions of the image: */
+                      let boundingRects = [];
+                      for (let i = 0; i < imgs.length; i++) {
+                          let a = imgs[i].getBoundingClientRect();
+                          boundingRects.push(a);
+                      }
+              
+                      let i = boundingRects.length - 1;
+                      while (i > 0 && e.pageX < boundingRects[i].left) {
+                          i--;
+                      }
+              
+                      /* Calculate the cursor's x and y coordinates, relative to the image: */
+                      x = e.pageX - boundingRects[i].left;
+                      y = e.pageY - boundingRects[i].top;
+                      /* Consider any page scrolling: */
+                      x = x - window.pageXOffset;
+                      y = y - window.pageYOffset;
+                      return {x: x, y: y};
+                  }
+              }
+            </script>
+            <p style="white-space: pre;">Frame: <label for="comp_num_selector"></label><select id="comp_num_selector" name="values">
+                <option selected="selected">Hand tremor + BI degradation + w/o noise</option>
+                <option>Hand tremor + BI degradation + w/ noise</option>
+                <option>Hand tremor + BD degradation + w/o noise</option>
+                <option>Hand tremor + BD degradation + w/ noise</option>
+                <option>Parallel motion + BI degradation + w/o noise</option>
+                <option>Parallel motion + BI degradation + w/ noise</option>
+                <option>Parallel motion + BD degradation + w/o noise</option>
+                <option>Parallel motion + BD degradation + w/ noise</option>
+                <option>Rotation + BI degradation + w/o noise</option>
+                <option>Rotation + BI degradation + w/ noise</option>
+                <option>Rotation + BD degradation + w/o noise</option>
+                <option>Rotation + BD degradation + w/ noise</option>
+              </select>    Content: <label for="comp_part_selector"></label><select id="comp_part_selector" name="values">
+                <option selected="selected">Board</option>
+                <option>QR-codes</option>
+                <option>Text</option>
+                <option>Metal paper</option>
+                <option>Color lines</option>
+                <option>Car numbers</option>
+                <option>Noise</option>
+                <option>Mira</option>
+              </select></p>
+            <p style="white-space: pre;"> Model 1: <label for="comp_model1_selector"></label><select id="comp_model1_selector" name="values">
+                <option selected="selected">D3Dnet</option>
+                <option>DBVSR</option>
+                <option>DUF-16L</option>
+                <option>DUF-28L</option>
+                <option>DynaVSR-R</option>
+                <option>DynaVSR-V</option>
+                <option>ESPCN</option>
+                <option>ESRGAN</option>
+                <option>iSeeBetter</option>
+                <option>LGFN</option>
+                <option>RBPN</option>
+                <option>Real-ESRGAN</option>
+                <option>Real-ESRNet</option>
+                <option>RealSR</option>
+                <option>RRN-5L</option>
+                <option>RRN-10L</option>
+                <option>SOF-VSR-BD</option>
+                <option>SOF-VSR-BI</option>
+                <option>TDAN</option>
+                <option>TGA</option>
+                <option>TMNet</option>
+              </select>    Model 2: <label for="comp_model2_selector"></label><select id="comp_model2_selector" name="values">
+                <option>D3Dnet</option>
+                <option selected="selected">DBVSR</option>
+                <option>DUF-16L</option>
+                <option>DUF-28L</option>
+                <option>DynaVSR-R</option>
+                <option>DynaVSR-V</option>
+                <option>ESPCN</option>
+                <option>ESRGAN</option>
+                <option>iSeeBetter</option>
+                <option>LGFN</option>
+                <option>RBPN</option>
+                <option>Real-ESRGAN</option>
+                <option>Real-ESRNet</option>
+                <option>RealSR</option>
+                <option>RRN-5L</option>
+                <option>RRN-10L</option>
+                <option>SOF-VSR-BD</option>
+                <option>SOF-VSR-BI</option>
+                <option>TDAN</option>
+                <option>TGA</option>
+                <option>TMNet</option>
+              </select>    Model 3: <label for="comp_model3_selector"></label><select id="comp_model3_selector" name="values">
+                <option>D3Dnet</option>
+                <option>DBVSR</option>
+                <option selected="selected">DUF-16L</option>
+                <option>DUF-28L</option>
+                <option>DynaVSR-R</option>
+                <option>DynaVSR-V</option>
+                <option>ESPCN</option>
+                <option>ESRGAN</option>
+                <option>iSeeBetter</option>
+                <option>LGFN</option>
+                <option>RBPN</option>
+                <option>Real-ESRGAN</option>
+                <option>Real-ESRNet</option>
+                <option>RealSR</option>
+                <option>RRN-5L</option>
+                <option>RRN-10L</option>
+                <option>SOF-VSR-BD</option>
+                <option>SOF-VSR-BI</option>
+                <option>TDAN</option>
+                <option>TGA</option>
+                <option>TMNet</option>
+              </select></p>
+            <p style="text-align: center"><b>Drag a red rectangle in the area, which you want to crop.</b></p>
+            <div class="row">
+              <div class="column">
+                <h3 style="text-align: center">GT</h3>
+                <div class="img-zoom-container">
+                  <img id="imagegt" style="width: 100%; height: 8vw" src="https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/GT/small_images/test1_bicubic_part1_frame_052_GT.jpg" />
+                  <div id="resultgt" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <img id="fake_vqmt" style="width: 100%;" src="/assets/img/benchmarks/vsr/vqmt.png" />
+                  <img id="fake_edge" style="width: 100%;" src="/assets/img/benchmarks/vsr/erqa.png" />
+                </div>
+              </div>
+              <div class="column">
+                <h3 id="comp_label1" style="text-align: center">D3Dnet</h3>
+                <div class="img-zoom-container">
+                  <img id="image1" style="width: 100%; height: 8vw" src="https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/D3Dnet/small_images/test1_bicubic_part1_frame_052_D3Dnet.jpg" />
+                  <div id="result1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="vqmt1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="edge1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                </div>
+              </div>
+              <div class="column">
+                <h3 id="comp_label2" style="text-align: center">DBVSR</h3>
+                <div class="img-zoom-container">
+                  <img id="image2" style="width: 100%; height: 8vw" src="https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/DBVSR/small_images/test1_bicubic_part1_frame_052_DBVSR.jpg" />
+                  <div id="result2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="vqmt2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="edge2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                </div>
+              </div>
+              <div class="column">
+                <h3 id="comp_label3" style="text-align: center">DUF-16L</h3>
+                <div class="img-zoom-container">
+                  <img id="image3" style="width: 100%; height: 8vw" src="https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/DUF-16L/small_images/test1_bicubic_part1_frame_052_DUF-16L.jpg" />
+                  <div id="result3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="vqmt3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                  <div id="edge3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                </div>
+              </div>
+              <script>
+                imageZoom(["imagegt", "image1", "image2", "image3"],
+                    ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 540, 960);
+                onChangeHelper();
+                
+                function onChangeHelper() {
+                    let bignumToName = ['test1_bicubic', 'test1_bicubic_noise2', 'test1_gauss', 'test1_gauss_noise2',
+                    'test2_bicubic', 'test2_bicubic_noise2', 'test2_gauss', 'test2_gauss_noise2',
+                    'test3_bicubic', 'test3_bicubic_noise2', 'test3_gauss', 'test3_gauss_noise2'];
+                    let frameToName = ["frame_052", "frame_052", "frame_052", "frame_052",
+                        "frame_069", "frame_069", "frame_069", "frame_069",
+                        "frame_049", "frame_049", "frame_049", "frame_049", ];
+                    let numToName = ['D3Dnet', 'DBVSR', 'DUF-16L', 'DUF-28L', 'DynaVSR-R', 'DynaVSR-V', 'ESPCN', 'ESRGAN', 'iSeeBetter', 'LGFN', 'RBPN',
+                        'Real-ESRGAN', 'Real-ESRNet', 'RealSR', 'RRN-5L', 'RRN-10L' ,'SOF-VSR-BD', 'SOF-VSR-BI', 'TDAN', 'TGA', 'TMNet'];
+                    let partToName = ['part1', 'part2', 'part3', 'part4', 'part5', 'part6', 'part7', 'part8'];
+                
+                    let numselect = document.getElementById("comp_num_selector");
+                    let selected_test = bignumToName[numselect.selectedIndex];
+                    let selected_frame = frameToName[numselect.selectedIndex];
+                
+                    let partselect = document.getElementById("comp_part_selector");
+                    let selected_part = partToName[partselect.selectedIndex];
+                
+                    let model1select = document.getElementById("comp_model1_selector");
+                    let model2select = document.getElementById("comp_model2_selector");
+                    let model3select = document.getElementById("comp_model3_selector");
+                    let selected_model1 = numToName[model1select.selectedIndex];
+                    let selected_model2 = numToName[model2select.selectedIndex];
+                    let selected_model3 = numToName[model3select.selectedIndex];
+                
+                    let pic_gt = document.getElementById("imagegt");
+                    let pic1 = document.getElementById("image1");
+                    let pic2 = document.getElementById("image2");
+                    let pic3 = document.getElementById("image3");
+                
+                    let res_gt = document.getElementById("resultgt");
+                    let res1 = document.getElementById("result1");
+                    let res2 = document.getElementById("result2");
+                    let res3 = document.getElementById("result3");
+                
+                    let fake_vqmt = document.getElementById("fake_vqmt");
+                    let vqmt1 = document.getElementById("vqmt1");
+                    let vqmt2 = document.getElementById("vqmt2");
+                    let vqmt3 = document.getElementById("vqmt3");
+                
+                    let fake_edge = document.getElementById("fake_edge");
+                    let edge1 = document.getElementById("edge1");
+                    let edge2 = document.getElementById("edge2");
+                    let edge3 = document.getElementById("edge3");
+                
+                
+                    let img_prefix = "https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/";
+                    let src_gt = img_prefix + "GT" + "/small_images/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + 'GT' + '.jpg';
+                    let src1 = img_prefix + selected_model1 + "/small_images/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model1 + '.jpg';
+                    let src2 = img_prefix + selected_model2 + "/small_images/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model2 + '.jpg';
+                    let src3 = img_prefix + selected_model3 + "/small_images/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model3 + '.jpg';
+                
+                    let resultgt_src = img_prefix + "GT" + "/result_parts/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + 'GT' + '.png';
+                    let result1_src = img_prefix + selected_model1 + "/result_parts/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model1 + '.png';
+                    let result2_src = img_prefix + selected_model2 + "/result_parts/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model2 + '.png';
+                    let result3_src = img_prefix + selected_model3 + "/result_parts/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model3 + '.png';
+                
+                    let vqmt1_src = img_prefix + selected_model1 + "/psnr/" + selected_test + "_" + selected_part + "_" + selected_frame + ".jpg";
+                    let vqmt2_src = img_prefix + selected_model2 + "/psnr/" + selected_test + "_" + selected_part + "_" + selected_frame + ".jpg";
+                    let vqmt3_src = img_prefix + selected_model3 + "/psnr/" + selected_test + "_" + selected_part + "_" + selected_frame + ".jpg";
+                
+                    let edge1_src = img_prefix + selected_model1 + "/edge/" + selected_test + "_" + selected_part + "_" + selected_frame + ".PNG";
+                    let edge2_src = img_prefix + selected_model2 + "/edge/" + selected_test + "_" + selected_part + "_" + selected_frame + ".PNG";
+                    let edge3_src = img_prefix + selected_model3 + "/edge/" + selected_test + "_" + selected_part + "_" + selected_frame + ".PNG";
+                
+                    let comp_label1 = document.getElementById("comp_label1");
+                    let comp_label2 = document.getElementById("comp_label2");
+                    let comp_label3 = document.getElementById("comp_label3");
+                
+                    res_gt.style.backgroundImage = "url('" + resultgt_src + "')";
+                    res1.style.backgroundImage = "url('" + result1_src + "')";
+                    res2.style.backgroundImage = "url('" + result2_src + "')";
+                    res3.style.backgroundImage = "url('" + result3_src + "')";
+                
+                    vqmt1.style.backgroundImage = "url('" + vqmt1_src + "')";
+                    vqmt2.style.backgroundImage = "url('" + vqmt2_src + "')";
+                    vqmt3.style.backgroundImage = "url('" + vqmt3_src + "')";
+                
+                    edge1.style.backgroundImage = "url('" + edge1_src + "')";
+                    edge2.style.backgroundImage = "url('" + edge2_src + "')";
+                    edge3.style.backgroundImage = "url('" + edge3_src + "')";
+                
+                    comp_label1.innerText = selected_model1;
+                    comp_label2.innerText = selected_model2;
+                    comp_label3.innerText = selected_model3;
+                
+                    pic_gt.src = src_gt;
+                    pic1.src = src1;
+                    pic2.src = src2;
+                    pic3.src = src3;
+                
+                    imageZoom(["imagegt", "image1", "image2", "image3"],
+                        ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 540, 960);
+                }
+                
+                document.getElementById("comp_num_selector").onchange = onChangeHelper;
+                document.getElementById("comp_part_selector").onchange = onChangeHelper;
+                document.getElementById("comp_model1_selector").onchange = onChangeHelper;
+                document.getElementById("comp_model2_selector").onchange = onChangeHelper;
+                document.getElementById("comp_model3_selector").onchange = onChangeHelper;
+              </script>
+            </div>
+          </div>
+          <!--
+<style>
+    .paper-preview-container img:hover {
+        filter: brightness(80%);
+    }
+
+    #paper-preview01 {
+        padding: 0;
+        clear: both;
+        border: 1px solid black;
+        box-shadow: 5px 5px 3px #888888;
+        width: 150px;
+    }
+</style>
+
+**Read the Benchmark's paper**
+
+
+<div style="display: inline-block; text-align: center" class="paper-preview-container">
+    <a href="/"><img src="/assets/img/benchmarks/deinterlacer/paper_preview.png" id="paper-preview01"></a><br/>
+    <a href="/">Download (pdf)</a>
+</div> -->
+          <h2 id="your-method-submission"><span id="participate"></span> Your method submission</h2>
+          <p><strong>Verify the restoration ability of your VSR algorithm and compare it with state-of-the-art solutions.</strong><br />
+            You can see information about all other participants <a href="/benchmarks/video-super-resolution-participants.html">here</a>.</p>
+          <div>
+            <table align="center" width="100%" cellpadding="10" style="border-collapse:collapse; table-layout: fixed; word-break: break-all;">
+              <tr>
+                <td bgcolor="#F4F6F6" colspan="2" width="30%" style="word-break: break-all;">
+                  <b>1. Download input data</b>
+                  <br />
+                  <i><font size="=1"></font></i>
+                </td>
+                <td bgcolor="#F4F6F6" style="word-break: break-all;">
+                  <b>Download input low-resolution videos as sequences of frames in .png format
+                    <br />
+                    There are 2 available options:</b>
+                  <ul>a. Download 1 folder with all videos, joined in one sequence <a href="https://drive.google.com/drive/folders/1N1IyjDFwxSNpOjHiKd_dLcthaX_-gi0F?usp=sharing">here</a>.<br />
+                    Neighboring videos are separated 
+                    by 10 black frames, which will be skipped for evaluation.</ul>
+                  <ul>b. If you worry this strategy can decrease your performance, you can download 12 folders<br />
+                    with 100 frames each <a href="https://drive.google.com/drive/folders/1hl3MZurhxe-qw1NIQhzfqhr0sZfgUUQt?usp=sharing">here</a>.</ul>
+                </td>
+              </tr>
+              <tr>
+                <td style="border-right-style: solid" width="15%">
+                  <br />
+                  <br />
+                </td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" bgcolor="#F4F6F6" style="word-break: break-all;" width="15%">
+                  <b>2. Apply your algorithm</b>
+                </td>
+                <td bgcolor="#F4F6F6" style="word-break: break-all;">
+                  <b>Restore high-resolution frames with your algorithm.</b><br />
+                  You can also send us the code of your method or the executable file and we will run it ourselves.
+                </td>
+              </tr>
+              <tr>
+                <td style="border-right-style: solid">
+                  <br />
+                  <br />
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="2" bgcolor="#F4F6F6" style="word-break: break-all;" width="15%">
+                  <b>3. Send us result</b>
+                </td>
+                <td bgcolor="#F4F6F6" style="word-break: break-all;">
+                  <b>Send us an email to <a href="mailto:vsr-benchmark@videoprocessing.ai">vsr-benchmark@videoprocessing.ai</a>
+                    with the following information: </b>
+                  <ul><b>A. </b>Name of your method that will be specified in our benchmark</ul>
+                  <ul><b>B. </b>Link to the cloud drive (Google Drive, OneDrive, Dropbox, etc.), containing output frames.<br />
+                    Check that the number of output frames matches the number of input frames:
+                    <ul>1310 frames in one folder for download option (a)</ul>
+                    <ul>12 folders with 100 frames each for download option (b)</ul>
+                  </ul>
+                  <ul><b>C. </b>(Optional) Execution time of your algorithm and information about used GPU</ul>
+                  <ul><b>D. </b>(Optional) Any additional information about the method:
+                    <ul>1. Full name of your model</ul>
+                    <ul>2. The parameter set that was used</ul>
+                    <ul>3. Any other additional information</ul>
+                    <ul>4. A link to the code of your model, if it is available</ul>
+                    <ul>5. A link to the paper about your model</ul>
+                    <ul>6. Any characteristics of your model's architecture (e.g. motion compensation, propagation, fusion)</ul>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!--See more information on the <a href="/benchmarks/helloworld.html#participate">GitHub page</a>-->
+          <h2 id="contact-us"><span id="contacts"></span> Contact Us</h2>
+          <p>For questions and propositions, please contact us: <a href="mailto:vsr-benchmark@videoprocessing.ai">vsr-benchmark@videoprocessing.ai</a></p>
+          <!--Feel free to ask any question about our benchmark:
+
+<style>
+    input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
+        font-size: 0.75em;
+        color: #999;
+        top: -5px;
+        -webkit-transition: all 0.225s ease;
+        transition: all 0.225s ease;
+    }
+
+    
+    .styled-input {
+        float: left;
+        width: 293px;
+        margin: 1rem 0;
+        position: relative;
+        border-radius: 4px;
+    }
+    
+    /*
+    @media only screen and (max-width: 768px){
+        .styled-input {
+            width:100%;
+        }
+    }
+    */
+    
+    .styled-input label {
+        color: black;
+        padding: 1.3rem 30px 1rem 30px;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        -webkit-transition: all 0.25s ease;
+        transition: all 0.25s ease;
+        pointer-events: none;
+    }
+    
+
+    .styled-input.wide {
+        width: 500px;
+        max-width: 100%;
+    }
+
+    input,
+    textarea {
+        padding: 30px;
+        border: 0;
+        font-size: 1rem;
+        background-color: #F0F0F0;
+        color: black;
+        border-radius: 4px;
+    }
+
+    input:focus,
+    textarea:focus { outline: 0; }
+
+    input:focus ~ span,
+    textarea:focus ~ span {
+        width: 100%;
+        -webkit-transition: all 0.075s ease;
+        transition: all 0.075s ease;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 15em;
+    }
+
+    .input-container {
+        width: 650px;
+        max-width: 100%;
+    }
+
+    .submit-btn {
+        float: center;
+        padding: 7px 35px;
+        border-radius: 4px;
+        display: inline-block;
+        background-color: #496E93;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
+        0 2px 10px 0 rgba(0,0,0,0.07);
+        -webkit-transition: all 300ms ease;
+        transition: all 300ms ease;
+        width:150px;
+    }
+
+    .wrapper {text-align: center;}
+
+    .submit-btn:hover {
+        transform: translateY(1px);
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
+        0 1px 1px 0 rgba(0,0,0,0.09);
+    }
+
+    @media (max-width: 768px) {
+        .submit-btn {
+            width:100%;
+            float: none;
+            text-align:center;
+        }
+    }
+
+    .cont2{
+        width:70%;
+        display:inline-block;
+    }
+
+    .f_form{
+        background-color: #9EB6CE;
+        border-radius:15px;
+    }
+</style>
+
+
+<div class="cont2">
+    <div class=".f_form">
+        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSegtyc69_VRyDIsyLBjOFRXpx0Eb1aJ3o6Oco_7qAPICdh5Vg/formResponse">
+            <div class="input-container">
+                <div>
+                    <div class="styled-input wide">
+                        <input style="width:100%" type="text" name="entry.1374950457" required />
+                        <label>Your name</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="styled-input wide">
+                        <input style="width:100%" name="entry.1818815138" type="text" required />
+                        <label>Email</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="styled-input wide">
+                        <input style="width:100%" type="text" name="entry.1449778271" required />
+                        <label>Your question or any feedback</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="styled-input wide">
+                    <input style="width:50%" type="submit" value="Send" class="submit-btn" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+-->
+          <h2 id="cite-us"><span id="cite"></span> Cite Us</h2>
+          <p>To refer to our benchmark or metric ERQA in your work, cite one of our papers:</p>
+          <div>
+            <table align="left" width="100%" style="border-collapse:collapse,font-size:10%">
+              <tr>
+                <td bgcolor="#F4F6F6">
+                  <tt>@article{</tt>
+                  <div style="margin-left: 20px"><tt>title={Towards True Detail Restoration for Super-Resolution: A Benchmark and a Quality Metric},</tt></div>
+                  <div style="margin-left: 20px"><tt>author={Lyapustin, Eugene and Kirillova, Anastasia and Meshchaninov, Viacheslav and Zimin, Evgeney and Karetin, Nikolai and Vatolin, Dmitriy},</tt></div>
+                  <div style="margin-left: 20px"><tt>journal={arXiv preprint arXiv:2203.08923},</tt></div>
+                  <div style="margin-left: 20px"><tt>year={2022}</tt></div>
+                  <tt>}</tt>
+                  <br />
+                  <br />
+                  <tt>@conference{</tt>
+                  <div style="margin-left: 20px"><tt>author={Anastasia Kirillova. and Eugene Lyapustin. and Anastasia Antsiferova. and Dmitry Vatolin.},</tt></div>
+                  <div style="margin-left: 20px"><tt>title={ERQA: Edge-restoration Quality Assessment for Video Super-Resolution},</tt></div>
+                  <div style="margin-left: 20px"><tt>booktitle={Proceedings of the 17th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 4: VISAPP,},</tt></div>
+                  <div style="margin-left: 20px"><tt>year={2022},</tt></div>
+                  <div style="margin-left: 20px"><tt>pages={315-322},</tt></div>
+                  <div style="margin-left: 20px"><tt>publisher={SciTePress},</tt></div>
+                  <div style="margin-left: 20px"><tt>organization={INSTICC},</tt></div>
+                  <div style="margin-left: 20px"><tt>doi={10.5220/0010780900003124},</tt></div>
+                  <div style="margin-left: 20px"><tt>isbn={978-989-758-555-5},</tt></div>
+                  <tt>}</tt>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=MSU Video Super-Resolution Benchmark&amp;url=
+http://localhost:4000/benchmarks/video-super-resolution.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=MSU Video Super-Resolution Benchmark&amp;url=
+http://localhost:4000/benchmarks/video-super-resolution.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/benchmarks/video-super-resolution.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=MSU Video Super-Resolution Benchmark&amp;body=
+http://localhost:4000/benchmarks/video-super-resolution.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/benchmarks/video-super-resolution.html
+&amp;title=MSU Video Super-Resolution Benchmark&amp;summary=MSU Video Super-Resolution Benchmark&amp;source=
+http://localhost:4000/benchmarks/video-super-resolution.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">26 Apr 2021</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/vfi/main.webp)"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Second annual MPEG4-AVC/H.264 codecs comparison. Frequently Asked Questions</title>
+    <meta property="og:title" content="Second annual MPEG4-AVC/H.264 codecs comparison. Frequently Asked Questions">
+    <meta property="og:image" content="http://localhost:4000/assets/img/codecs/mpeg4-avc-h264-2005-faq/preview.png">
+    <meta name="description" content="FAQ on MPEG4-AVC/H.264 codecs comparison">
+    <meta property="og:description" content="FAQ on MPEG4-AVC/H.264 codecs comparison">
+    <meta property="og:url" content="
+http://localhost:4000/codecs/mpeg4-avc-h264-2005-faq.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/codecs/">Codecs Comparisons & Optimization</a>
+        &mdash;
+        <a href="/codecs/reports/">All Codecs Comparison Reports</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <h1 id="second-annual-mpeg4-avch264-codecs-comparisonfrequently-asked-questions">Second annual MPEG4-AVC/H.264 codecs comparison<br />
+          Frequently Asked Questions</h1>
+        <ul>
+          <li>
+            <p><strong>Q: How did you choose metric set for your comparison?</strong></p>
+            <p>A: We used metrics, which are implemented in <a href="http://compression.ru/video/quality_measure/video_measurement_tool.html">MSU Quality
+                Measurement
+                Tool</a>.
+              In that tool we implemented objective comparison metrics that are
+              most commonly used.</p>
+            <p>The main metric in our comparison is PSNR, because it is used in
+              most objective comparisons, so our results will be understandable
+              for everybody. We will increase the number of metrics in next
+              comparison in spite of increasing measurements time.</p>
+          </li>
+          <li>
+            <p><strong>Q: Did you try to find mistakes in your comparison?</strong></p>
+            <p>A: Of course we did. Before the comparison start we found reviewers
+              for our comparison. They got draft of our report the month before
+              public release. In exchange they send to us list of comments and
+              mistakes in our comparison. Such exchange significantly decreased
+              number of mistakes in our report.</p>
+          </li>
+          <li>
+            <p><strong>Q: How did you verify objective measurements?</strong></p>
+            <p>A: We used different ways:</p>
+            <ul>
+              <li>First, we have published our measurement tool. Lots of people
+                download it, use it, and some times send us bug reports (as a
+                rule, bugs are in work with file formats, B-frames in AVI, etc).
+                So, reliability of our tool now is much better than in previous
+                comparisons.</li>
+              <li>Second, after completion of all measurements, we provided
+                original sequences and full results to codec developers (only
+                results of the developer’s codec and one of the freeware
+                reference codecs for each developer). Developers are really
+                interested in good results for their codec and they can verify
+                some strange results.</li>
+            </ul>
+            <p>These are our methods to increase our results reliability.</p>
+          </li>
+          <li>
+            <p><strong>Q: You mainly test the encoders, why don’t you call your
+                comparison “encoder comparison”?</strong></p>
+            <p>A: We use developer’s decoder if it is provided to us with encoder.
+              It means that developers can increase their results using decoder
+              optimization, postfiltering, etc.</p>
+            <p>In next comparison we are going to make additional decoder
+              compatibility tests.</p>
+          </li>
+          <li>
+            <p><strong>Q: What computers have you used for measurements?</strong></p>
+            <p>A: You can find information about our computers’ configurations on
+              <a href="/codecs/mpeg4-avc-h264-2005-part1.html">this
+                page</a>,
+              or on the 7-th page of PDF document.</p>
+          </li>
+          <li>
+            <p><strong>Q: Why did you use deinterlaced sequences?</strong></p>
+            <p>A: It is our common policy. We chose our sources similar to
+              sequences, which ordinary users use. It is very difficult for
+              ordinary user to get progressive sequence nowadays. As a rule, users
+              get sequences to compress from DVDs, satellite receivers,
+              DV-cameras, etc. They capture that sequences in real time using
+              popular simple embedded deinterlacing methods. Such methods along
+              with compressing artifacts decrease encoding performance on those
+              sequences. We think that popular codecs should take into
+              consideration such features of sequences with the help of
+              prefiltering and advanced motion compensation.</p>
+          </li>
+          <li>
+            <p><strong>Q: Is it possible for developers to use information about your
+                testing set to make better their results in your comparison?</strong></p>
+            <p>A: Theoretically it is possible. That is why we each time replace
+              two or three sequences with absolutely new ones, publishing them
+              only after finish of all measurements. So, user can draw more
+              attention on that sequences (we also track differences in results
+              with big interest).</p>
+          </li>
+          <li>
+            <p><strong>Q: You have used ATI graphics accelerator on your computers and
+                ATI codec is fastest in your comparison. Don’t you think it is
+                strange?</strong></p>
+            <p>A: We used the same computers as in previous comparison last year.
+              No one knew about ATI codec at that moment.</p>
+            <p>Anyway, we also were very interested, if ATI codec had used any
+              hardware acceleration. However, such acceleration does not conflict
+              with testing rules (we compare codecs for ordinary PC machines).</p>
+            <p>We made additional tests at another computer with following
+              configuration:</p>
+            <ul>
+              <li>Processor: Pentium 4, 3.0 GHz with Hyper Threading</li>
+              <li>Operation system: Windows XP Pro, SP2</li>
+              <li>Memory: 1Gb</li>
+              <li>Video accelerator: nVidia GeForce 6600 GT</li>
+              <li>Hard disk: SATA 200Gb</li>
+            </ul>
+            <p>Measurement results (“Foreman” sequence):</p>
+          </li>
+        </ul>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2005-faq/ati_speed.gif" />
+          </div>
+        </div>
+        <ul>
+          <li>
+            <p><strong>Q: I think, you did not attempted visual comparison; there are
+                only few frame pictures in your comparison!</strong></p>
+            <p>A: We apply much attention to correct visual comparison. :)</p>
+            <ul>
+              <li>First, by choosing frames anyone can show that any codec is
+                better than any other! It is because the quality of different
+                frames in decoded sequence changes significantly. You can read
+                about such situation reasons in <a href="/codecs/comparison-introduction.html">Introduction to Video Codecs
+                  Comparison.</a>
+                But people are still asking such questions; that is why we
+                introduced per-frame metrics in our comparison to show
+                differences in frames quality.</li>
+              <li>Second, we developed special software <a href="/vqmt/pvqt-info.html">MSU Perceptual Video
+                  Quality</a>,
+                which is created to conduct subjective blind (when experts don’t
+                know what encoder was used for current sequence) assessments
+                using different testing methods from Butterfly-test to ITU-T
+                BT.500-11 standard recommendations. This program is the only
+                freeware tool for such assessments.</li>
+              <li>Third, we are going to make number of visual subjective
+                comparisons. First such comparison will be released soon.</li>
+            </ul>
+          </li>
+          <li>
+            <p><strong>Q: Why didn’t you add codec X in your comparison?</strong></p>
+            <p>A: For each codec we used presets, provided us by developers. So,
+              only codecs, for which we were able to communicate with developers,
+              were added to our comparison.</p>
+          </li>
+          <li>
+            <p><strong>Q: Why did you measure High Profile separately?</strong></p>
+            <p>A: This year, similar to previous comparison, we tested only Main
+              Profile. More over, when we announced “Call for codecs”, only one
+              codec, according to our knowledge, could support High Profile good
+              enough. However, when developers provided to us new version of their
+              codecs, we discovered that at least three companies implemented High
+              Profile.</p>
+            <p>Next year we are going to remove profile restrictions, but we will
+              publish codec presets including used profile.</p>
+          </li>
+          <li>
+            <p><strong>Q: Why did you use such strange rules for your informal
+                comparison?</strong></p>
+            <p>A: People already have sent to us a lot of suggestion to combine all
+              results into one table. Actually, in the beginning we didn’t want to
+              make such table at all, because when one codec is best at low
+              bitrates, another one could be better at high bitrates, third one at
+              film material and fourth one at video conferencing. So, we can
+              average out all results, but…</p>
+            <p>Nevertheless, we are going to improve informal comparison rues, so,
+              you your suggestions are welcome.</p>
+          </li>
+          <li>
+            <p><strong>Q: Why do codecs versions in your comparison are not the latest
+                ones?</strong></p>
+            <p>A: The thing is that comparison measurements take rather long time.
+              But we didn’t renew our codecs versions during the measurements
+              (except critical bugs in codecs) to ensure fair conditions for all
+              developers. So, some developers could release new version of their
+              codec before comparison release.</p>
+            <p>In the future we are going to speed up our measurements using more
+              productive work with developers and improving our measurement
+              methods.</p>
+          </li>
+          <li>
+            <p><strong>Q: Why didn’t you use this type of diagrams?</strong></p>
+            <p>A: We permanently increase both number of diagram types and number
+              of graphs. There are seven diagram types in our last comparison. In
+              future we are going to add some new diagram types and replace some
+              of existing ones with improved versions. We have already started
+              work in that direction.</p>
+          </li>
+          <li>
+            <p><strong>Q: Why do your measurements take so much time?</strong></p>
+            <p>A: There are number of factors, which increase measurement time:</p>
+            <ul>
+              <li>People often ask us to <strong>increase number of sequences</strong> to
+                analyze codec results in new application areas. Only pure
+                measurements time is now more than 11 days. We are going to use
+                additional computers, but increase of sequence number will
+                increase time of human work in any case. Currently, all our
+                comparisons are free, so we are trying to limit human work time.</li>
+              <li>Another tendency is to <strong>increase number of metrics</strong>. We know
+                about drawbacks of PSNR and will add new metrics, trying to
+                limit their number in reasonable boundaries.</li>
+              <li>Number of codecs is also <strong>increasing</strong>. We are interested in
+                number of codecs increase, but at the same time it increases
+                time to report preparation.</li>
+              <li>If we find obvious mistake in codec, we, as a rule, <strong>send a bug
+                  report to developer</strong>. Some times developers can fix that bugs
+                and send us new version. That is correct approach in developer’s
+                point of view, but it also increases number of measurements in
+                our comparison.</li>
+              <li><strong>Report verification</strong> takes lots of time, because we are
+                trying to increase report quality as much as possible.</li>
+            </ul>
+            <p>So, if we decrease number of measured metrics and sequences in set,
+              prohibit developers to fix bugs and remove report verification, we
+              will speed up our comparison in few times.</p>
+          </li>
+          <li>
+            <p><strong>Q: When will you make new comparison?</strong></p>
+            <p>A: In September 2006, if we will not make two comparisons in year.
+              :)</p>
+          </li>
+        </ul>
+        <h2 id="contacts">Contacts</h2>
+        <p>E-mail: <a href="mailto:videocodec-testing@graphics.cs.msu.ru">videocodec-testing@graphics.cs.msu.ru</a></p>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=Second annual MPEG4-AVC/H.264 codecs comparison. Frequently Asked Questions&amp;url=
+http://localhost:4000/codecs/mpeg4-avc-h264-2005-faq.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=Second annual MPEG4-AVC/H.264 codecs comparison. Frequently Asked Questions&amp;url=
+http://localhost:4000/codecs/mpeg4-avc-h264-2005-faq.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/codecs/mpeg4-avc-h264-2005-faq.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=Second annual MPEG4-AVC/H.264 codecs comparison. Frequently Asked Questions&amp;body=
+http://localhost:4000/codecs/mpeg4-avc-h264-2005-faq.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/codecs/mpeg4-avc-h264-2005-faq.html
+&amp;title=Second annual MPEG4-AVC/H.264 codecs comparison. Frequently Asked Questions&amp;summary=Second annual MPEG4-AVC/H.264 codecs comparison. Frequently Asked Questions&amp;source=
+http://localhost:4000/codecs/mpeg4-avc-h264-2005-faq.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">10 Mar 2011</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-19.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-19/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2019</div>
+          <div class="text">Fourteen modern video codec comparison</div>
+        </a>
+        <a class="tile" href="/codecs/hevc-2018.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/hevc-2018/preview.png)"></div>
+          <div class="title">HEVC Video Codecs Comparison 2018 (Thirteen MSU Video Codec Comparison)</div>
+          <div class="text">13th MSU video codecs comparison</div>
+        </a>
+        <a class="tile" href="/codecs/hevc-2017.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/hevc-2017/preview.png)"></div>
+          <div class="title">HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)</div>
+          <div class="text">12th MSU video codecs comparison</div>
+        </a>
+        <a class="tile" href="/codecs/comparisons.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/comparisons/preview.png)"></div>
+          <div class="title">MSU Video Codec Comparisons (6 test of lossless, MPEG-4 and MPEG-4 AVC)</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-18.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-18/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2018</div>
+          <div class="text"></div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

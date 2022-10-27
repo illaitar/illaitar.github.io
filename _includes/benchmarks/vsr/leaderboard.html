@@ -1,0 +1,95 @@
+<style>
+    .dataTables_paginate {margin-top: 15px;}
+    .dataTables_length {margin-bottom: 15px;}
+</style>
+
+<p>
+    The table below shows a comparison of Video Super Resolution methods by subjective score and a few objective metrics. Default ranking is by subjective score.
+    <b>You can click on the model's name in the table</b> to read information about the method. You can see information about all participants <a href="/benchmarks/video-super-resolution-participants.html">here</a>.
+</p>
+
+<div id="leaderboard_pairs">
+
+    <div class="datatable-container">
+    <div class="datatable-center">
+        <table id="leaderboard_pairs_table" class="display" style="background-color: #ffffff;width:99.5%">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Rank</th>
+                <th style="background-color: #3d6f96">Model</th>
+                <th style="background-color: #3d6f96">Subjective</th>
+                <th style="background-color: #3d6f96">ERQAv1.0</th>
+                <th style="background-color: #3d6f96">LPIPS</th>
+                <th style="background-color: #3d6f96">SSIM-Y**</th>
+                <th style="background-color: #3d6f96">QRCRv1.0</th>
+                <th style="background-color: #3d6f96">PSNR-Y**</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    <script>
+    
+
+    function onChangeHelper() {
+        
+        let text = "<thead>\n" +
+        "<tr style=\"font-size: large; background-color: #3d6f96\">" +
+        "    <th style=\"background-color: #3d6f96\">Rank</th>" +
+        "        <th style=\"background-color: #3d6f96\">Model</th>" +
+        "        <th style=\"background-color: #3d6f96\">Subjective</th>" +
+        "        <th style=\"background-color: #3d6f96\">ERQAv1.0</th>" +
+        "        <th style=\"background-color: #3d6f96\">LPIPS</th>" +
+        "        <th style=\"background-color: #3d6f96\">SSIM-Y**</th>" +
+        "        <th style=\"background-color: #3d6f96\">QRCRv1.0</th>" +
+        "        <th style=\"background-color: #3d6f96\">PSNR-Y**</th>" +
+        "</tr>\n" +
+        "</thead>\n" +
+        "<tbody>\n";
+
+        let metrics = ['subjective', 'erqa10', 'lpips', 'ssim', 'qr-metric', 'psnr'];
+
+        $.getJSON('../assets/json/benchmarks/vsr/leaderboard.json', function (data) {
+            $.each( data['bicubic'], function( pair, val ) {
+                
+                if (pair.substring(0, 4) == 'only') {
+                    td = "<td style='background-color:#FAF18C'>";
+                } else {
+                    td = "<td>";
+                }
+                text += "<tr class=\"item\">\n";
+                text += td + val["ranking"] + "</td>\n" + td + val["official_name"] + "</td>\n";
+                for (metric of metrics) {
+                    text += td + val[metric] + "</td>\n";
+                }
+                text += "</tr>\n";                    
+            });
+    
+            text += "</tbody>\n";
+            
+            let table = document.getElementById('leaderboard_pairs_table');
+            table.innerHTML = text;
+                
+
+            $('#leaderboard_pairs_table').DataTable().destroy();
+
+            $('#leaderboard_pairs_table').DataTable({
+                searching: false,
+                ordering: true,
+                order: [[0, 'asc']],
+                "lengthMenu": [ [15, 40, -1], [15, 40, "All"] ],
+                bInfo : false,
+                dom: 'Blfrtip',
+            });
+        });
+    }  
+
+    onChangeHelper();
+
+    </script>
+
+</div>

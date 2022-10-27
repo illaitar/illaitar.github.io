@@ -1,0 +1,488 @@
+---
+---
+
+/* Definition-list properties */
+
+dl.properties {
+  display: grid;
+  grid-template-columns: minmax(min-content, 200px) 1fr;
+  font-size: 90%;
+  margin: 1rem;
+  row-gap: .5rem;
+  column-gap: .5rem;
+}
+
+dl.properties-short {
+  display: grid;
+  grid-template-columns: minmax(min-content, 100px) 1fr;
+  font-size: 90%;
+  margin: 1rem;
+  row-gap: .5rem;
+  column-gap: .5rem;
+}
+
+dl.properties>dt, dl.properties-short>dt {
+  grid-column-start: 1;
+  font-weight: bold;
+}
+
+dl.properties>dd, dl.properties-short>dd {
+  grid-column-start: 2;
+  margin: 0;
+}
+
+dl.properties p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+/* Hover help */
+.hover-help {
+    border-bottom: 1px dotted;
+    position: relative;
+    cursor:pointer;
+}
+.hover-help>.help-content {
+    visibility:hidden;
+    opacity:0;
+    transition: visibility .1s linear, opacity .1s linear;
+    display:block;
+    position:absolute;
+    width:200px;
+    left:0;
+    background: #5a5a5ae0;
+    padding: 10px 15px;
+    z-index: 100;
+    border-radius: 10px;
+    color: #ddd;
+    font-size:80%;
+}
+.hover-help:hover>.help-content {
+    visibility:visible;
+    opacity:1;
+    transition: visibility 0s linear, opacity .1s linear;
+}
+
+/* striped table */
+
+.table-info {
+    font-size:90%;
+    padding:0 2rem;
+    width:100%;
+}
+.table-info td,.table-info th {
+    padding:.6rem;
+}
+.table-striped>tbody>tr:nth-of-type(even),.table-striped>thead>tr {
+    background-color: rgba(0,0,0,.05);
+}
+
+/* Property list */
+.property-list {
+    font-size: 75%;
+    line-height: 140%;
+    column-count: 2;
+    column-gap: 3rem;
+}
+
+
+/* Hover predefined helps */
+
+.stdhelp-reduced-reference:before {
+    content: 'To compute metric you must have a distorted image (processed) and some data extracted from original image';
+}
+.stdhelp-full-reference:before {
+    content: 'You must have 2 images: original and distorted to compute metric value. Metric value shows degradation of the distorted relative to the original';
+}
+.stdhelp-no-reference:before {
+    content: 'You must have 1 image to compute metric value';
+}
+.stdhelp-image-metric:before {
+    content: 'This metric processes frames of video independently';
+}
+.stdhelp-temporal-metric:before {
+    content: 'This metric considers adjacent frames in video to compute values';
+}
+.stdhelp-colorspace-3p:before {
+    content: 'Metric will produce 3 image planes simultaneously, computing one value set for them';
+}
+.stdhelp-cpu-multithreaded:before {
+    content: 'No GPU capacities used. Can be computed on multiple cores simultaneously';
+}
+.stdhelp-opencl:before {
+    content: 'OpenCL is a standard that available on a huge amount GPU\'s, CPU\'s and other computing devices. In VQMT OpenCL is available for some metrics on Windows and Linux, and it is recommended. Using on CPU usaly not increses a performance compared to CPU metrics. Using on GPU can speed up the metric up to 12 times' ;
+}        
+.stdhelp-cuda:before {
+    content: 'CUDA is a standard that available on NVidia GPU\'s. In VQMT OpenCL is available for some metrics only on Windows. We recommend using OpenCL implementations instead of CUDA in MSU VQMT even if it is available: usually OpenCL implementations have better performance' ;
+}        
+.stdhelp-avg-std:before {
+    content: 'Standard set includes: arithmetic mean, harmonic mean, minimum and maximum values, standard deviation';
+}
+
+/* Red footnote*/
+
+.red-foot-note {
+    color: #888;
+}
+.red-foot-note:before {
+    content: '*';
+    color: red;
+}
+div.red-foot-note {
+    margin: 0 2rem;
+    color: #888;
+    padding: .3rem;
+    padding-left: 1rem;
+    font-size: 80%;
+    position: relative;
+}
+div.red-foot-note:before {
+    position: absolute;
+    left: .5rem;
+}
+
+/* flexible */
+
+.flexible-controller{
+    font-weight:bold;
+    padding-left: 16px;
+    cursor:pointer;
+}
+.flexible-controller:before{
+    content:'\25b6';
+    position: absolute;
+    transition: transform .3s;
+    left:0;
+}
+.flexible-check {
+    position:absolute;
+    width:0.01px;
+    height:0.01px;
+    opacity:0;
+}
+.flexible-check:checked~.flexible-controller:before{
+    transform: rotate(90deg);
+}
+.flexible-body {
+    height: 0;
+    padding: 0 0;
+    transition: padding .3s ease;
+    overflow:hidden;
+}
+.flexible-check:checked~.flexible-body {
+    height: auto;
+    padding: 24px 0;
+    overflow:visible;
+}
+.flexible-body img{ visibility:hidden; }
+.flexible-check:checked~.flexible-body img{
+    visibility:visible;
+}
+
+/* Image example */
+
+.thumb-cells {
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    clear:both;
+}   
+.thumb-cells>.cell{
+    margin:5px;
+    flex: 1 1 300px;
+}   
+.thumb-cells>.cell>img{
+    width:100%;
+    display:block;
+    cursor: pointer;
+}
+.thumb-cells .label {
+    display:block;
+    text-align: center;
+    margin-top:5px;
+}
+.thumb-panel {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    display:none;
+    visibility:hidden;
+    opacity: 0;
+    transition: visibility .1s linear, opacity .1s linear;
+    z-index: 100;
+}
+.thumb-panel.shown {
+    display: flex;
+    visibility:visible;
+    opacity: 1;
+    transition: visibility 0s linear, opacity .1s linear;
+}
+.thumb-panel>.cell {
+    display: none;
+    margin-top:0;
+}
+.thumb-panel .loading-box {
+    text-align: center;
+    width: 100%;
+    margin:3rem;
+}
+.thumb-panel.loaded>.cell {
+    display: block;
+}
+.thumb-panel.loaded>.loading-box {
+    display: none;
+}
+.thumb-panel>.cell {
+    overflow:hidden;
+    position:relative;
+}
+.thumb-panel>.cell>img.clone{
+    visibility:hidden;
+}
+.thumb-panel>.cell>img.crop{
+    width:auto;
+    max-width:unset;
+    position:absolute;
+}
+.sample-group {display: none;}
+.sample-group.selected {display: inline-block;}
+div.sample-choose,div.benchmark-choose {
+    /*float:right;
+    margin-right:5px;*/
+    font-style: italic;
+    margin: 1rem 0;
+}
+div.sample-choose>select,div.benchmark-choose>select {
+    margin-left: .5rem;
+    border: 2px solid black;
+}
+.dl-links {
+    float:right;
+    font-size:90%;
+    margin:0 5px;
+}
+.hover-tip:before {
+    padding-left:20px;
+    background-image: url('/assets/img/vqmt/pointer.svg');
+    background-size:24px;
+    background-position: 0 -3px;
+    background-repeat: no-repeat;
+    content:'hover to see details';
+    font-style:italic;
+    color:#00000060;
+    font-size:90%;
+}
+
+.attrib-icons {
+    width: 35px;
+    height: 16px;
+    display: inline-block;
+    background-image: url('/assets/img/vqmt/cc.svg'), url('/assets/img/vqmt/cc-attrib.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-size: 16px, 16px;
+    background-position: 0 0, 19px 0;
+    position: relative;
+    top: 3px;
+}
+
+.toplink{ 
+    display:block; 
+    margin: 1rem 0;
+}
+.toplink:before {
+    content: '\2BA4 ';
+    font-weight: bold;
+    position: relative;
+    top: -3px;
+}
+.toplink:after {
+    content: ' Go to top';
+}
+
+.markdown ul.vqmt-drop-down-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+ul.vqmt-drop-down-list>li {
+  padding-left: 1em;
+  position: relative;
+}
+
+ul.vqmt-drop-down-list>li:before {
+  content: " " !important;
+  margin-right: 1px;
+  width: 8px !important;
+  height: 8px !important;
+  background: url('list-marker.svg');
+  background-size: 8px 8px;
+  transform: rotate(0deg);
+  transition: transform 1s;
+  position: absolute;
+  top: .4rem;
+  z-index:0;
+}
+ul.vqmt-drop-down-list>li.selected:before {
+  transform: rotate(90deg);
+}
+.vqmt-drop-down-label {
+  margin-left: -1em;
+  padding-left: 1em;
+  cursor:pointer;
+  display:inline;
+  position:relative;
+  z-index:1;
+}
+.vqmt-drop-down-content {
+  display:block;
+  /*max-height:0;*/
+  transition: max-height 0.4s ease-out;
+  overflow: hidden;
+  margin: .25em 0;
+  position: relative;
+  display: none;
+}
+li.selected>.vqmt-drop-down-content {
+  /*max-height: 10000px;*/
+  transition: max-height 0.4s ease-in;
+}
+.markdown div.vqmt-drop-down-content li p {
+  display: block;
+}
+.markdown ul>li div.vqmt-drop-down-label p {
+  display:inline;
+}
+ul.menu-list, ul.menu-list ul, ul.open-list {
+    list-style: none;
+}
+ul.menu-list, ul.menu-list ul {
+    padding: 0.25rem 0 0 1.5rem;
+}
+ul.menu-list ul, ul.menu-list ul.menu-list {
+    margin: 0;
+}
+ul.menu-list li>ul, ul.open-list li>ul {
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+}
+ul.menu-list li.active>ul,ul.open-list li.active>ul {
+    max-height: 1500px;
+    transition: max-height 0.2s ease-in;
+    overflow: hidden;
+    padding: 0;
+}
+ul.menu-list ul>li,ul.menu-list>li {
+    min-height:1.5rem;
+}
+ul.menu-list li {
+    cursor: default;
+}
+ul.menu-list ul>li.menu-cont, ul.menu-list>li.menu-cont {
+    cursor: pointer;
+}
+ul.menu-list li:before {
+    content: "\2022";
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1rem;
+    top: -0.2rem;
+    margin-right: -0.45em;
+    margin-left: 0;
+    position: relative;
+    float: left;
+    font-size: 1.3rem;
+}
+ul.menu-list *, ul.menu-list {
+    max-height: 999999px;
+    min-height: 1px;
+}
+ul.menu-list ul>li.menu-cont:before, ul.menu-list>li.menu-cont:before, ul.open-list>li.open-cont:before { 
+    content: "";
+    border-color: transparent #111;
+    border-style: solid;
+    border-width: 0.35rem 0 0.35rem 0.45rem;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1rem;
+    top: 0.25rem;
+    margin-right: -0.45rem;
+    margin-left: 0;
+    position: relative;
+    float: left;
+    transition: transform .2s;
+    font-size: .9rem;
+}
+ul.menu-list ul>li.menu-cont.active:before, ul.menu-list>li.menu-cont.active:before, ul.open-list>li.open-cont.active:before {
+    transform: rotate(90deg);
+    transition: transform .2s;
+}
+ul.menu-list ul>li.menu-cont.illuminate:before, ul.menu-list>li.menu-cont.illuminate:before {
+    border-left-color: #978AFF;
+}
+ul.menu-list a.current {
+    font-style: italic;
+}
+ul.menu-list {
+    margin: 3rem 2rem;
+}
+.menu-list a, .good-links a{ text-decoration: none !important; color: #1282B9; }
+.menu-list a:visited , .good-links a:visited { color: #17526F; }
+.menu-list a:hover , .good-links a:hover { text-decoration: underline !important; }
+li.changelog {
+    font-weight: bold;  
+    font-family: "Trebuchet MS", sans-serif;
+    text-shadow: 1px 1px 1px #BBB;
+    font-size: 13px;
+}
+li.changelog li{
+    font-weight: normal;
+    font-size: 10pt;    
+    padding-left: 18px;
+    text-indent: -18px;
+    margin: 5px 1px;
+}
+li.changelog ul {
+    list-style: none;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 0;
+}
+body li.changelog li:before {
+    background-size: 14px 14px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width:18px; height:14px;
+    vertical-align: text-bottom;
+    opacity: .5;
+    content: '';
+    margin: 0;
+}
+li.changelog li.section {
+    font-weight:bold;
+}
+li.changelog li.n:before {background-image: url('circle-plus.svg');}
+li.changelog li.f:before {background-image: url('circle-check.svg');}
+li.changelog li.b:before {background-image: url('circle-x.svg');}
+li.changelog {    
+    margin: 10px 5px;
+    padding-left: 1rem;
+}
+li.changelog ul {
+    margin-left: -1.25rem;
+}
+body ul.changelog-global {
+    margin-left:0;
+    padding-left:0;
+    padding:0;
+    margin:0;
+}
+li.changelog {cursor:pointer}
+li.changelog ul {cursor:default}
+li.changelog .ver-info:before {content:''}
+li.changelog .ver-info:after {content:''}
+li.changelog .ver-info {margin-right:4rem; float:right; font-weight: normal; color: #555; cursor:default;}
+li.changelog .ver-date {margin-left:-4rem; font-weight: normal; float:right; cursor:default;}

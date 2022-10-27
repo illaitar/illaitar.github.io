@@ -1,0 +1,6316 @@
+{
+    "child": {
+        "ahq-11 + aomenc": {
+            "ERQA": "3.642",
+            "LPIPS": "0.179",
+            "YUV-MS-SSIM": "2.851",
+            "Y-PSNR": "3.063",
+            "Y-VMAF": "1.79",
+            "Y-VMAF NEG": "2.385",
+            "Subjective": "0.503",
+            "rank": "17"
+        },
+        "amq-12 + aomenc": {
+            "ERQA": "3.642",
+            "LPIPS": "0.28",
+            "YUV-MS-SSIM": "2.279",
+            "Y-PSNR": "2.939",
+            "Y-VMAF": "1.622",
+            "Y-VMAF NEG": "2.249",
+            "Subjective": "-",
+            "rank": "75"
+        },
+        "BasicVSR + aomenc": {
+            "ERQA": "4.695",
+            "LPIPS": "3.536",
+            "YUV-MS-SSIM": "1.648",
+            "Y-PSNR": "2.99",
+            "Y-VMAF": "1.111",
+            "Y-VMAF NEG": "1.565",
+            "Subjective": "1.238",
+            "rank": "42"
+        },
+        "bicubic + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "2.389",
+            "Y-PSNR": "5.502",
+            "Y-VMAF": "7.506",
+            "Y-VMAF NEG": "7.652",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "COMISR + aomenc": {
+            "ERQA": "3.13",
+            "LPIPS": "3.674",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0.314",
+            "rank": "13"
+        },
+        "DBVSR + aomenc": {
+            "ERQA": "4.442",
+            "LPIPS": "3.548",
+            "YUV-MS-SSIM": "1.595",
+            "Y-PSNR": "2.495",
+            "Y-VMAF": "1.206",
+            "Y-VMAF NEG": "1.586",
+            "Subjective": "-",
+            "rank": "77"
+        },
+        "EGVSR + aomenc": {
+            "ERQA": "5.21",
+            "LPIPS": "0.252",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "79"
+        },
+        "LGFN + aomenc": {
+            "ERQA": "5.557",
+            "LPIPS": "3.219",
+            "YUV-MS-SSIM": "1.745",
+            "Y-PSNR": "2.658",
+            "Y-VMAF": "1.143",
+            "Y-VMAF NEG": "1.6",
+            "Subjective": "-",
+            "rank": "81"
+        },
+        "only aomenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "33"
+        },
+        "RBPN + aomenc": {
+            "ERQA": "4.892",
+            "LPIPS": "3.466",
+            "YUV-MS-SSIM": "1.7",
+            "Y-PSNR": "2.924",
+            "Y-VMAF": "1.094",
+            "Y-VMAF NEG": "1.593",
+            "Subjective": "1.101",
+            "rank": "40"
+        },
+        "Real-ESRGAN + aomenc": {
+            "ERQA": "7.365",
+            "LPIPS": "0.776",
+            "YUV-MS-SSIM": "2.29",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.007",
+            "Y-VMAF NEG": "3.607",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "RealSR + aomenc": {
+            "ERQA": "2.134",
+            "LPIPS": "0.079",
+            "YUV-MS-SSIM": "1.678",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.814",
+            "Y-VMAF NEG": "1.835",
+            "Subjective": "0.381",
+            "rank": "15"
+        },
+        "RSDN + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.867",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "SOF-VSR-BD + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.335",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "SOF-VSR-BI + aomenc": {
+            "ERQA": "4.893",
+            "LPIPS": "3.16",
+            "YUV-MS-SSIM": "1.727",
+            "Y-PSNR": "2.524",
+            "Y-VMAF": "1.384",
+            "Y-VMAF NEG": "1.689",
+            "Subjective": "1.076",
+            "rank": "38"
+        },
+        "SwinIR + aomenc": {
+            "ERQA": "6.743",
+            "LPIPS": "1.076",
+            "YUV-MS-SSIM": "3.868",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.634",
+            "Y-VMAF NEG": "3.239",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "6.637",
+            "YUV-MS-SSIM": "8.92",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "4.061",
+            "Y-VMAF NEG": "5.177",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "VRT + aomenc": {
+            "ERQA": "4.589",
+            "LPIPS": "3.39",
+            "YUV-MS-SSIM": "0.524",
+            "Y-PSNR": "2.913",
+            "Y-VMAF": "1.071",
+            "Y-VMAF NEG": "1.545",
+            "Subjective": "0.96",
+            "rank": "30"
+        },
+        "ahq-11 + uavs3e": {
+            "ERQA": "3.25",
+            "LPIPS": "0.43",
+            "YUV-MS-SSIM": "2.735",
+            "Y-PSNR": "3.217",
+            "Y-VMAF": "1.849",
+            "Y-VMAF NEG": "2.325",
+            "Subjective": "0.553",
+            "rank": "19"
+        },
+        "amq-12 + uavs3e": {
+            "ERQA": "3.226",
+            "LPIPS": "0.506",
+            "YUV-MS-SSIM": "2.247",
+            "Y-PSNR": "2.946",
+            "Y-VMAF": "1.699",
+            "Y-VMAF NEG": "2.171",
+            "Subjective": "-",
+            "rank": "72"
+        },
+        "BasicVSR + uavs3e": {
+            "ERQA": "3.73",
+            "LPIPS": "3.236",
+            "YUV-MS-SSIM": "2.04",
+            "Y-PSNR": "3.084",
+            "Y-VMAF": "1.197",
+            "Y-VMAF NEG": "1.607",
+            "Subjective": "0.89",
+            "rank": "27"
+        },
+        "bicubic + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "13.236",
+            "YUV-MS-SSIM": "2.345",
+            "Y-PSNR": "3.659",
+            "Y-VMAF": "4.516",
+            "Y-VMAF NEG": "4.034",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "COMISR + uavs3e": {
+            "ERQA": "2.362",
+            "LPIPS": "3.624",
+            "YUV-MS-SSIM": "2.472",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "6.22",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "DBVSR + uavs3e": {
+            "ERQA": "3.523",
+            "LPIPS": "3.214",
+            "YUV-MS-SSIM": "2.008",
+            "Y-PSNR": "2.753",
+            "Y-VMAF": "1.303",
+            "Y-VMAF NEG": "1.621",
+            "Subjective": "-",
+            "rank": "74"
+        },
+        "EGVSR + uavs3e": {
+            "ERQA": "3.106",
+            "LPIPS": "0.453",
+            "YUV-MS-SSIM": "4.565",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "9.359",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "70"
+        },
+        "LGFN + uavs3e": {
+            "ERQA": "4.001",
+            "LPIPS": "3.042",
+            "YUV-MS-SSIM": "2.126",
+            "Y-PSNR": "2.915",
+            "Y-VMAF": "1.233",
+            "Y-VMAF NEG": "1.635",
+            "Subjective": "-",
+            "rank": "76"
+        },
+        "only uavs3e": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "33"
+        },
+        "RBPN + uavs3e": {
+            "ERQA": "3.673",
+            "LPIPS": "3.166",
+            "YUV-MS-SSIM": "2.058",
+            "Y-PSNR": "2.919",
+            "Y-VMAF": "1.182",
+            "Y-VMAF NEG": "1.637",
+            "Subjective": "1.706",
+            "rank": "44"
+        },
+        "Real-ESRGAN + uavs3e": {
+            "ERQA": "3.262",
+            "LPIPS": "0.796",
+            "YUV-MS-SSIM": "2.217",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.083",
+            "Y-VMAF NEG": "2.903",
+            "Subjective": "-",
+            "rank": "73"
+        },
+        "RealSR + uavs3e": {
+            "ERQA": "1.557",
+            "LPIPS": "0.087",
+            "YUV-MS-SSIM": "1.503",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.876",
+            "Y-VMAF NEG": "1.828",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RSDN + uavs3e": {
+            "ERQA": "5.108",
+            "LPIPS": "2.556",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "7.103",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + uavs3e": {
+            "ERQA": "18.617",
+            "LPIPS": "2.881",
+            "YUV-MS-SSIM": "5.148",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "7.91",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "SOF-VSR-BI + uavs3e": {
+            "ERQA": "3.751",
+            "LPIPS": "2.992",
+            "YUV-MS-SSIM": "2.052",
+            "Y-PSNR": "2.749",
+            "Y-VMAF": "1.454",
+            "Y-VMAF NEG": "1.733",
+            "Subjective": "1.752",
+            "rank": "46"
+        },
+        "SwinIR + uavs3e": {
+            "ERQA": "2.787",
+            "LPIPS": "1.058",
+            "YUV-MS-SSIM": "2.987",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.728",
+            "Y-VMAF NEG": "2.727",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + uavs3e": {
+            "ERQA": "5.386",
+            "LPIPS": "4.41",
+            "YUV-MS-SSIM": "4.001",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "3.258",
+            "Y-VMAF NEG": "3.304",
+            "Subjective": "-",
+            "rank": "80"
+        },
+        "VRT + uavs3e": {
+            "ERQA": "3.549",
+            "LPIPS": "3.103",
+            "YUV-MS-SSIM": "0.959",
+            "Y-PSNR": "2.952",
+            "Y-VMAF": "1.151",
+            "Y-VMAF NEG": "1.586",
+            "Subjective": "0.997",
+            "rank": "32"
+        },
+        "ahq-11 + vvenc": {
+            "ERQA": "1.945",
+            "LPIPS": "0.1",
+            "YUV-MS-SSIM": "1.083",
+            "Y-PSNR": "0",
+            "Y-VMAF": "1.221",
+            "Y-VMAF NEG": "1.506",
+            "Subjective": "0.645",
+            "rank": "23"
+        },
+        "amq-12 + vvenc": {
+            "ERQA": "1.897",
+            "LPIPS": "0.11",
+            "YUV-MS-SSIM": "0.659",
+            "Y-PSNR": "0",
+            "Y-VMAF": "1.091",
+            "Y-VMAF NEG": "1.415",
+            "Subjective": "-",
+            "rank": "63"
+        },
+        "BasicVSR + vvenc": {
+            "ERQA": "2.835",
+            "LPIPS": "1.81",
+            "YUV-MS-SSIM": "0.503",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.811",
+            "Y-VMAF NEG": "1.018",
+            "Subjective": "1.08",
+            "rank": "39"
+        },
+        "bicubic + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.424",
+            "Y-PSNR": "1.546",
+            "Y-VMAF": "3.085",
+            "Y-VMAF NEG": "2.726",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "COMISR + vvenc": {
+            "ERQA": "1.872",
+            "LPIPS": "0.804",
+            "YUV-MS-SSIM": "1.573",
+            "Y-PSNR": "0",
+            "Y-VMAF": "3.894",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "DBVSR + vvenc": {
+            "ERQA": "2.637",
+            "LPIPS": "1.748",
+            "YUV-MS-SSIM": "0.496",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.837",
+            "Y-VMAF NEG": "1.033",
+            "Subjective": "1.745",
+            "rank": "45"
+        },
+        "EGVSR + vvenc": {
+            "ERQA": "2.607",
+            "LPIPS": "0.321",
+            "YUV-MS-SSIM": "1.883",
+            "Y-PSNR": "0",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "68"
+        },
+        "LGFN + vvenc": {
+            "ERQA": "2.841",
+            "LPIPS": "2.154",
+            "YUV-MS-SSIM": "0.507",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.822",
+            "Y-VMAF NEG": "1.02",
+            "Subjective": "2.172",
+            "rank": "48"
+        },
+        "only vvenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "33"
+        },
+        "RBPN + vvenc": {
+            "ERQA": "2.78",
+            "LPIPS": "2.181",
+            "YUV-MS-SSIM": "0.501",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.801",
+            "Y-VMAF NEG": "1.037",
+            "Subjective": "1.209",
+            "rank": "41"
+        },
+        "Real-ESRGAN + vvenc": {
+            "ERQA": "2.4",
+            "LPIPS": "0.358",
+            "YUV-MS-SSIM": "2.132",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.549",
+            "Y-VMAF NEG": "2.16",
+            "Subjective": "-",
+            "rank": "66"
+        },
+        "RealSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "RSDN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.162",
+            "YUV-MS-SSIM": "2.035",
+            "Y-PSNR": "0",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "SOF-VSR-BD + vvenc": {
+            "ERQA": "2.745",
+            "LPIPS": "1.806",
+            "YUV-MS-SSIM": "1.93",
+            "Y-PSNR": "0",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "69"
+        },
+        "SOF-VSR-BI + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.587",
+            "YUV-MS-SSIM": "0.5",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.888",
+            "Y-VMAF NEG": "1.114",
+            "Subjective": "1.293",
+            "rank": "43"
+        },
+        "SwinIR + vvenc": {
+            "ERQA": "2.183",
+            "LPIPS": "0.359",
+            "YUV-MS-SSIM": "1.392",
+            "Y-PSNR": "0",
+            "Y-VMAF": "1.11",
+            "Y-VMAF NEG": "1.741",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.571",
+            "YUV-MS-SSIM": "1.759",
+            "Y-PSNR": "0",
+            "Y-VMAF": "2.186",
+            "Y-VMAF NEG": "2.279",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "VRT + vvenc": {
+            "ERQA": "2.868",
+            "LPIPS": "1.835",
+            "YUV-MS-SSIM": "0.351",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.789",
+            "Y-VMAF NEG": "1.012",
+            "Subjective": "0.972",
+            "rank": "31"
+        },
+        "ahq-11 + x264": {
+            "ERQA": "0.768",
+            "LPIPS": "0.347",
+            "YUV-MS-SSIM": "0.48",
+            "Y-PSNR": "0.502",
+            "Y-VMAF": "0.544",
+            "Y-VMAF NEG": "0.62",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "amq-12 + x264": {
+            "ERQA": "0.774",
+            "LPIPS": "0.406",
+            "YUV-MS-SSIM": "0.434",
+            "Y-PSNR": "0.485",
+            "Y-VMAF": "0.501",
+            "Y-VMAF NEG": "0.605",
+            "Subjective": "-",
+            "rank": "51"
+        },
+        "BasicVSR + x264": {
+            "ERQA": "1.105",
+            "LPIPS": "0.874",
+            "YUV-MS-SSIM": "0.461",
+            "Y-PSNR": "0.624",
+            "Y-VMAF": "0.505",
+            "Y-VMAF NEG": "0.569",
+            "Subjective": "0.604",
+            "rank": "21"
+        },
+        "bicubic + x264": {
+            "ERQA": "1.589",
+            "LPIPS": "1.167",
+            "YUV-MS-SSIM": "0.468",
+            "Y-PSNR": "0.552",
+            "Y-VMAF": "0.999",
+            "Y-VMAF NEG": "0.948",
+            "Subjective": "-",
+            "rank": "59"
+        },
+        "COMISR + x264": {
+            "ERQA": "0.691",
+            "LPIPS": "0.739",
+            "YUV-MS-SSIM": "0.435",
+            "Y-PSNR": "0.488",
+            "Y-VMAF": "0.872",
+            "Y-VMAF NEG": "0.872",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "DBVSR + x264": {
+            "ERQA": "1.055",
+            "LPIPS": "0.881",
+            "YUV-MS-SSIM": "0.444",
+            "Y-PSNR": "0.581",
+            "Y-VMAF": "0.511",
+            "Y-VMAF NEG": "0.566",
+            "Subjective": "-",
+            "rank": "53"
+        },
+        "EGVSR + x264": {
+            "ERQA": "1.02",
+            "LPIPS": "0.508",
+            "YUV-MS-SSIM": "0.598",
+            "Y-PSNR": "0.497",
+            "Y-VMAF": "1.08",
+            "Y-VMAF NEG": "1.017",
+            "Subjective": "-",
+            "rank": "52"
+        },
+        "LGFN + x264": {
+            "ERQA": "1.142",
+            "LPIPS": "0.898",
+            "YUV-MS-SSIM": "0.484",
+            "Y-PSNR": "0.617",
+            "Y-VMAF": "0.517",
+            "Y-VMAF NEG": "0.578",
+            "Subjective": "-",
+            "rank": "55"
+        },
+        "only x264": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "33"
+        },
+        "RBPN + x264": {
+            "ERQA": "1.075",
+            "LPIPS": "0.897",
+            "YUV-MS-SSIM": "0.466",
+            "Y-PSNR": "0.606",
+            "Y-VMAF": "0.5",
+            "Y-VMAF NEG": "0.573",
+            "Subjective": "0.644",
+            "rank": "22"
+        },
+        "Real-ESRGAN + x264": {
+            "ERQA": "0.716",
+            "LPIPS": "0.365",
+            "YUV-MS-SSIM": "0.422",
+            "Y-PSNR": "0.582",
+            "Y-VMAF": "0.542",
+            "Y-VMAF NEG": "0.643",
+            "Subjective": "0.725",
+            "rank": "24"
+        },
+        "RealSR + x264": {
+            "ERQA": "0.59",
+            "LPIPS": "0.172",
+            "YUV-MS-SSIM": "0.375",
+            "Y-PSNR": "0.454",
+            "Y-VMAF": "0.57",
+            "Y-VMAF NEG": "0.56",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RSDN + x264": {
+            "ERQA": "1.177",
+            "LPIPS": "0.768",
+            "YUV-MS-SSIM": "0.607",
+            "Y-PSNR": "0.536",
+            "Y-VMAF": "1.05",
+            "Y-VMAF NEG": "0.982",
+            "Subjective": "-",
+            "rank": "56"
+        },
+        "SOF-VSR-BD + x264": {
+            "ERQA": "1.073",
+            "LPIPS": "0.792",
+            "YUV-MS-SSIM": "0.616",
+            "Y-PSNR": "0.503",
+            "Y-VMAF": "1.101",
+            "Y-VMAF NEG": "0.994",
+            "Subjective": "-",
+            "rank": "54"
+        },
+        "SOF-VSR-BI + x264": {
+            "ERQA": "\u221e",
+            "LPIPS": "0.868",
+            "YUV-MS-SSIM": "0.462",
+            "Y-PSNR": "0.554",
+            "Y-VMAF": "0.533",
+            "Y-VMAF NEG": "0.601",
+            "Subjective": "0.524",
+            "rank": "18"
+        },
+        "SwinIR + x264": {
+            "ERQA": "0.674",
+            "LPIPS": "0.368",
+            "YUV-MS-SSIM": "0.469",
+            "Y-PSNR": "0.888",
+            "Y-VMAF": "0.502",
+            "Y-VMAF NEG": "0.62",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + x264": {
+            "ERQA": "1.382",
+            "LPIPS": "0.927",
+            "YUV-MS-SSIM": "0.618",
+            "Y-PSNR": "0.797",
+            "Y-VMAF": "0.939",
+            "Y-VMAF NEG": "0.934",
+            "Subjective": "-",
+            "rank": "57"
+        },
+        "VRT + x264": {
+            "ERQA": "1.08",
+            "LPIPS": "0.87",
+            "YUV-MS-SSIM": "0.293",
+            "Y-PSNR": "0.6",
+            "Y-VMAF": "0.502",
+            "Y-VMAF NEG": "0.563",
+            "Subjective": "0.595",
+            "rank": "20"
+        },
+        "ahq-11 + x265": {
+            "ERQA": "1.394",
+            "LPIPS": "0.586",
+            "YUV-MS-SSIM": "0.968",
+            "Y-PSNR": "1.098",
+            "Y-VMAF": "1.033",
+            "Y-VMAF NEG": "1.152",
+            "Subjective": "0.381",
+            "rank": "16"
+        },
+        "amq-12 + x265": {
+            "ERQA": "1.391",
+            "LPIPS": "0.702",
+            "YUV-MS-SSIM": "0.865",
+            "Y-PSNR": "1.048",
+            "Y-VMAF": "0.995",
+            "Y-VMAF NEG": "1.123",
+            "Subjective": "-",
+            "rank": "58"
+        },
+        "BasicVSR + x265": {
+            "ERQA": "1.909",
+            "LPIPS": "2.024",
+            "YUV-MS-SSIM": "0.878",
+            "Y-PSNR": "1.22",
+            "Y-VMAF": "0.938",
+            "Y-VMAF NEG": "1.032",
+            "Subjective": "0.862",
+            "rank": "25"
+        },
+        "bicubic + x265": {
+            "ERQA": "3.169",
+            "LPIPS": "3.392",
+            "YUV-MS-SSIM": "0.921",
+            "Y-PSNR": "1.175",
+            "Y-VMAF": "2.053",
+            "Y-VMAF NEG": "1.844",
+            "Subjective": "-",
+            "rank": "71"
+        },
+        "COMISR + x265": {
+            "ERQA": "1.267",
+            "LPIPS": "1.972",
+            "YUV-MS-SSIM": "0.959",
+            "Y-PSNR": "0.87",
+            "Y-VMAF": "1.778",
+            "Y-VMAF NEG": "1.544",
+            "Subjective": "0.332",
+            "rank": "14"
+        },
+        "DBVSR + x265": {
+            "ERQA": "1.77",
+            "LPIPS": "1.999",
+            "YUV-MS-SSIM": "0.86",
+            "Y-PSNR": "1.163",
+            "Y-VMAF": "0.948",
+            "Y-VMAF NEG": "1.017",
+            "Subjective": "-",
+            "rank": "61"
+        },
+        "EGVSR + x265": {
+            "ERQA": "1.753",
+            "LPIPS": "0.713",
+            "YUV-MS-SSIM": "1.267",
+            "Y-PSNR": "0.909",
+            "Y-VMAF": "2.119",
+            "Y-VMAF NEG": "1.813",
+            "Subjective": "-",
+            "rank": "60"
+        },
+        "LGFN + x265": {
+            "ERQA": "1.982",
+            "LPIPS": "2.027",
+            "YUV-MS-SSIM": "0.913",
+            "Y-PSNR": "1.217",
+            "Y-VMAF": "0.955",
+            "Y-VMAF NEG": "1.043",
+            "Subjective": "-",
+            "rank": "65"
+        },
+        "only x265": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "33"
+        },
+        "RBPN + x265": {
+            "ERQA": "1.843",
+            "LPIPS": "2.034",
+            "YUV-MS-SSIM": "0.888",
+            "Y-PSNR": "1.194",
+            "Y-VMAF": "0.921",
+            "Y-VMAF NEG": "1.034",
+            "Subjective": "0.903",
+            "rank": "29"
+        },
+        "Real-ESRGAN + x265": {
+            "ERQA": "1.286",
+            "LPIPS": "0.863",
+            "YUV-MS-SSIM": "0.868",
+            "Y-PSNR": "1.199",
+            "Y-VMAF": "1.069",
+            "Y-VMAF NEG": "1.29",
+            "Subjective": "1.888",
+            "rank": "47"
+        },
+        "RealSR + x265": {
+            "ERQA": "1.034",
+            "LPIPS": "0.279",
+            "YUV-MS-SSIM": "0.785",
+            "Y-PSNR": "0.848",
+            "Y-VMAF": "1.103",
+            "Y-VMAF NEG": "1.063",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RSDN + x265": {
+            "ERQA": "1.941",
+            "LPIPS": "1.556",
+            "YUV-MS-SSIM": "1.196",
+            "Y-PSNR": "0.926",
+            "Y-VMAF": "2.002",
+            "Y-VMAF NEG": "1.711",
+            "Subjective": "-",
+            "rank": "64"
+        },
+        "SOF-VSR-BD + x265": {
+            "ERQA": "1.865",
+            "LPIPS": "1.657",
+            "YUV-MS-SSIM": "1.273",
+            "Y-PSNR": "0.883",
+            "Y-VMAF": "2.04",
+            "Y-VMAF NEG": "1.733",
+            "Subjective": "-",
+            "rank": "62"
+        },
+        "SOF-VSR-BI + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.92",
+            "YUV-MS-SSIM": "0.878",
+            "Y-PSNR": "1.11",
+            "Y-VMAF": "0.996",
+            "Y-VMAF NEG": "1.053",
+            "Subjective": "0.882",
+            "rank": "26"
+        },
+        "SwinIR + x265": {
+            "ERQA": "1.185",
+            "LPIPS": "0.902",
+            "YUV-MS-SSIM": "1.004",
+            "Y-PSNR": "1.5",
+            "Y-VMAF": "0.966",
+            "Y-VMAF NEG": "1.21",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + x265": {
+            "ERQA": "2.455",
+            "LPIPS": "2.229",
+            "YUV-MS-SSIM": "1.356",
+            "Y-PSNR": "1.707",
+            "Y-VMAF": "1.753",
+            "Y-VMAF NEG": "1.688",
+            "Subjective": "-",
+            "rank": "67"
+        },
+        "VRT + x265": {
+            "ERQA": "1.826",
+            "LPIPS": "1.951",
+            "YUV-MS-SSIM": "0.505",
+            "Y-PSNR": "1.185",
+            "Y-VMAF": "0.915",
+            "Y-VMAF NEG": "1.018",
+            "Subjective": "0.898",
+            "rank": "28"
+        }
+    },
+    "colors": {
+        "ahq-11 + aomenc": {
+            "ERQA": "10.076",
+            "LPIPS": "2.797",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "8.052",
+            "Y-VMAF NEG": "19.667",
+            "Subjective": "-",
+            "rank": "68"
+        },
+        "amq-12 + aomenc": {
+            "ERQA": "39.81",
+            "LPIPS": "4.776",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "8.285",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "77"
+        },
+        "BasicVSR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "16.569",
+            "YUV-MS-SSIM": "14.361",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "4.234",
+            "Y-VMAF NEG": "6.331",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "bicubic + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "COMISR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "15.13",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "DBVSR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "16.269",
+            "YUV-MS-SSIM": "13.578",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "5.222",
+            "Y-VMAF NEG": "7.121",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "EGVSR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "24.861",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "LGFN + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "18.184",
+            "YUV-MS-SSIM": "15.473",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "4.748",
+            "Y-VMAF NEG": "6.913",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "only aomenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "17"
+        },
+        "RBPN + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "21.47",
+            "YUV-MS-SSIM": "8.644",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "4.925",
+            "Y-VMAF NEG": "6.891",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "Real-ESRGAN + aomenc": {
+            "ERQA": "10.424",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "4.662",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + aomenc": {
+            "ERQA": "6.836",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RSDN + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + aomenc": {
+            "ERQA": "29.688",
+            "LPIPS": "10.747",
+            "YUV-MS-SSIM": "7.14",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "5.143",
+            "Y-VMAF NEG": "6.88",
+            "Subjective": "-",
+            "rank": "76"
+        },
+        "SOF-VSR-BI + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "16.602",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SwinIR + aomenc": {
+            "ERQA": "10.894",
+            "LPIPS": "16.217",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "10.616",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "16.978",
+            "YUV-MS-SSIM": "21.122",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "5.412",
+            "Y-VMAF NEG": "7.23",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "VRT + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "14.017",
+            "YUV-MS-SSIM": "9.193",
+            "Y-PSNR": "31.401",
+            "Y-VMAF": "3.847",
+            "Y-VMAF NEG": "5.874",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "ahq-11 + uavs3e": {
+            "ERQA": "2.901",
+            "LPIPS": "2.833",
+            "YUV-MS-SSIM": "5.033",
+            "Y-PSNR": "7.871",
+            "Y-VMAF": "4.664",
+            "Y-VMAF NEG": "4.191",
+            "Subjective": "1.377",
+            "rank": "24"
+        },
+        "amq-12 + uavs3e": {
+            "ERQA": "3.636",
+            "LPIPS": "4.066",
+            "YUV-MS-SSIM": "5.41",
+            "Y-PSNR": "11.456",
+            "Y-VMAF": "5.01",
+            "Y-VMAF NEG": "4.79",
+            "Subjective": "-",
+            "rank": "63"
+        },
+        "BasicVSR + uavs3e": {
+            "ERQA": "14.512",
+            "LPIPS": "12.831",
+            "YUV-MS-SSIM": "3.679",
+            "Y-PSNR": "6.731",
+            "Y-VMAF": "2.36",
+            "Y-VMAF NEG": "3.707",
+            "Subjective": "-",
+            "rank": "71"
+        },
+        "bicubic + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "6.733",
+            "Y-PSNR": "16.588",
+            "Y-VMAF": "13.555",
+            "Y-VMAF NEG": "12.498",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "COMISR + uavs3e": {
+            "ERQA": "5.003",
+            "LPIPS": "9.169",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0.854",
+            "rank": "16"
+        },
+        "DBVSR + uavs3e": {
+            "ERQA": "14.609",
+            "LPIPS": "13.261",
+            "YUV-MS-SSIM": "5.343",
+            "Y-PSNR": "10.397",
+            "Y-VMAF": "3.769",
+            "Y-VMAF NEG": "4.27",
+            "Subjective": "-",
+            "rank": "72"
+        },
+        "EGVSR + uavs3e": {
+            "ERQA": "14.289",
+            "LPIPS": "16.553",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "70"
+        },
+        "LGFN + uavs3e": {
+            "ERQA": "21.679",
+            "LPIPS": "14.537",
+            "YUV-MS-SSIM": "4.911",
+            "Y-PSNR": "10.313",
+            "Y-VMAF": "2.731",
+            "Y-VMAF NEG": "4.089",
+            "Subjective": "-",
+            "rank": "75"
+        },
+        "only uavs3e": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "17"
+        },
+        "RBPN + uavs3e": {
+            "ERQA": "13.942",
+            "LPIPS": "16.128",
+            "YUV-MS-SSIM": "4.398",
+            "Y-PSNR": "7.787",
+            "Y-VMAF": "2.873",
+            "Y-VMAF NEG": "3.967",
+            "Subjective": "-",
+            "rank": "69"
+        },
+        "Real-ESRGAN + uavs3e": {
+            "ERQA": "2.304",
+            "LPIPS": "4.189",
+            "YUV-MS-SSIM": "13.132",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.135",
+            "Y-VMAF NEG": "14.032",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + uavs3e": {
+            "ERQA": "2.005",
+            "LPIPS": "1.284",
+            "YUV-MS-SSIM": "1.307",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "3.121",
+            "Y-VMAF NEG": "3.123",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RSDN + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "56.411",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + uavs3e": {
+            "ERQA": "9.022",
+            "LPIPS": "10.058",
+            "YUV-MS-SSIM": "4.148",
+            "Y-PSNR": "6.778",
+            "Y-VMAF": "3.706",
+            "Y-VMAF NEG": "4.093",
+            "Subjective": "-",
+            "rank": "67"
+        },
+        "SOF-VSR-BI + uavs3e": {
+            "ERQA": "8.421",
+            "LPIPS": "13.462",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "66"
+        },
+        "SwinIR + uavs3e": {
+            "ERQA": "2.266",
+            "LPIPS": "2.057",
+            "YUV-MS-SSIM": "11.698",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.474",
+            "Y-VMAF NEG": "16.081",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + uavs3e": {
+            "ERQA": "16.274",
+            "LPIPS": "11.632",
+            "YUV-MS-SSIM": "4.367",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "3.261",
+            "Y-VMAF NEG": "3.494",
+            "Subjective": "-",
+            "rank": "74"
+        },
+        "VRT + uavs3e": {
+            "ERQA": "15.214",
+            "LPIPS": "11.81",
+            "YUV-MS-SSIM": "4.586",
+            "Y-PSNR": "9.148",
+            "Y-VMAF": "2.062",
+            "Y-VMAF NEG": "3.717",
+            "Subjective": "-",
+            "rank": "73"
+        },
+        "ahq-11 + vvenc": {
+            "ERQA": "3.45",
+            "LPIPS": "1.647",
+            "YUV-MS-SSIM": "0",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.168",
+            "Y-VMAF NEG": "0.298",
+            "Subjective": "0.836",
+            "rank": "15"
+        },
+        "amq-12 + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.403",
+            "YUV-MS-SSIM": "0",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.159",
+            "Y-VMAF NEG": "0.444",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "BasicVSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "0",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.16",
+            "Y-VMAF NEG": "0.247",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "bicubic + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "COMISR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "1.097",
+            "rank": "22"
+        },
+        "DBVSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "0",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.113",
+            "Y-VMAF NEG": "0.188",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "EGVSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "LGFN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "0",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.192",
+            "Y-VMAF NEG": "0.301",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "only vvenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "17"
+        },
+        "RBPN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "0",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.184",
+            "Y-VMAF NEG": "0.283",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "Real-ESRGAN + vvenc": {
+            "ERQA": "3.665",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.024",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "65"
+        },
+        "RealSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "RSDN + vvenc": {
+            "ERQA": "2.782",
+            "LPIPS": "3.303",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "59"
+        },
+        "SOF-VSR-BD + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "0",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.119",
+            "Y-VMAF NEG": "0.216",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BI + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SwinIR + vvenc": {
+            "ERQA": "3.487",
+            "LPIPS": "3.877",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.041",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "62"
+        },
+        "TMNet + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "0",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.174",
+            "Y-VMAF NEG": "0.273",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "VRT + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "0",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.154",
+            "Y-VMAF NEG": "0.239",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "ahq-11 + x264": {
+            "ERQA": "0.85",
+            "LPIPS": "0.923",
+            "YUV-MS-SSIM": "1.055",
+            "Y-PSNR": "1.325",
+            "Y-VMAF": "1.18",
+            "Y-VMAF NEG": "1.247",
+            "Subjective": "0.41",
+            "rank": "13"
+        },
+        "amq-12 + x264": {
+            "ERQA": "0.798",
+            "LPIPS": "1.121",
+            "YUV-MS-SSIM": "0.996",
+            "Y-PSNR": "1.367",
+            "Y-VMAF": "1.17",
+            "Y-VMAF NEG": "1.267",
+            "Subjective": "-",
+            "rank": "51"
+        },
+        "BasicVSR + x264": {
+            "ERQA": "2.558",
+            "LPIPS": "2.324",
+            "YUV-MS-SSIM": "1.282",
+            "Y-PSNR": "2.314",
+            "Y-VMAF": "1.061",
+            "Y-VMAF NEG": "1.332",
+            "Subjective": "-",
+            "rank": "57"
+        },
+        "bicubic + x264": {
+            "ERQA": "2.789",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.257",
+            "Y-PSNR": "1.756",
+            "Y-VMAF": "2.006",
+            "Y-VMAF NEG": "1.899",
+            "Subjective": "-",
+            "rank": "60"
+        },
+        "COMISR + x264": {
+            "ERQA": "1.396",
+            "LPIPS": "1.935",
+            "YUV-MS-SSIM": "0.885",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.926",
+            "Y-VMAF NEG": "1.541",
+            "Subjective": "0.756",
+            "rank": "14"
+        },
+        "DBVSR + x264": {
+            "ERQA": "2.344",
+            "LPIPS": "2.232",
+            "YUV-MS-SSIM": "1.19",
+            "Y-PSNR": "1.937",
+            "Y-VMAF": "1.185",
+            "Y-VMAF NEG": "1.353",
+            "Subjective": "-",
+            "rank": "55"
+        },
+        "EGVSR + x264": {
+            "ERQA": "2.234",
+            "LPIPS": "2.596",
+            "YUV-MS-SSIM": "1.572",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.333",
+            "Y-VMAF NEG": "1.914",
+            "Subjective": "-",
+            "rank": "53"
+        },
+        "LGFN + x264": {
+            "ERQA": "2.627",
+            "LPIPS": "2.412",
+            "YUV-MS-SSIM": "1.348",
+            "Y-PSNR": "2.254",
+            "Y-VMAF": "1.14",
+            "Y-VMAF NEG": "1.384",
+            "Subjective": "-",
+            "rank": "58"
+        },
+        "only x264": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "17"
+        },
+        "RBPN + x264": {
+            "ERQA": "2.309",
+            "LPIPS": "2.356",
+            "YUV-MS-SSIM": "1.239",
+            "Y-PSNR": "2.012",
+            "Y-VMAF": "1.135",
+            "Y-VMAF NEG": "1.359",
+            "Subjective": "-",
+            "rank": "54"
+        },
+        "Real-ESRGAN + x264": {
+            "ERQA": "0.962",
+            "LPIPS": "1.058",
+            "YUV-MS-SSIM": "1.377",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.771",
+            "Y-VMAF NEG": "1.698",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + x264": {
+            "ERQA": "0.979",
+            "LPIPS": "0.794",
+            "YUV-MS-SSIM": "0.663",
+            "Y-PSNR": "1.033",
+            "Y-VMAF": "1.075",
+            "Y-VMAF NEG": "0.986",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RSDN + x264": {
+            "ERQA": "3.654",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "0.983",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.345",
+            "Y-VMAF NEG": "2.032",
+            "Subjective": "-",
+            "rank": "64"
+        },
+        "SOF-VSR-BD + x264": {
+            "ERQA": "2.147",
+            "LPIPS": "2.104",
+            "YUV-MS-SSIM": "1.103",
+            "Y-PSNR": "1.684",
+            "Y-VMAF": "1.171",
+            "Y-VMAF NEG": "1.341",
+            "Subjective": "-",
+            "rank": "52"
+        },
+        "SOF-VSR-BI + x264": {
+            "ERQA": "2.009",
+            "LPIPS": "2.252",
+            "YUV-MS-SSIM": "1.404",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.301",
+            "Y-VMAF NEG": "1.884",
+            "Subjective": "2.956",
+            "rank": "26"
+        },
+        "SwinIR + x264": {
+            "ERQA": "0.936",
+            "LPIPS": "0.669",
+            "YUV-MS-SSIM": "1.386",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.867",
+            "Y-VMAF NEG": "1.796",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + x264": {
+            "ERQA": "2.46",
+            "LPIPS": "2.151",
+            "YUV-MS-SSIM": "1.232",
+            "Y-PSNR": "2.281",
+            "Y-VMAF": "1.076",
+            "Y-VMAF NEG": "1.276",
+            "Subjective": "-",
+            "rank": "56"
+        },
+        "VRT + x264": {
+            "ERQA": "2.444",
+            "LPIPS": "2.192",
+            "YUV-MS-SSIM": "1.191",
+            "Y-PSNR": "2.021",
+            "Y-VMAF": "1.05",
+            "Y-VMAF NEG": "1.292",
+            "Subjective": "3.112",
+            "rank": "27"
+        },
+        "ahq-11 + x265": {
+            "ERQA": "3.146",
+            "LPIPS": "3.191",
+            "YUV-MS-SSIM": "3.504",
+            "Y-PSNR": "3.251",
+            "Y-VMAF": "3.33",
+            "Y-VMAF NEG": "3.226",
+            "Subjective": "1.175",
+            "rank": "23"
+        },
+        "amq-12 + x265": {
+            "ERQA": "3.324",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "3.416",
+            "Y-PSNR": "3.563",
+            "Y-VMAF": "3.377",
+            "Y-VMAF NEG": "3.325",
+            "Subjective": "-",
+            "rank": "61"
+        },
+        "BasicVSR + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "3.419",
+            "Y-PSNR": "3.803",
+            "Y-VMAF": "2.402",
+            "Y-VMAF NEG": "3.084",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "bicubic + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "COMISR + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "1.488",
+            "rank": "25"
+        },
+        "DBVSR + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "3.559",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.899",
+            "Y-VMAF NEG": "3.151",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "EGVSR + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "LGFN + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "3.901",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.653",
+            "Y-VMAF NEG": "3.237",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "only x265": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "17"
+        },
+        "RBPN + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "3.495",
+            "Y-PSNR": "3.945",
+            "Y-VMAF": "2.664",
+            "Y-VMAF NEG": "3.193",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "Real-ESRGAN + x265": {
+            "ERQA": "3.209",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.363",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + x265": {
+            "ERQA": "3.473",
+            "LPIPS": "2.555",
+            "YUV-MS-SSIM": "2.135",
+            "Y-PSNR": "2.133",
+            "Y-VMAF": "3.177",
+            "Y-VMAF NEG": "2.584",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RSDN + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "2.876",
+            "Y-PSNR": "3.284",
+            "Y-VMAF": "2.884",
+            "Y-VMAF NEG": "3.11",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BI + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SwinIR + x265": {
+            "ERQA": "3.417",
+            "LPIPS": "2.97",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.472",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "3.602",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.808",
+            "Y-VMAF NEG": "2.998",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "VRT + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "3.157",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.225",
+            "Y-VMAF NEG": "2.984",
+            "Subjective": "-",
+            "rank": "78"
+        }
+    },
+    "cuphead": {
+        "ahq-11 + aomenc": {
+            "ERQA": "3.297",
+            "LPIPS": "1.935",
+            "YUV-MS-SSIM": "2.302",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.474",
+            "Y-VMAF NEG": "1.8",
+            "Subjective": "1.617",
+            "rank": "45"
+        },
+        "amq-12 + aomenc": {
+            "ERQA": "3.888",
+            "LPIPS": "1.84",
+            "YUV-MS-SSIM": "2.034",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.551",
+            "Y-VMAF NEG": "1.941",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "BasicVSR + aomenc": {
+            "ERQA": "4.688",
+            "LPIPS": "2.263",
+            "YUV-MS-SSIM": "1.715",
+            "Y-PSNR": "3.28",
+            "Y-VMAF": "1.253",
+            "Y-VMAF NEG": "1.451",
+            "Subjective": "1.487",
+            "rank": "41"
+        },
+        "bicubic + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "2.016",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "3.811",
+            "Y-VMAF NEG": "5.751",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "COMISR + aomenc": {
+            "ERQA": "3.991",
+            "LPIPS": "2.088",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "1.179",
+            "rank": "32"
+        },
+        "DBVSR + aomenc": {
+            "ERQA": "4.604",
+            "LPIPS": "2.211",
+            "YUV-MS-SSIM": "1.641",
+            "Y-PSNR": "2.877",
+            "Y-VMAF": "1.271",
+            "Y-VMAF NEG": "1.449",
+            "Subjective": "-",
+            "rank": "80"
+        },
+        "EGVSR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "LGFN + aomenc": {
+            "ERQA": "6.285",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.816",
+            "Y-PSNR": "3.399",
+            "Y-VMAF": "1.274",
+            "Y-VMAF NEG": "1.496",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "only aomenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "23"
+        },
+        "RBPN + aomenc": {
+            "ERQA": "5.298",
+            "LPIPS": "2.358",
+            "YUV-MS-SSIM": "1.754",
+            "Y-PSNR": "4.355",
+            "Y-VMAF": "1.252",
+            "Y-VMAF NEG": "1.545",
+            "Subjective": "1.718",
+            "rank": "47"
+        },
+        "Real-ESRGAN + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.143",
+            "Y-VMAF NEG": "3.556",
+            "Subjective": "0.466",
+            "rank": "7"
+        },
+        "RealSR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "3.032",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.823",
+            "Y-VMAF NEG": "1.965",
+            "Subjective": "0.582",
+            "rank": "11"
+        },
+        "RSDN + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "SOF-VSR-BD + aomenc": {
+            "ERQA": "4.046",
+            "LPIPS": "1.994",
+            "YUV-MS-SSIM": "1.555",
+            "Y-PSNR": "2.904",
+            "Y-VMAF": "1.387",
+            "Y-VMAF NEG": "1.53",
+            "Subjective": "-",
+            "rank": "79"
+        },
+        "SOF-VSR-BI + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.398",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "2.382",
+            "rank": "49"
+        },
+        "SwinIR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.768",
+            "Y-VMAF NEG": "4.074",
+            "Subjective": "0.557",
+            "rank": "8"
+        },
+        "TMNet + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.445",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "4.675",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "VRT + aomenc": {
+            "ERQA": "4.244",
+            "LPIPS": "2.228",
+            "YUV-MS-SSIM": "1.562",
+            "Y-PSNR": "3.024",
+            "Y-VMAF": "1.182",
+            "Y-VMAF NEG": "1.407",
+            "Subjective": "1.447",
+            "rank": "40"
+        },
+        "ahq-11 + uavs3e": {
+            "ERQA": "1.872",
+            "LPIPS": "1.511",
+            "YUV-MS-SSIM": "1.63",
+            "Y-PSNR": "2.339",
+            "Y-VMAF": "1.368",
+            "Y-VMAF NEG": "1.54",
+            "Subjective": "1.57",
+            "rank": "43"
+        },
+        "amq-12 + uavs3e": {
+            "ERQA": "1.944",
+            "LPIPS": "1.493",
+            "YUV-MS-SSIM": "1.33",
+            "Y-PSNR": "1.842",
+            "Y-VMAF": "1.415",
+            "Y-VMAF NEG": "1.538",
+            "Subjective": "-",
+            "rank": "69"
+        },
+        "BasicVSR + uavs3e": {
+            "ERQA": "2.977",
+            "LPIPS": "1.695",
+            "YUV-MS-SSIM": "1.263",
+            "Y-PSNR": "1.989",
+            "Y-VMAF": "1.215",
+            "Y-VMAF NEG": "1.31",
+            "Subjective": "1.674",
+            "rank": "46"
+        },
+        "bicubic + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.13",
+            "YUV-MS-SSIM": "1.32",
+            "Y-PSNR": "1.993",
+            "Y-VMAF": "2.37",
+            "Y-VMAF NEG": "2.474",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "COMISR + uavs3e": {
+            "ERQA": "1.792",
+            "LPIPS": "1.541",
+            "YUV-MS-SSIM": "3.5",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "1.125",
+            "rank": "30"
+        },
+        "DBVSR + uavs3e": {
+            "ERQA": "2.825",
+            "LPIPS": "1.662",
+            "YUV-MS-SSIM": "1.235",
+            "Y-PSNR": "1.845",
+            "Y-VMAF": "1.228",
+            "Y-VMAF NEG": "1.309",
+            "Subjective": "-",
+            "rank": "73"
+        },
+        "EGVSR + uavs3e": {
+            "ERQA": "3.749",
+            "LPIPS": "2.733",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "77"
+        },
+        "LGFN + uavs3e": {
+            "ERQA": "3.353",
+            "LPIPS": "1.766",
+            "YUV-MS-SSIM": "1.308",
+            "Y-PSNR": "2.03",
+            "Y-VMAF": "1.225",
+            "Y-VMAF NEG": "1.331",
+            "Subjective": "-",
+            "rank": "76"
+        },
+        "only uavs3e": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "23"
+        },
+        "RBPN + uavs3e": {
+            "ERQA": "3.012",
+            "LPIPS": "1.748",
+            "YUV-MS-SSIM": "1.28",
+            "Y-PSNR": "2.252",
+            "Y-VMAF": "1.211",
+            "Y-VMAF NEG": "1.357",
+            "Subjective": "1.584",
+            "rank": "44"
+        },
+        "Real-ESRGAN + uavs3e": {
+            "ERQA": "1.32",
+            "LPIPS": "1.368",
+            "YUV-MS-SSIM": "1.503",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.257",
+            "Y-VMAF NEG": "1.768",
+            "Subjective": "0.579",
+            "rank": "10"
+        },
+        "RealSR + uavs3e": {
+            "ERQA": "1.265",
+            "LPIPS": "2.145",
+            "YUV-MS-SSIM": "1.113",
+            "Y-PSNR": "2.935",
+            "Y-VMAF": "1.407",
+            "Y-VMAF NEG": "1.411",
+            "Subjective": "0.695",
+            "rank": "16"
+        },
+        "RSDN + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.061",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "SOF-VSR-BD + uavs3e": {
+            "ERQA": "2.566",
+            "LPIPS": "1.605",
+            "YUV-MS-SSIM": "1.18",
+            "Y-PSNR": "1.73",
+            "Y-VMAF": "1.312",
+            "Y-VMAF NEG": "1.347",
+            "Subjective": "-",
+            "rank": "72"
+        },
+        "SOF-VSR-BI + uavs3e": {
+            "ERQA": "2.682",
+            "LPIPS": "1.747",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "2.774",
+            "rank": "50"
+        },
+        "SwinIR + uavs3e": {
+            "ERQA": "1.252",
+            "LPIPS": "1.228",
+            "YUV-MS-SSIM": "1.308",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.368",
+            "Y-VMAF NEG": "1.685",
+            "Subjective": "0.569",
+            "rank": "9"
+        },
+        "TMNet + uavs3e": {
+            "ERQA": "5.428",
+            "LPIPS": "2.177",
+            "YUV-MS-SSIM": "2.225",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.689",
+            "Y-VMAF NEG": "3.418",
+            "Subjective": "-",
+            "rank": "81"
+        },
+        "VRT + uavs3e": {
+            "ERQA": "2.724",
+            "LPIPS": "1.661",
+            "YUV-MS-SSIM": "1.18",
+            "Y-PSNR": "1.888",
+            "Y-VMAF": "1.162",
+            "Y-VMAF NEG": "1.278",
+            "Subjective": "1.49",
+            "rank": "42"
+        },
+        "ahq-11 + vvenc": {
+            "ERQA": "1.399",
+            "LPIPS": "1.425",
+            "YUV-MS-SSIM": "1.459",
+            "Y-PSNR": "1.725",
+            "Y-VMAF": "1.016",
+            "Y-VMAF NEG": "1.153",
+            "Subjective": "1.17",
+            "rank": "31"
+        },
+        "amq-12 + vvenc": {
+            "ERQA": "1.459",
+            "LPIPS": "1.43",
+            "YUV-MS-SSIM": "1.219",
+            "Y-PSNR": "1.52",
+            "Y-VMAF": "1.048",
+            "Y-VMAF NEG": "1.162",
+            "Subjective": "-",
+            "rank": "64"
+        },
+        "BasicVSR + vvenc": {
+            "ERQA": "2.28",
+            "LPIPS": "1.82",
+            "YUV-MS-SSIM": "1.139",
+            "Y-PSNR": "1.781",
+            "Y-VMAF": "0.837",
+            "Y-VMAF NEG": "0.997",
+            "Subjective": "1.197",
+            "rank": "33"
+        },
+        "bicubic + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.724",
+            "YUV-MS-SSIM": "1.221",
+            "Y-PSNR": "1.26",
+            "Y-VMAF": "1.76",
+            "Y-VMAF NEG": "1.719",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "COMISR + vvenc": {
+            "ERQA": "1.455",
+            "LPIPS": "1.56",
+            "YUV-MS-SSIM": "1.727",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.497",
+            "Y-VMAF NEG": "3.035",
+            "Subjective": "0.781",
+            "rank": "18"
+        },
+        "DBVSR + vvenc": {
+            "ERQA": "2.163",
+            "LPIPS": "1.786",
+            "YUV-MS-SSIM": "1.13",
+            "Y-PSNR": "1.709",
+            "Y-VMAF": "0.842",
+            "Y-VMAF NEG": "0.992",
+            "Subjective": "1.241",
+            "rank": "35"
+        },
+        "EGVSR + vvenc": {
+            "ERQA": "2.021",
+            "LPIPS": "1.94",
+            "YUV-MS-SSIM": "1.995",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.636",
+            "Y-VMAF NEG": "3.177",
+            "Subjective": "-",
+            "rank": "70"
+        },
+        "LGFN + vvenc": {
+            "ERQA": "2.324",
+            "LPIPS": "1.91",
+            "YUV-MS-SSIM": "1.154",
+            "Y-PSNR": "1.764",
+            "Y-VMAF": "0.841",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.269",
+            "rank": "37"
+        },
+        "only vvenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "23"
+        },
+        "RBPN + vvenc": {
+            "ERQA": "2.217",
+            "LPIPS": "1.918",
+            "YUV-MS-SSIM": "1.141",
+            "Y-PSNR": "1.832",
+            "Y-VMAF": "0.826",
+            "Y-VMAF NEG": "1.022",
+            "Subjective": "1.122",
+            "rank": "29"
+        },
+        "Real-ESRGAN + vvenc": {
+            "ERQA": "1.06",
+            "LPIPS": "1.346",
+            "YUV-MS-SSIM": "1.398",
+            "Y-PSNR": "1.855",
+            "Y-VMAF": "1.32",
+            "Y-VMAF NEG": "1.291",
+            "Subjective": "-",
+            "rank": "56"
+        },
+        "RealSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "RSDN + vvenc": {
+            "ERQA": "3.224",
+            "LPIPS": "2.803",
+            "YUV-MS-SSIM": "2.35",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.528",
+            "Y-VMAF NEG": "3.199",
+            "Subjective": "-",
+            "rank": "74"
+        },
+        "SOF-VSR-BD + vvenc": {
+            "ERQA": "2.028",
+            "LPIPS": "1.715",
+            "YUV-MS-SSIM": "1.097",
+            "Y-PSNR": "1.634",
+            "Y-VMAF": "0.926",
+            "Y-VMAF NEG": "1.038",
+            "Subjective": "-",
+            "rank": "71"
+        },
+        "SOF-VSR-BI + vvenc": {
+            "ERQA": "1.951",
+            "LPIPS": "1.807",
+            "YUV-MS-SSIM": "1.972",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.654",
+            "Y-VMAF NEG": "3.368",
+            "Subjective": "1.724",
+            "rank": "48"
+        },
+        "SwinIR + vvenc": {
+            "ERQA": "1.029",
+            "LPIPS": "1.254",
+            "YUV-MS-SSIM": "1.389",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.037",
+            "Y-VMAF NEG": "1.285",
+            "Subjective": "0.401",
+            "rank": "4"
+        },
+        "TMNet + vvenc": {
+            "ERQA": "3.314",
+            "LPIPS": "2.188",
+            "YUV-MS-SSIM": "1.641",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.848",
+            "Y-VMAF NEG": "2.018",
+            "Subjective": "-",
+            "rank": "75"
+        },
+        "VRT + vvenc": {
+            "ERQA": "2.245",
+            "LPIPS": "1.826",
+            "YUV-MS-SSIM": "1.099",
+            "Y-PSNR": "1.787",
+            "Y-VMAF": "0.803",
+            "Y-VMAF NEG": "0.981",
+            "Subjective": "1.122",
+            "rank": "28"
+        },
+        "ahq-11 + x264": {
+            "ERQA": "0.728",
+            "LPIPS": "0.701",
+            "YUV-MS-SSIM": "0.589",
+            "Y-PSNR": "0.579",
+            "Y-VMAF": "0.741",
+            "Y-VMAF NEG": "0.753",
+            "Subjective": "0.435",
+            "rank": "5"
+        },
+        "amq-12 + x264": {
+            "ERQA": "0.741",
+            "LPIPS": "0.704",
+            "YUV-MS-SSIM": "0.512",
+            "Y-PSNR": "0.515",
+            "Y-VMAF": "0.751",
+            "Y-VMAF NEG": "0.744",
+            "Subjective": "-",
+            "rank": "51"
+        },
+        "BasicVSR + x264": {
+            "ERQA": "1.11",
+            "LPIPS": "0.876",
+            "YUV-MS-SSIM": "0.556",
+            "Y-PSNR": "0.661",
+            "Y-VMAF": "0.703",
+            "Y-VMAF NEG": "0.713",
+            "Subjective": "0.782",
+            "rank": "19"
+        },
+        "bicubic + x264": {
+            "ERQA": "1.332",
+            "LPIPS": "1.063",
+            "YUV-MS-SSIM": "0.514",
+            "Y-PSNR": "0.536",
+            "Y-VMAF": "0.982",
+            "Y-VMAF NEG": "0.954",
+            "Subjective": "-",
+            "rank": "61"
+        },
+        "COMISR + x264": {
+            "ERQA": "0.73",
+            "LPIPS": "0.657",
+            "YUV-MS-SSIM": "0.469",
+            "Y-PSNR": "0.436",
+            "Y-VMAF": "0.958",
+            "Y-VMAF NEG": "0.828",
+            "Subjective": "0.45",
+            "rank": "6"
+        },
+        "DBVSR + x264": {
+            "ERQA": "1.058",
+            "LPIPS": "0.848",
+            "YUV-MS-SSIM": "0.547",
+            "Y-PSNR": "0.637",
+            "Y-VMAF": "0.709",
+            "Y-VMAF NEG": "0.713",
+            "Subjective": "-",
+            "rank": "55"
+        },
+        "EGVSR + x264": {
+            "ERQA": "0.984",
+            "LPIPS": "1.055",
+            "YUV-MS-SSIM": "0.587",
+            "Y-PSNR": "0.528",
+            "Y-VMAF": "1.012",
+            "Y-VMAF NEG": "0.883",
+            "Subjective": "-",
+            "rank": "52"
+        },
+        "LGFN + x264": {
+            "ERQA": "1.109",
+            "LPIPS": "0.901",
+            "YUV-MS-SSIM": "0.565",
+            "Y-PSNR": "0.671",
+            "Y-VMAF": "0.712",
+            "Y-VMAF NEG": "0.722",
+            "Subjective": "-",
+            "rank": "57"
+        },
+        "only x264": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "23"
+        },
+        "RBPN + x264": {
+            "ERQA": "1.071",
+            "LPIPS": "0.888",
+            "YUV-MS-SSIM": "0.556",
+            "Y-PSNR": "0.691",
+            "Y-VMAF": "0.702",
+            "Y-VMAF NEG": "0.725",
+            "Subjective": "0.743",
+            "rank": "17"
+        },
+        "Real-ESRGAN + x264": {
+            "ERQA": "0.595",
+            "LPIPS": "0.532",
+            "YUV-MS-SSIM": "0.485",
+            "Y-PSNR": "0.477",
+            "Y-VMAF": "0.74",
+            "Y-VMAF NEG": "0.708",
+            "Subjective": "0.381",
+            "rank": "3"
+        },
+        "RealSR + x264": {
+            "ERQA": "0.587",
+            "LPIPS": "0.756",
+            "YUV-MS-SSIM": "0.425",
+            "Y-PSNR": "0.514",
+            "Y-VMAF": "0.698",
+            "Y-VMAF NEG": "0.663",
+            "Subjective": "0.36",
+            "rank": "2"
+        },
+        "RSDN + x264": {
+            "ERQA": "1.2",
+            "LPIPS": "1.109",
+            "YUV-MS-SSIM": "0.573",
+            "Y-PSNR": "0.54",
+            "Y-VMAF": "0.996",
+            "Y-VMAF NEG": "0.838",
+            "Subjective": "-",
+            "rank": "58"
+        },
+        "SOF-VSR-BD + x264": {
+            "ERQA": "1.016",
+            "LPIPS": "0.835",
+            "YUV-MS-SSIM": "0.512",
+            "Y-PSNR": "0.597",
+            "Y-VMAF": "0.732",
+            "Y-VMAF NEG": "0.724",
+            "Subjective": "-",
+            "rank": "54"
+        },
+        "SOF-VSR-BI + x264": {
+            "ERQA": "0.97",
+            "LPIPS": "0.866",
+            "YUV-MS-SSIM": "0.558",
+            "Y-PSNR": "0.509",
+            "Y-VMAF": "1.029",
+            "Y-VMAF NEG": "0.883",
+            "Subjective": "0.818",
+            "rank": "20"
+        },
+        "SwinIR + x264": {
+            "ERQA": "0.567",
+            "LPIPS": "0.507",
+            "YUV-MS-SSIM": "0.449",
+            "Y-PSNR": "0.493",
+            "Y-VMAF": "0.693",
+            "Y-VMAF NEG": "0.677",
+            "Subjective": "0.349",
+            "rank": "1"
+        },
+        "TMNet + x264": {
+            "ERQA": "1.315",
+            "LPIPS": "0.944",
+            "YUV-MS-SSIM": "0.589",
+            "Y-PSNR": "0.85",
+            "Y-VMAF": "1.085",
+            "Y-VMAF NEG": "1.087",
+            "Subjective": "-",
+            "rank": "60"
+        },
+        "VRT + x264": {
+            "ERQA": "1.054",
+            "LPIPS": "0.857",
+            "YUV-MS-SSIM": "0.516",
+            "Y-PSNR": "0.646",
+            "Y-VMAF": "0.676",
+            "Y-VMAF NEG": "0.702",
+            "Subjective": "0.691",
+            "rank": "15"
+        },
+        "ahq-11 + x265": {
+            "ERQA": "0.967",
+            "LPIPS": "1.004",
+            "YUV-MS-SSIM": "0.844",
+            "Y-PSNR": "0.913",
+            "Y-VMAF": "1.059",
+            "Y-VMAF NEG": "1.13",
+            "Subjective": "0.908",
+            "rank": "22"
+        },
+        "amq-12 + x265": {
+            "ERQA": "1.002",
+            "LPIPS": "1.022",
+            "YUV-MS-SSIM": "0.738",
+            "Y-PSNR": "0.806",
+            "Y-VMAF": "1.099",
+            "Y-VMAF NEG": "1.14",
+            "Subjective": "-",
+            "rank": "53"
+        },
+        "BasicVSR + x265": {
+            "ERQA": "1.475",
+            "LPIPS": "1.17",
+            "YUV-MS-SSIM": "0.794",
+            "Y-PSNR": "0.956",
+            "Y-VMAF": "1.011",
+            "Y-VMAF NEG": "1.056",
+            "Subjective": "1.259",
+            "rank": "36"
+        },
+        "bicubic + x265": {
+            "ERQA": "1.813",
+            "LPIPS": "1.44",
+            "YUV-MS-SSIM": "0.755",
+            "Y-PSNR": "0.834",
+            "Y-VMAF": "1.56",
+            "Y-VMAF NEG": "1.572",
+            "Subjective": "-",
+            "rank": "68"
+        },
+        "COMISR + x265": {
+            "ERQA": "0.994",
+            "LPIPS": "0.949",
+            "YUV-MS-SSIM": "0.699",
+            "Y-PSNR": "0.5",
+            "Y-VMAF": "1.552",
+            "Y-VMAF NEG": "1.461",
+            "Subjective": "0.891",
+            "rank": "21"
+        },
+        "DBVSR + x265": {
+            "ERQA": "1.415",
+            "LPIPS": "1.137",
+            "YUV-MS-SSIM": "0.786",
+            "Y-PSNR": "0.935",
+            "Y-VMAF": "1.02",
+            "Y-VMAF NEG": "1.06",
+            "Subjective": "-",
+            "rank": "63"
+        },
+        "EGVSR + x265": {
+            "ERQA": "1.229",
+            "LPIPS": "1.435",
+            "YUV-MS-SSIM": "0.842",
+            "Y-PSNR": "0.547",
+            "Y-VMAF": "1.616",
+            "Y-VMAF NEG": "1.536",
+            "Subjective": "-",
+            "rank": "59"
+        },
+        "LGFN + x265": {
+            "ERQA": "1.481",
+            "LPIPS": "1.205",
+            "YUV-MS-SSIM": "0.811",
+            "Y-PSNR": "0.973",
+            "Y-VMAF": "1.027",
+            "Y-VMAF NEG": "1.076",
+            "Subjective": "-",
+            "rank": "65"
+        },
+        "only x265": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "23"
+        },
+        "RBPN + x265": {
+            "ERQA": "1.431",
+            "LPIPS": "1.179",
+            "YUV-MS-SSIM": "0.798",
+            "Y-PSNR": "1.002",
+            "Y-VMAF": "1.005",
+            "Y-VMAF NEG": "1.075",
+            "Subjective": "1.301",
+            "rank": "38"
+        },
+        "Real-ESRGAN + x265": {
+            "ERQA": "0.765",
+            "LPIPS": "0.786",
+            "YUV-MS-SSIM": "0.727",
+            "Y-PSNR": "0.704",
+            "Y-VMAF": "1.234",
+            "Y-VMAF NEG": "1.145",
+            "Subjective": "0.603",
+            "rank": "12"
+        },
+        "RealSR + x265": {
+            "ERQA": "0.769",
+            "LPIPS": "1.133",
+            "YUV-MS-SSIM": "0.635",
+            "Y-PSNR": "0.73",
+            "Y-VMAF": "1.073",
+            "Y-VMAF NEG": "1.044",
+            "Subjective": "0.666",
+            "rank": "13"
+        },
+        "RSDN + x265": {
+            "ERQA": "1.545",
+            "LPIPS": "1.38",
+            "YUV-MS-SSIM": "0.788",
+            "Y-PSNR": "0.484",
+            "Y-VMAF": "1.577",
+            "Y-VMAF NEG": "1.431",
+            "Subjective": "-",
+            "rank": "66"
+        },
+        "SOF-VSR-BD + x265": {
+            "ERQA": "1.352",
+            "LPIPS": "1.111",
+            "YUV-MS-SSIM": "0.733",
+            "Y-PSNR": "0.88",
+            "Y-VMAF": "1.063",
+            "Y-VMAF NEG": "1.085",
+            "Subjective": "-",
+            "rank": "62"
+        },
+        "SOF-VSR-BI + x265": {
+            "ERQA": "1.263",
+            "LPIPS": "1.136",
+            "YUV-MS-SSIM": "0.783",
+            "Y-PSNR": "0.537",
+            "Y-VMAF": "1.633",
+            "Y-VMAF NEG": "1.538",
+            "Subjective": "1.391",
+            "rank": "39"
+        },
+        "SwinIR + x265": {
+            "ERQA": "0.718",
+            "LPIPS": "0.729",
+            "YUV-MS-SSIM": "0.65",
+            "Y-PSNR": "0.682",
+            "Y-VMAF": "1.029",
+            "Y-VMAF NEG": "1.059",
+            "Subjective": "0.68",
+            "rank": "14"
+        },
+        "TMNet + x265": {
+            "ERQA": "1.771",
+            "LPIPS": "1.282",
+            "YUV-MS-SSIM": "0.863",
+            "Y-PSNR": "1.101",
+            "Y-VMAF": "1.719",
+            "Y-VMAF NEG": "1.772",
+            "Subjective": "-",
+            "rank": "67"
+        },
+        "VRT + x265": {
+            "ERQA": "1.417",
+            "LPIPS": "1.149",
+            "YUV-MS-SSIM": "0.736",
+            "Y-PSNR": "0.943",
+            "Y-VMAF": "0.984",
+            "Y-VMAF NEG": "1.035",
+            "Subjective": "1.198",
+            "rank": "34"
+        }
+    },
+    "dancing": {
+        "ahq-11 + aomenc": {
+            "ERQA": "3.44",
+            "LPIPS": "1.025",
+            "YUV-MS-SSIM": "2.731",
+            "Y-PSNR": "16.05",
+            "Y-VMAF": "1.379",
+            "Y-VMAF NEG": "1.969",
+            "Subjective": "0.414",
+            "rank": "18"
+        },
+        "amq-12 + aomenc": {
+            "ERQA": "4.406",
+            "LPIPS": "1.258",
+            "YUV-MS-SSIM": "2.169",
+            "Y-PSNR": "5.576",
+            "Y-VMAF": "1.534",
+            "Y-VMAF NEG": "2.085",
+            "Subjective": "-",
+            "rank": "75"
+        },
+        "BasicVSR + aomenc": {
+            "ERQA": "7.317",
+            "LPIPS": "2.675",
+            "YUV-MS-SSIM": "2.005",
+            "Y-PSNR": "3.659",
+            "Y-VMAF": "1.52",
+            "Y-VMAF NEG": "1.846",
+            "Subjective": "1.47",
+            "rank": "37"
+        },
+        "bicubic + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "2.351",
+            "Y-PSNR": "4.907",
+            "Y-VMAF": "4.317",
+            "Y-VMAF NEG": "4.626",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "COMISR + aomenc": {
+            "ERQA": "9.355",
+            "LPIPS": "2.39",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0.721",
+            "rank": "24"
+        },
+        "DBVSR + aomenc": {
+            "ERQA": "8.086",
+            "LPIPS": "2.826",
+            "YUV-MS-SSIM": "2.02",
+            "Y-PSNR": "3.779",
+            "Y-VMAF": "1.588",
+            "Y-VMAF NEG": "1.849",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "EGVSR + aomenc": {
+            "ERQA": "11.022",
+            "LPIPS": "1.868",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "80"
+        },
+        "LGFN + aomenc": {
+            "ERQA": "8.643",
+            "LPIPS": "2.913",
+            "YUV-MS-SSIM": "2.158",
+            "Y-PSNR": "3.712",
+            "Y-VMAF": "1.623",
+            "Y-VMAF NEG": "1.936",
+            "Subjective": "-",
+            "rank": "79"
+        },
+        "only aomenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "28"
+        },
+        "RBPN + aomenc": {
+            "ERQA": "8.472",
+            "LPIPS": "2.982",
+            "YUV-MS-SSIM": "2.042",
+            "Y-PSNR": "3.481",
+            "Y-VMAF": "1.604",
+            "Y-VMAF NEG": "1.936",
+            "Subjective": "1.536",
+            "rank": "38"
+        },
+        "Real-ESRGAN + aomenc": {
+            "ERQA": "11.033",
+            "LPIPS": "1.291",
+            "YUV-MS-SSIM": "3.65",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.062",
+            "Y-VMAF NEG": "4.497",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.541",
+            "YUV-MS-SSIM": "2.114",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.024",
+            "Y-VMAF NEG": "1.913",
+            "Subjective": "0.38",
+            "rank": "17"
+        },
+        "RSDN + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "4.696",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "SOF-VSR-BD + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.036",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "SOF-VSR-BI + aomenc": {
+            "ERQA": "10.903",
+            "LPIPS": "3.15",
+            "YUV-MS-SSIM": "2.024",
+            "Y-PSNR": "3.433",
+            "Y-VMAF": "1.736",
+            "Y-VMAF NEG": "1.949",
+            "Subjective": "1.737",
+            "rank": "40"
+        },
+        "SwinIR + aomenc": {
+            "ERQA": "7.638",
+            "LPIPS": "1.167",
+            "YUV-MS-SSIM": "3.712",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.683",
+            "Y-VMAF NEG": "4.337",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "4.507",
+            "YUV-MS-SSIM": "17.506",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "5.519",
+            "Y-VMAF NEG": "9.78",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "VRT + aomenc": {
+            "ERQA": "7.31",
+            "LPIPS": "2.833",
+            "YUV-MS-SSIM": "2.416",
+            "Y-PSNR": "3.607",
+            "Y-VMAF": "1.503",
+            "Y-VMAF NEG": "1.841",
+            "Subjective": "1.537",
+            "rank": "39"
+        },
+        "ahq-11 + uavs3e": {
+            "ERQA": "2.182",
+            "LPIPS": "1.006",
+            "YUV-MS-SSIM": "2.366",
+            "Y-PSNR": "4.733",
+            "Y-VMAF": "1.331",
+            "Y-VMAF NEG": "1.836",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "amq-12 + uavs3e": {
+            "ERQA": "2.252",
+            "LPIPS": "1.198",
+            "YUV-MS-SSIM": "1.822",
+            "Y-PSNR": "2.608",
+            "Y-VMAF": "1.453",
+            "Y-VMAF NEG": "1.757",
+            "Subjective": "-",
+            "rank": "63"
+        },
+        "BasicVSR + uavs3e": {
+            "ERQA": "4.452",
+            "LPIPS": "2.343",
+            "YUV-MS-SSIM": "1.669",
+            "Y-PSNR": "2.573",
+            "Y-VMAF": "1.417",
+            "Y-VMAF NEG": "1.644",
+            "Subjective": "1.935",
+            "rank": "44"
+        },
+        "bicubic + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "6.651",
+            "YUV-MS-SSIM": "1.923",
+            "Y-PSNR": "2.373",
+            "Y-VMAF": "3.242",
+            "Y-VMAF NEG": "3.032",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "COMISR + uavs3e": {
+            "ERQA": "2.874",
+            "LPIPS": "2.219",
+            "YUV-MS-SSIM": "3.358",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "6.099",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0.641",
+            "rank": "21"
+        },
+        "DBVSR + uavs3e": {
+            "ERQA": "4.348",
+            "LPIPS": "2.51",
+            "YUV-MS-SSIM": "1.713",
+            "Y-PSNR": "2.564",
+            "Y-VMAF": "1.481",
+            "Y-VMAF NEG": "1.68",
+            "Subjective": "-",
+            "rank": "74"
+        },
+        "EGVSR + uavs3e": {
+            "ERQA": "3.406",
+            "LPIPS": "1.695",
+            "YUV-MS-SSIM": "3.164",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "8.16",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "70"
+        },
+        "LGFN + uavs3e": {
+            "ERQA": "4.751",
+            "LPIPS": "2.505",
+            "YUV-MS-SSIM": "1.784",
+            "Y-PSNR": "2.59",
+            "Y-VMAF": "1.487",
+            "Y-VMAF NEG": "1.699",
+            "Subjective": "-",
+            "rank": "76"
+        },
+        "only uavs3e": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "28"
+        },
+        "RBPN + uavs3e": {
+            "ERQA": "4.773",
+            "LPIPS": "2.566",
+            "YUV-MS-SSIM": "1.699",
+            "Y-PSNR": "2.446",
+            "Y-VMAF": "1.468",
+            "Y-VMAF NEG": "1.711",
+            "Subjective": "2.534",
+            "rank": "49"
+        },
+        "Real-ESRGAN + uavs3e": {
+            "ERQA": "1.596",
+            "LPIPS": "1.387",
+            "YUV-MS-SSIM": "2.24",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.856",
+            "Y-VMAF NEG": "2.493",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + uavs3e": {
+            "ERQA": "1.544",
+            "LPIPS": "1.39",
+            "YUV-MS-SSIM": "1.268",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.72",
+            "Y-VMAF NEG": "1.588",
+            "Subjective": "0.361",
+            "rank": "15"
+        },
+        "RSDN + uavs3e": {
+            "ERQA": "16.72",
+            "LPIPS": "4.222",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "7.176",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "81"
+        },
+        "SOF-VSR-BD + uavs3e": {
+            "ERQA": "1.831",
+            "LPIPS": "2.654",
+            "YUV-MS-SSIM": "2.746",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "7.786",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "60"
+        },
+        "SOF-VSR-BI + uavs3e": {
+            "ERQA": "5.019",
+            "LPIPS": "2.848",
+            "YUV-MS-SSIM": "1.753",
+            "Y-PSNR": "2.384",
+            "Y-VMAF": "1.623",
+            "Y-VMAF NEG": "1.798",
+            "Subjective": "2.808",
+            "rank": "50"
+        },
+        "SwinIR + uavs3e": {
+            "ERQA": "1.265",
+            "LPIPS": "1.257",
+            "YUV-MS-SSIM": "2.048",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.532",
+            "Y-VMAF NEG": "2.35",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + uavs3e": {
+            "ERQA": "6.68",
+            "LPIPS": "3.333",
+            "YUV-MS-SSIM": "4.121",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "3.551",
+            "Y-VMAF NEG": "3.635",
+            "Subjective": "-",
+            "rank": "77"
+        },
+        "VRT + uavs3e": {
+            "ERQA": "4.424",
+            "LPIPS": "2.448",
+            "YUV-MS-SSIM": "2.071",
+            "Y-PSNR": "2.486",
+            "Y-VMAF": "1.397",
+            "Y-VMAF NEG": "1.62",
+            "Subjective": "1.739",
+            "rank": "41"
+        },
+        "ahq-11 + vvenc": {
+            "ERQA": "1.824",
+            "LPIPS": "0.953",
+            "YUV-MS-SSIM": "1.681",
+            "Y-PSNR": "0.375",
+            "Y-VMAF": "0.929",
+            "Y-VMAF NEG": "1.267",
+            "Subjective": "0.341",
+            "rank": "14"
+        },
+        "amq-12 + vvenc": {
+            "ERQA": "1.945",
+            "LPIPS": "1.141",
+            "YUV-MS-SSIM": "1.375",
+            "Y-PSNR": "0.307",
+            "Y-VMAF": "1.003",
+            "Y-VMAF NEG": "1.281",
+            "Subjective": "-",
+            "rank": "61"
+        },
+        "BasicVSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.809",
+            "YUV-MS-SSIM": "1.276",
+            "Y-PSNR": "0.303",
+            "Y-VMAF": "0.967",
+            "Y-VMAF NEG": "1.149",
+            "Subjective": "1.831",
+            "rank": "43"
+        },
+        "bicubic + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.461",
+            "Y-PSNR": "1.309",
+            "Y-VMAF": "2.258",
+            "Y-VMAF NEG": "2.1",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "COMISR + vvenc": {
+            "ERQA": "2.576",
+            "LPIPS": "2.111",
+            "YUV-MS-SSIM": "2.136",
+            "Y-PSNR": "1.665",
+            "Y-VMAF": "3.416",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0.926",
+            "rank": "27"
+        },
+        "DBVSR + vvenc": {
+            "ERQA": "3.961",
+            "LPIPS": "2.719",
+            "YUV-MS-SSIM": "1.294",
+            "Y-PSNR": "0.309",
+            "Y-VMAF": "0.997",
+            "Y-VMAF NEG": "1.153",
+            "Subjective": "2.223",
+            "rank": "47"
+        },
+        "EGVSR + vvenc": {
+            "ERQA": "3.293",
+            "LPIPS": "1.637",
+            "YUV-MS-SSIM": "1.838",
+            "Y-PSNR": "1.943",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "69"
+        },
+        "LGFN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.282",
+            "YUV-MS-SSIM": "1.304",
+            "Y-PSNR": "0.304",
+            "Y-VMAF": "1.018",
+            "Y-VMAF NEG": "1.191",
+            "Subjective": "2.378",
+            "rank": "48"
+        },
+        "only vvenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "28"
+        },
+        "RBPN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.257",
+            "YUV-MS-SSIM": "1.282",
+            "Y-PSNR": "0.293",
+            "Y-VMAF": "1.003",
+            "Y-VMAF NEG": "1.189",
+            "Subjective": "2.143",
+            "rank": "46"
+        },
+        "Real-ESRGAN + vvenc": {
+            "ERQA": "1.61",
+            "LPIPS": "1.324",
+            "YUV-MS-SSIM": "1.826",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.313",
+            "Y-VMAF NEG": "1.842",
+            "Subjective": "-",
+            "rank": "57"
+        },
+        "RealSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "RSDN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.366",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "SOF-VSR-BD + vvenc": {
+            "ERQA": "3.806",
+            "LPIPS": "2.676",
+            "YUV-MS-SSIM": "1.821",
+            "Y-PSNR": "1.86",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "72"
+        },
+        "SOF-VSR-BI + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.832",
+            "YUV-MS-SSIM": "1.307",
+            "Y-PSNR": "0.304",
+            "Y-VMAF": "1.102",
+            "Y-VMAF NEG": "1.231",
+            "Subjective": "2.074",
+            "rank": "45"
+        },
+        "SwinIR + vvenc": {
+            "ERQA": "1.52",
+            "LPIPS": "1.283",
+            "YUV-MS-SSIM": "1.707",
+            "Y-PSNR": "3.086",
+            "Y-VMAF": "1.154",
+            "Y-VMAF NEG": "1.805",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.731",
+            "YUV-MS-SSIM": "2.394",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.416",
+            "Y-VMAF NEG": "2.535",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "VRT + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.848",
+            "YUV-MS-SSIM": "1.482",
+            "Y-PSNR": "0.303",
+            "Y-VMAF": "0.949",
+            "Y-VMAF NEG": "1.14",
+            "Subjective": "1.775",
+            "rank": "42"
+        },
+        "ahq-11 + x264": {
+            "ERQA": "0.699",
+            "LPIPS": "0.497",
+            "YUV-MS-SSIM": "0.68",
+            "Y-PSNR": "0.817",
+            "Y-VMAF": "0.573",
+            "Y-VMAF NEG": "0.677",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "amq-12 + x264": {
+            "ERQA": "0.727",
+            "LPIPS": "0.539",
+            "YUV-MS-SSIM": "0.56",
+            "Y-PSNR": "0.606",
+            "Y-VMAF": "0.602",
+            "Y-VMAF NEG": "0.649",
+            "Subjective": "-",
+            "rank": "51"
+        },
+        "BasicVSR + x264": {
+            "ERQA": "1.41",
+            "LPIPS": "1.02",
+            "YUV-MS-SSIM": "0.612",
+            "Y-PSNR": "0.724",
+            "Y-VMAF": "0.666",
+            "Y-VMAF NEG": "0.704",
+            "Subjective": "0.695",
+            "rank": "23"
+        },
+        "bicubic + x264": {
+            "ERQA": "2.427",
+            "LPIPS": "1.8",
+            "YUV-MS-SSIM": "0.571",
+            "Y-PSNR": "0.567",
+            "Y-VMAF": "1.008",
+            "Y-VMAF NEG": "0.958",
+            "Subjective": "-",
+            "rank": "66"
+        },
+        "COMISR + x264": {
+            "ERQA": "0.95",
+            "LPIPS": "0.839",
+            "YUV-MS-SSIM": "0.577",
+            "Y-PSNR": "0.502",
+            "Y-VMAF": "1.036",
+            "Y-VMAF NEG": "0.937",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "DBVSR + x264": {
+            "ERQA": "1.39",
+            "LPIPS": "1.069",
+            "YUV-MS-SSIM": "0.6",
+            "Y-PSNR": "0.685",
+            "Y-VMAF": "0.688",
+            "Y-VMAF NEG": "0.71",
+            "Subjective": "-",
+            "rank": "54"
+        },
+        "EGVSR + x264": {
+            "ERQA": "1.133",
+            "LPIPS": "0.824",
+            "YUV-MS-SSIM": "0.655",
+            "Y-PSNR": "0.587",
+            "Y-VMAF": "1.25",
+            "Y-VMAF NEG": "1.129",
+            "Subjective": "-",
+            "rank": "52"
+        },
+        "LGFN + x264": {
+            "ERQA": "1.448",
+            "LPIPS": "1.06",
+            "YUV-MS-SSIM": "0.636",
+            "Y-PSNR": "0.729",
+            "Y-VMAF": "0.696",
+            "Y-VMAF NEG": "0.72",
+            "Subjective": "-",
+            "rank": "56"
+        },
+        "only x264": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "28"
+        },
+        "RBPN + x264": {
+            "ERQA": "1.47",
+            "LPIPS": "1.089",
+            "YUV-MS-SSIM": "0.612",
+            "Y-PSNR": "0.697",
+            "Y-VMAF": "0.689",
+            "Y-VMAF NEG": "0.719",
+            "Subjective": "0.774",
+            "rank": "26"
+        },
+        "Real-ESRGAN + x264": {
+            "ERQA": "0.615",
+            "LPIPS": "0.542",
+            "YUV-MS-SSIM": "0.575",
+            "Y-PSNR": "1.002",
+            "Y-VMAF": "0.638",
+            "Y-VMAF NEG": "0.746",
+            "Subjective": "0.372",
+            "rank": "16"
+        },
+        "RealSR + x264": {
+            "ERQA": "0.676",
+            "LPIPS": "0.632",
+            "YUV-MS-SSIM": "0.431",
+            "Y-PSNR": "0.586",
+            "Y-VMAF": "0.67",
+            "Y-VMAF NEG": "0.627",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RSDN + x264": {
+            "ERQA": "2.498",
+            "LPIPS": "1.549",
+            "YUV-MS-SSIM": "1.299",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.187",
+            "Y-VMAF NEG": "1.097",
+            "Subjective": "-",
+            "rank": "67"
+        },
+        "SOF-VSR-BD + x264": {
+            "ERQA": "1.432",
+            "LPIPS": "1.102",
+            "YUV-MS-SSIM": "0.676",
+            "Y-PSNR": "0.574",
+            "Y-VMAF": "1.248",
+            "Y-VMAF NEG": "1.097",
+            "Subjective": "-",
+            "rank": "55"
+        },
+        "SOF-VSR-BI + x264": {
+            "ERQA": "3.205",
+            "LPIPS": "1.153",
+            "YUV-MS-SSIM": "0.598",
+            "Y-PSNR": "0.649",
+            "Y-VMAF": "0.716",
+            "Y-VMAF NEG": "0.73",
+            "Subjective": "0.767",
+            "rank": "25"
+        },
+        "SwinIR + x264": {
+            "ERQA": "0.551",
+            "LPIPS": "0.488",
+            "YUV-MS-SSIM": "0.545",
+            "Y-PSNR": "0.757",
+            "Y-VMAF": "0.597",
+            "Y-VMAF NEG": "0.734",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + x264": {
+            "ERQA": "1.702",
+            "LPIPS": "1.281",
+            "YUV-MS-SSIM": "0.815",
+            "Y-PSNR": "1.256",
+            "Y-VMAF": "1.066",
+            "Y-VMAF NEG": "1.043",
+            "Subjective": "-",
+            "rank": "58"
+        },
+        "VRT + x264": {
+            "ERQA": "1.424",
+            "LPIPS": "1.073",
+            "YUV-MS-SSIM": "0.66",
+            "Y-PSNR": "0.693",
+            "Y-VMAF": "0.663",
+            "Y-VMAF NEG": "0.702",
+            "Subjective": "0.689",
+            "rank": "22"
+        },
+        "ahq-11 + x265": {
+            "ERQA": "1.309",
+            "LPIPS": "0.807",
+            "YUV-MS-SSIM": "1.189",
+            "Y-PSNR": "1.495",
+            "Y-VMAF": "0.96",
+            "Y-VMAF NEG": "1.173",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "amq-12 + x265": {
+            "ERQA": "1.333",
+            "LPIPS": "0.915",
+            "YUV-MS-SSIM": "0.984",
+            "Y-PSNR": "1.116",
+            "Y-VMAF": "1.037",
+            "Y-VMAF NEG": "1.14",
+            "Subjective": "-",
+            "rank": "53"
+        },
+        "BasicVSR + x265": {
+            "ERQA": "2.362",
+            "LPIPS": "1.667",
+            "YUV-MS-SSIM": "1.011",
+            "Y-PSNR": "1.239",
+            "Y-VMAF": "1.107",
+            "Y-VMAF NEG": "1.144",
+            "Subjective": "1.2",
+            "rank": "34"
+        },
+        "bicubic + x265": {
+            "ERQA": "3.939",
+            "LPIPS": "3.614",
+            "YUV-MS-SSIM": "1.029",
+            "Y-PSNR": "1.061",
+            "Y-VMAF": "1.796",
+            "Y-VMAF NEG": "1.639",
+            "Subjective": "-",
+            "rank": "73"
+        },
+        "COMISR + x265": {
+            "ERQA": "1.596",
+            "LPIPS": "1.48",
+            "YUV-MS-SSIM": "1.039",
+            "Y-PSNR": "0.739",
+            "Y-VMAF": "1.751",
+            "Y-VMAF NEG": "1.346",
+            "Subjective": "0.504",
+            "rank": "20"
+        },
+        "DBVSR + x265": {
+            "ERQA": "2.201",
+            "LPIPS": "1.712",
+            "YUV-MS-SSIM": "1.007",
+            "Y-PSNR": "1.206",
+            "Y-VMAF": "1.122",
+            "Y-VMAF NEG": "1.136",
+            "Subjective": "-",
+            "rank": "62"
+        },
+        "EGVSR + x265": {
+            "ERQA": "1.815",
+            "LPIPS": "1.374",
+            "YUV-MS-SSIM": "1.124",
+            "Y-PSNR": "0.79",
+            "Y-VMAF": "2.063",
+            "Y-VMAF NEG": "1.575",
+            "Subjective": "-",
+            "rank": "59"
+        },
+        "LGFN + x265": {
+            "ERQA": "2.407",
+            "LPIPS": "1.766",
+            "YUV-MS-SSIM": "1.05",
+            "Y-PSNR": "1.248",
+            "Y-VMAF": "1.148",
+            "Y-VMAF NEG": "1.171",
+            "Subjective": "-",
+            "rank": "65"
+        },
+        "only x265": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "28"
+        },
+        "RBPN + x265": {
+            "ERQA": "2.433",
+            "LPIPS": "1.777",
+            "YUV-MS-SSIM": "1.015",
+            "Y-PSNR": "1.199",
+            "Y-VMAF": "1.134",
+            "Y-VMAF NEG": "1.165",
+            "Subjective": "1.293",
+            "rank": "36"
+        },
+        "Real-ESRGAN + x265": {
+            "ERQA": "1.076",
+            "LPIPS": "0.995",
+            "YUV-MS-SSIM": "1.094",
+            "Y-PSNR": "1.426",
+            "Y-VMAF": "1.129",
+            "Y-VMAF NEG": "1.315",
+            "Subjective": "0.32",
+            "rank": "13"
+        },
+        "RealSR + x265": {
+            "ERQA": "1.078",
+            "LPIPS": "1.189",
+            "YUV-MS-SSIM": "0.784",
+            "Y-PSNR": "0.952",
+            "Y-VMAF": "1.176",
+            "Y-VMAF NEG": "1.062",
+            "Subjective": "0.425",
+            "rank": "19"
+        },
+        "RSDN + x265": {
+            "ERQA": "3.802",
+            "LPIPS": "2.566",
+            "YUV-MS-SSIM": "2.263",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.007",
+            "Y-VMAF NEG": "1.5",
+            "Subjective": "-",
+            "rank": "71"
+        },
+        "SOF-VSR-BD + x265": {
+            "ERQA": "2.257",
+            "LPIPS": "1.78",
+            "YUV-MS-SSIM": "1.112",
+            "Y-PSNR": "0.786",
+            "Y-VMAF": "2.017",
+            "Y-VMAF NEG": "1.485",
+            "Subjective": "-",
+            "rank": "64"
+        },
+        "SOF-VSR-BI + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.924",
+            "YUV-MS-SSIM": "1.01",
+            "Y-PSNR": "1.15",
+            "Y-VMAF": "1.189",
+            "Y-VMAF NEG": "1.176",
+            "Subjective": "1.227",
+            "rank": "35"
+        },
+        "SwinIR + x265": {
+            "ERQA": "0.945",
+            "LPIPS": "0.931",
+            "YUV-MS-SSIM": "1.027",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.033",
+            "Y-VMAF NEG": "1.249",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "TMNet + x265": {
+            "ERQA": "2.996",
+            "LPIPS": "2.372",
+            "YUV-MS-SSIM": "1.492",
+            "Y-PSNR": "1.764",
+            "Y-VMAF": "1.955",
+            "Y-VMAF NEG": "1.796",
+            "Subjective": "-",
+            "rank": "68"
+        },
+        "VRT + x265": {
+            "ERQA": "2.368",
+            "LPIPS": "1.74",
+            "YUV-MS-SSIM": "1.112",
+            "Y-PSNR": "1.204",
+            "Y-VMAF": "1.099",
+            "Y-VMAF NEG": "1.139",
+            "Subjective": "1.11",
+            "rank": "33"
+        }
+    },
+    "dontstarve": {
+        "ahq-11 + aomenc": {
+            "ERQA": "6.197",
+            "LPIPS": "1.984",
+            "YUV-MS-SSIM": "1.9",
+            "Y-PSNR": "6.234",
+            "Y-VMAF": "2.597",
+            "Y-VMAF NEG": "2.417",
+            "Subjective": "-",
+            "rank": "76"
+        },
+        "amq-12 + aomenc": {
+            "ERQA": "7.181",
+            "LPIPS": "2.429",
+            "YUV-MS-SSIM": "1.986",
+            "Y-PSNR": "8.054",
+            "Y-VMAF": "2.704",
+            "Y-VMAF NEG": "2.677",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "BasicVSR + aomenc": {
+            "ERQA": "7.753",
+            "LPIPS": "2.423",
+            "YUV-MS-SSIM": "2.081",
+            "Y-PSNR": "15.239",
+            "Y-VMAF": "1.638",
+            "Y-VMAF NEG": "1.847",
+            "Subjective": "-",
+            "rank": "86"
+        },
+        "bicubic + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "9.044",
+            "YUV-MS-SSIM": "2.366",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "5.823",
+            "Y-VMAF NEG": "6.595",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "COMISR + aomenc": {
+            "ERQA": "5.167",
+            "LPIPS": "1.592",
+            "YUV-MS-SSIM": "6.327",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "72"
+        },
+        "DBVSR + aomenc": {
+            "ERQA": "8.14",
+            "LPIPS": "2.712",
+            "YUV-MS-SSIM": "1.988",
+            "Y-PSNR": "11.095",
+            "Y-VMAF": "1.782",
+            "Y-VMAF NEG": "1.944",
+            "Subjective": "-",
+            "rank": "91"
+        },
+        "EGVSR + aomenc": {
+            "ERQA": "6.603",
+            "LPIPS": "1.682",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "79"
+        },
+        "LGFN + aomenc": {
+            "ERQA": "7.771",
+            "LPIPS": "2.784",
+            "YUV-MS-SSIM": "2.021",
+            "Y-PSNR": "8.478",
+            "Y-VMAF": "1.734",
+            "Y-VMAF NEG": "1.874",
+            "Subjective": "-",
+            "rank": "87"
+        },
+        "only aomenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "12"
+        },
+        "RBPN + aomenc": {
+            "ERQA": "7.829",
+            "LPIPS": "2.717",
+            "YUV-MS-SSIM": "2.06",
+            "Y-PSNR": "14.68",
+            "Y-VMAF": "1.723",
+            "Y-VMAF NEG": "1.949",
+            "Subjective": "-",
+            "rank": "89"
+        },
+        "Real-ESRGAN + aomenc": {
+            "ERQA": "3.928",
+            "LPIPS": "1.145",
+            "YUV-MS-SSIM": "2.135",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.664",
+            "Y-VMAF NEG": "2.579",
+            "Subjective": "-",
+            "rank": "69"
+        },
+        "RealSR + aomenc": {
+            "ERQA": "2.528",
+            "LPIPS": "1.716",
+            "YUV-MS-SSIM": "1.495",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.126",
+            "Y-VMAF NEG": "2.069",
+            "Subjective": "0.734",
+            "rank": "8"
+        },
+        "RSDN + aomenc": {
+            "ERQA": "8.805",
+            "LPIPS": "2.072",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "93"
+        },
+        "SOF-VSR-BD + aomenc": {
+            "ERQA": "6.877",
+            "LPIPS": "2.558",
+            "YUV-MS-SSIM": "1.706",
+            "Y-PSNR": "7.448",
+            "Y-VMAF": "1.936",
+            "Y-VMAF NEG": "2.018",
+            "Subjective": "-",
+            "rank": "80"
+        },
+        "SOF-VSR-BI + aomenc": {
+            "ERQA": "5.53",
+            "LPIPS": "2.164",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "74"
+        },
+        "SwinIR + aomenc": {
+            "ERQA": "3.096",
+            "LPIPS": "1.29",
+            "YUV-MS-SSIM": "1.982",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.157",
+            "Y-VMAF NEG": "2.481",
+            "Subjective": "1.474",
+            "rank": "23"
+        },
+        "TMNet + aomenc": {
+            "ERQA": "15.891",
+            "LPIPS": "3.604",
+            "YUV-MS-SSIM": "5.579",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "5.63",
+            "Y-VMAF NEG": "8.886",
+            "Subjective": "-",
+            "rank": "95"
+        },
+        "VRT + aomenc": {
+            "ERQA": "7.791",
+            "LPIPS": "2.479",
+            "YUV-MS-SSIM": "1.753",
+            "Y-PSNR": "12.451",
+            "Y-VMAF": "1.585",
+            "Y-VMAF NEG": "1.855",
+            "Subjective": "-",
+            "rank": "88"
+        },
+        "ahq-11 + uavs3e": {
+            "ERQA": "6.371",
+            "LPIPS": "1.867",
+            "YUV-MS-SSIM": "1.784",
+            "Y-PSNR": "6.356",
+            "Y-VMAF": "2.732",
+            "Y-VMAF NEG": "2.512",
+            "Subjective": "-",
+            "rank": "77"
+        },
+        "amq-12 + uavs3e": {
+            "ERQA": "8.287",
+            "LPIPS": "2.226",
+            "YUV-MS-SSIM": "1.805",
+            "Y-PSNR": "8.281",
+            "Y-VMAF": "2.864",
+            "Y-VMAF NEG": "2.756",
+            "Subjective": "-",
+            "rank": "92"
+        },
+        "BasicVSR + uavs3e": {
+            "ERQA": "7.065",
+            "LPIPS": "2.33",
+            "YUV-MS-SSIM": "2.004",
+            "Y-PSNR": "16.311",
+            "Y-VMAF": "1.71",
+            "Y-VMAF NEG": "1.936",
+            "Subjective": "-",
+            "rank": "81"
+        },
+        "bicubic + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "10.371",
+            "YUV-MS-SSIM": "2.229",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "6.472",
+            "Y-VMAF NEG": "7.565",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "COMISR + uavs3e": {
+            "ERQA": "5.033",
+            "LPIPS": "1.597",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "71"
+        },
+        "DBVSR + uavs3e": {
+            "ERQA": "7.935",
+            "LPIPS": "2.63",
+            "YUV-MS-SSIM": "1.927",
+            "Y-PSNR": "12.071",
+            "Y-VMAF": "1.877",
+            "Y-VMAF NEG": "2.056",
+            "Subjective": "-",
+            "rank": "90"
+        },
+        "EGVSR + uavs3e": {
+            "ERQA": "6.587",
+            "LPIPS": "1.593",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "LGFN + uavs3e": {
+            "ERQA": "7.083",
+            "LPIPS": "2.577",
+            "YUV-MS-SSIM": "1.928",
+            "Y-PSNR": "8.419",
+            "Y-VMAF": "1.804",
+            "Y-VMAF NEG": "1.944",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "only uavs3e": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "12"
+        },
+        "RBPN + uavs3e": {
+            "ERQA": "7.222",
+            "LPIPS": "2.577",
+            "YUV-MS-SSIM": "1.971",
+            "Y-PSNR": "16.41",
+            "Y-VMAF": "1.792",
+            "Y-VMAF NEG": "2.036",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "Real-ESRGAN + uavs3e": {
+            "ERQA": "5.403",
+            "LPIPS": "1.293",
+            "YUV-MS-SSIM": "2.135",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.857",
+            "Y-VMAF NEG": "2.865",
+            "Subjective": "-",
+            "rank": "73"
+        },
+        "RealSR + uavs3e": {
+            "ERQA": "2.629",
+            "LPIPS": "1.869",
+            "YUV-MS-SSIM": "1.644",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.267",
+            "Y-VMAF NEG": "2.209",
+            "Subjective": "0.798",
+            "rank": "10"
+        },
+        "RSDN + uavs3e": {
+            "ERQA": "10.574",
+            "LPIPS": "1.862",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "94"
+        },
+        "SOF-VSR-BD + uavs3e": {
+            "ERQA": "7.25",
+            "LPIPS": "2.478",
+            "YUV-MS-SSIM": "1.729",
+            "Y-PSNR": "7.739",
+            "Y-VMAF": "2.066",
+            "Y-VMAF NEG": "2.135",
+            "Subjective": "-",
+            "rank": "85"
+        },
+        "SOF-VSR-BI + uavs3e": {
+            "ERQA": "5.983",
+            "LPIPS": "2.0",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "75"
+        },
+        "SwinIR + uavs3e": {
+            "ERQA": "3.784",
+            "LPIPS": "1.469",
+            "YUV-MS-SSIM": "1.978",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.456",
+            "Y-VMAF NEG": "2.727",
+            "Subjective": "2.285",
+            "rank": "26"
+        },
+        "TMNet + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.459",
+            "YUV-MS-SSIM": "7.368",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "5.761",
+            "Y-VMAF NEG": "10.727",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "VRT + uavs3e": {
+            "ERQA": "6.956",
+            "LPIPS": "2.344",
+            "YUV-MS-SSIM": "1.75",
+            "Y-PSNR": "13.283",
+            "Y-VMAF": "1.654",
+            "Y-VMAF NEG": "1.93",
+            "Subjective": "3.753",
+            "rank": "31"
+        },
+        "ahq-11 + vvenc": {
+            "ERQA": "3.541",
+            "LPIPS": "1.63",
+            "YUV-MS-SSIM": "1.476",
+            "Y-PSNR": "0.064",
+            "Y-VMAF": "1.578",
+            "Y-VMAF NEG": "1.864",
+            "Subjective": "-",
+            "rank": "67"
+        },
+        "amq-12 + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.931",
+            "YUV-MS-SSIM": "1.474",
+            "Y-PSNR": "0.081",
+            "Y-VMAF": "1.634",
+            "Y-VMAF NEG": "1.995",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "BasicVSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.552",
+            "YUV-MS-SSIM": "1.646",
+            "Y-PSNR": "0.201",
+            "Y-VMAF": "0.786",
+            "Y-VMAF NEG": "1.67",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "bicubic + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.666",
+            "Y-PSNR": "3.914",
+            "Y-VMAF": "3.702",
+            "Y-VMAF NEG": "3.813",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "COMISR + vvenc": {
+            "ERQA": "3.299",
+            "LPIPS": "1.678",
+            "YUV-MS-SSIM": "2.141",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "1.402",
+            "rank": "22"
+        },
+        "DBVSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.582",
+            "YUV-MS-SSIM": "1.574",
+            "Y-PSNR": "0.17",
+            "Y-VMAF": "0.907",
+            "Y-VMAF NEG": "1.713",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "EGVSR + vvenc": {
+            "ERQA": "3.91",
+            "LPIPS": "1.675",
+            "YUV-MS-SSIM": "2.969",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "68"
+        },
+        "LGFN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.929",
+            "YUV-MS-SSIM": "1.575",
+            "Y-PSNR": "0.137",
+            "Y-VMAF": "0.842",
+            "Y-VMAF NEG": "1.701",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "only vvenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "12"
+        },
+        "RBPN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.816",
+            "YUV-MS-SSIM": "1.603",
+            "Y-PSNR": "0.17",
+            "Y-VMAF": "0.838",
+            "Y-VMAF NEG": "1.726",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "Real-ESRGAN + vvenc": {
+            "ERQA": "2.068",
+            "LPIPS": "1.072",
+            "YUV-MS-SSIM": "1.774",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.794",
+            "Y-VMAF NEG": "1.909",
+            "Subjective": "-",
+            "rank": "58"
+        },
+        "RealSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "RSDN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.611",
+            "YUV-MS-SSIM": "3.371",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "SOF-VSR-BD + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.408",
+            "YUV-MS-SSIM": "1.38",
+            "Y-PSNR": "0.121",
+            "Y-VMAF": "1.098",
+            "Y-VMAF NEG": "1.714",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "SOF-VSR-BI + vvenc": {
+            "ERQA": "3.503",
+            "LPIPS": "2.174",
+            "YUV-MS-SSIM": "2.508",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "66"
+        },
+        "SwinIR + vvenc": {
+            "ERQA": "2.06",
+            "LPIPS": "1.146",
+            "YUV-MS-SSIM": "1.492",
+            "Y-PSNR": "0.838",
+            "Y-VMAF": "1.458",
+            "Y-VMAF NEG": "1.93",
+            "Subjective": "0.612",
+            "rank": "5"
+        },
+        "TMNet + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.074",
+            "YUV-MS-SSIM": "2.684",
+            "Y-PSNR": "1.733",
+            "Y-VMAF": "3.225",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "VRT + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.563",
+            "YUV-MS-SSIM": "1.457",
+            "Y-PSNR": "0.173",
+            "Y-VMAF": "0.759",
+            "Y-VMAF NEG": "1.683",
+            "Subjective": "2.452",
+            "rank": "27"
+        },
+        "ahq-11 + x264": {
+            "ERQA": "1.269",
+            "LPIPS": "0.867",
+            "YUV-MS-SSIM": "0.587",
+            "Y-PSNR": "0.882",
+            "Y-VMAF": "0.939",
+            "Y-VMAF NEG": "0.872",
+            "Subjective": "0.779",
+            "rank": "9"
+        },
+        "amq-12 + x264": {
+            "ERQA": "1.494",
+            "LPIPS": "1.024",
+            "YUV-MS-SSIM": "0.567",
+            "Y-PSNR": "0.859",
+            "Y-VMAF": "0.968",
+            "Y-VMAF NEG": "0.901",
+            "Subjective": "-",
+            "rank": "54"
+        },
+        "BasicVSR + x264": {
+            "ERQA": "1.634",
+            "LPIPS": "1.07",
+            "YUV-MS-SSIM": "0.654",
+            "Y-PSNR": "1.509",
+            "Y-VMAF": "0.705",
+            "Y-VMAF NEG": "0.765",
+            "Subjective": "1.146",
+            "rank": "18"
+        },
+        "bicubic + x264": {
+            "ERQA": "2.494",
+            "LPIPS": "1.823",
+            "YUV-MS-SSIM": "0.616",
+            "Y-PSNR": "0.932",
+            "Y-VMAF": "1.281",
+            "Y-VMAF NEG": "1.261",
+            "Subjective": "-",
+            "rank": "60"
+        },
+        "COMISR + x264": {
+            "ERQA": "1.177",
+            "LPIPS": "0.726",
+            "YUV-MS-SSIM": "0.6",
+            "Y-PSNR": "0.88",
+            "Y-VMAF": "1.134",
+            "Y-VMAF NEG": "0.943",
+            "Subjective": "0.702",
+            "rank": "6"
+        },
+        "DBVSR + x264": {
+            "ERQA": "1.636",
+            "LPIPS": "1.118",
+            "YUV-MS-SSIM": "0.628",
+            "Y-PSNR": "1.276",
+            "Y-VMAF": "0.755",
+            "Y-VMAF NEG": "0.796",
+            "Subjective": "-",
+            "rank": "56"
+        },
+        "EGVSR + x264": {
+            "ERQA": "1.335",
+            "LPIPS": "0.802",
+            "YUV-MS-SSIM": "0.745",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.248",
+            "Y-VMAF NEG": "1.031",
+            "Subjective": "-",
+            "rank": "51"
+        },
+        "LGFN + x264": {
+            "ERQA": "1.611",
+            "LPIPS": "1.114",
+            "YUV-MS-SSIM": "0.639",
+            "Y-PSNR": "1.24",
+            "Y-VMAF": "0.736",
+            "Y-VMAF NEG": "0.773",
+            "Subjective": "-",
+            "rank": "55"
+        },
+        "only x264": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "12"
+        },
+        "RBPN + x264": {
+            "ERQA": "1.621",
+            "LPIPS": "1.126",
+            "YUV-MS-SSIM": "0.637",
+            "Y-PSNR": "1.366",
+            "Y-VMAF": "0.728",
+            "Y-VMAF NEG": "0.786",
+            "Subjective": "1.199",
+            "rank": "20"
+        },
+        "Real-ESRGAN + x264": {
+            "ERQA": "1.126",
+            "LPIPS": "0.622",
+            "YUV-MS-SSIM": "0.551",
+            "Y-PSNR": "0.63",
+            "Y-VMAF": "0.834",
+            "Y-VMAF NEG": "0.822",
+            "Subjective": "0.534",
+            "rank": "4"
+        },
+        "RealSR + x264": {
+            "ERQA": "0.828",
+            "LPIPS": "0.725",
+            "YUV-MS-SSIM": "0.417",
+            "Y-PSNR": "0.68",
+            "Y-VMAF": "0.719",
+            "Y-VMAF NEG": "0.707",
+            "Subjective": "0.283",
+            "rank": "1"
+        },
+        "RSDN + x264": {
+            "ERQA": "1.487",
+            "LPIPS": "0.84",
+            "YUV-MS-SSIM": "0.668",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.209",
+            "Y-VMAF NEG": "0.939",
+            "Subjective": "-",
+            "rank": "52"
+        },
+        "SOF-VSR-BD + x264": {
+            "ERQA": "1.49",
+            "LPIPS": "1.068",
+            "YUV-MS-SSIM": "0.584",
+            "Y-PSNR": "1.072",
+            "Y-VMAF": "0.793",
+            "Y-VMAF NEG": "0.801",
+            "Subjective": "-",
+            "rank": "53"
+        },
+        "SOF-VSR-BI + x264": {
+            "ERQA": "1.278",
+            "LPIPS": "0.917",
+            "YUV-MS-SSIM": "0.722",
+            "Y-PSNR": "0.995",
+            "Y-VMAF": "1.25",
+            "Y-VMAF NEG": "0.998",
+            "Subjective": "1.178",
+            "rank": "19"
+        },
+        "SwinIR + x264": {
+            "ERQA": "1.049",
+            "LPIPS": "0.687",
+            "YUV-MS-SSIM": "0.55",
+            "Y-PSNR": "0.779",
+            "Y-VMAF": "0.762",
+            "Y-VMAF NEG": "0.811",
+            "Subjective": "0.4",
+            "rank": "3"
+        },
+        "TMNet + x264": {
+            "ERQA": "2.021",
+            "LPIPS": "1.342",
+            "YUV-MS-SSIM": "0.782",
+            "Y-PSNR": "1.63",
+            "Y-VMAF": "1.326",
+            "Y-VMAF NEG": "1.336",
+            "Subjective": "-",
+            "rank": "57"
+        },
+        "VRT + x264": {
+            "ERQA": "1.663",
+            "LPIPS": "1.071",
+            "YUV-MS-SSIM": "0.596",
+            "Y-PSNR": "1.307",
+            "Y-VMAF": "0.702",
+            "Y-VMAF NEG": "0.765",
+            "Subjective": "0.966",
+            "rank": "11"
+        },
+        "ahq-11 + x265": {
+            "ERQA": "2.429",
+            "LPIPS": "1.656",
+            "YUV-MS-SSIM": "1.068",
+            "Y-PSNR": "1.47",
+            "Y-VMAF": "1.557",
+            "Y-VMAF NEG": "1.436",
+            "Subjective": "1.877",
+            "rank": "25"
+        },
+        "amq-12 + x265": {
+            "ERQA": "3.002",
+            "LPIPS": "2.042",
+            "YUV-MS-SSIM": "1.06",
+            "Y-PSNR": "1.432",
+            "Y-VMAF": "1.618",
+            "Y-VMAF NEG": "1.486",
+            "Subjective": "-",
+            "rank": "63"
+        },
+        "BasicVSR + x265": {
+            "ERQA": "3.209",
+            "LPIPS": "1.965",
+            "YUV-MS-SSIM": "1.192",
+            "Y-PSNR": "2.283",
+            "Y-VMAF": "1.118",
+            "Y-VMAF NEG": "1.221",
+            "Subjective": "3.018",
+            "rank": "29"
+        },
+        "bicubic + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.182",
+            "Y-PSNR": "1.538",
+            "Y-VMAF": "2.053",
+            "Y-VMAF NEG": "1.887",
+            "Subjective": "-",
+            "rank": "96"
+        },
+        "COMISR + x265": {
+            "ERQA": "2.213",
+            "LPIPS": "1.227",
+            "YUV-MS-SSIM": "1.219",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.748",
+            "Y-VMAF NEG": "1.16",
+            "Subjective": "1.228",
+            "rank": "21"
+        },
+        "DBVSR + x265": {
+            "ERQA": "3.207",
+            "LPIPS": "2.059",
+            "YUV-MS-SSIM": "1.148",
+            "Y-PSNR": "1.946",
+            "Y-VMAF": "1.204",
+            "Y-VMAF NEG": "1.26",
+            "Subjective": "-",
+            "rank": "65"
+        },
+        "EGVSR + x265": {
+            "ERQA": "2.429",
+            "LPIPS": "1.682",
+            "YUV-MS-SSIM": "1.487",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.829",
+            "Y-VMAF NEG": "1.243",
+            "Subjective": "-",
+            "rank": "59"
+        },
+        "LGFN + x265": {
+            "ERQA": "3.135",
+            "LPIPS": "2.115",
+            "YUV-MS-SSIM": "1.155",
+            "Y-PSNR": "1.868",
+            "Y-VMAF": "1.177",
+            "Y-VMAF NEG": "1.232",
+            "Subjective": "-",
+            "rank": "64"
+        },
+        "only x265": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "12"
+        },
+        "RBPN + x265": {
+            "ERQA": "3.127",
+            "LPIPS": "2.069",
+            "YUV-MS-SSIM": "1.162",
+            "Y-PSNR": "1.925",
+            "Y-VMAF": "1.167",
+            "Y-VMAF NEG": "1.255",
+            "Subjective": "3.104",
+            "rank": "30"
+        },
+        "Real-ESRGAN + x265": {
+            "ERQA": "2.169",
+            "LPIPS": "1.13",
+            "YUV-MS-SSIM": "1.099",
+            "Y-PSNR": "0.8",
+            "Y-VMAF": "1.562",
+            "Y-VMAF NEG": "1.36",
+            "Subjective": "1.027",
+            "rank": "17"
+        },
+        "RealSR + x265": {
+            "ERQA": "1.43",
+            "LPIPS": "1.44",
+            "YUV-MS-SSIM": "0.806",
+            "Y-PSNR": "0.781",
+            "Y-VMAF": "1.237",
+            "Y-VMAF NEG": "1.173",
+            "Subjective": "0.377",
+            "rank": "2"
+        },
+        "RSDN + x265": {
+            "ERQA": "2.936",
+            "LPIPS": "1.525",
+            "YUV-MS-SSIM": "1.276",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.863",
+            "Y-VMAF NEG": "1.114",
+            "Subjective": "-",
+            "rank": "62"
+        },
+        "SOF-VSR-BD + x265": {
+            "ERQA": "2.839",
+            "LPIPS": "1.934",
+            "YUV-MS-SSIM": "1.054",
+            "Y-PSNR": "1.66",
+            "Y-VMAF": "1.272",
+            "Y-VMAF NEG": "1.279",
+            "Subjective": "-",
+            "rank": "61"
+        },
+        "SOF-VSR-BI + x265": {
+            "ERQA": "2.392",
+            "LPIPS": "1.59",
+            "YUV-MS-SSIM": "1.32",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.874",
+            "Y-VMAF NEG": "1.176",
+            "Subjective": "2.875",
+            "rank": "28"
+        },
+        "SwinIR + x265": {
+            "ERQA": "1.89",
+            "LPIPS": "1.313",
+            "YUV-MS-SSIM": "1.06",
+            "Y-PSNR": "1.051",
+            "Y-VMAF": "1.34",
+            "Y-VMAF NEG": "1.352",
+            "Subjective": "0.733",
+            "rank": "7"
+        },
+        "TMNet + x265": {
+            "ERQA": "3.965",
+            "LPIPS": "2.662",
+            "YUV-MS-SSIM": "1.379",
+            "Y-PSNR": "1.637",
+            "Y-VMAF": "2.067",
+            "Y-VMAF NEG": "1.906",
+            "Subjective": "-",
+            "rank": "70"
+        },
+        "VRT + x265": {
+            "ERQA": "3.274",
+            "LPIPS": "1.956",
+            "YUV-MS-SSIM": "1.07",
+            "Y-PSNR": "2.115",
+            "Y-VMAF": "1.092",
+            "Y-VMAF NEG": "1.216",
+            "Subjective": "1.841",
+            "rank": "24"
+        }
+    },
+    "restaurant": {
+        "ahq-11 + aomenc": {
+            "ERQA": "2.142",
+            "LPIPS": "0.287",
+            "YUV-MS-SSIM": "4.089",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.556",
+            "Y-VMAF NEG": "2.919",
+            "Subjective": "0.302",
+            "rank": "13"
+        },
+        "amq-12 + aomenc": {
+            "ERQA": "3.398",
+            "LPIPS": "0.476",
+            "YUV-MS-SSIM": "4.708",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.549",
+            "Y-VMAF NEG": "3.762",
+            "Subjective": "-",
+            "rank": "60"
+        },
+        "BasicVSR + aomenc": {
+            "ERQA": "22.147",
+            "LPIPS": "2.163",
+            "YUV-MS-SSIM": "2.959",
+            "Y-PSNR": "11.001",
+            "Y-VMAF": "1.385",
+            "Y-VMAF NEG": "2.623",
+            "Subjective": "-",
+            "rank": "76"
+        },
+        "bicubic + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "8.574",
+            "YUV-MS-SSIM": "3.164",
+            "Y-PSNR": "11.149",
+            "Y-VMAF": "15.797",
+            "Y-VMAF NEG": "14.964",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "COMISR + aomenc": {
+            "ERQA": "4.609",
+            "LPIPS": "3.931",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0.578",
+            "rank": "15"
+        },
+        "DBVSR + aomenc": {
+            "ERQA": "14.774",
+            "LPIPS": "1.931",
+            "YUV-MS-SSIM": "2.497",
+            "Y-PSNR": "9.126",
+            "Y-VMAF": "1.488",
+            "Y-VMAF NEG": "2.533",
+            "Subjective": "-",
+            "rank": "72"
+        },
+        "EGVSR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "0.911",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "LGFN + aomenc": {
+            "ERQA": "18.718",
+            "LPIPS": "1.669",
+            "YUV-MS-SSIM": "2.71",
+            "Y-PSNR": "8.092",
+            "Y-VMAF": "1.418",
+            "Y-VMAF NEG": "2.411",
+            "Subjective": "-",
+            "rank": "75"
+        },
+        "only aomenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "18"
+        },
+        "RBPN + aomenc": {
+            "ERQA": "14.13",
+            "LPIPS": "1.932",
+            "YUV-MS-SSIM": "2.337",
+            "Y-PSNR": "7.499",
+            "Y-VMAF": "1.376",
+            "Y-VMAF NEG": "2.344",
+            "Subjective": "-",
+            "rank": "71"
+        },
+        "Real-ESRGAN + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "6.676",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.733",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + aomenc": {
+            "ERQA": "4.07",
+            "LPIPS": "0.3",
+            "YUV-MS-SSIM": "2.335",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "3.352",
+            "Y-VMAF NEG": "3.261",
+            "Subjective": "-",
+            "rank": "63"
+        },
+        "RSDN + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + aomenc": {
+            "ERQA": "12.71",
+            "LPIPS": "2.536",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "70"
+        },
+        "SOF-VSR-BI + aomenc": {
+            "ERQA": "7.429",
+            "LPIPS": "1.444",
+            "YUV-MS-SSIM": "2.255",
+            "Y-PSNR": "6.759",
+            "Y-VMAF": "1.567",
+            "Y-VMAF NEG": "2.761",
+            "Subjective": "-",
+            "rank": "66"
+        },
+        "SwinIR + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.201",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.061",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "TMNet + aomenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.485",
+            "YUV-MS-SSIM": "4.306",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.707",
+            "Y-VMAF NEG": "3.431",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "VRT + aomenc": {
+            "ERQA": "8.989",
+            "LPIPS": "1.623",
+            "YUV-MS-SSIM": "1.332",
+            "Y-PSNR": "7.056",
+            "Y-VMAF": "1.213",
+            "Y-VMAF NEG": "2.287",
+            "Subjective": "-",
+            "rank": "68"
+        },
+        "ahq-11 + uavs3e": {
+            "ERQA": "3.642",
+            "LPIPS": "0.542",
+            "YUV-MS-SSIM": "5.446",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.55",
+            "Y-VMAF NEG": "3.066",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "amq-12 + uavs3e": {
+            "ERQA": "2.727",
+            "LPIPS": "0.96",
+            "YUV-MS-SSIM": "4.55",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.405",
+            "Y-VMAF NEG": "3.199",
+            "Subjective": "-",
+            "rank": "58"
+        },
+        "BasicVSR + uavs3e": {
+            "ERQA": "16.767",
+            "LPIPS": "3.86",
+            "YUV-MS-SSIM": "2.912",
+            "Y-PSNR": "10.31",
+            "Y-VMAF": "1.237",
+            "Y-VMAF NEG": "2.183",
+            "Subjective": "-",
+            "rank": "74"
+        },
+        "bicubic + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "13.951",
+            "YUV-MS-SSIM": "2.778",
+            "Y-PSNR": "8.349",
+            "Y-VMAF": "10.626",
+            "Y-VMAF NEG": "8.986",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "COMISR + uavs3e": {
+            "ERQA": "3.501",
+            "LPIPS": "4.958",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "DBVSR + uavs3e": {
+            "ERQA": "8.759",
+            "LPIPS": "2.952",
+            "YUV-MS-SSIM": "2.148",
+            "Y-PSNR": "5.439",
+            "Y-VMAF": "1.325",
+            "Y-VMAF NEG": "2.081",
+            "Subjective": "-",
+            "rank": "67"
+        },
+        "EGVSR + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "0.971",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "LGFN + uavs3e": {
+            "ERQA": "14.806",
+            "LPIPS": "2.598",
+            "YUV-MS-SSIM": "2.504",
+            "Y-PSNR": "6.749",
+            "Y-VMAF": "1.268",
+            "Y-VMAF NEG": "2.007",
+            "Subjective": "-",
+            "rank": "73"
+        },
+        "only uavs3e": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "18"
+        },
+        "RBPN + uavs3e": {
+            "ERQA": "10.174",
+            "LPIPS": "2.967",
+            "YUV-MS-SSIM": "2.175",
+            "Y-PSNR": "5.992",
+            "Y-VMAF": "1.23",
+            "Y-VMAF NEG": "1.947",
+            "Subjective": "-",
+            "rank": "69"
+        },
+        "Real-ESRGAN + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "6.764",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.543",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + uavs3e": {
+            "ERQA": "2.661",
+            "LPIPS": "0.12",
+            "YUV-MS-SSIM": "1.814",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "3.13",
+            "Y-VMAF NEG": "2.684",
+            "Subjective": "1.978",
+            "rank": "29"
+        },
+        "RSDN + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "4.369",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BI + uavs3e": {
+            "ERQA": "5.94",
+            "LPIPS": "2.329",
+            "YUV-MS-SSIM": "2.127",
+            "Y-PSNR": "5.202",
+            "Y-VMAF": "1.39",
+            "Y-VMAF NEG": "2.303",
+            "Subjective": "-",
+            "rank": "64"
+        },
+        "SwinIR + uavs3e": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.957",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.527",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0.981",
+            "rank": "17"
+        },
+        "TMNet + uavs3e": {
+            "ERQA": "28.465",
+            "LPIPS": "5.079",
+            "YUV-MS-SSIM": "3.821",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.402",
+            "Y-VMAF NEG": "2.881",
+            "Subjective": "-",
+            "rank": "77"
+        },
+        "VRT + uavs3e": {
+            "ERQA": "6.844",
+            "LPIPS": "2.653",
+            "YUV-MS-SSIM": "1.349",
+            "Y-PSNR": "5.415",
+            "Y-VMAF": "1.125",
+            "Y-VMAF NEG": "1.858",
+            "Subjective": "-",
+            "rank": "65"
+        },
+        "ahq-11 + vvenc": {
+            "ERQA": "3.888",
+            "LPIPS": "0.129",
+            "YUV-MS-SSIM": "3.752",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.592",
+            "Y-VMAF NEG": "2.272",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "amq-12 + vvenc": {
+            "ERQA": "3.381",
+            "LPIPS": "0.299",
+            "YUV-MS-SSIM": "3.498",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.45",
+            "Y-VMAF NEG": "2.664",
+            "Subjective": "-",
+            "rank": "59"
+        },
+        "BasicVSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.965",
+            "YUV-MS-SSIM": "0.949",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.493",
+            "Y-VMAF NEG": "1.066",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "bicubic + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "2.514",
+            "Y-PSNR": "3.801",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "COMISR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.591",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "DBVSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.367",
+            "YUV-MS-SSIM": "0.893",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.488",
+            "Y-VMAF NEG": "1.01",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "EGVSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "0.874",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "LGFN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.869",
+            "YUV-MS-SSIM": "0.792",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.497",
+            "Y-VMAF NEG": "0.939",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "only vvenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "18"
+        },
+        "RBPN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.075",
+            "YUV-MS-SSIM": "0.774",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.482",
+            "Y-VMAF NEG": "0.945",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "Real-ESRGAN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "RealSR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "RSDN + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BI + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.827",
+            "YUV-MS-SSIM": "0.882",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.49",
+            "Y-VMAF NEG": "1.254",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SwinIR + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.392",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.523",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "TMNet + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "2.4",
+            "Y-PSNR": "0.042",
+            "Y-VMAF": "0.92",
+            "Y-VMAF NEG": "2.219",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "VRT + vvenc": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.495",
+            "YUV-MS-SSIM": "0.625",
+            "Y-PSNR": "0",
+            "Y-VMAF": "0.459",
+            "Y-VMAF NEG": "0.921",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "ahq-11 + x264": {
+            "ERQA": "0.982",
+            "LPIPS": "0.599",
+            "YUV-MS-SSIM": "0.921",
+            "Y-PSNR": "1.134",
+            "Y-VMAF": "0.54",
+            "Y-VMAF NEG": "0.954",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "amq-12 + x264": {
+            "ERQA": "0.998",
+            "LPIPS": "0.807",
+            "YUV-MS-SSIM": "0.792",
+            "Y-PSNR": "1.044",
+            "Y-VMAF": "0.5",
+            "Y-VMAF NEG": "0.944",
+            "Subjective": "-",
+            "rank": "51"
+        },
+        "BasicVSR + x264": {
+            "ERQA": "2.135",
+            "LPIPS": "1.567",
+            "YUV-MS-SSIM": "0.94",
+            "Y-PSNR": "1.439",
+            "Y-VMAF": "0.642",
+            "Y-VMAF NEG": "0.923",
+            "Subjective": "1.6",
+            "rank": "28"
+        },
+        "bicubic + x264": {
+            "ERQA": "2.459",
+            "LPIPS": "2.527",
+            "YUV-MS-SSIM": "0.765",
+            "Y-PSNR": "1.118",
+            "Y-VMAF": "1.753",
+            "Y-VMAF NEG": "1.672",
+            "Subjective": "-",
+            "rank": "57"
+        },
+        "COMISR + x264": {
+            "ERQA": "0.871",
+            "LPIPS": "1.811",
+            "YUV-MS-SSIM": "1.067",
+            "Y-PSNR": "1.782",
+            "Y-VMAF": "1.883",
+            "Y-VMAF NEG": "1.847",
+            "Subjective": "0.294",
+            "rank": "12"
+        },
+        "DBVSR + x264": {
+            "ERQA": "2.153",
+            "LPIPS": "1.61",
+            "YUV-MS-SSIM": "0.874",
+            "Y-PSNR": "1.376",
+            "Y-VMAF": "0.65",
+            "Y-VMAF NEG": "0.893",
+            "Subjective": "-",
+            "rank": "54"
+        },
+        "EGVSR + x264": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.57",
+            "YUV-MS-SSIM": "3.017",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.191",
+            "Y-VMAF NEG": "2.091",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "LGFN + x264": {
+            "ERQA": "2.285",
+            "LPIPS": "1.557",
+            "YUV-MS-SSIM": "0.95",
+            "Y-PSNR": "1.395",
+            "Y-VMAF": "0.663",
+            "Y-VMAF NEG": "0.886",
+            "Subjective": "-",
+            "rank": "55"
+        },
+        "only x264": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "18"
+        },
+        "RBPN + x264": {
+            "ERQA": "2.045",
+            "LPIPS": "1.65",
+            "YUV-MS-SSIM": "0.866",
+            "Y-PSNR": "1.393",
+            "Y-VMAF": "0.642",
+            "Y-VMAF NEG": "0.853",
+            "Subjective": "1.514",
+            "rank": "26"
+        },
+        "Real-ESRGAN + x264": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.281",
+            "YUV-MS-SSIM": "1.879",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.666",
+            "Y-VMAF NEG": "2.06",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + x264": {
+            "ERQA": "0.96",
+            "LPIPS": "0.47",
+            "YUV-MS-SSIM": "0.61",
+            "Y-PSNR": "0.785",
+            "Y-VMAF": "0.919",
+            "Y-VMAF NEG": "0.916",
+            "Subjective": "0.53",
+            "rank": "14"
+        },
+        "RSDN + x264": {
+            "ERQA": "\u221e",
+            "LPIPS": "2.974",
+            "YUV-MS-SSIM": "2.008",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.214",
+            "Y-VMAF NEG": "2.119",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + x264": {
+            "ERQA": "2.107",
+            "LPIPS": "1.671",
+            "YUV-MS-SSIM": "1.567",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "2.235",
+            "Y-VMAF NEG": "2.059",
+            "Subjective": "-",
+            "rank": "53"
+        },
+        "SOF-VSR-BI + x264": {
+            "ERQA": "2.81",
+            "LPIPS": "1.506",
+            "YUV-MS-SSIM": "0.837",
+            "Y-PSNR": "1.24",
+            "Y-VMAF": "0.67",
+            "Y-VMAF NEG": "0.938",
+            "Subjective": "1.393",
+            "rank": "24"
+        },
+        "SwinIR + x264": {
+            "ERQA": "0.781",
+            "LPIPS": "0.634",
+            "YUV-MS-SSIM": "1.014",
+            "Y-PSNR": "2.289",
+            "Y-VMAF": "0.428",
+            "Y-VMAF NEG": "1.63",
+            "Subjective": "1.073",
+            "rank": "23"
+        },
+        "TMNet + x264": {
+            "ERQA": "2.391",
+            "LPIPS": "1.62",
+            "YUV-MS-SSIM": "1.025",
+            "Y-PSNR": "2.07",
+            "Y-VMAF": "0.871",
+            "Y-VMAF NEG": "1.05",
+            "Subjective": "-",
+            "rank": "56"
+        },
+        "VRT + x264": {
+            "ERQA": "1.805",
+            "LPIPS": "1.494",
+            "YUV-MS-SSIM": "0.717",
+            "Y-PSNR": "1.27",
+            "Y-VMAF": "0.611",
+            "Y-VMAF NEG": "0.823",
+            "Subjective": "1.417",
+            "rank": "25"
+        },
+        "ahq-11 + x265": {
+            "ERQA": "2.255",
+            "LPIPS": "1.084",
+            "YUV-MS-SSIM": "1.991",
+            "Y-PSNR": "2.124",
+            "Y-VMAF": "1.077",
+            "Y-VMAF NEG": "1.88",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "amq-12 + x265": {
+            "ERQA": "1.923",
+            "LPIPS": "1.74",
+            "YUV-MS-SSIM": "1.712",
+            "Y-PSNR": "1.809",
+            "Y-VMAF": "1.021",
+            "Y-VMAF NEG": "1.831",
+            "Subjective": "-",
+            "rank": "52"
+        },
+        "BasicVSR + x265": {
+            "ERQA": "3.76",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.585",
+            "Y-PSNR": "1.935",
+            "Y-VMAF": "1.055",
+            "Y-VMAF NEG": "1.494",
+            "Subjective": "-",
+            "rank": "61"
+        },
+        "bicubic + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.37",
+            "Y-PSNR": "1.829",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "3.535",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "COMISR + x265": {
+            "ERQA": "1.952",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "2.724",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "DBVSR + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.271",
+            "Y-PSNR": "1.99",
+            "Y-VMAF": "1.107",
+            "Y-VMAF NEG": "1.449",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "EGVSR + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "1.87",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "LGFN + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.868",
+            "YUV-MS-SSIM": "1.371",
+            "Y-PSNR": "2.168",
+            "Y-VMAF": "1.085",
+            "Y-VMAF NEG": "1.428",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "only x265": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "18"
+        },
+        "RBPN + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.267",
+            "Y-PSNR": "2.074",
+            "Y-VMAF": "1.05",
+            "Y-VMAF NEG": "1.408",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "Real-ESRGAN + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "1.428",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "0",
+            "rank": "1"
+        },
+        "RealSR + x265": {
+            "ERQA": "1.946",
+            "LPIPS": "0.641",
+            "YUV-MS-SSIM": "1.052",
+            "Y-PSNR": "0.942",
+            "Y-VMAF": "1.938",
+            "Y-VMAF NEG": "1.678",
+            "Subjective": "1.543",
+            "rank": "27"
+        },
+        "RSDN + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "\u221e",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "3.902",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "\u221e",
+            "Y-VMAF NEG": "\u221e",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BI + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "3.433",
+            "YUV-MS-SSIM": "1.235",
+            "Y-PSNR": "1.813",
+            "Y-VMAF": "1.141",
+            "Y-VMAF NEG": "1.537",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SwinIR + x265": {
+            "ERQA": "1.295",
+            "LPIPS": "1.998",
+            "YUV-MS-SSIM": "1.985",
+            "Y-PSNR": "\u221e",
+            "Y-VMAF": "0.986",
+            "Y-VMAF NEG": "3.879",
+            "Subjective": "0.661",
+            "rank": "16"
+        },
+        "TMNet + x265": {
+            "ERQA": "\u221e",
+            "LPIPS": "\u221e",
+            "YUV-MS-SSIM": "1.717",
+            "Y-PSNR": "3.667",
+            "Y-VMAF": "1.753",
+            "Y-VMAF NEG": "1.854",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "VRT + x265": {
+            "ERQA": "3.827",
+            "LPIPS": "3.767",
+            "YUV-MS-SSIM": "0.963",
+            "Y-PSNR": "1.956",
+            "Y-VMAF": "0.988",
+            "Y-VMAF NEG": "1.348",
+            "Subjective": "-",
+            "rank": "62"
+        }
+    },
+    "Overall": {
+        "ahq-11 + aomenc": {
+            "ERQA": "4.799",
+            "LPIPS": "1.368",
+            "YUV-MS-SSIM": "5.999",
+            "Y-PSNR": "12.542",
+            "Y-VMAF": "2.808",
+            "Y-VMAF NEG": "5.193",
+            "Subjective": "1.95",
+            "rank": "32"
+        },
+        "amq-12 + aomenc": {
+            "ERQA": "10.388",
+            "LPIPS": "1.843",
+            "YUV-MS-SSIM": "5.883",
+            "Y-PSNR": "11.079",
+            "Y-VMAF": "2.874",
+            "Y-VMAF NEG": "5.564",
+            "Subjective": "-",
+            "rank": "65"
+        },
+        "BasicVSR + aomenc": {
+            "ERQA": "14.568",
+            "LPIPS": "4.938",
+            "YUV-MS-SSIM": "4.128",
+            "Y-PSNR": "11.428",
+            "Y-VMAF": "1.857",
+            "Y-VMAF NEG": "2.61",
+            "Subjective": "2.673",
+            "rank": "41"
+        },
+        "bicubic + aomenc": {
+            "ERQA": "21.965",
+            "LPIPS": "16.894",
+            "YUV-MS-SSIM": "5.735",
+            "Y-PSNR": "12.787",
+            "Y-VMAF": "8.635",
+            "Y-VMAF NEG": "10.043",
+            "Subjective": "-",
+            "rank": "87"
+        },
+        "COMISR + aomenc": {
+            "ERQA": "11.177",
+            "LPIPS": "4.801",
+            "YUV-MS-SSIM": "11.303",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "10.67",
+            "Y-VMAF NEG": "12.424",
+            "Subjective": "1.943",
+            "rank": "31"
+        },
+        "DBVSR + aomenc": {
+            "ERQA": "13.476",
+            "LPIPS": "4.916",
+            "YUV-MS-SSIM": "3.886",
+            "Y-PSNR": "10.296",
+            "Y-VMAF": "2.093",
+            "Y-VMAF NEG": "2.747",
+            "Subjective": "-",
+            "rank": "74"
+        },
+        "EGVSR + aomenc": {
+            "ERQA": "16.733",
+            "LPIPS": "5.67",
+            "YUV-MS-SSIM": "11.643",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "10.67",
+            "Y-VMAF NEG": "12.424",
+            "Subjective": "-",
+            "rank": "82"
+        },
+        "LGFN + aomenc": {
+            "ERQA": "14.631",
+            "LPIPS": "5.536",
+            "YUV-MS-SSIM": "4.321",
+            "Y-PSNR": "9.79",
+            "Y-VMAF": "1.99",
+            "Y-VMAF NEG": "2.705",
+            "Subjective": "-",
+            "rank": "77"
+        },
+        "only aomenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "16"
+        },
+        "RBPN + aomenc": {
+            "ERQA": "13.572",
+            "LPIPS": "5.821",
+            "YUV-MS-SSIM": "3.089",
+            "Y-PSNR": "10.89",
+            "Y-VMAF": "1.996",
+            "Y-VMAF NEG": "2.71",
+            "Subjective": "2.7",
+            "rank": "42"
+        },
+        "Real-ESRGAN + aomenc": {
+            "ERQA": "11.584",
+            "LPIPS": "11.957",
+            "YUV-MS-SSIM": "6.857",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "2.712",
+            "Y-VMAF NEG": "8.478",
+            "Subjective": "1.398",
+            "rank": "27"
+        },
+        "RealSR + aomenc": {
+            "ERQA": "6.762",
+            "LPIPS": "10.915",
+            "YUV-MS-SSIM": "5.463",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "4.283",
+            "Y-VMAF NEG": "5.285",
+            "Subjective": "0.843",
+            "rank": "15"
+        },
+        "RSDN + aomenc": {
+            "ERQA": "20.617",
+            "LPIPS": "14.574",
+            "YUV-MS-SSIM": "11.643",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "10.67",
+            "Y-VMAF NEG": "12.424",
+            "Subjective": "-",
+            "rank": "84"
+        },
+        "SOF-VSR-BD + aomenc": {
+            "ERQA": "15.11",
+            "LPIPS": "4.034",
+            "YUV-MS-SSIM": "7.546",
+            "Y-PSNR": "13.076",
+            "Y-VMAF": "7.464",
+            "Y-VMAF NEG": "7.637",
+            "Subjective": "-",
+            "rank": "79"
+        },
+        "SOF-VSR-BI + aomenc": {
+            "ERQA": "12.808",
+            "LPIPS": "4.82",
+            "YUV-MS-SSIM": "6.833",
+            "Y-PSNR": "11.314",
+            "Y-VMAF": "5.398",
+            "Y-VMAF NEG": "7.591",
+            "Subjective": "2.84",
+            "rank": "46"
+        },
+        "SwinIR + aomenc": {
+            "ERQA": "10.854",
+            "LPIPS": "4.566",
+            "YUV-MS-SSIM": "7.105",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "3.32",
+            "Y-VMAF NEG": "8.461",
+            "Subjective": "0.835",
+            "rank": "14"
+        },
+        "TMNet + aomenc": {
+            "ERQA": "21.798",
+            "LPIPS": "6.276",
+            "YUV-MS-SSIM": "10.322",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "4.667",
+            "Y-VMAF NEG": "6.876",
+            "Subjective": "-",
+            "rank": "86"
+        },
+        "VRT + aomenc": {
+            "ERQA": "12.289",
+            "LPIPS": "4.429",
+            "YUV-MS-SSIM": "2.797",
+            "Y-PSNR": "10.075",
+            "Y-VMAF": "1.733",
+            "Y-VMAF NEG": "2.468",
+            "Subjective": "2.631",
+            "rank": "39"
+        },
+        "ahq-11 + uavs3e": {
+            "ERQA": "3.37",
+            "LPIPS": "1.365",
+            "YUV-MS-SSIM": "3.166",
+            "Y-PSNR": "6.111",
+            "Y-VMAF": "2.249",
+            "Y-VMAF NEG": "2.578",
+            "Subjective": "1.376",
+            "rank": "26"
+        },
+        "amq-12 + uavs3e": {
+            "ERQA": "3.679",
+            "LPIPS": "1.742",
+            "YUV-MS-SSIM": "2.861",
+            "Y-PSNR": "6.547",
+            "Y-VMAF": "2.308",
+            "Y-VMAF NEG": "2.702",
+            "Subjective": "-",
+            "rank": "58"
+        },
+        "BasicVSR + uavs3e": {
+            "ERQA": "8.251",
+            "LPIPS": "4.383",
+            "YUV-MS-SSIM": "2.261",
+            "Y-PSNR": "6.833",
+            "Y-VMAF": "1.523",
+            "Y-VMAF NEG": "2.065",
+            "Subjective": "2.724",
+            "rank": "44"
+        },
+        "bicubic + uavs3e": {
+            "ERQA": "21.965",
+            "LPIPS": "17.458",
+            "YUV-MS-SSIM": "2.888",
+            "Y-PSNR": "8.395",
+            "Y-VMAF": "6.797",
+            "Y-VMAF NEG": "6.432",
+            "Subjective": "-",
+            "rank": "87"
+        },
+        "COMISR + uavs3e": {
+            "ERQA": "3.427",
+            "LPIPS": "3.851",
+            "YUV-MS-SSIM": "7.711",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "9.47",
+            "Y-VMAF NEG": "12.424",
+            "Subjective": "1.229",
+            "rank": "21"
+        },
+        "DBVSR + uavs3e": {
+            "ERQA": "7.0",
+            "LPIPS": "4.371",
+            "YUV-MS-SSIM": "2.396",
+            "Y-PSNR": "5.845",
+            "Y-VMAF": "1.83",
+            "Y-VMAF NEG": "2.17",
+            "Subjective": "-",
+            "rank": "62"
+        },
+        "EGVSR + uavs3e": {
+            "ERQA": "10.1",
+            "LPIPS": "4.0",
+            "YUV-MS-SSIM": "8.194",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "10.337",
+            "Y-VMAF NEG": "12.424",
+            "Subjective": "-",
+            "rank": "64"
+        },
+        "LGFN + uavs3e": {
+            "ERQA": "9.279",
+            "LPIPS": "4.504",
+            "YUV-MS-SSIM": "2.427",
+            "Y-PSNR": "5.503",
+            "Y-VMAF": "1.625",
+            "Y-VMAF NEG": "2.118",
+            "Subjective": "-",
+            "rank": "63"
+        },
+        "only uavs3e": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "16"
+        },
+        "RBPN + uavs3e": {
+            "ERQA": "7.133",
+            "LPIPS": "4.859",
+            "YUV-MS-SSIM": "2.263",
+            "Y-PSNR": "6.301",
+            "Y-VMAF": "1.626",
+            "Y-VMAF NEG": "2.109",
+            "Subjective": "2.944",
+            "rank": "49"
+        },
+        "Real-ESRGAN + uavs3e": {
+            "ERQA": "7.225",
+            "LPIPS": "2.633",
+            "YUV-MS-SSIM": "4.612",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "2.122",
+            "Y-VMAF NEG": "6.671",
+            "Subjective": "1.417",
+            "rank": "28"
+        },
+        "RealSR + uavs3e": {
+            "ERQA": "1.943",
+            "LPIPS": "1.149",
+            "YUV-MS-SSIM": "1.441",
+            "Y-PSNR": "14.741",
+            "Y-VMAF": "2.253",
+            "Y-VMAF NEG": "2.141",
+            "Subjective": "0.639",
+            "rank": "8"
+        },
+        "RSDN + uavs3e": {
+            "ERQA": "18.327",
+            "LPIPS": "13.844",
+            "YUV-MS-SSIM": "11.643",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "9.796",
+            "Y-VMAF NEG": "12.424",
+            "Subjective": "-",
+            "rank": "83"
+        },
+        "SOF-VSR-BD + uavs3e": {
+            "ERQA": "11.458",
+            "LPIPS": "4.007",
+            "YUV-MS-SSIM": "3.566",
+            "Y-PSNR": "8.658",
+            "Y-VMAF": "6.596",
+            "Y-VMAF NEG": "7.162",
+            "Subjective": "-",
+            "rank": "67"
+        },
+        "SOF-VSR-BI + uavs3e": {
+            "ERQA": "5.299",
+            "LPIPS": "4.23",
+            "YUV-MS-SSIM": "6.82",
+            "Y-PSNR": "10.917",
+            "Y-VMAF": "5.361",
+            "Y-VMAF NEG": "7.497",
+            "Subjective": "3.196",
+            "rank": "50"
+        },
+        "SwinIR + uavs3e": {
+            "ERQA": "6.803",
+            "LPIPS": "1.671",
+            "YUV-MS-SSIM": "4.411",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "1.848",
+            "Y-VMAF NEG": "6.922",
+            "Subjective": "0.639",
+            "rank": "9"
+        },
+        "TMNet + uavs3e": {
+            "ERQA": "13.187",
+            "LPIPS": "5.015",
+            "YUV-MS-SSIM": "4.317",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "3.487",
+            "Y-VMAF NEG": "4.577",
+            "Subjective": "-",
+            "rank": "71"
+        },
+        "VRT + uavs3e": {
+            "ERQA": "6.619",
+            "LPIPS": "4.003",
+            "YUV-MS-SSIM": "1.982",
+            "Y-PSNR": "5.862",
+            "Y-VMAF": "1.425",
+            "Y-VMAF NEG": "1.998",
+            "Subjective": "2.511",
+            "rank": "38"
+        },
+        "ahq-11 + vvenc": {
+            "ERQA": "2.675",
+            "LPIPS": "0.981",
+            "YUV-MS-SSIM": "1.575",
+            "Y-PSNR": "5.761",
+            "Y-VMAF": "0.917",
+            "Y-VMAF NEG": "1.393",
+            "Subjective": "1.291",
+            "rank": "24"
+        },
+        "amq-12 + vvenc": {
+            "ERQA": "11.064",
+            "LPIPS": "1.219",
+            "YUV-MS-SSIM": "1.371",
+            "Y-PSNR": "5.718",
+            "Y-VMAF": "0.898",
+            "Y-VMAF NEG": "1.493",
+            "Subjective": "-",
+            "rank": "66"
+        },
+        "BasicVSR + vvenc": {
+            "ERQA": "18.333",
+            "LPIPS": "11.561",
+            "YUV-MS-SSIM": "0.919",
+            "Y-PSNR": "5.781",
+            "Y-VMAF": "0.676",
+            "Y-VMAF NEG": "1.025",
+            "Subjective": "2.659",
+            "rank": "40"
+        },
+        "bicubic + vvenc": {
+            "ERQA": "21.965",
+            "LPIPS": "18.057",
+            "YUV-MS-SSIM": "5.068",
+            "Y-PSNR": "7.372",
+            "Y-VMAF": "7.026",
+            "Y-VMAF NEG": "7.832",
+            "Subjective": "-",
+            "rank": "87"
+        },
+        "COMISR + vvenc": {
+            "ERQA": "13.246",
+            "LPIPS": "11.026",
+            "YUV-MS-SSIM": "6.024",
+            "Y-PSNR": "11.497",
+            "Y-VMAF": "8.105",
+            "Y-VMAF NEG": "11.804",
+            "Subjective": "0.701",
+            "rank": "11"
+        },
+        "DBVSR + vvenc": {
+            "ERQA": "15.988",
+            "LPIPS": "11.435",
+            "YUV-MS-SSIM": "0.898",
+            "Y-PSNR": "5.765",
+            "Y-VMAF": "0.698",
+            "Y-VMAF NEG": "1.015",
+            "Subjective": "2.842",
+            "rank": "47"
+        },
+        "EGVSR + vvenc": {
+            "ERQA": "13.684",
+            "LPIPS": "10.643",
+            "YUV-MS-SSIM": "6.209",
+            "Y-PSNR": "11.543",
+            "Y-VMAF": "10.163",
+            "Y-VMAF NEG": "11.828",
+            "Subjective": "-",
+            "rank": "76"
+        },
+        "LGFN + vvenc": {
+            "ERQA": "18.342",
+            "LPIPS": "11.759",
+            "YUV-MS-SSIM": "0.889",
+            "Y-PSNR": "5.768",
+            "Y-VMAF": "0.702",
+            "Y-VMAF NEG": "1.025",
+            "Subjective": "2.944",
+            "rank": "48"
+        },
+        "only vvenc": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "16"
+        },
+        "RBPN + vvenc": {
+            "ERQA": "18.314",
+            "LPIPS": "11.777",
+            "YUV-MS-SSIM": "0.884",
+            "Y-PSNR": "5.783",
+            "Y-VMAF": "0.689",
+            "Y-VMAF NEG": "1.034",
+            "Subjective": "2.719",
+            "rank": "43"
+        },
+        "Real-ESRGAN + vvenc": {
+            "ERQA": "6.712",
+            "LPIPS": "12.744",
+            "YUV-MS-SSIM": "5.95",
+            "Y-PSNR": "14.561",
+            "Y-VMAF": "3.8",
+            "Y-VMAF NEG": "7.306",
+            "Subjective": "-",
+            "rank": "61"
+        },
+        "RealSR + vvenc": {
+            "ERQA": "21.965",
+            "LPIPS": "18.344",
+            "YUV-MS-SSIM": "11.643",
+            "Y-PSNR": "15.144",
+            "Y-VMAF": "10.67",
+            "Y-VMAF NEG": "12.424",
+            "Subjective": "-",
+            "rank": "87"
+        },
+        "RSDN + vvenc": {
+            "ERQA": "14.95",
+            "LPIPS": "4.866",
+            "YUV-MS-SSIM": "9.138",
+            "Y-PSNR": "14.061",
+            "Y-VMAF": "10.145",
+            "Y-VMAF NEG": "11.832",
+            "Subjective": "-",
+            "rank": "78"
+        },
+        "SOF-VSR-BD + vvenc": {
+            "ERQA": "15.958",
+            "LPIPS": "13.494",
+            "YUV-MS-SSIM": "2.112",
+            "Y-PSNR": "8.027",
+            "Y-VMAF": "6.41",
+            "Y-VMAF NEG": "6.394",
+            "Subjective": "-",
+            "rank": "80"
+        },
+        "SOF-VSR-BI + vvenc": {
+            "ERQA": "18.844",
+            "LPIPS": "11.273",
+            "YUV-MS-SSIM": "4.882",
+            "Y-PSNR": "9.245",
+            "Y-VMAF": "4.527",
+            "Y-VMAF NEG": "6.56",
+            "Subjective": "2.822",
+            "rank": "45"
+        },
+        "SwinIR + vvenc": {
+            "ERQA": "6.624",
+            "LPIPS": "1.552",
+            "YUV-MS-SSIM": "5.758",
+            "Y-PSNR": "8.971",
+            "Y-VMAF": "0.887",
+            "Y-VMAF NEG": "7.232",
+            "Subjective": "1.35",
+            "rank": "25"
+        },
+        "TMNet + vvenc": {
+            "ERQA": "21.303",
+            "LPIPS": "13.988",
+            "YUV-MS-SSIM": "1.813",
+            "Y-PSNR": "9.43",
+            "Y-VMAF": "1.795",
+            "Y-VMAF NEG": "3.508",
+            "Subjective": "-",
+            "rank": "85"
+        },
+        "VRT + vvenc": {
+            "ERQA": "18.333",
+            "LPIPS": "11.496",
+            "YUV-MS-SSIM": "0.836",
+            "Y-PSNR": "5.777",
+            "Y-VMAF": "0.652",
+            "Y-VMAF NEG": "0.996",
+            "Subjective": "2.235",
+            "rank": "34"
+        },
+        "ahq-11 + x264": {
+            "ERQA": "0.883",
+            "LPIPS": "0.656",
+            "YUV-MS-SSIM": "0.719",
+            "Y-PSNR": "0.873",
+            "Y-VMAF": "0.753",
+            "Y-VMAF NEG": "0.854",
+            "Subjective": "0.271",
+            "rank": "2"
+        },
+        "amq-12 + x264": {
+            "ERQA": "0.922",
+            "LPIPS": "0.767",
+            "YUV-MS-SSIM": "0.643",
+            "Y-PSNR": "0.813",
+            "Y-VMAF": "0.749",
+            "Y-VMAF NEG": "0.851",
+            "Subjective": "-",
+            "rank": "51"
+        },
+        "BasicVSR + x264": {
+            "ERQA": "1.659",
+            "LPIPS": "1.289",
+            "YUV-MS-SSIM": "0.751",
+            "Y-PSNR": "1.212",
+            "Y-VMAF": "0.714",
+            "Y-VMAF NEG": "0.834",
+            "Subjective": "1.49",
+            "rank": "29"
+        },
+        "bicubic + x264": {
+            "ERQA": "2.182",
+            "LPIPS": "10.965",
+            "YUV-MS-SSIM": "0.699",
+            "Y-PSNR": "0.91",
+            "Y-VMAF": "1.338",
+            "Y-VMAF NEG": "1.282",
+            "Subjective": "-",
+            "rank": "57"
+        },
+        "COMISR + x264": {
+            "ERQA": "0.969",
+            "LPIPS": "1.118",
+            "YUV-MS-SSIM": "0.672",
+            "Y-PSNR": "6.081",
+            "Y-VMAF": "1.302",
+            "Y-VMAF NEG": "1.161",
+            "Subjective": "0.367",
+            "rank": "6"
+        },
+        "DBVSR + x264": {
+            "ERQA": "1.606",
+            "LPIPS": "1.293",
+            "YUV-MS-SSIM": "0.714",
+            "Y-PSNR": "1.082",
+            "Y-VMAF": "0.75",
+            "Y-VMAF NEG": "0.838",
+            "Subjective": "-",
+            "rank": "53"
+        },
+        "EGVSR + x264": {
+            "ERQA": "6.029",
+            "LPIPS": "1.226",
+            "YUV-MS-SSIM": "1.196",
+            "Y-PSNR": "10.595",
+            "Y-VMAF": "1.519",
+            "Y-VMAF NEG": "1.344",
+            "Subjective": "-",
+            "rank": "59"
+        },
+        "LGFN + x264": {
+            "ERQA": "1.704",
+            "LPIPS": "1.324",
+            "YUV-MS-SSIM": "0.77",
+            "Y-PSNR": "1.151",
+            "Y-VMAF": "0.744",
+            "Y-VMAF NEG": "0.844",
+            "Subjective": "-",
+            "rank": "54"
+        },
+        "only x264": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "16"
+        },
+        "RBPN + x264": {
+            "ERQA": "1.599",
+            "LPIPS": "1.335",
+            "YUV-MS-SSIM": "0.729",
+            "Y-PSNR": "1.127",
+            "Y-VMAF": "0.733",
+            "Y-VMAF NEG": "0.836",
+            "Subjective": "1.498",
+            "rank": "30"
+        },
+        "Real-ESRGAN + x264": {
+            "ERQA": "5.58",
+            "LPIPS": "0.733",
+            "YUV-MS-SSIM": "0.881",
+            "Y-PSNR": "7.874",
+            "Y-VMAF": "0.698",
+            "Y-VMAF NEG": "1.113",
+            "Subjective": "0.335",
+            "rank": "4"
+        },
+        "RealSR + x264": {
+            "ERQA": "0.77",
+            "LPIPS": "0.591",
+            "YUV-MS-SSIM": "0.487",
+            "Y-PSNR": "0.675",
+            "Y-VMAF": "0.775",
+            "Y-VMAF NEG": "0.743",
+            "Subjective": "0.196",
+            "rank": "1"
+        },
+        "RSDN + x264": {
+            "ERQA": "6.58",
+            "LPIPS": "10.775",
+            "YUV-MS-SSIM": "1.023",
+            "Y-PSNR": "13.348",
+            "Y-VMAF": "1.5",
+            "Y-VMAF NEG": "1.335",
+            "Subjective": "-",
+            "rank": "60"
+        },
+        "SOF-VSR-BD + x264": {
+            "ERQA": "1.544",
+            "LPIPS": "1.262",
+            "YUV-MS-SSIM": "0.843",
+            "Y-PSNR": "2.763",
+            "Y-VMAF": "1.213",
+            "Y-VMAF NEG": "1.169",
+            "Subjective": "-",
+            "rank": "52"
+        },
+        "SOF-VSR-BI + x264": {
+            "ERQA": "4.981",
+            "LPIPS": "1.26",
+            "YUV-MS-SSIM": "0.764",
+            "Y-PSNR": "6.058",
+            "Y-VMAF": "1.083",
+            "Y-VMAF NEG": "1.006",
+            "Subjective": "1.273",
+            "rank": "23"
+        },
+        "SwinIR + x264": {
+            "ERQA": "0.76",
+            "LPIPS": "0.559",
+            "YUV-MS-SSIM": "0.736",
+            "Y-PSNR": "6.268",
+            "Y-VMAF": "0.642",
+            "Y-VMAF NEG": "1.045",
+            "Subjective": "0.304",
+            "rank": "3"
+        },
+        "TMNet + x264": {
+            "ERQA": "1.879",
+            "LPIPS": "1.377",
+            "YUV-MS-SSIM": "0.844",
+            "Y-PSNR": "1.481",
+            "Y-VMAF": "1.061",
+            "Y-VMAF NEG": "1.121",
+            "Subjective": "-",
+            "rank": "55"
+        },
+        "VRT + x264": {
+            "ERQA": "1.578",
+            "LPIPS": "1.259",
+            "YUV-MS-SSIM": "0.662",
+            "Y-PSNR": "1.09",
+            "Y-VMAF": "0.7",
+            "Y-VMAF NEG": "0.808",
+            "Subjective": "1.245",
+            "rank": "22"
+        },
+        "ahq-11 + x265": {
+            "ERQA": "1.917",
+            "LPIPS": "1.388",
+            "YUV-MS-SSIM": "1.594",
+            "Y-PSNR": "1.725",
+            "Y-VMAF": "1.503",
+            "Y-VMAF NEG": "1.666",
+            "Subjective": "0.724",
+            "rank": "12"
+        },
+        "amq-12 + x265": {
+            "ERQA": "1.996",
+            "LPIPS": "10.639",
+            "YUV-MS-SSIM": "1.462",
+            "Y-PSNR": "1.629",
+            "Y-VMAF": "1.525",
+            "Y-VMAF NEG": "1.674",
+            "Subjective": "-",
+            "rank": "56"
+        },
+        "BasicVSR + x265": {
+            "ERQA": "8.921",
+            "LPIPS": "13.198",
+            "YUV-MS-SSIM": "1.48",
+            "Y-PSNR": "1.906",
+            "Y-VMAF": "1.272",
+            "Y-VMAF NEG": "1.505",
+            "Subjective": "2.238",
+            "rank": "35"
+        },
+        "bicubic + x265": {
+            "ERQA": "16.014",
+            "LPIPS": "15.363",
+            "YUV-MS-SSIM": "4.563",
+            "Y-PSNR": "6.473",
+            "Y-VMAF": "6.469",
+            "Y-VMAF NEG": "5.191",
+            "Subjective": "-",
+            "rank": "81"
+        },
+        "COMISR + x265": {
+            "ERQA": "8.139",
+            "LPIPS": "12.998",
+            "YUV-MS-SSIM": "4.793",
+            "Y-PSNR": "10.678",
+            "Y-VMAF": "6.363",
+            "Y-VMAF NEG": "7.024",
+            "Subjective": "0.741",
+            "rank": "13"
+        },
+        "DBVSR + x265": {
+            "ERQA": "13.145",
+            "LPIPS": "13.211",
+            "YUV-MS-SSIM": "1.438",
+            "Y-PSNR": "6.607",
+            "Y-VMAF": "1.383",
+            "Y-VMAF NEG": "1.512",
+            "Subjective": "-",
+            "rank": "70"
+        },
+        "EGVSR + x265": {
+            "ERQA": "12.917",
+            "LPIPS": "10.748",
+            "YUV-MS-SSIM": "5.548",
+            "Y-PSNR": "10.701",
+            "Y-VMAF": "6.497",
+            "Y-VMAF NEG": "7.133",
+            "Subjective": "-",
+            "rank": "68"
+        },
+        "LGFN + x265": {
+            "ERQA": "13.213",
+            "LPIPS": "11.399",
+            "YUV-MS-SSIM": "1.533",
+            "Y-PSNR": "6.646",
+            "Y-VMAF": "1.341",
+            "Y-VMAF NEG": "1.531",
+            "Subjective": "-",
+            "rank": "72"
+        },
+        "only x265": {
+            "ERQA": "1.0",
+            "LPIPS": "1.0",
+            "YUV-MS-SSIM": "1.0",
+            "Y-PSNR": "1.0",
+            "Y-VMAF": "1.0",
+            "Y-VMAF NEG": "1.0",
+            "Subjective": "1.0",
+            "rank": "16"
+        },
+        "RBPN + x265": {
+            "ERQA": "13.185",
+            "LPIPS": "13.237",
+            "YUV-MS-SSIM": "1.438",
+            "Y-PSNR": "1.89",
+            "Y-VMAF": "1.324",
+            "Y-VMAF NEG": "1.522",
+            "Subjective": "2.282",
+            "rank": "37"
+        },
+        "Real-ESRGAN + x265": {
+            "ERQA": "6.328",
+            "LPIPS": "12.689",
+            "YUV-MS-SSIM": "5.393",
+            "Y-PSNR": "8.113",
+            "Y-VMAF": "1.464",
+            "Y-VMAF NEG": "6.957",
+            "Subjective": "0.64",
+            "rank": "10"
+        },
+        "RealSR + x265": {
+            "ERQA": "1.622",
+            "LPIPS": "1.206",
+            "YUV-MS-SSIM": "1.033",
+            "Y-PSNR": "1.064",
+            "Y-VMAF": "1.617",
+            "Y-VMAF NEG": "1.434",
+            "Subjective": "0.502",
+            "rank": "7"
+        },
+        "RSDN + x265": {
+            "ERQA": "13.416",
+            "LPIPS": "13.232",
+            "YUV-MS-SSIM": "5.682",
+            "Y-PSNR": "13.403",
+            "Y-VMAF": "6.467",
+            "Y-VMAF NEG": "7.064",
+            "Subjective": "-",
+            "rank": "73"
+        },
+        "SOF-VSR-BD + x265": {
+            "ERQA": "13.098",
+            "LPIPS": "13.141",
+            "YUV-MS-SSIM": "1.825",
+            "Y-PSNR": "3.274",
+            "Y-VMAF": "4.346",
+            "Y-VMAF NEG": "4.109",
+            "Subjective": "-",
+            "rank": "69"
+        },
+        "SOF-VSR-BI + x265": {
+            "ERQA": "18.545",
+            "LPIPS": "11.236",
+            "YUV-MS-SSIM": "4.558",
+            "Y-PSNR": "9.07",
+            "Y-VMAF": "3.565",
+            "Y-VMAF NEG": "4.525",
+            "Subjective": "2.244",
+            "rank": "36"
+        },
+        "SwinIR + x265": {
+            "ERQA": "1.575",
+            "LPIPS": "1.474",
+            "YUV-MS-SSIM": "4.641",
+            "Y-PSNR": "8.13",
+            "Y-VMAF": "1.304",
+            "Y-VMAF NEG": "4.903",
+            "Subjective": "0.346",
+            "rank": "5"
+        },
+        "TMNet + x265": {
+            "ERQA": "13.577",
+            "LPIPS": "13.485",
+            "YUV-MS-SSIM": "1.735",
+            "Y-PSNR": "7.046",
+            "Y-VMAF": "2.009",
+            "Y-VMAF NEG": "2.002",
+            "Subjective": "-",
+            "rank": "75"
+        },
+        "VRT + x265": {
+            "ERQA": "8.92",
+            "LPIPS": "11.329",
+            "YUV-MS-SSIM": "1.257",
+            "Y-PSNR": "6.634",
+            "Y-VMAF": "1.217",
+            "Y-VMAF NEG": "1.456",
+            "Subjective": "2.023",
+            "rank": "33"
+        }
+    }
+}

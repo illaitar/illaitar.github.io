@@ -1,0 +1,5 @@
+{%- if include.tableText -%}
+<div class="red-foot-note">{{include.tableText | markdownify | remove: '<p>' | remove: '</p>'}}</div>
+{%- else -%}
+<span class="red-foot-note"></span>
+{%- endif -%}

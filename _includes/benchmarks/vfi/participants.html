@@ -1,0 +1,177 @@
+<div id="comm_comp_div" class="datatable-container">
+    <div class="datatable-center">
+        <table id="char_table" class="display" style="width:99%">
+            <thead>
+                <tr>
+                    <th style="background-color: #3d6f96; color: #ffffff">Name</th>
+                    <th style="background-color: #3d6f96; color: #ffffff">Implementation</th>
+                    <th style="background-color: #3d6f96; color: #ffffff">Paper</th>
+                    <th style="background-color: #3d6f96; color: #ffffff">Year</th>
+                    <th style="background-color: #3d6f96; color: #ffffff">Added by</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="item">
+                    <td>Frame Repeating</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>MSU</td>
+                </tr>
+                <tr class="item">
+                    <td>Frame Averaging</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>MSU</td>
+                </tr>
+                <tr class="item">
+                    <td>RIFE</td>
+                    <td><a href="https://github.com/hzwer/arXiv2021-RIFE">Link</a></td>
+                    <td><a href="https://arxiv.org/pdf/2011.06294">Link</a></td>
+                    <td>2020</td>
+                    <td>MSU</td>
+                </tr>
+                <tr class="item">
+                    <td>XVFI</td>
+                    <td><a href="https://github.com/JihyongOh/XVFI">Link</a></td>
+                    <td><a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Sim_XVFI_eXtreme_Video_Frame_Interpolation_ICCV_2021_paper.pdf">Link</a></td>
+                    <td>2021</td>
+                    <td>MSU</td>
+                </tr>
+                <tr class="item">
+                    <td>Super-SloMo</td>
+                    <td><a href="https://github.com/avinashpaliwal/Super-SloMo">Link</a></td>
+                    <td><a href="https://arxiv.org/pdf/1712.00080">Link</a></td>
+                    <td>2017</td>
+                    <td>MSU</td>
+                </tr>
+                <tr class="item">
+                    <td>CAIN</td>
+                    <td><a href="https://github.com/myungsub/CAIN">Link</a></td>
+                    <td><a href="https://aaai.org/ojs/index.php/AAAI/article/view/6693/6547">Link</a></td>
+                    <td>2020</td>
+                    <td>MSU</td>
+                </tr>
+                <tr class="item">
+                    <td>Chronos-SloMo-v2</td>
+                    <td><a href="https://www.topazlabs.com/video-enhance-ai">Link</a></td>
+                    <td>—</td>
+                    <td>2021</td>
+                    <td>MSU</td>
+                </tr>
+                <tr class="item">
+                    <td>Adobe Premiere Pro</td>
+                    <td><a href="https://www.adobe.com/ru/products/premiere.html">Link</a></td>
+                    <td>—</td>
+                    <td>2021</td>
+                    <td>MSU</td>
+                </tr> 
+            </tbody>
+        </table>
+        
+        
+        
+        <script>$(document).ready(function () {
+            $('#char_table').DataTable({
+                lengthChange: false,
+                paging: false,
+                searching: false
+            });
+        });</script>
+    </div>
+</div>
+
+
+<!--
+<h2 id="dbvsr">DBVSR</h2>
+<ul>Estimates a motion blur for the particular input. Compensates the motion between frames explicitly.</ul>
+<div class="center">
+	<div>
+		<img src="/assets/img/benchmarks/sr-codecs/dbvsr.jpg">
+	</div>
+</div>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://github.com/cscss/DBVSR">GitHub</a>, <a href="https://arxiv.org/abs/2003.04716">paper</a></ul>
+
+<h2 id="dynavsr">DynaVSR</h2>
+<ul>DynaVSR can be applied to any VSR deep-learning model. For our benchmark, we used pretrained weights for model EDVR, which uses Deformable convolution to align neighboring frames.</ul>
+<div class="center">
+	<div>
+		<img src="/assets/img/benchmarks/sr-codecs/dynavsr.jpg">
+	</div>
+</div>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://github.com/esw0116/DynaVSR">GitHub</a>, <a href="http://arxiv.org/abs/2011.04482">paper</a></ul>
+
+<h2 id="egvsr">EGVSR</h2>
+<ul>The generator part 
+    is  divided  into  FNet  module  and  SRNet  module  for  optical 
+    flow estimation and video frame super-resolution, 
+    respectively.</ul>
+<div class="center">
+	<div>
+		<img src="/assets/img/benchmarks/sr-codecs/egvsr.png">
+	</div>
+</div>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://github.com/Thmen/EGVSR">GitHub</a>, <a href="https://arxiv.org/ftp/arxiv/papers/2107/2107.05307.pdf">paper</a></ul>
+
+<h2 id="iSeeBetter">iSeeBetter</h2>
+<ul>A combination of an RNN-based optical flow method that preserves spatio-temporal information in the current and adjacent frames as the generator and a discriminator that is adept at ensuring the generated SR frame offers superior fidelity.</ul>
+<div class="center">
+	<div>
+		<img src="/assets/img/benchmarks/sr-codecs/iseebetter.png">
+	</div>
+</div>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://github.com/amanchadha/iSeeBetter">GitHub</a>, <a href="https://arxiv.org/pdf/2006.11161.pdf">paper</a></ul>
+
+<h2 id="lgfn">LGFN</h2>
+<ul>Uses deformable convolutions with decreased multi-dilation convolution units (DMDCUs) to align frames explicitly. Fuses features from local and global fusion modules.</ul>
+<div class="center">
+	<div>
+		<img src="/assets/img/benchmarks/sr-codecs/lgfn.jpg">
+	</div>
+</div>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://github.com/BIOINSu/LGFN">GitHub</a>, <a href="https://doi.org/10.1109/ACCESS.2020.3025780">paper</a></ul>
+
+<h2 id="realsr">RealSR</h2>
+<ul>Tries to estimate degradation kernel and noise distribution for better visual quality.</ul>
+<div class="center">
+	<div style="width:75%">
+		<img src="/assets/img/benchmarks/sr-codecs/realsr.jpg">
+	</div>
+</div>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://github.com/nihui/realsr-ncnn-vulkan">GitHub</a>, <a href="https://github.com/jixiaozhong/RealSR">GitHub</a>, <a href="https://doi.org/10.1109/CVPRW50498.2020.00241">paper</a></ul>
+
+<h2 id="sof-vsr">SOF-VSR</h2>
+<ul>Two models: SOF-VSR-BD (trained on gauss degradation type), SOF-VSR-BI (trained on bicubic degradation type)</ul>
+<ul>Compensates motion by high-resolution optical flow, estimated from the low-resolution one in a coarse-to-fine manner.</ul>
+<div class="center">
+	<div style="width:75%">
+		<img src="/assets/img/benchmarks/sr-codecs/sof-vsr.jpg">
+	</div>
+</div>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://github.com/LongguangWang/SOF-VSR">GitHub</a>, <a href="https://doi.org/10.1109/TIP.2020.2967596">paper</a></ul>
+
+<h2 id="topaz">Topaz Video Enhance AI</h2>
+<ul>Topaz Video Enhance AI is a commercial filter.</ul>
+<ul>Three models: 
+        <li>ahq-11 (Artemis High Quality v11) - upscale or sharpen high quality input video, reducing motion flicker, </li>
+        <li>amq-12 (Artemis Medium Quality v12) - upscale or enhance medium quality video with moderate noise or compression artifacts, </li>
+        <li>amqs-1 (Artemis Dehalo v1) - upscale or enhance medium quality progressive video that contains haloing, moderate noise or compression artifacts.</li></ul>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://www.topazlabs.com/video-enhance-ai">Website</a></ul>
+
+<h2 id="waifu2x">waifu2x-ncnn-vulkan</h2>
+<ul>Two models: waifu2x-anime and waifu2x-cunet</ul>
+<ul>NCNN implementation of waifu2x converter. 
+    Waifu2x-ncnn-vulkan uses <a href="https://github.com/Tencent/ncnn">NCNN project</a> as the universal neural network inference framework.
+</ul>
+<ul>Added to the benchmark by MSU G&M Lab</ul>
+<ul>Links: <a href="https://github.com/nihui/waifu2x-ncnn-vulkan">GitHub</a>, <a href="https://github.com/nagadomi/waifu2x">GitHub</a></ul>
+-->

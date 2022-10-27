@@ -1,0 +1,465 @@
+<p>In this section, you can choose a part of the frame with particular content, see a cropped piece from this, <b>MSU VQMT PSNR</b>* Visualization, and <b>ERQAv1.0</b> Visualization for this crop. 
+    In part "QR-codes" codes, which can be detected, are surrounded by a blue rectangle. You can see information about all participants <a href="/benchmarks/video-super-resolution-participants.html">here</a>.<br>
+*We visualize shifted PSNR metric by applying MSU VQMT PSNR Visualization to frames with optimal shift for PSNR.
+</p>
+
+<style type="text/css">
+    .img-zoom-container {
+        position: relative;
+        margin: 1em auto;
+
+        width: 100%;
+    }
+
+    .img-zoom-lens {
+        position: absolute;
+        border: 2px solid #ff0000;
+        /*set the size of the lens:*/
+
+        width: 15px;
+        height: 15px;
+    }
+
+    /*Three image containers (use 25% for four, and 50% for two, etc)*/
+    .column {
+        box-sizing: border-box;
+        float: left;
+        width: 24%;
+        padding: 5px;
+    }
+
+
+    /*Clear floats after image containers*/
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+
+<div class="comparison_selector_div mobile-visualization">
+    <script>
+
+        function imageZoom(imgIDs, resultIDs, vqmtIDs, edgeIDs, zoomx, zoomy) {
+            let imgs = [];
+            for (let i = 0; i < imgIDs.length; i++) {
+                let imgID = imgIDs[i];
+                let img = document.getElementById(imgID);
+                imgs.push(img);
+            }
+
+            let results = [];
+            for (let i = 0; i < resultIDs.length; i++) {
+                let resultID = resultIDs[i];
+                let result = document.getElementById(resultID);
+                results.push(result);
+            }
+
+            let vqmts = [];
+            for (let i = 0; i < vqmtIDs.length; i++) {
+                let vqmtID = vqmtIDs[i];
+                let vqmt = document.getElementById(vqmtID);
+                vqmts.push(vqmt);
+            }
+
+            let edges = [];
+            for (let i = 0; i < edgeIDs.length; i++) {
+                let edgeID = edgeIDs[i];
+                let edge = document.getElementById(edgeID);
+                edges.push(edge);
+            }
+
+            let lenses = [];
+            let x = Math.floor(zoomx / 1080 * imgs[0].height);
+            let y = Math.floor(zoomy / 1920 * imgs[0].width);
+
+            for (let i = 0; i < imgs.length; i++) {
+                let pastLens = document.getElementById("lens" + i.toString());
+                if (pastLens) {
+                    pastLens.remove();
+                }
+                let lens = document.createElement("DIV");
+                lens.setAttribute("class", "img-zoom-lens");
+                lens.setAttribute("id", "lens" + i.toString());
+                imgs[i].parentElement.insertBefore(lens, imgs[i]);
+                lenses.push(lens);
+            }
+            let cxs = [], cys = [];
+            for (let i = 0; i < results.length; i++) {
+                let cx = results[i].offsetWidth / lenses[i].offsetWidth;
+                let cy = results[i].offsetHeight / lenses[i].offsetHeight;
+                cxs.push(cx);
+                cys.push(cy);
+            }
+
+            /* Set background properties for the result DIV */
+            for (let i = 0; i < results.length; i++) {
+                //results[i].style.backgroundImage = "url('" + imgs[i].src + "')";
+                results[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+            }
+
+            for (let i = 0; i < vqmts.length; i++) {
+                vqmts[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+                edges[i].style.backgroundSize = (imgs[i].width * cxs[i]) + "px " + (imgs[i].height * cys[i]) + "px";
+            }
+
+            for (let i = 0; i < lenses.length; i++) {
+                lenses[i].style.top = x + "px";
+                lenses[i].style.left = y + "px";
+                results[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                if (i < vqmts.length) {
+                    vqmts[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                    edges[i].style.backgroundPosition = "-" + (y * cxs[i]) + "px -" + (x * cys[i]) + "px";
+                }
+            }
+
+            /* Execute a function when someone moves the cursor over the image, or the lens: */
+            for (let i = 0; i < lenses.length; i++) {
+                lenses[i].addEventListener("mousedown", mousedown);
+                lenses[i].addEventListener("mouseup", mouseup);
+                /* And also for touch screens: */
+                /* Or touched (for touch screens: */
+                imgs[i].addEventListener("click", moveLens);
+                /* And also for touch screens: */
+                /* Or touched (for touch screens: */
+
+
+                lenses[i].addEventListener("touchstart", mousedown);
+                lenses[i].addEventListener("touchend", mouseup);
+            }
+
+            let clicked = 0;
+
+
+            function mousedown(e) {
+                for (let i = 0; i < lenses.length; i++) {
+                    lenses[i].addEventListener("mousemove", moveLens);
+                    imgs[i].addEventListener("mousemove", moveLens);
+                    lenses[i].addEventListener("touchmove", moveLens);
+                    imgs[i].addEventListener("touchmove", moveLens);
+                }
+                clicked = 1;
+            }
+
+            function mouseup(e) {
+                for (let i = 0; i < lenses.length; i++) {
+                    lenses[i].removeEventListener("mousemove", moveLens);
+                    imgs[i].removeEventListener("mousemove", moveLens);
+                    lenses[i].removeEventListener("touchmove", moveLens);
+                    imgs[i].removeEventListener("touchmove", moveLens);
+                }
+                clicked = 0;
+            }
+
+
+            function moveLens(e) {
+                /*if (!clicked) {
+                    return;
+                }*/
+                let pos, x, y;
+                /* Prevent any other actions that may occur when moving over the image */
+                e.preventDefault();
+                /* Get the cursor's x and y positions: */
+                pos = getCursorPos(e);
+                /* Calculate the position of the lens: */
+                x = pos.x - (lenses[0].offsetWidth / 2);
+                y = pos.y - (lenses[0].offsetHeight / 2);
+                /* Prevent the lens from being positioned outside the image: */
+                if (x > imgs[0].width - lenses[0].offsetWidth) {
+                    x = imgs[0].width - lenses[0].offsetWidth;
+                }
+                if (x < 0) {
+                    x = 0;
+                }
+                if (y > imgs[0].height - lenses[0].offsetHeight) {
+                    y = imgs[0].height - lenses[0].offsetHeight;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+                /* Set the position of the lens: */
+                for (let i = 0; i < lenses.length; i++) {
+                    lenses[i].style.left = x + "px";
+                    lenses[i].style.top = y + "px";
+                    /* Display what the lens "sees": */
+                    results[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                    if (i < vqmts.length) {
+                        vqmts[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                        edges[i].style.backgroundPosition = "-" + (x * cxs[i]) + "px -" + (y * cys[i]) + "px";
+                    }
+                }
+            }
+
+            function getCursorPos(e) {
+                let x = 0, y = 0;
+                e = e || window.event;
+                /* Get the x and y positions of the image: */
+                let boundingRects = [];
+                for (let i = 0; i < imgs.length; i++) {
+                    let a = imgs[i].getBoundingClientRect();
+                    boundingRects.push(a);
+                }
+
+                let i = boundingRects.length - 1;
+                while (i > 0 && e.pageX < boundingRects[i].left) {
+                    i--;
+                }
+
+                /* Calculate the cursor's x and y coordinates, relative to the image: */
+                x = e.pageX - boundingRects[i].left;
+                y = e.pageY - boundingRects[i].top;
+                /* Consider any page scrolling: */
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return {x: x, y: y};
+            }
+        }
+    </script>
+
+    <p  style="white-space: pre;">Frame: <label for="comp_num_selector"></label><select id="comp_num_selector" name="values">
+        <option selected="selected">Hand tremor + BI degradation + w/o noise</option>
+        <option>Hand tremor + BI degradation + w/ noise</option>
+        <option>Hand tremor + BD degradation + w/o noise</option>
+        <option>Hand tremor + BD degradation + w/ noise</option>
+        <option>Parallel motion + BI degradation + w/o noise</option>
+        <option>Parallel motion + BI degradation + w/ noise</option>
+        <option>Parallel motion + BD degradation + w/o noise</option>
+        <option>Parallel motion + BD degradation + w/ noise</option>
+        <option>Rotation + BI degradation + w/o noise</option>
+        <option>Rotation + BI degradation + w/ noise</option>
+        <option>Rotation + BD degradation + w/o noise</option>
+        <option>Rotation + BD degradation + w/ noise</option>
+    </select>    Content: <label for="comp_part_selector"></label><select id="comp_part_selector"
+                                                                                name="values">
+        <option selected="selected">Board</option>
+        <option>QR-codes</option>
+        <option>Text</option>
+        <option>Metal paper</option>
+        <option>Color lines</option>
+        <option>Car numbers</option>
+        <option>Noise</option>
+        <option>Mira</option>
+    </select></p><p style="white-space: pre;"> Model 1: <label for="comp_model1_selector"></label><select id="comp_model1_selector"
+                                                                                name="values">
+        <option selected="selected">D3Dnet</option>
+        <option>DBVSR</option>
+        <option>DUF-16L</option>
+        <option>DUF-28L</option>
+        <option>DynaVSR-R</option>
+        <option>DynaVSR-V</option>
+        <option>ESPCN</option>
+        <option>ESRGAN</option>
+        <option>iSeeBetter</option>
+        <option>LGFN</option>
+        <option>RBPN</option>
+        <option>Real-ESRGAN</option>
+        <option>Real-ESRNet</option>
+        <option>RealSR</option>
+        <option>RRN-5L</option>
+        <option>RRN-10L</option>
+        <option>SOF-VSR-BD</option>
+        <option>SOF-VSR-BI</option>
+        <option>TDAN</option>
+        <option>TGA</option>
+        <option>TMNet</option>
+    </select>    Model 2: <label for="comp_model2_selector"></label><select id="comp_model2_selector"
+                                                                                name="values">
+        <option>D3Dnet</option>
+        <option selected="selected">DBVSR</option>
+        <option>DUF-16L</option>
+        <option>DUF-28L</option>
+        <option>DynaVSR-R</option>
+        <option>DynaVSR-V</option>
+        <option>ESPCN</option>
+        <option>ESRGAN</option>
+        <option>iSeeBetter</option>
+        <option>LGFN</option>
+        <option>RBPN</option>
+        <option>Real-ESRGAN</option>
+        <option>Real-ESRNet</option>
+        <option>RealSR</option>
+        <option>RRN-5L</option>
+        <option>RRN-10L</option>
+        <option>SOF-VSR-BD</option>
+        <option>SOF-VSR-BI</option>
+        <option>TDAN</option>
+        <option>TGA</option>
+        <option>TMNet</option>
+    </select>    Model 3: <label for="comp_model3_selector"></label><select id="comp_model3_selector"
+                                                                                name="values">
+        <option>D3Dnet</option>
+        <option>DBVSR</option>
+        <option selected="selected">DUF-16L</option>
+        <option>DUF-28L</option>
+        <option>DynaVSR-R</option>
+        <option>DynaVSR-V</option>
+        <option>ESPCN</option>
+        <option>ESRGAN</option>
+        <option>iSeeBetter</option>
+        <option>LGFN</option>
+        <option>RBPN</option>
+        <option>Real-ESRGAN</option>
+        <option>Real-ESRNet</option>
+        <option>RealSR</option>
+        <option>RRN-5L</option>
+        <option>RRN-10L</option>
+        <option>SOF-VSR-BD</option>
+        <option>SOF-VSR-BI</option>
+        <option>TDAN</option>  
+        <option>TGA</option>   
+        <option>TMNet</option>                        
+    </select></p>
+    <p style="text-align: center"><b>Drag a red rectangle in the area, which you want to crop.</b></p>
+
+    <div class="row">
+        <div class="column">
+            <h3 style="text-align: center">GT</h3>
+            <div class="img-zoom-container">
+                <img id="imagegt" style="width: 100%; height: 8vw"
+                    src="https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/GT/small_images/test1_bicubic_part1_frame_052_GT.jpg">
+                <div id="resultgt" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <img id="fake_vqmt" style="width: 100%;"
+                    src = "/assets/img/benchmarks/vsr/vqmt.png">
+                <img id="fake_edge"  style="width: 100%;"
+                    src = "/assets/img/benchmarks/vsr/erqa.png">
+            </div>
+        </div>
+        <div class="column">
+            <h3 id="comp_label1" style="text-align: center">D3Dnet</h3>
+            <div class="img-zoom-container">
+                <img id="image1" style="width: 100%; height: 8vw"
+                    src="https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/D3Dnet/small_images/test1_bicubic_part1_frame_052_D3Dnet.jpg">
+                <div id="result1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="vqmt1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="edge1" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+            </div>
+        </div>
+        <div class="column">
+            <h3 id="comp_label2" style="text-align: center">DBVSR</h3>
+            <div class="img-zoom-container">
+                <img id="image2" style="width: 100%; height: 8vw"
+                    src = "https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/DBVSR/small_images/test1_bicubic_part1_frame_052_DBVSR.jpg">
+                <div id="result2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="vqmt2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="edge2" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+            </div>
+        </div>
+        <div class="column">
+            <h3 id="comp_label3" style="text-align: center">DUF-16L</h3>
+            <div class="img-zoom-container">
+                <img id="image3" style="width: 100%; height: 8vw"
+                    src = "https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/DUF-16L/small_images/test1_bicubic_part1_frame_052_DUF-16L.jpg">
+                <div id="result3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="vqmt3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+                <div id="edge3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
+            </div>
+        </div>
+        <script>
+            imageZoom(["imagegt", "image1", "image2", "image3"],
+                ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 540, 960);
+            onChangeHelper();
+
+            function onChangeHelper() {
+                let bignumToName = ['test1_bicubic', 'test1_bicubic_noise2', 'test1_gauss', 'test1_gauss_noise2', 
+                'test2_bicubic', 'test2_bicubic_noise2', 'test2_gauss', 'test2_gauss_noise2',
+                'test3_bicubic', 'test3_bicubic_noise2', 'test3_gauss', 'test3_gauss_noise2'];
+                let frameToName = ["frame_052", "frame_052", "frame_052", "frame_052",
+                    "frame_069", "frame_069", "frame_069", "frame_069", 
+                    "frame_049", "frame_049", "frame_049", "frame_049", ];
+                let numToName = ['D3Dnet', 'DBVSR', 'DUF-16L', 'DUF-28L', 'DynaVSR-R', 'DynaVSR-V', 'ESPCN', 'ESRGAN', 'iSeeBetter', 'LGFN', 'RBPN', 
+                    'Real-ESRGAN', 'Real-ESRNet', 'RealSR', 'RRN-5L', 'RRN-10L' ,'SOF-VSR-BD', 'SOF-VSR-BI', 'TDAN', 'TGA', 'TMNet'];
+                let partToName = ['part1', 'part2', 'part3', 'part4', 'part5', 'part6', 'part7', 'part8'];
+
+                let numselect = document.getElementById("comp_num_selector");
+                let selected_test = bignumToName[numselect.selectedIndex];
+                let selected_frame = frameToName[numselect.selectedIndex];
+    
+                let partselect = document.getElementById("comp_part_selector");
+                let selected_part = partToName[partselect.selectedIndex];
+
+                let model1select = document.getElementById("comp_model1_selector");
+                let model2select = document.getElementById("comp_model2_selector");
+                let model3select = document.getElementById("comp_model3_selector");
+                let selected_model1 = numToName[model1select.selectedIndex];
+                let selected_model2 = numToName[model2select.selectedIndex];
+                let selected_model3 = numToName[model3select.selectedIndex];
+                
+                let pic_gt = document.getElementById("imagegt");
+                let pic1 = document.getElementById("image1");
+                let pic2 = document.getElementById("image2");
+                let pic3 = document.getElementById("image3");
+
+                let res_gt = document.getElementById("resultgt");
+                let res1 = document.getElementById("result1");
+                let res2 = document.getElementById("result2");
+                let res3 = document.getElementById("result3");
+
+                let fake_vqmt = document.getElementById("fake_vqmt");
+                let vqmt1 = document.getElementById("vqmt1");
+                let vqmt2 = document.getElementById("vqmt2");
+                let vqmt3 = document.getElementById("vqmt3");
+
+                let fake_edge = document.getElementById("fake_edge");
+                let edge1 = document.getElementById("edge1");
+                let edge2 = document.getElementById("edge2");
+                let edge3 = document.getElementById("edge3");
+
+
+                let img_prefix = "https://storage.videoprocessing.ai/benchmarks/vsr/visualizations/";
+                let src_gt = img_prefix + "GT" + "/small_images/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + 'GT' + '.jpg';
+                let src1 = img_prefix + selected_model1 + "/small_images/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model1 + '.jpg';
+                let src2 = img_prefix + selected_model2 + "/small_images/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model2 + '.jpg';
+                let src3 = img_prefix + selected_model3 + "/small_images/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model3 + '.jpg';
+
+                let resultgt_src = img_prefix + "GT" + "/result_parts/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + 'GT' + '.png';
+                let result1_src = img_prefix + selected_model1 + "/result_parts/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model1 + '.png';
+                let result2_src = img_prefix + selected_model2 + "/result_parts/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model2 + '.png';
+                let result3_src = img_prefix + selected_model3 + "/result_parts/" + selected_test + "_" + selected_part + "_" + selected_frame + '_' + selected_model3 + '.png';
+
+                let vqmt1_src = img_prefix + selected_model1 + "/psnr/" + selected_test + "_" + selected_part + "_" + selected_frame + ".jpg";
+                let vqmt2_src = img_prefix + selected_model2 + "/psnr/" + selected_test + "_" + selected_part + "_" + selected_frame + ".jpg";
+                let vqmt3_src = img_prefix + selected_model3 + "/psnr/" + selected_test + "_" + selected_part + "_" + selected_frame + ".jpg";
+
+                let edge1_src = img_prefix + selected_model1 + "/edge/" + selected_test + "_" + selected_part + "_" + selected_frame + ".PNG";
+                let edge2_src = img_prefix + selected_model2 + "/edge/" + selected_test + "_" + selected_part + "_" + selected_frame + ".PNG";
+                let edge3_src = img_prefix + selected_model3 + "/edge/" + selected_test + "_" + selected_part + "_" + selected_frame + ".PNG";
+
+                let comp_label1 = document.getElementById("comp_label1");
+                let comp_label2 = document.getElementById("comp_label2");
+                let comp_label3 = document.getElementById("comp_label3");
+
+                res_gt.style.backgroundImage = "url('" + resultgt_src + "')";
+                res1.style.backgroundImage = "url('" + result1_src + "')";
+                res2.style.backgroundImage = "url('" + result2_src + "')";
+                res3.style.backgroundImage = "url('" + result3_src + "')";
+
+                vqmt1.style.backgroundImage = "url('" + vqmt1_src + "')";
+                vqmt2.style.backgroundImage = "url('" + vqmt2_src + "')";
+                vqmt3.style.backgroundImage = "url('" + vqmt3_src + "')";
+
+                edge1.style.backgroundImage = "url('" + edge1_src + "')";
+                edge2.style.backgroundImage = "url('" + edge2_src + "')";
+                edge3.style.backgroundImage = "url('" + edge3_src + "')";
+
+                comp_label1.innerText = selected_model1;
+                comp_label2.innerText = selected_model2;
+                comp_label3.innerText = selected_model3;
+
+                pic_gt.src = src_gt;
+                pic1.src = src1;
+                pic2.src = src2;
+                pic3.src = src3;
+
+                imageZoom(["imagegt", "image1", "image2", "image3"],
+                    ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 540, 960);
+            }
+
+            document.getElementById("comp_num_selector").onchange = onChangeHelper;
+            document.getElementById("comp_part_selector").onchange = onChangeHelper;
+            document.getElementById("comp_model1_selector").onchange = onChangeHelper;
+            document.getElementById("comp_model2_selector").onchange = onChangeHelper;
+            document.getElementById("comp_model3_selector").onchange = onChangeHelper;
+        </script>
+    </div>
+</div>

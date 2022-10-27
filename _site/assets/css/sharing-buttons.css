@@ -1,0 +1,33 @@
+.resp-sharing-button__link {
+display: inline-block;
+text-decoration: none; }
+.resp-sharing-button {
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #ffffff;
+width: 43px;
+height: 43px;
+border: 1px solid #a9a9a9;
+border-radius: 22px;
+box-sizing: border-box;
+transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+margin: 10px; }
+.resp-sharing-button svg {
+width: 20px;
+fill: #3d6f96;
+transition: fill 0.2s ease-in-out; }
+.resp-sharing-button:hover {
+background-color: #3d6f96;
+border: solid 1px #3d6f96; }
+.resp-sharing-button:hover svg {
+fill: #ffffff; }
+.resp-sharing-button--twitter svg {
+margin-top: 1px; }
+.resp-sharing-button--telegram svg {
+margin-top: 2px;
+margin-left: -3px; }
+.resp-sharing-button--email svg {
+margin-left: 2px; }
+.resp-sharing-button--linkedin svg {
+margin-top: -3px; }

@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Sixth MPEG-4 AVC/H.264 Video Codecs Comparison - Short Version</title>
+    <meta property="og:title" content="Sixth MPEG-4 AVC/H.264 Video Codecs Comparison - Short Version">
+    <meta property="og:image" content="http://localhost:4000/assets/img/codecs/mpeg4-avc-h264-2010/preview.png">
+    <meta name="description" content="6th MPEG-4 AVC/H.264 video codecs comparison">
+    <meta property="og:description" content="6th MPEG-4 AVC/H.264 video codecs comparison">
+    <meta property="og:url" content="
+http://localhost:4000/codecs/mpeg4-avc-h264-2010.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/post.css" rel="stylesheet" type="text/css">
+      <div class="tiles-width nav-current">
+        <a href="/index.html">Main page</a> &mdash;
+        <a href="/codecs/">Codecs Comparisons & Optimization</a>
+        &mdash;
+        <a href="/codecs/reports/">All Codecs Comparison Reports</a>
+      </div>
+      <div class="tiles-width markdown article">
+        <h1 id="sixth-mpeg-4-avch264-video-codecs-comparison---short-version">Sixth MPEG-4 AVC/H.264 Video Codecs Comparison - Short Version</h1>
+        <ul>
+          <li>Project head: Dr. Dmitriy Vatolin</li>
+          <li>Measurements, analysis: Dr. Dmitriy Kulikov, Alexander Parshin</li>
+        </ul>
+        <h2 id="history-of-versions">History of versions</h2>
+        <p>25th May 2010: Public report is released</p>
+        <p>16th June 2010: Appendix with <a href="/codecs/mpeg4-avc-h264-2010-appendixes.html#Appendix_8">VP8 encoder
+            analysis</a>
+          is released</p>
+        <h2 id="different-versions-of-report">Different Versions of Report</h2>
+        <p>There are four different versions of H.264 Comparison 2010 report:</p>
+        <ul>
+          <li>MPEG-4 AVC/H.264 Video Codecs Comparison - Short Version (this report)</li>
+          <li>MPEG-4 AVC/H.264 Video Codecs Comparison - Pro Version (Movies Edition)</li>
+          <li>MPEG-4 AVC/H.264 Video Codecs Comparison - Pro Version (HDTV Edition)</li>
+          <li>MPEG-4 AVC/H.264 Video Codecs Comparison - Pro Version (Enterprise
+            Edition)</li>
+        </ul>
+        <p>Here is the comparison of the versions:
+          <span id="version_comparison"></span></p>
+        <div class="center" style="text-align: center">
+          <table border="" cellspacing="1" cellpadding="7" bordercolor="#CCCCCC">
+            <colgroup>
+              <col style="width: 20%" />
+              <col style="width: 20%" />
+              <col style="width: 20%" />
+              <col style="width: 20%" />
+              <col style="width: 20%" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>
+                  <p></p>
+                </td>
+                <th>Short Version</th>
+                <th>Pro Version (Movies)</th>
+                <th>Pro Version (HDTV)</th>
+                <th>Pro Version (Enterprise)</th>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">Objective Metrics (SSIM)</td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/plus.gif" width="42" alt="YES" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/plus.gif" width="42" alt="YES" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/plus.gif" width="42" alt="YES" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/plus.gif" width="42" alt="YES" /></td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">Additional Metrics (PSNR)</td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td>For all results SSIM and PSNR metrics are used</td>
+                <td>For all results SSIM and PSNR metrics are used</td>
+                <td>For all results SSIM and PSNR metrics are used</td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">Movie use case</td>
+                <td>Only Normal preset</td>
+                <td>High Speed, Normal, High Quality presets</td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td>High Speed, Normal, High Quality presets</td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">HDTV use case</td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td>High Speed, Normal, High Quality presets</td>
+                <td>High Speed, Normal, High Quality presets</td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">Subjective Comparison</td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td>SAMVIQ analysis including psycho-visual enhancements</td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">Additional Analysis</td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td>Synthetic Motion Analyzer</td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">Additional Analysis</td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td>Distortion in Tail Area Analyzer</td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">Additional Analysis</td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/minus.gif" width="42" alt="NO" /></td>
+                <td>Spatially Variable Noise Analyzer</td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">Number of pages</td>
+                <td>25</td>
+                <td>116</td>
+                <td>114</td>
+                <td>177</td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0">Number of figures</td>
+                <td>50</td>
+                <td>131</td>
+                <td>131</td>
+                <td>226</td>
+              </tr>
+              <tr bgcolor="#CCFFCC" id="prices">
+                <td align="left"><strong>Prices</strong></td>
+                <td><strong>Free</strong></td>
+                <td><strong>$349</strong></td>
+                <td><strong>$349</strong></td>
+                <td><strong>$699</strong></td>
+              </tr>
+              <tr>
+                <td align="left" bgcolor="#F0F0F0" rowspan="2" colspan="1">Purchase</td>
+                <td><a href="http://compression.ru/video/codec_comparison/h264_2010/msu_mpeg4_avc_h264_codec_comparison_2010_short.pdf" target="_blank"><img src="/assets/img/codecs/mpeg4-avc-h264-2010/download.gif" border="0" alt="Download pdf" /></a></td>
+                <td><a href="https://www.regnow.com/checkout/cart/new/16995-23" target="_blank"><img src="/assets/img/codecs/mpeg4-avc-h264-2010/buy.gif" border="0" alt="Buy" /></a></td>
+                <td><a href="https://www.regnow.com/checkout/cart/new/16995-22" target="_blank"><img src="/assets/img/codecs/mpeg4-avc-h264-2010/buy.gif" border="0" alt="Buy" /></a></td>
+                <td><a href="https://www.regnow.com/checkout/cart/new/16995-21" target="_blank"><img src="/assets/img/codecs/mpeg4-avc-h264-2010/buy.gif" border="0" alt="Buy" /></a></td>
+              </tr>
+              <tr>
+                <td colspan="4"> Hint: You can remove "Extended download" service while purchasing to save money.</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="5">We can help you to <a href="/codecs/mpeg4-avc-h264-2010.html#private_participation">analyze your codec</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Pro versions of report will be available immediately after report
+          purchasing.</p>
+        <h2 id="html-version-of-report">Html-Version of Report</h2>
+        <p><span id="Video_Codecs"></span></p>
+        <h3 id="video-codecs-that-were-tested">Video Codecs that Were Tested</h3>
+        <ul>
+          <li>DivX H.264</li>
+          <li>Elecard H.264</li>
+          <li>Intel® MediaSDK AVC/H.264</li>
+          <li>MainConcept H.264</li>
+          <li>Microsoft Expression Encoder</li>
+          <li>Theora</li>
+          <li>x264</li>
+          <li>XviD (MPEG-4 ASP codec)</li>
+        </ul>
+        <p><span id="Overview"></span></p>
+        <h3 id="overview">Overview</h3>
+        <p><span id="Sequences"></span></p>
+        <h4 id="sequences">Sequences</h4>
+        <div class="center">Table 1.	Summary of video sequences</div>
+        <table class="normal with-borders center" style="text-align: center;" cellspacing="1" cellpadding="7">
+          <tbody>
+            <tr>
+              <th>Sequence</th>
+              <th>Number of frames</th>
+              <th>Frame rate</th>
+              <th>Resolution</th>
+            </tr>
+            <tr>
+              <td>Ice Age</td>
+              <td>2014</td>
+              <td>24</td>
+              <td>720x480</td>
+            </tr>
+            <tr>
+              <td>Indiana Jones</td>
+              <td>5000</td>
+              <td>30</td>
+              <td>704x288</td>
+            </tr>
+            <tr>
+              <td>State Enemy</td>
+              <td>6500</td>
+              <td>24</td>
+              <td>720x304</td>
+            </tr>
+            <tr>
+              <td>Up</td>
+              <td>1920</td>
+              <td>24</td>
+              <td>720x480</td>
+            </tr>
+            <tr>
+              <td>Amazon</td>
+              <td>1200</td>
+              <td>24</td>
+              <td>1280x720</td>
+            </tr>
+            <tr>
+              <td>Iron Man</td>
+              <td>600</td>
+              <td>24</td>
+              <td>1920x1080</td>
+            </tr>
+            <tr>
+              <td>Mobile Calendar</td>
+              <td>504</td>
+              <td>50</td>
+              <td>1280x720</td>
+            </tr>
+            <tr>
+              <td>Troy</td>
+              <td>300</td>
+              <td>24</td>
+              <td>1920x1072</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Brief descriptions of the sequences used in our comparison are given in
+          Table 1. More detailed descriptions of these sequences can be found in
+          <a href="/codecs/mpeg4-avc-h264-2010.html#Appendix_4">Appendix 4. Test Set of Video
+            Sequences</a>
+          <span id="Codecs"></span></p>
+        <h3 id="codecs">Codecs</h3>
+        <div class="center">Table 2. Short codec descriptions</div>
+        <table class="normal with-borders center" style="border-collapse: collapse" cellspacing="1" cellpadding="7">
+          <tbody>
+            <tr>
+              <th>Codec</th>
+              <th>Developer</th>
+              <th>Version</th>
+            </tr>
+            <tr>
+              <td>DivX AVC/H.264 Video Encoder</td>
+              <td>DivX, Inc.</td>
+              <td>version 1.1.1.6</td>
+            </tr>
+            <tr>
+              <td>Elecard AVC Video Encoder 8-bit edition</td>
+              <td>Elecard Ltd</td>
+              <td>2.1.022202.091207</td>
+            </tr>
+            <tr>
+              <td>Intel® MediaSDK AVC/H.264 transcoder sample application</td>
+              <td>Intel Corp.</td>
+              <td>1.10.1.15</td>
+            </tr>
+            <tr>
+              <td>MainConcept AVC/H.264 Video Encoder Console Application</td>
+              <td>MainConcept GmbH</td>
+              <td>8.5.0.12837</td>
+            </tr>
+            <tr>
+              <td>Microsoft Expression Encoder 3</td>
+              <td>Microsoft Corp.</td>
+              <td>3.0.1332.0</td>
+            </tr>
+            <tr>
+              <td>Theora encoder</td>
+              <td>Xiph.Org.</td>
+              <td>Provided by developers</td>
+            </tr>
+            <tr>
+              <td>x264</td>
+              <td>x264 Development Team</td>
+              <td>x264 core:85 r1442M 781d300</td>
+            </tr>
+            <tr>
+              <td>XviD raw mpeg4 bitstream encoder</td>
+              <td>XviD Development Team</td>
+              <td>xvid-1.3.0-dev</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Brief descriptions of the codecs used in our comparison are given in
+          Table 2. XviD was used as a good quality MPEG-4 ASP reference codec for
+          comparison purposes. Detailed descriptions of all codecs used in our
+          comparison can be found in <a href="/codecs/mpeg4-avc-h264-2010.html#Appendix_5">Appendix 5. Tested Codecs and
+            Presets.</a></p>
+        <p><em>Every codec developer could take <a href="/codecs/mpeg4-avc-h264-2010.html#private_participation">private
+              participation</a>
+            in this comparison
+            to test and analyze its codec.</em></p>
+        <p><span id="Objectives_and_Testing_Rules"></span></p>
+        <h2 id="objectives-and-testing-rules">Objectives and Testing Rules</h2>
+        <h3 id="h264-codec-testing-objectives">H.264 Codec Testing Objectives</h3>
+        <p>The main goal of this report is the presentation of a comparative
+          evaluation of the quality of new H.264 codecs using objective measures
+          of assessment. The comparison was done using settings provided by the
+          developers of each codec.</p>
+        <p>The main task of the comparison is to analyze different H.264 encoders
+          for the task of transcoding video—e.g., compressing video for personal
+          use. Speed requirements are given for a sufficiently fast PC; fast
+          presets are analogous to real-time encoding for a typical home-use PC.</p>
+        <p><span id="Testing_Rules"></span></p>
+        <h3 id="testing-rules">Testing Rules</h3>
+        <ul>
+          <li>
+            <p>The entire test set was divided into two primary types of applications.
+              These applications differ by resolution, bitrate and encoding speed
+              requirements:</p>
+            <ul>
+              <li>Movies (bitrates of 500-2000 kbps)</li>
+              <li>High-definition television (“HDTV”; bitrates of 0.7-10 mbps)</li>
+            </ul>
+          </li>
+          <li>
+            <p>There are special presets and speed limitations for every type of
+              application:</p>
+            <ul>
+              <li>Movies (speed requirements for 750 kbps 4CIF sequences):</li>
+              <li>Minimum 120 fps for “High Speed” preset (1 pass, no B-frames, 1
+                reference frame)</li>
+              <li>Minimum 80 fps for “Normal” preset)</li>
+              <li>Minimum 40 fps for “High Quality” preset</li>
+            </ul>
+          </li>
+          <li>
+            <p>HDTV (speed requirements for 3 mbps 1280x720 sequences):</p>
+            <ul>
+              <li>Minimum 100 fps for “High Speed” preset (1 pass, no B-frames, 1
+                reference frame)</li>
+              <li>Minimum 50 fps for “Normal” preset</li>
+              <li>Minimum 20 fps for “High Quality” preset</li>
+            </ul>
+          </li>
+          <li>Each codec’s developer provided settings for each type of application.</li>
+          <li>
+            <p>Each setting’s individual parameters were, to a large extent, chosen by
+              the developers, except the following:</p>
+            <ul>
+              <li>DivX H.264</li>
+              <li>Microsoft Expression Encoder</li>
+              <li>Theora</li>
+            </ul>
+          </li>
+          <li>Each codec was tested for speed three times; the minimum score was then
+            used as the representative time.</li>
+          <li>
+            <p>During the testing process, source video sequences were in the YV12
+              format (.yuv file extension) for all codecs except Theora (.y4m with
+              YV12)</p>
+          </li>
+          <li>
+            <p>The following computer configuration was used for the main tests:</p>
+            <ul>
+              <li>4-cores processor: Intel Core i7 920, 2.67GHz</li>
+              <li>OS Name: Microsoft Windows 7 Professional 64-bit</li>
+              <li>Total Physical Memory: 6 GB</li>
+              <li>GPU: NVIDIA GeForce GTX 275</li>
+            </ul>
+          </li>
+          <li>
+            <p>During the evaluation the following measures were used:</p>
+            <ul>
+              <li>SSIM (Y components)</li>
+              <li>PSNR (Y components)</li>
+            </ul>
+          </li>
+        </ul>
+        <p>More detailed information about these measures may be found on the
+          Internet at the <a href="/vqmt/info.html">Quality
+            Measure</a>
+          page.</p>
+        <p><span id="Results_for_Movies"></span></p>
+        <h2 id="results-for-movies">Results for Movies</h2>
+        <p>Full results for Movies could be found in professional versions of this
+          report:<br />
+          <a href="/codecs/mpeg4-avc-h264-2010.html#version_comparison">H.264 Comparison Report Pro 2010 - Movie
+            edition</a><br />
+          <a href="/codecs/mpeg4-avc-h264-2010.html#version_comparison">H.264 Comparison Report Pro 2010 - Enterprise
+            edition</a></p>
+        <p>This version contains only Y-SSIM results only for Normal preset. <span id="RD_Curves"></span></p>
+        <h3 id="rd-curves">RD Curves</h3>
+        <p>The Normal preset results for each sequence are presented in next
+          figures. The results do not depend strongly on the metric used. SSIM
+          metric: The leader is x264; MainConcept placed second, and DivX H.264
+          placed third. For the “Ice Age” and “Up” sequences, the MediaSDK and
+          Elecard encoders exhibited similar results. For the “Indiana Jones” and
+          “State Enemy” sequences, the XviD encoder placed fourth.</p>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/rdmv_normal_ice.png" />
+          </div>
+        </div>
+        <p><span id="Encoding_Speed"></span></p>
+        <h3 id="encoding-speed">Encoding Speed</h3>
+        <p>Absolute speed results are presented in next figures. All the encoders
+          except Microsoft Expression and Theora have a similar growth rate for
+          encoding time versus increasing bitrate. Elecard is the fastest encoder.
+          The encoding speed of the Microsoft Expression and Theora encoders
+          exhibits almost no dependency on bitrate, and Microsoft Expression’s
+          encoding speed decreases at 1,200 kbps for the “Ice Age” sequence.
+          XviD’s encoding speed exhibits little dependency on bitrate for the “Up”
+          sequence.</p>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/esmv_normal_ice.png" />
+          </div>
+        </div>
+        <p><span id="Speed_Quality_tradeoff"></span></p>
+        <h3 id="speedquality-tradeoff">Speed/Quality tradeoff</h3>
+        <p><em>Detailed descriptions of the speed/quality trade-off graphs can be found
+            in Appendix 7. Sometimes, codec results are not present in the
+            particular graph owing to the codec’s extremely poor performance. The
+            codec’s RD curve has no intersection with the reference’s RD curve.</em></p>
+        <p>The speed/quality trade-off graphs simultaneously show relative quality
+          and encoding speed for the encoders tested in this comparison. XviD is
+          the reference codec, for which both quality and speed are normalized to
+          unity for all of the graphs. The terms “better” and “worse” are used to
+          compare codecs in the same manner as in previous portions of this
+          comparison.</p>
+        <p><em>Please note that the method of averaging among all sequences assumes
+            that all codecs produced results for each sequence. When this is not the
+            case, only existing results are taken into account.</em></p>
+        <p>Next figures show results for the Normal preset. The results differ
+          depending on the chosen metric.</p>
+        <p>Y-SSIM: The three best codecs (no codec performs faster with higher
+          quality) in terms of speed and quality are XviD, Elecard and x264 on
+          average, except for the “Ice Age” and “Indiana Jones” sequences. The
+          x264 encoder is better on average than DivX H.264 and MainConcept.</p>
+        <p>Almost all encoders except Microsoft Expression exhibited better results
+          on average than did Theora.</p>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/tradeoffmv_normal_ice.png" />
+          </div>
+        </div>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/tradeoffmv_best.png" />
+          </div>
+        </div>
+        <p><span id="Bitrate_Handling"></span></p>
+        <h3 id="bitrate-handling">Bitrate Handling</h3>
+        <p>Encoders with Normal presets, except the Microsoft Expression encoder,
+          demonstrate good bitrate handling for all sequences. For the “Up”
+          sequence, XviD showed less than stellar results, especially at high
+          bitrates. For all sequences, MainConcept, x264, Elecard and DivX H.264
+          showed the best results compared with other encoders. DivX H.264’s
+          bitrate decreases at 1,500 kbps. MediaSDK slightly decreases bitrates,
+          but the results are stable. Theora has a good bitrate handling mechanism
+          but is not very stable.</p>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/bhmv_normal_ice.png" />
+          </div>
+        </div>
+        <p><span id="Relative_Quality_Analysis"></span></p>
+        <h3 id="relative-quality-analysis">Relative Quality Analysis</h3>
+        <p>Next table shows relative bitrates for a fixed-quality output for all
+          codecs. Note that these tables do not include information about the
+          speed of the encoder.</p>
+        <p>Note that each number in the tables below corresponds to some range of
+          bitrates (see Appendix 7 for more details). Unfortunately, these ranges
+          can differ significantly because of differences in the quality of
+          compared encoders. This situation can lead to some inadequate results
+          when three or more codecs are compared. This comparison technique will
+          be improved in the future.</p>
+        <p>The leaders are x264 and MainConcept, depending on the quality metric
+          (the bitrate difference is 18% for a fixed quality).</p>
+        <div class="center">Table 3. Average bitrate ratio for a fixed quality—usage area “Movies", Normal preset, Y-SSIM metric</div>
+        <table class="normal with-borders center" style="border-collapse: collapse" cellspacing="1" cellpadding="7">
+          <tbody>
+            <tr>
+              <th></th>
+              <th>DivX H.264</th>
+              <th>Elecard</th>
+              <th>Expression</th>
+              <th>MediaSDK</th>
+              <th>MainConcept</th>
+              <th>Theora</th>
+              <th>x264</th>
+              <th>XviD</th>
+            </tr>
+            <tr>
+              <th>DivX H.264</th>
+              <td>100%</td>
+              <td>124%</td>
+              <td>127%</td>
+              <td>118%</td>
+              <td>87%</td>
+              <td>138%</td>
+              <td>76%</td>
+              <td>128%</td>
+            </tr>
+            <tr>
+              <th>Elecard</th>
+              <td>81%</td>
+              <td>100%</td>
+              <td>103%</td>
+              <td>95%</td>
+              <td>70%</td>
+              <td>115%</td>
+              <td>61%</td>
+              <td>104%</td>
+            </tr>
+            <tr>
+              <th>Expression</th>
+              <td>79%</td>
+              <td>97%</td>
+              <td>100%</td>
+              <td>93%</td>
+              <td>69%</td>
+              <td>114%</td>
+              <td>61%</td>
+              <td>101%</td>
+            </tr>
+            <tr>
+              <th>Media SDK</th>
+              <td>84%</td>
+              <td>105%</td>
+              <td>107%</td>
+              <td>100%</td>
+              <td>74%</td>
+              <td>120%</td>
+              <td>64%</td>
+              <td>108%</td>
+            </tr>
+            <tr>
+              <th>MainConcept</th>
+              <td>115%</td>
+              <td>142%</td>
+              <td>144%</td>
+              <td>136%</td>
+              <td>100%</td>
+              <td>157%</td>
+              <td>88%</td>
+              <td>145%</td>
+            </tr>
+            <tr>
+              <th>Theora</th>
+              <td>72%</td>
+              <td>87%</td>
+              <td>88%</td>
+              <td>84%</td>
+              <td>64%</td>
+              <td>100%</td>
+              <td>57%</td>
+              <td>88%</td>
+            </tr>
+            <tr>
+              <th>x264</th>
+              <td>131%</td>
+              <td>163%</td>
+              <td>164%</td>
+              <td>155%</td>
+              <td>114%</td>
+              <td>176%</td>
+              <td>100%</td>
+              <td>164%</td>
+            </tr>
+            <tr>
+              <th>XviD</th>
+              <td>78%</td>
+              <td>96%</td>
+              <td>99%</td>
+              <td>93%</td>
+              <td>69%</td>
+              <td>113%</td>
+              <td>61%</td>
+              <td>100%</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Next figure depicts the data from the table above. Each line in the
+          figures corresponds to one codec. Values on the vertical axis are the
+          average relative bitrates compared with the codecs along the horizontal
+          axis. A lower bitrate indicates better relative results.</p>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/average_bitrate.png" />
+          </div>
+        </div>
+        <p><span id="Results_for_HDTV"></span></p>
+        <h3 id="results-for-hdtv">Results for HDTV</h3>
+        <p>Full results for HDTV could be found in professional versions of this
+          report:<br />
+          <a href="/codecs/mpeg4-avc-h264-2010.html#version_comparison">H.264 Comparison Report Pro 2010 - HDTV
+            edition</a><br />
+          <a href="/codecs/mpeg4-avc-h264-2010.html#version_comparison">H.264 Comparison Report Pro 2010 - Enterprise
+            edition</a></p>
+        <p><span id="HDTV_Speed_Quality_tradeoff"></span></p>
+        <h4 id="speedquality-tradeoff-1">Speed/Quality tradeoff</h4>
+        <p>Detailed descriptions of the speed/quality trade-off graphs can be found
+          in Appendix 7. Sometimes, codec results are not present in the
+          particular graph owing to the codec’s extremely poor performance. The
+          codec’s RD curve has no intersection with the reference’s RD curve.</p>
+        <p>The speed/quality trade-off graphs simultaneously show relative quality
+          and encoding speed for the encoders tested in this comparison. XviD is
+          the reference codec, for which both quality and speed are normalized to
+          unity for all of the graphs. The terms “better” and “worse” are used to
+          compare codecs in the same manner as in previous portions of this
+          comparison.</p>
+        <p>Please note that the method of averaging among all sequences assumes
+          that all codecs produced results for each sequence. When this is not the
+          case, only existing results are taken into account.</p>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/tradeoffhd_best.png" />
+          </div>
+        </div>
+        <p><span id="Conclusions"></span></p>
+        <h2 id="conclusions">Conclusions</h2>
+        <p><span id="Movies"></span></p>
+        <h3 id="movies">Movies</h3>
+        <p>The leading encoders in this usage area are MainConcept and x264. The
+          quality of the Theora encoder is rather low.</p>
+        <p><strong>High Speed Preset</strong></p>
+        <p>The x264 encoder demonstrates better quality on average, and MainConcept
+          shows slightly lower quality. These codecs’ bitrate handling algorithm
+          is acceptable for this usage area. The MediaSDK codec places third,
+          along with the dicas encoder (MediaSDK has slightly higher quality, but
+          its encoding speed is 25% lower). The top four codecs for this preset
+          are the following:</p>
+        <ol>
+          <li>x264</li>
+          <li>MainConcept</li>
+          <li>MediaSDK</li>
+        </ol>
+        <p><strong>Normal Preset</strong></p>
+        <p>The results for the Normal preset differ from those for the High Speed
+          presets only in third place. The x264 encoder demonstrates better
+          quality on average, and MainConcept shows slightly lower quality. The
+          DivX H.264 encoder holds third place. The top three codecs for this
+          preset are the following:</p>
+        <ol>
+          <li>x264</li>
+          <li>MainConcept</li>
+          <li>DivX H.264</li>
+        </ol>
+        <p><strong>High Quality Preset</strong></p>
+        <p>The results for this preset are similar to those of the Normal preset.
+          The leaders are the x264 and MainConcept codecs. DivX H.264 takes third
+          place. The top three codecs for this preset are the following:</p>
+        <ol>
+          <li>x264</li>
+          <li>MainConcept</li>
+          <li>DivX H.264</li>
+        </ol>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/conclusion_movies.png" />
+          </div>
+        </div>
+        <p><em>*The encoding speed of these encoders is not in the requirements range
+            owing to our chosen presets or to a lack of options<br />
+            **The MediaSDK encoder does not meet the requirements for High Speed
+            presets–specifically, no B-frames and exactly one reference frame</em></p>
+        <p><span id="HDTV"></span></p>
+        <h3 id="hdtv">HDTV</h3>
+        <p>The leaders in the HDTV area are x264, DivX H.264 and MainConcept. The
+          XviD encoder trails all other H.264 encoders. Theora demonstrates rather
+          poor results compared with other encoders.</p>
+        <p><strong>High Speed Preset</strong></p>
+        <p>The x264 encoder demonstrates better quality on average, and MainConcept
+          shows slightly lower quality. The top three codecs for this preset are
+          the following:</p>
+        <ol>
+          <li>x264</li>
+          <li>DivX H.264 (this preset does not meet speed requirements)</li>
+          <li>MainConcept</li>
+        </ol>
+        <p><strong>Normal Preset</strong></p>
+        <p>The results for the Normal preset differ from those of the High Speed
+          presets. MainConcept shows the best results. The difference between best
+          codecs are 2-4% of bitrate for the same quality. The top three codecs
+          for this preset are the following:</p>
+        <ol>
+          <li>MainConcept</li>
+          <li>x264</li>
+          <li>DivX H.264</li>
+        </ol>
+        <p><strong>High Quality Preset</strong></p>
+        <p>The results for the High Quality preset are very interesting: x264 held
+          first place, MainConcept was in second place, and two codecs (DivX H.264
+          and Elecard) shared third place (their quality results are very close,
+          but DivX H.264 is 1.2 times faster than Elecard). The top four codecs
+          for this preset are the following</p>
+        <ol>
+          <li>x264</li>
+          <li>MainConcept</li>
+          <li>DivX H.264 and Elecard</li>
+        </ol>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/conclusion_hdtv.png" alt="Average bitrate for HDTV for all presets " />
+          </div>
+        </div>
+        <p><em>*The encoding speed of this encoder is not in the requirements range
+            owing to our chosen presets or to a lack of options<br />
+            **The DivX H.264 High Speed preset for HDTV does not meet the speed
+            requirements</em></p>
+        <p><span id="Overall_Conclusions"></span></p>
+        <h3 id="overall-conclusions">Overall Conclusions</h3>
+        <p>Overall, the leader in this comparison is x264, followed by MainConcept
+          and DivX H.264. The Theora encoder demonstrates the worst results among
+          all codecs tested.</p>
+        <div class="center">
+          <div>
+            <img src="/assets/img/codecs/mpeg4-avc-h264-2010/conclusion_overall.png" alt="Average bitrate for Movies and HDTV for all presets " />
+          </div>
+        </div>
+        <p><em>*The encoding speed of this codec does not fall in the required range
+            owing to our chosen presets or to a lack of options.</em></p>
+        <p>The overall ranking of the codecs tested in this comparison is as
+          follows:</p>
+        <ol>
+          <li>x264</li>
+          <li>MainConcept</li>
+          <li>DivX H.264</li>
+          <li>MediaSDK</li>
+          <li>Elecard</li>
+          <li>XviD</li>
+          <li>Theora</li>
+        </ol>
+        <p>Microsoft Expression Encoder 3 could not be placed in this list because
+          of its much longer encoding time compared with other encoders (except
+          Theora).</p>
+        <p>Using the standard Theora interface, we could not find any
+          multithreading options; Theora works only in single-thread mode. The
+          leader in this comparison is x264—its quality difference (according to
+          the SSIM metric) could be explained by the special encoding option
+          (“–tune ssim”). Interestingly, using the PSNR metric for MainConcept
+          yielded results comparable with or better than those of x264. This means
+          that no encoder can achieve the best results for both SSIM and PSNR when
+          using the same parameters.</p>
+        <p>The difference between the MainConcept and DivX H.264 encoders is not
+          overly significant, so these encoders tied for second in this
+          comparison. The developers of the Elecard encoder do not provide a High
+          Speed preset, so its ranking is based solely on the results for the
+          Normal and High Quality presets. The dicas encoder holds third or fourth
+          place for some sequences.</p>
+        <p>This rank is based only on the encoders’ quality results. Encoding speed
+          is not considered here.</p>
+        <p><span id="Codec_Conclusion"></span></p>
+        <h2 id="codec-conclusion">Codec Conclusion</h2>
+        <p><strong>DivX H.264</strong> — quite balanced encoder with not very big number of
+          parameters, this fact could be comfortable for users. This encoder is
+          designed as a free sample application for DivX Plus HD compliant video
+          encoding, and is a feature-constrained, for-purpose application.</p>
+        <p><strong>Elecard</strong> — very fast codec with good encoding quality and very
+          flexible settings. Many adjustable encoding settings are provided. This
+          encoder has a very good bitrate handling mechanism (especially for the
+          “Movies” usage area).</p>
+        <p><strong>Microsoft Expression Encoder</strong> — the low encoding speed could result
+          from the GUI loading every time a video is encoded. Unfortunately, we
+          could not automate the encoder to eliminate this GUI loading.</p>
+        <p><strong>MediaSDK</strong> — balanced encoder with a limited number of parameters but
+          several use cases (speed/quality presets), making the encoder very
+          comfortable for users.</p>
+        <p><strong>MainConcept</strong> — one of the best codecs by encoding quality; has many
+          encoding settings that can be adjusted. This encoder has a very good
+          bitrate handling mechanism.</p>
+        <p><strong>Theora</strong> — not an H.264 codec. Using our testing methodology
+          (objective metrics) and test set, this encoder yields lower quality than
+          do H.264 codecs and even MPEG-4 ASP.</p>
+        <p><strong>x264</strong> — one of the best codecs by encoding quality; has very
+          user-friendly predefined presets, as well as many adjustable encoding
+          settings.</p>
+        <p><strong>XviD</strong> — an MPEG-4 ASP codec; its quality could be very close to or
+          even higher than that of some commercial H.264 standard implementations,
+          especially for encoding “Movie” sequences, but not for “HDTV” sequences.</p>
+        <h2 id="professional-versions-of-comparison-report">Professional Versions of Comparison Report</h2>
+        <p><a href="/codecs/mpeg4-avc-h264-2010.html#version_comparison">H.264 Comparison Report Pro 2010
+            versions</a>
+          contain:</p>
+        <ul>
+          <li>Additional objective metrics (PSNR)</li>
+          <li>Full information on Movies and HDTV usage areas, including three
+            speed/quality presets</li>
+          <li>Full subjective comparison results</li>
+          <li>Additional quality analyzers</li>
+          <li>Much more pages and figures</li>
+          <li>etc.</li>
+        </ul>
+        <h2 id="acknowledgments">Acknowledgments</h2>
+        <p>The Graphics &amp; Media Lab Video Group would like to express its gratitude
+          to the following companies for providing the codecs and settings used in
+          this report:</p>
+        <ul>
+          <li>Elecard Ltd</li>
+          <li>Intel Corporation</li>
+          <li>MainConcept GmbH</li>
+          <li>Theora Development Team</li>
+          <li>x264 Development Team</li>
+          <li>XviD Development Team</li>
+        </ul>
+        <p>The Video Group would also like to thank these companies for their help
+          and technical support during the tests.</p>
+        <h2 id="thanks">Thanks</h2>
+        <p>Special thanks to the following contributors of our previous comparisons</p>
+        <table class="center" style="text-align: center">
+          <tbody>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/google_logo.png" alt="Google" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/intel_logo.png" alt="Intel" /></td>
+              <td><a href="http://www.amd.com"><img src="/assets/img/codecs/mpeg4-avc-h264-2010/amd_logo.png" alt="AMD" /></a></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/nvidia_logo.png" alt="NVidia" /></td>
+            </tr>
+            <tr class="even">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/ati_logo.png" alt="ATI" /></td>
+              <td><a href="http://www.adobe.com"><img src="/assets/img/codecs/mpeg4-avc-h264-2010/adobe_logo.png" alt="Adobe" /></a></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/isphone_logo.png" alt="ISPhone" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/dicas_logo.png" alt="dicas" /></td>
+            </tr>
+            <tr class="odd">
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/kddi_logo.png" alt="KDDI R&amp;D labs" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/dolby_logo.png" alt="Dolby" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/tata_logo.png" alt="Tata Elxsi " /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/octasic_logo.png" alt="Octasic" /></td>
+            </tr>
+            <tr class="even">
+              <td><a href="http://www.qualcomm.com"><img src="/assets/img/codecs/mpeg4-avc-h264-2010/qualcomm_logo.png" alt="Qualcomm" /></a></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/voceweb_logo.png" alt="Voceweb" /></td>
+              <td><img src="/assets/img/codecs/mpeg4-avc-h264-2010/elgato_logo.png" alt="Elgato" /></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <p><span id="Appendixes"></span></p>
+        <h2 id="appendixes">Appendixes</h2>
+        <p><span id="Appendix_1"></span> <span id="Appendix_2"></span> <span id="Appendix_3"></span> <span id="Appendix_4"></span> <span id="Appendix_5"></span></p>
+        <p><a href="/codecs/mpeg4-avc-h264-2010-appendixes.html#Appendix_1">Appendix 1. Subjective Comparison and Psycho-visual
+            Enhancements</a></p>
+        <p><a href="/codecs/mpeg4-avc-h264-2010-appendixes.html#Appendix_2">Appendix 2. x264 Over-years
+            Comparison</a></p>
+        <p><a href="/codecs/mpeg4-avc-h264-2010-appendixes.html#Appendix_3">Appendix 3. Theora vs. x264 Single-thread
+            Comparison</a></p>
+        <p><a href="/codecs/mpeg4-avc-h264-2010-appendixes.html#Appendix_4">Appendix 4. Test Set of Video
+            Sequences</a></p>
+        <p><a href="/codecs/mpeg4-avc-h264-2010-appendixes.html#Appendix_5">Appendix 5. Tested Codecs and
+            Presets</a></p>
+        <p><a href="/codecs/mpeg4-avc-h264-2010-appendixes.html#Appendix_6">Appendix 6. Figures
+            Explanation</a></p>
+        <p><a href="/codecs/mpeg4-avc-h264-2010-appendixes.html#Appendix_7">Appendix 7. Objective Quality Metrics
+            Description</a></p>
+        <p><a href="/codecs/mpeg4-avc-h264-2010-appendixes.html#Appendix_8">VP8, x264 and XviD
+            comparison</a></p>
+        <p><span id="private_participation"></span></p>
+        <h2 id="codec-analysis-and-tuning-for-codec-developers-and-codec-users">Codec Analysis and Tuning for Codec Developers and Codec Users</h2>
+        <p>Computer Graphics and Multimedia Laboratory of Moscow State University:</p>
+        <ul>
+          <li>
+            <p>8 years working in the area of video codec analysis and tuning using
+              objective quality metrics and subjective comparisons.</p>
+          </li>
+          <li>
+            <p>16 reports of video codec comparisons and analysis (H.264, MPEG-4
+              MPEG-2, decoders’ error recovery).</p>
+          </li>
+          <li>
+            <p>Methods and algorithms for codec comparison and analysis development,
+              separate codec’s features and codec’s options analysis.</p>
+          </li>
+          <li>
+            <p>We could perform next task for codec developers and codec users.</p>
+          </li>
+        </ul>
+        <h3 id="strong-and-weak-points-of-your-codec">Strong and Weak Points of Your Codec</h3>
+        <ul>
+          <li>
+            <p>Deep encoder parts analysis (ME, RC on GOP, mode decision, etc).</p>
+          </li>
+          <li>
+            <p>Weak and strong points for your encoder and complete information about
+              encoding quality on different content types.</p>
+          </li>
+          <li>
+            <p>Encoding Quality improvement by the pre and post filtering (including
+              technologies licensing).</p>
+          </li>
+        </ul>
+        <h3 id="independent-codec-estimation-comparing-to-other-codecs-for-different-use-cases">Independent Codec Estimation Comparing to Other Codecs for Different Use-cases</h3>
+        <ul>
+          <li>
+            <p>Comparative analysis of your encoder and other encoders.</p>
+          </li>
+          <li>
+            <p>We have direct contact with many codec developers.</p>
+          </li>
+          <li>
+            <p>You will know place of your encoder between other newest well-known
+              encoders (compare encoding quality, speed, bitrate handling, etc.).</p>
+          </li>
+        </ul>
+        <h3 id="encoder-features-implementation-optimality-analysis">Encoder Features Implementation Optimality Analysis</h3>
+        <p>We perform encoder features effectiveness (speed/quality trade-off)
+          analysis that could lead up to 30% increase in the speed/quality
+          characteristics of your codec. We can help you to tune your codec and
+          find best encoding parameters.</p>
+        <h2 id="contacts">Contacts</h2>
+        <p>E-mail: <a href="mailto:videocodec-testing@graphics.cs.msu.ru">videocodec-testing@graphics.cs.msu.ru</a></p>
+      </div>
+      <div class="tiles-width meta">
+        <div class="share">
+          <link href="/assets/css/sharing-buttons.css" rel="stylesheet" type="text/css">
+          <!-- Sharingbutton Twitter -->
+          <a class="resp-sharing-button__link"
+   href="https://twitter.com/intent/tweet/?text=Sixth MPEG-4 AVC/H.264 Video Codecs Comparison - Short Version&amp;url=
+http://localhost:4000/codecs/mpeg4-avc-h264-2010.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Telegram -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://telegram.me/share/url?text=Sixth MPEG-4 AVC/H.264 Video Codecs Comparison - Short Version&amp;url=
+http://localhost:4000/codecs/mpeg4-avc-h264-2010.html
+" rel="noopener" target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton Facebook -->
+          <a aria-label=""
+   class="resp-sharing-button__link"
+   href="https://facebook.com/sharer/sharer.php?u=
+http://localhost:4000/codecs/mpeg4-avc-h264-2010.html
+" rel="noopener"
+   target="_blank">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton E-Mail -->
+          <a class="resp-sharing-button__link"
+   href="mailto:?subject=Sixth MPEG-4 AVC/H.264 Video Codecs Comparison - Short Version&amp;body=
+http://localhost:4000/codecs/mpeg4-avc-h264-2010.html
+" target="_self" rel="noopener"
+   aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/>
+              </svg>
+            </div>
+          </a>
+          <!-- Sharingbutton LinkedIn -->
+          <a class="resp-sharing-button__link"
+   href="https://www.linkedin.com/shareArticle?mini=true&amp;url=
+http://localhost:4000/codecs/mpeg4-avc-h264-2010.html
+&amp;title=Sixth MPEG-4 AVC/H.264 Video Codecs Comparison - Short Version&amp;summary=Sixth MPEG-4 AVC/H.264 Video Codecs Comparison - Short Version&amp;source=
+http://localhost:4000/codecs/mpeg4-avc-h264-2010.html
+"
+   target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+        <span class="date">08 Mar 2013</span>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width see-also-title">
+        See Also
+      </div>
+      <div class="tiles wide">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(/assets/img/benchmarks/deblurring/preview.png)"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-19.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-19/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2019</div>
+          <div class="text">Fourteen modern video codec comparison</div>
+        </a>
+        <a class="tile" href="/codecs/hevc-2018.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/hevc-2018/preview.png)"></div>
+          <div class="title">HEVC Video Codecs Comparison 2018 (Thirteen MSU Video Codec Comparison)</div>
+          <div class="text">13th MSU video codecs comparison</div>
+        </a>
+        <a class="tile" href="/codecs/hevc-2017.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/hevc-2017/preview.png)"></div>
+          <div class="title">HEVC Video Codecs Comparison 2017 (Twelfth MSU Video Codec Comparison)</div>
+          <div class="text">12th MSU video codecs comparison</div>
+        </a>
+        <a class="tile" href="/codecs/comparisons.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/comparisons/preview.png)"></div>
+          <div class="title">MSU Video Codec Comparisons (6 test of lossless, MPEG-4 and MPEG-4 AVC)</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/codecs/call-for-codecs-18.html">
+          <div class="image" style="background-image: url(/assets/img/codecs/call-for-codecs-18/preview.png)"></div>
+          <div class="title">Call for HEVC codecs 2018</div>
+          <div class="text"></div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="tiles-width markdown site-structure">
+        <span class="title">Site structure</span>
+        <ul>
+          <li>
+            <a href="/benchmarks/">MSU Benchmark Collection</a>
+            <ul>
+              <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+              <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+              <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+              <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+              <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+              <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+              <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+              <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+              <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+              <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+              <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+              <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/codecs/">Codecs Comparisons & Optimization</a>
+            <ul>
+              <li><a href="/codecs/avc/">AVC Codecs Comparison</a></li>
+              <li><a href="/codecs/hevc/">HEVC Codecs Comparison</a></li>
+              <li><a href="/codecs/image/">Image Codecs Comparison</a></li>
+              <li><a href="/codecs/lossless/">Lossless Codecs Comparison</a></li>
+              <li><a href="/codecs/optimization/">Codecs Optimization and Tuning</a></li>
+              <li><a href="/codecs/reports/">All Codecs Comparison Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/vqmt/">VQMT</a>
+            <ul>
+              <li><a href="/vqmt/plugins/">VQMT Plugins</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/stereo_quality/">Video Quality Measurement Tool 3D</a>
+            <ul>
+              <li><a href="/stereo_quality/correction/">Stereo Artifacts Correction</a></li>
+              <li><a href="/stereo_quality/metrics/">Stereo Quality Metrics</a></li>
+              <li><a href="/stereo_quality/reports/">All Stereo Quality Reports</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/datasets/">MSU Datasets Collection</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/metrics/">Metrics Research</a>
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <a href="/video_filters/">Video Filters</a>
+            <ul>
+              <li><a href="/video_filters/image/">Image Processing Filters</a></li>
+              <li><a href="/video_filters/public/">Free Filters</a></li>
+              <li><a href="/video_filters/virtualdub/">VirtualDub Filters</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/other/">Other Projects</a>
+            <ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

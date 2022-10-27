@@ -1,0 +1,496 @@
+<p>
+    The table below shows a comparison of Super-Resolution algorithms paired with different codecs 
+    by subjective score and a few objective metrics. 
+    <ul>
+    <li>Each column contains the codec that was used to compress the input video. </li>
+    <li>Each row contains a Super-Resolution algorithm, that was applied to that input.</li>
+    </ul>
+    You can choose a <b>metric</b> and a <b>method of comparison</b> that we used to calculate the BSQ-rate. 
+    Read the information about the methods of comparison <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#methods">here</a>. 
+<br>
+    Click on the model's name in the table to read information about the method.<br>
+    You can see information about all participants <a href="/benchmarks/super-resolution-for-video-compression-participants.html">here</a>. 
+<br>
+    Click on the labels to sort the table.
+</p>
+
+<div id="leaderboard_w">
+    <p style="white-space: pre;">Metric: <label for="leaderboard_metric_selector"></label><select id="leaderboard_metric_selector" name="values">
+        <option>ERQAv1.0</option>
+        <option>Y-PSNR</option>
+        <option>YUV-MS-SSIM</option>
+        <option>Y-VMAF</option>
+        <option>Y-VMAF NEG</option>
+        <option>LPIPS</option>
+        <option>Subjective</option>
+    </select>    Method: <label for="leaderboard_method_selector"></label><select id="leaderboard_method_selector" name="values">
+        <option>relative to x264</option>
+        <option>relative to self</option>
+        <option>max. relative to self</option>
+    </select></p>
+
+    <div class="datatable-container">
+    <div class="datatable-center">
+        <table id="leaderboard_table" class="display" style="background-color: #ffffff;width:99.5%">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Model</th>
+                <th style="background-color: #3d6f96">x264</th>
+                <th style="background-color: #3d6f96">x265</th>
+                <th style="background-color: #3d6f96">aomenc</th>
+                <th style="background-color: #3d6f96">VVenC</th>
+                <th style="background-color: #3d6f96">uavs3e</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+
+
+
+    <script>
+    
+    function getName(alg) {
+
+        if (alg == "only_compressed") {
+            return "only compressed";
+        }
+        if (alg == "waifu2xAnime") {
+            return "waifu2x-anime";
+        }
+        if (alg == "waifu2xCunet") {
+            return "waifu2x-cunet";
+        }
+        if (alg == "topaz-amq-12") {
+            return "amq-12";
+        } 
+        if (alg == "topaz-ahq-11") {
+            return "ahq-11";
+        }
+        if (alg == "topaz-amqs-1") {
+            return "amqs-1";
+        }
+        return alg;
+    }
+
+    function getHref(alg) {
+
+        
+        if (alg == "waifu2xAnime") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#waifu2x";
+        }
+        if (alg == "waifu2xCunet") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#waifu2x";
+        }
+        if (alg == "topaz-amq-12" || alg == "topaz-amqs-1" || alg == "topaz-ahq-11") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#topaz";
+        }
+        if (alg == "SOF-VSR-BI" || alg == "SOF-VSR-BD") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#sof-vsr";
+        }
+        if (alg == "LGFN") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#lgfn";
+        }
+        if (alg == "DBVSR") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#dbvsr";
+        }
+        if (alg == "EGVSR") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#egvsr";
+        }
+        if (alg == "iSeeBetter") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#iSeeBetter";
+        }
+        if (alg == "DynaVSR-R") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#dynavsr";
+        }
+        if (alg == "RealSR") {
+            return "/benchmarks/super-resolution-for-video-compression-participants.html#realsr";
+        }
+        
+    }
+
+    function getIndex(alg) {
+        
+        if (alg == "waifu2xAnime") {
+            return "7";
+        }
+        if (alg == "waifu2xCunet") {
+            return "6";
+        }
+        if (alg == "topaz-amq-12") {
+            return "1";
+        }
+        if (alg == "topaz-amqs-1") {
+            return "3";
+        }
+        if (alg == "topaz-ahq-11") {
+            return "2";
+        }
+        if (alg == "SOF-VSR-BI") {
+            return "8";
+        }
+        if (alg == "SOF-VSR-BD") {
+            return "11";
+        }
+        if (alg == "LGFN") {
+            return "12";
+        }
+        if (alg == "DBVSR") {
+            return "9";
+        }
+        if (alg == "EGVSR") {
+            return "13";
+        }
+        if (alg == "iSeeBetter") {
+            return "10";
+        }
+        if (alg == "DynaVSR-R") {
+            return "4";
+        }
+        if (alg == "RealSR") {
+            return "5";
+        }
+    }
+
+    function onChangeHelper() {
+        
+        var metric_select = document.getElementById("leaderboard_metric_selector");
+        var metricToName = ['ERQA', 'PSNR', 'MSSSIM', 'VMAFCLIPPED', 'VMAFNEG', 'LPIPS', 'Subjective'];
+        var metric_name = metricToName[metric_select.selectedIndex];
+
+        var method_select = document.getElementById("leaderboard_method_selector");
+        var methodToName = ['x264', 'self', 'best_self'];
+        var method_name = methodToName[method_select.selectedIndex];
+
+
+        let text = "<thead>\n" +
+        "<tr style=\"font-size: large; background-color: #3d6f96\">" +
+        "    <th style=\"background-color: #3d6f96;padding: 10px;\">Model</th>" +
+        "    <th style=\"background-color: #3d6f96\">x264</th>" +
+        "    <th style=\"background-color: #3d6f96\">x265</th>" +
+        "    <th style=\"background-color: #3d6f96\">aomenc</th>" +
+        "    <th style=\"background-color: #3d6f96\">VVenC</th>" +
+        "    <th style=\"background-color: #3d6f96\">uavs3e</th>" +
+        "</tr>\n" +
+        "</thead>\n" +
+        "<tbody>\n";
+
+        let codecs = ['x264', 'x265', 'libaom-av1', 'H.266', 'AVS3'];
+
+        if (metric_name != 'Subjective') {
+            $.getJSON('../assets/json/benchmarks/sr-codecs/leaderboard.json', function (data) {
+                $.each( data[metric_name], function( alg, val ) {
+                    
+                    if (alg != "only_compressed_540") {
+                        text += "<tr class=\"item\">\n";
+                        if (alg != "bicubic" && alg != "only_compressed") {
+                            text += "<td>" + getName(alg) + "<sup><a href='" + getHref(alg) + "'>[" + getIndex(alg) + "]</a></sup></td>\n";
+                        } else if (alg == "bicubic"){
+                            text += "<td>" + getName(alg) + "</td>\n";
+                        } else {
+                            text += "<td style='background-color:#FAF18C'>" + getName(alg) + "</td>\n";
+                        }
+
+                        for (codec of codecs) { 
+                            if (alg != "only_compressed") {
+                                text += "<td>" + val[codec][method_name].toFixed(3) + "</td>\n";
+                            } else {
+                                text += "<td style='background-color:#FAF18C'>" + val[codec][method_name].toFixed(3) + "</td>\n";
+                            }
+                        }
+                        text += "</tr>\n";
+                    }
+                });
+                text += "</tbody>\n";
+            
+                let table = document.getElementById('leaderboard_table');
+                table.innerHTML = text;
+
+                let TBP1 = document.getElementById("TBP1");
+                TBP1.innerHTML = "";
+                
+
+                $('#leaderboard_table').DataTable().destroy();
+
+                $('#leaderboard_table').DataTable({
+                    
+                    lengthChange: false,
+                    paging: false,
+                    searching: false,
+                    ordering: true,
+                    order: [[1, 'asc']]
+                });
+            });
+        } else {
+            $.getJSON('../assets/json/benchmarks/sr-codecs/subjective.json', function (data) {
+                $.each( data, function( alg, val ) {
+                    
+                    if (alg != "only_compressed_540") {
+                        text += "<tr class=\"item\">\n";
+                        if (alg != "bicubic" && alg != "only_compressed") {
+                            text += "<td>" + getName(alg) + "<sup><a href='" + getHref(alg) + "'>[" + getIndex(alg) + "]</a></sup></td>\n";
+                        } else if (alg == "bicubic"){
+                            text += "<td>" + getName(alg) + "</td>\n";
+                        } else {
+                            text += "<td style='background-color:#FAF18C'>" + getName(alg) + "</td>\n";
+                        }
+
+                        for (codec of codecs) { 
+                            if (codec == 'x264') {
+
+                                if (method_name == 'best_self') {
+                                    data = val['best']
+                                } else {
+                                    data = val['self']
+                                }
+
+                                if (data < 0) {
+                                    data = "TBP*";
+                                } else {
+                                    data = data.toFixed(3);
+                                }
+                            } else {
+                                data = "TBP*";
+                            }
+                            if (alg != "only_compressed") {
+                                text += "<td>" + data + "</td>\n";
+                            } else {
+                                text += "<td style='background-color:#FAF18C'>" + data + "</td>\n";
+                            }
+                        }
+                        text += "</tr>\n";
+                    }
+                });
+                text += "</tbody>\n";
+            
+                let table = document.getElementById('leaderboard_table');
+                table.innerHTML = text;
+
+                let TBP1 = document.getElementById("TBP1");
+                TBP1.innerHTML = "<p><b>*To Be Published</b></p>"
+                
+
+                $('#leaderboard_table').DataTable().destroy();
+
+                $('#leaderboard_table').DataTable({
+                    
+                    lengthChange: false,
+                    paging: false,
+                    searching: false,
+                    ordering: true,
+                    order: [[1, 'asc']]
+                });
+            });
+        }
+    }
+
+    document.getElementById("leaderboard_metric_selector").onchange = onChangeHelper;
+    document.getElementById("leaderboard_method_selector").onchange = onChangeHelper;
+    onChangeHelper();
+
+    </script>
+
+</div>
+
+<div id="TBP1"><p><b>*To Be Published</b></p></div>
+
+<h3 align="left" style="color: #3d6f96">Best sequence for each model</h3>
+
+<p>
+    The table below shows the best sequence for each Super-Resolution algorithm
+    based on the subjective score and a few objective metrics. The best video is the one in which the algorithm has the highest metric value among other videos.
+    Sequences are represented by different colors. You can see the list of videos in the <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#dataset_table">methodology</a>. 
+</p>
+
+<div id="leaderboard_best_video">
+    <p>     Metric: <label for="leaderboard_video_metric_selector"></label><select id="leaderboard_video_metric_selector" name="values">
+        <option>ERQA</option>
+        <option>Y-PSNR</option>
+        <option>YUV-MS-SSIM</option>
+        <option>Y-VMAF</option>
+        <option>Y-VMAF NEG</option>
+        <option>LPIPS</option>
+        <option>Subjective</option>
+    </select>
+    </p>
+
+    <div class="datatable-container">
+    <div class="datatable-center">
+        <table id="leaderboard_video_table" class="display" style="background-color: #ffffff;width:99.5%">
+            <thead>
+            <tr style="font-size: large; background-color: #3d6f96">
+                <th style="background-color: #3d6f96">Model</th>
+                <th style="background-color: #3d6f96">x264</th>
+                <th style="background-color: #3d6f96">x265</th>
+                <th style="background-color: #3d6f96">aomenc</th>
+                <th style="background-color: #3d6f96">VVenC</th>
+                <th style="background-color: #3d6f96">uavs3e</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    <script>
+        function onChangeHelper() {
+        
+        var metric_select = document.getElementById("leaderboard_video_metric_selector");
+        var metricToName = ['ERQA', 'PSNR', 'MSSSIM', 'VMAFCLIPPED', 'VMAFNEG', 'LPIPS', 'Subjective'];
+        var metric_name = metricToName[metric_select.selectedIndex];
+
+
+        let text = "<thead>\n" +
+        "<tr style=\"font-size: large; background-color: #3d6f96\">" +
+        "    <th style=\"background-color: #3d6f96; padding: 10px;\">Model</th>" +
+        "    <th style=\"background-color: #3d6f96\">x264</th>" +
+        "    <th style=\"background-color: #3d6f96\">x265</th>" +
+        "    <th style=\"background-color: #3d6f96\">aomenc</th>" +
+        "    <th style=\"background-color: #3d6f96\">VVenC</th>" +
+        "    <th style=\"background-color: #3d6f96\">uavs3e</th>" +
+        "</tr>\n" +
+        "</thead>\n" +
+        "<tbody>\n";
+
+        let codecs = ['x264', 'x265', 'libaom-av1', 'H.266', 'AVS3'];
+
+        if (metric_name != 'Subjective') {
+            $.getJSON('../assets/json/benchmarks/sr-codecs/leaderboard_videos.json', function (data) {
+                let index = 3;
+                $.each( data[metric_name], function( alg, val ) {
+                    
+                    if (alg != "only_compressed_540") {
+                        text += "<tr class=\"item\">\n";
+                        if (alg != "bicubic" && alg != "only_compressed") {
+                            let cur_index = index + 1;
+                            if (alg == "topaz-ahq-11") {
+                                cur_index = 1;
+                            } else if (alg == "topaz-amq-12") {
+                                cur_index = 2;
+                            } else if (alg == "topaz-amqs-1") {
+                                cur_index = 3;
+                            } else {
+                                index += 1;
+                            }
+                            text += "<td>" + getName(alg) + "<sup><a href='" + getHref(alg) + "'>[" + cur_index.toString() + "]</a></sup></td>\n";
+                            
+                        } else {
+                            text += "<td>" + getName(alg) + "</td>\n";
+                        } 
+
+                        for (codec of codecs) { 
+                            if (val[codec] == 'animation clip') {
+                                text += "<td style='background-color:#3CB371'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'skiing') {
+                                text += "<td style='background-color:#2E8B57'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'street show') {
+                                text += "<td style='background-color:#228B22'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'glass') {
+                                text += "<td style='background-color:#6B8E23'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'professor') {
+                                text += "<td style='background-color:#9ACD32'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'lift') {
+                                text += "<td style='background-color:#74CC64'>" + val[codec] + "</td>\n";
+                            } else if (val[codec] == 'wedding') {
+                                text += "<td style='background-color:#548F62'>" + val[codec] + "</td>\n";
+                            }
+                        }
+                        text += "</tr>\n";
+                    }
+                });
+                text += "</tbody>\n";
+            
+                let table = document.getElementById('leaderboard_video_table');
+                table.innerHTML = text;
+
+                let TBP = document.getElementById('TBP2');
+                TBP.innerHTML = "";
+                
+
+                $('#leaderboard_video_table').DataTable().destroy();
+
+                $('#leaderboard_video_table').DataTable({
+                    
+                    lengthChange: false,
+                    paging: false,
+                    searching: false,
+                    ordering: true,
+                    order: [[0, 'asc']]
+                });
+            });
+        } else {
+            $.getJSON('../assets/json/benchmarks/sr-codecs/subjective.json', function (data) {
+                let index = 3;
+                $.each( data, function( alg, val ) {
+                    
+                    if (alg != "only_compressed_540") {
+                        text += "<tr class=\"item\">\n";
+                        if (alg != "bicubic" && alg != "only_compressed") {
+                            let cur_index = index + 1;
+                            if (alg == "topaz-ahq-11") {
+                                cur_index = 1;
+                            } else if (alg == "topaz-amq-12") {
+                                cur_index = 2;
+                            } else if (alg == "topaz-amqs-1") {
+                                cur_index = 3;
+                            } else {
+                                index += 1;
+                            }
+                            text += "<td>" + getName(alg) + "<sup><a href='" + getHref(alg) + "'>[" + cur_index.toString() + "]</a></sup></td>\n";
+                        } else {
+                            text += "<td>" + getName(alg) + "</td>\n";
+                        }
+
+                        for (codec of codecs) { 
+                            if (codec == 'x264') {
+                                data = val['video']
+                            } else {
+                                data = "TBP*";
+                            }
+                            if (data == 'animation clip') {
+                                text += "<td style='background-color:#3CB371'>" + data + "</td>\n";
+                            } else if (data == 'skiing') {
+                                text += "<td style='background-color:#2E8B57'>" + data + "</td>\n";
+                            } else if (data == 'street show') {
+                                text += "<td style='background-color:#228B22'>" + data + "</td>\n";
+                            } else {
+                                text += "<td>" + data + "</td>\n"; 
+                            }
+                        }
+                        text += "</tr>\n";
+                    }
+                });
+                text += "</tbody>\n";
+            
+                let table = document.getElementById('leaderboard_video_table');
+                table.innerHTML = text;
+                
+                let TBP2 = document.getElementById("TBP2");
+                TBP2.innerHTML = "<p><b>*To Be Published</b></p>"
+
+                $('#leaderboard_video_table').DataTable().destroy();
+
+                $('#leaderboard_video_table').DataTable({
+                    
+                    lengthChange: false,
+                    paging: false,
+                    searching: false,
+                    ordering: true,
+                    order: [[0, 'asc']]
+                });
+            });
+        }
+    }
+
+    document.getElementById("leaderboard_video_metric_selector").onchange = onChangeHelper;
+    onChangeHelper();
+    </script>
+</div>
+
+<div id="TBP2"><p><b>*To Be Published</b></p></div>

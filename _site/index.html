@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <link href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Video Processing</title>
+    <meta property="og:title" content="Video Processing">
+    <meta property="og:image" content="http://localhost:4000/assets/img/logo.svg">
+    <meta property="og:url" content="
+http://localhost:4000/index.html
+">
+    <meta property="og:type" content="website">
+    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/nav_arrow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <ul class="navbar">
+      <li class="navbar-header">
+        <a href="/" class="header">
+          <img alt="Main page" class="logo" src="/assets/img/logo.svg">
+          <h1>Video processing, compression<br>
+            and quality research group
+            <div>Based in MSU Graphics & Media Laboratory</div>
+          </h1>
+        </a>
+        <a class="menu-toggle-button">
+          <div class="icon"></div>
+        </a>
+      </li>
+      <li>
+        <a href="/benchmarks/">Benchmarks <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/benchmarks/deblurring.html">MSU Video Deblurring Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-frame-interpolation.html">MSU Video Frame Interpolation Benchmark 2022</a></li>
+          <li><a href="/benchmarks/video-upscalers.html">MSU Video Upscalers Benchmark 2022</a></li>
+          <li><a href="/benchmarks/inverse-tone-mapping.html">MSU HDR Video Reconstruction Benchmark 2022</a></li>
+          <li><a href="/benchmarks/super-resolution-for-video-compression.html">MSU Super-Resolution for Video Compression Benchmark 2022</a></li>
+          <li><a href="/benchmarks/no-reference-video-quality-metrics.html">MSU No-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/full-reference-video-quality-metrics.html">MSU Full-Reference Video Quality Metrics Benchmark 2022</a></li>
+          <li><a href="/benchmarks/aligners.html">MSU Video Alignment and Retrieval Benchmark</a></li>
+          <li><a href="/benchmarks/mobile-video-codec-benchmark.html">MSU Mobile Video Codecs Benchmark 2021</a></li>
+          <li><a href="/benchmarks/video-super-resolution.html">MSU Video Super-Resolution Benchmark</a></li>
+          <li><a href="/benchmarks/shot-boundary-detection.html">MSU Shot Boundary Detection Benchmark 2020</a></li>
+          <li><a href="/benchmarks/deinterlacer.html">MSU Deinterlacer Benchmark</a></li>
+          <li><a href="https://videomatting.com/" target="_blank">The VideoMatting Project</a></li>
+          <li><a href="https://videocompletion.org/" target="_blank">Video Completion</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/projects/">Projects <img class="dropdown-icon" src="/assets/icons/dropdown.svg"></a>
+        <ul class="dropmenu">
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </li>
+      <li><a href="/publications/">Publications</a></li>
+      <li><a href="/about/">About Us</a></li>
+      <li><a href="/contacts/">Contacts</a></li>
+    </ul>
+    <div class="content">
+      <link href="/assets/css/glide.core.min.css" rel="stylesheet" type="text/css">
+      <link href="/assets/css/carousel.css" rel="stylesheet" type="text/css">
+      <script src="/assets/js/glide.min.js"></script>
+      <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide"
+                
+                    style="background-image: url(/assets/img/carousel/benchmark_collection.png)"
+                 >
+              <a href="/benchmarks/">
+                <div class="glide__text">
+                  <h1 id="msu-benchmark-collection">MSU Benchmark Collection</h1>
+                  <p><span class="motto">Unbiased comparisons with high-quality datasets</span></p>
+                  <ul>
+                    <li>Check our benchmarks to find the best practical method for your task</li>
+                    <li>We regularly improve our methodology to make fair comparisons</li>
+                    <li>Compare your algorithm with others without code disclosure</li>
+                  </ul>
+                </div>
+              </a>
+            </li>
+            <li class="glide__slide"
+                
+                    style="background-image: url(/assets/img/carousel/codecs_comparison.png)"
+                 >
+              <a href="/codecs/">
+                <div class="glide__text">
+                  <h1 id="video-codecs-comparison">Video codecs comparison</h1>
+                  <p><span class="motto">Worldwide leading codecs contest</span></p>
+                  <ul>
+                    <li>Deepest codecs review: 5 reports, including subjective<br />
+                      with 1000+ viewers and 7000+ charts</li>
+                    <li>All industry professionals will know about your codec’s success</li>
+                    <li>Compare your codec with world leaders staying incognito</li>
+                  </ul>
+                </div>
+              </a>
+            </li>
+            <li class="glide__slide"
+                
+                    style="background-image: url(/assets/img/carousel/vqmt_pro.png)"
+                 >
+              <a href="/vqmt/">
+                <div class="glide__text">
+                  <h1 id="msu-vqmt-pro">MSU VQMT Pro</h1>
+                  <p><span class="motto">A tool for video quality measurement</span></p>
+                  <ul>
+                    <li>Fastest SSIM, MS-SSIM, VMAF implementations</li>
+                    <li>Any video &amp; image support: 300+ formats including RAW + HDR</li>
+                    <li>Automate video quality measurement with GUI or CLI</li>
+                  </ul>
+                </div>
+              </a>
+            </li>
+            <li class="glide__slide"
+                
+                    style="background-image: url(/assets/img/carousel/vqmt3d.png)"
+                 >
+              <a href="/stereo_quality/">
+                <div class="glide__text">
+                  <h1 id="vqmt3d">VQMT3D</h1>
+                  <p><span class="motto">A tool for S3D video quality measurement</span></p>
+                  <ul>
+                    <li>World’s largest set of 18 stereo quality metrics</li>
+                    <li>Over 100 analyzed 3D Blu-ray movies with 11 reports</li>
+                    <li>The largest study of stereoscopic error influence on 300+ viewers</li>
+                  </ul>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div class="glide__arrows" data-glide-el="controls">
+            <img alt="Back" class="glide__arrow left" data-glide-dir="<" src="/assets/icons/carousel-left.svg">
+            <img alt="Next" class="glide__arrow right" data-glide-dir=">" src="/assets/icons/carousel-right.svg">
+          </div>
+        </div>
+        <div class="glide__bullets" data-glide-el="controls[nav]">
+          <div class="glide__bullet" data-glide-dir="=0">
+            <div class="dash"></div>
+          </div>
+          <div class="glide__bullet" data-glide-dir="=1">
+            <div class="dash"></div>
+          </div>
+          <div class="glide__bullet" data-glide-dir="=2">
+            <div class="dash"></div>
+          </div>
+          <div class="glide__bullet" data-glide-dir="=3">
+            <div class="dash"></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        new Glide('.glide', {autoplay: 8000}).mount();
+      </script>
+      <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
+      <div class="tiles">
+        <a class="tile" href="/benchmarks/deblurring.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/deblurring/preview.png
+        
+                )"></div>
+          <div class="title">MSU Video Deblurring Benchmark 2022</div>
+          <div class="text">Learn about the best video deblurring methods and choose the best model</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-frame-interpolation.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/vfi/main.webp
+        
+                )"></div>
+          <div class="title">MSU Video Frame Interpolation Benchmark 2022</div>
+          <div class="text">Discover the best algorithm to make high-quality and smooth slow motion videos</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-upscalers.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/upscalers/MSU_VUB.webp
+        
+                )"></div>
+          <div class="title">MSU Video Upscalers Benchmark 2022</div>
+          <div class="text">The most extensive comparison of video super-resolution (VSR) algorithms by subjective quality</div>
+        </a>
+        <a class="tile" href="/benchmarks/inverse-tone-mapping.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/itm/main.webp
+        
+                )"></div>
+          <div class="title">MSU HDR Video Reconstruction Benchmark 2022</div>
+          <div class="text">The most comprehensive comparison of HDR video reconstruction methods</div>
+        </a>
+        <a class="tile" href="/benchmarks/super-resolution-for-video-compression.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/sr-codecs/preview.gif
+        
+                )"></div>
+          <div class="title">MSU Super-Resolution for Video Compression Benchmark 2022</div>
+          <div class="text">Learn about the best SR methods for compressed videos and choose the best model to use with your codec</div>
+        </a>
+        <a class="tile" href="/benchmarks/no-reference-video-quality-metrics.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/frm/main.png
+        
+                )"></div>
+          <div class="title">MSU No-Reference Video Quality Metrics Benchmark 2022</div>
+          <div class="text">Explore newest No-Reference Video Quality Metrics and find the most appropriate for you.</div>
+        </a>
+        <a class="tile" href="/benchmarks/full-reference-video-quality-metrics.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/frm/main.png
+        
+                )"></div>
+          <div class="title">MSU Full-Reference Video Quality Metrics Benchmark 2022</div>
+          <div class="text">Explore newest Full-Reference Video Quality Metrics and find the most appropriate for you.</div>
+        </a>
+        <a class="tile" href="/vqmt/metrics/">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt/metrics_cover.jpg
+        
+                )"></div>
+          <div class="title">MSU Quality Measurement Tool: Metrics information</div>
+          <div class="text">Metrics' information</div>
+        </a>
+        <a class="tile" href="/benchmarks/aligners.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/aligners/kdpv_main.gif
+        
+                )"></div>
+          <div class="title">MSU Video Alignment and Retrieval Benchmark</div>
+          <div class="text">Explore the best algorithms in different video alignment tasks</div>
+        </a>
+        <a class="tile" href="/stereo_quality/report12.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report12/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 12</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/metrics/ways-of-cheating-on-popular-objective-metrics.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/metrics/psnr_and_ssim/main.gif
+        
+                )"></div>
+          <div class="title">PSNR and SSIM: application areas and criticism</div>
+          <div class="text">Learn about limits and applicability of the most popular metrics</div>
+        </a>
+        <a class="tile" href="/benchmarks/mobile-video-codec-benchmark.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/mvc/mvc_preview480x270.png
+        
+                )"></div>
+          <div class="title">MSU Mobile Video Codecs Benchmark 2021</div>
+          <div class="text">Discover Android devices with the longest video playback time and find the most power-efficient video-decoder on your Android device and</div>
+        </a>
+        <a class="tile" href="/stereo_quality/report11.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report11/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 11</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/datasets/mvdsvd.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/forecasting-of-viewers-discomfort/preview.jpg
+        
+                )"></div>
+          <div class="title">Forecasting of viewers’ discomfort</div>
+          <div class="text">How do distortions in a stereo movie affect the discomfort of viewers?</div>
+        </a>
+        <a class="tile" href="/benchmarks/video-super-resolution.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/vsr/main_page.gif
+        
+                )"></div>
+          <div class="title">MSU Video Super-Resolution Benchmark</div>
+          <div class="text">Discover the newest VSR methods and find the most appropriate method for your tasks</div>
+        </a>
+        <a class="tile" href="/benchmarks/shot-boundary-detection.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/sbd/fade.gif
+        
+                )"></div>
+          <div class="title">MSU Shot Boundary Detection Benchmark 2020</div>
+          <div class="text">Discover the best Shot Boundary Detection method for your case</div>
+        </a>
+        <a class="tile" href="/benchmarks/deinterlacer.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/benchmarks/deinterlacer/deinterlacing_preview480x270.png
+        
+                )"></div>
+          <div class="title">MSU Deinterlacer Benchmark</div>
+          <div class="text">The most comprehensive comparison of deinterlacing methods</div>
+        </a>
+        <a class="tile" href="/stereo_quality/report10.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/report10/preview-report.png
+        
+                )"></div>
+          <div class="title">MSU 3D-video Quality Analysis. Report 10</div>
+          <div class="text"></div>
+        </a>
+        <a class="tile" href="/stereo_quality/stereo-window-violation.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/stereo-window-violation/scheme.png
+        
+                )"></div>
+          <div class="title">Detection of stereo window violation</div>
+          <div class="text">How to find objects that are present only in one view?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/depth-continuity-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/depth-continuity-s3d/scheme.png
+        
+                )"></div>
+          <div class="title">Depth continuity estimation in S3D video</div>
+          <div class="text">How smooth is the depth transition between scenes?</div>
+        </a>
+        <a class="tile" href="/stereo_quality/converged-axes-detection.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/converged-axes-detection/scheme.png
+        
+                )"></div>
+          <div class="title">Detection of 3D movie scenes shot on converged axes</div>
+          <div class="text">Another cause of headaches when watching 3D movies.</div>
+        </a>
+        <a class="tile" href="/stereo_quality/parallax-range-estimation-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/parallax-range-estimation-s3d/negative_parallax.png
+        
+                )"></div>
+          <div class="title">Parallax range estimation in S3D video</div>
+          <div class="text">The parallax range should be both comfortable and entertaining for spectators.</div>
+        </a>
+        <a class="tile" href="/stereo_quality/geometric-distortions-correction-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/geometric-distortions-correction-s3d/example01_silent.gif
+        
+                )"></div>
+          <div class="title">Geometric distortions analysis and correction</div>
+          <div class="text">Automatic correction of vertical disparity, rotation mismatch and scale mismatch.</div>
+        </a>
+        <a class="tile" href="/stereo_quality/artifacts-detection-in-converted-s3d.html">
+          <div class="image" style="background-image: url(
+        
+            /assets/img/vqmt3d/artifacts-detection-in-converted-s3d/cardboard02.jpg
+        
+                )"></div>
+          <div class="title">Automatic detection of artifacts in converted S3D videos</div>
+          <div class="text">We detect edge sharpness mismatch, cardboard effect, and crosstalk noticeability.</div>
+        </a>
+      </div>
+      <div class="tiles-width separator"></div>
+      <div class="page-switcher">
+        <div>
+          <a class="button disabled">Previous</a>
+          <a href="/page/2/" class="button">Next</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-column copyright">
+        <img alt="MSU Graphics & Multimedia Lab Video Group" class="logo" src="/assets/img/logo.svg">
+        <div class="text">
+          MSU Graphics & Media Lab Video Group
+          <br>
+          2019&ndash;2022
+        </div>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/codecs/">Codecs Comparisons & Optimization</a></li>
+          <li><a href="/vqmt/">VQMT</a></li>
+          <li><a href="/stereo_quality/">Video Quality Measurement Tool 3D</a></li>
+          <li><a href="/datasets/">MSU Datasets Collection</a></li>
+          <li><a href="/metrics/">Metrics Research</a></li>
+          <li><a href="/video_filters/">Video Filters</a></li>
+          <li><a href="/other/">Other Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/benchmarks/">Benchmarks</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

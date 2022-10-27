@@ -1,0 +1,98 @@
+<h3 align="left" style="color: #3d6f96">Correlation of metrics with subjective assessment</h3>
+
+<p>We calculated objective metrics on the crops used for <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#subjective_comparison">subjective comparison</a> and calculated a correlation between the subjective and objective results. Below you can see the average correlation of metrics over all test cases.</p> 
+
+<div id="correlation_plot" style="display: block" class="highcharts-figure">
+    <script async src="/assets/js/benchmarks/sr-codecs/correlation.js"></script>
+</div>
+
+<p>* ERQA-MDTVSFA is calculated by multiplying MDTVSFA and ERQA values over the video.</p>
+
+<!--
+<h3 align="left" style="color: #3d6f96">Correlation of metrics with subjective assessment via extrapolated BSQ-rate</h3>
+
+<p>We calculated the correlation of metrics via the correlation of BSQ-rates, evaluated over metrics’ values.</p>
+
+<div id="correlation_bsqrate_plot" style="display: block" class="highcharts-figure">
+    <script async src="/assets/js/benchmarks/sr-codecs/correlation_bsqrate.js"></script>
+</div>
+-->
+
+<!--
+<h3 align="left" style="color: #3d6f96">Subjective assessment</h3>
+
+<div id="subjective_charts_selector" class="mobile-plots">
+    <p style="white-space: pre;">Video: <label for="subjective_charts_selector_video"></label><select id="subjective_charts_selector_video" name="values">
+        <option>animation clip (1)</option>
+        <option selected="selected">animation clip (2)</option>
+        <option>skiing (1)</option>
+        <option>skiing (2)</option>
+        <option>street show (1)</option>
+        <option>street show (2)</option>
+    </select></p>
+
+    <p>
+        Extrapolated:* <label class="switch" for="subjective_bitrates_selector">
+            <input id="subjective_bitrates_selector" type="checkbox">
+            <span class="slider round"></span>
+        </label><br>
+        <b>*You can see the information about extrapolation and subjective BSQ-rate calculation <a href="/benchmarks/super-resolution-for-video-compression-methodology.html#extrapolation">here</a>.</b>
+    </p>
+
+    <div id="subjective_charts_graph" style="display: block" class="highcharts-figure">
+        <script async src="/assets/js/benchmarks/sr-codecs/subjective_charts_graph.js"></script>
+    </div>
+
+    <div id="highlight2" style="text-align:center">
+        <p><b>Highlight the plot region where you want to zoom in</b></p>
+    </div>
+
+    <div id="subjective_charts_bsqrate" style="display: block" class="highcharts-figure">
+        <script async src="/assets/js/benchmarks/sr-codecs/subjective_charts_bsqrate.js"></script>
+    </div>
+
+    <script>
+        function onChangeHelper2() {
+            let speed_plot = document.getElementById("subjective_charts_graph");
+            let this_div = document.getElementById("subjective_charts_selector");
+
+            speed_plot.remove();
+            let new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "subjective_charts_graph");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+
+            let sc = document.createElement("script");
+            sc.src = '/assets/js/benchmarks/sr-codecs/subjective_charts_graph.js'; 
+            new_plot.appendChild(sc);
+
+            let old = document.getElementById('highlight2');
+            old.remove();
+            let new_text = document.createElement('div');
+            new_text.setAttribute("style", "text-align:center");
+            new_text.setAttribute("id", "highlight2");
+            new_text.innerHTML = "<p><b>Highlight the plot region where you want to zoom in</b></p>";
+            this_div.appendChild(new_text);
+
+            speed_plot = document.getElementById("subjective_charts_bsqrate");
+            this_div = document.getElementById("subjective_charts_selector");
+
+            speed_plot.remove();
+            new_plot = document.createElement('div');
+            new_plot.setAttribute("id", "subjective_charts_bsqrate");
+            new_plot.setAttribute("class", "highcharts-figure");
+            this_div.appendChild(new_plot);
+
+            sc = document.createElement("script");
+            sc.src = '/assets/js/benchmarks/sr-codecs/subjective_charts_bsqrate.js'; 
+            new_plot.appendChild(sc);
+        }
+
+        document.getElementById("subjective_charts_selector_video").onchange = onChangeHelper2;
+        document.getElementById("subjective_bitrates_selector").onchange = onChangeHelper2;
+    
+    </script>
+</div>
+-->
+
+    

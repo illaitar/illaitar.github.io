@@ -1,0 +1,29 @@
+{
+"From 30 fps": {
+    "RIFE": {"Subjective": 1.99, "PSNR": 27.15, "SSIM": 0.914, "VMAF": 66.33, "ERQA": 0.762, "LPIPS": 0.039, "MS-SSIM": 0.939, "FPS": 27.3, "rank": 2}, 
+    "Adobe Premiere Pro": {"Subjective": 1.49, "PSNR": 21.93, "SSIM": 0.780, "VMAF": 34.01, "ERQA": 0.633, "LPIPS": 0.085, "MS-SSIM": 0.885, "FPS": "TBD", "rank": 3}, 
+    "CAIN": {"Subjective": 1.07, "PSNR": 27.44, "SSIM": 0.919, "VMAF": 64.81, "ERQA": 0.738, "LPIPS": 0.087, "MS-SSIM": 0.931, "FPS": 35.2, "rank": 7}, 
+    "XVFI": {"Subjective": 1.38, "PSNR": 27.35, "SSIM": 0.913, "VMAF": 63.47, "ERQA": 0.733, "LPIPS": 0.061, "MS-SSIM": 0.933, "FPS": 5.4, "rank": 4}, 
+    "Chronos-SloMo-v2": {"Subjective": 2.05, "PSNR": 27.57, "SSIM": 0.917, "VMAF": 65.88, "ERQA": 0.752, "LPIPS": 0.053, "MS-SSIM": 0.939, "FPS": 4.35, "rank": 1}, 
+    "Super-SloMo": {"Subjective": 1.11, "PSNR": 26.69, "SSIM": 0.904, "VMAF": 61.35, "ERQA": 0.714, "LPIPS": 0.068, "MS-SSIM": 0.924, "FPS": 3.1, "rank": 6}, 
+    "Frame Repeating": {"Subjective": 1.31, "PSNR": 23.06, "SSIM": 0.750, "VMAF": 29.84, "ERQA": 0.610, "LPIPS": 0.097, "MS-SSIM": 0.771, "FPS": "— *", "rank": 5}, 
+    "Frame Averaging": {"Subjective": 0, "PSNR": 24.18, "SSIM": 0.788, "VMAF": 36.17, "ERQA": 0.628, "LPIPS": 0.087, "MS-SSIM": 0.830, "FPS": "— *", "rank": 8}}, 
+"From 60 fps": {
+    "RIFE": {
+        "Subjective": 1.47, 
+        "PSNR": 28.12, 
+        "SSIM": 0.938, 
+        "VMAF": 76.91, 
+        "ERQA": 0.809, 
+        "LPIPS": 0.026, 
+        "MS-SSIM": 0.960, 
+        "FPS": 27.3, 
+        "rank": 2
+    }, 
+    "Adobe Premiere Pro": {"Subjective": 1.21, "PSNR": 21.90, "SSIM": 0.786, "VMAF": 37.95, "ERQA": 0.651, "LPIPS": 0.079, "MS-SSIM": 0.899, "FPS": "TBD", "rank": 5}, 
+    "CAIN": {"Subjective": 1.30, "PSNR": 28.62, "SSIM": 0.944, "VMAF": 77.29, "ERQA": 0.799, "LPIPS": 0.052, "MS-SSIM": 0.959, "FPS": 35.2, "rank": 3}, 
+    "XVFI": {"Subjective": 1.25, "PSNR": 28.49, "SSIM": 0.941, "VMAF": 75.66, "ERQA": 0.788, "LPIPS": 0.043, "MS-SSIM": 0.959, "FPS": 5.4, "rank": 4}, 
+    "Chronos-SloMo-v2": {"Subjective": 1.52, "PSNR": 28.60, "SSIM": 0.942, "VMAF": 76.81, "ERQA": 0.801, "LPIPS": 0.036, "MS-SSIM": 0.961, "FPS": 4.35, "rank": 1}, 
+    "Super-SloMo": {"Subjective": 1.20, "PSNR": 27.80, "SSIM": 0.932, "VMAF": 72.92, "ERQA": 0.763, "LPIPS": 0.050, "MS-SSIM": 0.955, "FPS": 3.1, "rank": 6}, 
+    "Frame Repeating": {"Subjective": 0.68, "PSNR": 25.77, "SSIM": 0.816, "VMAF": 43.49, "ERQA": 0.693, "LPIPS": 0.055, "MS-SSIM": 0.867, "FPS": "— *", "rank": 7}, 
+    "Frame Averaging": {"Subjective": 0, "PSNR": 25.94, "SSIM": 0.854, "VMAF": 52.04, "ERQA": 0.691, "LPIPS": 0.071, "MS-SSIM": 0.908, "FPS": "— *", "rank": 8}}}
