@@ -326,6 +326,7 @@
                 <div id="edge3" class="img-zoom-result" style="width: 100%; padding-top: 100%"></div>
             </div>
         </div>
+        <div id="elem1"></div>
         <script>
             imageZoom(["imagegt", "image1", "image2", "image3"],
                 ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 200, 200);
@@ -383,6 +384,7 @@
                 // let src2 = img_prefix + "small_images/small_video" + selected_video + "_" + selected_model2 +".jpg";
                 // let src3 = img_prefix + "small_images/small_video" + selected_video + "_" + selected_model3 +".jpg";
 
+
                 let img_prefix = "https://storage.videoprocessing.ai/benchmarks/deblurring/visualizations_crops/";
                 let src_gt = img_prefix + "images/" + selected_video + "/" + selected_video + "_gt.webp";
                 let src1 = img_prefix + "images/" + selected_video + "/" + selected_video + "_" + selected_model1[0] +".webp";
@@ -434,6 +436,12 @@
 
                 imageZoom(["imagegt", "image1", "image2", "image3"],
                     ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 200, 200);
+                function updateDiv()
+                { 
+                    $( "#elem1" ).load(window.location.href + " #elem1" );
+                }
+                updateDiv();
+
             }
 
             document.getElementById("video_selector").onchange = onChangeHelper;
