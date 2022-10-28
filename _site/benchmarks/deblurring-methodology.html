@@ -136,30 +136,49 @@ http://localhost:4000/benchmarks/deblurring-methodology.html
     <a href="https://drive.google.com/file/d/1Fw5RkfPCvjpYxoCV-2n-Qr7oYLdqEnAO/view?usp=sharing">here</a>.<br> You also can see it in 
     Google Slides <a href="https://docs.google.com/presentation/d/1od9wMfacW-2p3enQHUSjKV5R3kcbnwdk3YSf-cqi_d4/edit?usp=sharing">here</a>.</p>
 -->
-          <h3 id="problem_definition">Problem definition</h3>
+          <h2 id="problem_definition">Problem definition</h2>
           <p>
-            Deblurring is the process of removing blurring artifacts from images. Video deblurring recovers a sharp sequence from a blurred one. Current SOTA aproaches use deep learning for this task
+            Deblurring is the process of removing blurring artifacts from images. Video deblurring recovers a sharp sequence from a blurred one. Current SOTA aproaches use deep learning algorythms for this task. Our benchmark will rank these algorithms and determine which is the best by means of restoration quality.
           </p>
           <p>
-            Our benchmark will rank these algorithms and determine which is the best by means of restoration quality.
+            To propose quality comparison we analyze different deblurring datasets. Many of them use gaussian blur to emulate defocus blur. For example, the most popolar datasets on paperswithcode, GoPro and REDS, both incorporate synthetic method of blur creation. RealBlur was the first dataset to suggest using a beam splitter to shoot with real distortion.  RealBlur has many scenes with nonprecise matched blurred and ground truth frames because of parallax effect. Nevertheless, they show significant gains achieved by learning from real distortion.
           </p>
-          <h3 id="dataset">Dataset</h3>
+          <h2 id="dataset">Dataset Proposal</h2>
           <p>
-            We propose a new real motion blur dataset. Using a beam splitter, we set the stereo base between two cameras to zero and obtain the same scene from two cameras with different shutter speed settings. The camera with higher shutter speed <b>(Camera [2])</b> captures gt frames, while the camera with lower shutter speed <b>(Camera [3])</b> captures motion blur
+            We propose a new real motion blur dataset. Using a beam-splitter rig and two GoPro Hero 9 cameras, we filmed different scenes. We set the stereo base between two cameras to zero and obtain the same scene from two cameras with different shutter speed settings. The camera with higher shutter speed (Camera [2]) captures ground truth frames, while the camera with lower shutter speed (Camera [3]) captures motion blur.
           </p>
           <div class="center">
             <div>
               <img style="width:100%" src="/assets/img/benchmarks/deblurring/scheme.png" />
             </div>
           </div>
+          <h3 id="dataset">Beam-splitter</h3>
           <p>
-            We have aquired 23 sequences with different types of motion and used objects using two GoPro Hero 9 cameras. We then proceeded to correct images mismatch using VQMT 3D Software
+            We construct a box to protect our cameras and beam splitter from external light.  To be able to more precisely manually align cameras and to raise the camera above the beam-splitter glass holder, we construct some stands and screw cameras to them. Then we connect the power and data cables to the cameras. Also, wThe walls of the box were covered with black matte sheets of paper for better light absorption and to increase the reflective properties of the beam-splitter at the time of shooting. The beam splitter itself was vertically aligned at 90 degrees angle.
           </p>
           <div class="center">
             <div>
-              <img style="width:100%" src="/assets/img/benchmarks/deblurring/splitter.png" />
+              <img style="width:80%" src="/assets/img/benchmarks/deblurring/splitter.png" />
             </div>
           </div>
+          <h3 id="alignment">Alignment</h3>
+          <p>
+            We disable optical stabilization and manually set all the available settings, such as ISO, focus distance, and color temperature. We film our sequences in 4K 60 FPS, and then crop regions of interest.
+          </p>
+          <p>
+            To achieve precise ground truth data it is crucial to film scenes without parallax present. The parallax is a difference in apparent position when an object is viewed along the two lines of sight. During post-processing, we can precisely correct affine mismatches between cameras, namely scale, rotation angle, and transition, but we cannot correct parallax without using complex optical flow algorithms that can affect our ground truth data quality.
+          </p>
+          <p>
+            For coarse alignment, we firstly visually aligned the lenses to obtain a visual zero stereo base. Then we point two cameras at one scene, using a photo from one camera and a video stream from another. After making sure that the parallax is not present we film all scenes in one go.
+          </p>
+          <h3 id="scenes">Scene selection</h3>
+          <p>
+            We use simple scenes to focus on a complex analysis of motion blur. We placed objects on a table with a white background 1.5 meters from the camera. We have aquired 23 sequences with different types of motion and objects using two GoPro Hero 9 cameras.
+          </p>
+          <h3 id="processing">Post-processing</h3>
+          <p>
+            For post-processing, we use a simple pipeline to minimize ground truth data tampering. Given the two videos from cameras, we first horizontally flip the blurred view, then we match the blurred view to the ground truth view using a homography transformation. For the estimation of transformation parameters, we utilize SIFT features, FLANN matcher, and the RANSAC algorithm. To correct beam splitter color distortions we use VQMT3D[link] color correction algorithm.
+          </p>
           <!-- 
 <div class="center" style="padding-bottom: 0px; margin-bottom: 0px;">
     <video autoplay loop muted playsinline width="100%">
@@ -374,7 +393,7 @@ http://localhost:4000/benchmarks/deblurring-methodology.html
 </div>
 <p class="center"><i>Table 2: Dataset characteristics</i></p>
 -->
-          <h3 id="metrics">Metrics</h3>
+          <h2 id="metrics">Metrics</h2>
           <h4 id="psnr">PSNR</h4>
           <p>
             PSNR is a commonly used metric for reconstruction quality for images and video. 

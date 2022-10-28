@@ -462,12 +462,21 @@
 
                 imageZoom(["imagegt", "image1", "image2", "image3"],
                     ["resultgt", "result1", "result2", "result3"], ["fake_vqmt", "vqmt1", "vqmt2", "vqmt3"], ["fake_edge", "edge1", "edge2", "edge3"], 540, 960);
+                function updateDiv()
+                { 
+                    $( "#result1" ).load(window.location.href + " #result1" );
+                }
+                updateDiv();
             }
 
             document.getElementById("video_selector").onchange = onChangeHelper;
             document.getElementById("comp_model1_selector").onchange = onChangeHelper;
             document.getElementById("comp_model2_selector").onchange = onChangeHelper;
             document.getElementById("comp_model3_selector").onchange = onChangeHelper;
+
+
+
+
         </script>
     </div>
 </div>

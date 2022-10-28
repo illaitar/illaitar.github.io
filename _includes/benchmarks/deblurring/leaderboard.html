@@ -2,9 +2,9 @@
     In the <a href="/benchmarks/deblurring-methodology.html">methodology</a> you can read brief information about all metrics.<br>
     You can scroll the table to see all the results.
 </p>
-<div class="datatable-container">
-    <div class="datatable-center">
-        <table id="leaderboard_bicubic" class="datatable display" style="background-color: #d4d4d4">
+<div style="width: 100%;" class="datatable-container" >
+    <div style="width: 100%;" class="datatable-center">
+        <table style="width: 100%;" id="leaderboard_bicubic" class="datatable display" style="background-color: #d4d4d4">
             <thead>
             <tr style="font-size: 90%; background-color: #3d6f96">    
                 <th style="background-color: #3d6f96">Rank</th>
@@ -16,87 +16,88 @@
                 <th style="background-color: #3d6f96">ERQAv2.0</th>
             </tr>
             </thead><tbody>
-        <tr class="item">
-            <td>1</td>
-            <td>NAFNet (REDS)</td>
-            <td> 30.5697</td>
-            <td> <b>0.9504</b></td>
-            <td> 66.7892</td>
-            <td> 0.0858</td>
-            <td> 0.7457</td>
-        </tr>
-        <tr class="item">
-            <td>2</td>
-            <td>Restormer</td>
-            <td> <b>31.7855</b></td>
-            <td> 0.9463</td>
-            <td> 66.3860 </td>
-            <td> 0.0825</td>
-            <td> 0.7482</td>
-        </tr>
-        <tr class="item">
-            <td>3</td>
-            <td>VRT (REDS)</td>
-            <td> 30.9915 </td>
-            <td> 0.9460</td>
-            <td>  66.7630</td>
-            <td> 0.0826</td>
-            <td> <b>   0.7509</b></td>
-        </tr>
-        <tr class="item">
-            <td>4</td>
-            <td>MPR (local)</td>
-            <td>  31.6742</td>
-            <td>  0.9454</td>
-            <td> <b>66.9960</b> </td>
-            <td> 0.0834</td>
-            <td> 0.7457</td>
-        </tr>
-        <tr class="item">
-            <td>5</td>
-            <td>VRT (GoPro)</td>
-            <td> 31.4457 </td>
-            <td> 0.9450 </td>
-            <td> 0.9450 </td>
-            <td> 0.0818</td>
-            <td> 0.7491</td>
-        </tr>
-        <tr class="item">
-            <td>6</td>
-            <td>Deeprft (GoPro)</td>
-            <td> 31.5951 </td>
-            <td> 0.9448</td>
-            <td> 66.5214</td>
-            <td> 0.0833</td>
-            <td>  0.7437</td>
-        </tr>
-        <tr class="item">
-            <td>7</td>
-            <td>Deeprft (REDS)</td>
-            <td> 31.3331</td>
-            <td> 0.9448 </td>
-            <td>  66.4491</td>
-            <td> <b> 0.0815</b></td>
-            <td> 0.7437</td>
-        </tr>
-        <tr class="item">
-            <td>8</td>
-            <td>DeblurGAN (Inception)</td>
-            <td>  31.1886</td>
-            <td>  0.9430</td>
-            <td>  66.8878</td>
-            <td>  0.0888</td>
-            <td> 0.7435</td>
-        </tr>
-        <tr class="item">
-            <td>9</td>
-            <td>Restormer (local)</td>
-            <td>  31.1470</td>
-            <td> 0.9422 </td>
-            <td> 65.2491 </td>
-            <td> 0.0826</td>
-            <td> 0.7391</td>
-        </tr>
+<tr class="item">
+                <td>1</td>
+                <td>NAFNet (REDS<sup>*</sup>)</td>
+                <td> 30.56977</td>
+                <td> <b>0.9504</b></td>
+                <td> 66.78929</td>
+                <td> 0.0858</td>
+                <td> 0.74571</td>
+            </tr>
+            <tr class="item">
+                <td>2</td>
+                <td>Restormer</td>
+                <td> <b>31.78555</b></td>
+                <td> 0.94638</td>
+                <td> 66.38604</td>
+                <td> 0.08251</td>
+                <td> 0.74823</td>
+            </tr>
+            <tr class="item">
+                <td>3</td>
+                <td>VRT (REDS<sup>*</sup>)</td>
+                <td> 30.99156</td>
+                <td> 0.94603</td>
+                <td> 66.76309</td>
+                <td> 0.08264</td>
+                <td> <b>0.75094</b></td>
+            </tr>
+            <tr class="item">
+                <td>4</td>
+                <td>MPR local</td>
+                <td> 31.67428</td>
+                <td> 0.94549</td>
+                <td> <b>66.99603</b></td>
+                <td> 0.08342</td>
+                <td> 0.74573</td>
+            </tr>
+            <tr class="item">
+                <td>5</td>
+                <td>VRT (GoPro<sup>*</sup>)</td>
+                <td> 31.44576</td>
+                <td> 0.94505</td>
+                <td> 66.67488</td>
+                <td> 0.08183</td>
+                <td> 0.74915</td>
+            </tr>
+            <tr class="item">
+                <td>6</td>
+                <td>Deeprft (GoPro<sup>*</sup>)</td>
+                <td> 31.5951</td>
+                <td> 0.94489</td>
+                <td> 66.52145</td>
+                <td> 0.0834</td>
+                <td> 0.74373</td>
+            </tr>
+            <tr class="item">
+                <td>7</td>
+                <td>Deeprft (REDS<sup>*</sup>)</td>
+                <td> 31.33312</td>
+                <td> 0.94484</td>
+                <td> 66.44911</td>
+                <td> <b>0.08151</b></td>
+                <td> 0.74375</td>
+            </tr>
+            <tr class="item">
+                <td>8</td>
+                <td>DeblurGAN Inception</td>
+                <td> 31.18869</td>
+                <td> 0.94308</td>
+                <td> 66.88787</td>
+                <td> 0.08882</td>
+                <td> 0.74352</td>
+            </tr>
+            
+            <tr class="item">
+                <td>9</td>
+                <td>Restormer local</td>
+                <td> 31.14706</td>
+                <td> 0.94223</td>
+                <td> 65.2492</td>
+                <td> 0.08263</td>
+                <td> 0.73918</td>
+            </tr>
         </tbody>
 
         </table>
@@ -112,3 +113,4 @@
         });</script>
     </div>
 </div>
+<div id="sup2"><p>* Train dataset</p></div>
