@@ -84,8 +84,7 @@ tt {
 </p>
 <h3 id="processing">Post-processing</h3>
 <p>
-    For post-processing, we use a simple pipeline to minimize ground truth data tampering. Given the two videos from cameras, we first horizontally flip the blurred view, then we match the blurred view to the ground truth view using a homography transformation. For the estimation of transformation parameters, we utilize SIFT features, FLANN matcher, and the RANSAC algorithm. To correct beam splitter color distortions we use VQMT3D[link] color correction algorithm.
-</p>
+    For post-processing, we use a simple pipeline to minimize ground truth data tampering. Given the two videos from cameras, we first horizontally flip the blurred view, then we match the blurred view to the ground truth view using a homography transformation. For the estimation of transformation parameters, we utilize SIFT features, FLANN matcher, and the RANSAC algorithm. To correct beam splitter color distortions we use <sup><a href="#references">[1]</a></sup> VQMT3D color correction algorithm.</p><sup> 
 
 
 <!-- 
@@ -327,7 +326,7 @@ tt {
 
 <p>
     SSIM is a metric based on structural similarity. 
-    <sup><a href="#references">[13]</a></sup>.
+    <sup><a href="#references">[3]</a></sup>.
 </p>
 
 <p>
@@ -516,6 +515,7 @@ tt {
 <h3 id="references">References</h3>
 
 <ol>
+    <li><a href="https://videoprocessing.ai/stereo_quality/local-color-correction-s3d.html">https://videoprocessing.ai/stereo_quality/local-color-correction-s3d.html</a></li>
     <li><a href="http://compression.ru/video/quality_measure/video_measurement_tool.html">http://compression.ru/video/quality_measure/video_measurement_tool.html</a></li>
     <li><a href="https://github.com/richzhang/PerceptualSimilarity">https://github.com/richzhang/PerceptualSimilarity</a></li>
     <li>R. Zhang, P. Isola, A. A. Efros, E. Shechtman, O. Wang, "The unreasonable effectiveness of deep features as a perceptual metric," in Proceedings of the IEEE conference on computer vision and pattern recognition, 2020, pp.586-595.</li>
@@ -523,8 +523,8 @@ tt {
     <li><a href="https://docs.opencv.org/3.4/dd/d1a/group__imgproc__feature.html#ga04723e007ed888ddf11d9ba04e2232de">https://docs.opencv.org/3.4/dd/d1a/group__imgproc__feature.html#ga04723e007ed888ddf11d9ba04e2232de</a></li>
     <li><a href="https://en.wikipedia.org/wiki/Canny_edge_detector">https://en.wikipedia.org/wiki/Canny_edge_detector</a></li>
     <li><a href="https://videoprocessing.ai/benchmarks/video-super-resolution-methodology.html">https://videoprocessing.ai/benchmarks/video-super-resolution-methodology.html</a></li>
-    <li><a href="http://app.subjectify.us/">http://app.subjectify.us/</a></li>
-    <li>A. Antsiferova, A. Yakovenko, N. Safonov, D. Kulikov, A. Gushin, D.Vatolin, "Objective video quality metrics application to video codecs comparisons: choosing the best for subjective quality estimation," in arXiv preprint arXiv:2107.10220, 2021</li>
-    <li><a href="https://github.com/alexanderkroner/saliency">https://github.com/alexanderkroner/saliency</a></li>
-    <li>A. Kroner, M. Senden, K. Driessens, and R. Goebel, "Contextual encoder-decoder network for visual saliency prediction," in Neural Networks, 129, pp. 261-270, 2020.</li>
+<!--     <li><a href="http://app.subjectify.us/">http://app.subjectify.us/</a></li> -->
+    <!-- <li>A. Antsiferova, A. Yakovenko, N. Safonov, D. Kulikov, A. Gushin, D.Vatolin, "Objective video quality metrics application to video codecs comparisons: choosing the best for subjective quality estimation," in arXiv preprint arXiv:2107.10220, 2021</li> -->
+    <!-- <li><a href="https://github.com/alexanderkroner/saliency">https://github.com/alexanderkroner/saliency</a></li> -->
+    <!-- <li>A. Kroner, M. Senden, K. Driessens, and R. Goebel, "Contextual encoder-decoder network for visual saliency prediction," in Neural Networks, 129, pp. 261-270, 2020.</li> -->
 </ol>
