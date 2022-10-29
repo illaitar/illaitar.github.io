@@ -85,8 +85,8 @@ tt {
 <h3 id="processing">Post-processing</h3>
 <p>
     For post-processing, we use a simple pipeline to minimize ground truth data tampering. Given the two videos from cameras, we first horizontally flip the blurred view, then we match the blurred view to the ground truth view using a homography transformation. For the estimation of transformation parameters, we utilize SIFT features, FLANN matcher, and the RANSAC algorithm. To correct beam splitter color distortions we use <sup><a href="#references">[1]</a></sup> VQMT3D color correction algorithm.</p><sup> 
-
-
+<h3 id="processing">Dataset preview</h3>
+{% include benchmarks/deblurring/dataset_slider.html %}
 <!-- 
 <div class="center" style="padding-bottom: 0px; margin-bottom: 0px;">
     <video autoplay loop muted playsinline width="100%">

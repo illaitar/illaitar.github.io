@@ -25,7 +25,6 @@ tag: invisible
 	__set_menu_buttons([
 	['Home', '/benchmarks/deblurring.html'],
 	['Participants','/benchmarks/deblurring-participants.html'], 
-	['Dataset','/benchmarks/deblurring-dataset.html'], 
 	['Evaluation methodology', '/benchmarks/deblurring-methodology.html'], 
 	['How to participate', '/benchmarks/deblurring.html#participate'],
     ['Contact us', '/benchmarks/deblurring.html#contacts']

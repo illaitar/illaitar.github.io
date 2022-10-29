@@ -61,8 +61,7 @@ subprojects:
 <script>
     __set_menu_buttons([
     ['Home', '/benchmarks/deblurring.html'],
-    ['Participants','/benchmarks/deblurring-participants.html'], 
-    ['Dataset','/benchmarks/deblurring-dataset.html'], 
+    ['Participants','/benchmarks/deblurring-participants.html'],
     ['Evaluation methodology', '/benchmarks/deblurring-methodology.html'], 
     ['How to participate', '#participate'],
     ['Contact us', '#contacts']
