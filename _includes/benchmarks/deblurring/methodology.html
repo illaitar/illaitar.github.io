@@ -43,9 +43,9 @@ tt {
 -->
 
 
-<h2 id="problem_definition">Problem definition</h2>
+<h2 id="problem_definition">Problem Definition</h2>
 <p>
-    Deblurring is the process of removing blurring artifacts from images. Video deblurring recovers a sharp sequence from a blurred one. Current SOTA aproaches use deep learning algorythms for this task. Our benchmark will rank these algorithms and determine which is the best by means of restoration quality.
+    Deblurring is the process of removing blurring artifacts from images. Video deblurring recovers a sharp sequence from a blurred one. Current SOTA aproaches use deep learning algorithms for this task. Our benchmark ranks these algorithms and determine which is the best by means of restoration quality.
 </p>
 <p>
     To propose quality comparison we analyze different deblurring datasets. Many of them use gaussian blur to emulate defocus blur. For example, the most popolar datasets on paperswithcode, GoPro and REDS, both incorporate synthetic method of blur creation. RealBlur was the first dataset to suggest using a beam splitter to shoot with real distortion.  RealBlur has many scenes with nonprecise matched blurred and ground truth frames because of parallax effect. Nevertheless, they show significant gains achieved by learning from real distortion.
@@ -61,7 +61,7 @@ tt {
 </div>
 <h3 id="dataset">Beam-splitter</h3>
 <p>
-    We construct a box to protect our cameras and beam splitter from external light.  To be able to more precisely manually align cameras and to raise the camera above the beam-splitter glass holder, we construct some stands and screw cameras to them. Then we connect the power and data cables to the cameras. Also, wThe walls of the box were covered with black matte sheets of paper for better light absorption and to increase the reflective properties of the beam-splitter at the time of shooting. The beam splitter itself was vertically aligned at 90 degrees angle.
+    We construct a box to protect our cameras and beam splitter from external light.  To be able to more precisely manually align cameras and to raise the camera above the beam-splitter glass holder, we construct some stands and screw cameras to them. Then we connect the power and data cables to the cameras. Also, the walls of the box were covered with black matte sheets of paper for better light absorption and to increase the reflective properties of the beam-splitter at the time of shooting. The beam splitter itself was vertically aligned at 90 degrees angle.
 </p>
 <div class="center">
     <div>
@@ -373,8 +373,7 @@ tt {
 
 <p>
     LPIPS (Learned Perceptual Image Patch Similarity) evaluates the distance between image patches. 
-    Higher means further/more different. Lower means more similar. In our benchmark, we subtract LPIPS value from 1. 
-    Thus, more similar images have higher metric values. 
+    Higher means further/more different. Lower means more similar.
 </p>
 <p>
     To calculate LPIPS we use Perceptual Similarity Metric implementation<sup><a href="#references">[3]</a></sup> proposed in 
