@@ -74,7 +74,7 @@ subprojects:
 {% include benchmarks/deblurring/board.html %}
 
 ## What's new
-- **24.10.2022** Beta-version Release.
+- **24.10.2022** Beta-version release.
 
 ## <span id="charts"></span> Leaderboard
 
