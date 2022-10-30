@@ -311,13 +311,6 @@ tt {
     PSNR is a commonly used metric for reconstruction quality for images and video. 
     In our benchmark, we calculate PSNR on the Y component in YUV colorspace. 
 </p>
-
-<p>
-    Since some Super-Resolution models can generate images with a global shift relative to GT, we calculate shifted PSNR. 
-    We check each shift in the range [-3, 3] (including subpixel shifts) for both axes and select the highest PSNR value among these shifts. 
-    We noticed that SRs’ results on the same video decoded with different bitrates usually have the same global shift. 
-    Thus we calculate the best shift only once for each video.
-</p> 
     
 <p>For metric calculation, we use MSU VQMT<sup><a href="#references">[2]</a></sup>.</p>
 
@@ -328,12 +321,6 @@ tt {
     SSIM is a metric based on structural similarity. 
     <sup><a href="#references">[3]</a></sup>.
 </p>
-
-<p>
-    These results also rely on the shift of frames. 
-    We take optimal subpixel shift for PSNR and apply in to input frames 
-    before calculating MS-SSIM.
-</p> 
     
 <p>For metric calculation, we use MSU VQMT<sup><a href="#references">[2]</a></sup>.</p>
 
